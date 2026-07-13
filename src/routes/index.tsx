@@ -35,23 +35,23 @@ export const Route = createFileRoute("/")({
 const capabilities = [
   {
     icon: ShoppingBag,
-    title: "Native E-commerce",
-    desc: "Shopify theme development and custom Liquid, built for scale.",
+    title: "Shopify & Custom E-commerce",
+    desc: "I architect scalable storefronts using custom Liquid, HTML, and CSS. No bloated themes, just high-converting, performance-driven environments.",
   },
   {
     icon: Zap,
-    title: "Email Marketing & Growth",
-    desc: "Klaviyo automation, CRM flows, and retention campaigns that keep customers coming back.",
+    title: "Retention & Email Marketing",
+    desc: "Designing automated Klaviyo CRM flows and targeted campaigns that turn one-time buyers into loyal brand advocates and maximize LTV.",
   },
   {
     icon: Palette,
-    title: "Strategic Identity",
-    desc: "Art direction that turns positioning into a cohesive visual language.",
+    title: "Brand Identity & UI/UX",
+    desc: "Crafting cohesive visual systems. From packaging to digital interfaces, I build scalable brands grounded in academic design principles.",
   },
   {
     icon: Bot,
-    title: "AI Automations",
-    desc: "Workflow automation with n8n, Claude and Gemini to move faster.",
+    title: "AI & Workflow Automation",
+    desc: "Connecting the dots between Make, Claude, and Gemini to streamline operations, reduce lead times, and scale businesses efficiently.",
   },
 ];
 
@@ -331,8 +331,8 @@ function Index() {
             variants={fadeUp}
             className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-1.5 text-xs font-semibold text-muted-foreground"
           >
-            <span className="h-2 w-2 rounded-full bg-gradient-accent" />
-            Available for select projects
+            <span className="h-2 w-2 animate-pulse rounded-full bg-orange-500" />
+            Creative Developer &amp; Growth Partner
           </motion.span>
           <motion.h1
             variants={fadeUp}
@@ -381,12 +381,22 @@ function Index() {
           <SectionLabel>Core Capabilities</SectionLabel>
           <Reveal className="grid grid-cols-1 gap-6 sm:grid-cols-2">
             {capabilities.map((c) => (
-              <motion.div key={c.title} variants={fadeUp} className="bento-card flex flex-col p-8">
-                <span className="mb-6 grid h-12 w-12 place-items-center rounded-2xl bg-secondary text-accent-1">
-                  <c.icon className="h-6 w-6" />
-                </span>
-                <h3 className="text-lg font-bold tracking-tight">{c.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{c.desc}</p>
+              <motion.div
+                key={c.title}
+                variants={fadeUp}
+                className="group relative flex flex-col rounded-[calc(var(--radius)+16px)] p-[1px] transition-all duration-300 hover:shadow-[var(--shadow-card-hover)]"
+              >
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute inset-0 rounded-[calc(var(--radius)+16px)] bg-gradient-accent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                />
+                <div className="relative flex h-full flex-col rounded-[calc(var(--radius)+15px)] border border-border bg-card p-8 shadow-[var(--shadow-card)] transition-colors duration-300">
+                  <span className="mb-6 grid h-12 w-12 place-items-center rounded-2xl bg-secondary text-accent-1 transition-colors duration-300 group-hover:bg-gradient-accent group-hover:text-accent-foreground">
+                    <c.icon className="h-6 w-6" />
+                  </span>
+                  <h3 className="text-lg font-bold tracking-tight">{c.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{c.desc}</p>
+                </div>
               </motion.div>
             ))}
           </Reveal>
