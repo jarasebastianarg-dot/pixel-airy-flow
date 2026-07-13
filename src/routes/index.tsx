@@ -396,55 +396,75 @@ function Index() {
             <motion.div variants={fadeUp}>
               <SectionLabel>The Architect</SectionLabel>
             </motion.div>
-            <div className="grid grid-cols-1 gap-10 md:grid-cols-[1fr_1.4fr] md:items-center">
-              <motion.div
-                variants={fadeUp}
-                className="relative aspect-[4/5] overflow-hidden rounded-3xl bg-foreground"
-              >
-                <img
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80"
-                  alt="Sebastián — designer and developer"
-                  loading="lazy"
-                  className="h-full w-full object-cover grayscale contrast-[1.1]"
-                />
+            <motion.h3
+              variants={fadeUp}
+              className="max-w-3xl text-3xl font-bold leading-tight tracking-tight md:text-5xl"
+            >
+              Systemic Logic.{" "}
+              <span className="font-serif italic font-normal text-accent-1">
+                Relentless Discipline.
+              </span>
+            </motion.h3>
+
+            <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3">
+              {/* Experience */}
+              <motion.div variants={fadeUp} className="md:col-span-2">
+                <div className="mb-8 flex items-center gap-2">
+                  <Briefcase className="h-4 w-4 text-accent-1" />
+                  <h4 className="text-lg font-bold tracking-tight">Experience</h4>
+                </div>
+                <ol className="relative border-l border-border pl-8">
+                  {experience.map((item) => (
+                    <li key={item.role} className="relative mb-10 last:mb-0">
+                      <span className="absolute -left-[2.6rem] top-1 grid h-4 w-4 place-items-center rounded-full border-2 border-background bg-gradient-accent" />
+                      <span className="text-xs font-semibold uppercase tracking-widest text-accent-1">
+                        {item.period}
+                      </span>
+                      <h5 className="mt-1 text-lg font-bold tracking-tight">{item.role}</h5>
+                      <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+                        {item.desc}
+                      </p>
+                    </li>
+                  ))}
+                </ol>
               </motion.div>
-              <div>
-                <motion.h3
-                  variants={fadeUp}
-                  className="text-3xl font-bold leading-tight tracking-tight md:text-5xl"
-                >
-                  Systemic Logic.{" "}
-                  <span className="font-serif italic font-normal text-accent-1">
-                    Relentless Discipline.
-                  </span>
-                </motion.h3>
-                <motion.p
-                  variants={fadeUp}
-                  className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg"
-                >
-                  I'm Sebastián. My background merges academic graphic design with deep technical
-                  execution. I build complex automation workflows and highly customized E-commerce
-                  architectures because beautiful design is useless if it doesn't perform. That same
-                  systemic discipline applies off-screen — whether I'm architecting server
-                  environments, grinding through marathon training, or hitting the boxing bags. I
-                  bring endurance and precision to every brand I scale.
-                </motion.p>
-                <motion.div variants={fadeUp} className="mt-8 flex flex-col gap-3 sm:flex-row">
-                  <MagneticButton
-                    href="mailto:hello@example.com"
-                    className="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-accent px-6 py-3.5 text-sm font-semibold text-accent-foreground shadow-[var(--shadow-accent)]"
-                  >
-                    <Mail className="h-4 w-4" />
-                    Contact me
-                    <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                  </MagneticButton>
-                  <div className="flex gap-3">
-                    <SocialLink icon={Linkedin} label="LinkedIn" />
-                    <SocialLink icon={Globe} label="Behance" />
-                  </div>
-                </motion.div>
-              </div>
+
+              {/* Credentials */}
+              <motion.div variants={fadeUp} className="md:col-span-1">
+                <div className="mb-8 flex items-center gap-2">
+                  <GraduationCap className="h-4 w-4 text-accent-1" />
+                  <h4 className="text-lg font-bold tracking-tight">Credentials</h4>
+                </div>
+                <ul className="flex flex-col gap-4">
+                  {credentials.map((c) => (
+                    <li
+                      key={c}
+                      className="rounded-2xl border border-border bg-secondary/60 px-5 py-4 text-sm font-semibold leading-snug"
+                    >
+                      {c}
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
             </div>
+
+            <motion.div
+              variants={fadeUp}
+              className="mt-12 flex flex-col gap-3 border-t border-border pt-10 sm:flex-row sm:items-center"
+            >
+              <MagneticButton
+                href="/resume.pdf"
+                className="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-accent px-6 py-3.5 text-sm font-semibold text-accent-foreground shadow-[var(--shadow-accent)]"
+              >
+                <Download className="h-4 w-4" />
+                Download Résumé
+              </MagneticButton>
+              <div className="flex gap-3">
+                <SocialLink icon={Linkedin} label="LinkedIn" />
+                <SocialLink icon={Globe} label="Behance" />
+                <SocialLink icon={Mail} label="Email" />
+              </div>
+            </motion.div>
           </Reveal>
           <p className="pb-10 text-center text-xs text-muted-foreground">
             © {new Date().getFullYear()} — Crafted in Buenos Aires.
