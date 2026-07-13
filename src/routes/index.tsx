@@ -101,10 +101,13 @@ function Index() {
             Available for select projects
           </span>
           <h1 className="mt-6 max-w-4xl text-5xl font-bold leading-[1.02] tracking-tight md:text-7xl">
-            Visual Marketing &amp; <span className="text-gradient-accent">E-commerce</span> Specialist.
+            We build{" "}
+            <span className="font-serif italic font-normal text-accent-1">brands</span> that stand
+            out and{" "}
+            <span className="font-serif italic font-normal text-accent-1">systems</span> that sell.
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">
-            Strategic Design | AI-Driven Analytics | Global Brand Management.
+            Bridging the gap between high-end visual design and technical e-commerce execution.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-4">
             <a
