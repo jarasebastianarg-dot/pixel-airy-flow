@@ -20,6 +20,9 @@ import {
   Code2,
   Zap,
   Boxes,
+  Download,
+  GraduationCap,
+  Briefcase,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -59,7 +62,6 @@ const works = [
     body: "Migrated 2000+ products to Shopify 2.0 without losing a single drop of performance.",
     image:
       "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1200&q=80",
-    span: "md:col-span-2",
   },
   {
     tag: "Lead Developer & Designer",
@@ -68,7 +70,6 @@ const works = [
     body: "End-to-end creation for a US market entry. Brand identity, UI/UX and Klaviyo integration.",
     image:
       "https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=900&q=80",
-    span: "",
   },
   {
     tag: "Brand Manager",
@@ -77,7 +78,6 @@ const works = [
     body: "Steered a 6-person team to scale operations across the US and Brazil, driving digital and 300+ attendee physical events.",
     image:
       "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=900&q=80",
-    span: "",
   },
   {
     tag: "Branding Designer",
@@ -86,17 +86,52 @@ const works = [
     body: "Complete visual identity for a European medical marketing agency.",
     image:
       "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=80",
-    span: "md:col-span-2",
   },
 ];
 
-const ecosystem = [
-  { label: "Shopify", color: "oklch(0.7 0.17 145)" },
-  { label: "Liquid", color: "oklch(0.7 0.15 250)" },
-  { label: "Klaviyo", color: "oklch(0.62 0.02 265)" },
-  { label: "n8n", color: "oklch(0.65 0.2 15)" },
-  { label: "Claude", color: "oklch(0.72 0.14 55)" },
-  { label: "Meta Ads", color: "oklch(0.65 0.17 255)" },
+const ecosystemClusters = [
+  {
+    group: "Build",
+    tools: [
+      { label: "Shopify", color: "oklch(0.7 0.17 145)" },
+      { label: "Liquid", color: "oklch(0.7 0.15 250)" },
+      { label: "Adobe CC", color: "oklch(0.65 0.2 15)" },
+    ],
+  },
+  {
+    group: "Scale",
+    tools: [
+      { label: "Klaviyo", color: "oklch(0.62 0.02 265)" },
+      { label: "Meta Ads", color: "oklch(0.65 0.17 255)" },
+      { label: "Make Automations", color: "oklch(0.7 0.19 300)" },
+      { label: "Claude", color: "oklch(0.72 0.14 55)" },
+    ],
+  },
+];
+
+const experience = [
+  {
+    role: "Freelance UI/UX & E-commerce Developer",
+    period: "2025 — Present",
+    desc: "Leading custom ecosystems for US/LATAM.",
+  },
+  {
+    role: "Brand Manager @ B-WAY",
+    period: "2024 — 2025",
+    desc: "Scaled operations across 3 international markets, led a 6-person team.",
+  },
+  {
+    role: "Product Designer @ B-WAY",
+    period: "2023 — 2024",
+    desc: "E-commerce visuals and CRO.",
+  },
+];
+
+const credentials = [
+  "B.A. Graphic Design (UADE)",
+  "B.A. Multimedia & Interaction Design (UADE)",
+  "Digital Marketing & GenAI (IBM/Google)",
+  "C1 Advanced English (Cambridge)",
 ];
 
 /* ─────────────────────── motion helpers ─────────────────────── */
@@ -361,55 +396,75 @@ function Index() {
             <motion.div variants={fadeUp}>
               <SectionLabel>The Architect</SectionLabel>
             </motion.div>
-            <div className="grid grid-cols-1 gap-10 md:grid-cols-[1fr_1.4fr] md:items-center">
-              <motion.div
-                variants={fadeUp}
-                className="relative aspect-[4/5] overflow-hidden rounded-3xl bg-foreground"
-              >
-                <img
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80"
-                  alt="Sebastián — designer and developer"
-                  loading="lazy"
-                  className="h-full w-full object-cover grayscale contrast-[1.1]"
-                />
+            <motion.h3
+              variants={fadeUp}
+              className="max-w-3xl text-3xl font-bold leading-tight tracking-tight md:text-5xl"
+            >
+              Systemic Logic.{" "}
+              <span className="font-serif italic font-normal text-accent-1">
+                Relentless Discipline.
+              </span>
+            </motion.h3>
+
+            <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3">
+              {/* Experience */}
+              <motion.div variants={fadeUp} className="md:col-span-2">
+                <div className="mb-8 flex items-center gap-2">
+                  <Briefcase className="h-4 w-4 text-accent-1" />
+                  <h4 className="text-lg font-bold tracking-tight">Experience</h4>
+                </div>
+                <ol className="relative border-l border-border pl-8">
+                  {experience.map((item) => (
+                    <li key={item.role} className="relative mb-10 last:mb-0">
+                      <span className="absolute -left-[2.6rem] top-1 grid h-4 w-4 place-items-center rounded-full border-2 border-background bg-gradient-accent" />
+                      <span className="text-xs font-semibold uppercase tracking-widest text-accent-1">
+                        {item.period}
+                      </span>
+                      <h5 className="mt-1 text-lg font-bold tracking-tight">{item.role}</h5>
+                      <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+                        {item.desc}
+                      </p>
+                    </li>
+                  ))}
+                </ol>
               </motion.div>
-              <div>
-                <motion.h3
-                  variants={fadeUp}
-                  className="text-3xl font-bold leading-tight tracking-tight md:text-5xl"
-                >
-                  Systemic Logic.{" "}
-                  <span className="font-serif italic font-normal text-accent-1">
-                    Relentless Discipline.
-                  </span>
-                </motion.h3>
-                <motion.p
-                  variants={fadeUp}
-                  className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg"
-                >
-                  I'm Sebastián. My background merges academic graphic design with deep technical
-                  execution. I build complex automation workflows and highly customized E-commerce
-                  architectures because beautiful design is useless if it doesn't perform. That same
-                  systemic discipline applies off-screen — whether I'm architecting server
-                  environments, grinding through marathon training, or hitting the boxing bags. I
-                  bring endurance and precision to every brand I scale.
-                </motion.p>
-                <motion.div variants={fadeUp} className="mt-8 flex flex-col gap-3 sm:flex-row">
-                  <MagneticButton
-                    href="mailto:hello@example.com"
-                    className="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-accent px-6 py-3.5 text-sm font-semibold text-accent-foreground shadow-[var(--shadow-accent)]"
-                  >
-                    <Mail className="h-4 w-4" />
-                    Contact me
-                    <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                  </MagneticButton>
-                  <div className="flex gap-3">
-                    <SocialLink icon={Linkedin} label="LinkedIn" />
-                    <SocialLink icon={Globe} label="Behance" />
-                  </div>
-                </motion.div>
-              </div>
+
+              {/* Credentials */}
+              <motion.div variants={fadeUp} className="md:col-span-1">
+                <div className="mb-8 flex items-center gap-2">
+                  <GraduationCap className="h-4 w-4 text-accent-1" />
+                  <h4 className="text-lg font-bold tracking-tight">Credentials</h4>
+                </div>
+                <ul className="flex flex-col gap-4">
+                  {credentials.map((c) => (
+                    <li
+                      key={c}
+                      className="rounded-2xl border border-border bg-secondary/60 px-5 py-4 text-sm font-semibold leading-snug"
+                    >
+                      {c}
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
             </div>
+
+            <motion.div
+              variants={fadeUp}
+              className="mt-12 flex flex-col gap-3 border-t border-border pt-10 sm:flex-row sm:items-center"
+            >
+              <MagneticButton
+                href="/resume.pdf"
+                className="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-accent px-6 py-3.5 text-sm font-semibold text-accent-foreground shadow-[var(--shadow-accent)]"
+              >
+                <Download className="h-4 w-4" />
+                Download Résumé
+              </MagneticButton>
+              <div className="flex gap-3">
+                <SocialLink icon={Linkedin} label="LinkedIn" />
+                <SocialLink icon={Globe} label="Behance" />
+                <SocialLink icon={Mail} label="Email" />
+              </div>
+            </motion.div>
           </Reveal>
           <p className="pb-10 text-center text-xs text-muted-foreground">
             © {new Date().getFullYear()} — Crafted in Buenos Aires.
@@ -436,21 +491,19 @@ function WorkCard({
   headline,
   body,
   image,
-  span,
 }: {
   tag: string;
   client: string;
   headline: string;
   body: string;
   image: string;
-  span: string;
 }) {
   return (
     <motion.a
       href="#"
       data-cursor-view
       variants={fadeUp}
-      className={`group relative block aspect-[4/3] overflow-hidden rounded-[calc(var(--radius)+16px)] border border-border shadow-[var(--shadow-card)] ${span}`}
+      className="group relative block h-[24rem] overflow-hidden rounded-[calc(var(--radius)+16px)] border border-border shadow-[var(--shadow-card)]"
     >
       <img
         src={image}
@@ -462,7 +515,7 @@ function WorkCard({
       <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-70 transition-opacity duration-500 group-hover:opacity-100" />
 
       {/* tag top-left */}
-      <span className="absolute left-6 top-6 inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1 text-xs font-semibold text-white backdrop-blur-md">
+      <span className="absolute left-6 top-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/70 px-3 py-1 text-xs font-semibold text-white backdrop-blur-md">
         <Boxes className="h-3.5 w-3.5" />
         {tag}
       </span>
@@ -539,8 +592,8 @@ function CodeApproach() {
           <span className="font-serif italic font-normal text-accent-1">&gt;</span> Wireframes.
         </p>
         <p className="mt-3 max-w-lg text-sm leading-relaxed text-white/60">
-          I skip static mockups, designing directly over Shopify Liquid and code for brutal
-          functional realism and faster time-to-market.
+          I bypass static mockups. Designing and iterating directly over Shopify Liquid and code
+          allows for faster time-to-market and absolute functional realism from day one.
         </p>
       </div>
     </div>
@@ -552,23 +605,29 @@ function Ecosystem() {
     <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius)+16px)] border border-border bg-card p-8 shadow-[var(--shadow-card)]">
       <h3 className="text-lg font-bold tracking-tight">The Ecosystem</h3>
       <p className="mt-1 text-sm text-muted-foreground">Tools I orchestrate as one system.</p>
-      <div className="mt-8 grid flex-1 grid-cols-2 gap-4 sm:grid-cols-3">
-        {ecosystem.map((tool, i) => (
-          <div
-            key={tool.label}
-            className="float-orb flex flex-col items-center justify-center gap-2 rounded-2xl border border-white/40 bg-white/40 p-4 text-center backdrop-blur-md"
-            style={{ animationDelay: `${i * 0.4}s` }}
-          >
-            <span
-              className="grid h-10 w-10 place-items-center rounded-full text-sm font-bold text-white shadow-lg"
-              style={{
-                background: tool.color,
-                boxShadow: `0 0 20px -4px ${tool.color}`,
-              }}
-            >
-              {tool.label[0]}
-            </span>
-            <span className="text-xs font-semibold">{tool.label}</span>
+      <div className="mt-8 flex flex-1 flex-col gap-6">
+        {ecosystemClusters.map((cluster) => (
+          <div key={cluster.group}>
+            <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+              {cluster.group}
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {cluster.tools.map((tool) => (
+                <span
+                  key={tool.label}
+                  className="inline-flex items-center gap-2 rounded-full border border-border bg-secondary px-3 py-1.5 text-xs font-semibold"
+                >
+                  <span
+                    className="h-2.5 w-2.5 rounded-full"
+                    style={{
+                      background: tool.color,
+                      boxShadow: `0 0 10px -2px ${tool.color}`,
+                    }}
+                  />
+                  {tool.label}
+                </span>
+              ))}
+            </div>
           </div>
         ))}
       </div>
