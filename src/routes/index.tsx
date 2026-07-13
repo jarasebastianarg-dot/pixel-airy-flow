@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { createFileRoute } from "@tanstack/react-router";
+import portrait from "@/assets/portrait.jpg";
 import {
   motion,
   useMotionValue,
@@ -39,8 +40,8 @@ const capabilities = [
   },
   {
     icon: Zap,
-    title: "Data-Driven Growth",
-    desc: "Klaviyo automation and retention that keeps customers coming back.",
+    title: "Email Marketing & Growth",
+    desc: "Klaviyo automation, CRM flows, and retention campaigns that keep customers coming back.",
   },
   {
     icon: Palette,
@@ -91,20 +92,34 @@ const works = [
 
 const ecosystemClusters = [
   {
-    group: "Build",
+    group: "Design & UX",
     tools: [
-      { label: "Shopify", color: "oklch(0.7 0.17 145)" },
-      { label: "Liquid", color: "oklch(0.7 0.15 250)" },
-      { label: "Adobe CC", color: "oklch(0.65 0.2 15)" },
+      { label: "Photoshop", color: "#31A8FF" },
+      { label: "Illustrator", color: "#FF9A00" },
+      { label: "InDesign", color: "#FF3366" },
+      { label: "After Effects", color: "#9999FF" },
     ],
   },
   {
-    group: "Scale",
+    group: "Build & Code",
     tools: [
-      { label: "Klaviyo", color: "oklch(0.62 0.02 265)" },
-      { label: "Meta Ads", color: "oklch(0.65 0.17 255)" },
-      { label: "Make Automations", color: "oklch(0.7 0.19 300)" },
-      { label: "Claude", color: "oklch(0.72 0.14 55)" },
+      { label: "Shopify", color: "#95BF47" },
+      { label: "Liquid", color: "#008080" },
+    ],
+  },
+  {
+    group: "Scale & Automate",
+    tools: [
+      { label: "Klaviyo (CRM)", color: "#20E2C8" },
+      { label: "Meta Ads", color: "#0668E1" },
+      { label: "Make Automations", color: "#8848AB" },
+    ],
+  },
+  {
+    group: "AI Models",
+    tools: [
+      { label: "Claude", color: "#D97757" },
+      { label: "Gemini", color: "#1A73E8" },
     ],
   },
 ];
@@ -128,8 +143,8 @@ const experience = [
 ];
 
 const credentials = [
-  "B.A. Graphic Design (UADE)",
-  "B.A. Multimedia & Interaction Design (UADE)",
+  "B.A. Graphic Design (UADE, 2019-2024)",
+  "B.A. Multimedia & Interaction Design (UADE, 2020-2024)",
   "Digital Marketing & GenAI (IBM/Google)",
   "C1 Advanced English (Cambridge)",
 ];
@@ -351,10 +366,20 @@ function Index() {
           </motion.div>
         </Reveal>
 
+        {/* Selected Works */}
+        <section id="works" className="pt-8">
+          <SectionLabel>Selected Works</SectionLabel>
+          <Reveal className="grid grid-cols-1 gap-6 md:grid-cols-2" stagger={0.12}>
+            {works.map((w) => (
+              <WorkCard key={w.client} {...w} />
+            ))}
+          </Reveal>
+        </section>
+
         {/* Capabilities */}
-        <section className="pb-8">
+        <section className="pt-16">
           <SectionLabel>Core Capabilities</SectionLabel>
-          <Reveal className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4">
+          <Reveal className="grid grid-cols-1 gap-6 sm:grid-cols-2">
             {capabilities.map((c) => (
               <motion.div key={c.title} variants={fadeUp} className="bento-card flex flex-col p-8">
                 <span className="mb-6 grid h-12 w-12 place-items-center rounded-2xl bg-secondary text-accent-1">
@@ -363,16 +388,6 @@ function Index() {
                 <h3 className="text-lg font-bold tracking-tight">{c.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{c.desc}</p>
               </motion.div>
-            ))}
-          </Reveal>
-        </section>
-
-        {/* Selected Works */}
-        <section id="works" className="pt-16">
-          <SectionLabel>Selected Works</SectionLabel>
-          <Reveal className="grid grid-cols-1 gap-6 md:grid-cols-2" stagger={0.12}>
-            {works.map((w) => (
-              <WorkCard key={w.client} {...w} />
             ))}
           </Reveal>
         </section>
@@ -396,15 +411,32 @@ function Index() {
             <motion.div variants={fadeUp}>
               <SectionLabel>The Architect</SectionLabel>
             </motion.div>
-            <motion.h3
-              variants={fadeUp}
-              className="max-w-3xl text-3xl font-bold leading-tight tracking-tight md:text-5xl"
-            >
-              Systemic Logic.{" "}
-              <span className="font-serif italic font-normal text-accent-1">
-                Relentless Discipline.
-              </span>
-            </motion.h3>
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:items-center">
+              <motion.div variants={fadeUp} className="md:col-span-1">
+                <img
+                  src={portrait}
+                  alt="Portrait of Sebastián"
+                  loading="lazy"
+                  width={1024}
+                  height={1024}
+                  className="aspect-square w-full rounded-2xl object-cover grayscale"
+                />
+              </motion.div>
+              <motion.div variants={fadeUp} className="md:col-span-2">
+                <h3 className="max-w-3xl text-3xl font-bold leading-tight tracking-tight md:text-5xl">
+                  Systemic Logic.{" "}
+                  <span className="font-serif italic font-normal text-accent-1">
+                    Relentless Discipline.
+                  </span>
+                </h3>
+                <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
+                  I'm Sebastián. My background merges academic graphic design with deep technical
+                  execution. I build complex automation workflows and highly customized E-commerce
+                  architectures because I understand that beautiful design is useless if it doesn't
+                  perform. I bring endurance and precision to every brand I scale.
+                </p>
+              </motion.div>
+            </div>
 
             <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3">
               {/* Experience */}
