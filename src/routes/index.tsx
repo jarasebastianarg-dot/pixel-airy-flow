@@ -147,41 +147,35 @@ function Index() {
           <SectionLabel>Selected Works</SectionLabel>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             <WorkCard
-              className="md:col-span-2"
               tag="Shopify Expert"
               client="Folkways"
               headline="The Technical Scale"
-              body="Led the migration of 2000+ products to Shopify 2.0, re-architecting the storefront for performance, maintainability and a dramatically smoother shopping UX."
-              metric="2000+"
-              metricLabel="products migrated"
+              body="Migrated 2000+ products to Shopify 2.0 without losing a single drop of performance."
+              image="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=900&q=80"
               icon={Boxes}
             />
             <WorkCard
               tag="Lead Developer & Designer"
               client="Paw Royalty"
-              headline="Full-Stack Creation"
-              body="End-to-end creation of a US-market store — design, build and launch — with custom Klaviyo flows powering retention from day one."
-              metric="US"
-              metricLabel="market launch"
+              headline="Full-Stack Launch"
+              body="End-to-end creation for a US market entry. Brand identity, UI/UX, and Klaviyo integration."
+              image="https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=900&q=80"
               icon={Layers}
             />
             <WorkCard
               tag="Brand Manager"
               client="B-WAY"
-              headline="Leadership & Expansion"
-              body="Managed a 6-person team through international expansion across the US &amp; Brazil, plus large-scale physical events for 300+ people."
-              metric="6"
-              metricLabel="person team led"
+              headline="Global Expansion"
+              body="Steered a 6-person team to scale operations across the US and Brazil, driving both digital and 300+ attendee physical events."
+              image="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=900&q=80"
               icon={Users}
             />
             <WorkCard
-              className="md:col-span-2"
               tag="Branding Designer"
               client="Elevate Local"
-              headline="Brand Identity"
-              body="Designed the full logo and visual identity system for a European medical marketing agency, balancing clinical trust with modern energy."
-              metric="EU"
-              metricLabel="brand identity"
+              headline="Clinical Aesthetics"
+              body="Complete visual identity for a European medical marketing agency."
+              image="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=900&q=80"
               icon={Palette}
             />
           </div>
@@ -195,10 +189,16 @@ function Index() {
               <span className="text-xs font-semibold uppercase tracking-widest text-background/60">
                 The Approach
               </span>
-              <p className="mt-6 text-2xl font-bold leading-snug tracking-tight md:text-3xl">
-                No static wireframes. Direct design and execution over Shopify Liquid and code —
-                for <span className="text-gradient-accent">rapid iteration</span> and functional realism.
-              </p>
+              <div className="mt-6">
+                <p className="text-3xl font-bold leading-tight tracking-tight md:text-5xl">
+                  We skip the{" "}
+                  <span className="font-serif italic font-normal text-accent-1">wireframes</span>.
+                </p>
+                <p className="mt-4 max-w-lg text-base leading-relaxed text-background/70">
+                  Direct UI/UX design and execution using code and Shopify Liquid for rapid
+                  iteration and functional realism.
+                </p>
+              </div>
             </div>
             <div className="bento-card p-8">
               <h3 className="text-lg font-bold tracking-tight">Tools</h3>
