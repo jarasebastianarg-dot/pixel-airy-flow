@@ -101,6 +101,7 @@
 :root {
   --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
   --font-body: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Instrument Serif", ui-serif, Georgia, serif;
 
   /* Warm off-white canvas + crisp white cards */
   --background: oklch(0.985 0.004 90);
@@ -123,6 +124,7 @@
 @theme inline {
   --font-display: var(--font-display);
   --font-body: var(--font-body);
+  --font-serif: var(--font-serif);
   --color-accent-1: var(--accent-1);
   --color-accent-2: var(--accent-2);
 }
@@ -130,7 +132,7 @@
 @utility bento-card {
   background-color: var(--card);
   border: 1px solid var(--border);
-  border-radius: var(--radius-3xl);
+  border-radius: var(--radius-4xl);
   box-shadow: var(--shadow-card);
   transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
   &:hover {

@@ -22,23 +22,23 @@ export const Route = createFileRoute("/")({
 const capabilities = [
   {
     icon: ShoppingBag,
-    title: "E-commerce & Shopify",
-    desc: "Native theme development, custom Liquid coding and conversion rate optimization built for scale.",
+    title: "Native E-commerce",
+    desc: "Shopify theme development and custom Liquid, built for scale.",
   },
   {
     icon: Mail,
-    title: "Growth & Email Marketing",
-    desc: "Retention strategies, Klaviyo automation and campaign design that keeps customers coming back.",
+    title: "Data-Driven Growth",
+    desc: "Klaviyo automation and retention that keeps customers coming back.",
   },
   {
     icon: Palette,
-    title: "Brand Identity",
-    desc: "Strategic design and art direction that translates positioning into a cohesive visual language.",
+    title: "Strategic Identity",
+    desc: "Art direction that turns positioning into a cohesive visual language.",
   },
   {
     icon: Bot,
     title: "AI Automations",
-    desc: "Workflow automation with n8n, Claude and Gemini to remove busywork and move faster.",
+    desc: "Workflow automation with n8n, Claude and Gemini to move faster.",
   },
 ];
 
@@ -101,10 +101,13 @@ function Index() {
             Available for select projects
           </span>
           <h1 className="mt-6 max-w-4xl text-5xl font-bold leading-[1.02] tracking-tight md:text-7xl">
-            Visual Marketing &amp; <span className="text-gradient-accent">E-commerce</span> Specialist.
+            We build{" "}
+            <span className="font-serif italic font-normal text-accent-1">brands</span> that stand
+            out and{" "}
+            <span className="font-serif italic font-normal text-accent-1">systems</span> that sell.
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">
-            Strategic Design | AI-Driven Analytics | Global Brand Management.
+            Bridging the gap between high-end visual design and technical e-commerce execution.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-4">
             <a
@@ -144,41 +147,35 @@ function Index() {
           <SectionLabel>Selected Works</SectionLabel>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             <WorkCard
-              className="md:col-span-2"
               tag="Shopify Expert"
               client="Folkways"
               headline="The Technical Scale"
-              body="Led the migration of 2000+ products to Shopify 2.0, re-architecting the storefront for performance, maintainability and a dramatically smoother shopping UX."
-              metric="2000+"
-              metricLabel="products migrated"
+              body="Migrated 2000+ products to Shopify 2.0 without losing a single drop of performance."
+              image="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=900&q=80"
               icon={Boxes}
             />
             <WorkCard
               tag="Lead Developer & Designer"
               client="Paw Royalty"
-              headline="Full-Stack Creation"
-              body="End-to-end creation of a US-market store — design, build and launch — with custom Klaviyo flows powering retention from day one."
-              metric="US"
-              metricLabel="market launch"
+              headline="Full-Stack Launch"
+              body="End-to-end creation for a US market entry. Brand identity, UI/UX, and Klaviyo integration."
+              image="https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=900&q=80"
               icon={Layers}
             />
             <WorkCard
               tag="Brand Manager"
               client="B-WAY"
-              headline="Leadership & Expansion"
-              body="Managed a 6-person team through international expansion across the US &amp; Brazil, plus large-scale physical events for 300+ people."
-              metric="6"
-              metricLabel="person team led"
+              headline="Global Expansion"
+              body="Steered a 6-person team to scale operations across the US and Brazil, driving both digital and 300+ attendee physical events."
+              image="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=900&q=80"
               icon={Users}
             />
             <WorkCard
-              className="md:col-span-2"
               tag="Branding Designer"
               client="Elevate Local"
-              headline="Brand Identity"
-              body="Designed the full logo and visual identity system for a European medical marketing agency, balancing clinical trust with modern energy."
-              metric="EU"
-              metricLabel="brand identity"
+              headline="Clinical Aesthetics"
+              body="Complete visual identity for a European medical marketing agency."
+              image="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=900&q=80"
               icon={Palette}
             />
           </div>
@@ -192,10 +189,16 @@ function Index() {
               <span className="text-xs font-semibold uppercase tracking-widest text-background/60">
                 The Approach
               </span>
-              <p className="mt-6 text-2xl font-bold leading-snug tracking-tight md:text-3xl">
-                No static wireframes. Direct design and execution over Shopify Liquid and code —
-                for <span className="text-gradient-accent">rapid iteration</span> and functional realism.
-              </p>
+              <div className="mt-6">
+                <p className="text-3xl font-bold leading-tight tracking-tight md:text-5xl">
+                  We skip the{" "}
+                  <span className="font-serif italic font-normal text-accent-1">wireframes</span>.
+                </p>
+                <p className="mt-4 max-w-lg text-base leading-relaxed text-background/70">
+                  Direct UI/UX design and execution using code and Shopify Liquid for rapid
+                  iteration and functional realism.
+                </p>
+              </div>
             </div>
             <div className="bento-card p-8">
               <h3 className="text-lg font-bold tracking-tight">Tools</h3>
@@ -257,41 +260,43 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 }
 
 function WorkCard({
-  className = "",
   tag,
   client,
   headline,
   body,
-  metric,
-  metricLabel,
+  image,
   icon: Icon,
 }: {
-  className?: string;
   tag: string;
   client: string;
   headline: string;
   body: string;
-  metric: string;
-  metricLabel: string;
+  image: string;
   icon: typeof Boxes;
 }) {
   return (
-    <div className={`bento-card group flex flex-col p-8 md:p-10 ${className}`}>
-      <div className="flex items-start justify-between gap-4">
-        <span className="inline-flex items-center gap-2 rounded-full bg-secondary px-3 py-1 text-xs font-semibold">
-          <Icon className="h-3.5 w-3.5 text-accent-1" />
-          {tag}
-        </span>
-        <ArrowUpRight className="h-5 w-5 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent-1" />
+    <div className="bento-card group grid grid-cols-1 overflow-hidden sm:grid-cols-2">
+      <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-foreground/90 to-foreground sm:aspect-auto">
+        <img
+          src={image}
+          alt={`${client} — ${headline}`}
+          loading="lazy"
+          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+        />
       </div>
-      <div className="mt-8 flex flex-1 flex-col">
-        <p className="text-sm font-semibold text-muted-foreground">{client}</p>
-        <h3 className="mt-1 text-2xl font-bold tracking-tight md:text-3xl">{headline}</h3>
-        <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground">{body}</p>
-      </div>
-      <div className="mt-8 flex items-baseline gap-3 border-t border-border pt-6">
-        <span className="text-4xl font-bold tracking-tight text-gradient-accent">{metric}</span>
-        <span className="text-sm text-muted-foreground">{metricLabel}</span>
+      <div className="flex flex-col p-8 md:p-10">
+        <div className="flex items-start justify-between gap-4">
+          <span className="inline-flex items-center gap-2 rounded-full bg-secondary px-3 py-1 text-xs font-semibold">
+            <Icon className="h-3.5 w-3.5 text-accent-1" />
+            {tag}
+          </span>
+          <ArrowUpRight className="h-5 w-5 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent-1" />
+        </div>
+        <div className="mt-8 flex flex-1 flex-col">
+          <p className="text-sm font-semibold text-muted-foreground">{client}</p>
+          <h3 className="mt-1 text-2xl font-bold tracking-tight md:text-3xl">{headline}</h3>
+          <p className="mt-4 text-base leading-relaxed text-muted-foreground">{body}</p>
+        </div>
       </div>
     </div>
   );
