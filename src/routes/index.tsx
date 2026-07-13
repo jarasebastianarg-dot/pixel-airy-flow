@@ -468,21 +468,19 @@ function WorkCard({
   headline,
   body,
   image,
-  span,
 }: {
   tag: string;
   client: string;
   headline: string;
   body: string;
   image: string;
-  span: string;
 }) {
   return (
     <motion.a
       href="#"
       data-cursor-view
       variants={fadeUp}
-      className={`group relative block aspect-[4/3] overflow-hidden rounded-[calc(var(--radius)+16px)] border border-border shadow-[var(--shadow-card)] ${span}`}
+      className="group relative block h-[24rem] overflow-hidden rounded-[calc(var(--radius)+16px)] border border-border shadow-[var(--shadow-card)]"
     >
       <img
         src={image}
@@ -494,7 +492,7 @@ function WorkCard({
       <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-70 transition-opacity duration-500 group-hover:opacity-100" />
 
       {/* tag top-left */}
-      <span className="absolute left-6 top-6 inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1 text-xs font-semibold text-white backdrop-blur-md">
+      <span className="absolute left-6 top-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/70 px-3 py-1 text-xs font-semibold text-white backdrop-blur-md">
         <Boxes className="h-3.5 w-3.5" />
         {tag}
       </span>
