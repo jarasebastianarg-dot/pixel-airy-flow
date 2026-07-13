@@ -582,23 +582,29 @@ function Ecosystem() {
     <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius)+16px)] border border-border bg-card p-8 shadow-[var(--shadow-card)]">
       <h3 className="text-lg font-bold tracking-tight">The Ecosystem</h3>
       <p className="mt-1 text-sm text-muted-foreground">Tools I orchestrate as one system.</p>
-      <div className="mt-8 grid flex-1 grid-cols-2 gap-4 sm:grid-cols-3">
-        {ecosystem.map((tool, i) => (
-          <div
-            key={tool.label}
-            className="float-orb flex flex-col items-center justify-center gap-2 rounded-2xl border border-white/40 bg-white/40 p-4 text-center backdrop-blur-md"
-            style={{ animationDelay: `${i * 0.4}s` }}
-          >
-            <span
-              className="grid h-10 w-10 place-items-center rounded-full text-sm font-bold text-white shadow-lg"
-              style={{
-                background: tool.color,
-                boxShadow: `0 0 20px -4px ${tool.color}`,
-              }}
-            >
-              {tool.label[0]}
-            </span>
-            <span className="text-xs font-semibold">{tool.label}</span>
+      <div className="mt-8 flex flex-1 flex-col gap-6">
+        {ecosystemClusters.map((cluster) => (
+          <div key={cluster.group}>
+            <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+              {cluster.group}
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {cluster.tools.map((tool) => (
+                <span
+                  key={tool.label}
+                  className="inline-flex items-center gap-2 rounded-full border border-border bg-secondary px-3 py-1.5 text-xs font-semibold"
+                >
+                  <span
+                    className="h-2.5 w-2.5 rounded-full"
+                    style={{
+                      background: tool.color,
+                      boxShadow: `0 0 10px -2px ${tool.color}`,
+                    }}
+                  />
+                  {tool.label}
+                </span>
+              ))}
+            </div>
           </div>
         ))}
       </div>
