@@ -3,6 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import portrait from "@/assets/portrait.jpg";
 import {
   motion,
+  AnimatePresence,
   useMotionValue,
   useSpring,
   useInView,
@@ -35,23 +36,23 @@ export const Route = createFileRoute("/")({
 const capabilities = [
   {
     icon: ShoppingBag,
-    title: "Native E-commerce",
-    desc: "Shopify theme development and custom Liquid, built for scale.",
+    title: "Shopify & Custom E-commerce",
+    desc: "I architect scalable storefronts using custom Liquid, HTML, and CSS. No bloated themes, just high-converting, performance-driven environments.",
   },
   {
     icon: Zap,
-    title: "Email Marketing & Growth",
-    desc: "Klaviyo automation, CRM flows, and retention campaigns that keep customers coming back.",
+    title: "Retention & Email Marketing",
+    desc: "Designing automated Klaviyo CRM flows and targeted campaigns that turn one-time buyers into loyal brand advocates and maximize LTV.",
   },
   {
     icon: Palette,
-    title: "Strategic Identity",
-    desc: "Art direction that turns positioning into a cohesive visual language.",
+    title: "Brand Identity & UI/UX",
+    desc: "Crafting cohesive visual systems. From packaging to digital interfaces, I build scalable brands grounded in academic design principles.",
   },
   {
     icon: Bot,
-    title: "AI Automations",
-    desc: "Workflow automation with n8n, Claude and Gemini to move faster.",
+    title: "AI & Workflow Automation",
+    desc: "Connecting the dots between Make, Claude, and Gemini to streamline operations, reduce lead times, and scale businesses efficiently.",
   },
 ];
 
@@ -331,8 +332,8 @@ function Index() {
             variants={fadeUp}
             className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-1.5 text-xs font-semibold text-muted-foreground"
           >
-            <span className="h-2 w-2 rounded-full bg-gradient-accent" />
-            Available for select projects
+            <span className="h-2 w-2 animate-pulse rounded-full bg-orange-500" />
+            Creative Developer &amp; Growth Partner
           </motion.span>
           <motion.h1
             variants={fadeUp}
@@ -381,12 +382,22 @@ function Index() {
           <SectionLabel>Core Capabilities</SectionLabel>
           <Reveal className="grid grid-cols-1 gap-6 sm:grid-cols-2">
             {capabilities.map((c) => (
-              <motion.div key={c.title} variants={fadeUp} className="bento-card flex flex-col p-8">
-                <span className="mb-6 grid h-12 w-12 place-items-center rounded-2xl bg-secondary text-accent-1">
-                  <c.icon className="h-6 w-6" />
-                </span>
-                <h3 className="text-lg font-bold tracking-tight">{c.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{c.desc}</p>
+              <motion.div
+                key={c.title}
+                variants={fadeUp}
+                className="group relative flex flex-col rounded-[calc(var(--radius)+16px)] p-[1px] transition-all duration-300 hover:shadow-[var(--shadow-card-hover)]"
+              >
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute inset-0 rounded-[calc(var(--radius)+16px)] bg-gradient-accent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                />
+                <div className="relative flex h-full flex-col rounded-[calc(var(--radius)+15px)] border border-border bg-card p-8 shadow-[var(--shadow-card)] transition-colors duration-300">
+                  <span className="mb-6 grid h-12 w-12 place-items-center rounded-2xl bg-secondary text-accent-1 transition-colors duration-300 group-hover:bg-gradient-accent group-hover:text-accent-foreground">
+                    <c.icon className="h-6 w-6" />
+                  </span>
+                  <h3 className="text-lg font-bold tracking-tight">{c.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{c.desc}</p>
+                </div>
               </motion.div>
             ))}
           </Reveal>
@@ -569,20 +580,41 @@ function WorkCard({
   );
 }
 
-const CODE_LINES = [
-  "{% assign conversion_rate = 'maximized' %}",
-  "{% render 'ui-execution', mode: 'realtime' %}",
-  "{% section 'hero-conversion' %}",
+const CODE_SNIPPETS = [
+  {
+    label: "theme.liquid",
+    code: "{% assign conversion = 'maximized' %}\n{% render 'ui', mode: 'ruthless' %}",
+  },
+  {
+    label: "brand.system.ts",
+    code: "import { Ps, Ai, Ae } from '@adobe/cc';\nconst system = new BrandIdentity();",
+  },
+  {
+    label: "pipeline.flow",
+    code: "webhook.listen(Klaviyo)\n  .pipe(Make)\n  .process(Claude)\n  .output(Growth);",
+  },
 ];
 
 function CodeApproach() {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
+  const [index, setIndex] = useState(0);
   const [text, setText] = useState("");
 
+  // rotate snippets every 4s once in view
   useEffect(() => {
     if (!inView) return;
-    const full = CODE_LINES.join("\n");
+    const id = setInterval(() => {
+      setIndex((i) => (i + 1) % CODE_SNIPPETS.length);
+    }, 4000);
+    return () => clearInterval(id);
+  }, [inView]);
+
+  // typewriter effect for the current snippet
+  useEffect(() => {
+    if (!inView) return;
+    const full = CODE_SNIPPETS[index].code;
+    setText("");
     let i = 0;
     const id = setInterval(() => {
       i++;
@@ -590,7 +622,7 @@ function CodeApproach() {
       if (i >= full.length) clearInterval(id);
     }, 32);
     return () => clearInterval(id);
-  }, [inView]);
+  }, [inView, index]);
 
   return (
     <div
@@ -604,18 +636,27 @@ function CodeApproach() {
         <span className="h-3 w-3 rounded-full bg-[oklch(0.7_0.17_145)]" />
         <span className="ml-3 flex items-center gap-1.5 font-mono text-xs text-white/40">
           <Code2 className="h-3.5 w-3.5" />
-          theme.liquid
+          {CODE_SNIPPETS[index].label}
         </span>
       </div>
       {/* code body */}
-      <div className="flex-1 px-6 py-6">
-        <pre className="whitespace-pre-wrap font-mono text-sm leading-relaxed text-[oklch(0.85_0.12_150)]">
-          {text}
-          <span
-            className="ml-0.5 inline-block h-4 w-2 translate-y-0.5 bg-accent-1"
-            style={{ animation: "caret-blink 1s step-end infinite" }}
-          />
-        </pre>
+      <div className="min-h-[6rem] flex-1 px-6 py-6">
+        <AnimatePresence mode="wait">
+          <motion.pre
+            key={index}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="whitespace-pre-wrap font-mono text-sm leading-relaxed text-[oklch(0.85_0.12_150)]"
+          >
+            {text}
+            <span
+              className="ml-0.5 inline-block h-4 w-2 translate-y-0.5 bg-accent-1"
+              style={{ animation: "caret-blink 1s step-end infinite" }}
+            />
+          </motion.pre>
+        </AnimatePresence>
       </div>
       {/* copy */}
       <div className="border-t border-white/10 px-6 py-7">
