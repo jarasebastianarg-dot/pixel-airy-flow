@@ -366,10 +366,20 @@ function Index() {
           </motion.div>
         </Reveal>
 
+        {/* Selected Works */}
+        <section id="works" className="pt-8">
+          <SectionLabel>Selected Works</SectionLabel>
+          <Reveal className="grid grid-cols-1 gap-6 md:grid-cols-2" stagger={0.12}>
+            {works.map((w) => (
+              <WorkCard key={w.client} {...w} />
+            ))}
+          </Reveal>
+        </section>
+
         {/* Capabilities */}
-        <section className="pb-8">
+        <section className="pt-16">
           <SectionLabel>Core Capabilities</SectionLabel>
-          <Reveal className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4">
+          <Reveal className="grid grid-cols-1 gap-6 sm:grid-cols-2">
             {capabilities.map((c) => (
               <motion.div key={c.title} variants={fadeUp} className="bento-card flex flex-col p-8">
                 <span className="mb-6 grid h-12 w-12 place-items-center rounded-2xl bg-secondary text-accent-1">
@@ -378,16 +388,6 @@ function Index() {
                 <h3 className="text-lg font-bold tracking-tight">{c.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{c.desc}</p>
               </motion.div>
-            ))}
-          </Reveal>
-        </section>
-
-        {/* Selected Works */}
-        <section id="works" className="pt-16">
-          <SectionLabel>Selected Works</SectionLabel>
-          <Reveal className="grid grid-cols-1 gap-6 md:grid-cols-2" stagger={0.12}>
-            {works.map((w) => (
-              <WorkCard key={w.client} {...w} />
             ))}
           </Reveal>
         </section>
