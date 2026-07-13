@@ -3,6 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import portrait from "@/assets/portrait.jpg";
 import {
   motion,
+  AnimatePresence,
   useMotionValue,
   useSpring,
   useInView,
