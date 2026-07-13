@@ -569,8 +569,8 @@ function CodeApproach() {
           <span className="font-serif italic font-normal text-accent-1">&gt;</span> Wireframes.
         </p>
         <p className="mt-3 max-w-lg text-sm leading-relaxed text-white/60">
-          I skip static mockups, designing directly over Shopify Liquid and code for brutal
-          functional realism and faster time-to-market.
+          I bypass static mockups. Designing and iterating directly over Shopify Liquid and code
+          allows for faster time-to-market and absolute functional realism from day one.
         </p>
       </div>
     </div>
