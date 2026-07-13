@@ -579,20 +579,41 @@ function WorkCard({
   );
 }
 
-const CODE_LINES = [
-  "{% assign conversion_rate = 'maximized' %}",
-  "{% render 'ui-execution', mode: 'realtime' %}",
-  "{% section 'hero-conversion' %}",
+const CODE_SNIPPETS = [
+  {
+    label: "theme.liquid",
+    code: "{% assign conversion = 'maximized' %}\n{% render 'ui', mode: 'ruthless' %}",
+  },
+  {
+    label: "brand.system.ts",
+    code: "import { Ps, Ai, Ae } from '@adobe/cc';\nconst system = new BrandIdentity();",
+  },
+  {
+    label: "pipeline.flow",
+    code: "webhook.listen(Klaviyo)\n  .pipe(Make)\n  .process(Claude)\n  .output(Growth);",
+  },
 ];
 
 function CodeApproach() {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
+  const [index, setIndex] = useState(0);
   const [text, setText] = useState("");
 
+  // rotate snippets every 4s once in view
   useEffect(() => {
     if (!inView) return;
-    const full = CODE_LINES.join("\n");
+    const id = setInterval(() => {
+      setIndex((i) => (i + 1) % CODE_SNIPPETS.length);
+    }, 4000);
+    return () => clearInterval(id);
+  }, [inView]);
+
+  // typewriter effect for the current snippet
+  useEffect(() => {
+    if (!inView) return;
+    const full = CODE_SNIPPETS[index].code;
+    setText("");
     let i = 0;
     const id = setInterval(() => {
       i++;
@@ -600,7 +621,7 @@ function CodeApproach() {
       if (i >= full.length) clearInterval(id);
     }, 32);
     return () => clearInterval(id);
-  }, [inView]);
+  }, [inView, index]);
 
   return (
     <div
@@ -614,18 +635,27 @@ function CodeApproach() {
         <span className="h-3 w-3 rounded-full bg-[oklch(0.7_0.17_145)]" />
         <span className="ml-3 flex items-center gap-1.5 font-mono text-xs text-white/40">
           <Code2 className="h-3.5 w-3.5" />
-          theme.liquid
+          {CODE_SNIPPETS[index].label}
         </span>
       </div>
       {/* code body */}
-      <div className="flex-1 px-6 py-6">
-        <pre className="whitespace-pre-wrap font-mono text-sm leading-relaxed text-[oklch(0.85_0.12_150)]">
-          {text}
-          <span
-            className="ml-0.5 inline-block h-4 w-2 translate-y-0.5 bg-accent-1"
-            style={{ animation: "caret-blink 1s step-end infinite" }}
-          />
-        </pre>
+      <div className="min-h-[6rem] flex-1 px-6 py-6">
+        <AnimatePresence mode="wait">
+          <motion.pre
+            key={index}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="whitespace-pre-wrap font-mono text-sm leading-relaxed text-[oklch(0.85_0.12_150)]"
+          >
+            {text}
+            <span
+              className="ml-0.5 inline-block h-4 w-2 translate-y-0.5 bg-accent-1"
+              style={{ animation: "caret-blink 1s step-end infinite" }}
+            />
+          </motion.pre>
+        </AnimatePresence>
       </div>
       {/* copy */}
       <div className="border-t border-white/10 px-6 py-7">
