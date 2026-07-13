@@ -411,15 +411,32 @@ function Index() {
             <motion.div variants={fadeUp}>
               <SectionLabel>The Architect</SectionLabel>
             </motion.div>
-            <motion.h3
-              variants={fadeUp}
-              className="max-w-3xl text-3xl font-bold leading-tight tracking-tight md:text-5xl"
-            >
-              Systemic Logic.{" "}
-              <span className="font-serif italic font-normal text-accent-1">
-                Relentless Discipline.
-              </span>
-            </motion.h3>
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:items-center">
+              <motion.div variants={fadeUp} className="md:col-span-1">
+                <img
+                  src={portrait}
+                  alt="Portrait of Sebastián"
+                  loading="lazy"
+                  width={1024}
+                  height={1024}
+                  className="aspect-square w-full rounded-2xl object-cover grayscale"
+                />
+              </motion.div>
+              <motion.div variants={fadeUp} className="md:col-span-2">
+                <h3 className="max-w-3xl text-3xl font-bold leading-tight tracking-tight md:text-5xl">
+                  Systemic Logic.{" "}
+                  <span className="font-serif italic font-normal text-accent-1">
+                    Relentless Discipline.
+                  </span>
+                </h3>
+                <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
+                  I'm Sebastián. My background merges academic graphic design with deep technical
+                  execution. I build complex automation workflows and highly customized E-commerce
+                  architectures because I understand that beautiful design is useless if it doesn't
+                  perform. I bring endurance and precision to every brand I scale.
+                </p>
+              </motion.div>
+            </div>
 
             <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3">
               {/* Experience */}
