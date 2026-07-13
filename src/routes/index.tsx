@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { createFileRoute } from "@tanstack/react-router";
+import portrait from "@/assets/portrait.jpg";
 import {
   motion,
   useMotionValue,
@@ -39,8 +40,8 @@ const capabilities = [
   },
   {
     icon: Zap,
-    title: "Data-Driven Growth",
-    desc: "Klaviyo automation and retention that keeps customers coming back.",
+    title: "Email Marketing & Growth",
+    desc: "Klaviyo automation, CRM flows, and retention campaigns that keep customers coming back.",
   },
   {
     icon: Palette,
@@ -91,20 +92,34 @@ const works = [
 
 const ecosystemClusters = [
   {
-    group: "Build",
+    group: "Design & UX",
     tools: [
-      { label: "Shopify", color: "oklch(0.7 0.17 145)" },
-      { label: "Liquid", color: "oklch(0.7 0.15 250)" },
-      { label: "Adobe CC", color: "oklch(0.65 0.2 15)" },
+      { label: "Photoshop", color: "#31A8FF" },
+      { label: "Illustrator", color: "#FF9A00" },
+      { label: "InDesign", color: "#FF3366" },
+      { label: "After Effects", color: "#9999FF" },
     ],
   },
   {
-    group: "Scale",
+    group: "Build & Code",
     tools: [
-      { label: "Klaviyo", color: "oklch(0.62 0.02 265)" },
-      { label: "Meta Ads", color: "oklch(0.65 0.17 255)" },
-      { label: "Make Automations", color: "oklch(0.7 0.19 300)" },
-      { label: "Claude", color: "oklch(0.72 0.14 55)" },
+      { label: "Shopify", color: "#95BF47" },
+      { label: "Liquid", color: "#008080" },
+    ],
+  },
+  {
+    group: "Scale & Automate",
+    tools: [
+      { label: "Klaviyo (CRM)", color: "#20E2C8" },
+      { label: "Meta Ads", color: "#0668E1" },
+      { label: "Make Automations", color: "#8848AB" },
+    ],
+  },
+  {
+    group: "AI Models",
+    tools: [
+      { label: "Claude", color: "#D97757" },
+      { label: "Gemini", color: "#1A73E8" },
     ],
   },
 ];
@@ -128,8 +143,8 @@ const experience = [
 ];
 
 const credentials = [
-  "B.A. Graphic Design (UADE)",
-  "B.A. Multimedia & Interaction Design (UADE)",
+  "B.A. Graphic Design (UADE, 2019-2024)",
+  "B.A. Multimedia & Interaction Design (UADE, 2020-2024)",
   "Digital Marketing & GenAI (IBM/Google)",
   "C1 Advanced English (Cambridge)",
 ];
