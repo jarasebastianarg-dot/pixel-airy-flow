@@ -1,23 +1,32 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { createFileRoute } from "@tanstack/react-router";
+import {
+  motion,
+  useMotionValue,
+  useSpring,
+  useInView,
+  type Variants,
+} from "framer-motion";
 import {
   ArrowUpRight,
   ShoppingBag,
   Mail,
   Palette,
   Bot,
-  Layers,
-  Users,
   Sparkles,
-  Boxes,
   Linkedin,
   Globe,
   ArrowRight,
+  Code2,
+  Zap,
+  Boxes,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   component: Index,
 });
+
+/* ─────────────────────────── data ─────────────────────────── */
 
 const capabilities = [
   {
@@ -26,7 +35,7 @@ const capabilities = [
     desc: "Shopify theme development and custom Liquid, built for scale.",
   },
   {
-    icon: Mail,
+    icon: Zap,
     title: "Data-Driven Growth",
     desc: "Klaviyo automation and retention that keeps customers coming back.",
   },
@@ -42,26 +51,198 @@ const capabilities = [
   },
 ];
 
-const tools = [
-  "Shopify",
-  "Liquid",
-  "Klaviyo",
-  "Meta Ads",
-  "Google Ads",
-  "n8n",
-  "Claude",
-  "Adobe CC",
+const works = [
+  {
+    tag: "Shopify Expert",
+    client: "Folkways",
+    headline: "The Technical Scale",
+    body: "Migrated 2000+ products to Shopify 2.0 without losing a single drop of performance.",
+    image:
+      "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1200&q=80",
+    span: "md:col-span-2",
+  },
+  {
+    tag: "Lead Developer & Designer",
+    client: "Paw Royalty",
+    headline: "Full-Stack Launch",
+    body: "End-to-end creation for a US market entry. Brand identity, UI/UX and Klaviyo integration.",
+    image:
+      "https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=900&q=80",
+    span: "",
+  },
+  {
+    tag: "Brand Manager",
+    client: "B-WAY",
+    headline: "Global Expansion",
+    body: "Steered a 6-person team to scale operations across the US and Brazil, driving digital and 300+ attendee physical events.",
+    image:
+      "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=900&q=80",
+    span: "",
+  },
+  {
+    tag: "Branding Designer",
+    client: "Elevate Local",
+    headline: "Clinical Aesthetics",
+    body: "Complete visual identity for a European medical marketing agency.",
+    image:
+      "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=80",
+    span: "md:col-span-2",
+  },
 ];
+
+const ecosystem = [
+  { label: "Shopify", color: "oklch(0.7 0.17 145)" },
+  { label: "Liquid", color: "oklch(0.7 0.15 250)" },
+  { label: "Klaviyo", color: "oklch(0.62 0.02 265)" },
+  { label: "n8n", color: "oklch(0.65 0.2 15)" },
+  { label: "Claude", color: "oklch(0.72 0.14 55)" },
+  { label: "Meta Ads", color: "oklch(0.65 0.17 255)" },
+];
+
+/* ─────────────────────── motion helpers ─────────────────────── */
+
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 28, filter: "blur(8px)" },
+  show: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+function Reveal({
+  children,
+  className,
+  stagger = 0.08,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  stagger?: number;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-80px" });
+  return (
+    <motion.div
+      ref={ref}
+      variants={{ show: { transition: { staggerChildren: stagger } } }}
+      initial="hidden"
+      animate={inView ? "show" : "hidden"}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+function MagneticButton({
+  children,
+  href,
+  className,
+}: {
+  children: React.ReactNode;
+  href: string;
+  className?: string;
+}) {
+  const ref = useRef<HTMLAnchorElement>(null);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const sx = useSpring(x, { stiffness: 200, damping: 15 });
+  const sy = useSpring(y, { stiffness: 200, damping: 15 });
+
+  function onMove(e: React.MouseEvent) {
+    const el = ref.current;
+    if (!el) return;
+    const r = el.getBoundingClientRect();
+    x.set((e.clientX - (r.left + r.width / 2)) * 0.35);
+    y.set((e.clientY - (r.top + r.height / 2)) * 0.35);
+  }
+  function reset() {
+    x.set(0);
+    y.set(0);
+  }
+
+  return (
+    <motion.a
+      ref={ref}
+      href={href}
+      onMouseMove={onMove}
+      onMouseLeave={reset}
+      style={{ x: sx, y: sy }}
+      className={className}
+    >
+      {children}
+    </motion.a>
+  );
+}
+
+/* ─────────────────────── custom cursor ─────────────────────── */
+
+function CustomCursor() {
+  const x = useMotionValue(-100);
+  const y = useMotionValue(-100);
+  const sx = useSpring(x, { stiffness: 500, damping: 40 });
+  const sy = useSpring(y, { stiffness: 500, damping: 40 });
+  const [hovering, setHovering] = useState(false);
+  const [enabled, setEnabled] = useState(false);
+
+  useEffect(() => {
+    if (window.matchMedia("(pointer: fine)").matches) setEnabled(true);
+    function move(e: MouseEvent) {
+      x.set(e.clientX);
+      y.set(e.clientY);
+      const t = e.target as HTMLElement;
+      setHovering(!!t.closest("[data-cursor-view]"));
+    }
+    window.addEventListener("mousemove", move);
+    return () => window.removeEventListener("mousemove", move);
+  }, [x, y]);
+
+  if (!enabled) return null;
+
+  return (
+    <motion.div
+      style={{ x: sx, y: sy }}
+      className="pointer-events-none fixed left-0 top-0 z-[100] -translate-x-1/2 -translate-y-1/2"
+    >
+      <motion.div
+        animate={{
+          width: hovering ? 72 : 12,
+          height: hovering ? 72 : 12,
+          backgroundColor: hovering
+            ? "oklch(0.7 0.19 40)"
+            : "oklch(0.21 0.02 265)",
+        }}
+        transition={{ type: "spring", stiffness: 260, damping: 22 }}
+        className="flex items-center justify-center rounded-full"
+      >
+        <motion.span
+          animate={{ opacity: hovering ? 1 : 0 }}
+          className="text-[10px] font-bold uppercase tracking-widest text-accent-foreground"
+        >
+          View
+        </motion.span>
+      </motion.div>
+    </motion.div>
+  );
+}
+
+/* ─────────────────────────── page ─────────────────────────── */
 
 function Index() {
   const [lang, setLang] = useState<"EN" | "ES">("EN");
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground md:cursor-none">
+      <CustomCursor />
+
       {/* Header */}
       <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur-md">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <a href="#" className="flex items-center gap-2 font-display text-lg font-bold tracking-tight">
+          <a
+            href="#"
+            className="flex items-center gap-2 font-display text-lg font-bold tracking-tight"
+          >
             <span className="grid h-8 w-8 place-items-center rounded-lg bg-gradient-accent text-accent-foreground">
               <Sparkles className="h-4 w-4" />
             </span>
@@ -95,153 +276,141 @@ function Index() {
 
       <main className="mx-auto max-w-6xl px-6">
         {/* Hero */}
-        <section className="py-20 md:py-28">
-          <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-1.5 text-xs font-semibold text-muted-foreground">
+        <Reveal className="py-20 md:py-28" stagger={0.12}>
+          <motion.span
+            variants={fadeUp}
+            className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-1.5 text-xs font-semibold text-muted-foreground"
+          >
             <span className="h-2 w-2 rounded-full bg-gradient-accent" />
             Available for select projects
-          </span>
-          <h1 className="mt-6 max-w-4xl text-5xl font-bold leading-[1.02] tracking-tight md:text-7xl">
+          </motion.span>
+          <motion.h1
+            variants={fadeUp}
+            className="mt-6 max-w-4xl text-5xl font-bold leading-[1.02] tracking-tight md:text-7xl"
+          >
             We build{" "}
             <span className="font-serif italic font-normal text-accent-1">brands</span> that stand
             out and{" "}
             <span className="font-serif italic font-normal text-accent-1">systems</span> that sell.
-          </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">
+          </motion.h1>
+          <motion.p
+            variants={fadeUp}
+            className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl"
+          >
             Bridging the gap between high-end visual design and technical e-commerce execution.
-          </p>
-          <div className="mt-8 flex flex-wrap items-center gap-4">
-            <a
+          </motion.p>
+          <motion.div variants={fadeUp} className="mt-8 flex flex-wrap items-center gap-4">
+            <MagneticButton
               href="#works"
-              className="group inline-flex items-center gap-2 rounded-full bg-gradient-accent px-7 py-3.5 text-sm font-semibold text-accent-foreground shadow-[var(--shadow-accent)] transition-transform hover:-translate-y-0.5"
+              className="group inline-flex items-center gap-2 rounded-full bg-gradient-accent px-7 py-3.5 text-sm font-semibold text-accent-foreground shadow-[var(--shadow-accent)]"
             >
               View Projects
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </a>
-            <a
+            </MagneticButton>
+            <MagneticButton
               href="#contact"
               className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-7 py-3.5 text-sm font-semibold transition-colors hover:bg-secondary"
             >
               Get in touch
-            </a>
-          </div>
-        </section>
+            </MagneticButton>
+          </motion.div>
+        </Reveal>
 
         {/* Capabilities */}
         <section className="pb-8">
           <SectionLabel>Core Capabilities</SectionLabel>
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4">
+          <Reveal className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4">
             {capabilities.map((c) => (
-              <div key={c.title} className="bento-card flex flex-col p-8">
+              <motion.div key={c.title} variants={fadeUp} className="bento-card flex flex-col p-8">
                 <span className="mb-6 grid h-12 w-12 place-items-center rounded-2xl bg-secondary text-accent-1">
                   <c.icon className="h-6 w-6" />
                 </span>
                 <h3 className="text-lg font-bold tracking-tight">{c.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{c.desc}</p>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </Reveal>
         </section>
 
         {/* Selected Works */}
         <section id="works" className="pt-16">
           <SectionLabel>Selected Works</SectionLabel>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-            <WorkCard
-              tag="Shopify Expert"
-              client="Folkways"
-              headline="The Technical Scale"
-              body="Migrated 2000+ products to Shopify 2.0 without losing a single drop of performance."
-              image="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=900&q=80"
-              icon={Boxes}
-            />
-            <WorkCard
-              tag="Lead Developer & Designer"
-              client="Paw Royalty"
-              headline="Full-Stack Launch"
-              body="End-to-end creation for a US market entry. Brand identity, UI/UX, and Klaviyo integration."
-              image="https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=900&q=80"
-              icon={Layers}
-            />
-            <WorkCard
-              tag="Brand Manager"
-              client="B-WAY"
-              headline="Global Expansion"
-              body="Steered a 6-person team to scale operations across the US and Brazil, driving both digital and 300+ attendee physical events."
-              image="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=900&q=80"
-              icon={Users}
-            />
-            <WorkCard
-              tag="Branding Designer"
-              client="Elevate Local"
-              headline="Clinical Aesthetics"
-              body="Complete visual identity for a European medical marketing agency."
-              image="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=900&q=80"
-              icon={Palette}
-            />
-          </div>
+          <Reveal className="grid grid-cols-1 gap-6 md:grid-cols-2" stagger={0.12}>
+            {works.map((w) => (
+              <WorkCard key={w.client} {...w} />
+            ))}
+          </Reveal>
         </section>
 
         {/* Methodology & Tech */}
         <section className="pt-16">
           <SectionLabel>Methodology &amp; Stack</SectionLabel>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-            <div className="bento-card flex flex-col justify-between overflow-hidden bg-foreground p-10 text-background md:col-span-2">
-              <span className="text-xs font-semibold uppercase tracking-widest text-background/60">
-                The Approach
-              </span>
-              <div className="mt-6">
-                <p className="text-3xl font-bold leading-tight tracking-tight md:text-5xl">
-                  We skip the{" "}
-                  <span className="font-serif italic font-normal text-accent-1">wireframes</span>.
-                </p>
-                <p className="mt-4 max-w-lg text-base leading-relaxed text-background/70">
-                  Direct UI/UX design and execution using code and Shopify Liquid for rapid
-                  iteration and functional realism.
-                </p>
-              </div>
-            </div>
-            <div className="bento-card p-8">
-              <h3 className="text-lg font-bold tracking-tight">Tools</h3>
-              <div className="mt-6 flex flex-wrap gap-2">
-                {tools.map((t) => (
-                  <span
-                    key={t}
-                    className="rounded-full border border-border bg-secondary px-4 py-2 text-sm font-medium"
-                  >
-                    {t}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
+          <Reveal className="grid grid-cols-1 gap-6 md:grid-cols-3" stagger={0.12}>
+            <motion.div variants={fadeUp} className="md:col-span-2">
+              <CodeApproach />
+            </motion.div>
+            <motion.div variants={fadeUp}>
+              <Ecosystem />
+            </motion.div>
+          </Reveal>
         </section>
 
         {/* The Architect */}
         <section id="contact" className="py-16">
-          <div className="bento-card p-10 md:p-14">
-            <div className="grid grid-cols-1 gap-10 md:grid-cols-[1.5fr_1fr] md:items-end">
+          <Reveal className="bento-card overflow-hidden p-10 md:p-14" stagger={0.12}>
+            <motion.div variants={fadeUp}>
+              <SectionLabel>The Architect</SectionLabel>
+            </motion.div>
+            <div className="grid grid-cols-1 gap-10 md:grid-cols-[1fr_1.4fr] md:items-center">
+              <motion.div
+                variants={fadeUp}
+                className="relative aspect-[4/5] overflow-hidden rounded-3xl bg-foreground"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80"
+                  alt="Sebastián — designer and developer"
+                  loading="lazy"
+                  className="h-full w-full object-cover grayscale contrast-[1.1]"
+                />
+              </motion.div>
               <div>
-                <SectionLabel>The Architect</SectionLabel>
-                <p className="max-w-xl text-2xl font-bold leading-snug tracking-tight md:text-3xl">
-                  26-year-old designer based in Buenos Aires, holding dual degrees in Graphic Design
-                  and Multimedia &amp; Interaction Design from UADE.
-                </p>
-              </div>
-              <div className="flex flex-col gap-3">
-                <a
-                  href="mailto:hello@example.com"
-                  className="group inline-flex items-center justify-between gap-2 rounded-full bg-gradient-accent px-6 py-3.5 text-sm font-semibold text-accent-foreground shadow-[var(--shadow-accent)] transition-transform hover:-translate-y-0.5"
+                <motion.h3
+                  variants={fadeUp}
+                  className="text-3xl font-bold leading-tight tracking-tight md:text-5xl"
                 >
-                  Contact me
-                  <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </a>
-                <div className="flex gap-3">
-                  <SocialLink icon={Linkedin} label="LinkedIn" />
-                  <SocialLink icon={Globe} label="Behance" />
-                </div>
+                  Systemic Logic.{" "}
+                  <span className="font-serif italic font-normal text-accent-1">
+                    Relentless Discipline.
+                  </span>
+                </motion.h3>
+                <motion.p
+                  variants={fadeUp}
+                  className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg"
+                >
+                  I'm Sebastián. My background merges academic graphic design with deep technical
+                  execution. I build complex automation workflows and highly customized E-commerce
+                  architectures because beautiful design is useless if it doesn't perform. That same
+                  systemic discipline applies off-screen — whether I'm architecting server
+                  environments, grinding through marathon training, or hitting the boxing bags. I
+                  bring endurance and precision to every brand I scale.
+                </motion.p>
+                <motion.div variants={fadeUp} className="mt-8 flex flex-col gap-3 sm:flex-row">
+                  <MagneticButton
+                    href="mailto:hello@example.com"
+                    className="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-accent px-6 py-3.5 text-sm font-semibold text-accent-foreground shadow-[var(--shadow-accent)]"
+                  >
+                    <Mail className="h-4 w-4" />
+                    Contact me
+                    <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </MagneticButton>
+                  <div className="flex gap-3">
+                    <SocialLink icon={Linkedin} label="LinkedIn" />
+                    <SocialLink icon={Globe} label="Behance" />
+                  </div>
+                </motion.div>
               </div>
             </div>
-          </div>
+          </Reveal>
           <p className="pb-10 text-center text-xs text-muted-foreground">
             © {new Date().getFullYear()} — Crafted in Buenos Aires.
           </p>
@@ -250,6 +419,8 @@ function Index() {
     </div>
   );
 }
+
+/* ─────────────────────── components ─────────────────────── */
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
@@ -265,38 +436,141 @@ function WorkCard({
   headline,
   body,
   image,
-  icon: Icon,
+  span,
 }: {
   tag: string;
   client: string;
   headline: string;
   body: string;
   image: string;
-  icon: typeof Boxes;
+  span: string;
 }) {
   return (
-    <div className="bento-card group grid grid-cols-1 overflow-hidden sm:grid-cols-2">
-      <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-foreground/90 to-foreground sm:aspect-auto">
-        <img
-          src={image}
-          alt={`${client} — ${headline}`}
-          loading="lazy"
-          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-        />
+    <motion.a
+      href="#"
+      data-cursor-view
+      variants={fadeUp}
+      className={`group relative block aspect-[4/3] overflow-hidden rounded-[calc(var(--radius)+16px)] border border-border shadow-[var(--shadow-card)] ${span}`}
+    >
+      <img
+        src={image}
+        alt={`${client} — ${headline}`}
+        loading="lazy"
+        className="absolute inset-0 h-full w-full object-cover transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110"
+      />
+      {/* dark gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-70 transition-opacity duration-500 group-hover:opacity-100" />
+
+      {/* tag top-left */}
+      <span className="absolute left-6 top-6 inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1 text-xs font-semibold text-white backdrop-blur-md">
+        <Boxes className="h-3.5 w-3.5" />
+        {tag}
+      </span>
+      <ArrowUpRight className="absolute right-6 top-6 h-5 w-5 text-white/80 transition-transform duration-500 group-hover:-translate-y-1 group-hover:translate-x-1" />
+
+      {/* text emerging from bottom */}
+      <div className="absolute inset-x-0 bottom-0 p-8 md:p-10">
+        <p className="translate-y-2 text-sm font-semibold text-white/70 opacity-90 transition-all duration-500 group-hover:translate-y-0">
+          {client}
+        </p>
+        <h3 className="mt-1 translate-y-3 text-2xl font-bold tracking-tight text-white transition-all duration-500 group-hover:translate-y-0 md:text-3xl">
+          {headline}
+        </h3>
+        <p className="mt-3 max-w-md translate-y-4 text-sm leading-relaxed text-white/0 transition-all duration-500 group-hover:translate-y-0 group-hover:text-white/80">
+          {body}
+        </p>
       </div>
-      <div className="flex flex-col p-8 md:p-10">
-        <div className="flex items-start justify-between gap-4">
-          <span className="inline-flex items-center gap-2 rounded-full bg-secondary px-3 py-1 text-xs font-semibold">
-            <Icon className="h-3.5 w-3.5 text-accent-1" />
-            {tag}
-          </span>
-          <ArrowUpRight className="h-5 w-5 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent-1" />
-        </div>
-        <div className="mt-8 flex flex-1 flex-col">
-          <p className="text-sm font-semibold text-muted-foreground">{client}</p>
-          <h3 className="mt-1 text-2xl font-bold tracking-tight md:text-3xl">{headline}</h3>
-          <p className="mt-4 text-base leading-relaxed text-muted-foreground">{body}</p>
-        </div>
+    </motion.a>
+  );
+}
+
+const CODE_LINES = [
+  "{% assign conversion_rate = 'maximized' %}",
+  "{% render 'ui-execution', mode: 'realtime' %}",
+  "{% section 'hero-conversion' %}",
+];
+
+function CodeApproach() {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const [text, setText] = useState("");
+
+  useEffect(() => {
+    if (!inView) return;
+    const full = CODE_LINES.join("\n");
+    let i = 0;
+    const id = setInterval(() => {
+      i++;
+      setText(full.slice(0, i));
+      if (i >= full.length) clearInterval(id);
+    }, 32);
+    return () => clearInterval(id);
+  }, [inView]);
+
+  return (
+    <div
+      ref={ref}
+      className="flex h-full flex-col overflow-hidden rounded-[calc(var(--radius)+16px)] border border-white/10 bg-[oklch(0.16_0.02_265)] shadow-[var(--shadow-card)]"
+    >
+      {/* window bar */}
+      <div className="flex items-center gap-2 border-b border-white/10 px-5 py-3">
+        <span className="h-3 w-3 rounded-full bg-[oklch(0.65_0.2_25)]" />
+        <span className="h-3 w-3 rounded-full bg-[oklch(0.8_0.16_85)]" />
+        <span className="h-3 w-3 rounded-full bg-[oklch(0.7_0.17_145)]" />
+        <span className="ml-3 flex items-center gap-1.5 font-mono text-xs text-white/40">
+          <Code2 className="h-3.5 w-3.5" />
+          theme.liquid
+        </span>
+      </div>
+      {/* code body */}
+      <div className="flex-1 px-6 py-6">
+        <pre className="whitespace-pre-wrap font-mono text-sm leading-relaxed text-[oklch(0.85_0.12_150)]">
+          {text}
+          <span
+            className="ml-0.5 inline-block h-4 w-2 translate-y-0.5 bg-accent-1"
+            style={{ animation: "caret-blink 1s step-end infinite" }}
+          />
+        </pre>
+      </div>
+      {/* copy */}
+      <div className="border-t border-white/10 px-6 py-7">
+        <p className="text-2xl font-bold tracking-tight text-white md:text-3xl">
+          Execution{" "}
+          <span className="font-serif italic font-normal text-accent-1">&gt;</span> Wireframes.
+        </p>
+        <p className="mt-3 max-w-lg text-sm leading-relaxed text-white/60">
+          I skip static mockups, designing directly over Shopify Liquid and code for brutal
+          functional realism and faster time-to-market.
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function Ecosystem() {
+  return (
+    <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius)+16px)] border border-border bg-card p-8 shadow-[var(--shadow-card)]">
+      <h3 className="text-lg font-bold tracking-tight">The Ecosystem</h3>
+      <p className="mt-1 text-sm text-muted-foreground">Tools I orchestrate as one system.</p>
+      <div className="mt-8 grid flex-1 grid-cols-2 gap-4 sm:grid-cols-3">
+        {ecosystem.map((tool, i) => (
+          <div
+            key={tool.label}
+            className="float-orb flex flex-col items-center justify-center gap-2 rounded-2xl border border-white/40 bg-white/40 p-4 text-center backdrop-blur-md"
+            style={{ animationDelay: `${i * 0.4}s` }}
+          >
+            <span
+              className="grid h-10 w-10 place-items-center rounded-full text-sm font-bold text-white shadow-lg"
+              style={{
+                background: tool.color,
+                boxShadow: `0 0 20px -4px ${tool.color}`,
+              }}
+            >
+              {tool.label[0]}
+            </span>
+            <span className="text-xs font-semibold">{tool.label}</span>
+          </div>
+        ))}
       </div>
     </div>
   );
