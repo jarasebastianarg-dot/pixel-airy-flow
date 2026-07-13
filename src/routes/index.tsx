@@ -260,41 +260,43 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 }
 
 function WorkCard({
-  className = "",
   tag,
   client,
   headline,
   body,
-  metric,
-  metricLabel,
+  image,
   icon: Icon,
 }: {
-  className?: string;
   tag: string;
   client: string;
   headline: string;
   body: string;
-  metric: string;
-  metricLabel: string;
+  image: string;
   icon: typeof Boxes;
 }) {
   return (
-    <div className={`bento-card group flex flex-col p-8 md:p-10 ${className}`}>
-      <div className="flex items-start justify-between gap-4">
-        <span className="inline-flex items-center gap-2 rounded-full bg-secondary px-3 py-1 text-xs font-semibold">
-          <Icon className="h-3.5 w-3.5 text-accent-1" />
-          {tag}
-        </span>
-        <ArrowUpRight className="h-5 w-5 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent-1" />
+    <div className="bento-card group grid grid-cols-1 overflow-hidden sm:grid-cols-2">
+      <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-foreground/90 to-foreground sm:aspect-auto">
+        <img
+          src={image}
+          alt={`${client} — ${headline}`}
+          loading="lazy"
+          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+        />
       </div>
-      <div className="mt-8 flex flex-1 flex-col">
-        <p className="text-sm font-semibold text-muted-foreground">{client}</p>
-        <h3 className="mt-1 text-2xl font-bold tracking-tight md:text-3xl">{headline}</h3>
-        <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground">{body}</p>
-      </div>
-      <div className="mt-8 flex items-baseline gap-3 border-t border-border pt-6">
-        <span className="text-4xl font-bold tracking-tight text-gradient-accent">{metric}</span>
-        <span className="text-sm text-muted-foreground">{metricLabel}</span>
+      <div className="flex flex-col p-8 md:p-10">
+        <div className="flex items-start justify-between gap-4">
+          <span className="inline-flex items-center gap-2 rounded-full bg-secondary px-3 py-1 text-xs font-semibold">
+            <Icon className="h-3.5 w-3.5 text-accent-1" />
+            {tag}
+          </span>
+          <ArrowUpRight className="h-5 w-5 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent-1" />
+        </div>
+        <div className="mt-8 flex flex-1 flex-col">
+          <p className="text-sm font-semibold text-muted-foreground">{client}</p>
+          <h3 className="mt-1 text-2xl font-bold tracking-tight md:text-3xl">{headline}</h3>
+          <p className="mt-4 text-base leading-relaxed text-muted-foreground">{body}</p>
+        </div>
       </div>
     </div>
   );
