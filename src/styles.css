@@ -102,6 +102,7 @@
   --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
   --font-body: "DM Sans", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "Instrument Serif", ui-serif, Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 
   /* Warm off-white canvas + crisp white cards */
   --background: oklch(0.985 0.004 90);
@@ -125,6 +126,7 @@
   --font-display: var(--font-display);
   --font-body: var(--font-body);
   --font-serif: var(--font-serif);
+  --font-mono: var(--font-mono);
   --color-accent-1: var(--accent-1);
   --color-accent-2: var(--accent-2);
 }
@@ -150,6 +152,20 @@
 
 @utility bg-gradient-accent {
   background: var(--gradient-accent);
+}
+
+@utility float-orb {
+  animation: float-orb 6s ease-in-out infinite;
+}
+
+@keyframes float-orb {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-0.6rem); }
+}
+
+@keyframes caret-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
 .dark {
