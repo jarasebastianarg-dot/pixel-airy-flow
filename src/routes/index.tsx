@@ -20,6 +20,9 @@ import {
   Code2,
   Zap,
   Boxes,
+  Download,
+  GraduationCap,
+  Briefcase,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
