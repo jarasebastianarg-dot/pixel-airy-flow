@@ -22,23 +22,23 @@ export const Route = createFileRoute("/")({
 const capabilities = [
   {
     icon: ShoppingBag,
-    title: "E-commerce & Shopify",
-    desc: "Native theme development, custom Liquid coding and conversion rate optimization built for scale.",
+    title: "Native E-commerce",
+    desc: "Shopify theme development and custom Liquid, built for scale.",
   },
   {
     icon: Mail,
-    title: "Growth & Email Marketing",
-    desc: "Retention strategies, Klaviyo automation and campaign design that keeps customers coming back.",
+    title: "Data-Driven Growth",
+    desc: "Klaviyo automation and retention that keeps customers coming back.",
   },
   {
     icon: Palette,
-    title: "Brand Identity",
-    desc: "Strategic design and art direction that translates positioning into a cohesive visual language.",
+    title: "Strategic Identity",
+    desc: "Art direction that turns positioning into a cohesive visual language.",
   },
   {
     icon: Bot,
     title: "AI Automations",
-    desc: "Workflow automation with n8n, Claude and Gemini to remove busywork and move faster.",
+    desc: "Workflow automation with n8n, Claude and Gemini to move faster.",
   },
 ];
 
