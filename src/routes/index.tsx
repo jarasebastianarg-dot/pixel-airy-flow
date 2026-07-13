@@ -59,7 +59,6 @@ const works = [
     body: "Migrated 2000+ products to Shopify 2.0 without losing a single drop of performance.",
     image:
       "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1200&q=80",
-    span: "md:col-span-2",
   },
   {
     tag: "Lead Developer & Designer",
@@ -68,7 +67,6 @@ const works = [
     body: "End-to-end creation for a US market entry. Brand identity, UI/UX and Klaviyo integration.",
     image:
       "https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=900&q=80",
-    span: "",
   },
   {
     tag: "Brand Manager",
@@ -77,7 +75,6 @@ const works = [
     body: "Steered a 6-person team to scale operations across the US and Brazil, driving digital and 300+ attendee physical events.",
     image:
       "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=900&q=80",
-    span: "",
   },
   {
     tag: "Branding Designer",
@@ -86,17 +83,52 @@ const works = [
     body: "Complete visual identity for a European medical marketing agency.",
     image:
       "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=80",
-    span: "md:col-span-2",
   },
 ];
 
-const ecosystem = [
-  { label: "Shopify", color: "oklch(0.7 0.17 145)" },
-  { label: "Liquid", color: "oklch(0.7 0.15 250)" },
-  { label: "Klaviyo", color: "oklch(0.62 0.02 265)" },
-  { label: "n8n", color: "oklch(0.65 0.2 15)" },
-  { label: "Claude", color: "oklch(0.72 0.14 55)" },
-  { label: "Meta Ads", color: "oklch(0.65 0.17 255)" },
+const ecosystemClusters = [
+  {
+    group: "Build",
+    tools: [
+      { label: "Shopify", color: "oklch(0.7 0.17 145)" },
+      { label: "Liquid", color: "oklch(0.7 0.15 250)" },
+      { label: "Adobe CC", color: "oklch(0.65 0.2 15)" },
+    ],
+  },
+  {
+    group: "Scale",
+    tools: [
+      { label: "Klaviyo", color: "oklch(0.62 0.02 265)" },
+      { label: "Meta Ads", color: "oklch(0.65 0.17 255)" },
+      { label: "Make Automations", color: "oklch(0.7 0.19 300)" },
+      { label: "Claude", color: "oklch(0.72 0.14 55)" },
+    ],
+  },
+];
+
+const experience = [
+  {
+    role: "Freelance UI/UX & E-commerce Developer",
+    period: "2025 — Present",
+    desc: "Leading custom ecosystems for US/LATAM.",
+  },
+  {
+    role: "Brand Manager @ B-WAY",
+    period: "2024 — 2025",
+    desc: "Scaled operations across 3 international markets, led a 6-person team.",
+  },
+  {
+    role: "Product Designer @ B-WAY",
+    period: "2023 — 2024",
+    desc: "E-commerce visuals and CRO.",
+  },
+];
+
+const credentials = [
+  "B.A. Graphic Design (UADE)",
+  "B.A. Multimedia & Interaction Design (UADE)",
+  "Digital Marketing & GenAI (IBM/Google)",
+  "C1 Advanced English (Cambridge)",
 ];
 
 /* ─────────────────────── motion helpers ─────────────────────── */
