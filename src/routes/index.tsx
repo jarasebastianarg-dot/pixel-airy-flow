@@ -472,7 +472,7 @@ function Index() {
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </MagneticButton>
             <MagneticButton
-              href="#contact"
+              href="#about"
               className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-7 py-3.5 text-sm font-semibold transition-colors hover:bg-secondary"
             >
               Get in touch
