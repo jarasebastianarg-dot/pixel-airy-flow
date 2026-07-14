@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import portrait from "@/assets/portrait.jpg";
+import portrait from "@/assets/portrait.jpg.asset.json";
 import {
   motion,
   AnimatePresence,
@@ -567,7 +567,7 @@ function Index() {
             <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:items-center">
               <motion.div variants={fadeUp} className="md:col-span-1">
                 <img
-                  src={portrait}
+                  src={portrait.url}
                   alt="Portrait of Sebastián"
                   loading="lazy"
                   width={1024}
