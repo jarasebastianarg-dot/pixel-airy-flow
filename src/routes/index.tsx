@@ -579,7 +579,7 @@ function Index() {
                 {/* soft radial glow on hover */}
                 <span
                   aria-hidden
-                  className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-gradient-accent opacity-0 blur-3xl transition-opacity duration-700 group-hover:opacity-25"
+                  className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,oklch(0.72_0.18_45_/_0.28),transparent_65%)] opacity-0 transition-opacity duration-700 group-hover:opacity-100"
                 />
 
                 <header className="flex items-start justify-between gap-6">
