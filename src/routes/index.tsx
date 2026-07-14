@@ -197,7 +197,7 @@ const experience = [
   {
     role: "Graphic Designer",
     company: "Freelance — Remote",
-    period: "2022 — 2023",
+    period: "2021 — 2023",
     highlights: [
       "Delivered end-to-end brand identities and UI/UX systems for clients across multiple industries.",
       "Ran editorial and social content strategy focused on brand voice consistency and audience retention.",
@@ -207,13 +207,13 @@ const experience = [
 
 const credentials = [
   {
-    title: "B.A. Graphic Design",
-    institution: "UADE",
+    title: "Bachelor's Degree in\u00a0Graphic Design",
+    institution: "UADE (Universidad Argentina de la Empresa)",
     period: "2019 — 2024",
   },
   {
-    title: "B.A. Multimedia & Interaction Design",
-    institution: "UADE",
+    title: "Bachelor's Degree in Multimedia & Interaction Design",
+    institution: "UADE (Universidad Argentina de la Empresa)",
     period: "2020 — 2024",
   },
   {
@@ -223,16 +223,16 @@ const credentials = [
   },
   {
     title: "Foundations of Digital Marketing & E-commerce",
-    institution: "Google",
+    institution: "Google - Professional Certificate",
     period: "2026",
   },
   {
     title: "OPI 2.0 — Public Speaking",
-    institution: "Franco Pisso",
+    institution: "Franco Pisso - Professional Certificate",
     period: "2026",
   },
   {
-    title: "C1 Advanced English",
+    title: "CAE - Certificate in Advanced English C1",
     institution: "Cambridge",
     period: "2018",
   },
