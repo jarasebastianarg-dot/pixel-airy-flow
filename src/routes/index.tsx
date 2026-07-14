@@ -165,27 +165,77 @@ const ecosystemClusters = [
 
 const experience = [
   {
-    role: "Freelance UI/UX & E-commerce Developer",
-    period: "2025 — Present",
-    desc: "Leading custom ecosystems for US/LATAM.",
+    role: "Branding & UI/UX Designer",
+    company: "Freelance — Remote",
+    period: "Oct 2025 — Present",
+    highlights: [
+      "Lead brand identity and UI/UX for a US + Argentina client portfolio, shipping web and app platforms engineered around the buyer journey.",
+      "Build scalable design systems and high-converting landing pages that turn paid social traffic into measurable e-commerce revenue.",
+    ],
   },
   {
-    role: "Brand Manager @ B-WAY",
-    period: "2024 — 2025",
-    desc: "Scaled operations across 3 international markets, led a 6-person team.",
+    role: "Brand Manager",
+    company: "B-WAY — Buenos Aires, AR",
+    period: "Aug 2024 — Dec 2025",
+    highlights: [
+      "Directed a 6-person interdisciplinary marketing team running 360° campaigns aligned to commercial KPIs.",
+      "Deployed AI-driven analytics workflows that cut production lead times by 30% and sharpened targeting precision.",
+      "Owned e-commerce and paid media strategy across 3 international markets (US, BR, AR), improving ROAS on core SKUs.",
+      "Orchestrated flagship events (B-WAY Experience, Barber Week) driving qualified lead generation at scale.",
+    ],
   },
   {
-    role: "Product Designer @ B-WAY",
-    period: "2023 — 2024",
-    desc: "E-commerce visuals and CRO.",
+    role: "Product Designer",
+    company: "B-WAY — Buenos Aires, AR",
+    period: "Nov 2023 — Aug 2024",
+    highlights: [
+      "Produced high-impact e-commerce visuals and paid social assets that lifted CTR and engagement across the funnel.",
+      "Optimized digital storefront UX to reduce friction and support product conversion and brand trust.",
+      "Designed international trade-show stands optimized for visitor flow and on-site lead capture.",
+    ],
+  },
+  {
+    role: "Graphic Designer",
+    company: "Freelance — Remote",
+    period: "2022 — 2023",
+    highlights: [
+      "Delivered end-to-end brand identities and UI/UX systems for clients across multiple industries.",
+      "Ran editorial and social content strategy focused on brand voice consistency and audience retention.",
+    ],
   },
 ];
 
 const credentials = [
-  "B.A. Graphic Design (UADE, 2019-2024)",
-  "B.A. Multimedia & Interaction Design (UADE, 2020-2024)",
-  "Digital Marketing & GenAI (IBM/Google)",
-  "C1 Advanced English (Cambridge)",
+  {
+    title: "B.A. Graphic Design",
+    institution: "UADE",
+    period: "2019 — 2024",
+  },
+  {
+    title: "B.A. Multimedia & Interaction Design",
+    institution: "UADE",
+    period: "2020 — 2024",
+  },
+  {
+    title: "Digital Marketing & Growth Hacking with GenAI",
+    institution: "IBM — Professional Certificate",
+    period: "Expected Apr 2026",
+  },
+  {
+    title: "Foundations of Digital Marketing & E-commerce",
+    institution: "Google",
+    period: "2026",
+  },
+  {
+    title: "OPI 2.0 — Public Speaking",
+    institution: "Franco Pisso",
+    period: "2026",
+  },
+  {
+    title: "C1 Advanced English",
+    institution: "Cambridge",
+    period: "2018",
+  },
 ];
 
 /* ─────────────────────── motion helpers ─────────────────────── */
@@ -550,15 +600,25 @@ function Index() {
                 </div>
                 <ol className="relative border-l border-border pl-8">
                   {experience.map((item) => (
-                    <li key={item.role} className="relative mb-10 last:mb-0">
+                    <li key={item.role + item.period} className="relative mb-10 last:mb-0">
                       <span className="absolute -left-[2.6rem] top-1 grid h-4 w-4 place-items-center rounded-full border-2 border-background bg-gradient-accent" />
                       <span className="text-xs font-semibold uppercase tracking-widest text-accent-1">
                         {item.period}
                       </span>
                       <h5 className="mt-1 text-lg font-bold tracking-tight">{item.role}</h5>
-                      <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-                        {item.desc}
+                      <p className="mt-0.5 text-sm font-medium text-foreground/80">
+                        {item.company}
                       </p>
+                      <ul className="mt-3 flex flex-col gap-2">
+                        {item.highlights.map((h) => (
+                          <li
+                            key={h}
+                            className="relative pl-4 text-sm leading-relaxed text-muted-foreground before:absolute before:left-0 before:top-[0.55rem] before:h-1 before:w-1 before:rounded-full before:bg-accent-1"
+                          >
+                            {h}
+                          </li>
+                        ))}
+                      </ul>
                     </li>
                   ))}
                 </ol>
@@ -570,13 +630,17 @@ function Index() {
                   <GraduationCap className="h-4 w-4 text-accent-1" />
                   <h4 className="text-lg font-bold tracking-tight">Credentials</h4>
                 </div>
-                <ul className="flex flex-col gap-4">
+                <ul className="flex flex-col gap-3">
                   {credentials.map((c) => (
                     <li
-                      key={c}
-                      className="rounded-2xl border border-border bg-secondary/60 px-5 py-4 text-sm font-semibold leading-snug"
+                      key={c.title + c.period}
+                      className="rounded-2xl border border-border bg-secondary/60 px-5 py-4 leading-snug"
                     >
-                      {c}
+                      <p className="text-sm font-bold tracking-tight">{c.title}</p>
+                      <p className="mt-1 text-xs text-muted-foreground">{c.institution}</p>
+                      <p className="mt-1 text-[0.7rem] font-semibold uppercase tracking-widest text-accent-1">
+                        {c.period}
+                      </p>
                     </li>
                   ))}
                 </ul>
