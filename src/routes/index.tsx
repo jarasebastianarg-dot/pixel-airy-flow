@@ -351,7 +351,7 @@ function Index() {
             variants={fadeUp}
             className="mt-6 max-w-4xl text-5xl font-bold leading-[1.02] tracking-tight md:text-7xl"
           >
-            We build{" "}
+            I build{" "}
             <span className="font-serif italic font-normal text-accent-1">brands</span> that stand
             out and{" "}
             <span className="font-serif italic font-normal text-accent-1">systems</span> that sell.
@@ -360,7 +360,7 @@ function Index() {
             variants={fadeUp}
             className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl"
           >
-            Bridging the gap between high-end visual design and technical e-commerce execution.
+            High-end visual design and technical e-commerce execution focused on converting.
           </motion.p>
           <motion.div variants={fadeUp} className="mt-8 flex flex-wrap items-center gap-4">
             <MagneticButton
