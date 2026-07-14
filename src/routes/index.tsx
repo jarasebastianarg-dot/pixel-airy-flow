@@ -240,6 +240,35 @@ const credentials = [
 
 /* ─────────────────────── motion helpers ─────────────────────── */
 
+function animateScrollTo(targetY: number, duration = 1100) {
+  const startY = window.scrollY;
+  const delta = targetY - startY;
+  if (Math.abs(delta) < 2) return;
+  const startTime = performance.now();
+  // easeInOutQuart — slow start, fast middle, gentle landing
+  const ease = (t: number) =>
+    t < 0.5 ? 8 * t * t * t * t : 1 - Math.pow(-2 * t + 2, 4) / 2;
+
+  let cancelled = false;
+  const cancel = () => {
+    cancelled = true;
+  };
+  window.addEventListener("wheel", cancel, { passive: true, once: true });
+  window.addEventListener("touchstart", cancel, { passive: true, once: true });
+
+  function step(now: number) {
+    if (cancelled) return;
+    const elapsed = Math.min((now - startTime) / duration, 1);
+    window.scrollTo(0, startY + delta * ease(elapsed));
+    if (elapsed < 1) requestAnimationFrame(step);
+    else {
+      window.removeEventListener("wheel", cancel);
+      window.removeEventListener("touchstart", cancel);
+    }
+  }
+  requestAnimationFrame(step);
+}
+
 function smoothScrollTo(id: string) {
   return (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (typeof window === "undefined") return;
@@ -251,7 +280,10 @@ function smoothScrollTo(id: string) {
       id === "top"
         ? 0
         : target.getBoundingClientRect().top + window.scrollY - 72;
-    window.scrollTo({ top: y, behavior: "smooth" });
+    const distance = Math.abs(y - window.scrollY);
+    // duration scales with distance for a natural feel (clamped 700–1400ms)
+    const duration = Math.min(1400, Math.max(700, distance * 0.6));
+    animateScrollTo(y, duration);
     if (history.replaceState) {
       history.replaceState(null, "", id === "top" ? " " : `#${id}`);
     }
