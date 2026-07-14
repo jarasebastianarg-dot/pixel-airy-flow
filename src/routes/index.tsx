@@ -240,6 +240,24 @@ const credentials = [
 
 /* ─────────────────────── motion helpers ─────────────────────── */
 
+function smoothScrollTo(id: string) {
+  return (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (typeof window === "undefined") return;
+    const target =
+      id === "top" ? document.body : document.getElementById(id);
+    if (!target) return;
+    e.preventDefault();
+    const y =
+      id === "top"
+        ? 0
+        : target.getBoundingClientRect().top + window.scrollY - 72;
+    window.scrollTo({ top: y, behavior: "smooth" });
+    if (history.replaceState) {
+      history.replaceState(null, "", id === "top" ? " " : `#${id}`);
+    }
+  };
+}
+
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 28, filter: "blur(8px)" },
   show: {
