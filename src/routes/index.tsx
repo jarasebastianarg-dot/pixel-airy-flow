@@ -805,16 +805,18 @@ function WorkCard({
   headline,
   body,
   image,
+  href,
 }: {
   tag: string;
   client: string;
   headline: string;
   body: string;
   image: string;
+  href?: string;
 }) {
   return (
     <motion.a
-      href="#"
+      href={href ?? "#"}
       data-cursor-view
       variants={fadeUp}
       className="group relative block h-[24rem] overflow-hidden rounded-[calc(var(--radius)+16px)] border border-border shadow-[var(--shadow-card)]"
