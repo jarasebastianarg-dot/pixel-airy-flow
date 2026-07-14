@@ -843,7 +843,12 @@ function Ecosystem({
         </span>
       </div>
 
-      <div className="mt-6 flex flex-1 flex-col gap-2">
+      <p className="mt-4 flex items-center gap-2 text-xs font-medium text-accent-1">
+        <MousePointerClick className="h-3.5 w-3.5" />
+        Click any discipline to explore its stack
+      </p>
+
+      <div className="mt-4 flex flex-1 flex-col gap-3">
         {ecosystemClusters.map((cluster, i) => {
           const isActive = active === i;
           const Icon = cluster.icon;
@@ -852,21 +857,21 @@ function Ecosystem({
               key={cluster.id}
               type="button"
               onClick={() => onSelect(i)}
-              className={`group relative overflow-hidden rounded-2xl border text-left transition-colors duration-300 ${
+              className={`group relative overflow-hidden rounded-2xl border text-left transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-1 focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
                 isActive
-                  ? "border-foreground/20 bg-secondary"
-                  : "border-border bg-transparent hover:border-foreground/15 hover:bg-secondary/50"
+                  ? "border-accent-1/40 bg-secondary shadow-[var(--shadow-card)]"
+                  : "cursor-pointer border-border bg-transparent shadow-none hover:-translate-y-0.5 hover:border-foreground/20 hover:bg-secondary/60 hover:shadow-[var(--shadow-card)]"
               }`}
             >
-              <div className="flex items-center gap-3 px-4 py-3">
+              <div className="flex items-center gap-3 px-4 py-3.5">
                 <span
-                  className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border transition-colors ${
+                  className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border transition-all duration-300 ${
                     isActive
-                      ? "border-foreground/20 bg-background text-accent-1"
-                      : "border-border bg-card text-muted-foreground group-hover:text-foreground"
+                      ? "border-foreground/20 bg-background text-accent-1 shadow-sm"
+                      : "border-border bg-card text-muted-foreground group-hover:border-foreground/15 group-hover:text-foreground"
                   }`}
                 >
-                  <Icon className="h-4 w-4" />
+                  <Icon className="h-4.5 w-4.5" strokeWidth={1.8} />
                 </span>
                 <div className="min-w-0 flex-1">
                   <div className="flex items-baseline gap-2">
@@ -881,13 +886,22 @@ function Ecosystem({
                     {cluster.tools.length} tools · {cluster.blurb}
                   </p>
                 </div>
-                <motion.span
-                  animate={{ rotate: isActive ? 90 : 0 }}
-                  transition={{ type: "spring", stiffness: 260, damping: 20 }}
-                  className="text-muted-foreground"
-                >
-                  <ArrowRight className="h-4 w-4" />
-                </motion.span>
+                <div className="flex shrink-0 items-center gap-2">
+                  <span className="hidden text-[10px] font-semibold uppercase tracking-widest text-accent-1 opacity-0 transition-all duration-300 group-hover:opacity-100 sm:block">
+                    {isActive ? "Active" : "Open"}
+                  </span>
+                  <motion.span
+                    animate={{ rotate: isActive ? 180 : 0 }}
+                    transition={{ type: "spring", stiffness: 260, damping: 20 }}
+                    className={`grid h-7 w-7 place-items-center rounded-full border transition-colors duration-300 ${
+                      isActive
+                        ? "border-accent-1/40 bg-accent-1/10 text-accent-1"
+                        : "border-border bg-card text-muted-foreground group-hover:border-foreground/20 group-hover:text-foreground"
+                    }`}
+                  >
+                    <ChevronDown className="h-3.5 w-3.5" />
+                  </motion.span>
+                </div>
               </div>
 
               <AnimatePresence initial={false}>
@@ -932,7 +946,7 @@ function Ecosystem({
               {isActive && (
                 <motion.span
                   layoutId="ecosystem-active-bar"
-                  className="absolute inset-y-0 left-0 w-[3px] bg-accent-1"
+                  className="absolute inset-y-0 left-0 w-[3px] bg-gradient-accent"
                 />
               )}
             </button>
