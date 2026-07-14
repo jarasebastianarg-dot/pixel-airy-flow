@@ -377,11 +377,12 @@ function Index() {
 
       {/* Header */}
       <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur-md">
-        <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4">
+        <div className="mx-auto flex max-w-6xl items-center gap-6 px-6 py-4">
           <a
             href="#top"
+            onClick={smoothScrollTo("top")}
             aria-label="SJ — home"
-            className="flex items-center gap-2 font-display text-lg font-bold tracking-tight"
+            className="mr-auto flex items-center gap-2 font-display text-lg font-bold tracking-tight"
           >
             <SJMonogram />
             <span className="sr-only">Sebastián</span>
@@ -401,6 +402,7 @@ function Index() {
               <a
                 key={l.href}
                 href={l.href}
+                onClick={smoothScrollTo(l.href.slice(1))}
                 className="rounded-full px-3 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground"
               >
                 {l.label}
@@ -429,6 +431,7 @@ function Index() {
             {/* Primary CTA */}
             <a
               href="#works"
+              onClick={smoothScrollTo("works")}
               className="group inline-flex items-center gap-1.5 rounded-full bg-gradient-accent px-4 py-2 text-xs font-semibold text-accent-foreground shadow-[var(--shadow-accent)] transition-transform hover:-translate-y-0.5"
             >
               View Projects
