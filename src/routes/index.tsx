@@ -377,25 +377,47 @@ function Index() {
 
       {/* Header */}
       <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur-md">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+        <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4">
           <a
-            href="#"
+            href="#top"
+            aria-label="SJ — home"
             className="flex items-center gap-2 font-display text-lg font-bold tracking-tight"
           >
-            <span className="grid h-8 w-8 place-items-center rounded-lg bg-gradient-accent text-accent-foreground">
-              <Sparkles className="h-4 w-4" />
-            </span>
-            Studio<span className="text-gradient-accent">.</span>
+            <SJMonogram />
+            <span className="sr-only">Sebastián</span>
           </a>
-          <div className="flex items-center gap-3">
-            <div className="flex items-center rounded-full border border-border bg-card p-1 text-xs font-semibold">
+
+          {/* Tertiary: section links */}
+          <nav
+            aria-label="Primary"
+            className="hidden items-center gap-1 md:flex"
+          >
+            {[
+              { href: "#works", label: "Work" },
+              { href: "#capabilities", label: "Capabilities" },
+              { href: "#stack", label: "Stack" },
+              { href: "#about", label: "About" },
+            ].map((l) => (
+              <a
+                key={l.href}
+                href={l.href}
+                className="rounded-full px-3 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground"
+              >
+                {l.label}
+              </a>
+            ))}
+          </nav>
+
+          <div className="flex items-center gap-2">
+            {/* Secondary: language toggle */}
+            <div className="flex items-center rounded-full border border-border bg-card p-1 text-[0.7rem] font-semibold">
               {(["EN", "ES"] as const).map((l) => (
                 <button
                   key={l}
                   onClick={() => setLang(l)}
-                  className={`rounded-full px-3 py-1 transition-colors ${
+                  className={`rounded-full px-2.5 py-0.5 transition-colors ${
                     lang === l
-                      ? "bg-gradient-accent text-accent-foreground"
+                      ? "bg-secondary text-foreground"
                       : "text-muted-foreground hover:text-foreground"
                   }`}
                 >
@@ -403,11 +425,14 @@ function Index() {
                 </button>
               ))}
             </div>
+
+            {/* Primary CTA */}
             <a
               href="#works"
-              className="hidden rounded-full bg-foreground px-4 py-2 text-xs font-semibold text-background transition-opacity hover:opacity-90 sm:inline-block"
+              className="group inline-flex items-center gap-1.5 rounded-full bg-gradient-accent px-4 py-2 text-xs font-semibold text-accent-foreground shadow-[var(--shadow-accent)] transition-transform hover:-translate-y-0.5"
             >
               View Projects
+              <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
             </a>
           </div>
         </div>
@@ -447,7 +472,7 @@ function Index() {
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </MagneticButton>
             <MagneticButton
-              href="#contact"
+              href="#about"
               className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-7 py-3.5 text-sm font-semibold transition-colors hover:bg-secondary"
             >
               Get in touch
@@ -456,7 +481,7 @@ function Index() {
         </Reveal>
 
         {/* Selected Works */}
-        <section id="works" className="pt-8">
+        <section id="works" className="scroll-mt-24 pt-8">
           <SectionLabel>Selected Works</SectionLabel>
           <Reveal className="grid grid-cols-1 gap-6 md:grid-cols-2" stagger={0.12}>
             {works.map((w) => (
@@ -466,7 +491,7 @@ function Index() {
         </section>
 
         {/* Capabilities */}
-        <section className="pt-24">
+        <section id="capabilities" className="scroll-mt-24 pt-24">
           <Reveal className="grid grid-cols-1 gap-10 md:grid-cols-12 md:items-end" stagger={0.1}>
             <motion.div variants={fadeUp} className="md:col-span-7">
               <SectionLabel>Core Capabilities</SectionLabel>
@@ -553,13 +578,13 @@ function Index() {
         </section>
 
         {/* Methodology & Tech */}
-        <section className="pt-16">
+        <section id="stack" className="scroll-mt-24 pt-16">
           <SectionLabel>Methodology &amp; Stack</SectionLabel>
           <MethodologyStack />
         </section>
 
         {/* The Architect */}
-        <section id="contact" className="py-16">
+        <section id="about" className="scroll-mt-24 py-16">
           <Reveal className="bento-card overflow-hidden p-10 md:p-14" stagger={0.12}>
             <motion.div variants={fadeUp}>
               <SectionLabel>The Architect</SectionLabel>
@@ -675,6 +700,42 @@ function Index() {
 }
 
 /* ─────────────────────── components ─────────────────────── */
+
+function SJMonogram({ className = "" }: { className?: string }) {
+  return (
+    <span
+      aria-hidden
+      className={`relative grid h-9 w-9 place-items-center overflow-hidden rounded-xl bg-gradient-accent text-accent-foreground shadow-[var(--shadow-accent)] ${className}`}
+    >
+      <svg
+        viewBox="0 0 40 40"
+        className="h-9 w-9"
+        role="img"
+      >
+        <defs>
+          <linearGradient id="sj-stroke" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stopColor="oklch(0.99 0.01 60)" />
+            <stop offset="100%" stopColor="oklch(0.95 0.03 60)" />
+          </linearGradient>
+        </defs>
+        <text
+          x="50%"
+          y="54%"
+          textAnchor="middle"
+          dominantBaseline="middle"
+          fontFamily="var(--font-serif)"
+          fontStyle="italic"
+          fontWeight="500"
+          fontSize="22"
+          fill="url(#sj-stroke)"
+          letterSpacing="-1"
+        >
+          SJ
+        </text>
+      </svg>
+    </span>
+  );
+}
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
