@@ -378,7 +378,7 @@ function FolkwaysProject() {
               >
                 <span
                   aria-hidden
-                  className="pointer-events-none absolute -right-8 -top-8 h-32 w-32 rounded-full bg-gradient-accent opacity-0 blur-2xl transition-opacity duration-700 group-hover:opacity-50"
+                  className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,oklch(0.72_0.18_45_/_0.28),transparent_65%)] opacity-0 transition-opacity duration-700 group-hover:opacity-100"
                 />
                 <m.icon className="h-6 w-6 text-accent-1" strokeWidth={1.6} />
                 <div className="mt-8 font-display text-4xl font-bold tracking-tight md:text-5xl">
