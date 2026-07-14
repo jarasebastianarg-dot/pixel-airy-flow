@@ -78,6 +78,7 @@ const works = [
     body: "Migrated 2000+ products to Shopify 2.0 without losing a single drop of performance.",
     image:
       "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1200&q=80",
+    href: "/projects/folkways",
   },
   {
     tag: "Lead Developer & Designer",
