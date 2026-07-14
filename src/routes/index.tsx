@@ -572,7 +572,7 @@ function Index() {
                   loading="lazy"
                   width={1024}
                   height={1024}
-                  className="aspect-square w-full rounded-2xl object-cover grayscale"
+                  className="aspect-square w-full rounded-2xl object-cover"
                 />
               </motion.div>
               <motion.div variants={fadeUp} className="md:col-span-2">
