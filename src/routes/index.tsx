@@ -390,27 +390,88 @@ function Index() {
         </section>
 
         {/* Capabilities */}
-        <section className="pt-16">
-          <SectionLabel>Core Capabilities</SectionLabel>
-          <Reveal className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+        <section className="pt-24">
+          <Reveal className="grid grid-cols-1 gap-10 md:grid-cols-12 md:items-end" stagger={0.1}>
+            <motion.div variants={fadeUp} className="md:col-span-7">
+              <SectionLabel>Core Capabilities</SectionLabel>
+              <h2 className="mt-4 text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl">
+                Four disciplines,{" "}
+                <span className="font-serif italic font-normal text-accent-1">one</span> operator.
+              </h2>
+            </motion.div>
+            <motion.p
+              variants={fadeUp}
+              className="md:col-span-5 text-base leading-relaxed text-muted-foreground md:text-lg"
+            >
+              I don&apos;t hand off between design, code, and growth. Every capability below is
+              executed by the same hands — so strategy, aesthetics and performance stay in sync.
+            </motion.p>
+          </Reveal>
+
+          <Reveal className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2" stagger={0.08}>
             {capabilities.map((c) => (
-              <motion.div
+              <motion.article
                 key={c.title}
                 variants={fadeUp}
-                className="group relative flex flex-col rounded-[calc(var(--radius)+16px)] p-[1px] transition-all duration-300 hover:shadow-[var(--shadow-card-hover)]"
+                whileHover={{ y: -6 }}
+                transition={{ type: "spring", stiffness: 260, damping: 22 }}
+                className="group relative isolate flex h-full flex-col overflow-hidden rounded-[calc(var(--radius)+18px)] border border-border bg-card p-8 shadow-[var(--shadow-card)] transition-shadow duration-500 hover:shadow-[var(--shadow-card-hover)] md:p-10"
               >
+                {/* animated accent bar */}
                 <span
                   aria-hidden
-                  className="pointer-events-none absolute inset-0 rounded-[calc(var(--radius)+16px)] bg-gradient-accent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                  className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-gradient-accent transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-x-100"
                 />
-                <div className="relative flex h-full flex-col rounded-[calc(var(--radius)+15px)] border border-border bg-card p-8 shadow-[var(--shadow-card)] transition-colors duration-300">
-                  <span className="mb-6 grid h-12 w-12 place-items-center rounded-2xl bg-secondary text-accent-1 transition-colors duration-300 group-hover:bg-gradient-accent group-hover:text-accent-foreground">
-                    <c.icon className="h-6 w-6" />
+                {/* soft radial glow on hover */}
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-gradient-accent opacity-0 blur-3xl transition-opacity duration-700 group-hover:opacity-25"
+                />
+
+                <header className="flex items-start justify-between gap-6">
+                  <motion.span
+                    whileHover={{ rotate: -6, scale: 1.05 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 15 }}
+                    className="relative grid h-14 w-14 place-items-center rounded-2xl bg-secondary text-accent-1 ring-1 ring-inset ring-border transition-colors duration-500 group-hover:bg-gradient-accent group-hover:text-accent-foreground group-hover:ring-transparent"
+                  >
+                    <c.icon className="h-6 w-6" strokeWidth={1.6} />
+                  </motion.span>
+                  <div className="text-right">
+                    <span className="font-mono text-xs font-semibold tracking-widest text-muted-foreground">
+                      {c.number}
+                    </span>
+                    <div className="mt-1 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-accent-1">
+                      {c.kicker}
+                    </div>
+                  </div>
+                </header>
+
+                <h3 className="mt-8 text-2xl font-bold leading-tight tracking-tight md:text-[1.6rem]">
+                  {c.title}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground md:text-[0.95rem]">
+                  {c.desc}
+                </p>
+
+                <div className="mt-auto flex flex-wrap items-center justify-between gap-4 pt-8">
+                  <ul className="flex flex-wrap gap-2">
+                    {c.tags.map((t) => (
+                      <li
+                        key={t}
+                        className="rounded-full border border-border bg-background/60 px-3 py-1 text-[0.7rem] font-medium text-muted-foreground transition-colors duration-300 group-hover:border-accent-1/40 group-hover:text-foreground"
+                      >
+                        {t}
+                      </li>
+                    ))}
+                  </ul>
+                  <span
+                    aria-hidden
+                    className="grid h-9 w-9 place-items-center rounded-full border border-border bg-card text-muted-foreground transition-all duration-500 group-hover:-rotate-45 group-hover:border-transparent group-hover:bg-gradient-accent group-hover:text-accent-foreground"
+                  >
+                    <ArrowUpRight className="h-4 w-4" />
                   </span>
-                  <h3 className="text-lg font-bold tracking-tight">{c.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{c.desc}</p>
                 </div>
-              </motion.div>
+              </motion.article>
             ))}
           </Reveal>
         </section>
