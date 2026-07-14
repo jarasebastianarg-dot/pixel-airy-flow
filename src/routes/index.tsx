@@ -701,6 +701,42 @@ function Index() {
 
 /* ─────────────────────── components ─────────────────────── */
 
+function SJMonogram({ className = "" }: { className?: string }) {
+  return (
+    <span
+      aria-hidden
+      className={`relative grid h-9 w-9 place-items-center overflow-hidden rounded-xl bg-gradient-accent text-accent-foreground shadow-[var(--shadow-accent)] ${className}`}
+    >
+      <svg
+        viewBox="0 0 40 40"
+        className="h-9 w-9"
+        role="img"
+      >
+        <defs>
+          <linearGradient id="sj-stroke" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stopColor="oklch(0.99 0.01 60)" />
+            <stop offset="100%" stopColor="oklch(0.95 0.03 60)" />
+          </linearGradient>
+        </defs>
+        <text
+          x="50%"
+          y="54%"
+          textAnchor="middle"
+          dominantBaseline="middle"
+          fontFamily="var(--font-serif)"
+          fontStyle="italic"
+          fontWeight="500"
+          fontSize="22"
+          fill="url(#sj-stroke)"
+          letterSpacing="-1"
+        >
+          SJ
+        </text>
+      </svg>
+    </span>
+  );
+}
+
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
     <h2 className="mb-6 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
