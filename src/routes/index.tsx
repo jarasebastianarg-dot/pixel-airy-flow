@@ -503,14 +503,7 @@ function Index() {
         {/* Methodology & Tech */}
         <section className="pt-16">
           <SectionLabel>Methodology &amp; Stack</SectionLabel>
-          <Reveal className="grid grid-cols-1 gap-6 md:grid-cols-3" stagger={0.12}>
-            <motion.div variants={fadeUp} className="md:col-span-2">
-              <CodeApproach />
-            </motion.div>
-            <motion.div variants={fadeUp}>
-              <Ecosystem />
-            </motion.div>
-          </Reveal>
+          <MethodologyStack />
         </section>
 
         {/* The Architect */}
