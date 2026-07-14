@@ -105,34 +105,58 @@ const works = [
 
 const ecosystemClusters = [
   {
+    id: "design",
     group: "Design & UX",
+    kicker: "01",
+    icon: Palette,
+    blurb: "Brand systems, editorial layouts and interface craft.",
     tools: [
-      { label: "Photoshop", color: "#31A8FF" },
-      { label: "Illustrator", color: "#FF9A00" },
-      { label: "InDesign", color: "#FF3366" },
-      { label: "After Effects", color: "#9999FF" },
+      { label: "Photoshop", color: "#31A8FF", use: "Photo retouching and campaign visuals" },
+      { label: "Illustrator", color: "#FF9A00", use: "Logo systems and vector creative assets" },
+      { label: "InDesign", color: "#FF3366", use: "Editorial layouts and brand guidelines" },
+      { label: "After Effects", color: "#9999FF", use: "Motion graphics for social and product" },
+      { label: "Figma", color: "#F24E1E", use: "Product UI, prototypes and design systems" },
+      { label: "Canva", color: "#00C4CC", use: "Fast-turn social decks and pitch material" },
+      { label: "Claude Design", color: "#D97757", use: "AI-assisted concept exploration and iteration" },
     ],
   },
   {
+    id: "build",
     group: "Build & Code",
+    kicker: "02",
+    icon: Code2,
+    blurb: "Storefronts and marketing sites shipped end-to-end.",
     tools: [
-      { label: "Shopify", color: "#95BF47" },
-      { label: "Liquid", color: "#008080" },
+      { label: "Shopify", color: "#95BF47", use: "Custom theme development and headless architecture" },
+      { label: "Shopify Liquid", color: "#008080", use: "Bespoke sections built to each merchant's flow" },
+      { label: "HTML / CSS", color: "#E34F26", use: "Responsive, accessible, pixel-accurate markup" },
+      { label: "Webflow", color: "#146EF5", use: "High-fidelity marketing sites for brand teams" },
     ],
   },
   {
+    id: "scale",
     group: "Scale & Automate",
+    kicker: "03",
+    icon: Zap,
+    blurb: "Retention, paid media and lifecycle automation.",
     tools: [
-      { label: "Klaviyo (CRM)", color: "#20E2C8" },
-      { label: "Meta Ads", color: "#0668E1" },
-      { label: "Make Automations", color: "#8848AB" },
+      { label: "Klaviyo", color: "#20E2C8", use: "CRM flows, segmentation and A/B testing" },
+      { label: "HubSpot", color: "#FF7A59", use: "Pipelines, lead scoring and sales enablement" },
+      { label: "Email Automation", color: "#F5A623", use: "Lifecycle campaigns end-to-end" },
+      { label: "Meta Ads", color: "#0668E1", use: "Paid social: creative, testing and reporting" },
+      { label: "Make", color: "#8848AB", use: "No-code pipelines connecting the whole stack" },
     ],
   },
   {
+    id: "ai",
     group: "AI Models",
+    kicker: "04",
+    icon: Bot,
+    blurb: "AI leveraged across design, code and growth.",
     tools: [
-      { label: "Claude", color: "#D97757" },
-      { label: "Gemini", color: "#1A73E8" },
+      { label: "Claude", color: "#D97757", use: "Engineering co-pilot and long-form copywriting" },
+      { label: "Claude Co-Work", color: "#B85A3E", use: "Async pair-programming and workflow acceleration" },
+      { label: "Gemini", color: "#1A73E8", use: "Research, data analysis and multimodal tasks" },
     ],
   },
 ];
@@ -479,14 +503,7 @@ function Index() {
         {/* Methodology & Tech */}
         <section className="pt-16">
           <SectionLabel>Methodology &amp; Stack</SectionLabel>
-          <Reveal className="grid grid-cols-1 gap-6 md:grid-cols-3" stagger={0.12}>
-            <motion.div variants={fadeUp} className="md:col-span-2">
-              <CodeApproach />
-            </motion.div>
-            <motion.div variants={fadeUp}>
-              <Ecosystem />
-            </motion.div>
-          </Reveal>
+          <MethodologyStack />
         </section>
 
         {/* The Architect */}
@@ -655,33 +672,90 @@ function WorkCard({
 
 const CODE_SNIPPETS = [
   {
-    label: "theme.liquid",
-    code: "{% assign conversion = 'maximized' %}\n{% render 'ui', mode: 'ruthless' %}",
+    label: "design.system.ts",
+    code:
+      "// design & ux — brand systems and interface craft\n" +
+      "export const design = {\n" +
+      "  photoshop:     'photo retouching & campaign visuals',\n" +
+      "  illustrator:   'logo systems & vector assets',\n" +
+      "  indesign:      'editorial layouts & guidelines',\n" +
+      "  afterEffects:  'motion graphics & social reels',\n" +
+      "  figma:         'product UI, prototypes, design systems',\n" +
+      "  canva:         'fast-turn decks & social',\n" +
+      "  claudeDesign:  'AI-assisted concept exploration',\n" +
+      "};",
   },
   {
-    label: "brand.system.ts",
-    code: "import { Ps, Ai, Ae } from '@adobe/cc';\nconst system = new BrandIdentity();",
+    label: "storefront.build.ts",
+    code:
+      "// build & code — shipping storefronts that convert\n" +
+      "export const stack = {\n" +
+      "  shopify:       'custom themes & headless architecture',\n" +
+      "  shopifyLiquid: 'bespoke sections per merchant flow',\n" +
+      "  htmlCss:       'responsive, accessible, pixel-accurate',\n" +
+      "  webflow:       'high-fidelity marketing sites',\n" +
+      "};",
   },
   {
-    label: "pipeline.flow",
-    code: "webhook.listen(Klaviyo)\n  .pipe(Make)\n  .process(Claude)\n  .output(Growth);",
+    label: "growth.pipeline.ts",
+    code:
+      "// scale & automate — retention, paid, lifecycle\n" +
+      "growth.klaviyo   = 'CRM flows, segmentation, A/B testing';\n" +
+      "growth.hubspot   = 'pipelines & lead scoring';\n" +
+      "growth.email     = 'lifecycle automations end-to-end';\n" +
+      "growth.metaAds   = 'paid social: creative, testing, reporting';\n" +
+      "growth.make      = 'no-code ops across the stack';",
+  },
+  {
+    label: "ai.co-pilot.ts",
+    code:
+      "// ai — leveraged across every discipline\n" +
+      "ai.claude        = 'engineering co-pilot & copywriting';\n" +
+      "ai.claudeCoWork  = 'async pair-programming at scale';\n" +
+      "ai.gemini        = 'research, data & multimodal analysis';",
   },
 ];
 
-function CodeApproach() {
+function MethodologyStack() {
+  const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(false);
+
+  useEffect(() => {
+    if (paused) return;
+    const id = setInterval(() => {
+      setActive((i) => (i + 1) % ecosystemClusters.length);
+    }, 6000);
+    return () => clearInterval(id);
+  }, [paused]);
+
+  return (
+    <Reveal
+      className="grid grid-cols-1 gap-6 md:grid-cols-3"
+      stagger={0.12}
+    >
+      <motion.div
+        variants={fadeUp}
+        className="md:col-span-2"
+        onMouseEnter={() => setPaused(true)}
+        onMouseLeave={() => setPaused(false)}
+      >
+        <CodeApproach index={active} />
+      </motion.div>
+      <motion.div
+        variants={fadeUp}
+        onMouseEnter={() => setPaused(true)}
+        onMouseLeave={() => setPaused(false)}
+      >
+        <Ecosystem active={active} onSelect={setActive} />
+      </motion.div>
+    </Reveal>
+  );
+}
+
+function CodeApproach({ index }: { index: number }) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
-  const [index, setIndex] = useState(0);
   const [text, setText] = useState("");
-
-  // rotate snippets every 4s once in view
-  useEffect(() => {
-    if (!inView) return;
-    const id = setInterval(() => {
-      setIndex((i) => (i + 1) % CODE_SNIPPETS.length);
-    }, 4000);
-    return () => clearInterval(id);
-  }, [inView]);
 
   // typewriter effect for the current snippet
   useEffect(() => {
@@ -693,7 +767,7 @@ function CodeApproach() {
       i++;
       setText(full.slice(0, i));
       if (i >= full.length) clearInterval(id);
-    }, 32);
+    }, 18);
     return () => clearInterval(id);
   }, [inView, index]);
 
@@ -746,36 +820,124 @@ function CodeApproach() {
   );
 }
 
-function Ecosystem() {
+function Ecosystem({
+  active,
+  onSelect,
+}: {
+  active: number;
+  onSelect: (i: number) => void;
+}) {
   return (
-    <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius)+16px)] border border-border bg-card p-8 shadow-[var(--shadow-card)]">
-      <h3 className="text-lg font-bold tracking-tight">The Ecosystem</h3>
-      <p className="mt-1 text-sm text-muted-foreground">Tools I orchestrate as one system.</p>
-      <div className="mt-8 flex flex-1 flex-col gap-6">
-        {ecosystemClusters.map((cluster) => (
-          <div key={cluster.group}>
-            <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-              {cluster.group}
-            </p>
-            <div className="flex flex-wrap gap-2">
-              {cluster.tools.map((tool) => (
+    <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius)+16px)] border border-border bg-card p-6 shadow-[var(--shadow-card)] md:p-8">
+      <div className="flex items-start justify-between gap-4">
+        <div>
+          <h3 className="font-serif text-2xl font-normal leading-tight tracking-tight md:text-3xl">
+            The <span className="italic text-accent-1">ecosystem</span>
+          </h3>
+          <p className="mt-2 text-sm text-muted-foreground">
+            Four disciplines, orchestrated as one system.
+          </p>
+        </div>
+        <span className="rounded-full border border-border bg-secondary px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+          {String(active + 1).padStart(2, "0")} / {String(ecosystemClusters.length).padStart(2, "0")}
+        </span>
+      </div>
+
+      <div className="mt-6 flex flex-1 flex-col gap-2">
+        {ecosystemClusters.map((cluster, i) => {
+          const isActive = active === i;
+          const Icon = cluster.icon;
+          return (
+            <button
+              key={cluster.id}
+              type="button"
+              onClick={() => onSelect(i)}
+              className={`group relative overflow-hidden rounded-2xl border text-left transition-colors duration-300 ${
+                isActive
+                  ? "border-foreground/20 bg-secondary"
+                  : "border-border bg-transparent hover:border-foreground/15 hover:bg-secondary/50"
+              }`}
+            >
+              <div className="flex items-center gap-3 px-4 py-3">
                 <span
-                  key={tool.label}
-                  className="inline-flex items-center gap-2 rounded-full border border-border bg-secondary px-3 py-1.5 text-xs font-semibold"
+                  className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border transition-colors ${
+                    isActive
+                      ? "border-foreground/20 bg-background text-accent-1"
+                      : "border-border bg-card text-muted-foreground group-hover:text-foreground"
+                  }`}
                 >
-                  <span
-                    className="h-2.5 w-2.5 rounded-full"
-                    style={{
-                      background: tool.color,
-                      boxShadow: `0 0 10px -2px ${tool.color}`,
-                    }}
-                  />
-                  {tool.label}
+                  <Icon className="h-4 w-4" />
                 </span>
-              ))}
-            </div>
-          </div>
-        ))}
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-baseline gap-2">
+                    <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+                      {cluster.kicker}
+                    </span>
+                    <p className="truncate text-sm font-semibold tracking-tight">
+                      {cluster.group}
+                    </p>
+                  </div>
+                  <p className="mt-0.5 truncate text-xs text-muted-foreground">
+                    {cluster.tools.length} tools · {cluster.blurb}
+                  </p>
+                </div>
+                <motion.span
+                  animate={{ rotate: isActive ? 90 : 0 }}
+                  transition={{ type: "spring", stiffness: 260, damping: 20 }}
+                  className="text-muted-foreground"
+                >
+                  <ArrowRight className="h-4 w-4" />
+                </motion.span>
+              </div>
+
+              <AnimatePresence initial={false}>
+                {isActive && (
+                  <motion.div
+                    key="content"
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                    className="overflow-hidden"
+                  >
+                    <ul className="divide-y divide-border/60 border-t border-border/60">
+                      {cluster.tools.map((tool, ti) => (
+                        <motion.li
+                          key={tool.label}
+                          initial={{ opacity: 0, x: -6 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: 0.05 + ti * 0.04, duration: 0.25 }}
+                          className="flex items-start gap-3 px-4 py-2.5"
+                        >
+                          <span
+                            className="mt-1.5 h-2 w-2 shrink-0 rounded-full"
+                            style={{
+                              background: tool.color,
+                              boxShadow: `0 0 10px -2px ${tool.color}`,
+                            }}
+                          />
+                          <div className="min-w-0 flex-1">
+                            <p className="text-xs font-semibold tracking-tight">{tool.label}</p>
+                            <p className="text-xs leading-relaxed text-muted-foreground">
+                              {tool.use}
+                            </p>
+                          </div>
+                        </motion.li>
+                      ))}
+                    </ul>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              {isActive && (
+                <motion.span
+                  layoutId="ecosystem-active-bar"
+                  className="absolute inset-y-0 left-0 w-[3px] bg-accent-1"
+                />
+              )}
+            </button>
+          );
+        })}
       </div>
     </div>
   );
