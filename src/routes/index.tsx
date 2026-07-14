@@ -36,23 +36,35 @@ export const Route = createFileRoute("/")({
 const capabilities = [
   {
     icon: ShoppingBag,
+    number: "01",
+    kicker: "Commerce",
     title: "Shopify & Custom E-commerce",
     desc: "I architect scalable storefronts using custom Liquid, HTML, and CSS. No bloated themes, just high-converting, performance-driven environments.",
+    tags: ["Shopify 2.0", "Liquid", "Headless"],
   },
   {
     icon: Zap,
+    number: "02",
+    kicker: "Retention",
     title: "Retention & Email Marketing",
     desc: "Designing automated Klaviyo CRM flows and targeted campaigns that turn one-time buyers into loyal brand advocates and maximize LTV.",
+    tags: ["Klaviyo", "Lifecycle", "LTV"],
   },
   {
     icon: Palette,
+    number: "03",
+    kicker: "Identity",
     title: "Brand Identity & UI/UX",
     desc: "Crafting cohesive visual systems. From packaging to digital interfaces, I build scalable brands grounded in academic design principles.",
+    tags: ["Systems", "UI/UX", "Packaging"],
   },
   {
     icon: Bot,
+    number: "04",
+    kicker: "Automation",
     title: "AI & Workflow Automation",
     desc: "Connecting the dots between Make, Claude, and Gemini to streamline operations, reduce lead times, and scale businesses efficiently.",
+    tags: ["Make", "Claude", "Gemini"],
   },
 ];
 
