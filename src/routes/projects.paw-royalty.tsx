@@ -1,12 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
+  AnimatePresence,
   motion,
   useInView,
   useScroll,
   useTransform,
   type Variants,
 } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import {
   ArrowLeft,
   ArrowUpRight,
@@ -109,25 +110,25 @@ const executionCards = [
     icon: Layers,
     kicker: "PDP",
     title: "High-Density Product Architectures",
-    body: "Designed information-dense, highly visual product pages (PDPs) that educate the buyer and build immediate trust. By hardcoding these intricate layouts directly in Shopify Liquid, the pages remain lightning-fast despite the heavy content load, maximizing conversion rates.",
+    body: "Information-dense PDPs hardcoded in Liquid — visual, fast, and engineered to build trust and drive conversion.",
   },
   {
     icon: ShoppingCart,
     kicker: "LTV",
     title: "Native Subscribe & Save Engine",
-    body: "Engineered a seamless 'Subscribe & Save' purchasing flow integrated directly into the native cart experience. This strategic implementation captures recurring revenue from day one, transforming initial traffic into high Customer Lifetime Value (LTV).",
+    body: "Seamless subscription flow wired into the native cart — capturing recurring revenue from day one.",
   },
   {
     icon: Mail,
     kicker: "Retention",
     title: "Full-Funnel Email Marketing",
-    body: "Orchestrated the brand’s entire retention ecosystem. Designed and deployed comprehensive Klaviyo campaigns and automated flows (Welcome Series, Abandoned Cart, Post-Purchase) to nurture leads, drive continuous engagement, and maximize campaign ROI.",
+    body: "Klaviyo flows — welcome, abandoned cart, post-purchase — nurturing leads and maximizing ROI on autopilot.",
   },
   {
     icon: MousePointerClick,
     kicker: "UX",
     title: "Liquid-Driven Creative Freedom",
-    body: "Leveraged custom Shopify Liquid and CSS to translate the brand’s fresh identity into a highly interactive, fluid user interface. Every component, hover state, and layout was crafted through code to ensure a flawless and memorable shopping journey across all devices.",
+    body: "Custom Liquid and CSS translate the brand into a fluid, interactive UI — hand-crafted across every device.",
   },
 ];
 
@@ -175,25 +176,52 @@ type ExecutionCardData = (typeof executionCards)[number];
 
 function ExecutionCard({ card, index }: { card: ExecutionCardData; index: number }) {
   const Icon = card.icon;
+  const [hovered, setHovered] = useState(false);
   return (
     <motion.article
       variants={fadeUp}
-      className="group relative isolate flex h-64 flex-col justify-between overflow-hidden rounded-[calc(var(--radius)+14px)] border border-border bg-card p-6 shadow-[var(--shadow-card)] transition-shadow duration-500 hover:shadow-[var(--shadow-card-hover)]"
+      onHoverStart={() => setHovered(true)}
+      onHoverEnd={() => setHovered(false)}
+      onFocus={() => setHovered(true)}
+      onBlur={() => setHovered(false)}
+      whileHover={{ y: -6 }}
+      transition={{ type: "spring", stiffness: 260, damping: 24 }}
+      tabIndex={0}
+      className="group relative isolate flex h-64 flex-col overflow-hidden rounded-[calc(var(--radius)+14px)] border border-border bg-card p-6 shadow-[var(--shadow-card)] outline-none transition-shadow duration-500 hover:shadow-[var(--shadow-card-hover)] focus-visible:ring-2 focus-visible:ring-accent-1/60"
     >
-      <span
+      {/* Accent top bar */}
+      <motion.span
         aria-hidden
-        className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-gradient-accent transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-x-100"
+        initial={false}
+        animate={{ scaleX: hovered ? 1 : 0 }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        className="absolute inset-x-0 top-0 h-[3px] origin-left bg-gradient-accent"
       />
-      <span
+      {/* Radial glow */}
+      <motion.span
         aria-hidden
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,oklch(0.72_0.18_45_/_0.22),transparent_65%)] opacity-0 transition-opacity duration-700 group-hover:opacity-100"
+        initial={false}
+        animate={{ opacity: hovered ? 1 : 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,oklch(0.72_0.18_45_/_0.22),transparent_65%)]"
       />
 
-      {/* Default state */}
-      <div className="relative flex items-start justify-between gap-4 transition-all duration-500 group-hover:-translate-y-1 group-hover:opacity-0">
-        <span className="grid h-12 w-12 place-items-center rounded-2xl bg-secondary text-accent-1 ring-1 ring-inset ring-border">
+      {/* Header row */}
+      <div className="relative flex items-start justify-between gap-4">
+        <motion.span
+          initial={false}
+          animate={{
+            backgroundColor: hovered
+              ? "oklch(0.72 0.18 45)"
+              : "oklch(0.96 0.01 60)",
+            color: hovered ? "oklch(1 0 0)" : "oklch(0.72 0.18 45)",
+            scale: hovered ? 1.05 : 1,
+          }}
+          transition={{ type: "spring", stiffness: 220, damping: 20 }}
+          className="grid h-11 w-11 place-items-center rounded-2xl ring-1 ring-inset ring-border"
+        >
           <Icon className="h-5 w-5" strokeWidth={1.6} />
-        </span>
+        </motion.span>
         <div className="text-right">
           <span className="font-mono text-[0.65rem] font-semibold tracking-widest text-muted-foreground">
             {String(index + 1).padStart(2, "0")}
@@ -203,34 +231,40 @@ function ExecutionCard({ card, index }: { card: ExecutionCardData; index: number
           </div>
         </div>
       </div>
-      <div className="relative transition-all duration-500 group-hover:-translate-y-1 group-hover:opacity-0">
-        <h3 className="text-lg font-bold leading-tight tracking-tight md:text-xl">
-          {card.title}
-        </h3>
-        <div className="mt-3 inline-flex items-center gap-1.5 font-mono text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-          <Plus className="h-3 w-3" />
-          Hover to expand
-        </div>
-      </div>
 
-      {/* Hover state */}
-      <div className="pointer-events-none absolute inset-0 flex flex-col justify-between p-6 opacity-0 transition-all duration-500 group-hover:pointer-events-auto group-hover:opacity-100">
-        <div className="flex items-center gap-3">
-          <span className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-accent text-accent-foreground">
-            <Icon className="h-4 w-4" strokeWidth={1.7} />
-          </span>
-          <span className="text-[0.6rem] font-semibold uppercase tracking-[0.2em] text-accent-1">
-            {card.kicker}
-          </span>
-        </div>
-        <div>
-          <h3 className="text-base font-bold leading-tight tracking-tight">
-            {card.title}
-          </h3>
-          <p className="mt-2 text-[0.8rem] leading-relaxed text-muted-foreground">
-            {card.body}
-          </p>
-        </div>
+      {/* Title always visible */}
+      <h3 className="relative mt-auto text-lg font-bold leading-tight tracking-tight md:text-[1.05rem] lg:text-lg">
+        {card.title}
+      </h3>
+
+      {/* Swap: helper vs body */}
+      <div className="relative mt-3 min-h-[3.75rem]">
+        <AnimatePresence mode="wait" initial={false}>
+          {hovered ? (
+            <motion.p
+              key="body"
+              initial={{ opacity: 0, y: 8, filter: "blur(4px)" }}
+              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              exit={{ opacity: 0, y: -6, filter: "blur(4px)" }}
+              transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+              className="absolute inset-x-0 top-0 text-[0.78rem] leading-relaxed text-muted-foreground"
+            >
+              {card.body}
+            </motion.p>
+          ) : (
+            <motion.div
+              key="hint"
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -6 }}
+              transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+              className="absolute inset-x-0 top-0 inline-flex items-center gap-1.5 font-mono text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-muted-foreground"
+            >
+              <Plus className="h-3 w-3" />
+              Hover to expand
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </motion.article>
   );
