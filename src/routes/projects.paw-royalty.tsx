@@ -347,7 +347,7 @@ function HorizontalMockups() {
               />
             </div>
           ))}
-          <div className="w-10 shrink-0" />
+          <div className="w-20 shrink-0" />
         </motion.div>
       </div>
     </div>
