@@ -171,6 +171,134 @@ function MediaPlaceholder({
   );
 }
 
+type ExecutionCardData = (typeof executionCards)[number];
+
+function ExecutionCard({ card, index }: { card: ExecutionCardData; index: number }) {
+  const Icon = card.icon;
+  return (
+    <motion.article
+      variants={fadeUp}
+      className="group relative isolate flex h-64 flex-col justify-between overflow-hidden rounded-[calc(var(--radius)+14px)] border border-border bg-card p-6 shadow-[var(--shadow-card)] transition-shadow duration-500 hover:shadow-[var(--shadow-card-hover)]"
+    >
+      <span
+        aria-hidden
+        className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-gradient-accent transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-x-100"
+      />
+      <span
+        aria-hidden
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,oklch(0.72_0.18_45_/_0.22),transparent_65%)] opacity-0 transition-opacity duration-700 group-hover:opacity-100"
+      />
+
+      {/* Default state */}
+      <div className="relative flex items-start justify-between gap-4 transition-all duration-500 group-hover:-translate-y-1 group-hover:opacity-0">
+        <span className="grid h-12 w-12 place-items-center rounded-2xl bg-secondary text-accent-1 ring-1 ring-inset ring-border">
+          <Icon className="h-5 w-5" strokeWidth={1.6} />
+        </span>
+        <div className="text-right">
+          <span className="font-mono text-[0.65rem] font-semibold tracking-widest text-muted-foreground">
+            {String(index + 1).padStart(2, "0")}
+          </span>
+          <div className="mt-1 text-[0.6rem] font-semibold uppercase tracking-[0.2em] text-accent-1">
+            {card.kicker}
+          </div>
+        </div>
+      </div>
+      <div className="relative transition-all duration-500 group-hover:-translate-y-1 group-hover:opacity-0">
+        <h3 className="text-lg font-bold leading-tight tracking-tight md:text-xl">
+          {card.title}
+        </h3>
+        <div className="mt-3 inline-flex items-center gap-1.5 font-mono text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+          <Plus className="h-3 w-3" />
+          Hover to expand
+        </div>
+      </div>
+
+      {/* Hover state */}
+      <div className="pointer-events-none absolute inset-0 flex flex-col justify-between p-6 opacity-0 transition-all duration-500 group-hover:pointer-events-auto group-hover:opacity-100">
+        <div className="flex items-center gap-3">
+          <span className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-accent text-accent-foreground">
+            <Icon className="h-4 w-4" strokeWidth={1.7} />
+          </span>
+          <span className="text-[0.6rem] font-semibold uppercase tracking-[0.2em] text-accent-1">
+            {card.kicker}
+          </span>
+        </div>
+        <div>
+          <h3 className="text-base font-bold leading-tight tracking-tight">
+            {card.title}
+          </h3>
+          <p className="mt-2 text-[0.8rem] leading-relaxed text-muted-foreground">
+            {card.body}
+          </p>
+        </div>
+      </div>
+    </motion.article>
+  );
+}
+
+const mockups = [
+  { label: "Homepage", icon: Monitor, kicker: "Storefront" },
+  { label: "Product Detail Page", icon: Layers, kicker: "PDP" },
+  { label: "Subscribe & Save Cart", icon: CreditCard, kicker: "Checkout" },
+  { label: "Mobile Experience", icon: Smartphone, kicker: "Responsive" },
+  { label: "Klaviyo Flow", icon: Send, kicker: "Retention" },
+];
+
+function HorizontalMockups() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"],
+  });
+  // Move from 0% to translate the track fully across (5 cards, show ~1.2 at a time)
+  const x = useTransform(scrollYProgress, [0, 1], ["2%", "-78%"]);
+
+  return (
+    <div ref={containerRef} className="relative h-[320vh]">
+      <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden">
+        <div className="mx-auto w-full max-w-6xl px-6 md:px-10">
+          <div className="flex items-end justify-between gap-6">
+            <div>
+              <SectionLabel>02.5 — Gallery</SectionLabel>
+              <h3 className="mt-4 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
+                Storefront{" "}
+                <span className="font-serif italic font-normal text-accent-1">
+                  in motion
+                </span>
+              </h3>
+            </div>
+            <span className="hidden font-mono text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground md:inline">
+              Scroll to explore →
+            </span>
+          </div>
+        </div>
+
+        <motion.div style={{ x }} className="mt-10 flex gap-6 pl-6 md:pl-10 will-change-transform">
+          {mockups.map((m, i) => (
+            <div
+              key={m.label}
+              className="relative w-[78vw] shrink-0 sm:w-[60vw] md:w-[46vw] lg:w-[40vw]"
+            >
+              <div className="absolute -top-3 left-4 z-10 inline-flex items-center gap-2 rounded-full border border-border bg-background px-3 py-1 font-mono text-[0.6rem] font-semibold uppercase tracking-[0.22em] text-muted-foreground shadow-[var(--shadow-card)]">
+                <span className="text-accent-1">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                {m.kicker}
+              </div>
+              <MediaPlaceholder
+                label={m.label}
+                aspect="aspect-[4/3]"
+                icon={m.icon}
+              />
+            </div>
+          ))}
+          <div className="w-10 shrink-0" />
+        </motion.div>
+      </div>
+    </div>
+  );
+}
+
 function PawRoyaltyProject() {
   return (
     <main className="min-h-screen bg-background text-foreground">
