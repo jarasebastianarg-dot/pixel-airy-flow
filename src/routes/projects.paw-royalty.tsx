@@ -7,7 +7,7 @@ import {
   useTransform,
   type Variants,
 } from "framer-motion";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   ArrowLeft,
   ArrowUpRight,
