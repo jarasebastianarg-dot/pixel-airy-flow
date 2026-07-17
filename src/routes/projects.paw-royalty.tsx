@@ -7,7 +7,7 @@ import {
   useTransform,
   type Variants,
 } from "framer-motion";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   ArrowLeft,
   ArrowUpRight,
@@ -280,12 +280,29 @@ const mockups = [
 
 function HorizontalMockups() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [trackWidth, setTrackWidth] = useState(0);
+  const [viewportWidth, setViewportWidth] = useState(0);
+
+  useEffect(() => {
+    const measure = () => {
+      if (trackRef.current && containerRef.current) {
+        setTrackWidth(trackRef.current.scrollWidth);
+        setViewportWidth(containerRef.current.clientWidth);
+      }
+    };
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, []);
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"],
   });
-  // Move from 0% to translate the track fully across (5 cards, show ~1.2 at a time)
-  const x = useTransform(scrollYProgress, [0, 1], ["2%", "-78%"]);
+
+  const maxTranslate = Math.max(0, trackWidth - viewportWidth);
+  const x = useTransform(scrollYProgress, (value) => -maxTranslate * value);
 
   return (
     <div ref={containerRef} className="relative h-[320vh]">
@@ -307,7 +324,11 @@ function HorizontalMockups() {
           </div>
         </div>
 
-        <motion.div style={{ x }} className="mt-10 flex gap-6 pl-6 md:pl-10 will-change-transform">
+        <motion.div
+          ref={trackRef}
+          style={{ x }}
+          className="mt-10 flex gap-6 pl-6 md:pl-10 will-change-transform"
+        >
           {mockups.map((m, i) => (
             <div
               key={m.label}
@@ -326,7 +347,7 @@ function HorizontalMockups() {
               />
             </div>
           ))}
-          <div className="w-10 shrink-0" />
+          <div className="w-20 shrink-0" />
         </motion.div>
       </div>
     </div>
