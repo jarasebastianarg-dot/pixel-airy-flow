@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as McpRouteImport } from './routes/mcp'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ProjectsPawRoyaltyRouteImport } from './routes/projects.paw-royalty'
 import { Route as ProjectsFolkwaysRouteImport } from './routes/projects.folkways'
 import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
 import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]/list-tools'
@@ -24,6 +25,11 @@ const McpRoute = McpRouteImport.update({
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjectsPawRoyaltyRoute = ProjectsPawRoyaltyRouteImport.update({
+  id: '/projects/paw-royalty',
+  path: '/projects/paw-royalty',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProjectsFolkwaysRoute = ProjectsFolkwaysRouteImport.update({
@@ -56,6 +62,7 @@ export interface FileRoutesByFullPath {
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/projects/folkways': typeof ProjectsFolkwaysRoute
+  '/projects/paw-royalty': typeof ProjectsPawRoyaltyRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
 }
 export interface FileRoutesByTo {
@@ -64,6 +71,7 @@ export interface FileRoutesByTo {
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/projects/folkways': typeof ProjectsFolkwaysRoute
+  '/projects/paw-royalty': typeof ProjectsPawRoyaltyRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
 }
 export interface FileRoutesById {
@@ -73,6 +81,7 @@ export interface FileRoutesById {
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/projects/folkways': typeof ProjectsFolkwaysRoute
+  '/projects/paw-royalty': typeof ProjectsPawRoyaltyRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
 }
 export interface FileRouteTypes {
@@ -83,6 +92,7 @@ export interface FileRouteTypes {
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
     | '/projects/folkways'
+    | '/projects/paw-royalty'
     | '/.mcp/invoke-tool/$tool'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -91,6 +101,7 @@ export interface FileRouteTypes {
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
     | '/projects/folkways'
+    | '/projects/paw-royalty'
     | '/.mcp/invoke-tool/$tool'
   id:
     | '__root__'
@@ -99,6 +110,7 @@ export interface FileRouteTypes {
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
     | '/projects/folkways'
+    | '/projects/paw-royalty'
     | '/.mcp/invoke-tool/$tool'
   fileRoutesById: FileRoutesById
 }
@@ -108,6 +120,7 @@ export interface RootRouteChildren {
   Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
   Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   ProjectsFolkwaysRoute: typeof ProjectsFolkwaysRoute
+  ProjectsPawRoyaltyRoute: typeof ProjectsPawRoyaltyRoute
   Char91DotmcpChar93InvokeToolToolRoute: typeof Char91DotmcpChar93InvokeToolToolRoute
 }
 
@@ -125,6 +138,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projects/paw-royalty': {
+      id: '/projects/paw-royalty'
+      path: '/projects/paw-royalty'
+      fullPath: '/projects/paw-royalty'
+      preLoaderRoute: typeof ProjectsPawRoyaltyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/projects/folkways': {
@@ -165,6 +185,7 @@ const rootRouteChildren: RootRouteChildren = {
   Char91DotwellKnownChar93OauthProtectedResourceRoute:
     Char91DotwellKnownChar93OauthProtectedResourceRoute,
   ProjectsFolkwaysRoute: ProjectsFolkwaysRoute,
+  ProjectsPawRoyaltyRoute: ProjectsPawRoyaltyRoute,
   Char91DotmcpChar93InvokeToolToolRoute: Char91DotmcpChar93InvokeToolToolRoute,
 }
 export const routeTree = rootRouteImport
