@@ -87,6 +87,7 @@ const works = [
     body: "End-to-end creation for a US market entry. Brand identity, UI/UX and Klaviyo integration.",
     image:
       "https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=900&q=80",
+    href: "/projects/paw-royalty",
   },
   {
     tag: "Brand Manager",
