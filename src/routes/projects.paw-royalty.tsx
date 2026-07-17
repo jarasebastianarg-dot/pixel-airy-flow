@@ -83,7 +83,13 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
   );
 }
 
-const stack = ["Shopify Liquid", "HTML / CSS", "Klaviyo"];
+const stack = [
+  "Shopify",
+  "Shopify Liquid",
+  "HTML / CSS",
+  "Klaviyo",
+  "Email Automations",
+];
 
 const focus = ["Brand Incubation", "UI/UX Design", "Retention Strategy"];
 
