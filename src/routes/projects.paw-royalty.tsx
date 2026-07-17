@@ -1,12 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
+  AnimatePresence,
   motion,
   useInView,
   useScroll,
   useTransform,
   type Variants,
 } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import {
   ArrowLeft,
   ArrowUpRight,
@@ -109,25 +110,25 @@ const executionCards = [
     icon: Layers,
     kicker: "PDP",
     title: "High-Density Product Architectures",
-    body: "Designed information-dense, highly visual product pages (PDPs) that educate the buyer and build immediate trust. By hardcoding these intricate layouts directly in Shopify Liquid, the pages remain lightning-fast despite the heavy content load, maximizing conversion rates.",
+    body: "Information-dense PDPs hardcoded in Liquid — visual, fast, and engineered to build trust and drive conversion.",
   },
   {
     icon: ShoppingCart,
     kicker: "LTV",
     title: "Native Subscribe & Save Engine",
-    body: "Engineered a seamless 'Subscribe & Save' purchasing flow integrated directly into the native cart experience. This strategic implementation captures recurring revenue from day one, transforming initial traffic into high Customer Lifetime Value (LTV).",
+    body: "Seamless subscription flow wired into the native cart — capturing recurring revenue from day one.",
   },
   {
     icon: Mail,
     kicker: "Retention",
     title: "Full-Funnel Email Marketing",
-    body: "Orchestrated the brand’s entire retention ecosystem. Designed and deployed comprehensive Klaviyo campaigns and automated flows (Welcome Series, Abandoned Cart, Post-Purchase) to nurture leads, drive continuous engagement, and maximize campaign ROI.",
+    body: "Klaviyo flows — welcome, abandoned cart, post-purchase — nurturing leads and maximizing ROI on autopilot.",
   },
   {
     icon: MousePointerClick,
     kicker: "UX",
     title: "Liquid-Driven Creative Freedom",
-    body: "Leveraged custom Shopify Liquid and CSS to translate the brand’s fresh identity into a highly interactive, fluid user interface. Every component, hover state, and layout was crafted through code to ensure a flawless and memorable shopping journey across all devices.",
+    body: "Custom Liquid and CSS translate the brand into a fluid, interactive UI — hand-crafted across every device.",
   },
 ];
 
