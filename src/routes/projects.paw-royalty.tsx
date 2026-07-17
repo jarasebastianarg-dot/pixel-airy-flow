@@ -1,5 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { motion, useInView, type Variants } from "framer-motion";
+import {
+  motion,
+  useInView,
+  useScroll,
+  useTransform,
+  type Variants,
+} from "framer-motion";
 import { useRef } from "react";
 import {
   ArrowLeft,
@@ -14,6 +20,11 @@ import {
   Percent,
   TrendingUp,
   Boxes,
+  Smartphone,
+  Monitor,
+  CreditCard,
+  Send,
+  Plus,
 } from "lucide-react";
 
 export const Route = createFileRoute("/projects/paw-royalty")({
@@ -155,6 +166,134 @@ function MediaPlaceholder({
         <span className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-muted-foreground">
           {label}
         </span>
+      </div>
+    </div>
+  );
+}
+
+type ExecutionCardData = (typeof executionCards)[number];
+
+function ExecutionCard({ card, index }: { card: ExecutionCardData; index: number }) {
+  const Icon = card.icon;
+  return (
+    <motion.article
+      variants={fadeUp}
+      className="group relative isolate flex h-64 flex-col justify-between overflow-hidden rounded-[calc(var(--radius)+14px)] border border-border bg-card p-6 shadow-[var(--shadow-card)] transition-shadow duration-500 hover:shadow-[var(--shadow-card-hover)]"
+    >
+      <span
+        aria-hidden
+        className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-gradient-accent transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-x-100"
+      />
+      <span
+        aria-hidden
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,oklch(0.72_0.18_45_/_0.22),transparent_65%)] opacity-0 transition-opacity duration-700 group-hover:opacity-100"
+      />
+
+      {/* Default state */}
+      <div className="relative flex items-start justify-between gap-4 transition-all duration-500 group-hover:-translate-y-1 group-hover:opacity-0">
+        <span className="grid h-12 w-12 place-items-center rounded-2xl bg-secondary text-accent-1 ring-1 ring-inset ring-border">
+          <Icon className="h-5 w-5" strokeWidth={1.6} />
+        </span>
+        <div className="text-right">
+          <span className="font-mono text-[0.65rem] font-semibold tracking-widest text-muted-foreground">
+            {String(index + 1).padStart(2, "0")}
+          </span>
+          <div className="mt-1 text-[0.6rem] font-semibold uppercase tracking-[0.2em] text-accent-1">
+            {card.kicker}
+          </div>
+        </div>
+      </div>
+      <div className="relative transition-all duration-500 group-hover:-translate-y-1 group-hover:opacity-0">
+        <h3 className="text-lg font-bold leading-tight tracking-tight md:text-xl">
+          {card.title}
+        </h3>
+        <div className="mt-3 inline-flex items-center gap-1.5 font-mono text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+          <Plus className="h-3 w-3" />
+          Hover to expand
+        </div>
+      </div>
+
+      {/* Hover state */}
+      <div className="pointer-events-none absolute inset-0 flex flex-col justify-between p-6 opacity-0 transition-all duration-500 group-hover:pointer-events-auto group-hover:opacity-100">
+        <div className="flex items-center gap-3">
+          <span className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-accent text-accent-foreground">
+            <Icon className="h-4 w-4" strokeWidth={1.7} />
+          </span>
+          <span className="text-[0.6rem] font-semibold uppercase tracking-[0.2em] text-accent-1">
+            {card.kicker}
+          </span>
+        </div>
+        <div>
+          <h3 className="text-base font-bold leading-tight tracking-tight">
+            {card.title}
+          </h3>
+          <p className="mt-2 text-[0.8rem] leading-relaxed text-muted-foreground">
+            {card.body}
+          </p>
+        </div>
+      </div>
+    </motion.article>
+  );
+}
+
+const mockups = [
+  { label: "Homepage", icon: Monitor, kicker: "Storefront" },
+  { label: "Product Detail Page", icon: Layers, kicker: "PDP" },
+  { label: "Subscribe & Save Cart", icon: CreditCard, kicker: "Checkout" },
+  { label: "Mobile Experience", icon: Smartphone, kicker: "Responsive" },
+  { label: "Klaviyo Flow", icon: Send, kicker: "Retention" },
+];
+
+function HorizontalMockups() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"],
+  });
+  // Move from 0% to translate the track fully across (5 cards, show ~1.2 at a time)
+  const x = useTransform(scrollYProgress, [0, 1], ["2%", "-78%"]);
+
+  return (
+    <div ref={containerRef} className="relative h-[320vh]">
+      <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden">
+        <div className="mx-auto w-full max-w-6xl px-6 md:px-10">
+          <div className="flex items-end justify-between gap-6">
+            <div>
+              <SectionLabel>02.5 — Gallery</SectionLabel>
+              <h3 className="mt-4 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
+                Storefront{" "}
+                <span className="font-serif italic font-normal text-accent-1">
+                  in motion
+                </span>
+              </h3>
+            </div>
+            <span className="hidden font-mono text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground md:inline">
+              Scroll to explore →
+            </span>
+          </div>
+        </div>
+
+        <motion.div style={{ x }} className="mt-10 flex gap-6 pl-6 md:pl-10 will-change-transform">
+          {mockups.map((m, i) => (
+            <div
+              key={m.label}
+              className="relative w-[78vw] shrink-0 sm:w-[60vw] md:w-[46vw] lg:w-[40vw]"
+            >
+              <div className="absolute -top-3 left-4 z-10 inline-flex items-center gap-2 rounded-full border border-border bg-background px-3 py-1 font-mono text-[0.6rem] font-semibold uppercase tracking-[0.22em] text-muted-foreground shadow-[var(--shadow-card)]">
+                <span className="text-accent-1">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                {m.kicker}
+              </div>
+              <MediaPlaceholder
+                label={m.label}
+                aspect="aspect-[4/3]"
+                icon={m.icon}
+              />
+            </div>
+          ))}
+          <div className="w-10 shrink-0" />
+        </motion.div>
       </div>
     </div>
   );
@@ -334,68 +473,18 @@ function PawRoyaltyProject() {
             </motion.p>
           </Reveal>
 
-          <Reveal className="mt-14 grid grid-cols-1 gap-5 md:grid-cols-2" stagger={0.08}>
+          <Reveal
+            className="mt-14 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4"
+            stagger={0.06}
+          >
             {executionCards.map((c, i) => (
-              <motion.article
-                key={c.title}
-                variants={fadeUp}
-                whileHover={{ y: -6 }}
-                transition={{ type: "spring", stiffness: 260, damping: 22 }}
-                className="group relative isolate flex h-full flex-col overflow-hidden rounded-[calc(var(--radius)+18px)] border border-border bg-card p-8 shadow-[var(--shadow-card)] transition-shadow duration-500 hover:shadow-[var(--shadow-card-hover)] md:p-10"
-              >
-                <span
-                  aria-hidden
-                  className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-gradient-accent transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-x-100"
-                />
-                <span
-                  aria-hidden
-                  className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,oklch(0.72_0.18_45_/_0.22),transparent_65%)] opacity-0 transition-opacity duration-700 group-hover:opacity-100"
-                />
-                <header className="flex items-start justify-between gap-6">
-                  <span className="relative grid h-14 w-14 place-items-center rounded-2xl bg-secondary text-accent-1 ring-1 ring-inset ring-border transition-colors duration-500 group-hover:bg-gradient-accent group-hover:text-accent-foreground group-hover:ring-transparent">
-                    <c.icon className="h-6 w-6" strokeWidth={1.6} />
-                  </span>
-                  <div className="text-right">
-                    <span className="font-mono text-xs font-semibold tracking-widest text-muted-foreground">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <div className="mt-1 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-accent-1">
-                      {c.kicker}
-                    </div>
-                  </div>
-                </header>
-                <h3 className="mt-8 text-2xl font-bold leading-tight tracking-tight md:text-[1.6rem]">
-                  {c.title}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground md:text-[0.95rem]">
-                  {c.body}
-                </p>
-              </motion.article>
+              <ExecutionCard key={c.title} card={c} index={i} />
             ))}
           </Reveal>
-
-          {/* Overlapping Code + UI Placeholder */}
-          <Reveal className="mt-20">
-            <motion.div variants={fadeUp} className="relative">
-              <div className="grid grid-cols-1 gap-6 md:grid-cols-12 md:gap-0">
-                <div className="md:col-span-7">
-                  <MediaPlaceholder
-                    label="Liquid Source"
-                    aspect="aspect-[16/10]"
-                    icon={Layers}
-                  />
-                </div>
-                <div className="md:col-span-6 md:-ml-16 md:mt-16 md:z-10">
-                  <MediaPlaceholder
-                    label="UI Preview"
-                    aspect="aspect-[4/3]"
-                    icon={MousePointerClick}
-                  />
-                </div>
-              </div>
-            </motion.div>
-          </Reveal>
         </div>
+
+        {/* Horizontal scroll mockups */}
+        <HorizontalMockups />
       </section>
 
       {/* The Impact */}
