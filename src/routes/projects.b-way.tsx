@@ -767,12 +767,13 @@ function BWayProject() {
                 variants={fadeUp}
                 className="text-base leading-relaxed text-muted-foreground md:col-span-5 md:text-lg"
               >
-                Architected and launched the Brazil and Argentina storefronts —
-                catalog, checkout, localized copy and payment logic — then ran
-                them day-to-day.
+                Architected and launched the USA, Brazil and Argentina
+                storefronts — catalog, checkout, localized copy and payment
+                logic — then ran them day-to-day. Scroll each preview to see
+                the full homepage.
               </motion.p>
             </Reveal>
-            <Reveal className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3" stagger={0.08}>
+            <Reveal className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4" stagger={0.08}>
               {ecomShots.map((s) => (
                 <motion.a
                   key={s.url}
@@ -792,13 +793,20 @@ function BWayProject() {
                       {s.country}
                     </span>
                   </div>
-                  <div className="relative aspect-[3/4] w-full overflow-hidden bg-background">
+                  <div
+                    className="relative aspect-[3/4] w-full overflow-y-auto overflow-x-hidden bg-background scroll-smooth [scrollbar-width:thin] [-webkit-overflow-scrolling:touch] [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-foreground/20"
+                    onClick={(e) => e.preventDefault()}
+                  >
                     <img
                       src={s.url}
                       alt={s.label}
                       loading="lazy"
-                      className="h-full w-full object-cover object-top transition-transform duration-[6000ms] ease-linear group-hover:-translate-y-[35%]"
+                      className="block w-full h-auto select-none"
+                      draggable={false}
                     />
+                    <div className="pointer-events-none sticky bottom-2 ml-auto mr-2 flex w-fit items-center gap-1 rounded-full bg-foreground/80 px-2.5 py-1 font-mono text-[0.55rem] font-semibold uppercase tracking-[0.2em] text-background opacity-90 shadow-md transition-opacity duration-300 group-hover:opacity-0">
+                      Scroll ↓
+                    </div>
                   </div>
                 </motion.a>
               ))}
