@@ -177,7 +177,9 @@ type ExecutionCardData = (typeof executionCards)[number];
 
 function ExecutionCard({ card, index }: { card: ExecutionCardData; index: number }) {
   const Icon = card.icon;
+  const isMobile = useIsMobile();
   const [hovered, setHovered] = useState(false);
+  const expanded = isMobile || hovered;
   return (
     <motion.article
       variants={fadeUp}
@@ -188,7 +190,7 @@ function ExecutionCard({ card, index }: { card: ExecutionCardData; index: number
       whileHover={{ y: -6 }}
       transition={{ type: "spring", stiffness: 260, damping: 24 }}
       tabIndex={0}
-      className="group relative isolate flex h-64 flex-col overflow-hidden rounded-[calc(var(--radius)+14px)] border border-border bg-card p-6 shadow-[var(--shadow-card)] outline-none transition-shadow duration-500 hover:shadow-[var(--shadow-card-hover)] focus-visible:ring-2 focus-visible:ring-accent-1/60"
+      className="group relative isolate flex min-h-64 flex-col overflow-hidden rounded-[calc(var(--radius)+14px)] border border-border bg-card p-6 shadow-[var(--shadow-card)] outline-none transition-shadow duration-500 hover:shadow-[var(--shadow-card-hover)] focus-visible:ring-2 focus-visible:ring-accent-1/60 md:h-64"
     >
       {/* Accent top bar */}
       <motion.span
