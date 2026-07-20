@@ -878,9 +878,9 @@ function ElevateLocalProject() {
 
           <Reveal className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-3" stagger={0.06}>
             {[
-              { label: "H1 · Medium", size: "56 / 64", sample: "Autoridad" },
-              { label: "H2 · Regular", size: "40 / 48", sample: "Precisión" },
-              { label: "H4 · Bold", size: "28 / 36", sample: "Sistema" },
+              { label: "H1 · Medium", size: "56 / 64", sample: "Authority" },
+              { label: "H2 · Regular", size: "40 / 48", sample: "Precision" },
+              { label: "H4 · Bold", size: "28 / 36", sample: "System" },
             ].map((row) => (
               <motion.div
                 key={row.label}
