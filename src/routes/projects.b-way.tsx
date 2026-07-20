@@ -897,29 +897,37 @@ function BWayProject() {
               variants={fadeUp}
               className="mt-6 max-w-3xl text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl"
             >
-              The{" "}
+              How I{" "}
               <span className="font-serif italic font-normal text-accent-1">
-                Impact
-              </span>
-              .
+                grew
+              </span>{" "}
+              in this role.
             </motion.h2>
+            <motion.p
+              variants={fadeUp}
+              className="mt-6 max-w-2xl text-base leading-relaxed text-background/70 md:text-lg"
+            >
+              Two years of compounding scope — I walked in as a Product Designer
+              and walked out as a Brand Manager owning packaging, digital, ops,
+              marketing and events across three countries.
+            </motion.p>
           </Reveal>
 
-          <Reveal className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4" stagger={0.08}>
+          <Reveal className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2" stagger={0.08}>
             {metrics.map((m) => (
               <motion.div
                 key={m.label}
                 variants={fadeUp}
                 whileHover={{ y: -4 }}
                 transition={{ type: "spring", stiffness: 260, damping: 22 }}
-                className="group relative overflow-hidden rounded-[calc(var(--radius)+16px)] border border-white/10 bg-white/[0.04] p-8 text-center backdrop-blur-sm transition-colors duration-500 hover:border-accent-1/40 sm:text-left"
+                className="group relative overflow-hidden rounded-[calc(var(--radius)+16px)] border border-white/10 bg-white/[0.04] p-8 text-left backdrop-blur-sm transition-colors duration-500 hover:border-accent-1/40"
               >
                 <span
                   aria-hidden
                   className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,oklch(0.72_0.18_45_/_0.28),transparent_65%)] opacity-0 transition-opacity duration-700 group-hover:opacity-100"
                 />
-                <m.icon className="mx-auto h-6 w-6 text-accent-1 sm:mx-0" strokeWidth={1.6} />
-                <div className="mt-8 font-display text-4xl font-bold tracking-tight md:text-5xl">
+                <m.icon className="h-6 w-6 text-accent-1" strokeWidth={1.6} />
+                <div className="mt-6 font-display text-xl font-bold leading-tight tracking-tight md:text-2xl">
                   {m.value}
                 </div>
                 <div className="mt-3 text-sm leading-relaxed text-background/70">
