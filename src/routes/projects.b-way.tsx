@@ -944,16 +944,19 @@ function BWayProject() {
                 alongside the educator team.
               </motion.p>
             </Reveal>
-            <Reveal className="mt-14 grid grid-cols-1 gap-8 sm:grid-cols-2" stagger={0.1}>
+            <Reveal
+              className="mt-14 grid grid-cols-1 gap-8 sm:grid-cols-2 sm:[grid-template-rows:auto_auto_1fr]"
+              stagger={0.1}
+            >
               {reels.map((r) => (
                 <motion.div
                   key={r.url}
                   variants={fadeUp}
                   whileHover={{ y: -4 }}
                   transition={{ type: "spring", stiffness: 260, damping: 22 }}
-                  className="group relative flex flex-col"
+                  className="group relative flex flex-col sm:grid sm:[grid-template-rows:subgrid] sm:row-span-3"
                 >
-                  <div className="mb-4 flex items-center gap-3">
+                  <div className="mb-4 flex flex-wrap items-center gap-3">
                     <span className="rounded-full bg-gradient-accent px-3 py-1 font-mono text-[0.65rem] font-bold uppercase tracking-[0.22em] text-accent-foreground shadow-[var(--shadow-accent)]">
                       Evento · {r.country}
                     </span>
@@ -961,13 +964,15 @@ function BWayProject() {
                       Stand designed &amp; organized by me
                     </span>
                   </div>
-                  <h3 className="text-xl font-bold tracking-tight md:text-2xl">
-                    {r.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground md:text-base">
-                    {r.body}
-                  </p>
-                  <div className="mt-5 overflow-hidden rounded-[calc(var(--radius)+18px)] border border-border bg-black shadow-[var(--shadow-card)]">
+                  <div>
+                    <h3 className="text-xl font-bold tracking-tight md:text-2xl">
+                      {r.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground md:text-base">
+                      {r.body}
+                    </p>
+                  </div>
+                  <div className="mt-5 self-end overflow-hidden rounded-[calc(var(--radius)+18px)] border border-border bg-black shadow-[var(--shadow-card)]">
                     <video
                       src={r.url}
                       className="aspect-[9/16] w-full object-cover"
