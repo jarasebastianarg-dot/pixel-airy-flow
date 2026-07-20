@@ -149,8 +149,8 @@ const chapters = [
     icon: Package,
     kicker: "Where I Started",
     title: "Packaging & Social Media",
-    body: "Started designing packaging for four product lines and every social media asset the brand needed.",
-    tags: ["Packaging", "Social Media", "Campaigns"],
+    body: "Started designing packaging for the full product range and every social media asset the brand needed — coordinating production directly with the factory in China from die-cut approvals to final print.",
+    tags: ["Packaging", "Social Media", "China Production"],
   },
   {
     n: "02",
@@ -226,7 +226,7 @@ const ecomShots = [
 
 // Packaging spotlight — curated mockups for the dedicated section
 const packagingSpotlight = [
-  { url: brandCover.url, label: "Full product line system", kicker: "Line-up" },
+  { url: sonicBlack.url, label: "Sonic · Black Edition system", kicker: "Sonic" },
   { url: b10kAdentro.url, label: "B10K · Interior print", kicker: "B10K" },
   { url: sonicNegro.url, label: "Sonic · Black Edition", kicker: "Sonic" },
   { url: compactFrente.url, label: "Compact · Retail box", kicker: "Compact" },
@@ -765,7 +765,7 @@ function BWayProject() {
               />
               <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 to-transparent p-6">
                 <div className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-white/85">
-                  Where it started — packaging system across 4 product lines
+                  Where it started — the full B-WAY packaging system
                 </div>
               </div>
             </motion.div>
@@ -868,14 +868,18 @@ function BWayProject() {
                 className="text-base leading-relaxed text-muted-foreground md:col-span-5 md:text-lg"
               >
                 I designed the packaging for every B-WAY product line — die-cuts,
-                interior architecture, print production and retail-shelf systems.{" "}
+                interior architecture, print production and retail-shelf systems —{" "}
+                <span className="font-semibold text-foreground">
+                  coordinating production directly with the factory in China
+                </span>{" "}
+                from die-cut sign-off to final print runs.{" "}
                 <span className="font-semibold text-foreground">
                   I also supervised every single launch
                 </span>{" "}
                 the brand rolled out from my first day through the end of{" "}
                 <span className="font-semibold text-accent-1">2025</span> —
-                keeping the visual language consistent across four product families
-                and three markets.
+                keeping the visual language consistent across the whole product
+                range and three markets.
               </motion.p>
             </Reveal>
 
@@ -891,7 +895,7 @@ function BWayProject() {
                   variants={fadeUp}
                   whileHover={{ y: -4 }}
                   transition={{ type: "spring", stiffness: 260, damping: 22 }}
-                  className="group relative block w-full overflow-hidden rounded-[calc(var(--radius)+14px)] border border-border bg-card text-left shadow-[var(--shadow-card)] transition-shadow duration-500 hover:shadow-[var(--shadow-card-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-1/60"
+                  className="group relative block w-full rounded-[calc(var(--radius)+14px)] border border-border bg-card text-left shadow-[var(--shadow-card)] transition-shadow duration-500 hover:shadow-[var(--shadow-card-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-1/60"
                   aria-label={`Open ${p.label} preview`}
                 >
                   <div className="absolute -top-3 left-3 z-10 inline-flex items-center gap-2 rounded-full border border-border bg-background px-2.5 py-1 font-mono text-[0.55rem] font-semibold uppercase tracking-[0.22em] text-muted-foreground shadow-[var(--shadow-card)]">
@@ -900,7 +904,7 @@ function BWayProject() {
                     </span>
                     {p.kicker}
                   </div>
-                  <div className="relative aspect-[4/3] w-full overflow-hidden bg-background">
+                  <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[calc(var(--radius)+14px)] bg-background">
                     <img
                       src={p.url}
                       alt={p.label}
@@ -925,10 +929,10 @@ function BWayProject() {
 
             <Reveal className="mt-10 flex flex-wrap gap-2" stagger={0.03}>
               {[
-                "4 product lines",
                 "Die-cut engineering",
                 "Interior print",
                 "Retail shelf systems",
+                "Factory coordination · China",
                 "Launch supervision · 2023 – 2025",
               ].map((t) => (
                 <motion.span
