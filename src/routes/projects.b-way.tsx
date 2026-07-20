@@ -15,6 +15,7 @@ import {
   Sparkles,
   Package,
   Palette,
+  Layers,
   Globe2,
   Plus,
   Users,
