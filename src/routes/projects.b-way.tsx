@@ -500,28 +500,25 @@ function BWayProject() {
               variants={fadeUp}
               className="mt-6 max-w-5xl text-4xl font-bold leading-[1.02] tracking-tight md:text-6xl lg:text-[4.5rem]"
             >
-              B-WAY: Scaling an{" "}
-              <span className="text-gradient-accent">Omnichannel Brand</span>{" "}
-              Across{" "}
+              From{" "}
+              <span className="text-gradient-accent">Packaging Designer</span>{" "}
+              to{" "}
               <span className="font-serif italic font-normal text-accent-1">
-                3 International Markets
+                Brand Manager
               </span>
-              .
+              . Two years scaling B-WAY across 3 markets.
             </motion.h1>
             <motion.p
               variants={fadeUp}
               className="mt-8 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg"
             >
-              A 360° commercial takeover — bridging{" "}
-              <span className="font-semibold text-foreground">
-                digital e-commerce
-              </span>
-              , large-scale{" "}
-              <span className="font-semibold text-foreground">
-                experiential events
-              </span>{" "}
-              and cross-market brand leadership across the US, Brazil and
-              Argentina.
+              I joined as a{" "}
+              <span className="font-semibold text-foreground">Product Designer</span>{" "}
+              drawing die-cuts on a bench and ended up leading a{" "}
+              <span className="font-semibold text-foreground">6-person team</span>{" "}
+              across the US, Brazil and Argentina — building Shopify stores from
+              zero, running Meta Ads, coaching brand educators and designing the
+              trade-show stands we activated at Barber Week.
             </motion.p>
           </Reveal>
 
@@ -537,7 +534,10 @@ function BWayProject() {
                 Role
               </div>
               <div className="mt-3 text-base font-semibold text-foreground transition-colors duration-300 md:text-lg md:group-hover:text-accent-1">
-                Brand Manager &amp; Product Designer
+                Product Designer → Brand Manager
+              </div>
+              <div className="mt-1 font-mono text-[0.65rem] uppercase tracking-[0.22em] text-muted-foreground">
+                2 years · Promoted in-role
               </div>
             </motion.div>
             <motion.div
@@ -547,7 +547,7 @@ function BWayProject() {
               className="group rounded-3xl border border-border bg-card p-6 shadow-[var(--shadow-card)] transition-colors duration-300 hover:border-accent-1/40 hover:shadow-[var(--shadow-elegant)]"
             >
               <div className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
-                Tech Stack
+                What I Actually Did
               </div>
               <div className="mt-3 flex flex-wrap gap-2">
                 {stack.map((t) => (
@@ -614,124 +614,170 @@ function BWayProject() {
               variants={fadeUp}
               className="text-lg leading-relaxed text-foreground/85 md:text-xl"
             >
-              The brand was growing rapidly but{" "}
-              <span className="font-semibold text-foreground">
-                lacked the digital infrastructure
-              </span>{" "}
-              to scale internationally. The challenge was threefold: bridge
-              physical products with a digital e-commerce ecosystem,
-              successfully enter the{" "}
-              <span className="font-semibold text-accent-1">
-                US and Brazil markets
-              </span>
-              , and unify a fragmented brand voice across high-profile
-              ambassadors and large-scale physical events.
+              The barber-tools market was{" "}
+              <span className="font-semibold text-foreground">stuck in corporate blacks and safe grays</span>.
+              B-WAY needed a visual system loud enough to disrupt it, and an
+              operation big enough to sell it across{" "}
+              <span className="font-semibold text-accent-1">the US, Brazil and Argentina</span>.
+              I started at the packaging bench — die-cuts, interior architecture,
+              print production — and every quarter, the scope kept expanding: social
+              design, e-commerce, campaigns, educators, events. Two years later, I
+              was running the whole brand.
             </motion.p>
           </Reveal>
         </div>
 
-        {/* Hero Mockup Placeholder */}
+        {/* Packaging Cover */}
         <div className="mx-auto max-w-6xl px-6 pb-20 md:px-10 md:pb-28">
           <Reveal>
-            <motion.div variants={fadeUp}>
-              <MediaPlaceholder
-                label="Global E-Commerce Dashboards & Campaign Assets"
-                aspect="aspect-[16/8]"
-                icon={Globe2}
+            <motion.div
+              variants={fadeUp}
+              className="relative overflow-hidden rounded-[calc(var(--radius)+18px)] border border-border bg-card shadow-[var(--shadow-card)]"
+            >
+              <img
+                src={brandCover.url}
+                alt="B-WAY full product line"
+                loading="lazy"
+                className="aspect-[16/9] w-full object-cover"
               />
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 to-transparent p-6">
+                <div className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-white/85">
+                  Where it started — packaging system across 4 product lines
+                </div>
+              </div>
             </motion.div>
           </Reveal>
         </div>
       </section>
 
-      {/* The Execution */}
+      {/* The Growth Story */}
       <section className="border-t border-border/60">
         <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
           <Reveal className="grid grid-cols-1 gap-10 md:grid-cols-12 md:items-end" stagger={0.1}>
             <motion.div variants={fadeUp} className="md:col-span-7">
-              <SectionLabel>02 — Build</SectionLabel>
+              <SectionLabel>02 — The Growth Story</SectionLabel>
               <h2 className="mt-6 text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl">
-                The{" "}
+                Four{" "}
                 <span className="font-serif italic font-normal text-accent-1">
-                  Execution
+                  chapters
                 </span>
+                , one promotion.
               </h2>
             </motion.div>
             <motion.p
               variants={fadeUp}
               className="text-base leading-relaxed text-muted-foreground md:col-span-5 md:text-lg"
             >
-              A{" "}
-              <span className="font-semibold text-foreground">
-                360° operational takeover
-              </span>
-              . Promoted from Product Designer to Brand Manager to engineer
-              the brand's commercial infrastructure across digital and physical
-              touchpoints.
+              The scope kept compounding. Each chapter added a new discipline on
+              top of the last — packaging, then digital, then commerce, then people.
+              By chapter four I was leading the team that made all of it move.
             </motion.p>
           </Reveal>
 
-          <Reveal
-            className="mt-14 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-2"
-            stagger={0.06}
-          >
-            {executionCards.map((c, i) => (
-              <ExecutionCard key={c.title} card={c} index={i} />
-            ))}
+          <Reveal className="mt-14 space-y-6 md:space-y-10" stagger={0.08}>
+            {chapters.map((c, i) => {
+              const Icon = c.icon;
+              return (
+                <motion.article
+                  key={c.n}
+                  variants={fadeUp}
+                  whileHover={{ y: -4 }}
+                  transition={{ type: "spring", stiffness: 260, damping: 24 }}
+                  className="group relative grid grid-cols-1 gap-6 overflow-hidden rounded-[calc(var(--radius)+18px)] border border-border bg-card p-6 shadow-[var(--shadow-card)] transition-shadow duration-500 hover:shadow-[var(--shadow-card-hover)] md:grid-cols-12 md:gap-10 md:p-10"
+                >
+                  <span
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,oklch(0.72_0.18_45_/_0.14),transparent_60%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                  />
+                  <div className="relative md:col-span-3">
+                    <div className="flex items-center gap-3">
+                      <span className="grid h-11 w-11 place-items-center rounded-2xl bg-secondary text-accent-1 ring-1 ring-inset ring-border transition-colors duration-300 group-hover:bg-accent-1 group-hover:text-white">
+                        <Icon className="h-5 w-5" strokeWidth={1.6} />
+                      </span>
+                      <div className="font-display text-4xl font-bold tracking-tight text-accent-1 md:text-5xl">
+                        {c.n}
+                      </div>
+                    </div>
+                    <div className="mt-4 font-mono text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
+                      {c.kicker}
+                    </div>
+                  </div>
+                  <div className="relative md:col-span-9">
+                    <h3 className="text-2xl font-bold tracking-tight md:text-3xl">
+                      {c.title}
+                    </h3>
+                    <p className="mt-4 text-base leading-relaxed text-foreground/80 md:text-lg">
+                      {c.body}
+                    </p>
+                    <div className="mt-5 flex flex-wrap gap-2">
+                      {c.tags.map((t) => (
+                        <span
+                          key={t}
+                          className="rounded-full border border-border bg-secondary px-3 py-1 text-xs font-semibold text-foreground/80"
+                        >
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </motion.article>
+              );
+            })}
           </Reveal>
         </div>
 
-        {/* Physical Event / Team Overlap */}
-        <div className="mx-auto max-w-6xl px-6 pb-24 md:px-10 md:pb-32">
-          <Reveal>
-            <motion.div variants={fadeUp} className="relative">
-              <div className="w-3/4">
-                <div className="relative aspect-[16/9] overflow-hidden rounded-[calc(var(--radius)+18px)] border border-white/10 bg-foreground text-background shadow-[var(--shadow-card)]">
-                  <span
-                    aria-hidden
-                    className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,oklch(0.72_0.18_45_/_0.22),transparent_55%),radial-gradient(circle_at_85%_80%,oklch(0.7_0.19_25_/_0.16),transparent_60%)]"
+        {/* Events & Reels */}
+        <div className="border-t border-border/60 bg-secondary/30">
+          <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
+            <Reveal className="grid grid-cols-1 gap-8 md:grid-cols-12 md:items-end" stagger={0.08}>
+              <motion.div variants={fadeUp} className="md:col-span-7">
+                <SectionLabel>03 — On The Floor</SectionLabel>
+                <h2 className="mt-6 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
+                  Events, educators &amp;{" "}
+                  <span className="font-serif italic font-normal text-accent-1">
+                    real-world activation
+                  </span>
+                  .
+                </h2>
+              </motion.div>
+              <motion.p
+                variants={fadeUp}
+                className="text-base leading-relaxed text-muted-foreground md:col-span-5 md:text-lg"
+              >
+                Barber Week, product launches and international trade shows — the digital
+                system finally colliding with the physical floor. Content produced with the
+                brand educator team.
+              </motion.p>
+            </Reveal>
+            <Reveal className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2" stagger={0.1}>
+              {reels.map((r) => (
+                <motion.div
+                  key={r.url}
+                  variants={fadeUp}
+                  whileHover={{ y: -4 }}
+                  transition={{ type: "spring", stiffness: 260, damping: 22 }}
+                  className="group relative overflow-hidden rounded-[calc(var(--radius)+18px)] border border-border bg-black shadow-[var(--shadow-card)]"
+                >
+                  <video
+                    src={r.url}
+                    className="aspect-[9/16] w-full object-cover"
+                    playsInline
+                    muted
+                    loop
+                    autoPlay
+                    preload="metadata"
+                    controls
                   />
-                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-center">
-                    <span className="grid h-14 w-14 place-items-center rounded-2xl bg-white/[0.06] text-accent-1 ring-1 ring-inset ring-white/10">
-                      <Calendar className="h-6 w-6" strokeWidth={1.6} />
-                    </span>
-                    <span className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-background/70">
-                      Physical Trade Show Stand / Barber Week Event Photo
-                    </span>
+                  <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 to-transparent p-5">
+                    <div className="font-display text-lg font-bold text-white md:text-xl">
+                      {r.title}
+                    </div>
+                    <div className="mt-1 text-sm text-white/70">{r.body}</div>
                   </div>
-                </div>
-              </div>
-              <div className="absolute -bottom-10 right-10 hidden w-1/3 md:block">
-                <div className="relative aspect-[4/3] overflow-hidden rounded-[calc(var(--radius)+14px)] border border-border bg-card shadow-[var(--shadow-card-hover)]">
-                  <span
-                    aria-hidden
-                    className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,oklch(0.72_0.18_45_/_0.2),transparent_60%)]"
-                  />
-                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 p-4 text-center">
-                    <span className="grid h-11 w-11 place-items-center rounded-2xl bg-secondary text-accent-1 ring-1 ring-inset ring-border">
-                      <Users className="h-5 w-5" strokeWidth={1.6} />
-                    </span>
-                    <span className="font-mono text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
-                      Brand Guidelines &amp; Team Management Assets
-                    </span>
-                  </div>
-                </div>
-              </div>
-              {/* Mobile-only stacked foreground */}
-              <div className="mt-6 w-2/3 md:hidden">
-                <div className="relative aspect-[4/3] overflow-hidden rounded-[calc(var(--radius)+14px)] border border-border bg-card shadow-[var(--shadow-card)]">
-                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 p-4 text-center">
-                    <span className="grid h-11 w-11 place-items-center rounded-2xl bg-secondary text-accent-1 ring-1 ring-inset ring-border">
-                      <Users className="h-5 w-5" strokeWidth={1.6} />
-                    </span>
-                    <span className="font-mono text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
-                      Brand Guidelines &amp; Team Management Assets
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </Reveal>
+                </motion.div>
+              ))}
+            </Reveal>
+          </div>
         </div>
       </section>
 
