@@ -48,6 +48,15 @@ import compactFront from "@/assets/bway/bway-compact-front.jpg.asset.json";
 import compactBack from "@/assets/bway/bway-compact-back.jpg.asset.json";
 import reel1 from "@/assets/bway/bway-event-reel-1.mp4.asset.json";
 import reel2 from "@/assets/bway/bway-event-reel-2.mp4.asset.json";
+// New high-fidelity packaging + e-commerce screenshots
+import sonicAdentro from "@/assets/bway/bway-sonic-adentro.jpg.asset.json";
+import sonicNegro from "@/assets/bway/bway-sonic-negro.jpg.asset.json";
+import b10kAdentro from "@/assets/bway/bway-b10k-adentro.jpg.asset.json";
+import compactFrente from "@/assets/bway/bway-compact-frente.jpg.asset.json";
+import diecutUrban from "@/assets/bway/bway-diecut-urban.jpg.asset.json";
+import ecomBrHome from "@/assets/bway/bway-ecom-br-home.png.asset.json";
+import ecomBrCatalog from "@/assets/bway/bway-ecom-br-catalog.png.asset.json";
+import ecomArHome from "@/assets/bway/bway-ecom-ar-home.png.asset.json";
 
 export const Route = createFileRoute("/projects/b-way")({
   component: BWayProject,
@@ -136,33 +145,33 @@ const chapters = [
     n: "01",
     icon: Package,
     kicker: "Where I Started",
-    title: "Packaging & Product Design",
-    body: "I joined B-WAY as a Product Designer, focused on the physical craft. I designed the packaging system for four product lines — B10K, Urban, Sonic and Compact — building die-cuts, interior architecture and a bold visual language that broke away from the conservative codes of the barber industry.",
-    tags: ["Die-cuts", "Print Production", "Product Renders", "Unboxing Experience"],
+    title: "Packaging & Social Media",
+    body: "Started designing packaging for four product lines and every social media asset the brand needed.",
+    tags: ["Packaging", "Social Media", "Campaigns"],
   },
   {
     n: "02",
-    icon: Palette,
-    kicker: "Growing the Scope",
-    title: "Social Media & Brand Design",
-    body: "The scope expanded fast. I started designing every social media asset, campaign key visual, and launch collateral across regions. Each product drop was translated into an editorial visual system that could travel from Instagram grids to trade-show print in a single sprint.",
-    tags: ["Instagram Grids", "Campaign Key Visuals", "Launch Collateral", "Visual System"],
+    icon: ShoppingBag,
+    kicker: "Going Digital",
+    title: "E-Commerce Management",
+    body: "Took ownership of the e-commerce — built Shopify BR and AR from scratch and ran the operation day-to-day.",
+    tags: ["Shopify BR", "Shopify AR", "Ops"],
   },
   {
     n: "03",
-    icon: ShoppingBag,
-    kicker: "Going Digital",
-    title: "E-Commerce, from Zero",
-    body: "Then I built the digital layer. I architected and launched Shopify storefronts for Brazil and Argentina from scratch — catalog, checkout, localized copy and payment logic — while running Meta Ads and email flows that tied every campaign back to revenue.",
-    tags: ["Shopify BR", "Shopify AR", "Meta Ads", "Email Automations"],
+    icon: Megaphone,
+    kicker: "Growing the Brand",
+    title: "Marketing Campaigns",
+    body: "Led marketing campaigns across markets — paid, email and content — tying every launch back to revenue.",
+    tags: ["Meta Ads", "Email", "Launches"],
   },
   {
     n: "04",
-    icon: Rocket,
-    kicker: "The Promotion",
-    title: "Brand Manager Across 3 Markets",
-    body: "By the end of year two, I was promoted to Brand Manager. I led a 6-person interdisciplinary team across the US, Brazil and Argentina, coordinated brand educators on how to speak and demo the product, and designed the trade-show stands we activated at Barber Week and beyond.",
-    tags: ["6-Person Team", "US · BR · AR", "Educators", "Trade-Show Stands", "Ambassadors"],
+    icon: Calendar,
+    kicker: "On The Floor",
+    title: "Events & Trade Shows",
+    body: "Owned the events — designed and organized the stands in Argentina, Brazil and the US, and led brand educators on-site.",
+    tags: ["Stand Design", "AR · BR · US", "Educators"],
   },
 ];
 
@@ -176,13 +185,17 @@ const executionCards = chapters.map((c) => ({
 
 const packaging = [
   { url: brandCover.url, label: "B-WAY · Full Product Line System", kicker: "Line-up" },
-  { url: b10kMockup.url, label: "B10K · Packaging Mockup", kicker: "B10K" },
-  { url: b10kInside.url, label: "B10K · Interior Architecture", kicker: "Interior" },
-  { url: b10kAccessories.url, label: "B10K · Accessories Packaging", kicker: "Accessories" },
+  { url: diecutUrban.url, label: "Urban · Retail Packaging", kicker: "Urban" },
+  { url: b10kAdentro.url, label: "B10K · Box & Interior Print", kicker: "B10K" },
+  { url: sonicNegro.url, label: "Sonic · Black Edition Packaging", kicker: "Sonic" },
+  { url: sonicAdentro.url, label: "Sonic · Interior Architecture", kicker: "Interior" },
+  { url: compactFrente.url, label: "Compact · Retail Packaging", kicker: "Compact" },
+  { url: b10kMockup.url, label: "B10K · Product Mockup", kicker: "Mockup" },
   { url: urbanDiecut.url, label: "Urban · Die-cut Technical Drawing", kicker: "Die-cut" },
   { url: urbanBack.url, label: "Urban · Back Packaging Details", kicker: "Urban" },
-  { url: sonicBlack.url, label: "Sonic · Black Edition", kicker: "Sonic" },
-  { url: sonicInside.url, label: "Sonic · Interior Packaging", kicker: "Interior" },
+  { url: b10kAccessories.url, label: "B10K · Accessories Packaging", kicker: "Accessories" },
+  { url: sonicBlack.url, label: "Sonic · Alt Edition", kicker: "Sonic" },
+  { url: sonicInside.url, label: "Sonic · Interior Detail", kicker: "Interior" },
   { url: compactFront.url, label: "Compact · Front View", kicker: "Compact" },
   { url: compactBack.url, label: "Compact · Back Packaging", kicker: "Compact" },
 ];
@@ -190,21 +203,29 @@ const packaging = [
 const reels = [
   {
     url: reel1.url,
-    title: "Barber Week · Live Event Reel",
-    body: "Trade-show floor content — stand activation, product demos and brand educators on-site.",
+    country: "Argentina",
+    title: "Barber Week · Buenos Aires",
+    body: "Stand activation, product demos and brand educators on-site.",
   },
   {
     url: reel2.url,
-    title: "Innovación · Visión · Identidad",
-    body: "Announcement reel: the most anticipated barber event of the year, produced in-house with the brand educator team.",
+    country: "Brasil",
+    title: "Barber Event · São Paulo",
+    body: "Announcement and floor reel — traveled to Brazil to lead the stand set-up and represent the brand on the floor.",
   },
 ];
 
+const ecomShots = [
+  { url: ecomBrHome.url, label: "Shopify Brasil · Homepage", country: "BR" },
+  { url: ecomBrCatalog.url, label: "Shopify Brasil · Catálogo", country: "BR" },
+  { url: ecomArHome.url, label: "Shopify Argentina · Homepage", country: "AR" },
+];
+
 const metrics = [
-  { icon: Globe2, value: "3", label: "International Markets (US, BR, AR)" },
-  { icon: Radar, value: "360°", label: "Omnichannel Campaigns Executed" },
-  { icon: Users, value: "6-Person", label: "Interdisciplinary Team Led" },
-  { icon: Calendar, value: "300+", label: "Attendees at Experiential Events" },
+  { icon: TrendingUp, value: "Product Designer → Brand Manager", label: "Promoted after two years of expanding scope — from packaging bench to running the brand." },
+  { icon: Layers, value: "5 disciplines owned", label: "Packaging, social, e-commerce, marketing campaigns and experiential events — all under one role." },
+  { icon: Globe2, value: "3 markets managed", label: "Argentina, Brazil and the US — Shopify stores, campaigns and stands localized for each." },
+  { icon: GraduationCap, value: "Where I grew the most", label: "The role where I stopped being just a designer and learned to lead a brand end-to-end." },
 ];
 
 function MediaPlaceholder({
@@ -726,16 +747,16 @@ function BWayProject() {
           </Reveal>
         </div>
 
-        {/* Events & Reels */}
-        <div className="border-t border-border/60 bg-secondary/30">
+        {/* E-Commerce Storefronts */}
+        <div className="border-t border-border/60">
           <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
             <Reveal className="grid grid-cols-1 gap-8 md:grid-cols-12 md:items-end" stagger={0.08}>
               <motion.div variants={fadeUp} className="md:col-span-7">
-                <SectionLabel>03 — On The Floor</SectionLabel>
+                <SectionLabel>02.6 — E-Commerce</SectionLabel>
                 <h2 className="mt-6 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
-                  Events, educators &amp;{" "}
+                  Shopify stores built{" "}
                   <span className="font-serif italic font-normal text-accent-1">
-                    real-world activation
+                    from zero
                   </span>
                   .
                 </h2>
@@ -744,35 +765,110 @@ function BWayProject() {
                 variants={fadeUp}
                 className="text-base leading-relaxed text-muted-foreground md:col-span-5 md:text-lg"
               >
-                Barber Week, product launches and international trade shows — the digital
-                system finally colliding with the physical floor. Content produced with the
-                brand educator team.
+                Architected and launched the Brazil and Argentina storefronts —
+                catalog, checkout, localized copy and payment logic — then ran
+                them day-to-day.
               </motion.p>
             </Reveal>
-            <Reveal className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2" stagger={0.1}>
+            <Reveal className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3" stagger={0.08}>
+              {ecomShots.map((s) => (
+                <motion.a
+                  key={s.url}
+                  href={s.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  variants={fadeUp}
+                  whileHover={{ y: -4 }}
+                  transition={{ type: "spring", stiffness: 260, damping: 22 }}
+                  className="group relative block overflow-hidden rounded-[calc(var(--radius)+14px)] border border-border bg-card shadow-[var(--shadow-card)] transition-shadow duration-500 hover:shadow-[var(--shadow-card-hover)]"
+                >
+                  <div className="flex items-center justify-between border-b border-border bg-secondary/60 px-4 py-2">
+                    <span className="font-mono text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
+                      {s.label}
+                    </span>
+                    <span className="rounded-full bg-gradient-accent px-2 py-0.5 text-[0.6rem] font-bold uppercase tracking-widest text-accent-foreground">
+                      {s.country}
+                    </span>
+                  </div>
+                  <div className="relative aspect-[3/4] w-full overflow-hidden bg-background">
+                    <img
+                      src={s.url}
+                      alt={s.label}
+                      loading="lazy"
+                      className="h-full w-full object-cover object-top transition-transform duration-[6000ms] ease-linear group-hover:-translate-y-[35%]"
+                    />
+                  </div>
+                </motion.a>
+              ))}
+            </Reveal>
+          </div>
+        </div>
+
+        {/* Events & Reels */}
+        <div className="border-t border-border/60 bg-secondary/30">
+          <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
+            <Reveal className="max-w-4xl" stagger={0.08}>
+              <motion.div variants={fadeUp}>
+                <SectionLabel>03 — On The Floor</SectionLabel>
+                <h2 className="mt-6 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
+                  Events I{" "}
+                  <span className="font-serif italic font-normal text-accent-1">
+                    organized
+                  </span>{" "}
+                  &amp; designed.
+                </h2>
+              </motion.div>
+              <motion.p
+                variants={fadeUp}
+                className="mt-6 text-base leading-relaxed text-muted-foreground md:text-lg"
+              >
+                I led the{" "}
+                <span className="font-semibold text-foreground">
+                  design and on-site set-up of the stands
+                </span>{" "}
+                for every B-WAY activation — the local events in Argentina and the
+                international ones in Brazil and the US.{" "}
+                <span className="font-semibold text-accent-1">
+                  Traveled to Brazil to build the stand on the ground and represent
+                  the brand on the floor
+                </span>{" "}
+                alongside the educator team.
+              </motion.p>
+            </Reveal>
+            <Reveal className="mt-14 grid grid-cols-1 gap-8 sm:grid-cols-2" stagger={0.1}>
               {reels.map((r) => (
                 <motion.div
                   key={r.url}
                   variants={fadeUp}
                   whileHover={{ y: -4 }}
                   transition={{ type: "spring", stiffness: 260, damping: 22 }}
-                  className="group relative overflow-hidden rounded-[calc(var(--radius)+18px)] border border-border bg-black shadow-[var(--shadow-card)]"
+                  className="group relative flex flex-col"
                 >
-                  <video
-                    src={r.url}
-                    className="aspect-[9/16] w-full object-cover"
-                    playsInline
-                    muted
-                    loop
-                    autoPlay
-                    preload="metadata"
-                    controls
-                  />
-                  <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 to-transparent p-5">
-                    <div className="font-display text-lg font-bold text-white md:text-xl">
-                      {r.title}
-                    </div>
-                    <div className="mt-1 text-sm text-white/70">{r.body}</div>
+                  <div className="mb-4 flex items-center gap-3">
+                    <span className="rounded-full bg-gradient-accent px-3 py-1 font-mono text-[0.65rem] font-bold uppercase tracking-[0.22em] text-accent-foreground shadow-[var(--shadow-accent)]">
+                      Evento · {r.country}
+                    </span>
+                    <span className="font-mono text-[0.6rem] font-semibold uppercase tracking-[0.22em] text-muted-foreground">
+                      Stand designed &amp; organized by me
+                    </span>
+                  </div>
+                  <h3 className="text-xl font-bold tracking-tight md:text-2xl">
+                    {r.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground md:text-base">
+                    {r.body}
+                  </p>
+                  <div className="mt-5 overflow-hidden rounded-[calc(var(--radius)+18px)] border border-border bg-black shadow-[var(--shadow-card)]">
+                    <video
+                      src={r.url}
+                      className="aspect-[9/16] w-full object-cover"
+                      playsInline
+                      muted
+                      loop
+                      autoPlay
+                      preload="metadata"
+                      controls
+                    />
                   </div>
                 </motion.div>
               ))}
@@ -801,29 +897,37 @@ function BWayProject() {
               variants={fadeUp}
               className="mt-6 max-w-3xl text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl"
             >
-              The{" "}
+              How I{" "}
               <span className="font-serif italic font-normal text-accent-1">
-                Impact
-              </span>
-              .
+                grew
+              </span>{" "}
+              in this role.
             </motion.h2>
+            <motion.p
+              variants={fadeUp}
+              className="mt-6 max-w-2xl text-base leading-relaxed text-background/70 md:text-lg"
+            >
+              Two years of compounding scope — I walked in as a Product Designer
+              and walked out as a Brand Manager owning packaging, digital, ops,
+              marketing and events across three countries.
+            </motion.p>
           </Reveal>
 
-          <Reveal className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4" stagger={0.08}>
+          <Reveal className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2" stagger={0.08}>
             {metrics.map((m) => (
               <motion.div
                 key={m.label}
                 variants={fadeUp}
                 whileHover={{ y: -4 }}
                 transition={{ type: "spring", stiffness: 260, damping: 22 }}
-                className="group relative overflow-hidden rounded-[calc(var(--radius)+16px)] border border-white/10 bg-white/[0.04] p-8 text-center backdrop-blur-sm transition-colors duration-500 hover:border-accent-1/40 sm:text-left"
+                className="group relative overflow-hidden rounded-[calc(var(--radius)+16px)] border border-white/10 bg-white/[0.04] p-8 text-left backdrop-blur-sm transition-colors duration-500 hover:border-accent-1/40"
               >
                 <span
                   aria-hidden
                   className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,oklch(0.72_0.18_45_/_0.28),transparent_65%)] opacity-0 transition-opacity duration-700 group-hover:opacity-100"
                 />
-                <m.icon className="mx-auto h-6 w-6 text-accent-1 sm:mx-0" strokeWidth={1.6} />
-                <div className="mt-8 font-display text-4xl font-bold tracking-tight md:text-5xl">
+                <m.icon className="h-6 w-6 text-accent-1" strokeWidth={1.6} />
+                <div className="mt-6 font-display text-xl font-bold leading-tight tracking-tight md:text-2xl">
                   {m.value}
                 </div>
                 <div className="mt-3 text-sm leading-relaxed text-background/70">
