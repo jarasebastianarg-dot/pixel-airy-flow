@@ -17,13 +17,21 @@ import {
   Video,
   Layers,
   Package,
-  Palette,
   Stethoscope,
   Globe2,
   Clock,
   Briefcase,
   Plus,
 } from "lucide-react";
+
+import elHorizontalDark from "@/assets/elevate-local/el-horizontal-dark.png.asset.json";
+import elHorizontalLight from "@/assets/elevate-local/el-horizontal-light.png.asset.json";
+import elStackedDark from "@/assets/elevate-local/el-stacked-dark.png.asset.json";
+import elStackedLight from "@/assets/elevate-local/el-stacked-light.png.asset.json";
+import elMediaDark from "@/assets/elevate-local/el-media-dark.png.asset.json";
+import elMediaLight from "@/assets/elevate-local/el-media-light.png.asset.json";
+import elIsoDark from "@/assets/elevate-local/el-iso-dark.png.asset.json";
+import elIsoLight from "@/assets/elevate-local/el-iso-light.png.asset.json";
 
 export const Route = createFileRoute("/projects/elevate-local")({
   component: ElevateLocalProject,
