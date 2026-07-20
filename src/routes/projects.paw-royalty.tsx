@@ -274,7 +274,6 @@ function ExecutionCard({ card, index }: { card: ExecutionCardData; index: number
 }
 
 const mockups = [
-  { label: "Homepage", icon: Monitor, kicker: "Storefront" },
   { label: "Product Detail Page", icon: Layers, kicker: "PDP" },
   { label: "Subscribe & Save Cart", icon: CreditCard, kicker: "Checkout" },
   { label: "Mobile Experience", icon: Smartphone, kicker: "Responsive" },
