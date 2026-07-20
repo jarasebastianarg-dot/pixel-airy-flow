@@ -1,6 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import portrait from "@/assets/portrait.jpg.asset.json";
+import folkwaysThumb from "@/assets/folkways/folkways-storefront.jpg.asset.json";
+import pawRoyaltyThumb from "@/assets/paw-royalty-crown.jpg.asset.json";
+import bwayThumb from "@/assets/bway/bway-brand.jpg.asset.json";
+import elevateThumb from "@/assets/elevate-local/el-horizontal-dark.png.asset.json";
 import {
   motion,
   AnimatePresence,
@@ -76,8 +80,7 @@ const works = [
     client: "Folkways",
     headline: "The Technical Scale",
     body: "Migrated 2000+ products to Shopify 2.0 without losing a single drop of performance.",
-    image:
-      "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1200&q=80",
+    image: folkwaysThumb.url,
     href: "/projects/folkways",
   },
   {
@@ -85,8 +88,7 @@ const works = [
     client: "Paw Royalty",
     headline: "Full-Stack Launch",
     body: "End-to-end creation for a US market entry. Brand identity, UI/UX and Klaviyo integration.",
-    image:
-      "https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=900&q=80",
+    image: pawRoyaltyThumb.url,
     href: "/projects/paw-royalty",
   },
   {
@@ -94,8 +96,7 @@ const works = [
     client: "B-WAY",
     headline: "Global Expansion",
     body: "Steered a 6-person team to scale operations across the US and Brazil, driving digital and 300+ attendee physical events.",
-    image:
-      "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=900&q=80",
+    image: bwayThumb.url,
     href: "/projects/b-way",
   },
   {
@@ -103,8 +104,7 @@ const works = [
     client: "Elevate Local",
     headline: "Clinical Aesthetics",
     body: "Complete visual identity for a European medical marketing agency.",
-    image:
-      "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=80",
+    image: elevateThumb.url,
     href: "/projects/elevate-local",
   },
 ];
