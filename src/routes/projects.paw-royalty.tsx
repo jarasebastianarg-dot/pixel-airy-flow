@@ -23,7 +23,6 @@ import {
   TrendingUp,
   Boxes,
   Smartphone,
-  Monitor,
   CreditCard,
   Send,
   Plus,
