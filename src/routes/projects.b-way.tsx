@@ -336,12 +336,7 @@ function ExecutionCard({ card, index }: { card: ExecutionCardData; index: number
   );
 }
 
-const mockups = [
-  { label: "Primary Logomark", icon: Sparkles, kicker: "Logo" },
-  { label: "Color System", icon: Palette, kicker: "Palette" },
-  { label: "Typography Scale", icon: Layers, kicker: "Type" },
-  { label: "Usage Guidelines", icon: Package, kicker: "Guidelines" },
-];
+const mockups = packaging;
 
 function HorizontalMockups() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -406,11 +401,12 @@ function HorizontalMockups() {
                 </span>
                 {m.kicker}
               </div>
-              <MediaPlaceholder
-                label={m.label}
-                aspect="aspect-[3/4]"
-                icon={m.icon}
-              />
+              <div className="relative aspect-[3/4] w-full overflow-hidden rounded-[calc(var(--radius)+18px)] border border-border bg-card shadow-[var(--shadow-card)]">
+                <img src={m.url} alt={m.label} loading="lazy" className="h-full w-full object-cover" />
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                  <div className="font-mono text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-white/85">{m.label}</div>
+                </div>
+              </div>
             </div>
           ))}
           <div className="w-2 shrink-0" />
@@ -455,11 +451,12 @@ function HorizontalMockups() {
                 </span>
                 {m.kicker}
               </div>
-              <MediaPlaceholder
-                label={m.label}
-                aspect="aspect-[4/3]"
-                icon={m.icon}
-              />
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[calc(var(--radius)+18px)] border border-border bg-card shadow-[var(--shadow-card)]">
+                <img src={m.url} alt={m.label} loading="lazy" className="h-full w-full object-cover" />
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                  <div className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-white/85">{m.label}</div>
+                </div>
+              </div>
             </div>
           ))}
           <div className="w-20 shrink-0" />
