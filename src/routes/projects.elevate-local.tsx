@@ -789,14 +789,22 @@ function ElevateLocalProject() {
                     <div className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-accent-1">
                       {c.role}
                     </div>
-                    <dl className="mt-3 grid grid-cols-2 gap-2 font-mono text-[0.65rem] text-muted-foreground">
-                      <div>
-                        <dt className="uppercase tracking-[0.2em] text-foreground/50">RGB</dt>
-                        <dd className="mt-1">{c.rgb}</dd>
+                    <dl className="mt-4 space-y-3 font-mono text-xs text-muted-foreground">
+                      <div className="flex items-baseline justify-between gap-3">
+                        <dt className="shrink-0 uppercase tracking-[0.2em] text-foreground/50">
+                          RGB
+                        </dt>
+                        <dd className="whitespace-nowrap tracking-widest tabular-nums text-foreground/80">
+                          {c.rgb}
+                        </dd>
                       </div>
-                      <div>
-                        <dt className="uppercase tracking-[0.2em] text-foreground/50">CMYK</dt>
-                        <dd className="mt-1">{c.cmyk}</dd>
+                      <div className="flex items-baseline justify-between gap-3">
+                        <dt className="shrink-0 uppercase tracking-[0.2em] text-foreground/50">
+                          CMYK
+                        </dt>
+                        <dd className="whitespace-nowrap tracking-widest tabular-nums text-foreground/80">
+                          {c.cmyk}
+                        </dd>
                       </div>
                     </dl>
                   </div>
