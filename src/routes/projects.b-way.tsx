@@ -853,7 +853,7 @@ function BWayProject() {
         {/* Packaging Work */}
         <div className="border-t border-border/60 bg-secondary/30">
           <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
-            <Reveal className="grid grid-cols-1 gap-8 md:grid-cols-12 md:items-end" stagger={0.08}>
+            <Reveal className="grid grid-cols-1 gap-8 md:grid-cols-12 md:items-start" stagger={0.08}>
               <motion.div variants={fadeUp} className="md:col-span-7">
                 <SectionLabel>02.5 — Packaging</SectionLabel>
                 <h2 className="mt-6 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
