@@ -107,8 +107,8 @@ const executionCards = [
   {
     icon: Target,
     kicker: "Positioning",
-    title: "Audience-Centric Positioning",
-    body: "Engineered the core logomark and visual language specifically to resonate with the European medical sector. Every typographic and color choice was strategically selected to project clinical trust, precision, and modern marketing energy.",
+    title: "Clinic-First Positioning",
+    body: "Engineered the core logomark and visual language specifically to resonate with European clinic directors and healthcare decision-makers. Every typographic and color choice was strategically selected to project clinical trust, precision, and patient-centric marketing energy.",
   },
   {
     icon: Video,
@@ -120,13 +120,13 @@ const executionCards = [
     icon: Layers,
     kicker: "Iteration",
     title: "Iterative Design Architecture",
-    body: "Developed multiple conceptual directions based on specific client avatars. Refined the chosen path through strategic feedback loops, ensuring the final identity was perfectly aligned with their B2B market goals.",
+    body: "Developed multiple conceptual directions based on clinic-director and patient avatars. Refined the chosen path through strategic feedback loops, ensuring the final identity was perfectly aligned with their B2B medical marketing goals.",
   },
   {
     icon: Package,
     kicker: "Delivery",
     title: "Scalable Asset Delivery",
-    body: "Delivered a robust and comprehensive brand package — including vector assets, color systems, and usage guidelines — ensuring the agency's new identity remains consistent and scalable across all digital platforms and pitch decks.",
+    body: "Delivered a robust and comprehensive brand package — including vector assets, color systems, and usage guidelines — ensuring the agency's new identity remains consistent and scalable across websites, pitch decks, paid ads, and clinic-facing collateral.",
   },
 ];
 
@@ -561,8 +561,9 @@ function ElevateLocalProject() {
               variants={fadeUp}
               className="mt-8 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg"
             >
-              A B2B visual identity engineered for the European medical sector —
-              balancing clinical trust with modern marketing agility, delivered
+              A B2B visual identity for a marketing agency that helps medical
+              clinics across Europe win patient trust and fill appointment books —
+              balancing clinical credibility with modern growth marketing, delivered
               100% remotely.
             </motion.p>
           </Reveal>
@@ -650,23 +651,22 @@ function ElevateLocalProject() {
               variants={fadeUp}
               className="text-lg leading-relaxed text-foreground/85 md:text-xl"
             >
-              Elevate Local, a marketing agency targeting European medical
-              clinics, needed to establish{" "}
+              Elevate Local is a marketing agency built to help{" "}
               <span className="font-semibold text-foreground">
-                immediate credibility
-              </span>
-              . The healthcare sector is highly conservative and demands
-              authority, yet the agency needed to project agility, modern
-              digital expertise, and growth.
+                medical clinics across Europe
+              </span>{" "}
+              attract more patients and own their local market. In a sector where
+              trust is the currency, the brand had to feel as credible as a white-coat
+              consultation — not as flashy as a consumer app.
             </motion.p>
             <motion.p
               variants={fadeUp}
               className="mt-6 text-base leading-relaxed text-muted-foreground md:text-lg"
             >
               The challenge was building a visual identity from scratch that
-              bridged this gap, appealing directly to high-end medical
-              professionals while managing the entire strategic process 100%
-              remotely.
+              bridged this gap: reassuring clinic directors and patients, while
+              still projecting the speed and precision of a performance marketing
+              team — all managed asynchronously across time zones.
             </motion.p>
           </Reveal>
         </div>
@@ -754,7 +754,8 @@ function ElevateLocalProject() {
               className="text-base leading-relaxed text-muted-foreground md:col-span-5 md:text-lg"
             >
               Neutral, mineral tones that simulate granite and high-gram paper —
-              engineered for clinical trust, not startup noise.
+              chosen to feel clean, clinical, and reassuring to patients and
+              clinic directors, not noisy like a consumer app.
             </motion.p>
           </Reveal>
 
@@ -824,8 +825,9 @@ function ElevateLocalProject() {
               variants={fadeUp}
               className="text-base leading-relaxed text-muted-foreground md:col-span-5 md:text-lg"
             >
-              A voice engineered to speak eye-to-eye with clinic directors:
-              stable, methodical, infallible. No generic startup type.
+              A voice engineered to speak eye-to-eye with clinic directors and
+              medical professionals: stable, methodical, and trustworthy. No
+              generic startup type.
             </motion.p>
           </Reveal>
 
@@ -878,9 +880,9 @@ function ElevateLocalProject() {
 
           <Reveal className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-3" stagger={0.06}>
             {[
-              { label: "H1 · Medium", size: "56 / 64", sample: "Autoridad" },
-              { label: "H2 · Regular", size: "40 / 48", sample: "Precisión" },
-              { label: "H4 · Bold", size: "28 / 36", sample: "Sistema" },
+              { label: "H1 · Medium", size: "56 / 64", sample: "Authority" },
+              { label: "H2 · Regular", size: "40 / 48", sample: "Precision" },
+              { label: "H4 · Bold", size: "28 / 36", sample: "System" },
             ].map((row) => (
               <motion.div
                 key={row.label}
