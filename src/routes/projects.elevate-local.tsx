@@ -99,7 +99,12 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
   );
 }
 
-const stack = ["Adobe Illustrator", "Loom"];
+const stack = [
+  "Figma",
+  "Adobe Illustrator",
+  "Adobe Photoshop",
+  "Loom",
+];
 
 const focus = ["B2B Visual Strategy", "Medical Sector", "Remote Collaboration"];
 
@@ -131,10 +136,26 @@ const executionCards = [
 ];
 
 const metrics = [
-  { icon: Globe2, value: "100%", label: "Asynchronous Remote Delivery" },
-  { icon: Layers, value: "3", label: "Strategic Concept Directions" },
-  { icon: Clock, value: "< 48h", label: "Average Revision Turnaround" },
-  { icon: Briefcase, value: "B2B", label: "Clinical Market Positioning" },
+  {
+    icon: Briefcase,
+    value: "B2B",
+    label: "Positioned for European clinic directors — a credibility-first identity built to unlock high-ticket healthcare contracts.",
+  },
+  {
+    icon: Sparkles,
+    value: "1",
+    label: "Unified visual system across web, decks and paid ads — the agency finally shows up consistent in every patient-facing touchpoint.",
+  },
+  {
+    icon: Clock,
+    value: "< 48h",
+    label: "Revision turnaround end-to-end async — the agency ships pitches and campaigns faster than in-house competitors.",
+  },
+  {
+    icon: Globe2,
+    value: "100%",
+    label: "Fully remote delivery across time zones — proof the brand can run at European speed with no on-site friction.",
+  },
 ];
 
 function MediaPlaceholder({
@@ -188,14 +209,6 @@ function LogoPlate({
           : "border-border bg-[oklch(0.96_0.004_90)]"
       }`}
     >
-      <span
-        aria-hidden
-        className={`absolute inset-0 ${
-          isDark
-            ? "bg-[radial-gradient(circle_at_20%_15%,oklch(0.72_0.18_45_/_0.16),transparent_60%)]"
-            : "bg-[radial-gradient(circle_at_85%_85%,oklch(0.72_0.18_45_/_0.1),transparent_60%)]"
-        }`}
-      />
       <div className="absolute inset-0 flex items-center justify-center p-10 md:p-14">
         <img
           src={variant.src}
@@ -327,7 +340,7 @@ const logoVariants: LogoVariant[] = [
   {
     kicker: "Primary",
     label: "Horizontal Logotype",
-    caption: "Obsidiana Mate on Piedra Caliza. Editorial pause anchored by the center dot.",
+    caption: "Matte Obsidian on Limestone. Editorial pause anchored by the center dot.",
     src: elHorizontalDark.url,
     alt: "Elevate Local horizontal logotype — dark on light",
     theme: "light",
@@ -335,7 +348,7 @@ const logoVariants: LogoVariant[] = [
   {
     kicker: "Negative",
     label: "Horizontal · Reversed",
-    caption: "Piedra Caliza on Obsidiana Mate. Same weight and legibility in negative.",
+    caption: "Limestone on Matte Obsidian. Same weight and legibility in negative.",
     src: elHorizontalLight.url,
     alt: "Elevate Local horizontal logotype — light on dark",
     theme: "dark",
@@ -368,28 +381,28 @@ const logoVariants: LogoVariant[] = [
 
 const palette = [
   {
-    name: "Obsidiana Mate",
+    name: "Matte Obsidian",
     hex: "#1E1A17",
     rgb: "30 · 26 · 23",
     cmyk: "72 · 68 · 67 · 85",
     role: "Primary CTA · Authority",
   },
   {
-    name: "Piedra Caliza",
+    name: "Limestone",
     hex: "#F0EFEB",
     rgb: "240 · 239 · 235",
     cmyk: "5 · 4 · 6 · 0",
     role: "Canvas · Editorial paper",
   },
   {
-    name: "Arena",
+    name: "Sand",
     hex: "#A39B92",
     rgb: "163 · 155 · 146",
     cmyk: "41 · 38 · 45 · 3",
     role: "Inactive states · Dividers",
   },
   {
-    name: "Cemento",
+    name: "Cement",
     hex: "#E3E1DC",
     rgb: "227 · 225 · 220",
     cmyk: "0 · 1 · 3 · 11",
@@ -678,10 +691,6 @@ function ElevateLocalProject() {
               variants={fadeUp}
               className="relative overflow-hidden rounded-[calc(var(--radius)+22px)] border border-white/10 bg-[oklch(0.18_0.008_60)] shadow-[var(--shadow-card-hover)]"
             >
-              <span
-                aria-hidden
-                className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,oklch(0.72_0.18_45_/_0.18),transparent_55%),radial-gradient(circle_at_85%_85%,oklch(0.7_0.19_25_/_0.14),transparent_60%)]"
-              />
               <div className="relative flex aspect-[16/8] items-center justify-center px-10 md:px-24">
                 <img
                   src={elHorizontalLight.url}
@@ -691,7 +700,7 @@ function ElevateLocalProject() {
               </div>
               <div className="relative flex items-center justify-between border-t border-white/10 bg-black/20 px-6 py-4 font-mono text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-white/70 backdrop-blur">
                 <span>Elevate Local · Primary Lockup</span>
-                <span className="text-accent-1">Obsidiana Mate #1E1A17</span>
+                <span className="text-accent-1">Matte Obsidian #1E1A17</span>
               </div>
             </motion.div>
           </Reveal>
@@ -782,27 +791,35 @@ function ElevateLocalProject() {
                       {c.hex}
                     </span>
                   </div>
-                  <div className="space-y-2 p-5">
+                  <div className="p-5">
                     <div className="text-base font-bold tracking-tight text-foreground">
                       {c.name}
                     </div>
-                    <div className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-accent-1">
+                    <div className="mt-1 font-mono text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-accent-1">
                       {c.role}
                     </div>
-                    <dl className="mt-4 space-y-3 font-mono text-xs text-muted-foreground">
-                      <div className="flex items-baseline justify-between gap-3">
-                        <dt className="shrink-0 uppercase tracking-[0.2em] text-foreground/50">
+                    <dl className="mt-5 divide-y divide-border/70 border-t border-border/70 font-mono">
+                      <div className="flex items-center justify-between gap-3 py-2.5">
+                        <dt className="text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
+                          HEX
+                        </dt>
+                        <dd className="whitespace-nowrap text-xs font-semibold tabular-nums text-foreground">
+                          {c.hex}
+                        </dd>
+                      </div>
+                      <div className="flex items-center justify-between gap-3 py-2.5">
+                        <dt className="text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
                           RGB
                         </dt>
-                        <dd className="whitespace-nowrap tracking-widest tabular-nums text-foreground/80">
+                        <dd className="whitespace-nowrap text-xs tabular-nums text-foreground/85">
                           {c.rgb}
                         </dd>
                       </div>
-                      <div className="flex items-baseline justify-between gap-3">
-                        <dt className="shrink-0 uppercase tracking-[0.2em] text-foreground/50">
+                      <div className="flex items-center justify-between gap-3 py-2.5">
+                        <dt className="text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
                           CMYK
                         </dt>
-                        <dd className="whitespace-nowrap tracking-widest tabular-nums text-foreground/80">
+                        <dd className="whitespace-nowrap text-xs tabular-nums text-foreground/85">
                           {c.cmyk}
                         </dd>
                       </div>
@@ -853,12 +870,15 @@ function ElevateLocalProject() {
               <div className="mt-8 text-[3.5rem] font-black leading-[0.95] tracking-[-0.04em] text-foreground md:text-[5rem]">
                 Aa
               </div>
-              <div className="mt-4 text-2xl font-black leading-tight tracking-tight md:text-3xl">
-                We don't just supply products,<br />
-                but the total solution.
-              </div>
-              <div className="mt-6 border-t border-border pt-4 font-mono text-[0.65rem] uppercase tracking-[0.22em] text-muted-foreground">
-                56 / 64 pt · Tracking −4%
+              <p className="mt-6 text-base leading-relaxed text-muted-foreground md:text-[0.95rem]">
+                Reserved for hero statements, landing headlines and section
+                openers. The heaviest cut in the family — used sparingly to
+                assert authority the moment a clinic director lands on the page.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-2 border-t border-border pt-4 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-muted-foreground">
+                <span className="rounded-full border border-border bg-secondary px-2.5 py-1">Hero</span>
+                <span className="rounded-full border border-border bg-secondary px-2.5 py-1">Section titles</span>
+                <span className="rounded-full border border-border bg-secondary px-2.5 py-1">Pitch decks</span>
               </div>
             </motion.div>
 
@@ -875,40 +895,19 @@ function ElevateLocalProject() {
               <div className="mt-8 text-[3.5rem] font-medium leading-[0.95] tracking-[-0.03em] text-foreground md:text-[5rem]">
                 Aa
               </div>
-              <div className="mt-4 text-lg leading-relaxed text-foreground/85 md:text-xl">
-                Building a data centre is a complex process that requires
-                knowledge in various areas — legibility optimized for long
-                digital reads and technical documents.
-              </div>
-              <div className="mt-6 border-t border-border pt-4 font-mono text-[0.65rem] uppercase tracking-[0.22em] text-muted-foreground">
-                Regular · 24 / 32 pt · Tracking −4%
+              <p className="mt-6 text-base leading-relaxed text-muted-foreground md:text-[0.95rem]">
+                The workhorse cut. Handles subheads, running copy, UI labels
+                and technical documentation — optimized for legibility on long
+                digital reads without losing editorial rhythm.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-2 border-t border-border pt-4 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-muted-foreground">
+                <span className="rounded-full border border-border bg-secondary px-2.5 py-1">Body copy</span>
+                <span className="rounded-full border border-border bg-secondary px-2.5 py-1">Subheads</span>
+                <span className="rounded-full border border-border bg-secondary px-2.5 py-1">UI &amp; docs</span>
               </div>
             </motion.div>
           </Reveal>
 
-          <Reveal className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-3" stagger={0.06}>
-            {[
-              { label: "H1 · Medium", size: "56 / 64", sample: "Authority" },
-              { label: "H2 · Regular", size: "40 / 48", sample: "Precision" },
-              { label: "H4 · Bold", size: "28 / 36", sample: "System" },
-            ].map((row) => (
-              <motion.div
-                key={row.label}
-                variants={fadeUp}
-                className="rounded-2xl border border-border bg-secondary/40 p-5"
-              >
-                <div className="font-mono text-[0.6rem] font-semibold uppercase tracking-[0.22em] text-accent-1">
-                  {row.label}
-                </div>
-                <div className="mt-2 text-2xl font-bold tracking-tight md:text-3xl">
-                  {row.sample}
-                </div>
-                <div className="mt-3 font-mono text-[0.6rem] uppercase tracking-[0.2em] text-muted-foreground">
-                  {row.size} pt
-                </div>
-              </motion.div>
-            ))}
-          </Reveal>
         </div>
       </section>
 
