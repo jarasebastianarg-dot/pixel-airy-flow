@@ -286,8 +286,10 @@ function HorizontalMockups() {
   const trackRef = useRef<HTMLDivElement>(null);
   const [trackWidth, setTrackWidth] = useState(0);
   const [viewportWidth, setViewportWidth] = useState(0);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
+    if (isMobile) return;
     const measure = () => {
       if (trackRef.current && containerRef.current) {
         setTrackWidth(trackRef.current.scrollWidth);
@@ -297,7 +299,7 @@ function HorizontalMockups() {
     measure();
     window.addEventListener("resize", measure);
     return () => window.removeEventListener("resize", measure);
-  }, []);
+  }, [isMobile]);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -306,6 +308,54 @@ function HorizontalMockups() {
 
   const maxTranslate = Math.max(0, trackWidth - viewportWidth);
   const x = useTransform(scrollYProgress, (value) => -maxTranslate * value);
+
+  if (isMobile) {
+    return (
+      <div className="relative">
+        <div className="mx-auto w-full max-w-6xl px-6">
+          <div className="flex items-end justify-between gap-4">
+            <div>
+              <SectionLabel>02.5 — Gallery</SectionLabel>
+              <h3 className="mt-4 text-3xl font-bold leading-[1.05] tracking-tight">
+                Storefront{" "}
+                <span className="font-serif italic font-normal text-accent-1">
+                  in motion
+                </span>
+              </h3>
+            </div>
+          </div>
+          <div className="mt-2 font-mono text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
+            Swipe to explore →
+          </div>
+        </div>
+        <div
+          className="mt-8 flex gap-4 overflow-x-auto scroll-smooth px-6 pb-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          style={{ scrollSnapType: "x mandatory", WebkitOverflowScrolling: "touch" }}
+        >
+          {mockups.map((m, i) => (
+            <div
+              key={m.label}
+              className="relative w-[85vw] shrink-0"
+              style={{ scrollSnapAlign: "center" }}
+            >
+              <div className="absolute -top-3 left-4 z-10 inline-flex items-center gap-2 rounded-full border border-border bg-background px-3 py-1 font-mono text-[0.6rem] font-semibold uppercase tracking-[0.22em] text-muted-foreground shadow-[var(--shadow-card)]">
+                <span className="text-accent-1">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                {m.kicker}
+              </div>
+              <MediaPlaceholder
+                label={m.label}
+                aspect="aspect-[3/4]"
+                icon={m.icon}
+              />
+            </div>
+          ))}
+          <div className="w-2 shrink-0" />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div ref={containerRef} className="relative h-[320vh]">
