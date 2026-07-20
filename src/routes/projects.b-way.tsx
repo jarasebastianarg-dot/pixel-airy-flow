@@ -116,34 +116,87 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
   );
 }
 
-const stack = ["Shopify", "Meta Ads", "Omnichannel Operations"];
+const stack = [
+  "Packaging Design",
+  "Product Design",
+  "Social Media Design",
+  "Shopify",
+  "Meta Ads",
+  "Email Marketing",
+  "Event Design",
+  "Team Leadership",
+  "Brand Education",
+];
 
-const focus = ["Global Expansion", "Team Leadership", "Experiential Events"];
+const focus = ["Product Designer → Brand Manager", "3 Markets · US / BR / AR", "2-Year Journey"];
 
-const executionCards = [
+// The Growth Story — 4 chapters covering the promotion arc
+const chapters = [
   {
+    n: "01",
+    icon: Package,
+    kicker: "Where I Started",
+    title: "Packaging & Product Design",
+    body: "I joined B-WAY as a Product Designer, focused on the physical craft. I designed the packaging system for four product lines — B10K, Urban, Sonic and Compact — building die-cuts, interior architecture and a bold visual language that broke away from the conservative codes of the barber industry.",
+    tags: ["Die-cuts", "Print Production", "Product Renders", "Unboxing Experience"],
+  },
+  {
+    n: "02",
+    icon: Palette,
+    kicker: "Growing the Scope",
+    title: "Social Media & Brand Design",
+    body: "The scope expanded fast. I started designing every social media asset, campaign key visual, and launch collateral across regions. Each product drop was translated into an editorial visual system that could travel from Instagram grids to trade-show print in a single sprint.",
+    tags: ["Instagram Grids", "Campaign Key Visuals", "Launch Collateral", "Visual System"],
+  },
+  {
+    n: "03",
     icon: ShoppingBag,
-    kicker: "E-Commerce",
-    title: "Global E-Commerce Expansion",
-    body: "Architected and launched localized Shopify stores for the US and Brazil from scratch. Executed data-driven email and social campaigns tailored to regional behaviors to drive global ROAS.",
+    kicker: "Going Digital",
+    title: "E-Commerce, from Zero",
+    body: "Then I built the digital layer. I architected and launched Shopify storefronts for Brazil and Argentina from scratch — catalog, checkout, localized copy and payment logic — while running Meta Ads and email flows that tied every campaign back to revenue.",
+    tags: ["Shopify BR", "Shopify AR", "Meta Ads", "Email Automations"],
   },
   {
-    icon: Users,
-    kicker: "Leadership",
-    title: "Interdisciplinary Team Leadership",
-    body: "Led a 6-person marketing and design team. Aligned daily creative output directly with commercial goals, streamlining internal workflows and drastically accelerating campaign delivery.",
+    n: "04",
+    icon: Rocket,
+    kicker: "The Promotion",
+    title: "Brand Manager Across 3 Markets",
+    body: "By the end of year two, I was promoted to Brand Manager. I led a 6-person interdisciplinary team across the US, Brazil and Argentina, coordinated brand educators on how to speak and demo the product, and designed the trade-show stands we activated at Barber Week and beyond.",
+    tags: ["6-Person Team", "US · BR · AR", "Educators", "Trade-Show Stands", "Ambassadors"],
+  },
+];
+
+// Kept for TS compat in original grid — mapped to chapters visually below
+const executionCards = chapters.map((c) => ({
+  icon: c.icon,
+  kicker: c.kicker,
+  title: c.title,
+  body: c.body,
+}));
+
+const packaging = [
+  { url: brandCover.url, label: "B-WAY · Full Product Line System", kicker: "Line-up" },
+  { url: b10kMockup.url, label: "B10K · Packaging Mockup", kicker: "B10K" },
+  { url: b10kInside.url, label: "B10K · Interior Architecture", kicker: "Interior" },
+  { url: b10kAccessories.url, label: "B10K · Accessories Packaging", kicker: "Accessories" },
+  { url: urbanDiecut.url, label: "Urban · Die-cut Technical Drawing", kicker: "Die-cut" },
+  { url: urbanBack.url, label: "Urban · Back Packaging Details", kicker: "Urban" },
+  { url: sonicBlack.url, label: "Sonic · Black Edition", kicker: "Sonic" },
+  { url: sonicInside.url, label: "Sonic · Interior Packaging", kicker: "Interior" },
+  { url: compactFront.url, label: "Compact · Front View", kicker: "Compact" },
+  { url: compactBack.url, label: "Compact · Back Packaging", kicker: "Compact" },
+];
+
+const reels = [
+  {
+    url: reel1.url,
+    title: "Barber Week · Live Event Reel",
+    body: "Trade-show floor content — stand activation, product demos and brand educators on-site.",
   },
   {
-    icon: UserCheck,
-    kicker: "Brand",
-    title: "Ambassador & Brand Management",
-    body: "Standardized the brand's global identity. Directed high-profile industry ambassadors, deploying strict visual and communicative guidelines to ensure brand authority across all channels.",
-  },
-  {
-    icon: Calendar,
-    kicker: "Events",
-    title: "Experiential Design & Events",
-    body: "Bridged digital strategy with real-world authority. Designed and managed structural trade show stands for international physical events (e.g., Barber Week), optimizing visitor flow and lead generation for 300+ attendees.",
+    url: reel2.url,
+    title: "Innovación · Visión · Identidad",
+    body: "Announcement reel: the most anticipated barber event of the year, produced in-house with the brand educator team.",
   },
 ];
 
