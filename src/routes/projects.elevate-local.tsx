@@ -209,14 +209,6 @@ function LogoPlate({
           : "border-border bg-[oklch(0.96_0.004_90)]"
       }`}
     >
-      <span
-        aria-hidden
-        className={`absolute inset-0 ${
-          isDark
-            ? "bg-[radial-gradient(circle_at_20%_15%,oklch(0.72_0.18_45_/_0.16),transparent_60%)]"
-            : "bg-[radial-gradient(circle_at_85%_85%,oklch(0.72_0.18_45_/_0.1),transparent_60%)]"
-        }`}
-      />
       <div className="absolute inset-0 flex items-center justify-center p-10 md:p-14">
         <img
           src={variant.src}
