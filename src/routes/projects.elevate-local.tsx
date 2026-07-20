@@ -870,12 +870,15 @@ function ElevateLocalProject() {
               <div className="mt-8 text-[3.5rem] font-black leading-[0.95] tracking-[-0.04em] text-foreground md:text-[5rem]">
                 Aa
               </div>
-              <div className="mt-4 text-2xl font-black leading-tight tracking-tight md:text-3xl">
-                We don't just supply products,<br />
-                but the total solution.
-              </div>
-              <div className="mt-6 border-t border-border pt-4 font-mono text-[0.65rem] uppercase tracking-[0.22em] text-muted-foreground">
-                56 / 64 pt · Tracking −4%
+              <p className="mt-6 text-base leading-relaxed text-muted-foreground md:text-[0.95rem]">
+                Reserved for hero statements, landing headlines and section
+                openers. The heaviest cut in the family — used sparingly to
+                assert authority the moment a clinic director lands on the page.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-2 border-t border-border pt-4 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-muted-foreground">
+                <span className="rounded-full border border-border bg-secondary px-2.5 py-1">Hero</span>
+                <span className="rounded-full border border-border bg-secondary px-2.5 py-1">Section titles</span>
+                <span className="rounded-full border border-border bg-secondary px-2.5 py-1">Pitch decks</span>
               </div>
             </motion.div>
 
@@ -892,40 +895,19 @@ function ElevateLocalProject() {
               <div className="mt-8 text-[3.5rem] font-medium leading-[0.95] tracking-[-0.03em] text-foreground md:text-[5rem]">
                 Aa
               </div>
-              <div className="mt-4 text-lg leading-relaxed text-foreground/85 md:text-xl">
-                Building a data centre is a complex process that requires
-                knowledge in various areas — legibility optimized for long
-                digital reads and technical documents.
-              </div>
-              <div className="mt-6 border-t border-border pt-4 font-mono text-[0.65rem] uppercase tracking-[0.22em] text-muted-foreground">
-                Regular · 24 / 32 pt · Tracking −4%
+              <p className="mt-6 text-base leading-relaxed text-muted-foreground md:text-[0.95rem]">
+                The workhorse cut. Handles subheads, running copy, UI labels
+                and technical documentation — optimized for legibility on long
+                digital reads without losing editorial rhythm.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-2 border-t border-border pt-4 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-muted-foreground">
+                <span className="rounded-full border border-border bg-secondary px-2.5 py-1">Body copy</span>
+                <span className="rounded-full border border-border bg-secondary px-2.5 py-1">Subheads</span>
+                <span className="rounded-full border border-border bg-secondary px-2.5 py-1">UI &amp; docs</span>
               </div>
             </motion.div>
           </Reveal>
 
-          <Reveal className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-3" stagger={0.06}>
-            {[
-              { label: "H1 · Medium", size: "56 / 64", sample: "Authority" },
-              { label: "H2 · Regular", size: "40 / 48", sample: "Precision" },
-              { label: "H4 · Bold", size: "28 / 36", sample: "System" },
-            ].map((row) => (
-              <motion.div
-                key={row.label}
-                variants={fadeUp}
-                className="rounded-2xl border border-border bg-secondary/40 p-5"
-              >
-                <div className="font-mono text-[0.6rem] font-semibold uppercase tracking-[0.22em] text-accent-1">
-                  {row.label}
-                </div>
-                <div className="mt-2 text-2xl font-bold tracking-tight md:text-3xl">
-                  {row.sample}
-                </div>
-                <div className="mt-3 font-mono text-[0.6rem] uppercase tracking-[0.2em] text-muted-foreground">
-                  {row.size} pt
-                </div>
-              </motion.div>
-            ))}
-          </Reveal>
         </div>
       </section>
 
