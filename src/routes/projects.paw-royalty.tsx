@@ -628,13 +628,13 @@ function PawRoyaltyProject() {
                 variants={fadeUp}
                 whileHover={{ y: -4 }}
                 transition={{ type: "spring", stiffness: 260, damping: 22 }}
-                className="group relative overflow-hidden rounded-[calc(var(--radius)+16px)] border border-white/10 bg-white/[0.04] p-8 backdrop-blur-sm transition-colors duration-500 hover:border-accent-1/40"
+                className="group relative overflow-hidden rounded-[calc(var(--radius)+16px)] border border-white/10 bg-white/[0.04] p-8 text-center backdrop-blur-sm transition-colors duration-500 hover:border-accent-1/40 sm:text-left"
               >
                 <span
                   aria-hidden
                   className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,oklch(0.72_0.18_45_/_0.28),transparent_65%)] opacity-0 transition-opacity duration-700 group-hover:opacity-100"
                 />
-                <m.icon className="h-6 w-6 text-accent-1" strokeWidth={1.6} />
+                <m.icon className="mx-auto h-6 w-6 text-accent-1 sm:mx-0" strokeWidth={1.6} />
                 <div className="mt-8 font-display text-4xl font-bold tracking-tight md:text-5xl">
                   {m.value}
                 </div>
