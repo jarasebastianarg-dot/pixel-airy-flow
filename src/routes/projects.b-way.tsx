@@ -398,7 +398,7 @@ function HorizontalMockups() {
   );
 }
 
-function ElevateLocalProject() {
+function BWayProject() {
   return (
     <main className="min-h-screen bg-background text-foreground">
       {/* Top bar */}
@@ -412,7 +412,7 @@ function ElevateLocalProject() {
             Back to portfolio
           </Link>
           <span className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-muted-foreground">
-            Case Study / 03
+            Case Study / 04
           </span>
         </div>
       </div>
@@ -426,17 +426,17 @@ function ElevateLocalProject() {
         <div className="mx-auto max-w-6xl px-6 pb-20 pt-16 md:px-10 md:pb-28 md:pt-24">
           <Reveal stagger={0.12}>
             <motion.div variants={fadeUp}>
-              <SectionLabel>Brand Identity · B2B Medical</SectionLabel>
+              <SectionLabel>Omnichannel · Global Expansion</SectionLabel>
             </motion.div>
             <motion.h1
               variants={fadeUp}
               className="mt-6 max-w-5xl text-4xl font-bold leading-[1.02] tracking-tight md:text-6xl lg:text-[4.5rem]"
             >
-              Elevate Local:{" "}
-              <span className="text-gradient-accent">Clinical Authority</span>{" "}
-              &amp; Strategic{" "}
+              B-WAY: Scaling an{" "}
+              <span className="text-gradient-accent">Omnichannel Brand</span>{" "}
+              Across{" "}
               <span className="font-serif italic font-normal text-accent-1">
-                Brand Identity
+                3 International Markets
               </span>
               .
             </motion.h1>
@@ -444,9 +444,16 @@ function ElevateLocalProject() {
               variants={fadeUp}
               className="mt-8 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg"
             >
-              A B2B visual identity engineered for the European medical sector —
-              balancing clinical trust with modern marketing agility, delivered
-              100% remotely.
+              A 360° commercial takeover — bridging{" "}
+              <span className="font-semibold text-foreground">
+                digital e-commerce
+              </span>
+              , large-scale{" "}
+              <span className="font-semibold text-foreground">
+                experiential events
+              </span>{" "}
+              and cross-market brand leadership across the US, Brazil and
+              Argentina.
             </motion.p>
           </Reveal>
 
@@ -462,7 +469,7 @@ function ElevateLocalProject() {
                 Role
               </div>
               <div className="mt-3 text-base font-semibold text-foreground transition-colors duration-300 md:text-lg md:group-hover:text-accent-1">
-                Brand Identity Designer
+                Brand Manager &amp; Product Designer
               </div>
             </motion.div>
             <motion.div
@@ -529,27 +536,28 @@ function ElevateLocalProject() {
             </motion.div>
           </Reveal>
           <Reveal className="mt-8 md:col-span-8 md:mt-0" stagger={0.08}>
+            <motion.h3
+              variants={fadeUp}
+              className="mb-6 text-2xl font-bold tracking-tight md:text-3xl"
+            >
+              The Challenge
+            </motion.h3>
             <motion.p
               variants={fadeUp}
               className="text-lg leading-relaxed text-foreground/85 md:text-xl"
             >
-              Elevate Local, a marketing agency targeting European medical
-              clinics, needed to establish{" "}
+              The brand was growing rapidly but{" "}
               <span className="font-semibold text-foreground">
-                immediate credibility
+                lacked the digital infrastructure
+              </span>{" "}
+              to scale internationally. The challenge was threefold: bridge
+              physical products with a digital e-commerce ecosystem,
+              successfully enter the{" "}
+              <span className="font-semibold text-accent-1">
+                US and Brazil markets
               </span>
-              . The healthcare sector is highly conservative and demands
-              authority, yet the agency needed to project agility, modern
-              digital expertise, and growth.
-            </motion.p>
-            <motion.p
-              variants={fadeUp}
-              className="mt-6 text-base leading-relaxed text-muted-foreground md:text-lg"
-            >
-              The challenge was building a visual identity from scratch that
-              bridged this gap, appealing directly to high-end medical
-              professionals while managing the entire strategic process 100%
-              remotely.
+              , and unify a fragmented brand voice across high-profile
+              ambassadors and large-scale physical events.
             </motion.p>
           </Reveal>
         </div>
@@ -559,9 +567,9 @@ function ElevateLocalProject() {
           <Reveal>
             <motion.div variants={fadeUp}>
               <MediaPlaceholder
-                label="Brand Identity Mockup"
+                label="Global E-Commerce Dashboards & Campaign Assets"
                 aspect="aspect-[16/8]"
-                icon={Stethoscope}
+                icon={Globe2}
               />
             </motion.div>
           </Reveal>
@@ -585,9 +593,13 @@ function ElevateLocalProject() {
               variants={fadeUp}
               className="text-base leading-relaxed text-muted-foreground md:col-span-5 md:text-lg"
             >
-              Designing a cohesive visual identity grounded in target audience
-              psychology and European market research, delivered through a
-              highly optimized, asynchronous remote collaboration framework.
+              A{" "}
+              <span className="font-semibold text-foreground">
+                360° operational takeover
+              </span>
+              . Promoted from Product Designer to Brand Manager to engineer
+              the brand's commercial infrastructure across digital and physical
+              touchpoints.
             </motion.p>
           </Reveal>
 
@@ -601,8 +613,58 @@ function ElevateLocalProject() {
           </Reveal>
         </div>
 
-        {/* Horizontal scroll mockups */}
-        <HorizontalMockups />
+        {/* Physical Event / Team Overlap */}
+        <div className="mx-auto max-w-6xl px-6 pb-24 md:px-10 md:pb-32">
+          <Reveal>
+            <motion.div variants={fadeUp} className="relative">
+              <div className="w-3/4">
+                <div className="relative aspect-[16/9] overflow-hidden rounded-[calc(var(--radius)+18px)] border border-white/10 bg-foreground text-background shadow-[var(--shadow-card)]">
+                  <span
+                    aria-hidden
+                    className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,oklch(0.72_0.18_45_/_0.22),transparent_55%),radial-gradient(circle_at_85%_80%,oklch(0.7_0.19_25_/_0.16),transparent_60%)]"
+                  />
+                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-center">
+                    <span className="grid h-14 w-14 place-items-center rounded-2xl bg-white/[0.06] text-accent-1 ring-1 ring-inset ring-white/10">
+                      <Calendar className="h-6 w-6" strokeWidth={1.6} />
+                    </span>
+                    <span className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-background/70">
+                      Physical Trade Show Stand / Barber Week Event Photo
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div className="absolute -bottom-10 right-10 hidden w-1/3 md:block">
+                <div className="relative aspect-[4/3] overflow-hidden rounded-[calc(var(--radius)+14px)] border border-border bg-card shadow-[var(--shadow-card-hover)]">
+                  <span
+                    aria-hidden
+                    className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,oklch(0.72_0.18_45_/_0.2),transparent_60%)]"
+                  />
+                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 p-4 text-center">
+                    <span className="grid h-11 w-11 place-items-center rounded-2xl bg-secondary text-accent-1 ring-1 ring-inset ring-border">
+                      <Users className="h-5 w-5" strokeWidth={1.6} />
+                    </span>
+                    <span className="font-mono text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
+                      Brand Guidelines &amp; Team Management Assets
+                    </span>
+                  </div>
+                </div>
+              </div>
+              {/* Mobile-only stacked foreground */}
+              <div className="mt-6 w-2/3 md:hidden">
+                <div className="relative aspect-[4/3] overflow-hidden rounded-[calc(var(--radius)+14px)] border border-border bg-card shadow-[var(--shadow-card)]">
+                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 p-4 text-center">
+                    <span className="grid h-11 w-11 place-items-center rounded-2xl bg-secondary text-accent-1 ring-1 ring-inset ring-border">
+                      <Users className="h-5 w-5" strokeWidth={1.6} />
+                    </span>
+                    <span className="font-mono text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
+                      Brand Guidelines &amp; Team Management Assets
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </Reveal>
+        </div>
       </section>
 
       {/* The Impact */}
@@ -665,10 +727,10 @@ function ElevateLocalProject() {
           <div>
             <SectionLabel>Next</SectionLabel>
             <h3 className="mt-4 max-w-xl text-3xl font-bold leading-[1.1] tracking-tight md:text-4xl">
-              Building a brand that needs to earn instant trust?
+              Scaling a brand across borders and channels?
             </h3>
             <p className="mt-3 max-w-lg text-base leading-relaxed text-muted-foreground">
-              I design B2B identities engineered for authority — delivered fully async.
+              I build omnichannel infrastructure — from Shopify storefronts to trade-show floors.
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-3">
