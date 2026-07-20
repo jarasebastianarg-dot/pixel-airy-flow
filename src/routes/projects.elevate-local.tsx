@@ -267,11 +267,87 @@ function ExecutionCard({ card, index }: { card: ExecutionCardData; index: number
   );
 }
 
-const mockups = [
-  { label: "Primary Logomark", icon: Sparkles, kicker: "Logo" },
-  { label: "Color System", icon: Palette, kicker: "Palette" },
-  { label: "Typography Scale", icon: Layers, kicker: "Type" },
-  { label: "Usage Guidelines", icon: Package, kicker: "Guidelines" },
+type LogoVariant = {
+  kicker: string;
+  label: string;
+  caption: string;
+  src: string;
+  alt: string;
+  theme: "dark" | "light";
+};
+
+const logoVariants: LogoVariant[] = [
+  {
+    kicker: "Primary",
+    label: "Horizontal Logotype",
+    caption: "Obsidiana Mate on Piedra Caliza. Editorial pause anchored by the center dot.",
+    src: elHorizontalDark.url,
+    alt: "Elevate Local horizontal logotype — dark on light",
+    theme: "light",
+  },
+  {
+    kicker: "Negative",
+    label: "Horizontal · Reversed",
+    caption: "Piedra Caliza on Obsidiana Mate. Same weight and legibility in negative.",
+    src: elHorizontalLight.url,
+    alt: "Elevate Local horizontal logotype — light on dark",
+    theme: "dark",
+  },
+  {
+    kicker: "Stacked",
+    label: "Vertical Lockup",
+    caption: "Square-format lockup for social avatars, decks and merch.",
+    src: elStackedDark.url,
+    alt: "Elevate Local stacked logotype",
+    theme: "light",
+  },
+  {
+    kicker: "Monogram",
+    label: "E·L Reduction",
+    caption: "Compact editorial mark for tight formats — 46px minimum.",
+    src: elMediaDark.url,
+    alt: "Elevate Local E·L monogram",
+    theme: "light",
+  },
+  {
+    kicker: "Isotype",
+    label: "The E",
+    caption: "Widened cut for aggressive, commercial recognition at any scale.",
+    src: elIsoDark.url,
+    alt: "Elevate Local isotype — the E",
+    theme: "light",
+  },
+];
+
+const palette = [
+  {
+    name: "Obsidiana Mate",
+    hex: "#1E1A17",
+    rgb: "30 · 26 · 23",
+    cmyk: "72 · 68 · 67 · 85",
+    role: "Primary CTA · Authority",
+  },
+  {
+    name: "Piedra Caliza",
+    hex: "#F0EFEB",
+    rgb: "240 · 239 · 235",
+    cmyk: "5 · 4 · 6 · 0",
+    role: "Canvas · Editorial paper",
+  },
+  {
+    name: "Arena",
+    hex: "#A39B92",
+    rgb: "163 · 155 · 146",
+    cmyk: "41 · 38 · 45 · 3",
+    role: "Inactive states · Dividers",
+  },
+  {
+    name: "Cemento",
+    hex: "#E3E1DC",
+    rgb: "227 · 225 · 220",
+    cmyk: "0 · 1 · 3 · 11",
+    role: "Cards · Table structure",
+  },
 ];
 
 function HorizontalMockups() {
