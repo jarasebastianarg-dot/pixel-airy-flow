@@ -464,49 +464,59 @@ function PawRoyaltyProject() {
           <Reveal className="mt-14 grid grid-cols-1 gap-4 md:grid-cols-3" stagger={0.08}>
             <motion.div
               variants={fadeUp}
-              className="rounded-3xl border border-border bg-card p-6 shadow-[var(--shadow-card)]"
+              whileHover={{ y: -4 }}
+              transition={{ type: "spring", stiffness: 300, damping: 22 }}
+              className="group rounded-3xl border border-border bg-card p-6 shadow-[var(--shadow-card)] transition-colors duration-300 hover:border-accent-1/40 hover:shadow-[var(--shadow-elegant)] md:hover:bg-card"
             >
               <div className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
                 Role
               </div>
-              <div className="mt-3 text-base font-semibold text-foreground md:text-lg">
+              <div className="mt-3 text-base font-semibold text-foreground transition-colors duration-300 md:text-lg md:group-hover:text-accent-1">
                 Lead E-commerce Developer & Designer
               </div>
             </motion.div>
             <motion.div
               variants={fadeUp}
-              className="rounded-3xl border border-border bg-card p-6 shadow-[var(--shadow-card)]"
+              whileHover={{ y: -4 }}
+              transition={{ type: "spring", stiffness: 300, damping: 22 }}
+              className="group rounded-3xl border border-border bg-card p-6 shadow-[var(--shadow-card)] transition-colors duration-300 hover:border-accent-1/40 hover:shadow-[var(--shadow-elegant)]"
             >
               <div className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
                 Tech Stack
               </div>
               <div className="mt-3 flex flex-wrap gap-2">
                 {stack.map((t) => (
-                  <span
+                  <motion.span
                     key={t}
-                    className="rounded-full border border-border bg-secondary px-3 py-1 text-xs font-semibold text-foreground/80"
+                    whileHover={{ y: -2, scale: 1.05 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 18 }}
+                    className="cursor-default rounded-full border border-border bg-secondary px-3 py-1 text-xs font-semibold text-foreground/80 transition-colors duration-200 hover:border-accent-1/50 hover:bg-background hover:text-foreground"
                   >
                     {t}
-                  </span>
+                  </motion.span>
                 ))}
               </div>
             </motion.div>
             <motion.div
               variants={fadeUp}
-              className="rounded-3xl border border-border bg-card p-6 shadow-[var(--shadow-card)]"
+              whileHover={{ y: -4 }}
+              transition={{ type: "spring", stiffness: 300, damping: 22 }}
+              className="group rounded-3xl border border-border bg-card p-6 shadow-[var(--shadow-card)] transition-colors duration-300 hover:border-accent-1/40 hover:shadow-[var(--shadow-elegant)]"
             >
               <div className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
                 Focus
               </div>
               <div className="mt-3 flex flex-wrap gap-2">
                 {focus.map((f) => (
-                  <span
+                  <motion.span
                     key={f}
-                    className="inline-flex items-center gap-1.5 rounded-full bg-gradient-accent px-3 py-1 text-xs font-semibold text-accent-foreground"
+                    whileHover={{ y: -2, scale: 1.06 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 18 }}
+                    className="group/tag inline-flex cursor-default items-center gap-1.5 rounded-full bg-gradient-accent px-3 py-1 text-xs font-semibold text-accent-foreground shadow-[0_2px_8px_-2px_oklch(0.7_0.19_25_/_0.3)] transition-shadow duration-200 hover:shadow-[0_6px_18px_-4px_oklch(0.7_0.19_25_/_0.55)]"
                   >
-                    <Sparkles className="h-3 w-3" />
+                    <Sparkles className="h-3 w-3 transition-transform duration-300 group-hover/tag:rotate-12 group-hover/tag:scale-110" />
                     {f}
-                  </span>
+                  </motion.span>
                 ))}
               </div>
             </motion.div>
