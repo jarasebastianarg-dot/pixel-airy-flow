@@ -23,7 +23,6 @@ import {
   TrendingUp,
   Boxes,
   Smartphone,
-  Monitor,
   CreditCard,
   Send,
   Plus,
@@ -179,7 +178,10 @@ function ExecutionCard({ card, index }: { card: ExecutionCardData; index: number
   const Icon = card.icon;
   const isMobile = useIsMobile();
   const [hovered, setHovered] = useState(false);
-  const expanded = isMobile || hovered;
+  // On mobile: always show body copy but keep the accent visuals in resting state.
+  // Reserve the accent bar / glow / icon-swap treatment for real hover on desktop.
+  const showBody = isMobile || hovered;
+  const active = hovered && !isMobile;
   return (
     <motion.article
       variants={fadeUp}
@@ -196,7 +198,7 @@ function ExecutionCard({ card, index }: { card: ExecutionCardData; index: number
       <motion.span
         aria-hidden
         initial={false}
-        animate={{ scaleX: expanded ? 1 : 0 }}
+        animate={{ scaleX: active ? 1 : 0 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         className="absolute inset-x-0 top-0 h-[3px] origin-left bg-gradient-accent"
       />
@@ -204,7 +206,7 @@ function ExecutionCard({ card, index }: { card: ExecutionCardData; index: number
       <motion.span
         aria-hidden
         initial={false}
-        animate={{ opacity: expanded ? 1 : 0 }}
+        animate={{ opacity: active ? 1 : 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,oklch(0.72_0.18_45_/_0.22),transparent_65%)]"
       />
@@ -214,11 +216,11 @@ function ExecutionCard({ card, index }: { card: ExecutionCardData; index: number
         <motion.span
           initial={false}
           animate={{
-            backgroundColor: expanded
+            backgroundColor: active
               ? "oklch(0.72 0.18 45)"
               : "oklch(0.96 0.01 60)",
-            color: expanded ? "oklch(1 0 0)" : "oklch(0.72 0.18 45)",
-            scale: expanded ? 1.05 : 1,
+            color: active ? "oklch(1 0 0)" : "oklch(0.72 0.18 45)",
+            scale: active ? 1.05 : 1,
           }}
           transition={{ type: "spring", stiffness: 220, damping: 20 }}
           className="grid h-11 w-11 place-items-center rounded-2xl ring-1 ring-inset ring-border"
@@ -243,7 +245,7 @@ function ExecutionCard({ card, index }: { card: ExecutionCardData; index: number
       {/* Swap: helper vs body */}
       <div className="relative mt-3 min-h-[3.75rem]">
         <AnimatePresence mode="wait" initial={false}>
-          {expanded ? (
+          {showBody ? (
             <motion.p
               key="body"
               initial={{ opacity: 0, y: 8, filter: "blur(4px)" }}
@@ -274,7 +276,6 @@ function ExecutionCard({ card, index }: { card: ExecutionCardData; index: number
 }
 
 const mockups = [
-  { label: "Homepage", icon: Monitor, kicker: "Storefront" },
   { label: "Product Detail Page", icon: Layers, kicker: "PDP" },
   { label: "Subscribe & Save Cart", icon: CreditCard, kicker: "Checkout" },
   { label: "Mobile Experience", icon: Smartphone, kicker: "Responsive" },
@@ -329,7 +330,7 @@ function HorizontalMockups() {
           </div>
         </div>
         <div
-          className="mt-8 flex gap-4 overflow-x-auto scroll-smooth px-6 pb-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          className="mt-10 flex gap-4 overflow-x-auto scroll-smooth px-6 pb-6 pt-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           style={{ scrollSnapType: "x mandatory", WebkitOverflowScrolling: "touch" }}
         >
           {mockups.map((m, i) => (
@@ -630,13 +631,13 @@ function PawRoyaltyProject() {
                 variants={fadeUp}
                 whileHover={{ y: -4 }}
                 transition={{ type: "spring", stiffness: 260, damping: 22 }}
-                className="group relative overflow-hidden rounded-[calc(var(--radius)+16px)] border border-white/10 bg-white/[0.04] p-8 backdrop-blur-sm transition-colors duration-500 hover:border-accent-1/40"
+                className="group relative overflow-hidden rounded-[calc(var(--radius)+16px)] border border-white/10 bg-white/[0.04] p-8 text-center backdrop-blur-sm transition-colors duration-500 hover:border-accent-1/40 sm:text-left"
               >
                 <span
                   aria-hidden
                   className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,oklch(0.72_0.18_45_/_0.28),transparent_65%)] opacity-0 transition-opacity duration-700 group-hover:opacity-100"
                 />
-                <m.icon className="h-6 w-6 text-accent-1" strokeWidth={1.6} />
+                <m.icon className="mx-auto h-6 w-6 text-accent-1 sm:mx-0" strokeWidth={1.6} />
                 <div className="mt-8 font-display text-4xl font-bold tracking-tight md:text-5xl">
                   {m.value}
                 </div>
