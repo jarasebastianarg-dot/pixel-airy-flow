@@ -50,6 +50,7 @@ import compactFront from "@/assets/bway/bway-compact-front.jpg.asset.json";
 import compactBack from "@/assets/bway/bway-compact-back.jpg.asset.json";
 import reel1 from "@/assets/bway/bway-event-reel-1.mp4.asset.json";
 import reel2 from "@/assets/bway/bway-event-reel-2.mp4.asset.json";
+import barberWeekBr from "@/assets/bway/bway-barber-week-br.mp4.asset.json";
 // New high-fidelity packaging + e-commerce screenshots
 import sonicAdentro from "@/assets/bway/bway-sonic-adentro.jpg.asset.json";
 import sonicNegro from "@/assets/bway/bway-sonic-negro.jpg.asset.json";
@@ -211,10 +212,10 @@ const reels = [
     body: "Stand activation, product demos and brand educators on-site.",
   },
   {
-    url: reel2.url,
+    url: barberWeekBr.url,
     country: "Brasil",
-    title: "Barber Event · São Paulo",
-    body: "Announcement and floor reel — traveled to Brazil to lead the stand set-up and represent the brand on the floor.",
+    title: "Barber Week · Brasil",
+    body: "Traveled to Brazil to design the stand, produce the graphics, organize the logistics and lead the on-site build — then represented the brand on the floor.",
   },
 ];
 
@@ -226,12 +227,12 @@ const ecomShots = [
 
 // Packaging spotlight — curated mockups for the dedicated section
 const packagingSpotlight = [
-  { url: sonicBlack.url, label: "Sonic · Black Edition system", kicker: "Sonic" },
-  { url: b10kAdentro.url, label: "B10K · Interior print", kicker: "B10K" },
-  { url: sonicNegro.url, label: "Sonic · Black Edition", kicker: "Sonic" },
-  { url: compactFrente.url, label: "Compact · Retail box", kicker: "Compact" },
-  { url: diecutUrban.url, label: "Urban · Retail box", kicker: "Urban" },
+  { url: brandCover.url, label: "B-WAY · Full Product Line System", kicker: "Line-up" },
+  { url: b10kAdentro.url, label: "B10K · Retail Box", kicker: "B10K" },
   { url: b10kAccessories.url, label: "B10K · Accessories", kicker: "Accessories" },
+  { url: sonicBlack.url, label: "Sonic · Black Edition", kicker: "Sonic" },
+  { url: diecutUrban.url, label: "Urban · Retail Box", kicker: "Urban" },
+  { url: compactFrente.url, label: "Compact · Retail Box", kicker: "Compact" },
 ];
 
 // Lightbox — clickable image zoom with spring animation
@@ -1031,13 +1032,13 @@ function BWayProject() {
               >
                 I led the{" "}
                 <span className="font-semibold text-foreground">
-                  design and on-site set-up of the stands
+                  stand design, graphics, logistics and on-site build
                 </span>{" "}
                 for every B-WAY activation — the local events in Argentina and the
                 international ones in Brazil and the US.{" "}
                 <span className="font-semibold text-accent-1">
-                  Traveled to Brazil to build the stand on the ground and represent
-                  the brand on the floor
+                  Traveled to Brazil to organize everything on the ground, assemble
+                  the stand and represent the brand on the floor
                 </span>{" "}
                 alongside the educator team.
               </motion.p>
@@ -1059,7 +1060,7 @@ function BWayProject() {
                       Evento · {r.country}
                     </span>
                     <span className="font-mono text-[0.6rem] font-semibold uppercase tracking-[0.22em] text-muted-foreground">
-                      Stand designed &amp; organized by me
+                      Stand design · graphics · build · organized by me
                     </span>
                   </div>
                   <div>
@@ -1073,13 +1074,15 @@ function BWayProject() {
                   <div className="mt-5 self-end overflow-hidden rounded-[calc(var(--radius)+18px)] border border-border bg-black shadow-[var(--shadow-card)]">
                     <video
                       src={r.url}
-                      className="aspect-[9/16] w-full object-cover"
+                      className="pointer-events-none aspect-[9/16] w-full object-cover"
                       playsInline
                       muted
                       loop
                       autoPlay
                       preload="metadata"
-                      controls
+                      disablePictureInPicture
+                      disableRemotePlayback
+                      controlsList="nodownload nofullscreen noplaybackrate noremoteplayback"
                     />
                   </div>
                 </motion.div>
