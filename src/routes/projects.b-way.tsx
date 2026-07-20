@@ -50,6 +50,7 @@ import compactFront from "@/assets/bway/bway-compact-front.jpg.asset.json";
 import compactBack from "@/assets/bway/bway-compact-back.jpg.asset.json";
 import reel1 from "@/assets/bway/bway-event-reel-1.mp4.asset.json";
 import reel2 from "@/assets/bway/bway-event-reel-2.mp4.asset.json";
+import barberWeekBr from "@/assets/bway/bway-barber-week-br.mp4.asset.json";
 // New high-fidelity packaging + e-commerce screenshots
 import sonicAdentro from "@/assets/bway/bway-sonic-adentro.jpg.asset.json";
 import sonicNegro from "@/assets/bway/bway-sonic-negro.jpg.asset.json";
