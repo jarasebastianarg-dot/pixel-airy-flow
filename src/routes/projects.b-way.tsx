@@ -1032,13 +1032,13 @@ function BWayProject() {
               >
                 I led the{" "}
                 <span className="font-semibold text-foreground">
-                  design and on-site set-up of the stands
+                  stand design, graphics, logistics and on-site build
                 </span>{" "}
                 for every B-WAY activation — the local events in Argentina and the
                 international ones in Brazil and the US.{" "}
                 <span className="font-semibold text-accent-1">
-                  Traveled to Brazil to build the stand on the ground and represent
-                  the brand on the floor
+                  Traveled to Brazil to organize everything on the ground, assemble
+                  the stand and represent the brand on the floor
                 </span>{" "}
                 alongside the educator team.
               </motion.p>
