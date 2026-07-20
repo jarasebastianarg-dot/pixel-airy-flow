@@ -150,7 +150,8 @@ const chapters = [
     kicker: "Where I Started",
     title: "Packaging & Social Media",
     body: "Started designing packaging for four product lines and every social media asset the brand needed.",
-    tags: ["Packaging", "Social Media", "Campaigns"],
+    body: "Started designing packaging for the full product range and every social media asset the brand needed — coordinating production directly with the factory in China from die-cut approvals to final print.",
+    tags: ["Packaging", "Social Media", "China Production"],
   },
   {
     n: "02",
