@@ -33,6 +33,8 @@ import {
   Rocket,
   MousePointerClick,
   ArrowDown,
+  X,
+  ZoomIn,
 } from "lucide-react";
 
 // Packaging references from previous portfolio
@@ -219,9 +221,99 @@ const reels = [
 const ecomShots = [
   { url: ecomUsHome.url, label: "Shopify USA · Homepage", country: "US" },
   { url: ecomBrHome.url, label: "Shopify Brasil · Homepage", country: "BR" },
-  { url: ecomBrCatalog.url, label: "Shopify Brasil · Catálogo", country: "BR" },
   { url: ecomArHome.url, label: "Shopify Argentina · Homepage", country: "AR" },
 ];
+
+// Packaging spotlight — curated mockups for the dedicated section
+const packagingSpotlight = [
+  { url: brandCover.url, label: "Full product line system", kicker: "Line-up" },
+  { url: b10kAdentro.url, label: "B10K · Interior print", kicker: "B10K" },
+  { url: sonicNegro.url, label: "Sonic · Black Edition", kicker: "Sonic" },
+  { url: compactFrente.url, label: "Compact · Retail box", kicker: "Compact" },
+  { url: diecutUrban.url, label: "Urban · Retail box", kicker: "Urban" },
+  { url: b10kAccessories.url, label: "B10K · Accessories", kicker: "Accessories" },
+];
+
+// Lightbox — clickable image zoom with spring animation
+function Lightbox({
+  open,
+  src,
+  label,
+  onClose,
+}: {
+  open: boolean;
+  src: string | null;
+  label?: string;
+  onClose: () => void;
+}) {
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", onKey);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prev;
+    };
+  }, [open, onClose]);
+
+  return (
+    <AnimatePresence>
+      {open && src ? (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.25 }}
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-foreground/85 p-4 backdrop-blur-md md:p-10"
+          onClick={onClose}
+          role="dialog"
+          aria-modal="true"
+          aria-label={label ?? "Image preview"}
+        >
+          <motion.button
+            type="button"
+            onClick={onClose}
+            initial={{ opacity: 0, y: -6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0 }}
+            className="absolute right-4 top-4 z-10 inline-flex h-11 w-11 items-center justify-center rounded-full bg-background/90 text-foreground shadow-[var(--shadow-card)] transition-colors hover:bg-background md:right-6 md:top-6"
+            aria-label="Close preview"
+          >
+            <X className="h-5 w-5" />
+          </motion.button>
+          {label ? (
+            <div className="pointer-events-none absolute left-1/2 top-4 -translate-x-1/2 rounded-full bg-background/90 px-4 py-1.5 font-mono text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-foreground shadow-[var(--shadow-card)] md:top-6">
+              {label}
+            </div>
+          ) : null}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.94, y: 10 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.96, y: 10 }}
+            transition={{ type: "spring", stiffness: 240, damping: 26 }}
+            className="relative max-h-[90vh] max-w-6xl overflow-hidden rounded-3xl border border-white/10 bg-background shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div
+              className="max-h-[90vh] w-full overflow-y-auto overscroll-contain [scrollbar-width:thin] [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-foreground/20"
+            >
+              <img
+                src={src}
+                alt={label ?? ""}
+                className="block h-auto w-full max-w-[92vw] select-none md:max-w-[80vw]"
+                draggable={false}
+              />
+            </div>
+          </motion.div>
+        </motion.div>
+      ) : null}
+    </AnimatePresence>
+  );
+}
 
 const metrics = [
   { icon: TrendingUp, value: "Product Designer → Brand Manager", label: "Promoted after two years of expanding scope — from packaging bench to running the brand." },
