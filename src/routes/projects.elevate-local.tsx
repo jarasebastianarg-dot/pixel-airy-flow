@@ -691,10 +691,6 @@ function ElevateLocalProject() {
               variants={fadeUp}
               className="relative overflow-hidden rounded-[calc(var(--radius)+22px)] border border-white/10 bg-[oklch(0.18_0.008_60)] shadow-[var(--shadow-card-hover)]"
             >
-              <span
-                aria-hidden
-                className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,oklch(0.72_0.18_45_/_0.18),transparent_55%),radial-gradient(circle_at_85%_85%,oklch(0.7_0.19_25_/_0.14),transparent_60%)]"
-              />
               <div className="relative flex aspect-[16/8] items-center justify-center px-10 md:px-24">
                 <img
                   src={elHorizontalLight.url}
@@ -704,7 +700,7 @@ function ElevateLocalProject() {
               </div>
               <div className="relative flex items-center justify-between border-t border-white/10 bg-black/20 px-6 py-4 font-mono text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-white/70 backdrop-blur">
                 <span>Elevate Local · Primary Lockup</span>
-                <span className="text-accent-1">Obsidiana Mate #1E1A17</span>
+                <span className="text-accent-1">Matte Obsidian #1E1A17</span>
               </div>
             </motion.div>
           </Reveal>
