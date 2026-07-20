@@ -898,7 +898,7 @@ function BWayProject() {
                       src={s.url}
                       alt={s.label}
                       loading="lazy"
-                      className="block h-auto w-full select-none transition-transform duration-[6000ms] ease-linear group-hover:-translate-y-[calc(100%-100%/1.25)]"
+                      className="block h-auto w-full select-none transition-transform duration-[7000ms] ease-linear group-hover:-translate-y-[70%]"
                       draggable={false}
                     />
                     <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
