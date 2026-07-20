@@ -178,8 +178,8 @@ type ExecutionCardData = (typeof executionCards)[number];
 function ExecutionCard({ card, index }: { card: ExecutionCardData; index: number }) {
   const Icon = card.icon;
   const isMobile = useIsMobile();
-  const [expanded, setHovered] = useState(false);
-  const expanded = isMobile || expanded;
+  const [hovered, setHovered] = useState(false);
+  const expanded = isMobile || hovered;
   return (
     <motion.article
       variants={fadeUp}
