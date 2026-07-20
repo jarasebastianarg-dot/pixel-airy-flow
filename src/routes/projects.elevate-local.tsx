@@ -791,27 +791,35 @@ function ElevateLocalProject() {
                       {c.hex}
                     </span>
                   </div>
-                  <div className="space-y-2 p-5">
+                  <div className="p-5">
                     <div className="text-base font-bold tracking-tight text-foreground">
                       {c.name}
                     </div>
-                    <div className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-accent-1">
+                    <div className="mt-1 font-mono text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-accent-1">
                       {c.role}
                     </div>
-                    <dl className="mt-4 space-y-3 font-mono text-xs text-muted-foreground">
-                      <div className="flex items-baseline justify-between gap-3">
-                        <dt className="shrink-0 uppercase tracking-[0.2em] text-foreground/50">
+                    <dl className="mt-5 divide-y divide-border/70 border-t border-border/70 font-mono">
+                      <div className="flex items-center justify-between gap-3 py-2.5">
+                        <dt className="text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
+                          HEX
+                        </dt>
+                        <dd className="whitespace-nowrap text-xs font-semibold tabular-nums text-foreground">
+                          {c.hex}
+                        </dd>
+                      </div>
+                      <div className="flex items-center justify-between gap-3 py-2.5">
+                        <dt className="text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
                           RGB
                         </dt>
-                        <dd className="whitespace-nowrap tracking-widest tabular-nums text-foreground/80">
+                        <dd className="whitespace-nowrap text-xs tabular-nums text-foreground/85">
                           {c.rgb}
                         </dd>
                       </div>
-                      <div className="flex items-baseline justify-between gap-3">
-                        <dt className="shrink-0 uppercase tracking-[0.2em] text-foreground/50">
+                      <div className="flex items-center justify-between gap-3 py-2.5">
+                        <dt className="text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
                           CMYK
                         </dt>
-                        <dd className="whitespace-nowrap tracking-widest tabular-nums text-foreground/80">
+                        <dd className="whitespace-nowrap text-xs tabular-nums text-foreground/85">
                           {c.cmyk}
                         </dd>
                       </div>
