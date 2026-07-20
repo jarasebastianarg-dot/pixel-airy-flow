@@ -1060,7 +1060,7 @@ function BWayProject() {
                       Evento · {r.country}
                     </span>
                     <span className="font-mono text-[0.6rem] font-semibold uppercase tracking-[0.22em] text-muted-foreground">
-                      Stand designed &amp; organized by me
+                      Stand design · graphics · build · organized by me
                     </span>
                   </div>
                   <div>
@@ -1074,13 +1074,15 @@ function BWayProject() {
                   <div className="mt-5 self-end overflow-hidden rounded-[calc(var(--radius)+18px)] border border-border bg-black shadow-[var(--shadow-card)]">
                     <video
                       src={r.url}
-                      className="aspect-[9/16] w-full object-cover"
+                      className="pointer-events-none aspect-[9/16] w-full object-cover"
                       playsInline
                       muted
                       loop
                       autoPlay
                       preload="metadata"
-                      controls
+                      disablePictureInPicture
+                      disableRemotePlayback
+                      controlsList="nodownload nofullscreen noplaybackrate noremoteplayback"
                     />
                   </div>
                 </motion.div>
