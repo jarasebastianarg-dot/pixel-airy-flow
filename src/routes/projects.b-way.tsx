@@ -747,16 +747,16 @@ function BWayProject() {
           </Reveal>
         </div>
 
-        {/* Events & Reels */}
-        <div className="border-t border-border/60 bg-secondary/30">
+        {/* E-Commerce Storefronts */}
+        <div className="border-t border-border/60">
           <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
             <Reveal className="grid grid-cols-1 gap-8 md:grid-cols-12 md:items-end" stagger={0.08}>
               <motion.div variants={fadeUp} className="md:col-span-7">
-                <SectionLabel>03 — On The Floor</SectionLabel>
+                <SectionLabel>02.6 — E-Commerce</SectionLabel>
                 <h2 className="mt-6 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
-                  Events, educators &amp;{" "}
+                  Shopify stores built{" "}
                   <span className="font-serif italic font-normal text-accent-1">
-                    real-world activation
+                    from zero
                   </span>
                   .
                 </h2>
@@ -765,35 +765,110 @@ function BWayProject() {
                 variants={fadeUp}
                 className="text-base leading-relaxed text-muted-foreground md:col-span-5 md:text-lg"
               >
-                Barber Week, product launches and international trade shows — the digital
-                system finally colliding with the physical floor. Content produced with the
-                brand educator team.
+                Architected and launched the Brazil and Argentina storefronts —
+                catalog, checkout, localized copy and payment logic — then ran
+                them day-to-day.
               </motion.p>
             </Reveal>
-            <Reveal className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2" stagger={0.1}>
+            <Reveal className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3" stagger={0.08}>
+              {ecomShots.map((s) => (
+                <motion.a
+                  key={s.url}
+                  href={s.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  variants={fadeUp}
+                  whileHover={{ y: -4 }}
+                  transition={{ type: "spring", stiffness: 260, damping: 22 }}
+                  className="group relative block overflow-hidden rounded-[calc(var(--radius)+14px)] border border-border bg-card shadow-[var(--shadow-card)] transition-shadow duration-500 hover:shadow-[var(--shadow-card-hover)]"
+                >
+                  <div className="flex items-center justify-between border-b border-border bg-secondary/60 px-4 py-2">
+                    <span className="font-mono text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
+                      {s.label}
+                    </span>
+                    <span className="rounded-full bg-gradient-accent px-2 py-0.5 text-[0.6rem] font-bold uppercase tracking-widest text-accent-foreground">
+                      {s.country}
+                    </span>
+                  </div>
+                  <div className="relative aspect-[3/4] w-full overflow-hidden bg-background">
+                    <img
+                      src={s.url}
+                      alt={s.label}
+                      loading="lazy"
+                      className="h-full w-full object-cover object-top transition-transform duration-[6000ms] ease-linear group-hover:-translate-y-[35%]"
+                    />
+                  </div>
+                </motion.a>
+              ))}
+            </Reveal>
+          </div>
+        </div>
+
+        {/* Events & Reels */}
+        <div className="border-t border-border/60 bg-secondary/30">
+          <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
+            <Reveal className="max-w-4xl" stagger={0.08}>
+              <motion.div variants={fadeUp}>
+                <SectionLabel>03 — On The Floor</SectionLabel>
+                <h2 className="mt-6 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
+                  Events I{" "}
+                  <span className="font-serif italic font-normal text-accent-1">
+                    organized
+                  </span>{" "}
+                  &amp; designed.
+                </h2>
+              </motion.div>
+              <motion.p
+                variants={fadeUp}
+                className="mt-6 text-base leading-relaxed text-muted-foreground md:text-lg"
+              >
+                I led the{" "}
+                <span className="font-semibold text-foreground">
+                  design and on-site set-up of the stands
+                </span>{" "}
+                for every B-WAY activation — the local events in Argentina and the
+                international ones in Brazil and the US.{" "}
+                <span className="font-semibold text-accent-1">
+                  Traveled to Brazil to build the stand on the ground and represent
+                  the brand on the floor
+                </span>{" "}
+                alongside the educator team.
+              </motion.p>
+            </Reveal>
+            <Reveal className="mt-14 grid grid-cols-1 gap-8 sm:grid-cols-2" stagger={0.1}>
               {reels.map((r) => (
                 <motion.div
                   key={r.url}
                   variants={fadeUp}
                   whileHover={{ y: -4 }}
                   transition={{ type: "spring", stiffness: 260, damping: 22 }}
-                  className="group relative overflow-hidden rounded-[calc(var(--radius)+18px)] border border-border bg-black shadow-[var(--shadow-card)]"
+                  className="group relative flex flex-col"
                 >
-                  <video
-                    src={r.url}
-                    className="aspect-[9/16] w-full object-cover"
-                    playsInline
-                    muted
-                    loop
-                    autoPlay
-                    preload="metadata"
-                    controls
-                  />
-                  <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 to-transparent p-5">
-                    <div className="font-display text-lg font-bold text-white md:text-xl">
-                      {r.title}
-                    </div>
-                    <div className="mt-1 text-sm text-white/70">{r.body}</div>
+                  <div className="mb-4 flex items-center gap-3">
+                    <span className="rounded-full bg-gradient-accent px-3 py-1 font-mono text-[0.65rem] font-bold uppercase tracking-[0.22em] text-accent-foreground shadow-[var(--shadow-accent)]">
+                      Evento · {r.country}
+                    </span>
+                    <span className="font-mono text-[0.6rem] font-semibold uppercase tracking-[0.22em] text-muted-foreground">
+                      Stand designed &amp; organized by me
+                    </span>
+                  </div>
+                  <h3 className="text-xl font-bold tracking-tight md:text-2xl">
+                    {r.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground md:text-base">
+                    {r.body}
+                  </p>
+                  <div className="mt-5 overflow-hidden rounded-[calc(var(--radius)+18px)] border border-border bg-black shadow-[var(--shadow-card)]">
+                    <video
+                      src={r.url}
+                      className="aspect-[9/16] w-full object-cover"
+                      playsInline
+                      muted
+                      loop
+                      autoPlay
+                      preload="metadata"
+                      controls
+                    />
                   </div>
                 </motion.div>
               ))}
