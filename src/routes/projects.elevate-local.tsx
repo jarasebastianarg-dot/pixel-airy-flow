@@ -99,7 +99,12 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
   );
 }
 
-const stack = ["Adobe Illustrator", "Loom"];
+const stack = [
+  "Figma",
+  "Adobe Illustrator",
+  "Adobe Photoshop",
+  "Loom",
+];
 
 const focus = ["B2B Visual Strategy", "Medical Sector", "Remote Collaboration"];
 
@@ -131,10 +136,26 @@ const executionCards = [
 ];
 
 const metrics = [
-  { icon: Globe2, value: "100%", label: "Asynchronous Remote Delivery" },
-  { icon: Layers, value: "3", label: "Strategic Concept Directions" },
-  { icon: Clock, value: "< 48h", label: "Average Revision Turnaround" },
-  { icon: Briefcase, value: "B2B", label: "Clinical Market Positioning" },
+  {
+    icon: Briefcase,
+    value: "B2B",
+    label: "Positioned for European clinic directors — a credibility-first identity built to unlock high-ticket healthcare contracts.",
+  },
+  {
+    icon: Sparkles,
+    value: "1",
+    label: "Unified visual system across web, decks and paid ads — the agency finally shows up consistent in every patient-facing touchpoint.",
+  },
+  {
+    icon: Clock,
+    value: "< 48h",
+    label: "Revision turnaround end-to-end async — the agency ships pitches and campaigns faster than in-house competitors.",
+  },
+  {
+    icon: Globe2,
+    value: "100%",
+    label: "Fully remote delivery across time zones — proof the brand can run at European speed with no on-site friction.",
+  },
 ];
 
 function MediaPlaceholder({
