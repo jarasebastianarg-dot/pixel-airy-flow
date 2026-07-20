@@ -296,19 +296,15 @@ function Lightbox({
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.96, y: 10 }}
             transition={{ type: "spring", stiffness: 240, damping: 26 }}
-            className="relative max-h-[90vh] max-w-6xl overflow-hidden rounded-3xl border border-white/10 bg-background shadow-2xl"
+            className="relative flex items-center justify-center overflow-hidden rounded-3xl border border-white/10 bg-background shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
-            <div
-              className="max-h-[90vh] w-full overflow-y-auto overscroll-contain [scrollbar-width:thin] [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-foreground/20"
-            >
-              <img
-                src={src}
-                alt={label ?? ""}
-                className="block h-auto w-full max-w-[92vw] select-none md:max-w-[80vw]"
-                draggable={false}
-              />
-            </div>
+            <img
+              src={src}
+              alt={label ?? ""}
+              className="block max-h-[88vh] max-w-[92vw] w-auto h-auto object-contain select-none md:max-w-[80vw]"
+              draggable={false}
+            />
           </motion.div>
         </motion.div>
       ) : null}
@@ -853,7 +849,7 @@ function BWayProject() {
         {/* Packaging Work */}
         <div className="border-t border-border/60 bg-secondary/30">
           <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
-            <Reveal className="grid grid-cols-1 gap-8 md:grid-cols-12 md:items-end" stagger={0.08}>
+            <Reveal className="grid grid-cols-1 gap-8 md:grid-cols-12 md:items-start" stagger={0.08}>
               <motion.div variants={fadeUp} className="md:col-span-7">
                 <SectionLabel>02.5 — Packaging</SectionLabel>
                 <h2 className="mt-6 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
