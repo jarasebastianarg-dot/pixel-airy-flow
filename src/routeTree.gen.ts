@@ -13,6 +13,7 @@ import { Route as McpRouteImport } from './routes/mcp'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProjectsPawRoyaltyRouteImport } from './routes/projects.paw-royalty'
 import { Route as ProjectsFolkwaysRouteImport } from './routes/projects.folkways'
+import { Route as ProjectsElevateLocalRouteImport } from './routes/projects.elevate-local'
 import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
 import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]/list-tools'
 import { Route as Char91DotmcpChar93InvokeToolToolRouteImport } from './routes/[.mcp]/invoke-tool/$tool'
@@ -35,6 +36,11 @@ const ProjectsPawRoyaltyRoute = ProjectsPawRoyaltyRouteImport.update({
 const ProjectsFolkwaysRoute = ProjectsFolkwaysRouteImport.update({
   id: '/projects/folkways',
   path: '/projects/folkways',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjectsElevateLocalRoute = ProjectsElevateLocalRouteImport.update({
+  id: '/projects/elevate-local',
+  path: '/projects/elevate-local',
   getParentRoute: () => rootRouteImport,
 } as any)
 const Char91DotwellKnownChar93OauthProtectedResourceRoute =
@@ -61,6 +67,7 @@ export interface FileRoutesByFullPath {
   '/mcp': typeof McpRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
+  '/projects/elevate-local': typeof ProjectsElevateLocalRoute
   '/projects/folkways': typeof ProjectsFolkwaysRoute
   '/projects/paw-royalty': typeof ProjectsPawRoyaltyRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
@@ -70,6 +77,7 @@ export interface FileRoutesByTo {
   '/mcp': typeof McpRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
+  '/projects/elevate-local': typeof ProjectsElevateLocalRoute
   '/projects/folkways': typeof ProjectsFolkwaysRoute
   '/projects/paw-royalty': typeof ProjectsPawRoyaltyRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
@@ -80,6 +88,7 @@ export interface FileRoutesById {
   '/mcp': typeof McpRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
+  '/projects/elevate-local': typeof ProjectsElevateLocalRoute
   '/projects/folkways': typeof ProjectsFolkwaysRoute
   '/projects/paw-royalty': typeof ProjectsPawRoyaltyRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
@@ -91,6 +100,7 @@ export interface FileRouteTypes {
     | '/mcp'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
+    | '/projects/elevate-local'
     | '/projects/folkways'
     | '/projects/paw-royalty'
     | '/.mcp/invoke-tool/$tool'
@@ -100,6 +110,7 @@ export interface FileRouteTypes {
     | '/mcp'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
+    | '/projects/elevate-local'
     | '/projects/folkways'
     | '/projects/paw-royalty'
     | '/.mcp/invoke-tool/$tool'
@@ -109,6 +120,7 @@ export interface FileRouteTypes {
     | '/mcp'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
+    | '/projects/elevate-local'
     | '/projects/folkways'
     | '/projects/paw-royalty'
     | '/.mcp/invoke-tool/$tool'
@@ -119,6 +131,7 @@ export interface RootRouteChildren {
   McpRoute: typeof McpRoute
   Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
   Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
+  ProjectsElevateLocalRoute: typeof ProjectsElevateLocalRoute
   ProjectsFolkwaysRoute: typeof ProjectsFolkwaysRoute
   ProjectsPawRoyaltyRoute: typeof ProjectsPawRoyaltyRoute
   Char91DotmcpChar93InvokeToolToolRoute: typeof Char91DotmcpChar93InvokeToolToolRoute
@@ -154,6 +167,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProjectsFolkwaysRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/projects/elevate-local': {
+      id: '/projects/elevate-local'
+      path: '/projects/elevate-local'
+      fullPath: '/projects/elevate-local'
+      preLoaderRoute: typeof ProjectsElevateLocalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/.well-known/oauth-protected-resource': {
       id: '/.well-known/oauth-protected-resource'
       path: '/.well-known/oauth-protected-resource'
@@ -184,6 +204,7 @@ const rootRouteChildren: RootRouteChildren = {
   Char91DotmcpChar93ListToolsRoute: Char91DotmcpChar93ListToolsRoute,
   Char91DotwellKnownChar93OauthProtectedResourceRoute:
     Char91DotwellKnownChar93OauthProtectedResourceRoute,
+  ProjectsElevateLocalRoute: ProjectsElevateLocalRoute,
   ProjectsFolkwaysRoute: ProjectsFolkwaysRoute,
   ProjectsPawRoyaltyRoute: ProjectsPawRoyaltyRoute,
   Char91DotmcpChar93InvokeToolToolRoute: Char91DotmcpChar93InvokeToolToolRoute,
