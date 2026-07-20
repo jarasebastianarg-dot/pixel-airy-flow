@@ -48,6 +48,15 @@ import compactFront from "@/assets/bway/bway-compact-front.jpg.asset.json";
 import compactBack from "@/assets/bway/bway-compact-back.jpg.asset.json";
 import reel1 from "@/assets/bway/bway-event-reel-1.mp4.asset.json";
 import reel2 from "@/assets/bway/bway-event-reel-2.mp4.asset.json";
+// New high-fidelity packaging + e-commerce screenshots
+import sonicAdentro from "@/assets/bway/bway-sonic-adentro.jpg.asset.json";
+import sonicNegro from "@/assets/bway/bway-sonic-negro.jpg.asset.json";
+import b10kAdentro from "@/assets/bway/bway-b10k-adentro.jpg.asset.json";
+import compactFrente from "@/assets/bway/bway-compact-frente.jpg.asset.json";
+import diecutUrban from "@/assets/bway/bway-diecut-urban.jpg.asset.json";
+import ecomBrHome from "@/assets/bway/bway-ecom-br-home.png.asset.json";
+import ecomBrCatalog from "@/assets/bway/bway-ecom-br-catalog.png.asset.json";
+import ecomArHome from "@/assets/bway/bway-ecom-ar-home.png.asset.json";
 
 export const Route = createFileRoute("/projects/b-way")({
   component: BWayProject,
@@ -136,33 +145,33 @@ const chapters = [
     n: "01",
     icon: Package,
     kicker: "Where I Started",
-    title: "Packaging & Product Design",
-    body: "I joined B-WAY as a Product Designer, focused on the physical craft. I designed the packaging system for four product lines — B10K, Urban, Sonic and Compact — building die-cuts, interior architecture and a bold visual language that broke away from the conservative codes of the barber industry.",
-    tags: ["Die-cuts", "Print Production", "Product Renders", "Unboxing Experience"],
+    title: "Packaging & Social Media",
+    body: "Started designing packaging for four product lines and every social media asset the brand needed.",
+    tags: ["Packaging", "Social Media", "Campaigns"],
   },
   {
     n: "02",
-    icon: Palette,
-    kicker: "Growing the Scope",
-    title: "Social Media & Brand Design",
-    body: "The scope expanded fast. I started designing every social media asset, campaign key visual, and launch collateral across regions. Each product drop was translated into an editorial visual system that could travel from Instagram grids to trade-show print in a single sprint.",
-    tags: ["Instagram Grids", "Campaign Key Visuals", "Launch Collateral", "Visual System"],
+    icon: ShoppingBag,
+    kicker: "Going Digital",
+    title: "E-Commerce Management",
+    body: "Took ownership of the e-commerce — built Shopify BR and AR from scratch and ran the operation day-to-day.",
+    tags: ["Shopify BR", "Shopify AR", "Ops"],
   },
   {
     n: "03",
-    icon: ShoppingBag,
-    kicker: "Going Digital",
-    title: "E-Commerce, from Zero",
-    body: "Then I built the digital layer. I architected and launched Shopify storefronts for Brazil and Argentina from scratch — catalog, checkout, localized copy and payment logic — while running Meta Ads and email flows that tied every campaign back to revenue.",
-    tags: ["Shopify BR", "Shopify AR", "Meta Ads", "Email Automations"],
+    icon: Megaphone,
+    kicker: "Growing the Brand",
+    title: "Marketing Campaigns",
+    body: "Led marketing campaigns across markets — paid, email and content — tying every launch back to revenue.",
+    tags: ["Meta Ads", "Email", "Launches"],
   },
   {
     n: "04",
-    icon: Rocket,
-    kicker: "The Promotion",
-    title: "Brand Manager Across 3 Markets",
-    body: "By the end of year two, I was promoted to Brand Manager. I led a 6-person interdisciplinary team across the US, Brazil and Argentina, coordinated brand educators on how to speak and demo the product, and designed the trade-show stands we activated at Barber Week and beyond.",
-    tags: ["6-Person Team", "US · BR · AR", "Educators", "Trade-Show Stands", "Ambassadors"],
+    icon: Calendar,
+    kicker: "On The Floor",
+    title: "Events & Trade Shows",
+    body: "Owned the events — designed and organized the stands in Argentina, Brazil and the US, and led brand educators on-site.",
+    tags: ["Stand Design", "AR · BR · US", "Educators"],
   },
 ];
 
@@ -176,13 +185,17 @@ const executionCards = chapters.map((c) => ({
 
 const packaging = [
   { url: brandCover.url, label: "B-WAY · Full Product Line System", kicker: "Line-up" },
-  { url: b10kMockup.url, label: "B10K · Packaging Mockup", kicker: "B10K" },
-  { url: b10kInside.url, label: "B10K · Interior Architecture", kicker: "Interior" },
-  { url: b10kAccessories.url, label: "B10K · Accessories Packaging", kicker: "Accessories" },
+  { url: diecutUrban.url, label: "Urban · Retail Packaging", kicker: "Urban" },
+  { url: b10kAdentro.url, label: "B10K · Box & Interior Print", kicker: "B10K" },
+  { url: sonicNegro.url, label: "Sonic · Black Edition Packaging", kicker: "Sonic" },
+  { url: sonicAdentro.url, label: "Sonic · Interior Architecture", kicker: "Interior" },
+  { url: compactFrente.url, label: "Compact · Retail Packaging", kicker: "Compact" },
+  { url: b10kMockup.url, label: "B10K · Product Mockup", kicker: "Mockup" },
   { url: urbanDiecut.url, label: "Urban · Die-cut Technical Drawing", kicker: "Die-cut" },
   { url: urbanBack.url, label: "Urban · Back Packaging Details", kicker: "Urban" },
-  { url: sonicBlack.url, label: "Sonic · Black Edition", kicker: "Sonic" },
-  { url: sonicInside.url, label: "Sonic · Interior Packaging", kicker: "Interior" },
+  { url: b10kAccessories.url, label: "B10K · Accessories Packaging", kicker: "Accessories" },
+  { url: sonicBlack.url, label: "Sonic · Alt Edition", kicker: "Sonic" },
+  { url: sonicInside.url, label: "Sonic · Interior Detail", kicker: "Interior" },
   { url: compactFront.url, label: "Compact · Front View", kicker: "Compact" },
   { url: compactBack.url, label: "Compact · Back Packaging", kicker: "Compact" },
 ];
@@ -190,21 +203,29 @@ const packaging = [
 const reels = [
   {
     url: reel1.url,
-    title: "Barber Week · Live Event Reel",
-    body: "Trade-show floor content — stand activation, product demos and brand educators on-site.",
+    country: "Argentina",
+    title: "Barber Week · Buenos Aires",
+    body: "Stand activation, product demos and brand educators on-site.",
   },
   {
     url: reel2.url,
-    title: "Innovación · Visión · Identidad",
-    body: "Announcement reel: the most anticipated barber event of the year, produced in-house with the brand educator team.",
+    country: "Brasil",
+    title: "Barber Event · São Paulo",
+    body: "Announcement and floor reel — traveled to Brazil to lead the stand set-up and represent the brand on the floor.",
   },
 ];
 
+const ecomShots = [
+  { url: ecomBrHome.url, label: "Shopify Brasil · Homepage", country: "BR" },
+  { url: ecomBrCatalog.url, label: "Shopify Brasil · Catálogo", country: "BR" },
+  { url: ecomArHome.url, label: "Shopify Argentina · Homepage", country: "AR" },
+];
+
 const metrics = [
-  { icon: Globe2, value: "3", label: "International Markets (US, BR, AR)" },
-  { icon: Radar, value: "360°", label: "Omnichannel Campaigns Executed" },
-  { icon: Users, value: "6-Person", label: "Interdisciplinary Team Led" },
-  { icon: Calendar, value: "300+", label: "Attendees at Experiential Events" },
+  { icon: TrendingUp, value: "Product Designer → Brand Manager", label: "Promoted after two years of expanding scope — from packaging bench to running the brand." },
+  { icon: Layers, value: "5 disciplines owned", label: "Packaging, social, e-commerce, marketing campaigns and experiential events — all under one role." },
+  { icon: Globe2, value: "3 markets managed", label: "Argentina, Brazil and the US — Shopify stores, campaigns and stands localized for each." },
+  { icon: GraduationCap, value: "Where I grew the most", label: "The role where I stopped being just a designer and learned to lead a brand end-to-end." },
 ];
 
 function MediaPlaceholder({
