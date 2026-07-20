@@ -23,28 +23,34 @@ import {
   Clock,
   Briefcase,
   Plus,
+  Users,
+  Megaphone,
+  Calendar,
+  ShoppingBag,
+  UserCheck,
+  Radar,
 } from "lucide-react";
 
 export const Route = createFileRoute("/projects/b-way")({
-  component: ElevateLocalProject,
+  component: BWayProject,
   head: () => ({
     meta: [
-      { title: "Elevate Local — Clinical Authority & Strategic Brand Identity" },
+      { title: "B-WAY — Scaling an Omnichannel Brand Across 3 International Markets" },
       {
         name: "description",
         content:
-          "Case study: building a B2B brand identity for a marketing agency serving European medical clinics — 100% remote, async, and clinically credible.",
+          "Case study: architecting global e-commerce, leading a 6-person team, and orchestrating experiential events for B-WAY across the US, Brazil and Argentina.",
       },
-      { property: "og:title", content: "Elevate Local — Brand Identity Case Study" },
+      { property: "og:title", content: "B-WAY — Omnichannel Growth Case Study" },
       {
         property: "og:description",
         content:
-          "How I designed a clinical, high-trust B2B brand identity for the European medical sector — delivered fully async.",
+          "How I scaled B-WAY across 3 international markets — bridging Shopify, Meta Ads, ambassador management and large-scale physical events.",
       },
       { property: "og:type", content: "article" },
-      { property: "og:url", content: "/projects/elevate-local" },
+      { property: "og:url", content: "/projects/b-way" },
     ],
-    links: [{ rel: "canonical", href: "/projects/elevate-local" }],
+    links: [{ rel: "canonical", href: "/projects/b-way" }],
   }),
 });
 
