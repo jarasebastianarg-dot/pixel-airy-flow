@@ -212,10 +212,10 @@ const reels = [
     body: "Stand activation, product demos and brand educators on-site.",
   },
   {
-    url: reel2.url,
+    url: barberWeekBr.url,
     country: "Brasil",
-    title: "Barber Event · São Paulo",
-    body: "Announcement and floor reel — traveled to Brazil to lead the stand set-up and represent the brand on the floor.",
+    title: "Barber Week · Brasil",
+    body: "Traveled to Brazil to design the stand, produce the graphics, organize the logistics and lead the on-site build — then represented the brand on the floor.",
   },
 ];
 
@@ -227,12 +227,12 @@ const ecomShots = [
 
 // Packaging spotlight — curated mockups for the dedicated section
 const packagingSpotlight = [
-  { url: sonicBlack.url, label: "Sonic · Black Edition system", kicker: "Sonic" },
-  { url: b10kAdentro.url, label: "B10K · Interior print", kicker: "B10K" },
-  { url: sonicNegro.url, label: "Sonic · Black Edition", kicker: "Sonic" },
-  { url: compactFrente.url, label: "Compact · Retail box", kicker: "Compact" },
-  { url: diecutUrban.url, label: "Urban · Retail box", kicker: "Urban" },
+  { url: brandCover.url, label: "B-WAY · Full Product Line System", kicker: "Line-up" },
+  { url: b10kAdentro.url, label: "B10K · Retail Box", kicker: "B10K" },
   { url: b10kAccessories.url, label: "B10K · Accessories", kicker: "Accessories" },
+  { url: sonicBlack.url, label: "Sonic · Black Edition", kicker: "Sonic" },
+  { url: diecutUrban.url, label: "Urban · Retail Box", kicker: "Urban" },
+  { url: compactFrente.url, label: "Compact · Retail Box", kicker: "Compact" },
 ];
 
 // Lightbox — clickable image zoom with spring animation
