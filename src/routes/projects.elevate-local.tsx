@@ -340,7 +340,7 @@ const logoVariants: LogoVariant[] = [
   {
     kicker: "Primary",
     label: "Horizontal Logotype",
-    caption: "Obsidiana Mate on Piedra Caliza. Editorial pause anchored by the center dot.",
+    caption: "Matte Obsidian on Limestone. Editorial pause anchored by the center dot.",
     src: elHorizontalDark.url,
     alt: "Elevate Local horizontal logotype — dark on light",
     theme: "light",
@@ -348,7 +348,7 @@ const logoVariants: LogoVariant[] = [
   {
     kicker: "Negative",
     label: "Horizontal · Reversed",
-    caption: "Piedra Caliza on Obsidiana Mate. Same weight and legibility in negative.",
+    caption: "Limestone on Matte Obsidian. Same weight and legibility in negative.",
     src: elHorizontalLight.url,
     alt: "Elevate Local horizontal logotype — light on dark",
     theme: "dark",
@@ -381,28 +381,28 @@ const logoVariants: LogoVariant[] = [
 
 const palette = [
   {
-    name: "Obsidiana Mate",
+    name: "Matte Obsidian",
     hex: "#1E1A17",
     rgb: "30 · 26 · 23",
     cmyk: "72 · 68 · 67 · 85",
     role: "Primary CTA · Authority",
   },
   {
-    name: "Piedra Caliza",
+    name: "Limestone",
     hex: "#F0EFEB",
     rgb: "240 · 239 · 235",
     cmyk: "5 · 4 · 6 · 0",
     role: "Canvas · Editorial paper",
   },
   {
-    name: "Arena",
+    name: "Sand",
     hex: "#A39B92",
     rgb: "163 · 155 · 146",
     cmyk: "41 · 38 · 45 · 3",
     role: "Inactive states · Dividers",
   },
   {
-    name: "Cemento",
+    name: "Cement",
     hex: "#E3E1DC",
     rgb: "227 · 225 · 220",
     cmyk: "0 · 1 · 3 · 11",
