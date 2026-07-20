@@ -849,6 +849,100 @@ function BWayProject() {
           </Reveal>
         </div>
 
+        {/* Packaging Work */}
+        <div className="border-t border-border/60 bg-secondary/30">
+          <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
+            <Reveal className="grid grid-cols-1 gap-8 md:grid-cols-12 md:items-end" stagger={0.08}>
+              <motion.div variants={fadeUp} className="md:col-span-7">
+                <SectionLabel>02.5 — Packaging</SectionLabel>
+                <h2 className="mt-6 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
+                  Every box the brand{" "}
+                  <span className="font-serif italic font-normal text-accent-1">
+                    shipped
+                  </span>
+                  .
+                </h2>
+              </motion.div>
+              <motion.p
+                variants={fadeUp}
+                className="text-base leading-relaxed text-muted-foreground md:col-span-5 md:text-lg"
+              >
+                I designed the packaging for every B-WAY product line — die-cuts,
+                interior architecture, print production and retail-shelf systems.{" "}
+                <span className="font-semibold text-foreground">
+                  I also supervised every single launch
+                </span>{" "}
+                the brand rolled out from my first day through the end of{" "}
+                <span className="font-semibold text-accent-1">2025</span> —
+                keeping the visual language consistent across four product families
+                and three markets.
+              </motion.p>
+            </Reveal>
+
+            <Reveal
+              className="mt-12 grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6"
+              stagger={0.06}
+            >
+              {packagingSpotlight.map((p, i) => (
+                <motion.button
+                  key={p.url}
+                  type="button"
+                  onClick={() => openLightbox(p.url, p.label)}
+                  variants={fadeUp}
+                  whileHover={{ y: -4 }}
+                  transition={{ type: "spring", stiffness: 260, damping: 22 }}
+                  className="group relative block w-full overflow-hidden rounded-[calc(var(--radius)+14px)] border border-border bg-card text-left shadow-[var(--shadow-card)] transition-shadow duration-500 hover:shadow-[var(--shadow-card-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-1/60"
+                  aria-label={`Open ${p.label} preview`}
+                >
+                  <div className="absolute -top-3 left-3 z-10 inline-flex items-center gap-2 rounded-full border border-border bg-background px-2.5 py-1 font-mono text-[0.55rem] font-semibold uppercase tracking-[0.22em] text-muted-foreground shadow-[var(--shadow-card)]">
+                    <span className="text-accent-1">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    {p.kicker}
+                  </div>
+                  <div className="relative aspect-[4/3] w-full overflow-hidden bg-background">
+                    <img
+                      src={p.url}
+                      alt={p.label}
+                      loading="lazy"
+                      className="h-full w-full object-cover transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]"
+                      draggable={false}
+                    />
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-90 transition-opacity duration-500 group-hover:opacity-100" />
+                    <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-between gap-2 p-3">
+                      <span className="font-mono text-[0.6rem] font-semibold uppercase tracking-[0.22em] text-white/90">
+                        {p.label}
+                      </span>
+                      <span className="inline-flex items-center gap-1 rounded-full bg-white/95 px-2 py-0.5 font-mono text-[0.55rem] font-semibold uppercase tracking-[0.2em] text-foreground opacity-0 shadow-md transition-opacity duration-300 group-hover:opacity-100">
+                        <ZoomIn className="h-3 w-3" />
+                        Zoom
+                      </span>
+                    </div>
+                  </div>
+                </motion.button>
+              ))}
+            </Reveal>
+
+            <Reveal className="mt-10 flex flex-wrap gap-2" stagger={0.03}>
+              {[
+                "4 product lines",
+                "Die-cut engineering",
+                "Interior print",
+                "Retail shelf systems",
+                "Launch supervision · 2023 – 2025",
+              ].map((t) => (
+                <motion.span
+                  key={t}
+                  variants={fadeUp}
+                  className="rounded-full border border-border bg-card px-3 py-1 text-xs font-semibold text-foreground/80"
+                >
+                  {t}
+                </motion.span>
+              ))}
+            </Reveal>
+          </div>
+        </div>
+
         {/* E-Commerce Storefronts */}
         <div className="border-t border-border/60">
           <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
