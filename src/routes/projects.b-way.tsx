@@ -776,11 +776,11 @@ function BWayProject() {
 
       {/* The Growth Story */}
       <section className="border-t border-border/60">
-        <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
-          <Reveal className="grid grid-cols-1 gap-10 md:grid-cols-12 md:items-end" stagger={0.1}>
+        <div className="mx-auto max-w-6xl px-6 py-16 md:px-10 md:py-20">
+          <Reveal className="grid grid-cols-1 gap-6 md:grid-cols-12 md:items-end" stagger={0.1}>
             <motion.div variants={fadeUp} className="md:col-span-7">
               <SectionLabel>02 — The Growth Story</SectionLabel>
-              <h2 className="mt-6 text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl">
+              <h2 className="mt-4 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
                 Four{" "}
                 <span className="font-serif italic font-normal text-accent-1">
                   chapters
@@ -790,7 +790,7 @@ function BWayProject() {
             </motion.div>
             <motion.p
               variants={fadeUp}
-              className="text-base leading-relaxed text-muted-foreground md:col-span-5 md:text-lg"
+              className="text-sm leading-relaxed text-muted-foreground md:col-span-5 md:text-base"
             >
               The scope kept compounding. Each chapter added a new discipline on
               top of the last — packaging, then digital, then commerce, then people.
@@ -798,16 +798,16 @@ function BWayProject() {
             </motion.p>
           </Reveal>
 
-          <Reveal className="mt-14 space-y-6 md:space-y-10" stagger={0.08}>
+          <Reveal className="mt-10 space-y-4 md:space-y-6" stagger={0.08}>
             {chapters.map((c, i) => {
               const Icon = c.icon;
               return (
                 <motion.article
                   key={c.n}
                   variants={fadeUp}
-                  whileHover={{ y: -4 }}
+                  whileHover={{ y: -3 }}
                   transition={{ type: "spring", stiffness: 260, damping: 24 }}
-                  className="group relative grid grid-cols-1 gap-6 overflow-hidden rounded-[calc(var(--radius)+18px)] border border-border bg-card p-6 shadow-[var(--shadow-card)] transition-shadow duration-500 hover:shadow-[var(--shadow-card-hover)] md:grid-cols-12 md:gap-10 md:p-10"
+                  className="group relative grid grid-cols-1 gap-4 overflow-hidden rounded-[calc(var(--radius)+14px)] border border-border bg-card p-5 shadow-[var(--shadow-card)] transition-shadow duration-500 hover:shadow-[var(--shadow-card-hover)] md:grid-cols-12 md:gap-6 md:p-7"
                 >
                   <span
                     aria-hidden
@@ -815,29 +815,29 @@ function BWayProject() {
                   />
                   <div className="relative md:col-span-3">
                     <div className="flex items-center gap-3">
-                      <span className="grid h-11 w-11 place-items-center rounded-2xl bg-secondary text-accent-1 ring-1 ring-inset ring-border transition-colors duration-300 group-hover:bg-accent-1 group-hover:text-white">
-                        <Icon className="h-5 w-5" strokeWidth={1.6} />
+                      <span className="grid h-10 w-10 place-items-center rounded-xl bg-secondary text-accent-1 ring-1 ring-inset ring-border transition-colors duration-300 group-hover:bg-accent-1 group-hover:text-white">
+                        <Icon className="h-4 w-4" strokeWidth={1.6} />
                       </span>
-                      <div className="font-display text-4xl font-bold tracking-tight text-accent-1 md:text-5xl">
+                      <div className="font-display text-3xl font-bold tracking-tight text-accent-1 md:text-4xl">
                         {c.n}
                       </div>
                     </div>
-                    <div className="mt-4 font-mono text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
+                    <div className="mt-3 font-mono text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
                       {c.kicker}
                     </div>
                   </div>
                   <div className="relative md:col-span-9">
-                    <h3 className="text-2xl font-bold tracking-tight md:text-3xl">
+                    <h3 className="text-xl font-bold tracking-tight md:text-2xl">
                       {c.title}
                     </h3>
-                    <p className="mt-4 text-base leading-relaxed text-foreground/80 md:text-lg">
+                    <p className="mt-2 text-sm leading-relaxed text-foreground/80 md:text-base">
                       {c.body}
                     </p>
-                    <div className="mt-5 flex flex-wrap gap-2">
+                    <div className="mt-4 flex flex-wrap gap-2">
                       {c.tags.map((t) => (
                         <span
                           key={t}
-                          className="rounded-full border border-border bg-secondary px-3 py-1 text-xs font-semibold text-foreground/80"
+                          className="rounded-full border border-border bg-secondary px-2.5 py-1 text-[0.7rem] font-semibold text-foreground/80"
                         >
                           {t}
                         </span>
