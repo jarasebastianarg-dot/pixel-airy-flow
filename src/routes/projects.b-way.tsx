@@ -98,42 +98,42 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
   );
 }
 
-const stack = ["Adobe Illustrator", "Loom"];
+const stack = ["Shopify", "Meta Ads", "Omnichannel Operations"];
 
-const focus = ["B2B Visual Strategy", "Medical Sector", "Remote Collaboration"];
+const focus = ["Global Expansion", "Team Leadership", "Experiential Events"];
 
 const executionCards = [
   {
-    icon: Target,
-    kicker: "Positioning",
-    title: "Audience-Centric Positioning",
-    body: "Engineered the core logomark and visual language specifically to resonate with the European medical sector. Every typographic and color choice was strategically selected to project clinical trust, precision, and modern marketing energy.",
+    icon: ShoppingBag,
+    kicker: "E-Commerce",
+    title: "Global E-Commerce Expansion",
+    body: "Architected and launched localized Shopify stores for the US and Brazil from scratch. Executed data-driven email and social campaigns tailored to regional behaviors to drive global ROAS.",
   },
   {
-    icon: Video,
-    kicker: "Async",
-    title: "Asynchronous Strategic Presentations",
-    body: "Leveraged asynchronous Loom video presentations to guide European stakeholders through the design rationale remotely. This workflow solved timezone friction, allowing the client to digest strategic context before providing feedback, drastically reducing revision cycles.",
+    icon: Users,
+    kicker: "Leadership",
+    title: "Interdisciplinary Team Leadership",
+    body: "Led a 6-person marketing and design team. Aligned daily creative output directly with commercial goals, streamlining internal workflows and drastically accelerating campaign delivery.",
   },
   {
-    icon: Layers,
-    kicker: "Iteration",
-    title: "Iterative Design Architecture",
-    body: "Developed multiple conceptual directions based on specific client avatars. Refined the chosen path through strategic feedback loops, ensuring the final identity was perfectly aligned with their B2B market goals.",
+    icon: UserCheck,
+    kicker: "Brand",
+    title: "Ambassador & Brand Management",
+    body: "Standardized the brand's global identity. Directed high-profile industry ambassadors, deploying strict visual and communicative guidelines to ensure brand authority across all channels.",
   },
   {
-    icon: Package,
-    kicker: "Delivery",
-    title: "Scalable Asset Delivery",
-    body: "Delivered a robust and comprehensive brand package — including vector assets, color systems, and usage guidelines — ensuring the agency's new identity remains consistent and scalable across all digital platforms and pitch decks.",
+    icon: Calendar,
+    kicker: "Events",
+    title: "Experiential Design & Events",
+    body: "Bridged digital strategy with real-world authority. Designed and managed structural trade show stands for international physical events (e.g., Barber Week), optimizing visitor flow and lead generation for 300+ attendees.",
   },
 ];
 
 const metrics = [
-  { icon: Globe2, value: "100%", label: "Asynchronous Remote Delivery" },
-  { icon: Layers, value: "3", label: "Strategic Concept Directions" },
-  { icon: Clock, value: "< 48h", label: "Average Revision Turnaround" },
-  { icon: Briefcase, value: "B2B", label: "Clinical Market Positioning" },
+  { icon: Globe2, value: "3", label: "International Markets (US, BR, AR)" },
+  { icon: Radar, value: "360°", label: "Omnichannel Campaigns Executed" },
+  { icon: Users, value: "6-Person", label: "Interdisciplinary Team Led" },
+  { icon: Calendar, value: "300+", label: "Attendees at Experiential Events" },
 ];
 
 function MediaPlaceholder({
