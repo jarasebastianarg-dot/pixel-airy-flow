@@ -57,6 +57,7 @@ import diecutUrban from "@/assets/bway/bway-diecut-urban.jpg.asset.json";
 import ecomBrHome from "@/assets/bway/bway-ecom-br-home.png.asset.json";
 import ecomBrCatalog from "@/assets/bway/bway-ecom-br-catalog.png.asset.json";
 import ecomArHome from "@/assets/bway/bway-ecom-ar-home.png.asset.json";
+import ecomUsHome from "@/assets/bway/bway-ecom-us.png.asset.json";
 
 export const Route = createFileRoute("/projects/b-way")({
   component: BWayProject,
@@ -216,6 +217,7 @@ const reels = [
 ];
 
 const ecomShots = [
+  { url: ecomUsHome.url, label: "Shopify USA · Homepage", country: "US" },
   { url: ecomBrHome.url, label: "Shopify Brasil · Homepage", country: "BR" },
   { url: ecomBrCatalog.url, label: "Shopify Brasil · Catálogo", country: "BR" },
   { url: ecomArHome.url, label: "Shopify Argentina · Homepage", country: "AR" },
