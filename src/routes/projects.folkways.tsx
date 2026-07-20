@@ -554,6 +554,19 @@ function FolkwaysProject() {
             </motion.p>
           </Reveal>
         </div>
+
+        {/* Hero Mockup Placeholder */}
+        <div className="mx-auto max-w-6xl px-6 pb-20 md:px-10 md:pb-28">
+          <Reveal>
+            <motion.div variants={fadeUp}>
+              <MediaPlaceholder
+                label="Storefront Mockup"
+                aspect="aspect-[16/8]"
+                icon={Palette}
+              />
+            </motion.div>
+          </Reveal>
+        </div>
       </section>
 
       {/* The Execution */}
@@ -580,46 +593,18 @@ function FolkwaysProject() {
             </motion.p>
           </Reveal>
 
-          <Reveal className="mt-14 grid grid-cols-1 gap-5 md:grid-cols-2" stagger={0.08}>
+          <Reveal
+            className="mt-14 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4"
+            stagger={0.06}
+          >
             {executionCards.map((c, i) => (
-              <motion.article
-                key={c.title}
-                variants={fadeUp}
-                whileHover={{ y: -6 }}
-                transition={{ type: "spring", stiffness: 260, damping: 22 }}
-                className="group relative isolate flex h-full flex-col overflow-hidden rounded-[calc(var(--radius)+18px)] border border-border bg-card p-8 shadow-[var(--shadow-card)] transition-shadow duration-500 hover:shadow-[var(--shadow-card-hover)] md:p-10"
-              >
-                <span
-                  aria-hidden
-                  className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-gradient-accent transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-x-100"
-                />
-                <span
-                  aria-hidden
-                  className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,oklch(0.72_0.18_45_/_0.22),transparent_65%)] opacity-0 transition-opacity duration-700 group-hover:opacity-100"
-                />
-                <header className="flex items-start justify-between gap-6">
-                  <span className="relative grid h-14 w-14 place-items-center rounded-2xl bg-secondary text-accent-1 ring-1 ring-inset ring-border transition-colors duration-500 group-hover:bg-gradient-accent group-hover:text-accent-foreground group-hover:ring-transparent">
-                    <c.icon className="h-6 w-6" strokeWidth={1.6} />
-                  </span>
-                  <div className="text-right">
-                    <span className="font-mono text-xs font-semibold tracking-widest text-muted-foreground">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <div className="mt-1 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-accent-1">
-                      {c.kicker}
-                    </div>
-                  </div>
-                </header>
-                <h3 className="mt-8 text-2xl font-bold leading-tight tracking-tight md:text-[1.6rem]">
-                  {c.title}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground md:text-[0.95rem]">
-                  {c.body}
-                </p>
-              </motion.article>
+              <ExecutionCard key={c.title} card={c} index={i} />
             ))}
           </Reveal>
         </div>
+
+        {/* Horizontal scroll mockups */}
+        <HorizontalMockups />
       </section>
 
       {/* The Impact */}
@@ -657,13 +642,13 @@ function FolkwaysProject() {
                 variants={fadeUp}
                 whileHover={{ y: -4 }}
                 transition={{ type: "spring", stiffness: 260, damping: 22 }}
-                className="group relative overflow-hidden rounded-[calc(var(--radius)+16px)] border border-white/10 bg-white/[0.04] p-8 backdrop-blur-sm transition-colors duration-500 hover:border-accent-1/40"
+                className="group relative overflow-hidden rounded-[calc(var(--radius)+16px)] border border-white/10 bg-white/[0.04] p-8 text-center backdrop-blur-sm transition-colors duration-500 hover:border-accent-1/40 sm:text-left"
               >
                 <span
                   aria-hidden
                   className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,oklch(0.72_0.18_45_/_0.28),transparent_65%)] opacity-0 transition-opacity duration-700 group-hover:opacity-100"
                 />
-                <m.icon className="h-6 w-6 text-accent-1" strokeWidth={1.6} />
+                <m.icon className="mx-auto h-6 w-6 text-accent-1 sm:mx-0" strokeWidth={1.6} />
                 <div className="mt-8 font-display text-4xl font-bold tracking-tight md:text-5xl">
                   {m.value}
                 </div>
