@@ -17,13 +17,20 @@ import {
   Video,
   Layers,
   Package,
-  Palette,
-  Stethoscope,
   Globe2,
   Clock,
   Briefcase,
   Plus,
 } from "lucide-react";
+
+import elHorizontalDark from "@/assets/elevate-local/el-horizontal-dark.png.asset.json";
+import elHorizontalLight from "@/assets/elevate-local/el-horizontal-light.png.asset.json";
+import elStackedDark from "@/assets/elevate-local/el-stacked-dark.png.asset.json";
+import elStackedLight from "@/assets/elevate-local/el-stacked-light.png.asset.json";
+import elMediaDark from "@/assets/elevate-local/el-media-dark.png.asset.json";
+import elMediaLight from "@/assets/elevate-local/el-media-light.png.asset.json";
+import elIsoDark from "@/assets/elevate-local/el-iso-dark.png.asset.json";
+import elIsoLight from "@/assets/elevate-local/el-iso-light.png.asset.json";
 
 export const Route = createFileRoute("/projects/elevate-local")({
   component: ElevateLocalProject,
@@ -165,6 +172,54 @@ function MediaPlaceholder({
 
 type ExecutionCardData = (typeof executionCards)[number];
 
+function LogoPlate({
+  variant,
+  aspect,
+}: {
+  variant: LogoVariant;
+  aspect: string;
+}) {
+  const isDark = variant.theme === "dark";
+  return (
+    <div
+      className={`relative w-full ${aspect} overflow-hidden rounded-[calc(var(--radius)+18px)] border shadow-[var(--shadow-card)] ${
+        isDark
+          ? "border-white/10 bg-[oklch(0.18_0.008_60)]"
+          : "border-border bg-[oklch(0.96_0.004_90)]"
+      }`}
+    >
+      <span
+        aria-hidden
+        className={`absolute inset-0 ${
+          isDark
+            ? "bg-[radial-gradient(circle_at_20%_15%,oklch(0.72_0.18_45_/_0.16),transparent_60%)]"
+            : "bg-[radial-gradient(circle_at_85%_85%,oklch(0.72_0.18_45_/_0.1),transparent_60%)]"
+        }`}
+      />
+      <div className="absolute inset-0 flex items-center justify-center p-10 md:p-14">
+        <img
+          src={variant.src}
+          alt={variant.alt}
+          className="max-h-full max-w-full object-contain"
+          loading="lazy"
+        />
+      </div>
+      <div
+        className={`absolute inset-x-0 bottom-0 flex items-center justify-between gap-3 border-t px-4 py-3 text-[0.65rem] font-semibold uppercase tracking-[0.22em] ${
+          isDark
+            ? "border-white/10 bg-black/30 text-white/70 backdrop-blur"
+            : "border-border bg-background/70 text-muted-foreground backdrop-blur"
+        }`}
+      >
+        <span className="font-mono">{variant.label}</span>
+        <span className={`font-mono ${isDark ? "text-accent-1" : "text-accent-1"}`}>
+          {variant.kicker}
+        </span>
+      </div>
+    </div>
+  );
+}
+
 function ExecutionCard({ card, index }: { card: ExecutionCardData; index: number }) {
   const Icon = card.icon;
   const isMobile = useIsMobile();
@@ -259,11 +314,87 @@ function ExecutionCard({ card, index }: { card: ExecutionCardData; index: number
   );
 }
 
-const mockups = [
-  { label: "Primary Logomark", icon: Sparkles, kicker: "Logo" },
-  { label: "Color System", icon: Palette, kicker: "Palette" },
-  { label: "Typography Scale", icon: Layers, kicker: "Type" },
-  { label: "Usage Guidelines", icon: Package, kicker: "Guidelines" },
+type LogoVariant = {
+  kicker: string;
+  label: string;
+  caption: string;
+  src: string;
+  alt: string;
+  theme: "dark" | "light";
+};
+
+const logoVariants: LogoVariant[] = [
+  {
+    kicker: "Primary",
+    label: "Horizontal Logotype",
+    caption: "Obsidiana Mate on Piedra Caliza. Editorial pause anchored by the center dot.",
+    src: elHorizontalDark.url,
+    alt: "Elevate Local horizontal logotype — dark on light",
+    theme: "light",
+  },
+  {
+    kicker: "Negative",
+    label: "Horizontal · Reversed",
+    caption: "Piedra Caliza on Obsidiana Mate. Same weight and legibility in negative.",
+    src: elHorizontalLight.url,
+    alt: "Elevate Local horizontal logotype — light on dark",
+    theme: "dark",
+  },
+  {
+    kicker: "Stacked",
+    label: "Vertical Lockup",
+    caption: "Square-format lockup for social avatars, decks and merch.",
+    src: elStackedDark.url,
+    alt: "Elevate Local stacked logotype",
+    theme: "light",
+  },
+  {
+    kicker: "Monogram",
+    label: "E·L Reduction",
+    caption: "Compact editorial mark for tight formats — 46px minimum.",
+    src: elMediaDark.url,
+    alt: "Elevate Local E·L monogram",
+    theme: "light",
+  },
+  {
+    kicker: "Isotype",
+    label: "The E",
+    caption: "Widened cut for aggressive, commercial recognition at any scale.",
+    src: elIsoDark.url,
+    alt: "Elevate Local isotype — the E",
+    theme: "light",
+  },
+];
+
+const palette = [
+  {
+    name: "Obsidiana Mate",
+    hex: "#1E1A17",
+    rgb: "30 · 26 · 23",
+    cmyk: "72 · 68 · 67 · 85",
+    role: "Primary CTA · Authority",
+  },
+  {
+    name: "Piedra Caliza",
+    hex: "#F0EFEB",
+    rgb: "240 · 239 · 235",
+    cmyk: "5 · 4 · 6 · 0",
+    role: "Canvas · Editorial paper",
+  },
+  {
+    name: "Arena",
+    hex: "#A39B92",
+    rgb: "163 · 155 · 146",
+    cmyk: "41 · 38 · 45 · 3",
+    role: "Inactive states · Dividers",
+  },
+  {
+    name: "Cemento",
+    hex: "#E3E1DC",
+    rgb: "227 · 225 · 220",
+    cmyk: "0 · 1 · 3 · 11",
+    role: "Cards · Table structure",
+  },
 ];
 
 function HorizontalMockups() {
@@ -317,7 +448,7 @@ function HorizontalMockups() {
           className="mt-10 flex gap-4 overflow-x-auto scroll-smooth px-6 pb-6 pt-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           style={{ scrollSnapType: "x mandatory", WebkitOverflowScrolling: "touch" }}
         >
-          {mockups.map((m, i) => (
+          {logoVariants.map((m, i) => (
             <div
               key={m.label}
               className="relative w-[85vw] shrink-0"
@@ -329,11 +460,7 @@ function HorizontalMockups() {
                 </span>
                 {m.kicker}
               </div>
-              <MediaPlaceholder
-                label={m.label}
-                aspect="aspect-[3/4]"
-                icon={m.icon}
-              />
+              <LogoPlate variant={m} aspect="aspect-[3/4]" />
             </div>
           ))}
           <div className="w-2 shrink-0" />
@@ -367,7 +494,7 @@ function HorizontalMockups() {
           style={{ x }}
           className="mt-10 flex gap-6 pl-6 md:pl-10 will-change-transform"
         >
-          {mockups.map((m, i) => (
+          {logoVariants.map((m, i) => (
             <div
               key={m.label}
               className="relative w-[78vw] shrink-0 sm:w-[60vw] md:w-[46vw] lg:w-[40vw]"
@@ -378,11 +505,7 @@ function HorizontalMockups() {
                 </span>
                 {m.kicker}
               </div>
-              <MediaPlaceholder
-                label={m.label}
-                aspect="aspect-[4/3]"
-                icon={m.icon}
-              />
+              <LogoPlate variant={m} aspect="aspect-[4/3]" />
             </div>
           ))}
           <div className="w-20 shrink-0" />
@@ -548,15 +671,28 @@ function ElevateLocalProject() {
           </Reveal>
         </div>
 
-        {/* Hero Mockup Placeholder */}
+        {/* Hero Logo Showcase */}
         <div className="mx-auto max-w-6xl px-6 pb-20 md:px-10 md:pb-28">
           <Reveal>
-            <motion.div variants={fadeUp}>
-              <MediaPlaceholder
-                label="Brand Identity Mockup"
-                aspect="aspect-[16/8]"
-                icon={Stethoscope}
+            <motion.div
+              variants={fadeUp}
+              className="relative overflow-hidden rounded-[calc(var(--radius)+22px)] border border-white/10 bg-[oklch(0.18_0.008_60)] shadow-[var(--shadow-card-hover)]"
+            >
+              <span
+                aria-hidden
+                className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,oklch(0.72_0.18_45_/_0.18),transparent_55%),radial-gradient(circle_at_85%_85%,oklch(0.7_0.19_25_/_0.14),transparent_60%)]"
               />
+              <div className="relative flex aspect-[16/8] items-center justify-center px-10 md:px-24">
+                <img
+                  src={elHorizontalLight.url}
+                  alt="Elevate Local horizontal logotype on Obsidiana Mate"
+                  className="max-h-[60%] w-full max-w-4xl object-contain"
+                />
+              </div>
+              <div className="relative flex items-center justify-between border-t border-white/10 bg-black/20 px-6 py-4 font-mono text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-white/70 backdrop-blur">
+                <span>Elevate Local · Primary Lockup</span>
+                <span className="text-accent-1">Obsidiana Mate #1E1A17</span>
+              </div>
             </motion.div>
           </Reveal>
         </div>
@@ -597,6 +733,173 @@ function ElevateLocalProject() {
 
         {/* Horizontal scroll mockups */}
         <HorizontalMockups />
+      </section>
+
+      {/* Color System — Mineral Palette */}
+      <section className="border-t border-border/60 bg-secondary/30">
+        <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
+          <Reveal className="grid grid-cols-1 gap-10 md:grid-cols-12 md:items-end" stagger={0.1}>
+            <motion.div variants={fadeUp} className="md:col-span-7">
+              <SectionLabel>02.6 — Color</SectionLabel>
+              <h2 className="mt-6 text-4xl font-bold leading-[1.05] tracking-tight md:text-5xl">
+                The{" "}
+                <span className="font-serif italic font-normal text-accent-1">
+                  Mineral
+                </span>{" "}
+                Palette
+              </h2>
+            </motion.div>
+            <motion.p
+              variants={fadeUp}
+              className="text-base leading-relaxed text-muted-foreground md:col-span-5 md:text-lg"
+            >
+              Neutral, mineral tones that simulate granite and high-gram paper —
+              engineered for clinical trust, not startup noise.
+            </motion.p>
+          </Reveal>
+
+          <Reveal className="mt-14 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4" stagger={0.08}>
+            {palette.map((c) => {
+              const dark = c.hex === "#1E1A17";
+              return (
+                <motion.div
+                  key={c.name}
+                  variants={fadeUp}
+                  whileHover={{ y: -4 }}
+                  transition={{ type: "spring", stiffness: 280, damping: 22 }}
+                  className="group overflow-hidden rounded-[calc(var(--radius)+14px)] border border-border bg-card shadow-[var(--shadow-card)] transition-shadow duration-500 hover:shadow-[var(--shadow-card-hover)]"
+                >
+                  <div
+                    className="relative h-40"
+                    style={{ backgroundColor: c.hex }}
+                  >
+                    <span
+                      className={`absolute left-4 top-4 font-mono text-[0.6rem] font-semibold uppercase tracking-[0.24em] ${
+                        dark ? "text-white/70" : "text-black/50"
+                      }`}
+                    >
+                      {c.hex}
+                    </span>
+                  </div>
+                  <div className="space-y-2 p-5">
+                    <div className="text-base font-bold tracking-tight text-foreground">
+                      {c.name}
+                    </div>
+                    <div className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-accent-1">
+                      {c.role}
+                    </div>
+                    <dl className="mt-3 grid grid-cols-2 gap-2 font-mono text-[0.65rem] text-muted-foreground">
+                      <div>
+                        <dt className="uppercase tracking-[0.2em] text-foreground/50">RGB</dt>
+                        <dd className="mt-1">{c.rgb}</dd>
+                      </div>
+                      <div>
+                        <dt className="uppercase tracking-[0.2em] text-foreground/50">CMYK</dt>
+                        <dd className="mt-1">{c.cmyk}</dd>
+                      </div>
+                    </dl>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Typography — Geomanist */}
+      <section className="border-t border-border/60">
+        <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
+          <Reveal className="grid grid-cols-1 gap-10 md:grid-cols-12 md:items-end" stagger={0.1}>
+            <motion.div variants={fadeUp} className="md:col-span-7">
+              <SectionLabel>02.7 — Type</SectionLabel>
+              <h2 className="mt-6 text-4xl font-bold leading-[1.05] tracking-tight md:text-5xl">
+                Geomanist —{" "}
+                <span className="font-serif italic font-normal text-accent-1">
+                  Editorial
+                </span>{" "}
+                Authority
+              </h2>
+            </motion.div>
+            <motion.p
+              variants={fadeUp}
+              className="text-base leading-relaxed text-muted-foreground md:col-span-5 md:text-lg"
+            >
+              A voice engineered to speak eye-to-eye with clinic directors:
+              stable, methodical, infallible. No generic startup type.
+            </motion.p>
+          </Reveal>
+
+          <Reveal className="mt-14 grid grid-cols-1 gap-4 md:grid-cols-2" stagger={0.08}>
+            <motion.div
+              variants={fadeUp}
+              whileHover={{ y: -4 }}
+              transition={{ type: "spring", stiffness: 260, damping: 22 }}
+              className="relative overflow-hidden rounded-[calc(var(--radius)+18px)] border border-border bg-card p-8 shadow-[var(--shadow-card)] md:p-10"
+            >
+              <div className="flex items-center justify-between font-mono text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
+                <span>Geomanist · Ultra</span>
+                <span className="text-accent-1">Headline</span>
+              </div>
+              <div className="mt-8 text-[3.5rem] font-black leading-[0.95] tracking-[-0.04em] text-foreground md:text-[5rem]">
+                Aa
+              </div>
+              <div className="mt-4 text-2xl font-black leading-tight tracking-tight md:text-3xl">
+                We don't just supply products,<br />
+                but the total solution.
+              </div>
+              <div className="mt-6 border-t border-border pt-4 font-mono text-[0.65rem] uppercase tracking-[0.22em] text-muted-foreground">
+                56 / 64 pt · Tracking −4%
+              </div>
+            </motion.div>
+
+            <motion.div
+              variants={fadeUp}
+              whileHover={{ y: -4 }}
+              transition={{ type: "spring", stiffness: 260, damping: 22 }}
+              className="relative overflow-hidden rounded-[calc(var(--radius)+18px)] border border-border bg-card p-8 shadow-[var(--shadow-card)] md:p-10"
+            >
+              <div className="flex items-center justify-between font-mono text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
+                <span>Geomanist · Medium</span>
+                <span className="text-accent-1">Body &amp; Subhead</span>
+              </div>
+              <div className="mt-8 text-[3.5rem] font-medium leading-[0.95] tracking-[-0.03em] text-foreground md:text-[5rem]">
+                Aa
+              </div>
+              <div className="mt-4 text-lg leading-relaxed text-foreground/85 md:text-xl">
+                Building a data centre is a complex process that requires
+                knowledge in various areas — legibility optimized for long
+                digital reads and technical documents.
+              </div>
+              <div className="mt-6 border-t border-border pt-4 font-mono text-[0.65rem] uppercase tracking-[0.22em] text-muted-foreground">
+                Regular · 24 / 32 pt · Tracking −4%
+              </div>
+            </motion.div>
+          </Reveal>
+
+          <Reveal className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-3" stagger={0.06}>
+            {[
+              { label: "H1 · Medium", size: "56 / 64", sample: "Autoridad" },
+              { label: "H2 · Regular", size: "40 / 48", sample: "Precisión" },
+              { label: "H4 · Bold", size: "28 / 36", sample: "Sistema" },
+            ].map((row) => (
+              <motion.div
+                key={row.label}
+                variants={fadeUp}
+                className="rounded-2xl border border-border bg-secondary/40 p-5"
+              >
+                <div className="font-mono text-[0.6rem] font-semibold uppercase tracking-[0.22em] text-accent-1">
+                  {row.label}
+                </div>
+                <div className="mt-2 text-2xl font-bold tracking-tight md:text-3xl">
+                  {row.sample}
+                </div>
+                <div className="mt-3 font-mono text-[0.6rem] uppercase tracking-[0.2em] text-muted-foreground">
+                  {row.size} pt
+                </div>
+              </motion.div>
+            ))}
+          </Reveal>
+        </div>
       </section>
 
       {/* The Impact */}
