@@ -873,19 +873,19 @@ function BWayProject() {
                 the full homepage.
               </motion.p>
             </Reveal>
-            <Reveal className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4" stagger={0.08}>
+            <Reveal className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3" stagger={0.08}>
               {ecomShots.map((s) => (
-                <motion.a
+                <motion.button
                   key={s.url}
-                  href={s.url}
-                  target="_blank"
-                  rel="noreferrer"
+                  type="button"
+                  onClick={() => openLightbox(s.url, s.label)}
                   variants={fadeUp}
                   whileHover={{ y: -4 }}
                   transition={{ type: "spring", stiffness: 260, damping: 22 }}
-                  className="group relative block overflow-hidden rounded-[calc(var(--radius)+14px)] border border-border bg-card shadow-[var(--shadow-card)] transition-shadow duration-500 hover:shadow-[var(--shadow-card-hover)]"
+                  className="group relative block w-full overflow-hidden rounded-[calc(var(--radius)+14px)] border border-border bg-card text-left shadow-[var(--shadow-card)] transition-shadow duration-500 hover:shadow-[var(--shadow-card-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-1/60"
+                  aria-label={`Open ${s.label} preview`}
                 >
-                  <div className="flex items-center justify-between border-b border-border bg-secondary/60 px-4 py-2">
+                  <div className="flex items-center justify-between border-b border-border bg-secondary/60 px-4 py-2.5">
                     <span className="font-mono text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
                       {s.label}
                     </span>
@@ -893,22 +893,21 @@ function BWayProject() {
                       {s.country}
                     </span>
                   </div>
-                  <div
-                    className="relative aspect-[3/4] w-full overflow-y-auto overflow-x-hidden bg-background scroll-smooth [scrollbar-width:thin] [-webkit-overflow-scrolling:touch] [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-foreground/20"
-                    onClick={(e) => e.preventDefault()}
-                  >
+                  <div className="relative aspect-[4/5] w-full overflow-hidden bg-background">
                     <img
                       src={s.url}
                       alt={s.label}
                       loading="lazy"
-                      className="block w-full h-auto select-none"
+                      className="block h-auto w-full select-none transition-transform duration-[6000ms] ease-linear group-hover:-translate-y-[calc(100%-100%/1.25)]"
                       draggable={false}
                     />
-                    <div className="pointer-events-none sticky bottom-2 ml-auto mr-2 flex w-fit items-center gap-1 rounded-full bg-foreground/80 px-2.5 py-1 font-mono text-[0.55rem] font-semibold uppercase tracking-[0.2em] text-background opacity-90 shadow-md transition-opacity duration-300 group-hover:opacity-0">
-                      Scroll ↓
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                    <div className="pointer-events-none absolute right-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-foreground/85 px-2.5 py-1 font-mono text-[0.55rem] font-semibold uppercase tracking-[0.2em] text-background opacity-0 shadow-md transition-opacity duration-300 group-hover:opacity-100">
+                      <ZoomIn className="h-3 w-3" />
+                      Click to zoom
                     </div>
                   </div>
-                </motion.a>
+                </motion.button>
               ))}
             </Reveal>
           </div>
