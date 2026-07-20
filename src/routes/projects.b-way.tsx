@@ -13,15 +13,9 @@ import {
   ArrowLeft,
   ArrowUpRight,
   Sparkles,
-  Target,
-  Video,
-  Layers,
   Package,
   Palette,
-  Stethoscope,
   Globe2,
-  Clock,
-  Briefcase,
   Plus,
   Users,
   Megaphone,
@@ -29,7 +23,30 @@ import {
   ShoppingBag,
   UserCheck,
   Radar,
+  Play,
+  Pause,
+  Volume2,
+  VolumeX,
+  TrendingUp,
+  GraduationCap,
+  Rocket,
+  MousePointerClick,
+  ArrowDown,
 } from "lucide-react";
+
+// Packaging references from previous portfolio
+import brandCover from "@/assets/bway/bway-brand.jpg.asset.json";
+import b10kMockup from "@/assets/bway/bway-b10k-mockup.jpg.asset.json";
+import b10kInside from "@/assets/bway/bway-b10k-inside.jpg.asset.json";
+import b10kAccessories from "@/assets/bway/bway-b10k-accessories.jpg.asset.json";
+import urbanDiecut from "@/assets/bway/bway-urban-diecut.jpg.asset.json";
+import urbanBack from "@/assets/bway/bway-urban-back.jpg.asset.json";
+import sonicBlack from "@/assets/bway/bway-sonic-black.jpg.asset.json";
+import sonicInside from "@/assets/bway/bway-sonic-inside.jpg.asset.json";
+import compactFront from "@/assets/bway/bway-compact-front.jpg.asset.json";
+import compactBack from "@/assets/bway/bway-compact-back.jpg.asset.json";
+import reel1 from "@/assets/bway/bway-event-reel-1.mp4.asset.json";
+import reel2 from "@/assets/bway/bway-event-reel-2.mp4.asset.json";
 
 export const Route = createFileRoute("/projects/b-way")({
   component: BWayProject,
