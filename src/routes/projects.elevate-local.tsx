@@ -173,6 +173,54 @@ function MediaPlaceholder({
 
 type ExecutionCardData = (typeof executionCards)[number];
 
+function LogoPlate({
+  variant,
+  aspect,
+}: {
+  variant: LogoVariant;
+  aspect: string;
+}) {
+  const isDark = variant.theme === "dark";
+  return (
+    <div
+      className={`relative w-full ${aspect} overflow-hidden rounded-[calc(var(--radius)+18px)] border shadow-[var(--shadow-card)] ${
+        isDark
+          ? "border-white/10 bg-[oklch(0.18_0.008_60)]"
+          : "border-border bg-[oklch(0.96_0.004_90)]"
+      }`}
+    >
+      <span
+        aria-hidden
+        className={`absolute inset-0 ${
+          isDark
+            ? "bg-[radial-gradient(circle_at_20%_15%,oklch(0.72_0.18_45_/_0.16),transparent_60%)]"
+            : "bg-[radial-gradient(circle_at_85%_85%,oklch(0.72_0.18_45_/_0.1),transparent_60%)]"
+        }`}
+      />
+      <div className="absolute inset-0 flex items-center justify-center p-10 md:p-14">
+        <img
+          src={variant.src}
+          alt={variant.alt}
+          className="max-h-full max-w-full object-contain"
+          loading="lazy"
+        />
+      </div>
+      <div
+        className={`absolute inset-x-0 bottom-0 flex items-center justify-between gap-3 border-t px-4 py-3 text-[0.65rem] font-semibold uppercase tracking-[0.22em] ${
+          isDark
+            ? "border-white/10 bg-black/30 text-white/70 backdrop-blur"
+            : "border-border bg-background/70 text-muted-foreground backdrop-blur"
+        }`}
+      >
+        <span className="font-mono">{variant.label}</span>
+        <span className={`font-mono ${isDark ? "text-accent-1" : "text-accent-1"}`}>
+          {variant.kicker}
+        </span>
+      </div>
+    </div>
+  );
+}
+
 function ExecutionCard({ card, index }: { card: ExecutionCardData; index: number }) {
   const Icon = card.icon;
   const isMobile = useIsMobile();
