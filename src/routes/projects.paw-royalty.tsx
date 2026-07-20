@@ -178,7 +178,10 @@ function ExecutionCard({ card, index }: { card: ExecutionCardData; index: number
   const Icon = card.icon;
   const isMobile = useIsMobile();
   const [hovered, setHovered] = useState(false);
-  const expanded = isMobile || hovered;
+  // On mobile: always show body copy but keep the accent visuals in resting state.
+  // Reserve the accent bar / glow / icon-swap treatment for real hover on desktop.
+  const showBody = isMobile || hovered;
+  const active = hovered && !isMobile;
   return (
     <motion.article
       variants={fadeUp}
@@ -195,7 +198,7 @@ function ExecutionCard({ card, index }: { card: ExecutionCardData; index: number
       <motion.span
         aria-hidden
         initial={false}
-        animate={{ scaleX: expanded ? 1 : 0 }}
+        animate={{ scaleX: active ? 1 : 0 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         className="absolute inset-x-0 top-0 h-[3px] origin-left bg-gradient-accent"
       />
@@ -203,7 +206,7 @@ function ExecutionCard({ card, index }: { card: ExecutionCardData; index: number
       <motion.span
         aria-hidden
         initial={false}
-        animate={{ opacity: expanded ? 1 : 0 }}
+        animate={{ opacity: active ? 1 : 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,oklch(0.72_0.18_45_/_0.22),transparent_65%)]"
       />
@@ -213,11 +216,11 @@ function ExecutionCard({ card, index }: { card: ExecutionCardData; index: number
         <motion.span
           initial={false}
           animate={{
-            backgroundColor: expanded
+            backgroundColor: active
               ? "oklch(0.72 0.18 45)"
               : "oklch(0.96 0.01 60)",
-            color: expanded ? "oklch(1 0 0)" : "oklch(0.72 0.18 45)",
-            scale: expanded ? 1.05 : 1,
+            color: active ? "oklch(1 0 0)" : "oklch(0.72 0.18 45)",
+            scale: active ? 1.05 : 1,
           }}
           transition={{ type: "spring", stiffness: 220, damping: 20 }}
           className="grid h-11 w-11 place-items-center rounded-2xl ring-1 ring-inset ring-border"
@@ -242,7 +245,7 @@ function ExecutionCard({ card, index }: { card: ExecutionCardData; index: number
       {/* Swap: helper vs body */}
       <div className="relative mt-3 min-h-[3.75rem]">
         <AnimatePresence mode="wait" initial={false}>
-          {expanded ? (
+          {showBody ? (
             <motion.p
               key="body"
               initial={{ opacity: 0, y: 8, filter: "blur(4px)" }}
