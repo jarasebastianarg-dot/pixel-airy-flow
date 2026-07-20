@@ -401,7 +401,7 @@ function HorizontalMockups() {
           className="mt-10 flex gap-4 overflow-x-auto scroll-smooth px-6 pb-6 pt-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           style={{ scrollSnapType: "x mandatory", WebkitOverflowScrolling: "touch" }}
         >
-          {mockups.map((m, i) => (
+          {logoVariants.map((m, i) => (
             <div
               key={m.label}
               className="relative w-[85vw] shrink-0"
@@ -413,11 +413,7 @@ function HorizontalMockups() {
                 </span>
                 {m.kicker}
               </div>
-              <MediaPlaceholder
-                label={m.label}
-                aspect="aspect-[3/4]"
-                icon={m.icon}
-              />
+              <LogoPlate variant={m} aspect="aspect-[3/4]" />
             </div>
           ))}
           <div className="w-2 shrink-0" />
@@ -451,7 +447,7 @@ function HorizontalMockups() {
           style={{ x }}
           className="mt-10 flex gap-6 pl-6 md:pl-10 will-change-transform"
         >
-          {mockups.map((m, i) => (
+          {logoVariants.map((m, i) => (
             <div
               key={m.label}
               className="relative w-[78vw] shrink-0 sm:w-[60vw] md:w-[46vw] lg:w-[40vw]"
@@ -462,11 +458,7 @@ function HorizontalMockups() {
                 </span>
                 {m.kicker}
               </div>
-              <MediaPlaceholder
-                label={m.label}
-                aspect="aspect-[4/3]"
-                icon={m.icon}
-              />
+              <LogoPlate variant={m} aspect="aspect-[4/3]" />
             </div>
           ))}
           <div className="w-20 shrink-0" />
