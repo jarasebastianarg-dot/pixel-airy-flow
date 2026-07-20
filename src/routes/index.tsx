@@ -96,6 +96,7 @@ const works = [
     body: "Steered a 6-person team to scale operations across the US and Brazil, driving digital and 300+ attendee physical events.",
     image:
       "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=900&q=80",
+    href: "/projects/b-way",
   },
   {
     tag: "Branding Designer",
