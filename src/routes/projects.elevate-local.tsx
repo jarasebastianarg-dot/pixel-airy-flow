@@ -17,7 +17,6 @@ import {
   Video,
   Layers,
   Package,
-  Stethoscope,
   Globe2,
   Clock,
   Briefcase,
