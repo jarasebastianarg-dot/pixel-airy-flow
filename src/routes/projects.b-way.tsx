@@ -33,6 +33,8 @@ import {
   Rocket,
   MousePointerClick,
   ArrowDown,
+  X,
+  ZoomIn,
 } from "lucide-react";
 
 // Packaging references from previous portfolio
@@ -219,9 +221,99 @@ const reels = [
 const ecomShots = [
   { url: ecomUsHome.url, label: "Shopify USA · Homepage", country: "US" },
   { url: ecomBrHome.url, label: "Shopify Brasil · Homepage", country: "BR" },
-  { url: ecomBrCatalog.url, label: "Shopify Brasil · Catálogo", country: "BR" },
   { url: ecomArHome.url, label: "Shopify Argentina · Homepage", country: "AR" },
 ];
+
+// Packaging spotlight — curated mockups for the dedicated section
+const packagingSpotlight = [
+  { url: brandCover.url, label: "Full product line system", kicker: "Line-up" },
+  { url: b10kAdentro.url, label: "B10K · Interior print", kicker: "B10K" },
+  { url: sonicNegro.url, label: "Sonic · Black Edition", kicker: "Sonic" },
+  { url: compactFrente.url, label: "Compact · Retail box", kicker: "Compact" },
+  { url: diecutUrban.url, label: "Urban · Retail box", kicker: "Urban" },
+  { url: b10kAccessories.url, label: "B10K · Accessories", kicker: "Accessories" },
+];
+
+// Lightbox — clickable image zoom with spring animation
+function Lightbox({
+  open,
+  src,
+  label,
+  onClose,
+}: {
+  open: boolean;
+  src: string | null;
+  label?: string;
+  onClose: () => void;
+}) {
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", onKey);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prev;
+    };
+  }, [open, onClose]);
+
+  return (
+    <AnimatePresence>
+      {open && src ? (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.25 }}
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-foreground/85 p-4 backdrop-blur-md md:p-10"
+          onClick={onClose}
+          role="dialog"
+          aria-modal="true"
+          aria-label={label ?? "Image preview"}
+        >
+          <motion.button
+            type="button"
+            onClick={onClose}
+            initial={{ opacity: 0, y: -6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0 }}
+            className="absolute right-4 top-4 z-10 inline-flex h-11 w-11 items-center justify-center rounded-full bg-background/90 text-foreground shadow-[var(--shadow-card)] transition-colors hover:bg-background md:right-6 md:top-6"
+            aria-label="Close preview"
+          >
+            <X className="h-5 w-5" />
+          </motion.button>
+          {label ? (
+            <div className="pointer-events-none absolute left-1/2 top-4 -translate-x-1/2 rounded-full bg-background/90 px-4 py-1.5 font-mono text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-foreground shadow-[var(--shadow-card)] md:top-6">
+              {label}
+            </div>
+          ) : null}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.94, y: 10 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.96, y: 10 }}
+            transition={{ type: "spring", stiffness: 240, damping: 26 }}
+            className="relative max-h-[90vh] max-w-6xl overflow-hidden rounded-3xl border border-white/10 bg-background shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div
+              className="max-h-[90vh] w-full overflow-y-auto overscroll-contain [scrollbar-width:thin] [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-foreground/20"
+            >
+              <img
+                src={src}
+                alt={label ?? ""}
+                className="block h-auto w-full max-w-[92vw] select-none md:max-w-[80vw]"
+                draggable={false}
+              />
+            </div>
+          </motion.div>
+        </motion.div>
+      ) : null}
+    </AnimatePresence>
+  );
+}
 
 const metrics = [
   { icon: TrendingUp, value: "Product Designer → Brand Manager", label: "Promoted after two years of expanding scope — from packaging bench to running the brand." },
@@ -490,8 +582,16 @@ function HorizontalMockups() {
 }
 
 function BWayProject() {
+  const [lightbox, setLightbox] = useState<{ src: string; label?: string } | null>(null);
+  const openLightbox = (src: string, label?: string) => setLightbox({ src, label });
   return (
     <main className="min-h-screen bg-background text-foreground">
+      <Lightbox
+        open={lightbox !== null}
+        src={lightbox?.src ?? null}
+        label={lightbox?.label}
+        onClose={() => setLightbox(null)}
+      />
       {/* Top bar */}
       <div className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur-xl">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 md:px-10">
@@ -749,6 +849,100 @@ function BWayProject() {
           </Reveal>
         </div>
 
+        {/* Packaging Work */}
+        <div className="border-t border-border/60 bg-secondary/30">
+          <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
+            <Reveal className="grid grid-cols-1 gap-8 md:grid-cols-12 md:items-end" stagger={0.08}>
+              <motion.div variants={fadeUp} className="md:col-span-7">
+                <SectionLabel>02.5 — Packaging</SectionLabel>
+                <h2 className="mt-6 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
+                  Every box the brand{" "}
+                  <span className="font-serif italic font-normal text-accent-1">
+                    shipped
+                  </span>
+                  .
+                </h2>
+              </motion.div>
+              <motion.p
+                variants={fadeUp}
+                className="text-base leading-relaxed text-muted-foreground md:col-span-5 md:text-lg"
+              >
+                I designed the packaging for every B-WAY product line — die-cuts,
+                interior architecture, print production and retail-shelf systems.{" "}
+                <span className="font-semibold text-foreground">
+                  I also supervised every single launch
+                </span>{" "}
+                the brand rolled out from my first day through the end of{" "}
+                <span className="font-semibold text-accent-1">2025</span> —
+                keeping the visual language consistent across four product families
+                and three markets.
+              </motion.p>
+            </Reveal>
+
+            <Reveal
+              className="mt-12 grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6"
+              stagger={0.06}
+            >
+              {packagingSpotlight.map((p, i) => (
+                <motion.button
+                  key={p.url}
+                  type="button"
+                  onClick={() => openLightbox(p.url, p.label)}
+                  variants={fadeUp}
+                  whileHover={{ y: -4 }}
+                  transition={{ type: "spring", stiffness: 260, damping: 22 }}
+                  className="group relative block w-full overflow-hidden rounded-[calc(var(--radius)+14px)] border border-border bg-card text-left shadow-[var(--shadow-card)] transition-shadow duration-500 hover:shadow-[var(--shadow-card-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-1/60"
+                  aria-label={`Open ${p.label} preview`}
+                >
+                  <div className="absolute -top-3 left-3 z-10 inline-flex items-center gap-2 rounded-full border border-border bg-background px-2.5 py-1 font-mono text-[0.55rem] font-semibold uppercase tracking-[0.22em] text-muted-foreground shadow-[var(--shadow-card)]">
+                    <span className="text-accent-1">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    {p.kicker}
+                  </div>
+                  <div className="relative aspect-[4/3] w-full overflow-hidden bg-background">
+                    <img
+                      src={p.url}
+                      alt={p.label}
+                      loading="lazy"
+                      className="h-full w-full object-cover transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]"
+                      draggable={false}
+                    />
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-90 transition-opacity duration-500 group-hover:opacity-100" />
+                    <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-between gap-2 p-3">
+                      <span className="font-mono text-[0.6rem] font-semibold uppercase tracking-[0.22em] text-white/90">
+                        {p.label}
+                      </span>
+                      <span className="inline-flex items-center gap-1 rounded-full bg-white/95 px-2 py-0.5 font-mono text-[0.55rem] font-semibold uppercase tracking-[0.2em] text-foreground opacity-0 shadow-md transition-opacity duration-300 group-hover:opacity-100">
+                        <ZoomIn className="h-3 w-3" />
+                        Zoom
+                      </span>
+                    </div>
+                  </div>
+                </motion.button>
+              ))}
+            </Reveal>
+
+            <Reveal className="mt-10 flex flex-wrap gap-2" stagger={0.03}>
+              {[
+                "4 product lines",
+                "Die-cut engineering",
+                "Interior print",
+                "Retail shelf systems",
+                "Launch supervision · 2023 – 2025",
+              ].map((t) => (
+                <motion.span
+                  key={t}
+                  variants={fadeUp}
+                  className="rounded-full border border-border bg-card px-3 py-1 text-xs font-semibold text-foreground/80"
+                >
+                  {t}
+                </motion.span>
+              ))}
+            </Reveal>
+          </div>
+        </div>
+
         {/* E-Commerce Storefronts */}
         <div className="border-t border-border/60">
           <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
@@ -773,19 +967,19 @@ function BWayProject() {
                 the full homepage.
               </motion.p>
             </Reveal>
-            <Reveal className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4" stagger={0.08}>
+            <Reveal className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3" stagger={0.08}>
               {ecomShots.map((s) => (
-                <motion.a
+                <motion.button
                   key={s.url}
-                  href={s.url}
-                  target="_blank"
-                  rel="noreferrer"
+                  type="button"
+                  onClick={() => openLightbox(s.url, s.label)}
                   variants={fadeUp}
                   whileHover={{ y: -4 }}
                   transition={{ type: "spring", stiffness: 260, damping: 22 }}
-                  className="group relative block overflow-hidden rounded-[calc(var(--radius)+14px)] border border-border bg-card shadow-[var(--shadow-card)] transition-shadow duration-500 hover:shadow-[var(--shadow-card-hover)]"
+                  className="group relative block w-full overflow-hidden rounded-[calc(var(--radius)+14px)] border border-border bg-card text-left shadow-[var(--shadow-card)] transition-shadow duration-500 hover:shadow-[var(--shadow-card-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-1/60"
+                  aria-label={`Open ${s.label} preview`}
                 >
-                  <div className="flex items-center justify-between border-b border-border bg-secondary/60 px-4 py-2">
+                  <div className="flex items-center justify-between border-b border-border bg-secondary/60 px-4 py-2.5">
                     <span className="font-mono text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
                       {s.label}
                     </span>
@@ -793,22 +987,21 @@ function BWayProject() {
                       {s.country}
                     </span>
                   </div>
-                  <div
-                    className="relative aspect-[3/4] w-full overflow-y-auto overflow-x-hidden bg-background scroll-smooth [scrollbar-width:thin] [-webkit-overflow-scrolling:touch] [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-foreground/20"
-                    onClick={(e) => e.preventDefault()}
-                  >
+                  <div className="relative aspect-[4/5] w-full overflow-hidden bg-background">
                     <img
                       src={s.url}
                       alt={s.label}
                       loading="lazy"
-                      className="block w-full h-auto select-none"
+                      className="block h-auto w-full select-none transition-transform duration-[7000ms] ease-linear group-hover:-translate-y-[70%]"
                       draggable={false}
                     />
-                    <div className="pointer-events-none sticky bottom-2 ml-auto mr-2 flex w-fit items-center gap-1 rounded-full bg-foreground/80 px-2.5 py-1 font-mono text-[0.55rem] font-semibold uppercase tracking-[0.2em] text-background opacity-90 shadow-md transition-opacity duration-300 group-hover:opacity-0">
-                      Scroll ↓
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                    <div className="pointer-events-none absolute right-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-foreground/85 px-2.5 py-1 font-mono text-[0.55rem] font-semibold uppercase tracking-[0.2em] text-background opacity-0 shadow-md transition-opacity duration-300 group-hover:opacity-100">
+                      <ZoomIn className="h-3 w-3" />
+                      Click to zoom
                     </div>
                   </div>
-                </motion.a>
+                </motion.button>
               ))}
             </Reveal>
           </div>
@@ -845,16 +1038,19 @@ function BWayProject() {
                 alongside the educator team.
               </motion.p>
             </Reveal>
-            <Reveal className="mt-14 grid grid-cols-1 gap-8 sm:grid-cols-2" stagger={0.1}>
+            <Reveal
+              className="mt-14 grid grid-cols-1 gap-8 sm:grid-cols-2 sm:[grid-template-rows:auto_auto_1fr]"
+              stagger={0.1}
+            >
               {reels.map((r) => (
                 <motion.div
                   key={r.url}
                   variants={fadeUp}
                   whileHover={{ y: -4 }}
                   transition={{ type: "spring", stiffness: 260, damping: 22 }}
-                  className="group relative flex flex-col"
+                  className="group relative flex flex-col sm:grid sm:[grid-template-rows:subgrid] sm:row-span-3"
                 >
-                  <div className="mb-4 flex items-center gap-3">
+                  <div className="mb-4 flex flex-wrap items-center gap-3">
                     <span className="rounded-full bg-gradient-accent px-3 py-1 font-mono text-[0.65rem] font-bold uppercase tracking-[0.22em] text-accent-foreground shadow-[var(--shadow-accent)]">
                       Evento · {r.country}
                     </span>
@@ -862,13 +1058,15 @@ function BWayProject() {
                       Stand designed &amp; organized by me
                     </span>
                   </div>
-                  <h3 className="text-xl font-bold tracking-tight md:text-2xl">
-                    {r.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground md:text-base">
-                    {r.body}
-                  </p>
-                  <div className="mt-5 overflow-hidden rounded-[calc(var(--radius)+18px)] border border-border bg-black shadow-[var(--shadow-card)]">
+                  <div>
+                    <h3 className="text-xl font-bold tracking-tight md:text-2xl">
+                      {r.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground md:text-base">
+                      {r.body}
+                    </p>
+                  </div>
+                  <div className="mt-5 self-end overflow-hidden rounded-[calc(var(--radius)+18px)] border border-border bg-black shadow-[var(--shadow-card)]">
                     <video
                       src={r.url}
                       className="aspect-[9/16] w-full object-cover"
