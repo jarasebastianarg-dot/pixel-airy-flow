@@ -285,6 +285,8 @@ const mockups = [
     focus: "Conversion + Education",
     body: "Designed to convert and inform in equal measure — hero storytelling, best-sellers, benefits, customer proof and press credibility guide cold clicks to considered add-to-carts.",
     image: prHome.url,
+    naturalWidth: 286,
+    frame: "mobile" as const,
   },
   {
     kicker: "PDP",
@@ -292,6 +294,8 @@ const mockups = [
     focus: "Conversion + Trust",
     body: "A high-density PDP built to close the sale. Native Subscribe & Save 15% wired into the cart, plus ingredients, certifications, FAQs and behavioral wellness copy stack the trust pet parents need to check out.",
     image: prProduct.url,
+    naturalWidth: 471,
+    frame: "mobile" as const,
   },
   {
     kicker: "S&S",
@@ -299,6 +303,8 @@ const mockups = [
     focus: "Recurring Revenue",
     body: "A dedicated page that turns subscription into the offer — choose formula, pick cadence, save 15% every order — reframing recurrence as clinical benefit, not a lock-in.",
     image: prSubscribe.url,
+    naturalWidth: 791,
+    frame: "desktop" as const,
   },
   {
     kicker: "Quiz",
@@ -306,6 +312,8 @@ const mockups = [
     focus: "Personalization + Discount",
     body: "An interactive quiz that recommends a supplement stack by breed, age and health goals and unlocks a first-order discount — feeding Klaviyo with segmented, high-intent data.",
     image: prQuiz.url,
+    naturalWidth: 1920,
+    frame: "desktop" as const,
   },
 ];
 
@@ -316,6 +324,8 @@ const emails = [
     focus: "Brand + Conversion",
     body: "Editorial hero campaign email — bestseller grid with vet-driven copy, science badges and a limited-time 15% first-order code. Designed to sell the brand and the product at once.",
     image: prEmailCampaign.url,
+    naturalWidth: 640,
+    frame: "desktop" as const,
   },
   {
     kicker: "Retention",
@@ -323,6 +333,8 @@ const emails = [
     focus: "Recurring Revenue",
     body: "Full routine grid pushing every SKU into the subscription funnel — dark cards, single CTA per formula, and social proof close to lift subscribers-per-send.",
     image: prEmailSubscribe.url,
+    naturalWidth: 516,
+    frame: "desktop" as const,
   },
   {
     kicker: "Welcome",
@@ -330,6 +342,8 @@ const emails = [
     focus: "Acquisition + Trust",
     body: "Welcome-series drop for the Calming SKU: veterinarian-formulated badge, ingredient breakdown, verified reviews and a single ROYAL-SUB code to convert first-time subscribers.",
     image: prEmailCalming.url,
+    naturalWidth: 457,
+    frame: "desktop" as const,
   },
 ];
 
@@ -338,13 +352,13 @@ function Lightbox({
   open,
   src,
   label,
-  width = "standard",
+  maxWidth,
   onClose,
 }: {
   open: boolean;
   src: string | null;
   label?: string;
-  width?: "standard" | "wide";
+  maxWidth?: number;
   onClose: () => void;
 }) {
   useEffect(() => {
@@ -396,11 +410,10 @@ function Lightbox({
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.96, y: 10 }}
             transition={{ type: "spring", stiffness: 240, damping: 26 }}
-            className={`relative flex max-h-[88vh] w-[92vw] items-start justify-center overflow-y-auto rounded-3xl border border-white/10 bg-background shadow-2xl ${
-              width === "wide"
-                ? "md:w-[76vw] lg:w-[62vw] xl:w-[54vw]"
-                : "md:w-[80vw] lg:w-[64vw] xl:w-[52vw]"
-            }`}
+            className="relative flex max-h-[88vh] items-start justify-center overflow-y-auto rounded-3xl border border-white/10 bg-background shadow-2xl"
+            style={{
+              width: "min(92vw, " + (maxWidth ?? 1200) + "px)",
+            }}
             onClick={(e) => e.stopPropagation()}
           >
             <img
@@ -426,23 +439,27 @@ function ScrollPreviewCard({
 }: {
   item: GalleryItem;
   index: number;
-  onOpen: (src: string, label: string, width?: "standard" | "wide") => void;
+  onOpen: (src: string, label: string, maxWidth?: number) => void;
   scrollDurationMs?: number;
 }) {
+  const cardMaxW = Math.min(360, item.naturalWidth ?? 360);
+  const isMobileFrame = item.frame === "mobile";
   return (
     <motion.div
       variants={fadeUp}
-      className="relative mx-auto flex h-full w-full max-w-[360px] flex-col"
+      className="relative mx-auto flex h-full w-full flex-col"
+      style={{ maxWidth: cardMaxW }}
     >
       <div className="mb-3 inline-flex w-fit items-center gap-2 rounded-full border border-border bg-background px-3 py-1 font-mono text-[0.6rem] font-semibold uppercase tracking-[0.22em] text-muted-foreground shadow-[var(--shadow-card)]">
         <span className="text-accent-1">
           {String(index + 1).padStart(2, "0")}
         </span>
         {item.kicker}
+        {isMobileFrame ? <span className="ml-1 text-muted-foreground/60">· Mobile</span> : null}
       </div>
       <button
         type="button"
-        onClick={() => onOpen(item.image, item.title, item.kicker === "Home" || item.kicker === "PDP" ? "wide" : "standard")}
+        onClick={() => onOpen(item.image, item.title, item.naturalWidth)}
         className="group relative block w-full overflow-hidden rounded-[calc(var(--radius)+14px)] border border-border bg-[#E4EDF7] text-left shadow-[var(--shadow-card)] transition-shadow duration-500 hover:shadow-[var(--shadow-card-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-1/60"
         aria-label={`Open ${item.title} preview`}
       >
@@ -481,7 +498,7 @@ function PreviewGallery({
   scrollDurationMs,
 }: {
   items: GalleryItem[];
-  onOpen: (src: string, label: string, width?: "standard" | "wide") => void;
+  onOpen: (src: string, label: string, maxWidth?: number) => void;
   scrollDurationMs?: number;
 }) {
   return (
@@ -503,15 +520,15 @@ function PreviewGallery({
 }
 
 function PawRoyaltyProject() {
-  const [lightbox, setLightbox] = useState<{ src: string; label?: string; width?: "standard" | "wide" } | null>(null);
-  const openLightbox = (src: string, label?: string, width?: "standard" | "wide") => setLightbox({ src, label, width });
+  const [lightbox, setLightbox] = useState<{ src: string; label?: string; maxWidth?: number } | null>(null);
+  const openLightbox = (src: string, label?: string, maxWidth?: number) => setLightbox({ src, label, maxWidth });
   return (
     <main className="min-h-screen bg-background text-foreground">
       <Lightbox
         open={lightbox !== null}
         src={lightbox?.src ?? null}
         label={lightbox?.label}
-        width={lightbox?.width}
+        maxWidth={lightbox?.maxWidth}
         onClose={() => setLightbox(null)}
       />
       {/* Top bar */}
