@@ -18,13 +18,9 @@ import {
   ShoppingCart,
   Mail,
   MousePointerClick,
-  Palette,
   Percent,
   TrendingUp,
   Boxes,
-  Smartphone,
-  CreditCard,
-  Send,
   Plus,
 } from "lucide-react";
 import prHome from "@/assets/paw-royalty/pr-home.png.asset.json";
