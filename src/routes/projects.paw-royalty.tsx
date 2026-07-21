@@ -516,15 +516,15 @@ function PreviewGallery({
 }
 
 function PawRoyaltyProject() {
-  const [lightbox, setLightbox] = useState<{ src: string; label?: string; width?: "standard" | "wide" } | null>(null);
-  const openLightbox = (src: string, label?: string, width?: "standard" | "wide") => setLightbox({ src, label, width });
+  const [lightbox, setLightbox] = useState<{ src: string; label?: string; maxWidth?: number } | null>(null);
+  const openLightbox = (src: string, label?: string, maxWidth?: number) => setLightbox({ src, label, maxWidth });
   return (
     <main className="min-h-screen bg-background text-foreground">
       <Lightbox
         open={lightbox !== null}
         src={lightbox?.src ?? null}
         label={lightbox?.label}
-        width={lightbox?.width}
+        maxWidth={lightbox?.maxWidth}
         onClose={() => setLightbox(null)}
       />
       {/* Top bar */}
