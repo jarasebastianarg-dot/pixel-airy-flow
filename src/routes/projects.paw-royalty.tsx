@@ -439,23 +439,27 @@ function ScrollPreviewCard({
 }: {
   item: GalleryItem;
   index: number;
-  onOpen: (src: string, label: string, width?: "standard" | "wide") => void;
+  onOpen: (src: string, label: string, maxWidth?: number) => void;
   scrollDurationMs?: number;
 }) {
+  const cardMaxW = Math.min(360, item.naturalWidth ?? 360);
+  const isMobileFrame = item.frame === "mobile";
   return (
     <motion.div
       variants={fadeUp}
-      className="relative mx-auto flex h-full w-full max-w-[360px] flex-col"
+      className="relative mx-auto flex h-full w-full flex-col"
+      style={{ maxWidth: cardMaxW }}
     >
       <div className="mb-3 inline-flex w-fit items-center gap-2 rounded-full border border-border bg-background px-3 py-1 font-mono text-[0.6rem] font-semibold uppercase tracking-[0.22em] text-muted-foreground shadow-[var(--shadow-card)]">
         <span className="text-accent-1">
           {String(index + 1).padStart(2, "0")}
         </span>
         {item.kicker}
+        {isMobileFrame ? <span className="ml-1 text-muted-foreground/60">· Mobile</span> : null}
       </div>
       <button
         type="button"
-        onClick={() => onOpen(item.image, item.title, item.kicker === "Home" || item.kicker === "PDP" ? "wide" : "standard")}
+        onClick={() => onOpen(item.image, item.title, item.naturalWidth)}
         className="group relative block w-full overflow-hidden rounded-[calc(var(--radius)+14px)] border border-border bg-[#E4EDF7] text-left shadow-[var(--shadow-card)] transition-shadow duration-500 hover:shadow-[var(--shadow-card-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-1/60"
         aria-label={`Open ${item.title} preview`}
       >
@@ -494,7 +498,7 @@ function PreviewGallery({
   scrollDurationMs,
 }: {
   items: GalleryItem[];
-  onOpen: (src: string, label: string, width?: "standard" | "wide") => void;
+  onOpen: (src: string, label: string, maxWidth?: number) => void;
   scrollDurationMs?: number;
 }) {
   return (
