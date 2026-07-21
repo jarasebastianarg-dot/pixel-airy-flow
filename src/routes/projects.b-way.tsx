@@ -296,13 +296,13 @@ function Lightbox({
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.96, y: 10 }}
             transition={{ type: "spring", stiffness: 240, damping: 26 }}
-            className="relative flex items-center justify-center overflow-hidden rounded-3xl border border-white/10 bg-background shadow-2xl"
+            className="relative flex max-h-[88vh] w-[92vw] items-start justify-center overflow-y-auto rounded-3xl border border-white/10 bg-background shadow-2xl md:w-[76vw] lg:w-[62vw] xl:w-[54vw]"
             onClick={(e) => e.stopPropagation()}
           >
             <img
               src={src}
               alt={label ?? ""}
-              className="block max-h-[88vh] max-w-[92vw] w-auto h-auto object-contain select-none md:max-w-[80vw]"
+              className="block h-auto w-full select-none [image-rendering:auto]"
               draggable={false}
             />
           </motion.div>
