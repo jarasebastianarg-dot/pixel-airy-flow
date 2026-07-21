@@ -363,7 +363,7 @@ function HorizontalMockups() {
         >
           {mockups.map((m, i) => (
             <div
-              key={m.label}
+              key={m.title}
               className="relative w-[85vw] shrink-0"
               style={{ scrollSnapAlign: "center" }}
             >
