@@ -428,25 +428,25 @@ function ScrollPreviewCard({
       variants={fadeUp}
       className="relative flex h-full flex-col"
     >
+      <div className="mb-3 inline-flex w-fit items-center gap-2 rounded-full border border-border bg-background px-3 py-1 font-mono text-[0.6rem] font-semibold uppercase tracking-[0.22em] text-muted-foreground shadow-[var(--shadow-card)]">
+        <span className="text-accent-1">
+          {String(index + 1).padStart(2, "0")}
+        </span>
+        {item.kicker}
+      </div>
       <button
         type="button"
         onClick={() => onOpen(item.image, item.title)}
         className="group relative block w-full overflow-hidden rounded-[calc(var(--radius)+14px)] border border-border bg-[#E4EDF7] text-left shadow-[var(--shadow-card)] transition-shadow duration-500 hover:shadow-[var(--shadow-card-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-1/60"
         aria-label={`Open ${item.title} preview`}
       >
-        <div className="absolute -top-3 left-4 z-10 inline-flex items-center gap-2 rounded-full border border-border bg-background px-3 py-1 font-mono text-[0.6rem] font-semibold uppercase tracking-[0.22em] text-muted-foreground shadow-[var(--shadow-card)]">
-          <span className="text-accent-1">
-            {String(index + 1).padStart(2, "0")}
-          </span>
-          {item.kicker}
-        </div>
         <div className="relative aspect-[4/5] w-full overflow-hidden">
           <img
             src={item.image}
             alt={item.title}
             loading="lazy"
             style={{ transitionDuration: `${scrollDurationMs}ms` }}
-            className="block h-auto w-full select-none ease-linear group-hover:-translate-y-[70%]"
+            className="block h-auto w-full select-none ease-linear [image-rendering:auto] group-hover:-translate-y-[70%]"
             draggable={false}
           />
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
