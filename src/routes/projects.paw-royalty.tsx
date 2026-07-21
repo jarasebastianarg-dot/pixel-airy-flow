@@ -285,6 +285,8 @@ const mockups = [
     focus: "Conversion + Education",
     body: "Designed to convert and inform in equal measure — hero storytelling, best-sellers, benefits, customer proof and press credibility guide cold clicks to considered add-to-carts.",
     image: prHome.url,
+    naturalWidth: 286,
+    frame: "mobile" as const,
   },
   {
     kicker: "PDP",
@@ -292,6 +294,8 @@ const mockups = [
     focus: "Conversion + Trust",
     body: "A high-density PDP built to close the sale. Native Subscribe & Save 15% wired into the cart, plus ingredients, certifications, FAQs and behavioral wellness copy stack the trust pet parents need to check out.",
     image: prProduct.url,
+    naturalWidth: 471,
+    frame: "mobile" as const,
   },
   {
     kicker: "S&S",
@@ -299,6 +303,8 @@ const mockups = [
     focus: "Recurring Revenue",
     body: "A dedicated page that turns subscription into the offer — choose formula, pick cadence, save 15% every order — reframing recurrence as clinical benefit, not a lock-in.",
     image: prSubscribe.url,
+    naturalWidth: 791,
+    frame: "desktop" as const,
   },
   {
     kicker: "Quiz",
@@ -306,6 +312,8 @@ const mockups = [
     focus: "Personalization + Discount",
     body: "An interactive quiz that recommends a supplement stack by breed, age and health goals and unlocks a first-order discount — feeding Klaviyo with segmented, high-intent data.",
     image: prQuiz.url,
+    naturalWidth: 1920,
+    frame: "desktop" as const,
   },
 ];
 
@@ -316,6 +324,8 @@ const emails = [
     focus: "Brand + Conversion",
     body: "Editorial hero campaign email — bestseller grid with vet-driven copy, science badges and a limited-time 15% first-order code. Designed to sell the brand and the product at once.",
     image: prEmailCampaign.url,
+    naturalWidth: 640,
+    frame: "desktop" as const,
   },
   {
     kicker: "Retention",
@@ -323,6 +333,8 @@ const emails = [
     focus: "Recurring Revenue",
     body: "Full routine grid pushing every SKU into the subscription funnel — dark cards, single CTA per formula, and social proof close to lift subscribers-per-send.",
     image: prEmailSubscribe.url,
+    naturalWidth: 516,
+    frame: "desktop" as const,
   },
   {
     kicker: "Welcome",
@@ -330,6 +342,8 @@ const emails = [
     focus: "Acquisition + Trust",
     body: "Welcome-series drop for the Calming SKU: veterinarian-formulated badge, ingredient breakdown, verified reviews and a single ROYAL-SUB code to convert first-time subscribers.",
     image: prEmailCalming.url,
+    naturalWidth: 457,
+    frame: "desktop" as const,
   },
 ];
 
