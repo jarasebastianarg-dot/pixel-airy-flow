@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import portrait from "@/assets/portrait.jpg.asset.json";
 import folkwaysThumb from "@/assets/folkways/folkways-storefront.jpg.asset.json";
-import pawRoyaltyThumb from "@/assets/paw-royalty-crown.jpg.asset.json";
+import pawRoyaltyThumb from "@/assets/paw-royalty-logo-thumb.jpg.asset.json";
 import bwayThumb from "@/assets/bway/bway-brand.jpg.asset.json";
 import elevateThumb from "@/assets/elevate-local/el-horizontal-dark.png.asset.json";
 import {
