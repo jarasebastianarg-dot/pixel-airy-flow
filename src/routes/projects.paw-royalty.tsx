@@ -3,8 +3,6 @@ import {
   AnimatePresence,
   motion,
   useInView,
-  useScroll,
-  useTransform,
   type Variants,
 } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
@@ -22,11 +20,16 @@ import {
   TrendingUp,
   Boxes,
   Plus,
+  X,
+  ZoomIn,
 } from "lucide-react";
 import prHome from "@/assets/paw-royalty/pr-home.png.asset.json";
 import prProduct from "@/assets/paw-royalty/pr-product.png.asset.json";
 import prSubscribe from "@/assets/paw-royalty/pr-subscribe.png.asset.json";
 import prQuiz from "@/assets/paw-royalty/pr-quiz.png.asset.json";
+import prEmailSubscribe from "@/assets/paw-royalty/pr-email-subscribe.png.asset.json";
+import prEmailCalming from "@/assets/paw-royalty/pr-email-calming.png.asset.json";
+import prEmailCampaign from "@/assets/paw-royalty/pr-email-campaign.png.asset.json";
 
 export const Route = createFileRoute("/projects/paw-royalty")({
   component: PawRoyaltyProject,
