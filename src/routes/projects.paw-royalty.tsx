@@ -609,11 +609,14 @@ function PawRoyaltyProject() {
         <div className="mx-auto max-w-6xl px-6 pb-20 md:px-10 md:pb-28">
           <Reveal>
             <motion.div variants={fadeUp}>
-              <MediaPlaceholder
-                label="Storefront Mockup"
-                aspect="aspect-[16/8]"
-                icon={Palette}
-              />
+              <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[calc(var(--radius)+18px)] border border-border bg-[#E4EDF7] shadow-[var(--shadow-card)]">
+                <img
+                  src={prHome.url}
+                  alt="Paw Royalty homepage — hero, best sellers and education"
+                  loading="lazy"
+                  className="absolute inset-0 h-full w-full object-cover object-top"
+                />
+              </div>
             </motion.div>
           </Reveal>
         </div>
