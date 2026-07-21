@@ -18,15 +18,15 @@ import {
   ShoppingCart,
   Mail,
   MousePointerClick,
-  Palette,
   Percent,
   TrendingUp,
   Boxes,
-  Smartphone,
-  CreditCard,
-  Send,
   Plus,
 } from "lucide-react";
+import prHome from "@/assets/paw-royalty/pr-home.png.asset.json";
+import prProduct from "@/assets/paw-royalty/pr-product.png.asset.json";
+import prSubscribe from "@/assets/paw-royalty/pr-subscribe.png.asset.json";
+import prQuiz from "@/assets/paw-royalty/pr-quiz.png.asset.json";
 
 export const Route = createFileRoute("/projects/paw-royalty")({
   component: PawRoyaltyProject,
@@ -276,10 +276,34 @@ function ExecutionCard({ card, index }: { card: ExecutionCardData; index: number
 }
 
 const mockups = [
-  { label: "Product Detail Page", icon: Layers, kicker: "PDP" },
-  { label: "Subscribe & Save Cart", icon: CreditCard, kicker: "Checkout" },
-  { label: "Mobile Experience", icon: Smartphone, kicker: "Responsive" },
-  { label: "Klaviyo Flow", icon: Send, kicker: "Retention" },
+  {
+    kicker: "Home",
+    title: "Homepage",
+    focus: "Conversion + Education",
+    body: "The storefront is designed to convert and inform in equal measure. Because the product is a supplement for animals, education comes first — hero storytelling, best-sellers, a benefits grid, real customer proof and press credibility guide the user from cold click to considered add-to-cart.",
+    image: prHome.url,
+  },
+  {
+    kicker: "PDP",
+    title: "Product Detail Page",
+    focus: "Conversion + Trust",
+    body: "High-density PDP built to close the sale. Native Subscribe & Save 15% is wired into the cart to lift AOV and LTV, while ingredient breakdowns, USA-made certifications, FAQs and behavioral wellness copy stack the trust the pet parent needs before checking out.",
+    image: prProduct.url,
+  },
+  {
+    kicker: "S&S",
+    title: "Subscribe & Save",
+    focus: "Recurring Revenue",
+    body: "A dedicated page that turns the subscription into the offer. A three-step visual — choose formula, pick cadence, save 15% every order — makes commitment feel simple, and the ‘Why Consistency Matters’ block reframes recurrence as clinical benefit, not a lock-in.",
+    image: prSubscribe.url,
+  },
+  {
+    kicker: "Quiz",
+    title: "Wellness Quiz",
+    focus: "Personalization + Discount",
+    body: "An interactive quiz that recommends the right supplement stack for each dog based on breed, age and health goals — unlocking a first-order discount at the end. Turns a cold visitor into a segmented, incentivized subscriber, and feeds Klaviyo with high-intent data.",
+    image: prQuiz.url,
+  },
 ];
 
 function HorizontalMockups() {
@@ -335,7 +359,7 @@ function HorizontalMockups() {
         >
           {mockups.map((m, i) => (
             <div
-              key={m.label}
+              key={m.title}
               className="relative w-[85vw] shrink-0"
               style={{ scrollSnapAlign: "center" }}
             >
@@ -345,11 +369,16 @@ function HorizontalMockups() {
                 </span>
                 {m.kicker}
               </div>
-              <MediaPlaceholder
-                label={m.label}
-                aspect="aspect-[3/4]"
-                icon={m.icon}
-              />
+              <MockupFrame image={m.image} title={m.title} />
+              <div className="mt-5 space-y-2">
+                <div className="font-mono text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-accent-1">
+                  {m.focus}
+                </div>
+                <div className="text-lg font-bold tracking-tight">{m.title}</div>
+                <p className="text-[0.85rem] leading-relaxed text-muted-foreground">
+                  {m.body}
+                </p>
+              </div>
             </div>
           ))}
           <div className="w-2 shrink-0" />
@@ -381,12 +410,12 @@ function HorizontalMockups() {
         <motion.div
           ref={trackRef}
           style={{ x }}
-          className="mt-10 flex gap-6 pl-6 md:pl-10 will-change-transform"
+          className="mt-10 flex items-stretch gap-8 pl-6 md:pl-10 will-change-transform"
         >
           {mockups.map((m, i) => (
             <div
-              key={m.label}
-              className="relative w-[78vw] shrink-0 sm:w-[60vw] md:w-[46vw] lg:w-[40vw]"
+              key={m.title}
+              className="relative flex w-[78vw] shrink-0 flex-col sm:w-[60vw] md:w-[48vw] lg:w-[38vw]"
             >
               <div className="absolute -top-3 left-4 z-10 inline-flex items-center gap-2 rounded-full border border-border bg-background px-3 py-1 font-mono text-[0.6rem] font-semibold uppercase tracking-[0.22em] text-muted-foreground shadow-[var(--shadow-card)]">
                 <span className="text-accent-1">
@@ -394,16 +423,34 @@ function HorizontalMockups() {
                 </span>
                 {m.kicker}
               </div>
-              <MediaPlaceholder
-                label={m.label}
-                aspect="aspect-[4/3]"
-                icon={m.icon}
-              />
+              <MockupFrame image={m.image} title={m.title} />
+              <div className="mt-5 space-y-2">
+                <div className="font-mono text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-accent-1">
+                  {m.focus}
+                </div>
+                <div className="text-xl font-bold tracking-tight">{m.title}</div>
+                <p className="max-w-md text-sm leading-relaxed text-muted-foreground">
+                  {m.body}
+                </p>
+              </div>
             </div>
           ))}
           <div className="w-20 shrink-0" />
         </motion.div>
       </div>
+    </div>
+  );
+}
+
+function MockupFrame({ image, title }: { image: string; title: string }) {
+  return (
+    <div className="relative aspect-[3/4] w-full overflow-hidden rounded-[calc(var(--radius)+18px)] border border-border bg-[#E4EDF7] shadow-[var(--shadow-card)]">
+      <img
+        src={image}
+        alt={`Paw Royalty — ${title}`}
+        loading="lazy"
+        className="absolute inset-0 h-full w-full object-cover object-top"
+      />
     </div>
   );
 }
@@ -558,11 +605,14 @@ function PawRoyaltyProject() {
         <div className="mx-auto max-w-6xl px-6 pb-20 md:px-10 md:pb-28">
           <Reveal>
             <motion.div variants={fadeUp}>
-              <MediaPlaceholder
-                label="Storefront Mockup"
-                aspect="aspect-[16/8]"
-                icon={Palette}
-              />
+              <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[calc(var(--radius)+18px)] border border-border bg-[#E4EDF7] shadow-[var(--shadow-card)]">
+                <img
+                  src={prHome.url}
+                  alt="Paw Royalty homepage — hero, best sellers and education"
+                  loading="lazy"
+                  className="absolute inset-0 h-full w-full object-cover object-top"
+                />
+              </div>
             </motion.div>
           </Reveal>
         </div>
