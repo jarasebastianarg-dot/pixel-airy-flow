@@ -352,13 +352,13 @@ function Lightbox({
   open,
   src,
   label,
-  width = "standard",
+  maxWidth,
   onClose,
 }: {
   open: boolean;
   src: string | null;
   label?: string;
-  width?: "standard" | "wide";
+  maxWidth?: number;
   onClose: () => void;
 }) {
   useEffect(() => {
@@ -410,11 +410,10 @@ function Lightbox({
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.96, y: 10 }}
             transition={{ type: "spring", stiffness: 240, damping: 26 }}
-            className={`relative flex max-h-[88vh] w-[92vw] items-start justify-center overflow-y-auto rounded-3xl border border-white/10 bg-background shadow-2xl ${
-              width === "wide"
-                ? "md:w-[76vw] lg:w-[62vw] xl:w-[54vw]"
-                : "md:w-[80vw] lg:w-[64vw] xl:w-[52vw]"
-            }`}
+            className="relative flex max-h-[88vh] items-start justify-center overflow-y-auto rounded-3xl border border-white/10 bg-background shadow-2xl"
+            style={{
+              width: "min(92vw, " + (maxWidth ?? 1200) + "px)",
+            }}
             onClick={(e) => e.stopPropagation()}
           >
             <img
