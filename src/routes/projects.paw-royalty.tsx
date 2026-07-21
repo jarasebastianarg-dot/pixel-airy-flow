@@ -426,7 +426,7 @@ function ScrollPreviewCard({
   return (
     <motion.div
       variants={fadeUp}
-      className="relative flex h-full flex-col"
+      className="relative mx-auto flex h-full w-full max-w-[440px] flex-col"
     >
       <div className="mb-3 inline-flex w-fit items-center gap-2 rounded-full border border-border bg-background px-3 py-1 font-mono text-[0.6rem] font-semibold uppercase tracking-[0.22em] text-muted-foreground shadow-[var(--shadow-card)]">
         <span className="text-accent-1">
