@@ -338,11 +338,13 @@ function Lightbox({
   open,
   src,
   label,
+  width = "standard",
   onClose,
 }: {
   open: boolean;
   src: string | null;
   label?: string;
+  width?: "standard" | "wide";
   onClose: () => void;
 }) {
   useEffect(() => {
@@ -394,13 +396,17 @@ function Lightbox({
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.96, y: 10 }}
             transition={{ type: "spring", stiffness: 240, damping: 26 }}
-            className="relative flex max-h-[88vh] w-[92vw] items-start justify-center overflow-y-auto rounded-3xl border border-white/10 bg-background shadow-2xl md:w-[80vw] lg:w-[64vw] xl:w-[52vw]"
+            className={`relative flex max-h-[88vh] w-[92vw] items-start justify-center overflow-y-auto rounded-3xl border border-white/10 bg-background shadow-2xl ${
+              width === "wide"
+                ? "md:w-[72vw] lg:w-[58vw] xl:w-[48vw]"
+                : "md:w-[80vw] lg:w-[64vw] xl:w-[52vw]"
+            }`}
             onClick={(e) => e.stopPropagation()}
           >
             <img
               src={src}
               alt={label ?? ""}
-              className="block h-auto w-full select-none"
+              className="block h-auto w-full select-none [image-rendering:auto]"
               draggable={false}
             />
           </motion.div>
@@ -420,7 +426,7 @@ function ScrollPreviewCard({
 }: {
   item: GalleryItem;
   index: number;
-  onOpen: (src: string, label: string) => void;
+  onOpen: (src: string, label: string, width?: "standard" | "wide") => void;
   scrollDurationMs?: number;
 }) {
   return (
@@ -436,7 +442,7 @@ function ScrollPreviewCard({
       </div>
       <button
         type="button"
-        onClick={() => onOpen(item.image, item.title)}
+        onClick={() => onOpen(item.image, item.title, item.kicker === "Home" || item.kicker === "PDP" ? "wide" : "standard")}
         className="group relative block w-full overflow-hidden rounded-[calc(var(--radius)+14px)] border border-border bg-[#E4EDF7] text-left shadow-[var(--shadow-card)] transition-shadow duration-500 hover:shadow-[var(--shadow-card-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-1/60"
         aria-label={`Open ${item.title} preview`}
       >
@@ -475,7 +481,7 @@ function PreviewGallery({
   scrollDurationMs,
 }: {
   items: GalleryItem[];
-  onOpen: (src: string, label: string) => void;
+  onOpen: (src: string, label: string, width?: "standard" | "wide") => void;
   scrollDurationMs?: number;
 }) {
   return (
@@ -497,14 +503,15 @@ function PreviewGallery({
 }
 
 function PawRoyaltyProject() {
-  const [lightbox, setLightbox] = useState<{ src: string; label?: string } | null>(null);
-  const openLightbox = (src: string, label?: string) => setLightbox({ src, label });
+  const [lightbox, setLightbox] = useState<{ src: string; label?: string; width?: "standard" | "wide" } | null>(null);
+  const openLightbox = (src: string, label?: string, width?: "standard" | "wide") => setLightbox({ src, label, width });
   return (
     <main className="min-h-screen bg-background text-foreground">
       <Lightbox
         open={lightbox !== null}
         src={lightbox?.src ?? null}
         label={lightbox?.label}
+        width={lightbox?.width}
         onClose={() => setLightbox(null)}
       />
       {/* Top bar */}
