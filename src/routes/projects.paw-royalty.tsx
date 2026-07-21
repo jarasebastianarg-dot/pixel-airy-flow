@@ -27,6 +27,10 @@ import {
   Send,
   Plus,
 } from "lucide-react";
+import prHome from "@/assets/paw-royalty/pr-home.png.asset.json";
+import prProduct from "@/assets/paw-royalty/pr-product.png.asset.json";
+import prSubscribe from "@/assets/paw-royalty/pr-subscribe.png.asset.json";
+import prQuiz from "@/assets/paw-royalty/pr-quiz.png.asset.json";
 
 export const Route = createFileRoute("/projects/paw-royalty")({
   component: PawRoyaltyProject,
