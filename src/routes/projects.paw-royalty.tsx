@@ -283,178 +283,217 @@ const mockups = [
     kicker: "Home",
     title: "Homepage",
     focus: "Conversion + Education",
-    body: "The storefront is designed to convert and inform in equal measure. Because the product is a supplement for animals, education comes first — hero storytelling, best-sellers, a benefits grid, real customer proof and press credibility guide the user from cold click to considered add-to-cart.",
+    body: "Designed to convert and inform in equal measure — hero storytelling, best-sellers, benefits, customer proof and press credibility guide cold clicks to considered add-to-carts.",
     image: prHome.url,
   },
   {
     kicker: "PDP",
     title: "Product Detail Page",
     focus: "Conversion + Trust",
-    body: "High-density PDP built to close the sale. Native Subscribe & Save 15% is wired into the cart to lift AOV and LTV, while ingredient breakdowns, USA-made certifications, FAQs and behavioral wellness copy stack the trust the pet parent needs before checking out.",
+    body: "A high-density PDP built to close the sale. Native Subscribe & Save 15% wired into the cart, plus ingredients, certifications, FAQs and behavioral wellness copy stack the trust pet parents need to check out.",
     image: prProduct.url,
   },
   {
     kicker: "S&S",
     title: "Subscribe & Save",
     focus: "Recurring Revenue",
-    body: "A dedicated page that turns the subscription into the offer. A three-step visual — choose formula, pick cadence, save 15% every order — makes commitment feel simple, and the ‘Why Consistency Matters’ block reframes recurrence as clinical benefit, not a lock-in.",
+    body: "A dedicated page that turns subscription into the offer — choose formula, pick cadence, save 15% every order — reframing recurrence as clinical benefit, not a lock-in.",
     image: prSubscribe.url,
   },
   {
     kicker: "Quiz",
     title: "Wellness Quiz",
     focus: "Personalization + Discount",
-    body: "An interactive quiz that recommends the right supplement stack for each dog based on breed, age and health goals — unlocking a first-order discount at the end. Turns a cold visitor into a segmented, incentivized subscriber, and feeds Klaviyo with high-intent data.",
+    body: "An interactive quiz that recommends a supplement stack by breed, age and health goals and unlocks a first-order discount — feeding Klaviyo with segmented, high-intent data.",
     image: prQuiz.url,
   },
 ];
 
-function HorizontalMockups() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const trackRef = useRef<HTMLDivElement>(null);
-  const [trackWidth, setTrackWidth] = useState(0);
-  const [viewportWidth, setViewportWidth] = useState(0);
-  const isMobile = useIsMobile();
+const emails = [
+  {
+    kicker: "Campaign",
+    title: "Royal Treatment — Flagship Campaign",
+    focus: "Brand + Conversion",
+    body: "Editorial hero campaign email — bestseller grid with vet-driven copy, science badges and a limited-time 15% first-order code. Designed to sell the brand and the product at once.",
+    image: prEmailCampaign.url,
+  },
+  {
+    kicker: "Retention",
+    title: "Subscribe & Save 15% Off",
+    focus: "Recurring Revenue",
+    body: "Full routine grid pushing every SKU into the subscription funnel — dark cards, single CTA per formula, and social proof close to lift subscribers-per-send.",
+    image: prEmailSubscribe.url,
+  },
+  {
+    kicker: "Welcome",
+    title: "Calming — 20% OFF Welcome Flow",
+    focus: "Acquisition + Trust",
+    body: "Welcome-series drop for the Calming SKU: veterinarian-formulated badge, ingredient breakdown, verified reviews and a single ROYAL-SUB code to convert first-time subscribers.",
+    image: prEmailCalming.url,
+  },
+];
 
+// Lightbox — clickable full-resolution zoom for any preview image
+function Lightbox({
+  open,
+  src,
+  label,
+  onClose,
+}: {
+  open: boolean;
+  src: string | null;
+  label?: string;
+  onClose: () => void;
+}) {
   useEffect(() => {
-    if (isMobile) return;
-    const measure = () => {
-      if (trackRef.current && containerRef.current) {
-        setTrackWidth(trackRef.current.scrollWidth);
-        setViewportWidth(containerRef.current.clientWidth);
-      }
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
     };
-    measure();
-    window.addEventListener("resize", measure);
-    return () => window.removeEventListener("resize", measure);
-  }, [isMobile]);
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"],
-  });
-
-  const maxTranslate = Math.max(0, trackWidth - viewportWidth);
-  const x = useTransform(scrollYProgress, (value) => -maxTranslate * value);
-
-  if (isMobile) {
-    return (
-      <div className="relative">
-        <div className="mx-auto w-full max-w-6xl px-6">
-          <div className="flex items-end justify-between gap-4">
-            <div>
-              <SectionLabel>02.5 — Gallery</SectionLabel>
-              <h3 className="mt-4 text-3xl font-bold leading-[1.05] tracking-tight">
-                Storefront{" "}
-                <span className="font-serif italic font-normal text-accent-1">
-                  in motion
-                </span>
-              </h3>
-            </div>
-          </div>
-          <div className="mt-2 font-mono text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
-            Swipe to explore →
-          </div>
-        </div>
-        <div
-          className="mt-10 flex gap-4 overflow-x-auto scroll-smooth px-6 pb-6 pt-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-          style={{ scrollSnapType: "x mandatory", WebkitOverflowScrolling: "touch" }}
-        >
-          {mockups.map((m, i) => (
-            <div
-              key={m.title}
-              className="relative w-[85vw] shrink-0"
-              style={{ scrollSnapAlign: "center" }}
-            >
-              <div className="absolute -top-3 left-4 z-10 inline-flex items-center gap-2 rounded-full border border-border bg-background px-3 py-1 font-mono text-[0.6rem] font-semibold uppercase tracking-[0.22em] text-muted-foreground shadow-[var(--shadow-card)]">
-                <span className="text-accent-1">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                {m.kicker}
-              </div>
-              <MockupFrame image={m.image} title={m.title} />
-              <div className="mt-5 space-y-2">
-                <div className="font-mono text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-accent-1">
-                  {m.focus}
-                </div>
-                <div className="text-lg font-bold tracking-tight">{m.title}</div>
-                <p className="text-[0.85rem] leading-relaxed text-muted-foreground">
-                  {m.body}
-                </p>
-              </div>
-            </div>
-          ))}
-          <div className="w-2 shrink-0" />
-        </div>
-      </div>
-    );
-  }
+    window.addEventListener("keydown", onKey);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prev;
+    };
+  }, [open, onClose]);
 
   return (
-    <div ref={containerRef} className="relative h-[320vh]">
-      <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden">
-        <div className="mx-auto w-full max-w-6xl px-6 md:px-10">
-          <div className="flex items-end justify-between gap-6">
-            <div>
-              <SectionLabel>02.5 — Gallery</SectionLabel>
-              <h3 className="mt-4 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
-                Storefront{" "}
-                <span className="font-serif italic font-normal text-accent-1">
-                  in motion
-                </span>
-              </h3>
-            </div>
-            <span className="hidden font-mono text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground md:inline">
-              Scroll to explore →
-            </span>
-          </div>
-        </div>
-
+    <AnimatePresence>
+      {open && src ? (
         <motion.div
-          ref={trackRef}
-          style={{ x }}
-          className="mt-10 flex items-stretch gap-8 pl-6 md:pl-10 will-change-transform"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.25 }}
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-foreground/85 p-4 backdrop-blur-md md:p-10"
+          onClick={onClose}
+          role="dialog"
+          aria-modal="true"
+          aria-label={label ?? "Image preview"}
         >
-          {mockups.map((m, i) => (
-            <div
-              key={m.title}
-              className="relative flex w-[78vw] shrink-0 flex-col sm:w-[60vw] md:w-[48vw] lg:w-[38vw]"
-            >
-              <div className="absolute -top-3 left-4 z-10 inline-flex items-center gap-2 rounded-full border border-border bg-background px-3 py-1 font-mono text-[0.6rem] font-semibold uppercase tracking-[0.22em] text-muted-foreground shadow-[var(--shadow-card)]">
-                <span className="text-accent-1">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                {m.kicker}
-              </div>
-              <MockupFrame image={m.image} title={m.title} />
-              <div className="mt-5 space-y-2">
-                <div className="font-mono text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-accent-1">
-                  {m.focus}
-                </div>
-                <div className="text-xl font-bold tracking-tight">{m.title}</div>
-                <p className="max-w-md text-sm leading-relaxed text-muted-foreground">
-                  {m.body}
-                </p>
-              </div>
+          <motion.button
+            type="button"
+            onClick={onClose}
+            initial={{ opacity: 0, y: -6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0 }}
+            className="absolute right-4 top-4 z-10 inline-flex h-11 w-11 items-center justify-center rounded-full bg-background/90 text-foreground shadow-[var(--shadow-card)] transition-colors hover:bg-background md:right-6 md:top-6"
+            aria-label="Close preview"
+          >
+            <X className="h-5 w-5" />
+          </motion.button>
+          {label ? (
+            <div className="pointer-events-none absolute left-1/2 top-4 -translate-x-1/2 rounded-full bg-background/90 px-4 py-1.5 font-mono text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-foreground shadow-[var(--shadow-card)] md:top-6">
+              {label}
             </div>
-          ))}
-          <div className="w-20 shrink-0" />
+          ) : null}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.94, y: 10 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.96, y: 10 }}
+            transition={{ type: "spring", stiffness: 240, damping: 26 }}
+            className="relative flex max-h-[88vh] max-w-[92vw] items-start justify-center overflow-y-auto rounded-3xl border border-white/10 bg-background shadow-2xl md:max-w-[80vw]"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src={src}
+              alt={label ?? ""}
+              className="block h-auto w-auto max-w-full select-none"
+              draggable={false}
+            />
+          </motion.div>
         </motion.div>
-      </div>
-    </div>
+      ) : null}
+    </AnimatePresence>
   );
 }
 
-function MockupFrame({ image, title }: { image: string; title: string }) {
+type GalleryItem = (typeof mockups)[number];
+
+function ScrollPreviewCard({
+  item,
+  index,
+  onOpen,
+  scrollDurationMs = 7000,
+}: {
+  item: GalleryItem;
+  index: number;
+  onOpen: (src: string, label: string) => void;
+  scrollDurationMs?: number;
+}) {
   return (
-    <div className="relative aspect-[3/4] w-full overflow-hidden rounded-[calc(var(--radius)+18px)] border border-border bg-[#E4EDF7] shadow-[var(--shadow-card)]">
-      <img
-        src={image}
-        alt={`Paw Royalty — ${title}`}
-        loading="lazy"
-        className="absolute inset-0 h-full w-full object-cover object-top"
-      />
-    </div>
+    <motion.div
+      variants={fadeUp}
+      className="relative flex h-full flex-col"
+    >
+      <button
+        type="button"
+        onClick={() => onOpen(item.image, item.title)}
+        whileHover={undefined}
+        className="group relative block w-full overflow-hidden rounded-[calc(var(--radius)+14px)] border border-border bg-[#E4EDF7] text-left shadow-[var(--shadow-card)] transition-shadow duration-500 hover:shadow-[var(--shadow-card-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-1/60"
+        aria-label={`Open ${item.title} preview`}
+      >
+        <div className="absolute -top-3 left-4 z-10 inline-flex items-center gap-2 rounded-full border border-border bg-background px-3 py-1 font-mono text-[0.6rem] font-semibold uppercase tracking-[0.22em] text-muted-foreground shadow-[var(--shadow-card)]">
+          <span className="text-accent-1">
+            {String(index + 1).padStart(2, "0")}
+          </span>
+          {item.kicker}
+        </div>
+        <div className="relative aspect-[4/5] w-full overflow-hidden">
+          <img
+            src={item.image}
+            alt={item.title}
+            loading="lazy"
+            style={{ transitionDuration: `${scrollDurationMs}ms` }}
+            className="block h-auto w-full select-none ease-linear group-hover:-translate-y-[70%]"
+            draggable={false}
+          />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+          <div className="pointer-events-none absolute right-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-foreground/85 px-2.5 py-1 font-mono text-[0.55rem] font-semibold uppercase tracking-[0.2em] text-background opacity-0 shadow-md transition-opacity duration-300 group-hover:opacity-100">
+            <ZoomIn className="h-3 w-3" />
+            Click to zoom
+          </div>
+        </div>
+      </button>
+      <div className="mt-5 space-y-2">
+        <div className="font-mono text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-accent-1">
+          {item.focus}
+        </div>
+        <div className="text-lg font-bold tracking-tight">{item.title}</div>
+        <p className="text-[0.85rem] leading-relaxed text-muted-foreground">
+          {item.body}
+        </p>
+      </div>
+    </motion.div>
+  );
+}
+
+function PreviewGallery({
+  items,
+  onOpen,
+  scrollDurationMs,
+}: {
+  items: GalleryItem[];
+  onOpen: (src: string, label: string) => void;
+  scrollDurationMs?: number;
+}) {
+  return (
+    <Reveal
+      className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-2"
+      stagger={0.08}
+    >
+      {items.map((item, i) => (
+        <ScrollPreviewCard
+          key={item.title}
+          item={item}
+          index={i}
+          onOpen={onOpen}
+          scrollDurationMs={scrollDurationMs}
+        />
+      ))}
+    </Reveal>
   );
 }
 
