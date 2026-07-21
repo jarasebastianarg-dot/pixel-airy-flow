@@ -497,8 +497,16 @@ function PreviewGallery({
 }
 
 function PawRoyaltyProject() {
+  const [lightbox, setLightbox] = useState<{ src: string; label?: string } | null>(null);
+  const openLightbox = (src: string, label?: string) => setLightbox({ src, label });
   return (
     <main className="min-h-screen bg-background text-foreground">
+      <Lightbox
+        open={lightbox !== null}
+        src={lightbox?.src ?? null}
+        label={lightbox?.label}
+        onClose={() => setLightbox(null)}
+      />
       {/* Top bar */}
       <div className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur-xl">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 md:px-10">
@@ -641,22 +649,6 @@ function PawRoyaltyProject() {
             </motion.p>
           </Reveal>
         </div>
-
-        {/* Hero Mockup Placeholder */}
-        <div className="mx-auto max-w-6xl px-6 pb-20 md:px-10 md:pb-28">
-          <Reveal>
-            <motion.div variants={fadeUp}>
-              <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[calc(var(--radius)+18px)] border border-border bg-[#E4EDF7] shadow-[var(--shadow-card)]">
-                <img
-                  src={prHome.url}
-                  alt="Paw Royalty homepage — hero, best sellers and education"
-                  loading="lazy"
-                  className="absolute inset-0 h-full w-full object-cover object-top"
-                />
-              </div>
-            </motion.div>
-          </Reveal>
-        </div>
       </section>
 
       {/* The Execution */}
@@ -691,10 +683,57 @@ function PawRoyaltyProject() {
               <ExecutionCard key={c.title} card={c} index={i} />
             ))}
           </Reveal>
-        </div>
 
-        {/* Horizontal scroll mockups */}
-        <HorizontalMockups />
+          {/* Storefront preview gallery — scroll on hover, click to zoom */}
+          <div className="mt-20">
+            <Reveal className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between" stagger={0.08}>
+              <motion.div variants={fadeUp}>
+                <SectionLabel>02.5 — Gallery</SectionLabel>
+                <h3 className="mt-4 text-3xl font-bold leading-[1.1] tracking-tight md:text-5xl">
+                  Storefront{" "}
+                  <span className="font-serif italic font-normal text-accent-1">
+                    in motion
+                  </span>
+                </h3>
+              </motion.div>
+              <motion.p
+                variants={fadeUp}
+                className="max-w-md text-sm leading-relaxed text-muted-foreground md:text-base"
+              >
+                Hover any preview to scroll the full page. Click to open the
+                full-resolution capture.
+              </motion.p>
+            </Reveal>
+            <PreviewGallery items={mockups} onOpen={openLightbox} />
+          </div>
+        </div>
+      </section>
+
+      {/* Email Marketing */}
+      <section className="border-t border-border/60 bg-secondary/30">
+        <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
+          <Reveal className="grid grid-cols-1 gap-10 md:grid-cols-12 md:items-end" stagger={0.1}>
+            <motion.div variants={fadeUp} className="md:col-span-7">
+              <SectionLabel>02.75 — Email Marketing</SectionLabel>
+              <h2 className="mt-6 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
+                Retention wired into{" "}
+                <span className="font-serif italic font-normal text-accent-1">
+                  Klaviyo
+                </span>
+                .
+              </h2>
+            </motion.div>
+            <motion.p
+              variants={fadeUp}
+              className="text-base leading-relaxed text-muted-foreground md:col-span-5 md:text-lg"
+            >
+              A full-funnel email system — welcome, subscribe-and-save
+              retention, and flagship product campaigns — designed and coded
+              inside Klaviyo to compound revenue on autopilot.
+            </motion.p>
+          </Reveal>
+          <PreviewGallery items={emails} onOpen={openLightbox} scrollDurationMs={9000} />
+        </div>
       </section>
 
       {/* The Impact */}
