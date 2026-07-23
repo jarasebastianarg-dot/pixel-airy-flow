@@ -899,11 +899,13 @@ const CODE_SNIPPETS = [
   },
 ];
 
+// All coral, matching the site's accent-1 (~oklch(0.72 0.18 45)).
+// Only origin/spread/intensity vary so each card feels alive without breaking the palette.
 const CLUSTER_GRADIENTS = [
-  "radial-gradient(120% 90% at 100% 0%, oklch(0.86 0.16 40 / 0.9), transparent 60%)",
-  "radial-gradient(120% 90% at 100% 0%, oklch(0.86 0.14 65 / 0.9), transparent 60%)",
-  "radial-gradient(120% 90% at 100% 0%, oklch(0.83 0.16 20 / 0.9), transparent 60%)",
-  "radial-gradient(120% 90% at 100% 0%, oklch(0.82 0.12 340 / 0.9), transparent 60%)",
+  "radial-gradient(130% 100% at 100% 0%, oklch(0.78 0.19 45 / 0.55), transparent 62%)",
+  "radial-gradient(120% 110% at 0% 100%, oklch(0.75 0.19 42 / 0.5), transparent 65%)",
+  "radial-gradient(140% 100% at 100% 100%, oklch(0.8 0.17 48 / 0.5), transparent 62%)",
+  "radial-gradient(120% 100% at 0% 0%, oklch(0.77 0.18 44 / 0.5), transparent 65%)",
 ];
 
 function MethodologyStack() {
