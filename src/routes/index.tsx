@@ -899,6 +899,13 @@ const CODE_SNIPPETS = [
   },
 ];
 
+const CLUSTER_GRADIENTS = [
+  "radial-gradient(120% 90% at 100% 0%, oklch(0.86 0.16 40 / 0.9), transparent 60%)",
+  "radial-gradient(120% 90% at 100% 0%, oklch(0.86 0.14 65 / 0.9), transparent 60%)",
+  "radial-gradient(120% 90% at 100% 0%, oklch(0.83 0.16 20 / 0.9), transparent 60%)",
+  "radial-gradient(120% 90% at 100% 0%, oklch(0.82 0.12 340 / 0.9), transparent 60%)",
+];
+
 function MethodologyStack() {
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
@@ -915,12 +922,12 @@ function MethodologyStack() {
     <Reveal className="flex flex-col gap-10" stagger={0.1}>
       {/* Editorial headline */}
       <motion.div variants={fadeUp} className="max-w-2xl">
-        <h2 className="font-display text-4xl font-light leading-[1.05] tracking-tight text-foreground md:text-5xl lg:text-6xl">
+        <h2 className="font-serif text-4xl font-normal leading-[1.05] tracking-tight text-foreground md:text-5xl lg:text-6xl">
           Methodology &amp;{" "}
-          <span className="font-serif italic font-normal text-accent-1">Stack</span>
+          <span className="italic text-accent-1">Stack</span>
         </h2>
         <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
-          Four disciplines orchestrated as one system. Click any cluster to explore
+          Four disciplines orchestrated as one system. Tap any cluster to explore
           the tools — the workspace on the right re-compiles in real time.
         </p>
       </motion.div>
@@ -937,33 +944,43 @@ function MethodologyStack() {
           {ecosystemClusters.map((cluster, i) => {
             const isActive = active === i;
             const Icon = cluster.icon;
+            const gradient = CLUSTER_GRADIENTS[i % CLUSTER_GRADIENTS.length];
             return (
               <motion.button
                 key={cluster.id}
                 type="button"
                 onClick={() => setActive(i)}
-                whileHover={{ y: -3 }}
+                whileHover={{ y: -4 }}
+                whileTap={{ scale: 0.985 }}
                 transition={{ type: "spring", stiffness: 300, damping: 22 }}
-                className={`group relative flex flex-col gap-5 overflow-hidden rounded-3xl border p-6 text-left transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-1 focus-visible:ring-offset-2 focus-visible:ring-offset-background md:p-7 ${
+                className={`group relative flex cursor-pointer flex-col gap-5 overflow-hidden rounded-3xl border p-6 text-left transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-1 focus-visible:ring-offset-2 focus-visible:ring-offset-background md:p-7 ${
                   isActive
                     ? "border-accent-1/50 bg-card shadow-[var(--shadow-card-hover)]"
-                    : "border-border bg-card/70 shadow-[var(--shadow-card)] hover:border-foreground/15 hover:bg-card"
+                    : "border-border bg-card/70 shadow-[var(--shadow-card)] hover:-translate-y-0.5 hover:border-accent-1/30 hover:bg-card hover:shadow-[var(--shadow-card-hover)]"
                 }`}
                 aria-pressed={isActive}
               >
-                {/* Active glow */}
-                <AnimatePresence>
-                  {isActive && (
-                    <motion.span
-                      key="glow"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      aria-hidden
-                      className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-gradient-accent opacity-20 blur-3xl"
-                    />
-                  )}
-                </AnimatePresence>
+                {/* Per-cluster gradient — subtle when idle, alive when active */}
+                <motion.span
+                  aria-hidden
+                  className="pointer-events-none absolute inset-0"
+                  style={{ background: gradient }}
+                  initial={false}
+                  animate={
+                    isActive
+                      ? {
+                          opacity: [0.55, 0.75, 0.55],
+                          scale: [1, 1.06, 1],
+                          rotate: [0, 2, 0],
+                        }
+                      : { opacity: 0.14, scale: 1, rotate: 0 }
+                  }
+                  transition={
+                    isActive
+                      ? { duration: 7, repeat: Infinity, ease: "easeInOut" }
+                      : { duration: 0.4 }
+                  }
+                />
 
                 <div className="relative flex items-center justify-between">
                   <span
@@ -975,17 +992,29 @@ function MethodologyStack() {
                   >
                     <Icon className="h-5 w-5" strokeWidth={1.8} />
                   </span>
-                  <span
-                    className={`font-mono text-[10px] font-semibold uppercase tracking-[0.2em] transition-colors ${
-                      isActive ? "text-accent-1" : "text-muted-foreground/70"
-                    }`}
-                  >
-                    {cluster.kicker}
-                  </span>
+                  <div className="flex items-center gap-2">
+                    <span
+                      className={`font-mono text-[10px] font-semibold uppercase tracking-[0.2em] transition-colors ${
+                        isActive ? "text-accent-1" : "text-muted-foreground/70"
+                      }`}
+                    >
+                      {cluster.kicker}
+                    </span>
+                    <span
+                      aria-hidden
+                      className={`grid h-7 w-7 place-items-center rounded-full border transition-all duration-300 ${
+                        isActive
+                          ? "border-accent-1/40 bg-accent-1/10 text-accent-1"
+                          : "border-border bg-background/80 text-muted-foreground group-hover:-rotate-45 group-hover:border-accent-1/40 group-hover:text-accent-1"
+                      }`}
+                    >
+                      <ArrowUpRight className="h-3.5 w-3.5" />
+                    </span>
+                  </div>
                 </div>
 
                 <div className="relative space-y-2">
-                  <h3 className="font-display text-lg font-semibold tracking-tight text-foreground md:text-xl">
+                  <h3 className="font-serif text-2xl font-normal leading-tight tracking-tight text-foreground md:text-[1.75rem]">
                     {cluster.group}
                   </h3>
                   <p className="text-sm leading-relaxed text-muted-foreground">
@@ -1021,15 +1050,15 @@ function MethodologyStack() {
                   )}
                 </div>
 
-                {/* Bottom active bar */}
-                {isActive && (
-                  <motion.span
-                    layoutId="stack-active-bar"
-                    aria-hidden
-                    className="absolute inset-x-6 bottom-0 h-[2px] rounded-full bg-gradient-accent"
-                    transition={{ type: "spring", stiffness: 320, damping: 28 }}
-                  />
-                )}
+                {/* Bottom active bar — fades in place, no cross-card slide */}
+                <motion.span
+                  aria-hidden
+                  initial={false}
+                  animate={{ opacity: isActive ? 1 : 0, scaleX: isActive ? 1 : 0.6 }}
+                  transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                  style={{ transformOrigin: "left" }}
+                  className="pointer-events-none absolute inset-x-6 bottom-0 h-[2px] rounded-full bg-gradient-accent"
+                />
               </motion.button>
             );
           })}
