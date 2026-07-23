@@ -29,7 +29,6 @@ import {
   Download,
   GraduationCap,
   Briefcase,
-  ArrowUpRight as ArrowUpRightIcon,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
