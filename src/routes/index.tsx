@@ -634,6 +634,7 @@ function Index() {
 
         {/* Methodology & Tech */}
         <section id="stack" className="scroll-mt-24 pt-16">
+          <SectionLabel>Methodology &amp; Stack</SectionLabel>
           <MethodologyStack />
         </section>
 
