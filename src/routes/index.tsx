@@ -915,35 +915,143 @@ function MethodologyStack() {
   }, [paused]);
 
   return (
-    <Reveal
-      className="grid grid-cols-1 gap-6 md:grid-cols-3"
-      stagger={0.12}
-    >
-      <motion.div
-        variants={fadeUp}
-        className="md:col-span-2"
-        onMouseEnter={() => setPaused(true)}
-        onMouseLeave={() => setPaused(false)}
-      >
-        <CodeApproach index={active} />
+    <Reveal className="flex flex-col gap-10" stagger={0.1}>
+      {/* Editorial headline */}
+      <motion.div variants={fadeUp} className="max-w-2xl">
+        <h2 className="font-display text-4xl font-light leading-[1.05] tracking-tight text-foreground md:text-5xl lg:text-6xl">
+          Methodology &amp;{" "}
+          <span className="font-serif italic font-normal text-accent-1">Stack</span>
+        </h2>
+        <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
+          Four disciplines orchestrated as one system. Click any cluster to explore
+          the tools — the workspace on the right re-compiles in real time.
+        </p>
       </motion.div>
+
+      {/* Interactive grid */}
       <motion.div
         variants={fadeUp}
         onMouseEnter={() => setPaused(true)}
         onMouseLeave={() => setPaused(false)}
+        className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:items-stretch"
       >
-        <Ecosystem active={active} onSelect={setActive} />
+        {/* Cluster cards */}
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:col-span-7">
+          {ecosystemClusters.map((cluster, i) => {
+            const isActive = active === i;
+            const Icon = cluster.icon;
+            return (
+              <motion.button
+                key={cluster.id}
+                type="button"
+                onClick={() => setActive(i)}
+                whileHover={{ y: -3 }}
+                transition={{ type: "spring", stiffness: 300, damping: 22 }}
+                className={`group relative flex flex-col gap-5 overflow-hidden rounded-3xl border p-6 text-left transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-1 focus-visible:ring-offset-2 focus-visible:ring-offset-background md:p-7 ${
+                  isActive
+                    ? "border-accent-1/50 bg-card shadow-[var(--shadow-card-hover)]"
+                    : "border-border bg-card/70 shadow-[var(--shadow-card)] hover:border-foreground/15 hover:bg-card"
+                }`}
+                aria-pressed={isActive}
+              >
+                {/* Active glow */}
+                <AnimatePresence>
+                  {isActive && (
+                    <motion.span
+                      key="glow"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      aria-hidden
+                      className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-gradient-accent opacity-20 blur-3xl"
+                    />
+                  )}
+                </AnimatePresence>
+
+                <div className="relative flex items-center justify-between">
+                  <span
+                    className={`grid h-11 w-11 shrink-0 place-items-center rounded-full transition-all duration-300 ${
+                      isActive
+                        ? "bg-gradient-accent text-accent-foreground shadow-[var(--shadow-accent)]"
+                        : "border border-border bg-background text-muted-foreground group-hover:border-accent-1/40 group-hover:text-accent-1"
+                    }`}
+                  >
+                    <Icon className="h-5 w-5" strokeWidth={1.8} />
+                  </span>
+                  <span
+                    className={`font-mono text-[10px] font-semibold uppercase tracking-[0.2em] transition-colors ${
+                      isActive ? "text-accent-1" : "text-muted-foreground/70"
+                    }`}
+                  >
+                    {cluster.kicker}
+                  </span>
+                </div>
+
+                <div className="relative space-y-2">
+                  <h3 className="font-display text-lg font-semibold tracking-tight text-foreground md:text-xl">
+                    {cluster.group}
+                  </h3>
+                  <p className="text-sm leading-relaxed text-muted-foreground">
+                    {cluster.blurb}
+                  </p>
+                </div>
+
+                <div className="relative flex flex-wrap gap-1.5">
+                  {cluster.tools.slice(0, 5).map((tool, ti) => (
+                    <motion.span
+                      key={tool.label}
+                      initial={false}
+                      animate={{
+                        borderColor: isActive
+                          ? "color-mix(in oklab, var(--accent-1) 35%, transparent)"
+                          : "var(--border)",
+                      }}
+                      transition={{ delay: isActive ? ti * 0.03 : 0, duration: 0.2 }}
+                      className="inline-flex items-center gap-1.5 rounded-full border bg-background/60 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-muted-foreground"
+                    >
+                      <span
+                        aria-hidden
+                        className="h-1.5 w-1.5 rounded-full"
+                        style={{ background: tool.color }}
+                      />
+                      {tool.label}
+                    </motion.span>
+                  ))}
+                  {cluster.tools.length > 5 && (
+                    <span className="inline-flex items-center rounded-full border border-border bg-background/60 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-muted-foreground/70">
+                      +{cluster.tools.length - 5}
+                    </span>
+                  )}
+                </div>
+
+                {/* Bottom active bar */}
+                {isActive && (
+                  <motion.span
+                    layoutId="stack-active-bar"
+                    aria-hidden
+                    className="absolute inset-x-6 bottom-0 h-[2px] rounded-full bg-gradient-accent"
+                    transition={{ type: "spring", stiffness: 320, damping: 28 }}
+                  />
+                )}
+              </motion.button>
+            );
+          })}
+        </div>
+
+        {/* Terminal */}
+        <div className="lg:col-span-5">
+          <StackTerminal index={active} />
+        </div>
       </motion.div>
     </Reveal>
   );
 }
 
-function CodeApproach({ index }: { index: number }) {
+function StackTerminal({ index }: { index: number }) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
   const [text, setText] = useState("");
 
-  // typewriter effect for the current snippet
   useEffect(() => {
     if (!inView) return;
     const full = CODE_SNIPPETS[index].code;
@@ -953,35 +1061,45 @@ function CodeApproach({ index }: { index: number }) {
       i++;
       setText(full.slice(0, i));
       if (i >= full.length) clearInterval(id);
-    }, 18);
+    }, 14);
     return () => clearInterval(id);
   }, [inView, index]);
+
+  const cluster = ecosystemClusters[index];
 
   return (
     <div
       ref={ref}
-      className="flex h-full flex-col overflow-hidden rounded-[calc(var(--radius)+16px)] border border-white/10 bg-[oklch(0.16_0.02_265)] shadow-[var(--shadow-card)]"
+      className="sticky top-24 flex h-full min-h-[26rem] flex-col overflow-hidden rounded-[calc(var(--radius)+16px)] border border-white/10 bg-[oklch(0.16_0.02_265)] shadow-2xl"
     >
       {/* window bar */}
-      <div className="flex items-center gap-2 border-b border-white/10 px-5 py-3">
-        <span className="h-3 w-3 rounded-full bg-[oklch(0.65_0.2_25)]" />
-        <span className="h-3 w-3 rounded-full bg-[oklch(0.8_0.16_85)]" />
-        <span className="h-3 w-3 rounded-full bg-[oklch(0.7_0.17_145)]" />
-        <span className="ml-3 flex items-center gap-1.5 font-mono text-xs text-white/40">
+      <div className="flex items-center justify-between gap-2 border-b border-white/10 bg-white/[0.02] px-5 py-3">
+        <div className="flex items-center gap-1.5">
+          <span className="h-3 w-3 rounded-full bg-[oklch(0.65_0.2_25)]/70" />
+          <span className="h-3 w-3 rounded-full bg-[oklch(0.8_0.16_85)]/70" />
+          <span className="h-3 w-3 rounded-full bg-[oklch(0.7_0.17_145)]/70" />
+        </div>
+        <span className="flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.24em] text-white/40">
           <Code2 className="h-3.5 w-3.5" />
           {CODE_SNIPPETS[index].label}
         </span>
+        <span className="w-10" />
       </div>
+
       {/* code body */}
-      <div className="min-h-[6rem] flex-1 px-6 py-6">
+      <div className="relative min-h-[10rem] flex-1 overflow-hidden px-6 py-6">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -right-24 -top-24 h-56 w-56 rounded-full bg-gradient-accent opacity-15 blur-3xl"
+        />
         <AnimatePresence mode="wait">
           <motion.pre
             key={index}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="whitespace-pre-wrap font-mono text-sm leading-relaxed text-[oklch(0.85_0.12_150)]"
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.35 }}
+            className="relative whitespace-pre-wrap font-mono text-[13px] leading-relaxed text-[oklch(0.9_0.03_120)]"
           >
             {text}
             <span
@@ -991,153 +1109,23 @@ function CodeApproach({ index }: { index: number }) {
           </motion.pre>
         </AnimatePresence>
       </div>
-      {/* copy */}
-      <div className="border-t border-white/10 px-6 py-7">
-        <p className="text-2xl font-bold tracking-tight text-white md:text-3xl">
-          Execution{" "}
-          <span className="font-serif italic font-normal text-accent-1">&gt;</span> Wireframes.
-        </p>
-        <p className="mt-3 max-w-lg text-sm leading-relaxed text-white/60">
-          I bypass static mockups. Designing and iterating directly over Shopify Liquid and code
-          allows for faster time-to-market and absolute functional realism from day one.
-        </p>
-      </div>
-    </div>
-  );
-}
 
-function Ecosystem({
-  active,
-  onSelect,
-}: {
-  active: number;
-  onSelect: (i: number) => void;
-}) {
-  return (
-    <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius)+16px)] border border-border bg-card p-6 shadow-[var(--shadow-card)] md:p-8">
-      <div className="flex items-start justify-between gap-4">
-        <div>
-          <h3 className="font-serif text-2xl font-normal leading-tight tracking-tight md:text-3xl">
-            The <span className="italic text-accent-1">ecosystem</span>
-          </h3>
-          <p className="mt-2 text-sm text-muted-foreground">
-            Four disciplines, orchestrated as one system.
-          </p>
+      {/* footer status */}
+      <div className="border-t border-white/10 bg-white/[0.02] px-6 py-4">
+        <div className="flex items-center justify-between gap-3">
+          <div className="flex items-center gap-2 min-w-0">
+            <span className="relative flex h-2 w-2 shrink-0">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent-1 opacity-60" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-accent-1" />
+            </span>
+            <span className="truncate font-mono text-[10px] uppercase tracking-[0.22em] text-white/50">
+              live · {cluster.group}
+            </span>
+          </div>
+          <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-white/40">
+            {String(index + 1).padStart(2, "0")} / {String(ecosystemClusters.length).padStart(2, "0")}
+          </span>
         </div>
-        <span className="rounded-full border border-border bg-secondary px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-          {String(active + 1).padStart(2, "0")} / {String(ecosystemClusters.length).padStart(2, "0")}
-        </span>
-      </div>
-
-      <p className="mt-4 flex items-center gap-2 text-xs font-medium text-accent-1">
-        <MousePointerClick className="h-3.5 w-3.5" />
-        Click any discipline to explore its stack
-      </p>
-
-      <div className="mt-4 flex flex-1 flex-col gap-3">
-        {ecosystemClusters.map((cluster, i) => {
-          const isActive = active === i;
-          const Icon = cluster.icon;
-          return (
-            <button
-              key={cluster.id}
-              type="button"
-              onClick={() => onSelect(i)}
-              className={`group relative overflow-hidden rounded-2xl border text-left transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-1 focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
-                isActive
-                  ? "border-accent-1/40 bg-secondary shadow-[var(--shadow-card)]"
-                  : "cursor-pointer border-border bg-transparent shadow-none hover:-translate-y-0.5 hover:border-foreground/20 hover:bg-secondary/60 hover:shadow-[var(--shadow-card)]"
-              }`}
-            >
-              <div className="flex items-center gap-3 px-4 py-3.5">
-                <span
-                  className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border transition-all duration-300 ${
-                    isActive
-                      ? "border-foreground/20 bg-background text-accent-1 shadow-sm"
-                      : "border-border bg-card text-muted-foreground group-hover:border-foreground/15 group-hover:text-foreground"
-                  }`}
-                >
-                  <Icon className="h-4.5 w-4.5" strokeWidth={1.8} />
-                </span>
-                <div className="min-w-0 flex-1">
-                  <div className="flex items-baseline gap-2">
-                    <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-                      {cluster.kicker}
-                    </span>
-                    <p className="truncate text-sm font-semibold tracking-tight">
-                      {cluster.group}
-                    </p>
-                  </div>
-                  <p className="mt-0.5 truncate text-xs text-muted-foreground">
-                    {cluster.tools.length} tools · {cluster.blurb}
-                  </p>
-                </div>
-                <div className="flex shrink-0 items-center gap-2">
-                  <span className="hidden text-[10px] font-semibold uppercase tracking-widest text-accent-1 opacity-0 transition-all duration-300 group-hover:opacity-100 sm:block">
-                    {isActive ? "Active" : "Open"}
-                  </span>
-                  <motion.span
-                    animate={{ rotate: isActive ? 180 : 0 }}
-                    transition={{ type: "spring", stiffness: 260, damping: 20 }}
-                    className={`grid h-7 w-7 place-items-center rounded-full border transition-colors duration-300 ${
-                      isActive
-                        ? "border-accent-1/40 bg-accent-1/10 text-accent-1"
-                        : "border-border bg-card text-muted-foreground group-hover:border-foreground/20 group-hover:text-foreground"
-                    }`}
-                  >
-                    <ChevronDown className="h-3.5 w-3.5" />
-                  </motion.span>
-                </div>
-              </div>
-
-              <AnimatePresence initial={false}>
-                {isActive && (
-                  <motion.div
-                    key="content"
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                    className="overflow-hidden"
-                  >
-                    <ul className="divide-y divide-border/60 border-t border-border/60">
-                      {cluster.tools.map((tool, ti) => (
-                        <motion.li
-                          key={tool.label}
-                          initial={{ opacity: 0, x: -6 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: 0.05 + ti * 0.04, duration: 0.25 }}
-                          className="flex items-start gap-3 px-4 py-2.5"
-                        >
-                          <span
-                            className="mt-1.5 h-2 w-2 shrink-0 rounded-full"
-                            style={{
-                              background: tool.color,
-                              boxShadow: `0 0 10px -2px ${tool.color}`,
-                            }}
-                          />
-                          <div className="min-w-0 flex-1">
-                            <p className="text-xs font-semibold tracking-tight">{tool.label}</p>
-                            <p className="text-xs leading-relaxed text-muted-foreground">
-                              {tool.use}
-                            </p>
-                          </div>
-                        </motion.li>
-                      ))}
-                    </ul>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-
-              {isActive && (
-                <motion.span
-                  layoutId="ecosystem-active-bar"
-                  className="absolute inset-y-0 left-0 w-[3px] bg-gradient-accent"
-                />
-              )}
-            </button>
-          );
-        })}
       </div>
     </div>
   );
