@@ -111,7 +111,7 @@ const ecosystemClusters = [
   {
     id: "design",
     group: "Design & UX",
-    kicker: "01",
+    kicker: "Craft",
     icon: Palette,
     blurb: "Brand systems, editorial layouts and interface craft.",
     tools: [
@@ -127,7 +127,7 @@ const ecosystemClusters = [
   {
     id: "build",
     group: "Build & Code",
-    kicker: "02",
+    kicker: "Ship",
     icon: Code2,
     blurb: "Storefronts and marketing sites shipped end-to-end.",
     tools: [
@@ -140,7 +140,7 @@ const ecosystemClusters = [
   {
     id: "scale",
     group: "Scale & Automate",
-    kicker: "03",
+    kicker: "Growth",
     icon: Zap,
     blurb: "Retention, paid media and lifecycle automation.",
     tools: [
@@ -154,7 +154,7 @@ const ecosystemClusters = [
   {
     id: "ai",
     group: "AI Models",
-    kicker: "04",
+    kicker: "Intelligence",
     icon: Bot,
     blurb: "AI leveraged across design, code and growth.",
     tools: [
