@@ -29,8 +29,6 @@ import {
   Download,
   GraduationCap,
   Briefcase,
-  MousePointerClick,
-  ChevronDown,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
