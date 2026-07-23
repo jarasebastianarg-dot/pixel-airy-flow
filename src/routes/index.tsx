@@ -899,6 +899,13 @@ const CODE_SNIPPETS = [
   },
 ];
 
+const CLUSTER_GRADIENTS = [
+  "radial-gradient(120% 90% at 100% 0%, oklch(0.86 0.16 40 / 0.9), transparent 60%)",
+  "radial-gradient(120% 90% at 100% 0%, oklch(0.86 0.14 65 / 0.9), transparent 60%)",
+  "radial-gradient(120% 90% at 100% 0%, oklch(0.83 0.16 20 / 0.9), transparent 60%)",
+  "radial-gradient(120% 90% at 100% 0%, oklch(0.82 0.12 340 / 0.9), transparent 60%)",
+];
+
 function MethodologyStack() {
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
