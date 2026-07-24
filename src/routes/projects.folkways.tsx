@@ -509,9 +509,10 @@ function FolkwaysProject() {
               variants={fadeUp}
               className="mt-8 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg"
             >
-              A full Shopify 2.0 rebuild — from catalog migration to a bespoke
-              retention loop — engineered directly in Liquid, without a single
-              bloated app.
+              A full Shopify 2.0 rebuild plus a native Klaviyo retention
+              engine — from catalog migration to cashback recovery flows and
+              wine club campaigns — engineered directly in Liquid and coded
+              in-house, without a single bloated app.
             </motion.p>
           </Reveal>
 
@@ -599,20 +600,23 @@ function FolkwaysProject() {
               className="text-lg leading-relaxed text-foreground/85 md:text-xl"
             >
               Moving a massive, complex catalog to Shopify 2.0 required more
-              than a simple theme update. The brand was suffering from severe{" "}
+              than a simple theme update. The brand was leaking revenue on
+              two fronts: a storefront suffering from severe{" "}
               <span className="font-semibold text-foreground">
                 “app bloat,”
               </span>{" "}
-              which caused critical page load delays, broke visual cohesion,
-              and created a chaotic backend workflow.
+              and a fragmented email stack that couldn't turn buyers into
+              repeat customers — page load delays on one side, dead retention
+              flows on the other.
             </motion.p>
             <motion.p
               variants={fadeUp}
               className="mt-6 text-base leading-relaxed text-muted-foreground md:text-lg"
             >
-              The team was forced to manage multiple single-use third-party
-              applications, draining resources and complicating day-to-day
-              operations.
+              The team was juggling multiple single-use apps for cart, upsell
+              and pop-ups while running Klaviyo at a fraction of its
+              potential — draining resources and starving the wine club of
+              the traffic it needed to grow.
             </motion.p>
           </Reveal>
         </div>
@@ -636,10 +640,10 @@ function FolkwaysProject() {
               variants={fadeUp}
               className="text-base leading-relaxed text-muted-foreground md:col-span-5 md:text-lg"
             >
-              Designing and architecting directly within Shopify Liquid and
-              native CSS to achieve a pixel-perfect match with the brand's
-              identity — without compromising functionality for the user or
-              the backend workflow.
+              Rebuilding the storefront in Shopify Liquid and rewiring
+              retention inside Klaviyo — one editorial system covering
+              catalog, cart, campaigns and lifecycle email, without
+              compromising the buyer journey or the backend workflow.
             </motion.p>
           </Reveal>
 
