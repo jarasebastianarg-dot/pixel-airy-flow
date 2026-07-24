@@ -105,7 +105,7 @@ const stack = [
   "Email Automations",
 ];
 
-const focus = ["Shopify 2.0 Migration", "App Consolidation", "CRO"];
+const focus = ["Shopify 2.0 Migration", "Email Marketing", "CRO & Retention"];
 
 const executionCards = [
   {
