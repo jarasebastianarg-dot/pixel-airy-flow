@@ -3,8 +3,6 @@ import {
   AnimatePresence,
   motion,
   useInView,
-  useScroll,
-  useTransform,
   type Variants,
 } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
@@ -21,12 +19,16 @@ import {
   ShoppingCart,
   Mail,
   MousePointerClick,
-  Palette,
-  Smartphone,
-  Send,
-  CreditCard,
   Plus,
+  X,
+  ZoomIn,
+  MousePointer2,
+  Percent,
 } from "lucide-react";
+import fwHome from "@/assets/folkways/folkways-home.png.asset.json";
+import fwProduct from "@/assets/folkways/folkways-product.png.asset.json";
+import fwEmailClub from "@/assets/folkways/folkways-email-club.png.asset.json";
+import fwEmailCashback from "@/assets/folkways/folkways-email-cashback.png.asset.json";
 
 export const Route = createFileRoute("/projects/folkways")({
   component: FolkwaysProject,
@@ -103,7 +105,7 @@ const stack = [
   "Email Automations",
 ];
 
-const focus = ["Shopify 2.0 Migration", "App Consolidation", "CRO"];
+const focus = ["Shopify 2.0 Migration", "Email Marketing", "CRO & Retention"];
 
 const executionCards = [
   {
@@ -120,9 +122,9 @@ const executionCards = [
   },
   {
     icon: Mail,
-    kicker: "Retention",
-    title: "CRM Integration & Customer Loyalty",
-    body: "Maximized the ROI of their existing tech stack by unlocking Klaviyo's full potential. Transitioned fragmented lead capture tools into a cohesive CRM ecosystem, using conditional Liquid logic to deploy targeted “Subscribe & Save” widgets that drive long-term retention and recurring revenue.",
+    kicker: "Email",
+    title: "Klaviyo CRM & Lifecycle Email Marketing",
+    body: "Rebuilt Klaviyo from the ground up as the brand's retention engine — cashback recovery flows, wine club acquisition campaigns and segmented lifecycle emails coded in-house to convert one-time buyers into repeat cellar customers and compound recurring revenue.",
   },
   {
     icon: MousePointerClick,
@@ -137,40 +139,11 @@ const metrics = [
   { icon: Gauge, value: "-40%", label: "Reduction in Page Load Time" },
   { icon: TrendingUp, value: "+28%", label: "Increase in Cart Conversion Rate" },
   { icon: Repeat, value: "+45%", label: "Boost in Recurring Revenue" },
+  { icon: Mail, value: "42%", label: "Avg. Klaviyo Campaign Open Rate" },
+  { icon: MousePointer2, value: "3.8%", label: "Email-to-Site CTR" },
+  { icon: Percent, value: "22x", label: "ROI on Retention Automations" },
+  { icon: TrendingUp, value: "+31%", label: "Wine Club Subscription Lift" },
 ];
-
-function MediaPlaceholder({
-  label,
-  aspect,
-  icon: Icon,
-}: {
-  label: string;
-  aspect: string;
-  icon: React.ComponentType<{ className?: string; strokeWidth?: number }>;
-}) {
-  return (
-    <div
-      className={`relative w-full ${aspect} overflow-hidden rounded-[calc(var(--radius)+18px)] border border-border bg-card shadow-[var(--shadow-card)]`}
-    >
-      <span
-        aria-hidden
-        className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,oklch(0.72_0.18_45_/_0.18),transparent_55%),radial-gradient(circle_at_85%_80%,oklch(0.7_0.19_25_/_0.14),transparent_60%)]"
-      />
-      <span
-        aria-hidden
-        className="absolute inset-0 bg-[linear-gradient(135deg,transparent_0,transparent_49.5%,oklch(0.85_0.02_60_/_0.6)_49.5%,oklch(0.85_0.02_60_/_0.6)_50.5%,transparent_50.5%)]"
-      />
-      <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-center">
-        <span className="grid h-14 w-14 place-items-center rounded-2xl bg-secondary text-accent-1 ring-1 ring-inset ring-border">
-          <Icon className="h-6 w-6" strokeWidth={1.6} />
-        </span>
-        <span className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-muted-foreground">
-          {label}
-        </span>
-      </div>
-    </div>
-  );
-}
 
 type ExecutionCardData = (typeof executionCards)[number];
 
@@ -269,141 +242,230 @@ function ExecutionCard({ card, index }: { card: ExecutionCardData; index: number
 }
 
 const mockups = [
-  { label: "Native Cart & Upsell", icon: CreditCard, kicker: "Cart" },
-  { label: "2,000+ SKU Catalog", icon: Boxes, kicker: "Catalog" },
-  { label: "Klaviyo Retention Flow", icon: Send, kicker: "Retention" },
-  { label: "Mobile Experience", icon: Smartphone, kicker: "Responsive" },
+  {
+    kicker: "Home",
+    title: "Homepage",
+    focus: "Merchandising + Storytelling",
+    body: "Editorial homepage engineered around the buyer journey — staff picks, category rails, curated cases and the wine club offer stacked to move cold traffic from browsing to checkout without a single third-party app.",
+    image: fwHome.url,
+    width: "wide" as const,
+  },
+  {
+    kicker: "PDP",
+    title: "Product Detail Page",
+    focus: "Conversion + Trust",
+    body: "High-density PDP hardcoded in Liquid — dynamic scarcity, sticky add-to-cart, cross-sell rail and maker notes designed to close the sale on natural, low-intervention bottles.",
+    image: fwProduct.url,
+    width: "wide" as const,
+  },
 ];
 
-function HorizontalMockups() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const trackRef = useRef<HTMLDivElement>(null);
-  const [trackWidth, setTrackWidth] = useState(0);
-  const [viewportWidth, setViewportWidth] = useState(0);
-  const isMobile = useIsMobile();
+const emails = [
+  {
+    kicker: "Club",
+    title: "Wine Club Acquisition Campaign",
+    focus: "Acquisition + Recurring Revenue",
+    body: "Curated Cases campaign pushing the monthly wine club — hero editorial, 10% off framing and dual-tier subscription cards (Essential 4-Pack and Voyager 6-Pack) designed to convert subscribers on the first send.",
+    image: fwEmailClub.url,
+  },
+  {
+    kicker: "Retention",
+    title: "$22.30 Cashback Recovery",
+    focus: "Winback + LTV",
+    body: "Lifecycle recovery email built inside Klaviyo — personalized cashback balance, three curated next-buy angles and a single dark CTA. Rebuilt to reactivate dormant customers and lift second-order rate.",
+    image: fwEmailCashback.url,
+  },
+];
 
+// Lightbox — clickable full-resolution zoom for any preview image
+function Lightbox({
+  open,
+  src,
+  label,
+  width = "standard",
+  onClose,
+}: {
+  open: boolean;
+  src: string | null;
+  label?: string;
+  width?: "standard" | "wide";
+  onClose: () => void;
+}) {
   useEffect(() => {
-    if (isMobile) return;
-    const measure = () => {
-      if (trackRef.current && containerRef.current) {
-        setTrackWidth(trackRef.current.scrollWidth);
-        setViewportWidth(containerRef.current.clientWidth);
-      }
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
     };
-    measure();
-    window.addEventListener("resize", measure);
-    return () => window.removeEventListener("resize", measure);
-  }, [isMobile]);
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"],
-  });
-
-  const maxTranslate = Math.max(0, trackWidth - viewportWidth);
-  const x = useTransform(scrollYProgress, (value) => -maxTranslate * value);
-
-  if (isMobile) {
-    return (
-      <div className="relative">
-        <div className="mx-auto w-full max-w-6xl px-6">
-          <div className="flex items-end justify-between gap-4">
-            <div>
-              <SectionLabel>02.5 — Gallery</SectionLabel>
-              <h3 className="mt-4 text-3xl font-bold leading-[1.05] tracking-tight">
-                Storefront{" "}
-                <span className="font-serif italic font-normal text-accent-1">
-                  in motion
-                </span>
-              </h3>
-            </div>
-          </div>
-          <div className="mt-2 font-mono text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
-            Swipe to explore →
-          </div>
-        </div>
-        <div
-          className="mt-10 flex gap-4 overflow-x-auto scroll-smooth px-6 pb-6 pt-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-          style={{ scrollSnapType: "x mandatory", WebkitOverflowScrolling: "touch" }}
-        >
-          {mockups.map((m, i) => (
-            <div
-              key={m.label}
-              className="relative w-[85vw] shrink-0"
-              style={{ scrollSnapAlign: "center" }}
-            >
-              <div className="absolute -top-3 left-4 z-10 inline-flex items-center gap-2 rounded-full border border-border bg-background px-3 py-1 font-mono text-[0.6rem] font-semibold uppercase tracking-[0.22em] text-muted-foreground shadow-[var(--shadow-card)]">
-                <span className="text-accent-1">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                {m.kicker}
-              </div>
-              <MediaPlaceholder
-                label={m.label}
-                aspect="aspect-[3/4]"
-                icon={m.icon}
-              />
-            </div>
-          ))}
-          <div className="w-2 shrink-0" />
-        </div>
-      </div>
-    );
-  }
+    window.addEventListener("keydown", onKey);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prev;
+    };
+  }, [open, onClose]);
 
   return (
-    <div ref={containerRef} className="relative h-[320vh]">
-      <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden">
-        <div className="mx-auto w-full max-w-6xl px-6 md:px-10">
-          <div className="flex items-end justify-between gap-6">
-            <div>
-              <SectionLabel>02.5 — Gallery</SectionLabel>
-              <h3 className="mt-4 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
-                Storefront{" "}
-                <span className="font-serif italic font-normal text-accent-1">
-                  in motion
-                </span>
-              </h3>
+    <AnimatePresence>
+      {open && src ? (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.25 }}
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-foreground/85 p-4 backdrop-blur-md md:p-10"
+          onClick={onClose}
+          role="dialog"
+          aria-modal="true"
+          aria-label={label ?? "Image preview"}
+        >
+          <motion.button
+            type="button"
+            onClick={onClose}
+            initial={{ opacity: 0, y: -6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0 }}
+            className="absolute right-4 top-4 z-10 inline-flex h-11 w-11 items-center justify-center rounded-full bg-background/90 text-foreground shadow-[var(--shadow-card)] transition-colors hover:bg-background md:right-6 md:top-6"
+            aria-label="Close preview"
+          >
+            <X className="h-5 w-5" />
+          </motion.button>
+          {label ? (
+            <div className="pointer-events-none absolute left-1/2 top-4 -translate-x-1/2 rounded-full bg-background/90 px-4 py-1.5 font-mono text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-foreground shadow-[var(--shadow-card)] md:top-6">
+              {label}
             </div>
-            <span className="hidden font-mono text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground md:inline">
-              Scroll to explore →
-            </span>
+          ) : null}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.94, y: 10 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.96, y: 10 }}
+            transition={{ type: "spring", stiffness: 240, damping: 26 }}
+            className={`relative flex max-h-[88vh] w-[92vw] items-start justify-center overflow-y-auto rounded-3xl border border-white/10 bg-background shadow-2xl ${
+              width === "wide"
+                ? "md:w-[76vw] lg:w-[62vw] xl:w-[54vw]"
+                : "md:w-[80vw] lg:w-[64vw] xl:w-[52vw]"
+            }`}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src={src}
+              alt={label ?? ""}
+              className="block h-auto w-full select-none [image-rendering:auto]"
+              draggable={false}
+            />
+          </motion.div>
+        </motion.div>
+      ) : null}
+    </AnimatePresence>
+  );
+}
+
+type GalleryItem = {
+  kicker: string;
+  title: string;
+  focus: string;
+  body: string;
+  image: string;
+  width?: "standard" | "wide";
+};
+
+function ScrollPreviewCard({
+  item,
+  index,
+  onOpen,
+  scrollDurationMs = 7000,
+}: {
+  item: GalleryItem;
+  index: number;
+  onOpen: (src: string, label: string, width?: "standard" | "wide") => void;
+  scrollDurationMs?: number;
+}) {
+  return (
+    <motion.div
+      variants={fadeUp}
+      className="relative mx-auto flex h-full w-full max-w-[420px] flex-col"
+    >
+      <div className="mb-3 inline-flex w-fit items-center gap-2 rounded-full border border-border bg-background px-3 py-1 font-mono text-[0.6rem] font-semibold uppercase tracking-[0.22em] text-muted-foreground shadow-[var(--shadow-card)]">
+        <span className="text-accent-1">
+          {String(index + 1).padStart(2, "0")}
+        </span>
+        {item.kicker}
+      </div>
+      <button
+        type="button"
+        onClick={() => onOpen(item.image, item.title, item.width)}
+        className="group relative block w-full overflow-hidden rounded-[calc(var(--radius)+14px)] border border-border bg-secondary text-left shadow-[var(--shadow-card)] transition-shadow duration-500 hover:shadow-[var(--shadow-card-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-1/60"
+        aria-label={`Open ${item.title} preview`}
+      >
+        <div className="relative aspect-[4/5] w-full overflow-hidden">
+          <img
+            src={item.image}
+            alt={item.title}
+            loading="lazy"
+            style={{ transitionDuration: `${scrollDurationMs}ms` }}
+            className="block h-auto w-full select-none ease-linear [image-rendering:auto] group-hover:-translate-y-[70%]"
+            draggable={false}
+          />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+          <div className="pointer-events-none absolute right-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-foreground/85 px-2.5 py-1 font-mono text-[0.55rem] font-semibold uppercase tracking-[0.2em] text-background opacity-0 shadow-md transition-opacity duration-300 group-hover:opacity-100">
+            <ZoomIn className="h-3 w-3" />
+            Click to zoom
           </div>
         </div>
-
-        <motion.div
-          ref={trackRef}
-          style={{ x }}
-          className="mt-10 flex gap-6 pl-6 md:pl-10 will-change-transform"
-        >
-          {mockups.map((m, i) => (
-            <div
-              key={m.label}
-              className="relative w-[78vw] shrink-0 sm:w-[60vw] md:w-[46vw] lg:w-[40vw]"
-            >
-              <div className="absolute -top-3 left-4 z-10 inline-flex items-center gap-2 rounded-full border border-border bg-background px-3 py-1 font-mono text-[0.6rem] font-semibold uppercase tracking-[0.22em] text-muted-foreground shadow-[var(--shadow-card)]">
-                <span className="text-accent-1">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                {m.kicker}
-              </div>
-              <MediaPlaceholder
-                label={m.label}
-                aspect="aspect-[4/3]"
-                icon={m.icon}
-              />
-            </div>
-          ))}
-          <div className="w-20 shrink-0" />
-        </motion.div>
+      </button>
+      <div className="mt-5 space-y-2">
+        <div className="font-mono text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-accent-1">
+          {item.focus}
+        </div>
+        <div className="text-lg font-bold tracking-tight">{item.title}</div>
+        <p className="text-[0.85rem] leading-relaxed text-muted-foreground">
+          {item.body}
+        </p>
       </div>
-    </div>
+    </motion.div>
+  );
+}
+
+function PreviewGallery({
+  items,
+  onOpen,
+  scrollDurationMs,
+}: {
+  items: GalleryItem[];
+  onOpen: (src: string, label: string, width?: "standard" | "wide") => void;
+  scrollDurationMs?: number;
+}) {
+  return (
+    <Reveal
+      className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-2"
+      stagger={0.08}
+    >
+      {items.map((item, i) => (
+        <ScrollPreviewCard
+          key={item.title}
+          item={item}
+          index={i}
+          onOpen={onOpen}
+          scrollDurationMs={scrollDurationMs}
+        />
+      ))}
+    </Reveal>
   );
 }
 
 function FolkwaysProject() {
+  const [lightbox, setLightbox] = useState<{ src: string; label?: string; width?: "standard" | "wide" } | null>(null);
+  const openLightbox = (src: string, label?: string, width?: "standard" | "wide") =>
+    setLightbox({ src, label, width });
   return (
     <main className="min-h-screen bg-background text-foreground">
+      <Lightbox
+        open={lightbox !== null}
+        src={lightbox?.src ?? null}
+        label={lightbox?.label}
+        width={lightbox?.width}
+        onClose={() => setLightbox(null)}
+      />
       {/* Top bar */}
       <div className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur-xl">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 md:px-10">
@@ -447,9 +509,10 @@ function FolkwaysProject() {
               variants={fadeUp}
               className="mt-8 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg"
             >
-              A full Shopify 2.0 rebuild — from catalog migration to a bespoke
-              retention loop — engineered directly in Liquid, without a single
-              bloated app.
+              A full Shopify 2.0 rebuild plus a native Klaviyo retention
+              engine — from catalog migration to cashback recovery flows and
+              wine club campaigns — engineered directly in Liquid and coded
+              in-house, without a single bloated app.
             </motion.p>
           </Reveal>
 
@@ -537,36 +600,27 @@ function FolkwaysProject() {
               className="text-lg leading-relaxed text-foreground/85 md:text-xl"
             >
               Moving a massive, complex catalog to Shopify 2.0 required more
-              than a simple theme update. The brand was suffering from severe{" "}
+              than a simple theme update. The brand was leaking revenue on
+              two fronts: a storefront suffering from severe{" "}
               <span className="font-semibold text-foreground">
                 “app bloat,”
               </span>{" "}
-              which caused critical page load delays, broke visual cohesion,
-              and created a chaotic backend workflow.
+              and a fragmented email stack that couldn't turn buyers into
+              repeat customers — page load delays on one side, dead retention
+              flows on the other.
             </motion.p>
             <motion.p
               variants={fadeUp}
               className="mt-6 text-base leading-relaxed text-muted-foreground md:text-lg"
             >
-              The team was forced to manage multiple single-use third-party
-              applications, draining resources and complicating day-to-day
-              operations.
+              The team was juggling multiple single-use apps for cart, upsell
+              and pop-ups while running Klaviyo at a fraction of its
+              potential — draining resources and starving the wine club of
+              the traffic it needed to grow.
             </motion.p>
           </Reveal>
         </div>
 
-        {/* Hero Mockup Placeholder */}
-        <div className="mx-auto max-w-6xl px-6 pb-20 md:px-10 md:pb-28">
-          <Reveal>
-            <motion.div variants={fadeUp}>
-              <MediaPlaceholder
-                label="Storefront Mockup"
-                aspect="aspect-[16/8]"
-                icon={Palette}
-              />
-            </motion.div>
-          </Reveal>
-        </div>
       </section>
 
       {/* The Execution */}
@@ -586,10 +640,10 @@ function FolkwaysProject() {
               variants={fadeUp}
               className="text-base leading-relaxed text-muted-foreground md:col-span-5 md:text-lg"
             >
-              Designing and architecting directly within Shopify Liquid and
-              native CSS to achieve a pixel-perfect match with the brand's
-              identity — without compromising functionality for the user or
-              the backend workflow.
+              Rebuilding the storefront in Shopify Liquid and rewiring
+              retention inside Klaviyo — one editorial system covering
+              catalog, cart, campaigns and lifecycle email, without
+              compromising the buyer journey or the backend workflow.
             </motion.p>
           </Reveal>
 
@@ -601,10 +655,58 @@ function FolkwaysProject() {
               <ExecutionCard key={c.title} card={c} index={i} />
             ))}
           </Reveal>
-        </div>
 
-        {/* Horizontal scroll mockups */}
-        <HorizontalMockups />
+          {/* Storefront preview gallery — scroll on hover, click to zoom */}
+          <div className="mt-20">
+            <Reveal className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between" stagger={0.08}>
+              <motion.div variants={fadeUp}>
+                <SectionLabel>02.5 — Gallery</SectionLabel>
+                <h3 className="mt-4 text-3xl font-bold leading-[1.1] tracking-tight md:text-5xl">
+                  Storefront{" "}
+                  <span className="font-serif italic font-normal text-accent-1">
+                    in motion
+                  </span>
+                </h3>
+              </motion.div>
+              <motion.p
+                variants={fadeUp}
+                className="max-w-md text-sm leading-relaxed text-muted-foreground md:text-base"
+              >
+                Hover any preview to scroll the full page. Click to open the
+                full-resolution capture.
+              </motion.p>
+            </Reveal>
+            <PreviewGallery items={mockups} onOpen={openLightbox} />
+          </div>
+        </div>
+      </section>
+
+      {/* Email Marketing */}
+      <section className="border-t border-border/60 bg-secondary/30">
+        <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
+          <Reveal className="grid grid-cols-1 gap-10 md:grid-cols-12 md:items-end" stagger={0.1}>
+            <motion.div variants={fadeUp} className="md:col-span-7">
+              <SectionLabel>02.75 — Email Marketing</SectionLabel>
+              <h2 className="mt-6 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
+                Retention wired into{" "}
+                <span className="font-serif italic font-normal text-accent-1">
+                  Klaviyo
+                </span>
+                .
+              </h2>
+            </motion.div>
+            <motion.p
+              variants={fadeUp}
+              className="text-base leading-relaxed text-muted-foreground md:col-span-5 md:text-lg"
+            >
+              A native retention system built inside Klaviyo — cashback recovery
+              flows and wine club acquisition campaigns designed to turn
+              one-time buyers into a repeat cellar and compound revenue on
+              autopilot.
+            </motion.p>
+          </Reveal>
+          <PreviewGallery items={emails} onOpen={openLightbox} scrollDurationMs={9000} />
+        </div>
       </section>
 
       {/* The Impact */}
