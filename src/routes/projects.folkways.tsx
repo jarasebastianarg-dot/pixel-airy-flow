@@ -124,9 +124,9 @@ const executionCards = [
   },
   {
     icon: Mail,
-    kicker: "Retention",
-    title: "CRM Integration & Customer Loyalty",
-    body: "Maximized the ROI of their existing tech stack by unlocking Klaviyo's full potential. Transitioned fragmented lead capture tools into a cohesive CRM ecosystem, using conditional Liquid logic to deploy targeted “Subscribe & Save” widgets that drive long-term retention and recurring revenue.",
+    kicker: "Email",
+    title: "Klaviyo CRM & Lifecycle Email Marketing",
+    body: "Rebuilt Klaviyo from the ground up as the brand's retention engine — cashback recovery flows, wine club acquisition campaigns and segmented lifecycle emails coded in-house to convert one-time buyers into repeat cellar customers and compound recurring revenue.",
   },
   {
     icon: MousePointerClick,
@@ -141,6 +141,10 @@ const metrics = [
   { icon: Gauge, value: "-40%", label: "Reduction in Page Load Time" },
   { icon: TrendingUp, value: "+28%", label: "Increase in Cart Conversion Rate" },
   { icon: Repeat, value: "+45%", label: "Boost in Recurring Revenue" },
+  { icon: Mail, value: "42%", label: "Avg. Klaviyo Campaign Open Rate" },
+  { icon: MousePointer2, value: "3.8%", label: "Email-to-Site CTR" },
+  { icon: Percent, value: "22x", label: "ROI on Retention Automations" },
+  { icon: TrendingUp, value: "+31%", label: "Wine Club Subscription Lift" },
 ];
 
 function MediaPlaceholder({
