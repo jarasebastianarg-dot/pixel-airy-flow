@@ -277,135 +277,214 @@ function ExecutionCard({ card, index }: { card: ExecutionCardData; index: number
 }
 
 const mockups = [
-  { label: "Native Cart & Upsell", icon: CreditCard, kicker: "Cart" },
-  { label: "2,000+ SKU Catalog", icon: Boxes, kicker: "Catalog" },
-  { label: "Klaviyo Retention Flow", icon: Send, kicker: "Retention" },
-  { label: "Mobile Experience", icon: Smartphone, kicker: "Responsive" },
+  {
+    kicker: "Home",
+    title: "Homepage",
+    focus: "Merchandising + Storytelling",
+    body: "Editorial homepage engineered around the buyer journey — staff picks, category rails, curated cases and the wine club offer stacked to move cold traffic from browsing to checkout without a single third-party app.",
+    image: fwHome.url,
+    width: "wide" as const,
+  },
+  {
+    kicker: "PDP",
+    title: "Product Detail Page",
+    focus: "Conversion + Trust",
+    body: "High-density PDP hardcoded in Liquid — dynamic scarcity, sticky add-to-cart, cross-sell rail and maker notes designed to close the sale on natural, low-intervention bottles.",
+    image: fwProduct.url,
+    width: "wide" as const,
+  },
 ];
 
-function HorizontalMockups() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const trackRef = useRef<HTMLDivElement>(null);
-  const [trackWidth, setTrackWidth] = useState(0);
-  const [viewportWidth, setViewportWidth] = useState(0);
-  const isMobile = useIsMobile();
+const emails = [
+  {
+    kicker: "Club",
+    title: "Wine Club Acquisition Campaign",
+    focus: "Acquisition + Recurring Revenue",
+    body: "Curated Cases campaign pushing the monthly wine club — hero editorial, 10% off framing and dual-tier subscription cards (Essential 4-Pack and Voyager 6-Pack) designed to convert subscribers on the first send.",
+    image: fwEmailClub.url,
+  },
+  {
+    kicker: "Retention",
+    title: "$22.30 Cashback Recovery",
+    focus: "Winback + LTV",
+    body: "Lifecycle recovery email built inside Klaviyo — personalized cashback balance, three curated next-buy angles and a single dark CTA. Rebuilt to reactivate dormant customers and lift second-order rate.",
+    image: fwEmailCashback.url,
+  },
+];
 
+// Lightbox — clickable full-resolution zoom for any preview image
+function Lightbox({
+  open,
+  src,
+  label,
+  width = "standard",
+  onClose,
+}: {
+  open: boolean;
+  src: string | null;
+  label?: string;
+  width?: "standard" | "wide";
+  onClose: () => void;
+}) {
   useEffect(() => {
-    if (isMobile) return;
-    const measure = () => {
-      if (trackRef.current && containerRef.current) {
-        setTrackWidth(trackRef.current.scrollWidth);
-        setViewportWidth(containerRef.current.clientWidth);
-      }
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
     };
-    measure();
-    window.addEventListener("resize", measure);
-    return () => window.removeEventListener("resize", measure);
-  }, [isMobile]);
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"],
-  });
-
-  const maxTranslate = Math.max(0, trackWidth - viewportWidth);
-  const x = useTransform(scrollYProgress, (value) => -maxTranslate * value);
-
-  if (isMobile) {
-    return (
-      <div className="relative">
-        <div className="mx-auto w-full max-w-6xl px-6">
-          <div className="flex items-end justify-between gap-4">
-            <div>
-              <SectionLabel>02.5 — Gallery</SectionLabel>
-              <h3 className="mt-4 text-3xl font-bold leading-[1.05] tracking-tight">
-                Storefront{" "}
-                <span className="font-serif italic font-normal text-accent-1">
-                  in motion
-                </span>
-              </h3>
-            </div>
-          </div>
-          <div className="mt-2 font-mono text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
-            Swipe to explore →
-          </div>
-        </div>
-        <div
-          className="mt-10 flex gap-4 overflow-x-auto scroll-smooth px-6 pb-6 pt-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-          style={{ scrollSnapType: "x mandatory", WebkitOverflowScrolling: "touch" }}
-        >
-          {mockups.map((m, i) => (
-            <div
-              key={m.label}
-              className="relative w-[85vw] shrink-0"
-              style={{ scrollSnapAlign: "center" }}
-            >
-              <div className="absolute -top-3 left-4 z-10 inline-flex items-center gap-2 rounded-full border border-border bg-background px-3 py-1 font-mono text-[0.6rem] font-semibold uppercase tracking-[0.22em] text-muted-foreground shadow-[var(--shadow-card)]">
-                <span className="text-accent-1">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                {m.kicker}
-              </div>
-              <MediaPlaceholder
-                label={m.label}
-                aspect="aspect-[3/4]"
-                icon={m.icon}
-              />
-            </div>
-          ))}
-          <div className="w-2 shrink-0" />
-        </div>
-      </div>
-    );
-  }
+    window.addEventListener("keydown", onKey);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prev;
+    };
+  }, [open, onClose]);
 
   return (
-    <div ref={containerRef} className="relative h-[320vh]">
-      <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden">
-        <div className="mx-auto w-full max-w-6xl px-6 md:px-10">
-          <div className="flex items-end justify-between gap-6">
-            <div>
-              <SectionLabel>02.5 — Gallery</SectionLabel>
-              <h3 className="mt-4 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
-                Storefront{" "}
-                <span className="font-serif italic font-normal text-accent-1">
-                  in motion
-                </span>
-              </h3>
+    <AnimatePresence>
+      {open && src ? (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.25 }}
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-foreground/85 p-4 backdrop-blur-md md:p-10"
+          onClick={onClose}
+          role="dialog"
+          aria-modal="true"
+          aria-label={label ?? "Image preview"}
+        >
+          <motion.button
+            type="button"
+            onClick={onClose}
+            initial={{ opacity: 0, y: -6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0 }}
+            className="absolute right-4 top-4 z-10 inline-flex h-11 w-11 items-center justify-center rounded-full bg-background/90 text-foreground shadow-[var(--shadow-card)] transition-colors hover:bg-background md:right-6 md:top-6"
+            aria-label="Close preview"
+          >
+            <X className="h-5 w-5" />
+          </motion.button>
+          {label ? (
+            <div className="pointer-events-none absolute left-1/2 top-4 -translate-x-1/2 rounded-full bg-background/90 px-4 py-1.5 font-mono text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-foreground shadow-[var(--shadow-card)] md:top-6">
+              {label}
             </div>
-            <span className="hidden font-mono text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground md:inline">
-              Scroll to explore →
-            </span>
+          ) : null}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.94, y: 10 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.96, y: 10 }}
+            transition={{ type: "spring", stiffness: 240, damping: 26 }}
+            className={`relative flex max-h-[88vh] w-[92vw] items-start justify-center overflow-y-auto rounded-3xl border border-white/10 bg-background shadow-2xl ${
+              width === "wide"
+                ? "md:w-[76vw] lg:w-[62vw] xl:w-[54vw]"
+                : "md:w-[80vw] lg:w-[64vw] xl:w-[52vw]"
+            }`}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src={src}
+              alt={label ?? ""}
+              className="block h-auto w-full select-none [image-rendering:auto]"
+              draggable={false}
+            />
+          </motion.div>
+        </motion.div>
+      ) : null}
+    </AnimatePresence>
+  );
+}
+
+type GalleryItem = {
+  kicker: string;
+  title: string;
+  focus: string;
+  body: string;
+  image: string;
+  width?: "standard" | "wide";
+};
+
+function ScrollPreviewCard({
+  item,
+  index,
+  onOpen,
+  scrollDurationMs = 7000,
+}: {
+  item: GalleryItem;
+  index: number;
+  onOpen: (src: string, label: string, width?: "standard" | "wide") => void;
+  scrollDurationMs?: number;
+}) {
+  return (
+    <motion.div
+      variants={fadeUp}
+      className="relative mx-auto flex h-full w-full max-w-[420px] flex-col"
+    >
+      <div className="mb-3 inline-flex w-fit items-center gap-2 rounded-full border border-border bg-background px-3 py-1 font-mono text-[0.6rem] font-semibold uppercase tracking-[0.22em] text-muted-foreground shadow-[var(--shadow-card)]">
+        <span className="text-accent-1">
+          {String(index + 1).padStart(2, "0")}
+        </span>
+        {item.kicker}
+      </div>
+      <button
+        type="button"
+        onClick={() => onOpen(item.image, item.title, item.width)}
+        className="group relative block w-full overflow-hidden rounded-[calc(var(--radius)+14px)] border border-border bg-secondary text-left shadow-[var(--shadow-card)] transition-shadow duration-500 hover:shadow-[var(--shadow-card-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-1/60"
+        aria-label={`Open ${item.title} preview`}
+      >
+        <div className="relative aspect-[4/5] w-full overflow-hidden">
+          <img
+            src={item.image}
+            alt={item.title}
+            loading="lazy"
+            style={{ transitionDuration: `${scrollDurationMs}ms` }}
+            className="block h-auto w-full select-none ease-linear [image-rendering:auto] group-hover:-translate-y-[70%]"
+            draggable={false}
+          />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+          <div className="pointer-events-none absolute right-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-foreground/85 px-2.5 py-1 font-mono text-[0.55rem] font-semibold uppercase tracking-[0.2em] text-background opacity-0 shadow-md transition-opacity duration-300 group-hover:opacity-100">
+            <ZoomIn className="h-3 w-3" />
+            Click to zoom
           </div>
         </div>
-
-        <motion.div
-          ref={trackRef}
-          style={{ x }}
-          className="mt-10 flex gap-6 pl-6 md:pl-10 will-change-transform"
-        >
-          {mockups.map((m, i) => (
-            <div
-              key={m.label}
-              className="relative w-[78vw] shrink-0 sm:w-[60vw] md:w-[46vw] lg:w-[40vw]"
-            >
-              <div className="absolute -top-3 left-4 z-10 inline-flex items-center gap-2 rounded-full border border-border bg-background px-3 py-1 font-mono text-[0.6rem] font-semibold uppercase tracking-[0.22em] text-muted-foreground shadow-[var(--shadow-card)]">
-                <span className="text-accent-1">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                {m.kicker}
-              </div>
-              <MediaPlaceholder
-                label={m.label}
-                aspect="aspect-[4/3]"
-                icon={m.icon}
-              />
-            </div>
-          ))}
-          <div className="w-20 shrink-0" />
-        </motion.div>
+      </button>
+      <div className="mt-5 space-y-2">
+        <div className="font-mono text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-accent-1">
+          {item.focus}
+        </div>
+        <div className="text-lg font-bold tracking-tight">{item.title}</div>
+        <p className="text-[0.85rem] leading-relaxed text-muted-foreground">
+          {item.body}
+        </p>
       </div>
-    </div>
+    </motion.div>
+  );
+}
+
+function PreviewGallery({
+  items,
+  onOpen,
+  scrollDurationMs,
+}: {
+  items: GalleryItem[];
+  onOpen: (src: string, label: string, width?: "standard" | "wide") => void;
+  scrollDurationMs?: number;
+}) {
+  return (
+    <Reveal
+      className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-2"
+      stagger={0.08}
+    >
+      {items.map((item, i) => (
+        <ScrollPreviewCard
+          key={item.title}
+          item={item}
+          index={i}
+          onOpen={onOpen}
+          scrollDurationMs={scrollDurationMs}
+        />
+      ))}
+    </Reveal>
   );
 }
 
