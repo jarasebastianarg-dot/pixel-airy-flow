@@ -489,8 +489,18 @@ function PreviewGallery({
 }
 
 function FolkwaysProject() {
+  const [lightbox, setLightbox] = useState<{ src: string; label?: string; width?: "standard" | "wide" } | null>(null);
+  const openLightbox = (src: string, label?: string, width?: "standard" | "wide") =>
+    setLightbox({ src, label, width });
   return (
     <main className="min-h-screen bg-background text-foreground">
+      <Lightbox
+        open={lightbox !== null}
+        src={lightbox?.src ?? null}
+        label={lightbox?.label}
+        width={lightbox?.width}
+        onClose={() => setLightbox(null)}
+      />
       {/* Top bar */}
       <div className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur-xl">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 md:px-10">
