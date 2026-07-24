@@ -125,7 +125,7 @@ const executionCards = [
     icon: Mail,
     kicker: "Retention",
     title: "Full-Funnel Email Marketing",
-    body: "Klaviyo flows — welcome, abandoned cart, post-purchase — nurturing leads and maximizing ROI on autopilot.",
+    body: "Editorial Klaviyo campaigns and lifecycle flows — welcome, abandoned cart, post-purchase and subscribe-and-save — designed and coded in-house to nurture new pet parents and compound recurring revenue on autopilot.",
   },
   {
     icon: MousePointerClick,
@@ -140,6 +140,10 @@ const metrics = [
   { icon: Percent, value: "+4.2%", label: "Day-One Conversion Rate" },
   { icon: Repeat, value: "35%", label: "Subscription Opt-In Rate" },
   { icon: TrendingUp, value: "30x", label: "ROI on Klaviyo Automations" },
+  { icon: Mail, value: "48%", label: "Average Campaign Open Rate" },
+  { icon: MousePointerClick, value: "5.1%", label: "Email → Site Click-Through" },
+  { icon: Repeat, value: "+38%", label: "Subscribe & Save Lift from Email" },
+  { icon: Percent, value: "22%", label: "Revenue from Email Channel" },
 ];
 
 function MediaPlaceholder({
