@@ -3,8 +3,6 @@ import {
   AnimatePresence,
   motion,
   useInView,
-  useScroll,
-  useTransform,
   type Variants,
 } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
@@ -146,39 +144,6 @@ const metrics = [
   { icon: Percent, value: "22x", label: "ROI on Retention Automations" },
   { icon: TrendingUp, value: "+31%", label: "Wine Club Subscription Lift" },
 ];
-
-function MediaPlaceholder({
-  label,
-  aspect,
-  icon: Icon,
-}: {
-  label: string;
-  aspect: string;
-  icon: React.ComponentType<{ className?: string; strokeWidth?: number }>;
-}) {
-  return (
-    <div
-      className={`relative w-full ${aspect} overflow-hidden rounded-[calc(var(--radius)+18px)] border border-border bg-card shadow-[var(--shadow-card)]`}
-    >
-      <span
-        aria-hidden
-        className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,oklch(0.72_0.18_45_/_0.18),transparent_55%),radial-gradient(circle_at_85%_80%,oklch(0.7_0.19_25_/_0.14),transparent_60%)]"
-      />
-      <span
-        aria-hidden
-        className="absolute inset-0 bg-[linear-gradient(135deg,transparent_0,transparent_49.5%,oklch(0.85_0.02_60_/_0.6)_49.5%,oklch(0.85_0.02_60_/_0.6)_50.5%,transparent_50.5%)]"
-      />
-      <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-center">
-        <span className="grid h-14 w-14 place-items-center rounded-2xl bg-secondary text-accent-1 ring-1 ring-inset ring-border">
-          <Icon className="h-6 w-6" strokeWidth={1.6} />
-        </span>
-        <span className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-muted-foreground">
-          {label}
-        </span>
-      </div>
-    </div>
-  );
-}
 
 type ExecutionCardData = (typeof executionCards)[number];
 
