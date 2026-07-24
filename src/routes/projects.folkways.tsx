@@ -652,18 +652,6 @@ function FolkwaysProject() {
           </Reveal>
         </div>
 
-        {/* Hero Mockup Placeholder */}
-        <div className="mx-auto max-w-6xl px-6 pb-20 md:px-10 md:pb-28">
-          <Reveal>
-            <motion.div variants={fadeUp}>
-              <MediaPlaceholder
-                label="Storefront Mockup"
-                aspect="aspect-[16/8]"
-                icon={Palette}
-              />
-            </motion.div>
-          </Reveal>
-        </div>
       </section>
 
       {/* The Execution */}
@@ -698,10 +686,58 @@ function FolkwaysProject() {
               <ExecutionCard key={c.title} card={c} index={i} />
             ))}
           </Reveal>
-        </div>
 
-        {/* Horizontal scroll mockups */}
-        <HorizontalMockups />
+          {/* Storefront preview gallery — scroll on hover, click to zoom */}
+          <div className="mt-20">
+            <Reveal className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between" stagger={0.08}>
+              <motion.div variants={fadeUp}>
+                <SectionLabel>02.5 — Gallery</SectionLabel>
+                <h3 className="mt-4 text-3xl font-bold leading-[1.1] tracking-tight md:text-5xl">
+                  Storefront{" "}
+                  <span className="font-serif italic font-normal text-accent-1">
+                    in motion
+                  </span>
+                </h3>
+              </motion.div>
+              <motion.p
+                variants={fadeUp}
+                className="max-w-md text-sm leading-relaxed text-muted-foreground md:text-base"
+              >
+                Hover any preview to scroll the full page. Click to open the
+                full-resolution capture.
+              </motion.p>
+            </Reveal>
+            <PreviewGallery items={mockups} onOpen={openLightbox} />
+          </div>
+        </div>
+      </section>
+
+      {/* Email Marketing */}
+      <section className="border-t border-border/60 bg-secondary/30">
+        <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
+          <Reveal className="grid grid-cols-1 gap-10 md:grid-cols-12 md:items-end" stagger={0.1}>
+            <motion.div variants={fadeUp} className="md:col-span-7">
+              <SectionLabel>02.75 — Email Marketing</SectionLabel>
+              <h2 className="mt-6 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
+                Retention wired into{" "}
+                <span className="font-serif italic font-normal text-accent-1">
+                  Klaviyo
+                </span>
+                .
+              </h2>
+            </motion.div>
+            <motion.p
+              variants={fadeUp}
+              className="text-base leading-relaxed text-muted-foreground md:col-span-5 md:text-lg"
+            >
+              A native retention system built inside Klaviyo — cashback recovery
+              flows and wine club acquisition campaigns designed to turn
+              one-time buyers into a repeat cellar and compound revenue on
+              autopilot.
+            </motion.p>
+          </Reveal>
+          <PreviewGallery items={emails} onOpen={openLightbox} scrollDurationMs={9000} />
+        </div>
       </section>
 
       {/* The Impact */}
