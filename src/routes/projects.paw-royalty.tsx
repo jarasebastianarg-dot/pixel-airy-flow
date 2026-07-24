@@ -125,7 +125,7 @@ const executionCards = [
     icon: Mail,
     kicker: "Retention",
     title: "Full-Funnel Email Marketing",
-    body: "Klaviyo flows — welcome, abandoned cart, post-purchase — nurturing leads and maximizing ROI on autopilot.",
+    body: "Editorial Klaviyo campaigns and lifecycle flows — welcome, abandoned cart, post-purchase and subscribe-and-save — designed and coded in-house to nurture new pet parents and compound recurring revenue on autopilot.",
   },
   {
     icon: MousePointerClick,
@@ -140,6 +140,10 @@ const metrics = [
   { icon: Percent, value: "+4.2%", label: "Day-One Conversion Rate" },
   { icon: Repeat, value: "35%", label: "Subscription Opt-In Rate" },
   { icon: TrendingUp, value: "30x", label: "ROI on Klaviyo Automations" },
+  { icon: Mail, value: "48%", label: "Average Campaign Open Rate" },
+  { icon: MousePointerClick, value: "5.1%", label: "Email → Site Click-Through" },
+  { icon: Repeat, value: "+38%", label: "Subscribe & Save Lift from Email" },
+  { icon: Percent, value: "22%", label: "Revenue from Email Channel" },
 ];
 
 function MediaPlaceholder({
@@ -735,8 +739,9 @@ function PawRoyaltyProject() {
               className="text-base leading-relaxed text-muted-foreground md:col-span-5 md:text-lg"
             >
               A full-funnel email system — welcome, subscribe-and-save
-              retention, and flagship product campaigns — designed and coded
-              inside Klaviyo to compound revenue on autopilot.
+              retention and flagship product campaigns — designed and coded
+              inside Klaviyo. The channel now drives 22% of total revenue
+              with a 48% average open rate and a 30× ROI on automations.
             </motion.p>
           </Reveal>
           <PreviewGallery items={emails} onOpen={openLightbox} scrollDurationMs={9000} />
