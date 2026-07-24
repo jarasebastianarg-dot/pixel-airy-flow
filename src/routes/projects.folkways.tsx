@@ -21,12 +21,16 @@ import {
   ShoppingCart,
   Mail,
   MousePointerClick,
-  Palette,
-  Smartphone,
-  Send,
-  CreditCard,
   Plus,
+  X,
+  ZoomIn,
+  MousePointer2,
+  Percent,
 } from "lucide-react";
+import fwHome from "@/assets/folkways/folkways-home.png.asset.json";
+import fwProduct from "@/assets/folkways/folkways-product.png.asset.json";
+import fwEmailClub from "@/assets/folkways/folkways-email-club.png.asset.json";
+import fwEmailCashback from "@/assets/folkways/folkways-email-cashback.png.asset.json";
 
 export const Route = createFileRoute("/projects/folkways")({
   component: FolkwaysProject,
