@@ -739,8 +739,9 @@ function PawRoyaltyProject() {
               className="text-base leading-relaxed text-muted-foreground md:col-span-5 md:text-lg"
             >
               A full-funnel email system — welcome, subscribe-and-save
-              retention, and flagship product campaigns — designed and coded
-              inside Klaviyo to compound revenue on autopilot.
+              retention and flagship product campaigns — designed and coded
+              inside Klaviyo. The channel now drives 22% of total revenue
+              with a 48% average open rate and a 30× ROI on automations.
             </motion.p>
           </Reveal>
           <PreviewGallery items={emails} onOpen={openLightbox} scrollDurationMs={9000} />
