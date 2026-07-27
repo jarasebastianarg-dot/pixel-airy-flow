@@ -25,6 +25,13 @@ import {
   MousePointer2,
   Percent,
 } from "lucide-react";
+import folkwaysHomeRetina from "@/assets/folkways/folkways-home-retina.png.asset.json";
+import folkwaysProductRetina from "@/assets/folkways/folkways-product-retina.png.asset.json";
+import folkwaysEmailClubRetina from "@/assets/folkways/folkways-email-club-retina.png.asset.json";
+import folkwaysEmailCashbackRetina from "@/assets/folkways/folkways-email-cashback-retina.png.asset.json";
+import folkwaysHomeRebuiltRetina from "@/assets/folkways/folkways-home-rebuilt-retina.png.asset.json";
+import folkwaysProductRebuiltRetina from "@/assets/folkways/folkways-product-rebuilt-retina.png.asset.json";
+
 const FW_HOME =
   "https://raw.githubusercontent.com/jarasebastianarg-dot/Portfolio-Assets/main/Folkways%20Home.png";
 const FW_PRODUCT =
@@ -251,7 +258,8 @@ const mockups = [
     title: "Homepage",
     focus: "Merchandising + Storytelling",
     body: "Editorial homepage engineered around the buyer journey — staff picks, category rails, curated cases and the wine club offer stacked to move cold traffic from browsing to checkout without a single third-party app.",
-    image: FW_HOME,
+    image: folkwaysHomeRebuiltRetina.url,
+    sourceImage: FW_HOME,
     width: "wide" as const,
   },
   {
@@ -259,7 +267,8 @@ const mockups = [
     title: "Product Detail Page",
     focus: "Conversion + Trust",
     body: "High-density PDP hardcoded in Liquid — dynamic scarcity, sticky add-to-cart, cross-sell rail and maker notes designed to close the sale on natural, low-intervention bottles.",
-    image: FW_PRODUCT,
+    image: folkwaysProductRebuiltRetina.url,
+    sourceImage: FW_PRODUCT,
     width: "wide" as const,
   },
 ];
@@ -270,14 +279,16 @@ const emails = [
     title: "Wine Club Acquisition Campaign",
     focus: "Acquisition + Recurring Revenue",
     body: "Curated Cases campaign pushing the monthly wine club — hero editorial, 10% off framing and dual-tier subscription cards (Essential 4-Pack and Voyager 6-Pack) designed to convert subscribers on the first send.",
-    image: FW_EMAIL_CLUB,
+    image: folkwaysEmailClubRetina.url,
+    sourceImage: FW_EMAIL_CLUB,
   },
   {
     kicker: "Retention",
     title: "$22.30 Cashback Recovery",
     focus: "Winback + LTV",
     body: "Lifecycle recovery email built inside Klaviyo — personalized cashback balance, three curated next-buy angles and a single dark CTA. Rebuilt to reactivate dormant customers and lift second-order rate.",
-    image: FW_EMAIL_CASHBACK,
+    image: folkwaysEmailCashbackRetina.url,
+    sourceImage: FW_EMAIL_CASHBACK,
   },
 ];
 
@@ -351,7 +362,8 @@ function Lightbox({
               src={src}
               alt={label ?? ""}
               className="w-full h-auto block"
-              style={{ transform: "translateZ(0)", imageRendering: "high-quality" as React.CSSProperties["imageRendering"] }}
+              decoding="async"
+              style={{ transform: "translateZ(0)" }}
               draggable={false}
             />
           </motion.div>
@@ -367,6 +379,7 @@ type GalleryItem = {
   focus: string;
   body: string;
   image: string;
+  sourceImage?: string;
   width?: "standard" | "wide";
 };
 
@@ -403,8 +416,9 @@ function ScrollPreviewCard({
             src={item.image}
             alt={item.title}
             loading="lazy"
-            style={{ transitionDuration: `${scrollDurationMs}ms` }}
-            className="block h-auto w-full select-none ease-linear [image-rendering:auto] group-hover:-translate-y-[70%]"
+            decoding="async"
+            style={{ transitionDuration: `${scrollDurationMs}ms`, transform: "translateZ(0)" }}
+            className="block h-auto w-full select-none ease-linear group-hover:-translate-y-[70%]"
             draggable={false}
           />
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
