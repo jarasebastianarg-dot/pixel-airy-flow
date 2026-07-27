@@ -25,10 +25,14 @@ import {
   MousePointer2,
   Percent,
 } from "lucide-react";
-import fwHome from "@/assets/folkways/folkways-home.png.asset.json";
-import fwProduct from "@/assets/folkways/folkways-product.png.asset.json";
-import fwEmailClub from "@/assets/folkways/folkways-email-club.png.asset.json";
-import fwEmailCashback from "@/assets/folkways/folkways-email-cashback.png.asset.json";
+const FW_HOME =
+  "https://raw.githubusercontent.com/jarasebastianarg-dot/Portfolio-Assets/main/Folkways%20Home.png";
+const FW_PRODUCT =
+  "https://raw.githubusercontent.com/jarasebastianarg-dot/Portfolio-Assets/main/Folkways%20Product-page-wine.png";
+const FW_EMAIL_CLUB =
+  "https://raw.githubusercontent.com/jarasebastianarg-dot/Portfolio-Assets/main/Folkways%20email%20(1).png";
+const FW_EMAIL_CASHBACK =
+  "https://raw.githubusercontent.com/jarasebastianarg-dot/Portfolio-Assets/main/Folkways%20email%20(2).png";
 
 export const Route = createFileRoute("/projects/folkways")({
   component: FolkwaysProject,
@@ -247,7 +251,7 @@ const mockups = [
     title: "Homepage",
     focus: "Merchandising + Storytelling",
     body: "Editorial homepage engineered around the buyer journey — staff picks, category rails, curated cases and the wine club offer stacked to move cold traffic from browsing to checkout without a single third-party app.",
-    image: fwHome.url,
+    image: FW_HOME,
     width: "wide" as const,
   },
   {
@@ -255,7 +259,7 @@ const mockups = [
     title: "Product Detail Page",
     focus: "Conversion + Trust",
     body: "High-density PDP hardcoded in Liquid — dynamic scarcity, sticky add-to-cart, cross-sell rail and maker notes designed to close the sale on natural, low-intervention bottles.",
-    image: fwProduct.url,
+    image: FW_PRODUCT,
     width: "wide" as const,
   },
 ];
@@ -266,14 +270,14 @@ const emails = [
     title: "Wine Club Acquisition Campaign",
     focus: "Acquisition + Recurring Revenue",
     body: "Curated Cases campaign pushing the monthly wine club — hero editorial, 10% off framing and dual-tier subscription cards (Essential 4-Pack and Voyager 6-Pack) designed to convert subscribers on the first send.",
-    image: fwEmailClub.url,
+    image: FW_EMAIL_CLUB,
   },
   {
     kicker: "Retention",
     title: "$22.30 Cashback Recovery",
     focus: "Winback + LTV",
     body: "Lifecycle recovery email built inside Klaviyo — personalized cashback balance, three curated next-buy angles and a single dark CTA. Rebuilt to reactivate dormant customers and lift second-order rate.",
-    image: fwEmailCashback.url,
+    image: FW_EMAIL_CASHBACK,
   },
 ];
 
@@ -340,7 +344,7 @@ function Lightbox({
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.96, y: 10 }}
             transition={{ type: "spring", stiffness: 240, damping: 26 }}
-            className={`relative w-full max-h-[80vh] overflow-y-auto overscroll-contain rounded-3xl border border-white/10 bg-background shadow-2xl ${
+            className={`relative w-full max-h-[85vh] overflow-y-auto overscroll-contain rounded-3xl border border-white/10 bg-background shadow-2xl ${
               width === "wide"
                 ? "md:w-[76vw] lg:w-[62vw] xl:w-[54vw]"
                 : "md:w-[80vw] lg:w-[64vw] xl:w-[52vw]"
