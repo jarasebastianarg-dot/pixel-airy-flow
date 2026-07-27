@@ -332,10 +332,14 @@ function MagneticButton({
   children,
   href,
   className,
+  download,
+  target,
 }: {
   children: React.ReactNode;
   href: string;
   className?: string;
+  download?: string | boolean;
+  target?: string;
 }) {
   const ref = useRef<HTMLAnchorElement>(null);
   const x = useMotionValue(0);
@@ -359,6 +363,9 @@ function MagneticButton({
     <motion.a
       ref={ref}
       href={href}
+      download={download}
+      target={target}
+      rel={target === "_blank" ? "noopener noreferrer" : undefined}
       onMouseMove={onMove}
       onMouseLeave={reset}
       style={{ x: sx, y: sy }}
