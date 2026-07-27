@@ -1215,12 +1215,28 @@ function CopyEmailButton({ email }: { email: string }) {
   const [copied, setCopied] = useState(false);
 
   async function handleCopy() {
+    let ok = false;
     try {
       await navigator.clipboard.writeText(email);
+      ok = true;
+    } catch {
+      // Fallback for restricted contexts: use a hidden textarea + execCommand
+      const ta = document.createElement("textarea");
+      ta.value = email;
+      ta.setAttribute("readonly", "");
+      ta.style.position = "absolute";
+      ta.style.left = "-9999px";
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        ok = document.execCommand("copy");
+      } finally {
+        document.body.removeChild(ta);
+      }
+    }
+    if (ok) {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
-    } catch {
-      // Clipboard API not available — user can still use the mailto link
     }
   }
 
