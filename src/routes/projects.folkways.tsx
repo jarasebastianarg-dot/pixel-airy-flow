@@ -29,6 +29,8 @@ import folkwaysHomeRetina from "@/assets/folkways/folkways-home-retina.png.asset
 import folkwaysProductRetina from "@/assets/folkways/folkways-product-retina.png.asset.json";
 import folkwaysEmailClubRetina from "@/assets/folkways/folkways-email-club-retina.png.asset.json";
 import folkwaysEmailCashbackRetina from "@/assets/folkways/folkways-email-cashback-retina.png.asset.json";
+import folkwaysHomeRebuiltRetina from "@/assets/folkways/folkways-home-rebuilt-retina.png.asset.json";
+import folkwaysProductRebuiltRetina from "@/assets/folkways/folkways-product-rebuilt-retina.png.asset.json";
 
 const FW_HOME =
   "https://raw.githubusercontent.com/jarasebastianarg-dot/Portfolio-Assets/main/Folkways%20Home.png";
@@ -256,7 +258,7 @@ const mockups = [
     title: "Homepage",
     focus: "Merchandising + Storytelling",
     body: "Editorial homepage engineered around the buyer journey — staff picks, category rails, curated cases and the wine club offer stacked to move cold traffic from browsing to checkout without a single third-party app.",
-    image: folkwaysHomeRetina.url,
+    image: folkwaysHomeRebuiltRetina.url,
     sourceImage: FW_HOME,
     width: "wide" as const,
   },
@@ -265,7 +267,7 @@ const mockups = [
     title: "Product Detail Page",
     focus: "Conversion + Trust",
     body: "High-density PDP hardcoded in Liquid — dynamic scarcity, sticky add-to-cart, cross-sell rail and maker notes designed to close the sale on natural, low-intervention bottles.",
-    image: folkwaysProductRetina.url,
+    image: folkwaysProductRebuiltRetina.url,
     sourceImage: FW_PRODUCT,
     width: "wide" as const,
   },
