@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import portrait from "@/assets/portrait.jpg.asset.json";
+import cvAsset from "@/assets/JaraSebastian_CV.pdf.asset.json";
 import folkwaysThumb from "@/assets/folkways/folkways-storefront.jpg.asset.json";
 import pawRoyaltyThumb from "@/assets/paw-royalty-logo-thumb.jpg.asset.json";
 import bwayThumb from "@/assets/bway/bway-brand.jpg.asset.json";
@@ -21,7 +22,6 @@ import {
   Bot,
   Sparkles,
   Linkedin,
-  Globe,
   ArrowRight,
   Code2,
   Zap,
@@ -29,6 +29,8 @@ import {
   Download,
   GraduationCap,
   Briefcase,
+  Copy,
+  Check,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -330,10 +332,14 @@ function MagneticButton({
   children,
   href,
   className,
+  download,
+  target,
 }: {
   children: React.ReactNode;
   href: string;
   className?: string;
+  download?: string | boolean;
+  target?: string;
 }) {
   const ref = useRef<HTMLAnchorElement>(null);
   const x = useMotionValue(0);
@@ -357,6 +363,9 @@ function MagneticButton({
     <motion.a
       ref={ref}
       href={href}
+      download={download}
+      target={target}
+      rel={target === "_blank" ? "noopener noreferrer" : undefined}
       onMouseMove={onMove}
       onMouseLeave={reset}
       style={{ x: sx, y: sy }}
@@ -729,19 +738,29 @@ function Index() {
 
             <motion.div
               variants={fadeUp}
-              className="mt-12 flex flex-col gap-3 border-t border-border pt-10 sm:flex-row sm:items-center"
+              className="mt-12 flex flex-col flex-wrap gap-3 border-t border-border pt-10 sm:flex-row sm:items-center"
             >
               <MagneticButton
-                href="/resume.pdf"
+                href={cvAsset.url}
+                download="JaraSebastian_CV.pdf"
                 className="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-accent px-6 py-3.5 text-sm font-semibold text-accent-foreground shadow-[var(--shadow-accent)]"
               >
                 <Download className="h-4 w-4" />
                 Download Résumé
               </MagneticButton>
-              <div className="flex gap-3">
-                <SocialLink icon={Linkedin} label="LinkedIn" />
-                <SocialLink icon={Globe} label="Behance" />
-                <SocialLink icon={Mail} label="Email" />
+              <div className="flex flex-wrap gap-3">
+                <SocialLink
+                  icon={Linkedin}
+                  label="LinkedIn"
+                  href="https://www.linkedin.com/in/sebastian-jara-dsgn/"
+                  target="_blank"
+                />
+                <SocialLink
+                  icon={Mail}
+                  label="Email"
+                  href="mailto:jarasebastian.arg@gmail.com"
+                />
+                <CopyEmailButton email="jarasebastian.arg@gmail.com" />
               </div>
             </motion.div>
           </Reveal>
@@ -1166,15 +1185,74 @@ function StackTerminal({ index }: { index: number }) {
   );
 }
 
-function SocialLink({ icon: Icon, label }: { icon: typeof Linkedin; label: string }) {
+function SocialLink({
+  icon: Icon,
+  label,
+  href = "#",
+  target,
+}: {
+  icon: typeof Linkedin;
+  label: string;
+  href?: string;
+  target?: string;
+}) {
+  const isExternal = target === "_blank";
   return (
     <a
-      href="#"
+      href={href}
+      target={target}
+      rel={isExternal ? "noopener noreferrer" : undefined}
       aria-label={label}
       className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-border bg-card px-4 py-3 text-sm font-semibold transition-colors hover:bg-secondary"
     >
       <Icon className="h-4 w-4" />
       {label}
     </a>
+  );
+}
+
+function CopyEmailButton({ email }: { email: string }) {
+  const [copied, setCopied] = useState(false);
+
+  async function handleCopy() {
+    let ok = false;
+    try {
+      await navigator.clipboard.writeText(email);
+      ok = true;
+    } catch {
+      // Fallback for restricted contexts: use a hidden textarea + execCommand
+      const ta = document.createElement("textarea");
+      ta.value = email;
+      ta.setAttribute("readonly", "");
+      ta.style.position = "absolute";
+      ta.style.left = "-9999px";
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        ok = document.execCommand("copy");
+      } finally {
+        document.body.removeChild(ta);
+      }
+    }
+    if (ok) {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
+  }
+
+  return (
+    <button
+      type="button"
+      onClick={handleCopy}
+      aria-label="Copy email address"
+      className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-border bg-card px-4 py-3 text-sm font-semibold transition-colors hover:bg-secondary"
+    >
+      {copied ? (
+        <Check className="h-4 w-4 text-emerald-500" aria-hidden />
+      ) : (
+        <Copy className="h-4 w-4" aria-hidden />
+      )}
+      {copied ? "Copied" : "Copy"}
+    </button>
   );
 }
