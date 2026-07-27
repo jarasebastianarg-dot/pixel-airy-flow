@@ -731,19 +731,29 @@ function Index() {
 
             <motion.div
               variants={fadeUp}
-              className="mt-12 flex flex-col gap-3 border-t border-border pt-10 sm:flex-row sm:items-center"
+              className="mt-12 flex flex-col flex-wrap gap-3 border-t border-border pt-10 sm:flex-row sm:items-center"
             >
               <MagneticButton
-                href="/resume.pdf"
+                href={cvAsset.url}
+                download="JaraSebastian_CV.pdf"
                 className="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-accent px-6 py-3.5 text-sm font-semibold text-accent-foreground shadow-[var(--shadow-accent)]"
               >
                 <Download className="h-4 w-4" />
                 Download Résumé
               </MagneticButton>
-              <div className="flex gap-3">
-                <SocialLink icon={Linkedin} label="LinkedIn" />
-                <SocialLink icon={Globe} label="Behance" />
-                <SocialLink icon={Mail} label="Email" />
+              <div className="flex flex-wrap gap-3">
+                <SocialLink
+                  icon={Linkedin}
+                  label="LinkedIn"
+                  href="https://www.linkedin.com/in/sebastian-jara-dsgn/"
+                  target="_blank"
+                />
+                <SocialLink
+                  icon={Mail}
+                  label="Email"
+                  href="mailto:jarasebastian.arg@gmail.com"
+                />
+                <CopyEmailButton email="jarasebastian.arg@gmail.com" />
               </div>
             </motion.div>
           </Reveal>
