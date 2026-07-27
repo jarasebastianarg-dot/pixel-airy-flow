@@ -340,7 +340,7 @@ function Lightbox({
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.96, y: 10 }}
             transition={{ type: "spring", stiffness: 240, damping: 26 }}
-            className={`relative flex max-h-[88vh] w-[92vw] items-start justify-center overflow-y-auto rounded-3xl border border-white/10 bg-background shadow-2xl ${
+            className={`relative w-full max-h-[80vh] overflow-y-auto overscroll-contain rounded-3xl border border-white/10 bg-background shadow-2xl ${
               width === "wide"
                 ? "md:w-[76vw] lg:w-[62vw] xl:w-[54vw]"
                 : "md:w-[80vw] lg:w-[64vw] xl:w-[52vw]"
@@ -350,7 +350,8 @@ function Lightbox({
             <img
               src={src}
               alt={label ?? ""}
-              className="block h-auto w-full select-none [image-rendering:auto]"
+              className="w-full h-auto block select-none"
+              style={{ imageRendering: "high-quality" as React.CSSProperties["imageRendering"] }}
               draggable={false}
             />
           </motion.div>
