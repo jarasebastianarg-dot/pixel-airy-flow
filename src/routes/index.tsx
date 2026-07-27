@@ -1185,15 +1185,58 @@ function StackTerminal({ index }: { index: number }) {
   );
 }
 
-function SocialLink({ icon: Icon, label }: { icon: typeof Linkedin; label: string }) {
+function SocialLink({
+  icon: Icon,
+  label,
+  href = "#",
+  target,
+}: {
+  icon: typeof Linkedin;
+  label: string;
+  href?: string;
+  target?: string;
+}) {
+  const isExternal = target === "_blank";
   return (
     <a
-      href="#"
+      href={href}
+      target={target}
+      rel={isExternal ? "noopener noreferrer" : undefined}
       aria-label={label}
       className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-border bg-card px-4 py-3 text-sm font-semibold transition-colors hover:bg-secondary"
     >
       <Icon className="h-4 w-4" />
       {label}
     </a>
+  );
+}
+
+function CopyEmailButton({ email }: { email: string }) {
+  const [copied, setCopied] = useState(false);
+
+  async function handleCopy() {
+    try {
+      await navigator.clipboard.writeText(email);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // Clipboard API not available — user can still use the mailto link
+    }
+  }
+
+  return (
+    <button
+      type="button"
+      onClick={handleCopy}
+      aria-label="Copy email address"
+      className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-border bg-card px-4 py-3 text-sm font-semibold transition-colors hover:bg-secondary"
+    >
+      {copied ? (
+        <Check className="h-4 w-4 text-emerald-500" aria-hidden />
+      ) : (
+        <Copy className="h-4 w-4" aria-hidden />
+      )}
+      {copied ? "Copied" : "Copy"}
+    </button>
   );
 }
