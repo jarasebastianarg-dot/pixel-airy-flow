@@ -351,7 +351,7 @@ function Lightbox({
               src={src}
               alt={label ?? ""}
               className="w-full h-auto block select-none"
-              style={{ imageRendering: "high-quality" }}
+              style={{ imageRendering: "high-quality" as React.CSSProperties["imageRendering"] }}
               draggable={false}
             />
           </motion.div>
