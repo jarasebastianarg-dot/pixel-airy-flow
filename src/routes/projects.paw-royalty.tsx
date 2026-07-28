@@ -23,13 +23,13 @@ import {
   X,
   ZoomIn,
 } from "lucide-react";
-import prHome from "@/assets/paw-royalty/pr-home.png.asset.json";
-import prProduct from "@/assets/paw-royalty/pr-product.png.asset.json";
-import prSubscribe from "@/assets/paw-royalty/pr-subscribe.png.asset.json";
-import prQuiz from "@/assets/paw-royalty/pr-quiz.png.asset.json";
-import prEmailSubscribe from "@/assets/paw-royalty/pr-email-subscribe.png.asset.json";
-import prEmailCalming from "@/assets/paw-royalty/pr-email-calming.png.asset.json";
-import prEmailCampaign from "@/assets/paw-royalty/pr-email-campaign.png.asset.json";
+const prHome = { url: "https://raw.githubusercontent.com/jarasebastianarg-dot/Portfolio-Photos/main/Paw%20Royalty%20Home.png" };
+const prProduct = { url: "https://raw.githubusercontent.com/jarasebastianarg-dot/Portfolio-Photos/main/Paw%20Royalty%20Product%20page.png" };
+const prSubscribe = { url: "https://raw.githubusercontent.com/jarasebastianarg-dot/Portfolio-Photos/main/Paw%20Royalty%20Pagina%20subscribe%20and%20save.png" };
+const prQuiz = { url: "https://raw.githubusercontent.com/jarasebastianarg-dot/Portfolio-Photos/main/Paw%20Royalty%20Quiz%20page.png" };
+const prEmailCampaign = { url: "https://raw.githubusercontent.com/jarasebastianarg-dot/Portfolio-Photos/main/Paw%20Royalty%20email%20(1).png" };
+const prEmailSubscribe = { url: "https://raw.githubusercontent.com/jarasebastianarg-dot/Portfolio-Photos/main/Paw%20Royalty%20email%20(2).png" };
+const prEmailCalming = { url: "https://raw.githubusercontent.com/jarasebastianarg-dot/Portfolio-Photos/main/PawRoyalty%20email%203.png" };
 
 export const Route = createFileRoute("/projects/paw-royalty")({
   component: PawRoyaltyProject,
