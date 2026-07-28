@@ -57,10 +57,10 @@ import sonicNegro from "@/assets/bway/bway-sonic-negro.jpg.asset.json";
 import b10kAdentro from "@/assets/bway/bway-b10k-adentro.jpg.asset.json";
 import compactFrente from "@/assets/bway/bway-compact-frente.jpg.asset.json";
 import diecutUrban from "@/assets/bway/bway-diecut-urban.jpg.asset.json";
-import ecomBrHome from "@/assets/bway/bway-ecom-br-home.png.asset.json";
 import ecomBrCatalog from "@/assets/bway/bway-ecom-br-catalog.png.asset.json";
-import ecomArHome from "@/assets/bway/bway-ecom-ar-home.png.asset.json";
-import ecomUsHome from "@/assets/bway/bway-ecom-us.png.asset.json";
+const ecomBrHome = { url: "https://raw.githubusercontent.com/jarasebastianarg-dot/Portfolio-Photos/main/Bway-brasil-Home.png" };
+const ecomArHome = { url: "https://raw.githubusercontent.com/jarasebastianarg-dot/Portfolio-Photos/main/Bway%20Ecom%20arg.png" };
+const ecomUsHome = { url: "https://raw.githubusercontent.com/jarasebastianarg-dot/Portfolio-Photos/main/Bway-USA-Ecom.png" };
 
 export const Route = createFileRoute("/projects/b-way")({
   component: BWayProject,
