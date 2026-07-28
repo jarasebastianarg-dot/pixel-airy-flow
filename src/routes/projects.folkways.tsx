@@ -33,13 +33,13 @@ import folkwaysHomeRebuiltRetina from "@/assets/folkways/folkways-home-rebuilt-r
 import folkwaysProductRebuiltRetina from "@/assets/folkways/folkways-product-rebuilt-retina.png.asset.json";
 
 const FW_HOME =
-  "https://raw.githubusercontent.com/jarasebastianarg-dot/Portfolio-Assets/main/Folkways%20Home.png";
+  "https://raw.githubusercontent.com/jarasebastianarg-dot/Portfolio-Photos/main/Folkways%20Home.png";
 const FW_PRODUCT =
-  "https://raw.githubusercontent.com/jarasebastianarg-dot/Portfolio-Assets/main/Folkways%20Product-page-wine.png";
+  "https://raw.githubusercontent.com/jarasebastianarg-dot/Portfolio-Photos/main/Folkways%20Product-page-wine.png";
 const FW_EMAIL_CLUB =
-  "https://raw.githubusercontent.com/jarasebastianarg-dot/Portfolio-Assets/main/Folkways%20email%20(1).png";
+  "https://raw.githubusercontent.com/jarasebastianarg-dot/Portfolio-Photos/main/Folkways%20email%20(1).png";
 const FW_EMAIL_CASHBACK =
-  "https://raw.githubusercontent.com/jarasebastianarg-dot/Portfolio-Assets/main/Folkways%20email%20(2).png";
+  "https://raw.githubusercontent.com/jarasebastianarg-dot/Portfolio-Photos/main/Folkways%20email%20(2).png";
 
 export const Route = createFileRoute("/projects/folkways")({
   component: FolkwaysProject,
@@ -258,7 +258,7 @@ const mockups = [
     title: "Homepage",
     focus: "Merchandising + Storytelling",
     body: "Editorial homepage engineered around the buyer journey — staff picks, category rails, curated cases and the wine club offer stacked to move cold traffic from browsing to checkout without a single third-party app.",
-    image: folkwaysHomeRebuiltRetina.url,
+    image: FW_HOME,
     sourceImage: FW_HOME,
     width: "wide" as const,
   },
@@ -267,7 +267,7 @@ const mockups = [
     title: "Product Detail Page",
     focus: "Conversion + Trust",
     body: "High-density PDP hardcoded in Liquid — dynamic scarcity, sticky add-to-cart, cross-sell rail and maker notes designed to close the sale on natural, low-intervention bottles.",
-    image: folkwaysProductRebuiltRetina.url,
+    image: FW_PRODUCT,
     sourceImage: FW_PRODUCT,
     width: "wide" as const,
   },
@@ -279,7 +279,7 @@ const emails = [
     title: "Wine Club Acquisition Campaign",
     focus: "Acquisition + Recurring Revenue",
     body: "Curated Cases campaign pushing the monthly wine club — hero editorial, 10% off framing and dual-tier subscription cards (Essential 4-Pack and Voyager 6-Pack) designed to convert subscribers on the first send.",
-    image: folkwaysEmailClubRetina.url,
+    image: FW_EMAIL_CLUB,
     sourceImage: FW_EMAIL_CLUB,
   },
   {
@@ -287,7 +287,7 @@ const emails = [
     title: "$22.30 Cashback Recovery",
     focus: "Winback + LTV",
     body: "Lifecycle recovery email built inside Klaviyo — personalized cashback balance, three curated next-buy angles and a single dark CTA. Rebuilt to reactivate dormant customers and lift second-order rate.",
-    image: folkwaysEmailCashbackRetina.url,
+    image: FW_EMAIL_CASHBACK,
     sourceImage: FW_EMAIL_CASHBACK,
   },
 ];
