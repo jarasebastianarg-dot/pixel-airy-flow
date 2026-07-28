@@ -25,12 +25,6 @@ import {
   MousePointer2,
   Percent,
 } from "lucide-react";
-import folkwaysHomeRetina from "@/assets/folkways/folkways-home-retina.png.asset.json";
-import folkwaysProductRetina from "@/assets/folkways/folkways-product-retina.png.asset.json";
-import folkwaysEmailClubRetina from "@/assets/folkways/folkways-email-club-retina.png.asset.json";
-import folkwaysEmailCashbackRetina from "@/assets/folkways/folkways-email-cashback-retina.png.asset.json";
-import folkwaysHomeRebuiltRetina from "@/assets/folkways/folkways-home-rebuilt-retina.png.asset.json";
-import folkwaysProductRebuiltRetina from "@/assets/folkways/folkways-product-rebuilt-retina.png.asset.json";
 
 const FW_HOME =
   "https://raw.githubusercontent.com/jarasebastianarg-dot/Portfolio-Photos/main/Folkways%20Home.png";
