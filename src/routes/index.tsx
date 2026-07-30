@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { createFileRoute } from "@tanstack/react-router";
+import { useLanguage, type Lang } from "@/i18n/LanguageContext";
 import portrait from "@/assets/portrait.jpg.asset.json";
 import cvAsset from "@/assets/JaraSebastian_CV.pdf.asset.json";
 import folkwaysThumb from "@/assets/folkways-thumbnail.webp.asset.json";
@@ -39,208 +40,78 @@ export const Route = createFileRoute("/")({
 
 /* ─────────────────────────── data ─────────────────────────── */
 
-const capabilities = [
-  {
-    icon: ShoppingBag,
-    number: "01",
-    kicker: "Commerce",
-    title: "Shopify & Custom E-commerce",
-    desc: "I architect scalable storefronts using custom Liquid, HTML, and CSS. No bloated themes, just high-converting, performance-driven environments.",
-    tags: ["Shopify 2.0", "Liquid", "Headless"],
-  },
-  {
-    icon: Zap,
-    number: "02",
-    kicker: "Retention",
-    title: "Retention & Email Marketing",
-    desc: "Designing automated Klaviyo CRM flows and targeted campaigns that turn one-time buyers into loyal brand advocates and maximize LTV.",
-    tags: ["Klaviyo", "Lifecycle", "LTV"],
-  },
-  {
-    icon: Palette,
-    number: "03",
-    kicker: "Identity",
-    title: "Brand Identity & UI/UX",
-    desc: "Crafting cohesive visual systems. From packaging to digital interfaces, I build scalable brands grounded in academic design principles.",
-    tags: ["Systems", "UI/UX", "Packaging"],
-  },
-  {
-    icon: Bot,
-    number: "04",
-    kicker: "Automation",
-    title: "AI & Workflow Automation",
-    desc: "Connecting the dots between Make, Claude, and Gemini to streamline operations, reduce lead times, and scale businesses efficiently.",
-    tags: ["Make", "Claude", "Gemini"],
-  },
-];
+/** Visual/structural metadata — all copy lives in the language dictionary. */
+const capabilityMeta = [
+  { icon: ShoppingBag, number: "01" },
+  { icon: Zap, number: "02" },
+  { icon: Palette, number: "03" },
+  { icon: Bot, number: "04" },
+] as const;
 
-const works = [
+const workMeta = [
+  { slug: "folkways", client: "Folkways", image: folkwaysThumb.url, href: "/projects/folkways" },
   {
-    tag: "Shopify Expert",
-    client: "Folkways",
-    headline: "The Technical Scale",
-    body: "Migrated 2000+ products to Shopify 2.0 without losing a single drop of performance.",
-    image: folkwaysThumb.url,
-    href: "/projects/folkways",
-  },
-  {
-    tag: "Lead Developer & Designer",
+    slug: "paw-royalty",
     client: "Paw Royalty",
-    headline: "Full-Stack Launch",
-    body: "End-to-end creation for a US market entry. Brand identity, UI/UX and Klaviyo integration.",
     image: pawRoyaltyThumb.url,
     href: "/projects/paw-royalty",
   },
+  { slug: "b-way", client: "B-WAY", image: bwayThumb.url, href: "/projects/b-way" },
   {
-    tag: "Brand Manager",
-    client: "B-WAY",
-    headline: "Global Expansion",
-    body: "Steered a 6-person team to scale operations across the US and Brazil, driving digital and 300+ attendee physical events.",
-    image: bwayThumb.url,
-    href: "/projects/b-way",
-  },
-  {
-    tag: "Branding Designer",
+    slug: "elevate-local",
     client: "Elevate Local",
-    headline: "Clinical Aesthetics",
-    body: "Complete visual identity for a European medical marketing agency.",
     image: elevateThumb.url,
     href: "/projects/elevate-local",
   },
-];
+] as const;
 
 const ecosystemClusters = [
   {
     id: "design",
-    group: "Design & UX",
-    kicker: "Craft",
     icon: Palette,
-    blurb: "Brand systems, editorial layouts and interface craft.",
     tools: [
-      { label: "Photoshop", color: "#31A8FF", use: "Photo retouching and campaign visuals" },
-      { label: "Illustrator", color: "#FF9A00", use: "Logo systems and vector creative assets" },
-      { label: "InDesign", color: "#FF3366", use: "Editorial layouts and brand guidelines" },
-      { label: "After Effects", color: "#9999FF", use: "Motion graphics for social and product" },
-      { label: "Figma", color: "#F24E1E", use: "Product UI, prototypes and design systems" },
-      { label: "Canva", color: "#00C4CC", use: "Fast-turn social decks and pitch material" },
-      { label: "Claude Design", color: "#D97757", use: "AI-assisted concept exploration and iteration" },
+      { label: "Photoshop", color: "#31A8FF" },
+      { label: "Illustrator", color: "#FF9A00" },
+      { label: "InDesign", color: "#FF3366" },
+      { label: "After Effects", color: "#9999FF" },
+      { label: "Figma", color: "#F24E1E" },
+      { label: "Canva", color: "#00C4CC" },
+      { label: "Claude Design", color: "#D97757" },
     ],
   },
   {
     id: "build",
-    group: "Build & Code",
-    kicker: "Ship",
     icon: Code2,
-    blurb: "Storefronts and marketing sites shipped end-to-end.",
     tools: [
-      { label: "Shopify", color: "#95BF47", use: "Custom theme development and headless architecture" },
-      { label: "Shopify Liquid", color: "#008080", use: "Bespoke sections built to each merchant's flow" },
-      { label: "HTML / CSS", color: "#E34F26", use: "Responsive, accessible, pixel-accurate markup" },
-      { label: "Webflow", color: "#146EF5", use: "High-fidelity marketing sites for brand teams" },
+      { label: "Shopify", color: "#95BF47" },
+      { label: "Shopify Liquid", color: "#008080" },
+      { label: "HTML / CSS", color: "#E34F26" },
+      { label: "Webflow", color: "#146EF5" },
     ],
   },
   {
     id: "scale",
-    group: "Scale & Automate",
-    kicker: "Growth",
     icon: Zap,
-    blurb: "Retention, paid media and lifecycle automation.",
     tools: [
-      { label: "Klaviyo", color: "#20E2C8", use: "CRM flows, segmentation and A/B testing" },
-      { label: "HubSpot", color: "#FF7A59", use: "Pipelines, lead scoring and sales enablement" },
-      { label: "Email Automation", color: "#F5A623", use: "Lifecycle campaigns end-to-end" },
-      { label: "Meta Ads", color: "#0668E1", use: "Paid social: creative, testing and reporting" },
-      { label: "Make", color: "#8848AB", use: "No-code pipelines connecting the whole stack" },
+      { label: "Klaviyo", color: "#20E2C8" },
+      { label: "HubSpot", color: "#FF7A59" },
+      { label: "Email Automation", color: "#F5A623" },
+      { label: "Meta Ads", color: "#0668E1" },
+      { label: "Make", color: "#8848AB" },
     ],
   },
   {
     id: "ai",
-    group: "AI Models",
-    kicker: "Intelligence",
     icon: Bot,
-    blurb: "AI leveraged across design, code and growth.",
     tools: [
-      { label: "Claude", color: "#D97757", use: "Engineering co-pilot and long-form copywriting" },
-      { label: "Claude Co-Work", color: "#B85A3E", use: "Async pair-programming and workflow acceleration" },
-      { label: "Gemini", color: "#1A73E8", use: "Research, data analysis and multimodal tasks" },
+      { label: "Claude", color: "#D97757" },
+      { label: "Claude Co-Work", color: "#B85A3E" },
+      { label: "Gemini", color: "#1A73E8" },
     ],
   },
-];
+] as const;
 
-const experience = [
-  {
-    role: "Branding & UI/UX Designer",
-    company: "Freelance — Remote",
-    period: "Oct 2025 — Present",
-    highlights: [
-      "Lead brand identity and UI/UX for a US + Argentina client portfolio, shipping web and app platforms engineered around the buyer journey.",
-      "Build scalable design systems and high-converting landing pages that turn paid social traffic into measurable e-commerce revenue.",
-    ],
-  },
-  {
-    role: "Brand Manager",
-    company: "B-WAY — Buenos Aires, AR",
-    period: "Aug 2024 — Dec 2025",
-    highlights: [
-      "Directed a 6-person interdisciplinary marketing team running 360° campaigns aligned to commercial KPIs.",
-      "Deployed AI-driven analytics workflows that cut production lead times by 30% and sharpened targeting precision.",
-      "Owned e-commerce and paid media strategy across 3 international markets (US, BR, AR), improving ROAS on core SKUs.",
-      "Orchestrated flagship events (B-WAY Experience, Barber Week) driving qualified lead generation at scale.",
-    ],
-  },
-  {
-    role: "Product Designer",
-    company: "B-WAY — Buenos Aires, AR",
-    period: "Nov 2023 — Aug 2024",
-    highlights: [
-      "Produced high-impact e-commerce visuals and paid social assets that lifted CTR and engagement across the funnel.",
-      "Optimized digital storefront UX to reduce friction and support product conversion and brand trust.",
-      "Designed international trade-show stands optimized for visitor flow and on-site lead capture.",
-    ],
-  },
-  {
-    role: "Graphic Designer",
-    company: "Freelance — Remote",
-    period: "2021 — 2023",
-    highlights: [
-      "Delivered end-to-end brand identities and UI/UX systems for clients across multiple industries.",
-      "Ran editorial and social content strategy focused on brand voice consistency and audience retention.",
-    ],
-  },
-];
 
-const credentials = [
-  {
-    title: "Bachelor's Degree in\u00a0Graphic Design",
-    institution: "UADE (Universidad Argentina de la Empresa)",
-    period: "2019 — 2024",
-  },
-  {
-    title: "Bachelor's Degree in Multimedia & Interaction Design",
-    institution: "UADE (Universidad Argentina de la Empresa)",
-    period: "2020 — 2024",
-  },
-  {
-    title: "Digital Marketing & Growth Hacking with GenAI",
-    institution: "IBM — Professional Certificate",
-    period: "Expected Apr 2026",
-  },
-  {
-    title: "Foundations of Digital Marketing & E-commerce",
-    institution: "Google - Professional Certificate",
-    period: "2026",
-  },
-  {
-    title: "OPI 2.0 — Public Speaking",
-    institution: "Franco Pisso - Professional Certificate",
-    period: "2026",
-  },
-  {
-    title: "CAE - Certificate in Advanced English C1",
-    institution: "Cambridge",
-    period: "2018",
-  },
-];
 
 /* ─────────────────────── motion helpers ─────────────────────── */
 
@@ -430,7 +301,7 @@ function CustomCursor() {
 /* ─────────────────────────── page ─────────────────────────── */
 
 function Index() {
-  const [lang, setLang] = useState<"EN" | "ES">("EN");
+  const { lang, setLang, t } = useLanguage();
 
   return (
     <div className="min-h-screen bg-background text-foreground md:cursor-none">
@@ -455,30 +326,36 @@ function Index() {
             className="hidden items-center gap-1 md:flex"
           >
             {[
-              { href: "#works", label: "Work" },
-              { href: "#capabilities", label: "Capabilities" },
-              { href: "#stack", label: "Stack" },
-              { href: "#about", label: "About" },
+              { href: "#works", label: t.nav.work },
+              { href: "#capabilities", label: t.nav.capabilities },
+              { href: "#stack", label: t.nav.stack },
+              { href: "#about", label: t.nav.about },
             ].map((l) => (
               <a
                 key={l.href}
                 href={l.href}
                 onClick={smoothScrollTo(l.href.slice(1))}
-                className="rounded-full px-3 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground"
+                className="min-w-0 break-words rounded-full px-3 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground"
               >
                 {l.label}
               </a>
             ))}
           </nav>
 
-          <div className="flex items-center gap-2">
+          <div className="flex min-w-0 flex-wrap items-center justify-end gap-2">
             {/* Secondary: language toggle */}
-            <div className="flex items-center rounded-full border border-border bg-card p-1 text-[0.7rem] font-semibold">
-              {(["EN", "ES"] as const).map((l) => (
+            <div
+              role="group"
+              aria-label={t.nav.langLabel}
+              className="flex shrink-0 items-center rounded-full border border-border bg-card p-1 text-[0.7rem] font-semibold"
+            >
+              {(["en", "es"] as Lang[]).map((l) => (
                 <button
                   key={l}
+                  type="button"
+                  aria-pressed={lang === l}
                   onClick={() => setLang(l)}
-                  className={`rounded-full px-2.5 py-0.5 transition-colors ${
+                  className={`rounded-full px-2.5 py-0.5 uppercase transition-transform duration-200 active:scale-95 ${
                     lang === l
                       ? "bg-secondary text-foreground"
                       : "text-muted-foreground hover:text-foreground"
@@ -493,64 +370,86 @@ function Index() {
             <a
               href="#works"
               onClick={smoothScrollTo("works")}
-              className="group inline-flex items-center gap-1.5 rounded-full bg-gradient-accent px-4 py-2 text-xs font-semibold text-accent-foreground shadow-[var(--shadow-accent)] transition-transform hover:-translate-y-0.5"
+              className="group inline-flex min-w-0 items-center gap-1.5 rounded-full bg-gradient-accent px-4 py-2 text-center text-xs font-semibold text-accent-foreground shadow-[var(--shadow-accent)] transition-transform duration-200 hover:-translate-y-0.5 active:scale-95"
             >
-              View Projects
+              <span className="break-words">{t.nav.viewProjects}</span>
               <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
             </a>
           </div>
         </div>
       </header>
 
-      <main className="mx-auto max-w-6xl px-6">
+      <motion.main
+        key={lang}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.25, ease: "easeOut" }}
+        className="mx-auto max-w-6xl px-6"
+      >
         {/* Hero */}
         <Reveal className="py-20 md:py-28" stagger={0.12}>
           <motion.span
             variants={fadeUp}
-            className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-1.5 text-xs font-semibold text-muted-foreground"
+            className="inline-flex max-w-full flex-wrap items-center gap-2 break-words rounded-full border border-border bg-card px-4 py-1.5 text-xs font-semibold text-muted-foreground"
           >
             <span className="h-2 w-2 animate-pulse rounded-full bg-orange-500" />
-            Creative Developer &amp; Growth Partner
+            {t.hero.badge}
           </motion.span>
           <motion.h1
             variants={fadeUp}
-            className="mt-6 max-w-4xl text-5xl font-bold leading-[1.02] tracking-tight md:text-7xl"
+            className="mt-6 max-w-4xl break-words text-5xl font-bold leading-[1.02] tracking-tight md:text-7xl"
           >
-            I build{" "}
-            <span className="font-serif italic font-normal text-accent-1">brands</span> that stand
-            out and{" "}
-            <span className="font-serif italic font-normal text-accent-1">systems</span> that sell.
+            {t.hero.headline.pre}
+            <span className="font-serif italic font-normal text-accent-1">
+              {t.hero.headline.em1}
+            </span>
+            {t.hero.headline.mid}
+            <span className="font-serif italic font-normal text-accent-1">
+              {t.hero.headline.em2}
+            </span>
+            {t.hero.headline.post}
           </motion.h1>
           <motion.p
             variants={fadeUp}
-            className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl"
+            className="mt-6 max-w-2xl break-words text-lg leading-relaxed text-muted-foreground md:text-xl"
           >
-            High-end visual design and technical e-commerce execution focused on converting.
+            {t.hero.subtitle}
           </motion.p>
           <motion.div variants={fadeUp} className="mt-8 flex flex-wrap items-center gap-4">
             <MagneticButton
               href="#works"
-              className="group inline-flex items-center gap-2 rounded-full bg-gradient-accent px-7 py-3.5 text-sm font-semibold text-accent-foreground shadow-[var(--shadow-accent)]"
+              className="group inline-flex min-w-0 items-center gap-2 break-words rounded-full bg-gradient-accent px-7 py-3.5 text-sm font-semibold text-accent-foreground shadow-[var(--shadow-accent)] transition-transform duration-200 active:scale-95"
             >
-              View Projects
+              {t.hero.ctaPrimary}
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </MagneticButton>
             <MagneticButton
               href="#about"
-              className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-7 py-3.5 text-sm font-semibold transition-colors hover:bg-secondary"
+              className="inline-flex min-w-0 items-center gap-2 break-words rounded-full border border-border bg-card px-7 py-3.5 text-sm font-semibold transition-transform duration-200 hover:bg-secondary active:scale-95"
             >
-              Get in touch
+              {t.hero.ctaSecondary}
             </MagneticButton>
           </motion.div>
         </Reveal>
 
         {/* Selected Works */}
         <section id="works" className="scroll-mt-24 pt-8">
-          <SectionLabel>Selected Works</SectionLabel>
+          <SectionLabel>{t.sections.works}</SectionLabel>
           <Reveal className="grid grid-cols-1 gap-6 md:grid-cols-2" stagger={0.12}>
-            {works.map((w) => (
-              <WorkCard key={w.client} {...w} />
-            ))}
+            {workMeta.map((w) => {
+              const copy = t.works[w.slug as keyof typeof t.works];
+              return (
+                <WorkCard
+                  key={w.slug}
+                  client={w.client}
+                  image={w.image}
+                  href={w.href}
+                  tag={copy.tag}
+                  headline={copy.headline}
+                  body={copy.body}
+                />
+              );
+            })}
           </Reveal>
         </section>
 
@@ -558,29 +457,33 @@ function Index() {
         <section id="capabilities" className="scroll-mt-24 pt-24">
           <Reveal className="grid grid-cols-1 gap-10 md:grid-cols-12 md:items-end" stagger={0.1}>
             <motion.div variants={fadeUp} className="md:col-span-7">
-              <SectionLabel>Core Capabilities</SectionLabel>
-              <h2 className="mt-4 text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl">
-                Four disciplines,{" "}
-                <span className="font-serif italic font-normal text-accent-1">one</span> operator.
+              <SectionLabel>{t.sections.capabilities}</SectionLabel>
+              <h2 className="mt-4 break-words text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl">
+                {t.capabilities.heading.pre}
+                <span className="font-serif italic font-normal text-accent-1">
+                  {t.capabilities.heading.em}
+                </span>
+                {t.capabilities.heading.post}
               </h2>
             </motion.div>
             <motion.p
               variants={fadeUp}
-              className="md:col-span-5 text-base leading-relaxed text-muted-foreground md:text-lg"
+              className="min-w-0 break-words md:col-span-5 text-base leading-relaxed text-muted-foreground md:text-lg"
             >
-              I don&apos;t hand off between design, code, and growth. Every capability below is
-              executed by the same hands — so strategy, aesthetics and performance stay in sync.
+              {t.capabilities.intro}
             </motion.p>
           </Reveal>
 
           <Reveal className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2" stagger={0.08}>
-            {capabilities.map((c) => (
+            {capabilityMeta.map((meta, i) => {
+              const c = { ...meta, ...t.capabilities.items[i] };
+              return (
               <motion.article
                 key={c.title}
                 variants={fadeUp}
                 whileHover={{ y: -6 }}
                 transition={{ type: "spring", stiffness: 260, damping: 22 }}
-                className="group relative isolate flex h-full flex-col overflow-hidden rounded-[calc(var(--radius)+18px)] border border-border bg-card p-8 shadow-[var(--shadow-card)] transition-shadow duration-500 hover:shadow-[var(--shadow-card-hover)] md:p-10"
+                className="group relative isolate flex h-full min-w-0 flex-col overflow-hidden rounded-[calc(var(--radius)+18px)] border border-border bg-card p-8 shadow-[var(--shadow-card)] transition-shadow duration-500 hover:shadow-[var(--shadow-card-hover)] md:p-10"
               >
                 {/* animated accent bar */}
                 <span
@@ -601,49 +504,50 @@ function Index() {
                   >
                     <c.icon className="h-6 w-6" strokeWidth={1.6} />
                   </motion.span>
-                  <div className="text-right">
+                  <div className="min-w-0 text-right">
                     <span className="font-mono text-xs font-semibold tracking-widest text-muted-foreground">
                       {c.number}
                     </span>
-                    <div className="mt-1 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-accent-1">
+                    <div className="mt-1 break-words text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-accent-1">
                       {c.kicker}
                     </div>
                   </div>
                 </header>
 
-                <h3 className="mt-8 text-2xl font-bold leading-tight tracking-tight md:text-[1.6rem]">
+                <h3 className="mt-8 break-words text-2xl font-bold leading-tight tracking-tight md:text-[1.6rem]">
                   {c.title}
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground md:text-[0.95rem]">
+                <p className="mt-3 break-words text-sm leading-relaxed text-muted-foreground md:text-[0.95rem]">
                   {c.desc}
                 </p>
 
                 <div className="mt-auto flex flex-wrap items-center justify-between gap-4 pt-8">
                   <ul className="flex flex-wrap gap-2">
-                    {c.tags.map((t) => (
+                    {c.tags.map((tag) => (
                       <li
-                        key={t}
-                        className="rounded-full border border-border bg-background/60 px-3 py-1 text-[0.7rem] font-medium text-muted-foreground transition-colors duration-300 group-hover:border-accent-1/40 group-hover:text-foreground"
+                        key={tag}
+                        className="max-w-full break-words rounded-full border border-border bg-background/60 px-3 py-1 text-[0.7rem] font-medium text-muted-foreground transition-colors duration-300 group-hover:border-accent-1/40 group-hover:text-foreground"
                       >
-                        {t}
+                        {tag}
                       </li>
                     ))}
                   </ul>
                   <span
                     aria-hidden
-                    className="grid h-9 w-9 place-items-center rounded-full border border-border bg-card text-muted-foreground transition-all duration-500 group-hover:-rotate-45 group-hover:border-transparent group-hover:bg-gradient-accent group-hover:text-accent-foreground"
+                    className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-border bg-card text-muted-foreground transition-all duration-500 group-hover:-rotate-45 group-hover:border-transparent group-hover:bg-gradient-accent group-hover:text-accent-foreground"
                   >
                     <ArrowUpRight className="h-4 w-4" />
                   </span>
                 </div>
               </motion.article>
-            ))}
+              );
+            })}
           </Reveal>
         </section>
 
         {/* Methodology & Tech */}
         <section id="stack" className="scroll-mt-24 pt-16">
-          <SectionLabel>Methodology &amp; Stack</SectionLabel>
+          <SectionLabel>{t.sections.stack}</SectionLabel>
           <MethodologyStack />
         </section>
 
@@ -651,7 +555,7 @@ function Index() {
         <section id="about" className="scroll-mt-24 py-16">
           <Reveal className="bento-card overflow-hidden p-10 md:p-14" stagger={0.12}>
             <motion.div variants={fadeUp}>
-              <SectionLabel>The Architect</SectionLabel>
+              <SectionLabel>{t.sections.about}</SectionLabel>
             </motion.div>
             <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:items-center">
               <motion.div variants={fadeUp} className="md:col-span-1">
@@ -664,45 +568,46 @@ function Index() {
                   className="aspect-square w-full rounded-2xl object-cover"
                 />
               </motion.div>
-              <motion.div variants={fadeUp} className="md:col-span-2">
-                <h3 className="max-w-3xl text-3xl font-bold leading-tight tracking-tight md:text-5xl">
-                  Systemic Logic.{" "}
+              <motion.div variants={fadeUp} className="min-w-0 md:col-span-2">
+                <h3 className="max-w-3xl break-words text-3xl font-bold leading-tight tracking-tight md:text-5xl">
+                  {t.about.heading.pre}
                   <span className="font-serif italic font-normal text-accent-1">
-                    Relentless Discipline.
+                    {t.about.heading.em}
                   </span>
                 </h3>
-                <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
-                  I'm Sebastián. My background merges academic graphic design with deep technical
-                  execution. I build complex automation workflows and highly customized E-commerce
-                  architectures because I understand that beautiful design is useless if it doesn't
-                  perform. I bring endurance and precision to every brand I scale.
+                <p className="mt-6 max-w-2xl break-words text-base leading-relaxed text-muted-foreground md:text-lg">
+                  {t.about.bio}
                 </p>
               </motion.div>
             </div>
 
             <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3">
               {/* Experience */}
-              <motion.div variants={fadeUp} className="md:col-span-2">
+              <motion.div variants={fadeUp} className="min-w-0 md:col-span-2">
                 <div className="mb-8 flex items-center gap-2">
-                  <Briefcase className="h-4 w-4 text-accent-1" />
-                  <h4 className="text-lg font-bold tracking-tight">Experience</h4>
+                  <Briefcase className="h-4 w-4 shrink-0 text-accent-1" />
+                  <h4 className="min-w-0 break-words text-lg font-bold tracking-tight">
+                    {t.sections.experience}
+                  </h4>
                 </div>
                 <ol className="relative border-l border-border pl-8">
-                  {experience.map((item) => (
+                  {t.experience.map((item) => (
                     <li key={item.role + item.period} className="relative mb-10 last:mb-0">
                       <span className="absolute -left-[2.6rem] top-1 grid h-4 w-4 place-items-center rounded-full border-2 border-background bg-gradient-accent" />
                       <span className="text-xs font-semibold uppercase tracking-widest text-accent-1">
                         {item.period}
                       </span>
-                      <h5 className="mt-1 text-lg font-bold tracking-tight">{item.role}</h5>
-                      <p className="mt-0.5 text-sm font-medium text-foreground/80">
+                      <h5 className="mt-1 break-words text-lg font-bold tracking-tight">
+                        {item.role}
+                      </h5>
+                      <p className="mt-0.5 break-words text-sm font-medium text-foreground/80">
                         {item.company}
                       </p>
                       <ul className="mt-3 flex flex-col gap-2">
                         {item.highlights.map((h) => (
                           <li
                             key={h}
-                            className="relative pl-4 text-sm leading-relaxed text-muted-foreground before:absolute before:left-0 before:top-[0.55rem] before:h-1 before:w-1 before:rounded-full before:bg-accent-1"
+                            className="relative break-words pl-4 text-sm leading-relaxed text-muted-foreground before:absolute before:left-0 before:top-[0.55rem] before:h-1 before:w-1 before:rounded-full before:bg-accent-1"
                           >
                             {h}
                           </li>
@@ -714,16 +619,18 @@ function Index() {
               </motion.div>
 
               {/* Credentials */}
-              <motion.div variants={fadeUp} className="md:col-span-1">
+              <motion.div variants={fadeUp} className="min-w-0 md:col-span-1">
                 <div className="mb-8 flex items-center gap-2">
-                  <GraduationCap className="h-4 w-4 text-accent-1" />
-                  <h4 className="text-lg font-bold tracking-tight">Credentials</h4>
+                  <GraduationCap className="h-4 w-4 shrink-0 text-accent-1" />
+                  <h4 className="min-w-0 break-words text-lg font-bold tracking-tight">
+                    {t.sections.credentials}
+                  </h4>
                 </div>
                 <ul className="flex flex-col gap-3">
-                  {credentials.map((c) => (
+                  {t.credentials.map((c) => (
                     <li
                       key={c.title + c.period}
-                      className="rounded-2xl border border-border bg-secondary/60 px-5 py-4 leading-snug"
+                      className="min-w-0 break-words rounded-2xl border border-border bg-secondary/60 px-5 py-4 leading-snug"
                     >
                       <p className="text-sm font-bold tracking-tight">{c.title}</p>
                       <p className="mt-1 text-xs text-muted-foreground">{c.institution}</p>
@@ -743,10 +650,10 @@ function Index() {
               <MagneticButton
                 href={cvAsset.url}
                 download="JaraSebastian_CV.pdf"
-                className="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-accent px-6 py-3.5 text-sm font-semibold text-accent-foreground shadow-[var(--shadow-accent)]"
+                className="group inline-flex min-w-0 items-center justify-center gap-2 break-words rounded-full bg-gradient-accent px-6 py-3.5 text-center text-sm font-semibold text-accent-foreground shadow-[var(--shadow-accent)] transition-transform duration-200 active:scale-95"
               >
-                <Download className="h-4 w-4" />
-                Download Résumé
+                <Download className="h-4 w-4 shrink-0" />
+                {t.about.downloadCv}
               </MagneticButton>
               <div className="flex flex-wrap gap-3">
                 <SocialLink
@@ -757,18 +664,18 @@ function Index() {
                 />
                 <SocialLink
                   icon={Mail}
-                  label="Email"
+                  label={t.about.email}
                   href="mailto:jarasebastian.arg@gmail.com"
                 />
                 <CopyEmailButton email="jarasebastian.arg@gmail.com" />
               </div>
             </motion.div>
           </Reveal>
-          <p className="pb-10 text-center text-xs text-muted-foreground">
-            © {new Date().getFullYear()} — Crafted in Buenos Aires.
+          <p className="break-words pb-10 text-center text-xs text-muted-foreground">
+            © {new Date().getFullYear()} — {t.about.footer}
           </p>
         </section>
-      </main>
+      </motion.main>
     </div>
   );
 }
@@ -851,21 +758,21 @@ function WorkCard({
       <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-70 transition-opacity duration-500 group-hover:opacity-100" />
 
       {/* tag top-left */}
-      <span className="absolute left-6 top-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/70 px-3 py-1 text-xs font-semibold text-white backdrop-blur-md">
-        <Boxes className="h-3.5 w-3.5" />
+      <span className="absolute left-6 right-16 top-6 inline-flex max-w-fit flex-wrap items-center gap-2 break-words rounded-full border border-white/20 bg-black/70 px-3 py-1 text-xs font-semibold text-white backdrop-blur-md">
+        <Boxes className="h-3.5 w-3.5 shrink-0" />
         {tag}
       </span>
       <ArrowUpRight className="absolute right-6 top-6 h-5 w-5 text-white/80 transition-transform duration-500 group-hover:-translate-y-1 group-hover:translate-x-1" />
 
       {/* text emerging from bottom */}
-      <div className="absolute inset-x-0 bottom-0 p-8 md:p-10">
-        <p className="translate-y-2 text-sm font-semibold text-white/70 opacity-90 transition-all duration-500 group-hover:translate-y-0">
+      <div className="absolute inset-x-0 bottom-0 min-w-0 p-8 md:p-10">
+        <p className="translate-y-2 break-words text-sm font-semibold text-white/70 opacity-90 transition-all duration-500 group-hover:translate-y-0">
           {client}
         </p>
-        <h3 className="mt-1 translate-y-3 text-2xl font-bold tracking-tight text-white transition-all duration-500 group-hover:translate-y-0 md:text-3xl">
+        <h3 className="mt-1 translate-y-3 break-words text-2xl font-bold tracking-tight text-white transition-all duration-500 group-hover:translate-y-0 md:text-3xl">
           {headline}
         </h3>
-        <p className="mt-3 max-w-md translate-y-4 text-sm leading-relaxed text-white/0 transition-all duration-500 group-hover:translate-y-0 group-hover:text-white/80">
+        <p className="mt-3 max-w-md translate-y-4 break-words text-sm leading-relaxed text-white/0 transition-all duration-500 group-hover:translate-y-0 group-hover:text-white/80">
           {body}
         </p>
       </div>
@@ -929,6 +836,7 @@ const CLUSTER_GRADIENTS = [
 ];
 
 function MethodologyStack() {
+  const { t } = useLanguage();
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
 
@@ -948,15 +856,16 @@ function MethodologyStack() {
         className="grid grid-cols-1 gap-8 md:grid-cols-12 md:items-end"
       >
         <div className="md:col-span-7">
-          <h2 className="mt-4 text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl">
-            One system,{" "}
-            <span className="font-serif italic font-normal text-accent-1">four</span>{" "}
-            engines.
+          <h2 className="mt-4 break-words text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl">
+            {t.methodology.heading.pre}
+            <span className="font-serif italic font-normal text-accent-1">
+              {t.methodology.heading.em}
+            </span>
+            {t.methodology.heading.post}
           </h2>
         </div>
-        <p className="text-base leading-relaxed text-muted-foreground md:col-span-5 md:text-lg">
-          Design, code, growth and AI orchestrated as a single stack. Tap any
-          cluster — the workspace on the right re-compiles in real time.
+        <p className="min-w-0 break-words text-base leading-relaxed text-muted-foreground md:col-span-5 md:text-lg">
+          {t.methodology.intro}
         </p>
       </motion.div>
 
@@ -972,6 +881,7 @@ function MethodologyStack() {
           {ecosystemClusters.map((cluster, i) => {
             const isActive = active === i;
             const Icon = cluster.icon;
+            const copy = t.methodology.clusters[cluster.id];
             const gradient = CLUSTER_GRADIENTS[i % CLUSTER_GRADIENTS.length];
             return (
               <motion.button
@@ -981,7 +891,7 @@ function MethodologyStack() {
                 whileHover={{ y: -4 }}
                 whileTap={{ scale: 0.985 }}
                 transition={{ type: "spring", stiffness: 300, damping: 22 }}
-                className={`group relative flex cursor-pointer flex-col gap-5 overflow-hidden rounded-3xl border p-6 text-left transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-1 focus-visible:ring-offset-2 focus-visible:ring-offset-background md:p-7 ${
+                className={`group relative flex min-w-0 cursor-pointer flex-col gap-5 overflow-hidden rounded-3xl border p-6 text-left transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-1 focus-visible:ring-offset-2 focus-visible:ring-offset-background md:p-7 ${
                   isActive
                     ? "border-accent-1/50 bg-card shadow-[var(--shadow-card-hover)]"
                     : "border-border bg-card/70 shadow-[var(--shadow-card)] hover:-translate-y-0.5 hover:border-accent-1/30 hover:bg-card hover:shadow-[var(--shadow-card-hover)]"
@@ -1019,18 +929,18 @@ function MethodologyStack() {
                   >
                     <Icon className="h-6 w-6" strokeWidth={1.6} />
                   </span>
-                  <div className="flex items-start gap-3">
-                    <div className="text-right">
+                  <div className="flex min-w-0 items-start gap-3">
+                    <div className="min-w-0 text-right">
                       <span className="font-mono text-xs font-semibold tracking-widest text-muted-foreground">
                         {String(i + 1).padStart(2, "0")}
                       </span>
-                      <div className="mt-1 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-accent-1">
-                      {cluster.kicker}
+                      <div className="mt-1 break-words text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-accent-1">
+                      {copy.kicker}
                       </div>
                     </div>
                     <span
                       aria-hidden
-                      className={`mt-0.5 grid h-8 w-8 place-items-center rounded-full border transition-all duration-300 ${
+                      className={`mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-full border transition-all duration-300 ${
                         isActive
                           ? "border-accent-1/40 bg-accent-1/10 text-accent-1"
                           : "border-border bg-background/80 text-muted-foreground group-hover:-rotate-45 group-hover:border-accent-1/40 group-hover:text-accent-1"
@@ -1041,12 +951,12 @@ function MethodologyStack() {
                   </div>
                 </div>
 
-                <div className="relative space-y-3">
-                  <h3 className="text-2xl font-bold leading-tight tracking-tight md:text-[1.6rem]">
-                    {cluster.group}
+                <div className="relative min-w-0 space-y-3">
+                  <h3 className="break-words text-2xl font-bold leading-tight tracking-tight md:text-[1.6rem]">
+                    {copy.group}
                   </h3>
-                  <p className="text-sm leading-relaxed text-muted-foreground md:text-[0.95rem]">
-                    {cluster.blurb}
+                  <p className="break-words text-sm leading-relaxed text-muted-foreground md:text-[0.95rem]">
+                    {copy.blurb}
                   </p>
                 </div>
 
@@ -1061,11 +971,11 @@ function MethodologyStack() {
                           : "var(--border)",
                       }}
                       transition={{ delay: isActive ? ti * 0.03 : 0, duration: 0.2 }}
-                      className="inline-flex items-center gap-1.5 rounded-full border bg-background/60 px-3 py-1 text-[0.7rem] font-medium text-muted-foreground transition-colors group-hover:text-foreground"
+                      className="inline-flex max-w-full items-center gap-1.5 break-words rounded-full border bg-background/60 px-3 py-1 text-[0.7rem] font-medium text-muted-foreground transition-colors group-hover:text-foreground"
                     >
                       <span
                         aria-hidden
-                        className="h-1.5 w-1.5 rounded-full"
+                        className="h-1.5 w-1.5 shrink-0 rounded-full"
                         style={{ background: tool.color }}
                       />
                       {tool.label}
@@ -1102,6 +1012,7 @@ function MethodologyStack() {
 }
 
 function StackTerminal({ index }: { index: number }) {
+  const { t } = useLanguage();
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
   const [text, setText] = useState("");
@@ -1173,7 +1084,7 @@ function StackTerminal({ index }: { index: number }) {
               <span className="relative inline-flex h-2 w-2 rounded-full bg-accent-1" />
             </span>
             <span className="truncate font-mono text-[10px] uppercase tracking-[0.22em] text-white/50">
-              live · {cluster.group}
+              {t.methodology.live} · {t.methodology.clusters[cluster.id].group}
             </span>
           </div>
           <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-white/40">
@@ -1203,15 +1114,16 @@ function SocialLink({
       target={target}
       rel={isExternal ? "noopener noreferrer" : undefined}
       aria-label={label}
-      className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-border bg-card px-4 py-3 text-sm font-semibold transition-colors hover:bg-secondary"
+      className="inline-flex min-w-0 flex-1 items-center justify-center gap-2 break-words rounded-full border border-border bg-card px-4 py-3 text-sm font-semibold transition-transform duration-200 hover:bg-secondary active:scale-95"
     >
-      <Icon className="h-4 w-4" />
+      <Icon className="h-4 w-4 shrink-0" />
       {label}
     </a>
   );
 }
 
 function CopyEmailButton({ email }: { email: string }) {
+  const { t } = useLanguage();
   const [copied, setCopied] = useState(false);
 
   async function handleCopy() {
@@ -1244,15 +1156,15 @@ function CopyEmailButton({ email }: { email: string }) {
     <button
       type="button"
       onClick={handleCopy}
-      aria-label="Copy email address"
-      className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-border bg-card px-4 py-3 text-sm font-semibold transition-colors hover:bg-secondary"
+      aria-label={t.about.copyAria}
+      className="inline-flex min-w-0 flex-1 items-center justify-center gap-2 break-words rounded-full border border-border bg-card px-4 py-3 text-sm font-semibold transition-transform duration-200 hover:bg-secondary active:scale-95"
     >
       {copied ? (
-        <Check className="h-4 w-4 text-emerald-500" aria-hidden />
+        <Check className="h-4 w-4 shrink-0 text-emerald-500" aria-hidden />
       ) : (
-        <Copy className="h-4 w-4" aria-hidden />
+        <Copy className="h-4 w-4 shrink-0" aria-hidden />
       )}
-      {copied ? "Copied" : "Copy"}
+      {copied ? t.about.copied : t.about.copy}
     </button>
   );
 }
