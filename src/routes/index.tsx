@@ -111,7 +111,7 @@ const ecosystemClusters = [
   },
 ] as const;
 
-type ClusterId = (typeof ecosystemClusters)[number]["id"];
+
 
 /* ─────────────────────── motion helpers ─────────────────────── */
 
