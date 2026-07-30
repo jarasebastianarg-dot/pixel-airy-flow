@@ -695,6 +695,8 @@ function ElevateLocalProject() {
                 <img
                   src={elHorizontalLight.url}
                   alt="Elevate Local horizontal logotype on Obsidiana Mate"
+                  loading="lazy"
+                  decoding="async"
                   className="max-h-[60%] w-full max-w-4xl object-contain"
                 />
               </div>
