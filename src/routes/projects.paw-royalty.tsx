@@ -452,7 +452,7 @@ function ScrollPreviewCard({
           <img
             src={item.image}
             alt={item.title}
-            loading="lazy"
+            loading="lazy" decoding="async"
             style={{ transitionDuration: `${scrollDurationMs}ms` }}
             className="block h-auto w-full select-none ease-linear [image-rendering:auto] group-hover:-translate-y-[70%]"
             draggable={false}

@@ -214,7 +214,7 @@ function LogoPlate({
           src={variant.src}
           alt={variant.alt}
           className="max-h-full max-w-full object-contain"
-          loading="lazy"
+          loading="lazy" decoding="async"
         />
       </div>
       <div
