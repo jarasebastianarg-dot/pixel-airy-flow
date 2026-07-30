@@ -836,6 +836,7 @@ const CLUSTER_GRADIENTS = [
 ];
 
 function MethodologyStack() {
+  const { t } = useLanguage();
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
 
@@ -855,15 +856,16 @@ function MethodologyStack() {
         className="grid grid-cols-1 gap-8 md:grid-cols-12 md:items-end"
       >
         <div className="md:col-span-7">
-          <h2 className="mt-4 text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl">
-            One system,{" "}
-            <span className="font-serif italic font-normal text-accent-1">four</span>{" "}
-            engines.
+          <h2 className="mt-4 break-words text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl">
+            {t.methodology.heading.pre}
+            <span className="font-serif italic font-normal text-accent-1">
+              {t.methodology.heading.em}
+            </span>
+            {t.methodology.heading.post}
           </h2>
         </div>
-        <p className="text-base leading-relaxed text-muted-foreground md:col-span-5 md:text-lg">
-          Design, code, growth and AI orchestrated as a single stack. Tap any
-          cluster — the workspace on the right re-compiles in real time.
+        <p className="min-w-0 break-words text-base leading-relaxed text-muted-foreground md:col-span-5 md:text-lg">
+          {t.methodology.intro}
         </p>
       </motion.div>
 
@@ -879,6 +881,7 @@ function MethodologyStack() {
           {ecosystemClusters.map((cluster, i) => {
             const isActive = active === i;
             const Icon = cluster.icon;
+            const copy = t.methodology.clusters[cluster.id];
             const gradient = CLUSTER_GRADIENTS[i % CLUSTER_GRADIENTS.length];
             return (
               <motion.button
@@ -888,7 +891,7 @@ function MethodologyStack() {
                 whileHover={{ y: -4 }}
                 whileTap={{ scale: 0.985 }}
                 transition={{ type: "spring", stiffness: 300, damping: 22 }}
-                className={`group relative flex cursor-pointer flex-col gap-5 overflow-hidden rounded-3xl border p-6 text-left transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-1 focus-visible:ring-offset-2 focus-visible:ring-offset-background md:p-7 ${
+                className={`group relative flex min-w-0 cursor-pointer flex-col gap-5 overflow-hidden rounded-3xl border p-6 text-left transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-1 focus-visible:ring-offset-2 focus-visible:ring-offset-background md:p-7 ${
                   isActive
                     ? "border-accent-1/50 bg-card shadow-[var(--shadow-card-hover)]"
                     : "border-border bg-card/70 shadow-[var(--shadow-card)] hover:-translate-y-0.5 hover:border-accent-1/30 hover:bg-card hover:shadow-[var(--shadow-card-hover)]"
@@ -926,18 +929,18 @@ function MethodologyStack() {
                   >
                     <Icon className="h-6 w-6" strokeWidth={1.6} />
                   </span>
-                  <div className="flex items-start gap-3">
-                    <div className="text-right">
+                  <div className="flex min-w-0 items-start gap-3">
+                    <div className="min-w-0 text-right">
                       <span className="font-mono text-xs font-semibold tracking-widest text-muted-foreground">
                         {String(i + 1).padStart(2, "0")}
                       </span>
-                      <div className="mt-1 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-accent-1">
-                      {cluster.kicker}
+                      <div className="mt-1 break-words text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-accent-1">
+                      {copy.kicker}
                       </div>
                     </div>
                     <span
                       aria-hidden
-                      className={`mt-0.5 grid h-8 w-8 place-items-center rounded-full border transition-all duration-300 ${
+                      className={`mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-full border transition-all duration-300 ${
                         isActive
                           ? "border-accent-1/40 bg-accent-1/10 text-accent-1"
                           : "border-border bg-background/80 text-muted-foreground group-hover:-rotate-45 group-hover:border-accent-1/40 group-hover:text-accent-1"
@@ -948,12 +951,12 @@ function MethodologyStack() {
                   </div>
                 </div>
 
-                <div className="relative space-y-3">
-                  <h3 className="text-2xl font-bold leading-tight tracking-tight md:text-[1.6rem]">
-                    {cluster.group}
+                <div className="relative min-w-0 space-y-3">
+                  <h3 className="break-words text-2xl font-bold leading-tight tracking-tight md:text-[1.6rem]">
+                    {copy.group}
                   </h3>
-                  <p className="text-sm leading-relaxed text-muted-foreground md:text-[0.95rem]">
-                    {cluster.blurb}
+                  <p className="break-words text-sm leading-relaxed text-muted-foreground md:text-[0.95rem]">
+                    {copy.blurb}
                   </p>
                 </div>
 
@@ -968,11 +971,11 @@ function MethodologyStack() {
                           : "var(--border)",
                       }}
                       transition={{ delay: isActive ? ti * 0.03 : 0, duration: 0.2 }}
-                      className="inline-flex items-center gap-1.5 rounded-full border bg-background/60 px-3 py-1 text-[0.7rem] font-medium text-muted-foreground transition-colors group-hover:text-foreground"
+                      className="inline-flex max-w-full items-center gap-1.5 break-words rounded-full border bg-background/60 px-3 py-1 text-[0.7rem] font-medium text-muted-foreground transition-colors group-hover:text-foreground"
                     >
                       <span
                         aria-hidden
-                        className="h-1.5 w-1.5 rounded-full"
+                        className="h-1.5 w-1.5 shrink-0 rounded-full"
                         style={{ background: tool.color }}
                       />
                       {tool.label}
