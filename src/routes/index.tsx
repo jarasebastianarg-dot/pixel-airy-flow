@@ -301,7 +301,7 @@ function CustomCursor() {
 /* ─────────────────────────── page ─────────────────────────── */
 
 function Index() {
-  const [lang, setLang] = useState<"EN" | "ES">("EN");
+  const { lang, setLang, t } = useLanguage();
 
   return (
     <div className="min-h-screen bg-background text-foreground md:cursor-none">
@@ -326,30 +326,36 @@ function Index() {
             className="hidden items-center gap-1 md:flex"
           >
             {[
-              { href: "#works", label: "Work" },
-              { href: "#capabilities", label: "Capabilities" },
-              { href: "#stack", label: "Stack" },
-              { href: "#about", label: "About" },
+              { href: "#works", label: t.nav.work },
+              { href: "#capabilities", label: t.nav.capabilities },
+              { href: "#stack", label: t.nav.stack },
+              { href: "#about", label: t.nav.about },
             ].map((l) => (
               <a
                 key={l.href}
                 href={l.href}
                 onClick={smoothScrollTo(l.href.slice(1))}
-                className="rounded-full px-3 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground"
+                className="min-w-0 break-words rounded-full px-3 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground"
               >
                 {l.label}
               </a>
             ))}
           </nav>
 
-          <div className="flex items-center gap-2">
+          <div className="flex min-w-0 flex-wrap items-center justify-end gap-2">
             {/* Secondary: language toggle */}
-            <div className="flex items-center rounded-full border border-border bg-card p-1 text-[0.7rem] font-semibold">
-              {(["EN", "ES"] as const).map((l) => (
+            <div
+              role="group"
+              aria-label={t.nav.langLabel}
+              className="flex shrink-0 items-center rounded-full border border-border bg-card p-1 text-[0.7rem] font-semibold"
+            >
+              {(["en", "es"] as Lang[]).map((l) => (
                 <button
                   key={l}
+                  type="button"
+                  aria-pressed={lang === l}
                   onClick={() => setLang(l)}
-                  className={`rounded-full px-2.5 py-0.5 transition-colors ${
+                  className={`rounded-full px-2.5 py-0.5 uppercase transition-transform duration-200 active:scale-95 ${
                     lang === l
                       ? "bg-secondary text-foreground"
                       : "text-muted-foreground hover:text-foreground"
@@ -364,64 +370,86 @@ function Index() {
             <a
               href="#works"
               onClick={smoothScrollTo("works")}
-              className="group inline-flex items-center gap-1.5 rounded-full bg-gradient-accent px-4 py-2 text-xs font-semibold text-accent-foreground shadow-[var(--shadow-accent)] transition-transform hover:-translate-y-0.5"
+              className="group inline-flex min-w-0 items-center gap-1.5 rounded-full bg-gradient-accent px-4 py-2 text-center text-xs font-semibold text-accent-foreground shadow-[var(--shadow-accent)] transition-transform duration-200 hover:-translate-y-0.5 active:scale-95"
             >
-              View Projects
+              <span className="break-words">{t.nav.viewProjects}</span>
               <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
             </a>
           </div>
         </div>
       </header>
 
-      <main className="mx-auto max-w-6xl px-6">
+      <motion.main
+        key={lang}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.25, ease: "easeOut" }}
+        className="mx-auto max-w-6xl px-6"
+      >
         {/* Hero */}
         <Reveal className="py-20 md:py-28" stagger={0.12}>
           <motion.span
             variants={fadeUp}
-            className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-1.5 text-xs font-semibold text-muted-foreground"
+            className="inline-flex max-w-full flex-wrap items-center gap-2 break-words rounded-full border border-border bg-card px-4 py-1.5 text-xs font-semibold text-muted-foreground"
           >
             <span className="h-2 w-2 animate-pulse rounded-full bg-orange-500" />
-            Creative Developer &amp; Growth Partner
+            {t.hero.badge}
           </motion.span>
           <motion.h1
             variants={fadeUp}
-            className="mt-6 max-w-4xl text-5xl font-bold leading-[1.02] tracking-tight md:text-7xl"
+            className="mt-6 max-w-4xl break-words text-5xl font-bold leading-[1.02] tracking-tight md:text-7xl"
           >
-            I build{" "}
-            <span className="font-serif italic font-normal text-accent-1">brands</span> that stand
-            out and{" "}
-            <span className="font-serif italic font-normal text-accent-1">systems</span> that sell.
+            {t.hero.headline.pre}
+            <span className="font-serif italic font-normal text-accent-1">
+              {t.hero.headline.em1}
+            </span>
+            {t.hero.headline.mid}
+            <span className="font-serif italic font-normal text-accent-1">
+              {t.hero.headline.em2}
+            </span>
+            {t.hero.headline.post}
           </motion.h1>
           <motion.p
             variants={fadeUp}
-            className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl"
+            className="mt-6 max-w-2xl break-words text-lg leading-relaxed text-muted-foreground md:text-xl"
           >
-            High-end visual design and technical e-commerce execution focused on converting.
+            {t.hero.subtitle}
           </motion.p>
           <motion.div variants={fadeUp} className="mt-8 flex flex-wrap items-center gap-4">
             <MagneticButton
               href="#works"
-              className="group inline-flex items-center gap-2 rounded-full bg-gradient-accent px-7 py-3.5 text-sm font-semibold text-accent-foreground shadow-[var(--shadow-accent)]"
+              className="group inline-flex min-w-0 items-center gap-2 break-words rounded-full bg-gradient-accent px-7 py-3.5 text-sm font-semibold text-accent-foreground shadow-[var(--shadow-accent)] transition-transform duration-200 active:scale-95"
             >
-              View Projects
+              {t.hero.ctaPrimary}
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </MagneticButton>
             <MagneticButton
               href="#about"
-              className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-7 py-3.5 text-sm font-semibold transition-colors hover:bg-secondary"
+              className="inline-flex min-w-0 items-center gap-2 break-words rounded-full border border-border bg-card px-7 py-3.5 text-sm font-semibold transition-transform duration-200 hover:bg-secondary active:scale-95"
             >
-              Get in touch
+              {t.hero.ctaSecondary}
             </MagneticButton>
           </motion.div>
         </Reveal>
 
         {/* Selected Works */}
         <section id="works" className="scroll-mt-24 pt-8">
-          <SectionLabel>Selected Works</SectionLabel>
+          <SectionLabel>{t.sections.works}</SectionLabel>
           <Reveal className="grid grid-cols-1 gap-6 md:grid-cols-2" stagger={0.12}>
-            {works.map((w) => (
-              <WorkCard key={w.client} {...w} />
-            ))}
+            {workMeta.map((w) => {
+              const copy = t.works[w.slug as keyof typeof t.works];
+              return (
+                <WorkCard
+                  key={w.slug}
+                  client={w.client}
+                  image={w.image}
+                  href={w.href}
+                  tag={copy.tag}
+                  headline={copy.headline}
+                  body={copy.body}
+                />
+              );
+            })}
           </Reveal>
         </section>
 
