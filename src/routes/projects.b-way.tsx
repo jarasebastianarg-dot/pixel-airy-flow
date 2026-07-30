@@ -583,7 +583,7 @@ function BWayProject() {
   const [lightbox, setLightbox] = useState<{ src: string; label?: string } | null>(null);
   const openLightbox = (src: string, label?: string) => setLightbox({ src, label });
   return (
-    <main className="min-h-screen bg-background text-foreground">
+    <main className="min-h-screen w-full overflow-x-hidden bg-background text-foreground">
       <Lightbox
         open={lightbox !== null}
         src={lightbox?.src ?? null}

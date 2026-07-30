@@ -508,7 +508,7 @@ function PawRoyaltyProject() {
   const [lightbox, setLightbox] = useState<{ src: string; label?: string; width?: "standard" | "wide" } | null>(null);
   const openLightbox = (src: string, label?: string, width?: "standard" | "wide") => setLightbox({ src, label, width });
   return (
-    <main className="min-h-screen bg-background text-foreground">
+    <main className="min-h-screen w-full overflow-x-hidden bg-background text-foreground">
       <Lightbox
         open={lightbox !== null}
         src={lightbox?.src ?? null}
