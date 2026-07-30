@@ -452,7 +452,7 @@ function ScrollPreviewCard({
           <img
             src={item.image}
             alt={item.title}
-            loading="lazy"
+            loading="lazy" decoding="async"
             style={{ transitionDuration: `${scrollDurationMs}ms` }}
             className="block h-auto w-full select-none ease-linear [image-rendering:auto] group-hover:-translate-y-[70%]"
             draggable={false}
@@ -508,7 +508,7 @@ function PawRoyaltyProject() {
   const [lightbox, setLightbox] = useState<{ src: string; label?: string; width?: "standard" | "wide" } | null>(null);
   const openLightbox = (src: string, label?: string, width?: "standard" | "wide") => setLightbox({ src, label, width });
   return (
-    <main className="min-h-screen bg-background text-foreground">
+    <main className="min-h-screen w-full overflow-x-hidden bg-background text-foreground">
       <Lightbox
         open={lightbox !== null}
         src={lightbox?.src ?? null}

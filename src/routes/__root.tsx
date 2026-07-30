@@ -78,17 +78,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Visual Marketing & E-commerce Specialist — Portfolio" },
+      { title: "E-commerce Development & Automation Agency" },
       {
         name: "description",
         content:
-          "Strategic design, AI-driven analytics and global brand management. Shopify, Klaviyo, CRO and automation work for high-growth e-commerce brands.",
+          "High-conversion Shopify environments built directly with code. Specializing in brand identity, custom UI/UX architecture, and AI-driven workflows.",
       },
       { name: "author", content: "Portfolio" },
-      { property: "og:title", content: "Visual Marketing & E-commerce Specialist" },
+      { property: "og:title", content: "E-commerce Development & Automation Agency" },
       {
         property: "og:description",
-        content: "Strategic Design | AI-Driven Analytics | Global Brand Management.",
+        content:
+          "High-conversion Shopify environments built directly with code. Brand identity, custom UI/UX architecture, and AI-driven workflows.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -102,6 +103,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      { rel: "preconnect", href: "https://raw.githubusercontent.com", crossOrigin: "anonymous" },
+      { rel: "dns-prefetch", href: "https://raw.githubusercontent.com" },
       {
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap",
@@ -116,11 +119,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className="w-full overflow-x-hidden">
       <head>
         <HeadContent />
       </head>
-      <body>
+      <body className="w-full overflow-x-hidden">
         {children}
         <Scripts />
       </body>

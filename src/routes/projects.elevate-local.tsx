@@ -214,7 +214,7 @@ function LogoPlate({
           src={variant.src}
           alt={variant.alt}
           className="max-h-full max-w-full object-contain"
-          loading="lazy"
+          loading="lazy" decoding="async"
         />
       </div>
       <div
@@ -530,7 +530,7 @@ function HorizontalMockups() {
 
 function ElevateLocalProject() {
   return (
-    <main className="min-h-screen bg-background text-foreground">
+    <main className="min-h-screen w-full overflow-x-hidden bg-background text-foreground">
       {/* Top bar */}
       <div className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur-xl">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 md:px-10">
@@ -695,6 +695,8 @@ function ElevateLocalProject() {
                 <img
                   src={elHorizontalLight.url}
                   alt="Elevate Local horizontal logotype on Obsidiana Mate"
+                  loading="lazy"
+                  decoding="async"
                   className="max-h-[60%] w-full max-w-4xl object-contain"
                 />
               </div>

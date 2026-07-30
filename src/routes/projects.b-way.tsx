@@ -515,7 +515,7 @@ function HorizontalMockups() {
                 {m.kicker}
               </div>
               <div className="relative aspect-[3/4] w-full overflow-hidden rounded-[calc(var(--radius)+18px)] border border-border bg-card shadow-[var(--shadow-card)]">
-                <img src={m.url} alt={m.label} loading="lazy" className="h-full w-full object-cover" />
+                <img src={m.url} alt={m.label} loading="lazy" decoding="async" className="h-full w-full object-cover" />
                 <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-4">
                   <div className="font-mono text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-white/85">{m.label}</div>
                 </div>
@@ -565,7 +565,7 @@ function HorizontalMockups() {
                 {m.kicker}
               </div>
               <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[calc(var(--radius)+18px)] border border-border bg-card shadow-[var(--shadow-card)]">
-                <img src={m.url} alt={m.label} loading="lazy" className="h-full w-full object-cover" />
+                <img src={m.url} alt={m.label} loading="lazy" decoding="async" className="h-full w-full object-cover" />
                 <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-4">
                   <div className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-white/85">{m.label}</div>
                 </div>
@@ -583,7 +583,7 @@ function BWayProject() {
   const [lightbox, setLightbox] = useState<{ src: string; label?: string } | null>(null);
   const openLightbox = (src: string, label?: string) => setLightbox({ src, label });
   return (
-    <main className="min-h-screen bg-background text-foreground">
+    <main className="min-h-screen w-full overflow-x-hidden bg-background text-foreground">
       <Lightbox
         open={lightbox !== null}
         src={lightbox?.src ?? null}
@@ -758,7 +758,7 @@ function BWayProject() {
               <img
                 src={brandCover.url}
                 alt="B-WAY full product line"
-                loading="lazy"
+                loading="lazy" decoding="async"
                 className="aspect-[16/9] w-full object-cover"
               />
               <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 to-transparent p-6">
@@ -906,7 +906,7 @@ function BWayProject() {
                     <img
                       src={p.url}
                       alt={p.label}
-                      loading="lazy"
+                      loading="lazy" decoding="async"
                       className="h-full w-full object-cover transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]"
                       draggable={false}
                     />
@@ -993,7 +993,7 @@ function BWayProject() {
                     <img
                       src={s.url}
                       alt={s.label}
-                      loading="lazy"
+                      loading="lazy" decoding="async"
                       className="block h-auto w-full select-none transition-transform duration-[7000ms] ease-linear group-hover:-translate-y-[70%]"
                       draggable={false}
                     />
