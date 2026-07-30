@@ -1012,6 +1012,7 @@ function MethodologyStack() {
 }
 
 function StackTerminal({ index }: { index: number }) {
+  const { t } = useLanguage();
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
   const [text, setText] = useState("");
@@ -1083,7 +1084,7 @@ function StackTerminal({ index }: { index: number }) {
               <span className="relative inline-flex h-2 w-2 rounded-full bg-accent-1" />
             </span>
             <span className="truncate font-mono text-[10px] uppercase tracking-[0.22em] text-white/50">
-              live · {cluster.group}
+              {t.methodology.live} · {t.methodology.clusters[cluster.id].group}
             </span>
           </div>
           <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-white/40">
