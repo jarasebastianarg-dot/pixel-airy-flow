@@ -758,21 +758,21 @@ function WorkCard({
       <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-70 transition-opacity duration-500 group-hover:opacity-100" />
 
       {/* tag top-left */}
-      <span className="absolute left-6 top-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/70 px-3 py-1 text-xs font-semibold text-white backdrop-blur-md">
-        <Boxes className="h-3.5 w-3.5" />
+      <span className="absolute left-6 right-16 top-6 inline-flex max-w-fit flex-wrap items-center gap-2 break-words rounded-full border border-white/20 bg-black/70 px-3 py-1 text-xs font-semibold text-white backdrop-blur-md">
+        <Boxes className="h-3.5 w-3.5 shrink-0" />
         {tag}
       </span>
       <ArrowUpRight className="absolute right-6 top-6 h-5 w-5 text-white/80 transition-transform duration-500 group-hover:-translate-y-1 group-hover:translate-x-1" />
 
       {/* text emerging from bottom */}
-      <div className="absolute inset-x-0 bottom-0 p-8 md:p-10">
-        <p className="translate-y-2 text-sm font-semibold text-white/70 opacity-90 transition-all duration-500 group-hover:translate-y-0">
+      <div className="absolute inset-x-0 bottom-0 min-w-0 p-8 md:p-10">
+        <p className="translate-y-2 break-words text-sm font-semibold text-white/70 opacity-90 transition-all duration-500 group-hover:translate-y-0">
           {client}
         </p>
-        <h3 className="mt-1 translate-y-3 text-2xl font-bold tracking-tight text-white transition-all duration-500 group-hover:translate-y-0 md:text-3xl">
+        <h3 className="mt-1 translate-y-3 break-words text-2xl font-bold tracking-tight text-white transition-all duration-500 group-hover:translate-y-0 md:text-3xl">
           {headline}
         </h3>
-        <p className="mt-3 max-w-md translate-y-4 text-sm leading-relaxed text-white/0 transition-all duration-500 group-hover:translate-y-0 group-hover:text-white/80">
+        <p className="mt-3 max-w-md translate-y-4 break-words text-sm leading-relaxed text-white/0 transition-all duration-500 group-hover:translate-y-0 group-hover:text-white/80">
           {body}
         </p>
       </div>
