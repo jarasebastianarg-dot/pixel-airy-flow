@@ -49,11 +49,18 @@ const capabilityMeta = [
 ] as const;
 
 const workMeta = [
-  { slug: "folkways", client: "Folkways", image: folkwaysThumb.url, href: "/projects/folkways" },
+  {
+    slug: "folkways",
+    client: "Folkways",
+    image:
+      "https://raw.githubusercontent.com/jarasebastianarg-dot/Portfolio-Photos/main/Folkways%20Home.png",
+    href: "/projects/folkways",
+  },
   {
     slug: "paw-royalty",
     client: "Paw Royalty",
-    image: pawRoyaltyThumb.url,
+    image:
+      "https://raw.githubusercontent.com/jarasebastianarg-dot/Portfolio-Photos/main/Paw%20Royalty%20thumbnail.png",
     href: "/projects/paw-royalty",
   },
   { slug: "b-way", client: "B-WAY", image: bwayThumb.url, href: "/projects/b-way" },
