@@ -1114,9 +1114,9 @@ function SocialLink({
       target={target}
       rel={isExternal ? "noopener noreferrer" : undefined}
       aria-label={label}
-      className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-border bg-card px-4 py-3 text-sm font-semibold transition-colors hover:bg-secondary"
+      className="inline-flex min-w-0 flex-1 items-center justify-center gap-2 break-words rounded-full border border-border bg-card px-4 py-3 text-sm font-semibold transition-transform duration-200 hover:bg-secondary active:scale-95"
     >
-      <Icon className="h-4 w-4" />
+      <Icon className="h-4 w-4 shrink-0" />
       {label}
     </a>
   );
