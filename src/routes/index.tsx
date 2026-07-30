@@ -561,8 +561,9 @@ function Index() {
               <motion.div variants={fadeUp} className="md:col-span-1">
                 <img
                   src={portrait.url}
-                  alt="Portrait of Sebastián"
+                  alt="Portrait of Sebastián Jara, e-commerce developer and UI/UX designer"
                   loading="lazy"
+                  decoding="async"
                   width={1024}
                   height={1024}
                   className="aspect-square w-full rounded-2xl object-cover"
@@ -750,8 +751,9 @@ function WorkCard({
     >
       <img
         src={image}
-        alt={`${client} — ${headline}`}
+        alt={`${client} — ${headline}. Shopify e-commerce design, UI/UX and automation case study.`}
         loading="lazy"
+        decoding="async"
         className="absolute inset-0 h-full w-full object-cover transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110"
       />
       {/* dark gradient overlay */}
