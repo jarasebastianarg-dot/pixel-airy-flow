@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { createFileRoute } from "@tanstack/react-router";
+import { useLanguage, type Lang } from "@/i18n/LanguageContext";
 import portrait from "@/assets/portrait.jpg.asset.json";
 import cvAsset from "@/assets/JaraSebastian_CV.pdf.asset.json";
 import folkwaysThumb from "@/assets/folkways-thumbnail.webp.asset.json";
@@ -39,75 +40,30 @@ export const Route = createFileRoute("/")({
 
 /* ─────────────────────────── data ─────────────────────────── */
 
-const capabilities = [
-  {
-    icon: ShoppingBag,
-    number: "01",
-    kicker: "Commerce",
-    title: "Shopify & Custom E-commerce",
-    desc: "I architect scalable storefronts using custom Liquid, HTML, and CSS. No bloated themes, just high-converting, performance-driven environments.",
-    tags: ["Shopify 2.0", "Liquid", "Headless"],
-  },
-  {
-    icon: Zap,
-    number: "02",
-    kicker: "Retention",
-    title: "Retention & Email Marketing",
-    desc: "Designing automated Klaviyo CRM flows and targeted campaigns that turn one-time buyers into loyal brand advocates and maximize LTV.",
-    tags: ["Klaviyo", "Lifecycle", "LTV"],
-  },
-  {
-    icon: Palette,
-    number: "03",
-    kicker: "Identity",
-    title: "Brand Identity & UI/UX",
-    desc: "Crafting cohesive visual systems. From packaging to digital interfaces, I build scalable brands grounded in academic design principles.",
-    tags: ["Systems", "UI/UX", "Packaging"],
-  },
-  {
-    icon: Bot,
-    number: "04",
-    kicker: "Automation",
-    title: "AI & Workflow Automation",
-    desc: "Connecting the dots between Make, Claude, and Gemini to streamline operations, reduce lead times, and scale businesses efficiently.",
-    tags: ["Make", "Claude", "Gemini"],
-  },
-];
+/** Visual/structural metadata — all copy lives in the language dictionary. */
+const capabilityMeta = [
+  { icon: ShoppingBag, number: "01" },
+  { icon: Zap, number: "02" },
+  { icon: Palette, number: "03" },
+  { icon: Bot, number: "04" },
+] as const;
 
-const works = [
+const workMeta = [
+  { slug: "folkways", client: "Folkways", image: folkwaysThumb.url, href: "/projects/folkways" },
   {
-    tag: "Shopify Expert",
-    client: "Folkways",
-    headline: "The Technical Scale",
-    body: "Migrated 2000+ products to Shopify 2.0 without losing a single drop of performance.",
-    image: folkwaysThumb.url,
-    href: "/projects/folkways",
-  },
-  {
-    tag: "Lead Developer & Designer",
+    slug: "paw-royalty",
     client: "Paw Royalty",
-    headline: "Full-Stack Launch",
-    body: "End-to-end creation for a US market entry. Brand identity, UI/UX and Klaviyo integration.",
     image: pawRoyaltyThumb.url,
     href: "/projects/paw-royalty",
   },
+  { slug: "b-way", client: "B-WAY", image: bwayThumb.url, href: "/projects/b-way" },
   {
-    tag: "Brand Manager",
-    client: "B-WAY",
-    headline: "Global Expansion",
-    body: "Steered a 6-person team to scale operations across the US and Brazil, driving digital and 300+ attendee physical events.",
-    image: bwayThumb.url,
-    href: "/projects/b-way",
-  },
-  {
-    tag: "Branding Designer",
+    slug: "elevate-local",
     client: "Elevate Local",
-    headline: "Clinical Aesthetics",
-    body: "Complete visual identity for a European medical marketing agency.",
     image: elevateThumb.url,
     href: "/projects/elevate-local",
   },
-];
+] as const;
 
 const ecosystemClusters = [
   {
