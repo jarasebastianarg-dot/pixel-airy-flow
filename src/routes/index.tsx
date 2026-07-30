@@ -547,7 +547,7 @@ function Index() {
 
         {/* Methodology & Tech */}
         <section id="stack" className="scroll-mt-24 pt-16">
-          <SectionLabel>Methodology &amp; Stack</SectionLabel>
+          <SectionLabel>{t.sections.stack}</SectionLabel>
           <MethodologyStack />
         </section>
 
@@ -555,7 +555,7 @@ function Index() {
         <section id="about" className="scroll-mt-24 py-16">
           <Reveal className="bento-card overflow-hidden p-10 md:p-14" stagger={0.12}>
             <motion.div variants={fadeUp}>
-              <SectionLabel>The Architect</SectionLabel>
+              <SectionLabel>{t.sections.about}</SectionLabel>
             </motion.div>
             <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:items-center">
               <motion.div variants={fadeUp} className="md:col-span-1">
@@ -568,45 +568,46 @@ function Index() {
                   className="aspect-square w-full rounded-2xl object-cover"
                 />
               </motion.div>
-              <motion.div variants={fadeUp} className="md:col-span-2">
-                <h3 className="max-w-3xl text-3xl font-bold leading-tight tracking-tight md:text-5xl">
-                  Systemic Logic.{" "}
+              <motion.div variants={fadeUp} className="min-w-0 md:col-span-2">
+                <h3 className="max-w-3xl break-words text-3xl font-bold leading-tight tracking-tight md:text-5xl">
+                  {t.about.heading.pre}
                   <span className="font-serif italic font-normal text-accent-1">
-                    Relentless Discipline.
+                    {t.about.heading.em}
                   </span>
                 </h3>
-                <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
-                  I'm Sebastián. My background merges academic graphic design with deep technical
-                  execution. I build complex automation workflows and highly customized E-commerce
-                  architectures because I understand that beautiful design is useless if it doesn't
-                  perform. I bring endurance and precision to every brand I scale.
+                <p className="mt-6 max-w-2xl break-words text-base leading-relaxed text-muted-foreground md:text-lg">
+                  {t.about.bio}
                 </p>
               </motion.div>
             </div>
 
             <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3">
               {/* Experience */}
-              <motion.div variants={fadeUp} className="md:col-span-2">
+              <motion.div variants={fadeUp} className="min-w-0 md:col-span-2">
                 <div className="mb-8 flex items-center gap-2">
-                  <Briefcase className="h-4 w-4 text-accent-1" />
-                  <h4 className="text-lg font-bold tracking-tight">Experience</h4>
+                  <Briefcase className="h-4 w-4 shrink-0 text-accent-1" />
+                  <h4 className="min-w-0 break-words text-lg font-bold tracking-tight">
+                    {t.sections.experience}
+                  </h4>
                 </div>
                 <ol className="relative border-l border-border pl-8">
-                  {experience.map((item) => (
+                  {t.experience.map((item) => (
                     <li key={item.role + item.period} className="relative mb-10 last:mb-0">
                       <span className="absolute -left-[2.6rem] top-1 grid h-4 w-4 place-items-center rounded-full border-2 border-background bg-gradient-accent" />
                       <span className="text-xs font-semibold uppercase tracking-widest text-accent-1">
                         {item.period}
                       </span>
-                      <h5 className="mt-1 text-lg font-bold tracking-tight">{item.role}</h5>
-                      <p className="mt-0.5 text-sm font-medium text-foreground/80">
+                      <h5 className="mt-1 break-words text-lg font-bold tracking-tight">
+                        {item.role}
+                      </h5>
+                      <p className="mt-0.5 break-words text-sm font-medium text-foreground/80">
                         {item.company}
                       </p>
                       <ul className="mt-3 flex flex-col gap-2">
                         {item.highlights.map((h) => (
                           <li
                             key={h}
-                            className="relative pl-4 text-sm leading-relaxed text-muted-foreground before:absolute before:left-0 before:top-[0.55rem] before:h-1 before:w-1 before:rounded-full before:bg-accent-1"
+                            className="relative break-words pl-4 text-sm leading-relaxed text-muted-foreground before:absolute before:left-0 before:top-[0.55rem] before:h-1 before:w-1 before:rounded-full before:bg-accent-1"
                           >
                             {h}
                           </li>
@@ -618,16 +619,18 @@ function Index() {
               </motion.div>
 
               {/* Credentials */}
-              <motion.div variants={fadeUp} className="md:col-span-1">
+              <motion.div variants={fadeUp} className="min-w-0 md:col-span-1">
                 <div className="mb-8 flex items-center gap-2">
-                  <GraduationCap className="h-4 w-4 text-accent-1" />
-                  <h4 className="text-lg font-bold tracking-tight">Credentials</h4>
+                  <GraduationCap className="h-4 w-4 shrink-0 text-accent-1" />
+                  <h4 className="min-w-0 break-words text-lg font-bold tracking-tight">
+                    {t.sections.credentials}
+                  </h4>
                 </div>
                 <ul className="flex flex-col gap-3">
-                  {credentials.map((c) => (
+                  {t.credentials.map((c) => (
                     <li
                       key={c.title + c.period}
-                      className="rounded-2xl border border-border bg-secondary/60 px-5 py-4 leading-snug"
+                      className="min-w-0 break-words rounded-2xl border border-border bg-secondary/60 px-5 py-4 leading-snug"
                     >
                       <p className="text-sm font-bold tracking-tight">{c.title}</p>
                       <p className="mt-1 text-xs text-muted-foreground">{c.institution}</p>
@@ -647,10 +650,10 @@ function Index() {
               <MagneticButton
                 href={cvAsset.url}
                 download="JaraSebastian_CV.pdf"
-                className="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-accent px-6 py-3.5 text-sm font-semibold text-accent-foreground shadow-[var(--shadow-accent)]"
+                className="group inline-flex min-w-0 items-center justify-center gap-2 break-words rounded-full bg-gradient-accent px-6 py-3.5 text-center text-sm font-semibold text-accent-foreground shadow-[var(--shadow-accent)] transition-transform duration-200 active:scale-95"
               >
-                <Download className="h-4 w-4" />
-                Download Résumé
+                <Download className="h-4 w-4 shrink-0" />
+                {t.about.downloadCv}
               </MagneticButton>
               <div className="flex flex-wrap gap-3">
                 <SocialLink
@@ -661,18 +664,18 @@ function Index() {
                 />
                 <SocialLink
                   icon={Mail}
-                  label="Email"
+                  label={t.about.email}
                   href="mailto:jarasebastian.arg@gmail.com"
                 />
                 <CopyEmailButton email="jarasebastian.arg@gmail.com" />
               </div>
             </motion.div>
           </Reveal>
-          <p className="pb-10 text-center text-xs text-muted-foreground">
-            © {new Date().getFullYear()} — Crafted in Buenos Aires.
+          <p className="break-words pb-10 text-center text-xs text-muted-foreground">
+            © {new Date().getFullYear()} — {t.about.footer}
           </p>
         </section>
-      </main>
+      </motion.main>
     </div>
   );
 }
