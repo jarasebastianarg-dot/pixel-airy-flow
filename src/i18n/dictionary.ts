@@ -568,6 +568,6 @@ export const dictionary = {
       },
     },
   },
-} as const;
+};
 
 export type Dict = (typeof dictionary)["en"];
