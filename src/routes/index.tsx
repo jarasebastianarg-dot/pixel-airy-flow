@@ -304,7 +304,7 @@ function Index() {
   const { lang, setLang, t } = useLanguage();
 
   return (
-    <div className="min-h-screen bg-background text-foreground md:cursor-none">
+    <div className="min-h-screen w-full overflow-x-hidden bg-background text-foreground md:cursor-none">
       <CustomCursor />
 
       {/* Header */}
@@ -314,7 +314,7 @@ function Index() {
             href="#top"
             onClick={smoothScrollTo("top")}
             aria-label="SJ — home"
-            className="mr-auto flex items-center gap-2 font-display text-lg font-bold tracking-tight"
+            className="mr-auto flex min-h-[44px] min-w-[44px] items-center gap-2 font-display text-lg font-bold tracking-tight"
           >
             <SJMonogram />
             <span className="sr-only">Sebastián</span>
@@ -335,7 +335,7 @@ function Index() {
                 key={l.href}
                 href={l.href}
                 onClick={smoothScrollTo(l.href.slice(1))}
-                className="min-w-0 break-words rounded-full px-3 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground"
+                className="inline-flex min-h-[44px] min-w-0 items-center break-words rounded-full px-3 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground"
               >
                 {l.label}
               </a>
@@ -355,7 +355,7 @@ function Index() {
                   type="button"
                   aria-pressed={lang === l}
                   onClick={() => setLang(l)}
-                  className={`rounded-full px-2.5 py-0.5 uppercase transition-transform duration-200 active:scale-95 ${
+                  className={`inline-flex min-h-[36px] min-w-[44px] items-center justify-center rounded-full px-2.5 py-0.5 uppercase transition-transform duration-200 active:scale-95 ${
                     lang === l
                       ? "bg-secondary text-foreground"
                       : "text-muted-foreground hover:text-foreground"
