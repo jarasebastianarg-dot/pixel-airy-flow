@@ -1123,6 +1123,7 @@ function SocialLink({
 }
 
 function CopyEmailButton({ email }: { email: string }) {
+  const { t } = useLanguage();
   const [copied, setCopied] = useState(false);
 
   async function handleCopy() {
@@ -1155,15 +1156,15 @@ function CopyEmailButton({ email }: { email: string }) {
     <button
       type="button"
       onClick={handleCopy}
-      aria-label="Copy email address"
-      className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-border bg-card px-4 py-3 text-sm font-semibold transition-colors hover:bg-secondary"
+      aria-label={t.about.copyAria}
+      className="inline-flex min-w-0 flex-1 items-center justify-center gap-2 break-words rounded-full border border-border bg-card px-4 py-3 text-sm font-semibold transition-transform duration-200 hover:bg-secondary active:scale-95"
     >
       {copied ? (
-        <Check className="h-4 w-4 text-emerald-500" aria-hidden />
+        <Check className="h-4 w-4 shrink-0 text-emerald-500" aria-hidden />
       ) : (
-        <Copy className="h-4 w-4" aria-hidden />
+        <Copy className="h-4 w-4 shrink-0" aria-hidden />
       )}
-      {copied ? "Copied" : "Copy"}
+      {copied ? t.about.copied : t.about.copy}
     </button>
   );
 }
