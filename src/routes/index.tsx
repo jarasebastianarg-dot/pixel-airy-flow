@@ -68,135 +68,50 @@ const workMeta = [
 const ecosystemClusters = [
   {
     id: "design",
-    group: "Design & UX",
-    kicker: "Craft",
     icon: Palette,
-    blurb: "Brand systems, editorial layouts and interface craft.",
     tools: [
-      { label: "Photoshop", color: "#31A8FF", use: "Photo retouching and campaign visuals" },
-      { label: "Illustrator", color: "#FF9A00", use: "Logo systems and vector creative assets" },
-      { label: "InDesign", color: "#FF3366", use: "Editorial layouts and brand guidelines" },
-      { label: "After Effects", color: "#9999FF", use: "Motion graphics for social and product" },
-      { label: "Figma", color: "#F24E1E", use: "Product UI, prototypes and design systems" },
-      { label: "Canva", color: "#00C4CC", use: "Fast-turn social decks and pitch material" },
-      { label: "Claude Design", color: "#D97757", use: "AI-assisted concept exploration and iteration" },
+      { label: "Photoshop", color: "#31A8FF" },
+      { label: "Illustrator", color: "#FF9A00" },
+      { label: "InDesign", color: "#FF3366" },
+      { label: "After Effects", color: "#9999FF" },
+      { label: "Figma", color: "#F24E1E" },
+      { label: "Canva", color: "#00C4CC" },
+      { label: "Claude Design", color: "#D97757" },
     ],
   },
   {
     id: "build",
-    group: "Build & Code",
-    kicker: "Ship",
     icon: Code2,
-    blurb: "Storefronts and marketing sites shipped end-to-end.",
     tools: [
-      { label: "Shopify", color: "#95BF47", use: "Custom theme development and headless architecture" },
-      { label: "Shopify Liquid", color: "#008080", use: "Bespoke sections built to each merchant's flow" },
-      { label: "HTML / CSS", color: "#E34F26", use: "Responsive, accessible, pixel-accurate markup" },
-      { label: "Webflow", color: "#146EF5", use: "High-fidelity marketing sites for brand teams" },
+      { label: "Shopify", color: "#95BF47" },
+      { label: "Shopify Liquid", color: "#008080" },
+      { label: "HTML / CSS", color: "#E34F26" },
+      { label: "Webflow", color: "#146EF5" },
     ],
   },
   {
     id: "scale",
-    group: "Scale & Automate",
-    kicker: "Growth",
     icon: Zap,
-    blurb: "Retention, paid media and lifecycle automation.",
     tools: [
-      { label: "Klaviyo", color: "#20E2C8", use: "CRM flows, segmentation and A/B testing" },
-      { label: "HubSpot", color: "#FF7A59", use: "Pipelines, lead scoring and sales enablement" },
-      { label: "Email Automation", color: "#F5A623", use: "Lifecycle campaigns end-to-end" },
-      { label: "Meta Ads", color: "#0668E1", use: "Paid social: creative, testing and reporting" },
-      { label: "Make", color: "#8848AB", use: "No-code pipelines connecting the whole stack" },
+      { label: "Klaviyo", color: "#20E2C8" },
+      { label: "HubSpot", color: "#FF7A59" },
+      { label: "Email Automation", color: "#F5A623" },
+      { label: "Meta Ads", color: "#0668E1" },
+      { label: "Make", color: "#8848AB" },
     ],
   },
   {
     id: "ai",
-    group: "AI Models",
-    kicker: "Intelligence",
     icon: Bot,
-    blurb: "AI leveraged across design, code and growth.",
     tools: [
-      { label: "Claude", color: "#D97757", use: "Engineering co-pilot and long-form copywriting" },
-      { label: "Claude Co-Work", color: "#B85A3E", use: "Async pair-programming and workflow acceleration" },
-      { label: "Gemini", color: "#1A73E8", use: "Research, data analysis and multimodal tasks" },
+      { label: "Claude", color: "#D97757" },
+      { label: "Claude Co-Work", color: "#B85A3E" },
+      { label: "Gemini", color: "#1A73E8" },
     ],
   },
-];
+] as const;
 
-const experience = [
-  {
-    role: "Branding & UI/UX Designer",
-    company: "Freelance — Remote",
-    period: "Oct 2025 — Present",
-    highlights: [
-      "Lead brand identity and UI/UX for a US + Argentina client portfolio, shipping web and app platforms engineered around the buyer journey.",
-      "Build scalable design systems and high-converting landing pages that turn paid social traffic into measurable e-commerce revenue.",
-    ],
-  },
-  {
-    role: "Brand Manager",
-    company: "B-WAY — Buenos Aires, AR",
-    period: "Aug 2024 — Dec 2025",
-    highlights: [
-      "Directed a 6-person interdisciplinary marketing team running 360° campaigns aligned to commercial KPIs.",
-      "Deployed AI-driven analytics workflows that cut production lead times by 30% and sharpened targeting precision.",
-      "Owned e-commerce and paid media strategy across 3 international markets (US, BR, AR), improving ROAS on core SKUs.",
-      "Orchestrated flagship events (B-WAY Experience, Barber Week) driving qualified lead generation at scale.",
-    ],
-  },
-  {
-    role: "Product Designer",
-    company: "B-WAY — Buenos Aires, AR",
-    period: "Nov 2023 — Aug 2024",
-    highlights: [
-      "Produced high-impact e-commerce visuals and paid social assets that lifted CTR and engagement across the funnel.",
-      "Optimized digital storefront UX to reduce friction and support product conversion and brand trust.",
-      "Designed international trade-show stands optimized for visitor flow and on-site lead capture.",
-    ],
-  },
-  {
-    role: "Graphic Designer",
-    company: "Freelance — Remote",
-    period: "2021 — 2023",
-    highlights: [
-      "Delivered end-to-end brand identities and UI/UX systems for clients across multiple industries.",
-      "Ran editorial and social content strategy focused on brand voice consistency and audience retention.",
-    ],
-  },
-];
-
-const credentials = [
-  {
-    title: "Bachelor's Degree in\u00a0Graphic Design",
-    institution: "UADE (Universidad Argentina de la Empresa)",
-    period: "2019 — 2024",
-  },
-  {
-    title: "Bachelor's Degree in Multimedia & Interaction Design",
-    institution: "UADE (Universidad Argentina de la Empresa)",
-    period: "2020 — 2024",
-  },
-  {
-    title: "Digital Marketing & Growth Hacking with GenAI",
-    institution: "IBM — Professional Certificate",
-    period: "Expected Apr 2026",
-  },
-  {
-    title: "Foundations of Digital Marketing & E-commerce",
-    institution: "Google - Professional Certificate",
-    period: "2026",
-  },
-  {
-    title: "OPI 2.0 — Public Speaking",
-    institution: "Franco Pisso - Professional Certificate",
-    period: "2026",
-  },
-  {
-    title: "CAE - Certificate in Advanced English C1",
-    institution: "Cambridge",
-    period: "2018",
-  },
-];
+type ClusterId = (typeof ecosystemClusters)[number]["id"];
 
 /* ─────────────────────── motion helpers ─────────────────────── */
 
