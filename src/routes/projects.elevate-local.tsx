@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { LanguageToggle } from "@/components/LanguageToggle";
 import {
   AnimatePresence,
   motion,
@@ -546,9 +547,12 @@ function ElevateLocalProject() {
             <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
             {tr("Back to portfolio")}
           </Link>
+          <div className="flex items-center gap-3">
           <span className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-muted-foreground">
             {tr("Case Study / 03")}
           </span>
+            <LanguageToggle />
+          </div>
         </div>
       </div>
 
