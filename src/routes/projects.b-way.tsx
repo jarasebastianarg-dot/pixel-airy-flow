@@ -947,9 +947,9 @@ function BWayProject() {
               <motion.div variants={fadeUp} className="md:col-span-7">
                 <SectionLabel>{tr("02.6 — E-Commerce")}</SectionLabel>
                 <h2 className="mt-6 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
-                  Shopify stores built{" "}
+                  {tr("Shopify stores built")}{" "}
                   <span className="font-serif italic font-normal text-accent-1">
-                    from zero
+                    {tr("from zero")}
                   </span>
                   .
                 </h2>
@@ -958,10 +958,7 @@ function BWayProject() {
                 variants={fadeUp}
                 className="text-base leading-relaxed text-muted-foreground md:col-span-5 md:text-lg"
               >
-                Architected and launched the USA, Brazil and Argentina
-                storefronts — catalog, checkout, localized copy and payment
-                logic — then ran them day-to-day. Scroll each preview to see
-                the full homepage.
+                {tr("Architected and launched the USA, Brazil and Argentina storefronts — catalog, checkout, localized copy and payment logic — then ran them day-to-day. Scroll each preview to see the full homepage.")}
               </motion.p>
             </Reveal>
             <Reveal className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3" stagger={0.08}>
@@ -974,11 +971,11 @@ function BWayProject() {
                   whileHover={{ y: -4 }}
                   transition={{ type: "spring", stiffness: 260, damping: 22 }}
                   className="group relative block w-full overflow-hidden rounded-[calc(var(--radius)+14px)] border border-border bg-card text-left shadow-[var(--shadow-card)] transition-shadow duration-500 hover:shadow-[var(--shadow-card-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-1/60"
-                  aria-label={`Open ${s.label} preview`}
+                  aria-label={`${tr("Open")} ${tr(s.label)} ${tr("preview")}`}
                 >
                   <div className="flex items-center justify-between border-b border-border bg-secondary/60 px-4 py-2.5">
                     <span className="font-mono text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
-                      {s.label}
+                      {tr(s.label)}
                     </span>
                     <span className="rounded-full bg-gradient-accent px-2 py-0.5 text-[0.6rem] font-bold uppercase tracking-widest text-accent-foreground">
                       {s.country}
@@ -987,7 +984,7 @@ function BWayProject() {
                   <div className="relative aspect-[4/5] w-full overflow-hidden bg-background">
                     <img
                       src={s.url}
-                      alt={s.label}
+                      alt={tr(s.label)}
                       loading="lazy" decoding="async"
                       className="block h-auto w-full select-none transition-transform duration-[7000ms] ease-linear group-hover:-translate-y-[70%]"
                       draggable={false}
@@ -995,7 +992,7 @@ function BWayProject() {
                     <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                     <div className="pointer-events-none absolute right-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-foreground/85 px-2.5 py-1 font-mono text-[0.55rem] font-semibold uppercase tracking-[0.2em] text-background opacity-0 shadow-md transition-opacity duration-300 group-hover:opacity-100">
                       <ZoomIn className="h-3 w-3" />
-                      Click to zoom
+                      {tr("Click to zoom")}
                     </div>
                   </div>
                 </motion.button>
@@ -1011,28 +1008,26 @@ function BWayProject() {
               <motion.div variants={fadeUp}>
                 <SectionLabel>{tr("03 — On The Floor")}</SectionLabel>
                 <h2 className="mt-6 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
-                  Events I{" "}
+                  {tr("Events I")}{" "}
                   <span className="font-serif italic font-normal text-accent-1">
-                    organized
+                    {tr("organized")}
                   </span>{" "}
-                  &amp; designed.
+                  &amp; {tr("designed.")}
                 </h2>
               </motion.div>
               <motion.p
                 variants={fadeUp}
                 className="mt-6 text-base leading-relaxed text-muted-foreground md:text-lg"
               >
-                I led the{" "}
+                {tr("I led the")}{" "}
                 <span className="font-semibold text-foreground">
-                  stand design, graphics, logistics and on-site build
+                  {tr("stand design, graphics, logistics and on-site build")}
                 </span>{" "}
-                for every B-WAY activation — the local events in Argentina and the
-                international ones in Brazil and the US.{" "}
+                {tr("for every B-WAY activation — the local events in Argentina and the international ones in Brazil and the US.")}{" "}
                 <span className="font-semibold text-accent-1">
-                  Traveled to Brazil to organize everything on the ground, assemble
-                  the stand and represent the brand on the floor
+                  {tr("Traveled to Brazil to organize everything on the ground, assemble the stand and represent the brand on the floor")}
                 </span>{" "}
-                alongside the educator team.
+                {tr("alongside the educator team.")}
               </motion.p>
             </Reveal>
             <Reveal
@@ -1049,18 +1044,18 @@ function BWayProject() {
                 >
                   <div className="mb-4 flex flex-wrap items-center gap-3">
                     <span className="rounded-full bg-gradient-accent px-3 py-1 font-mono text-[0.65rem] font-bold uppercase tracking-[0.22em] text-accent-foreground shadow-[var(--shadow-accent)]">
-                      Evento · {r.country}
+                      {tr("Evento")} · {r.country}
                     </span>
                     <span className="font-mono text-[0.6rem] font-semibold uppercase tracking-[0.22em] text-muted-foreground">
-                      Stand design · graphics · build · organized by me
+                      {tr("Stand design · graphics · build · organized by me")}
                     </span>
                   </div>
                   <div>
                     <h3 className="text-xl font-bold tracking-tight md:text-2xl">
-                      {r.title}
+                      {tr(r.title)}
                     </h3>
                     <p className="mt-2 text-sm leading-relaxed text-muted-foreground md:text-base">
-                      {r.body}
+                      {tr(r.body)}
                     </p>
                   </div>
                   <div className="mt-5 self-end overflow-hidden rounded-[calc(var(--radius)+18px)] border border-border bg-black shadow-[var(--shadow-card)]">
