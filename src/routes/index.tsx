@@ -400,7 +400,7 @@ function Index() {
             <a
               href="#works"
               onClick={smoothScrollTo("works")}
-              className="group inline-flex min-w-0 items-center gap-1.5 rounded-full bg-gradient-accent px-4 py-2 text-center text-xs font-semibold text-accent-foreground shadow-[var(--shadow-accent)] transition-transform duration-200 hover:-translate-y-0.5 active:scale-95"
+              className="group inline-flex min-w-0 items-center gap-1.5 rounded-full bg-gradient-accent px-3.5 py-2.5 text-center text-xs sm:px-4 sm:py-2 font-semibold text-accent-foreground shadow-[var(--shadow-accent)] transition-transform duration-200 hover:-translate-y-0.5 active:scale-95"
             >
               <span className="break-words">{t.nav.viewProjects}</span>
               <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
@@ -448,14 +448,14 @@ function Index() {
           <motion.div variants={fadeUp} className="mt-8 flex flex-wrap items-center gap-4">
             <MagneticButton
               href="#works"
-              className="group inline-flex min-w-0 items-center gap-2 break-words rounded-full bg-gradient-accent px-7 py-3.5 text-sm font-semibold text-accent-foreground shadow-[var(--shadow-accent)] transition-transform duration-200 active:scale-95"
+              className="group inline-flex min-w-0 items-center gap-2 break-words rounded-full bg-gradient-accent px-5 py-3 sm:px-7 sm:py-3.5 text-sm font-semibold text-accent-foreground shadow-[var(--shadow-accent)] transition-transform duration-200 active:scale-95"
             >
               {t.hero.ctaPrimary}
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </MagneticButton>
             <MagneticButton
               href="#about"
-              className="inline-flex min-w-0 items-center gap-2 break-words rounded-full border border-border bg-card px-7 py-3.5 text-sm font-semibold transition-transform duration-200 hover:bg-secondary active:scale-95"
+              className="inline-flex min-w-0 items-center gap-2 break-words rounded-full border border-border bg-card px-5 py-3 sm:px-7 sm:py-3.5 text-sm font-semibold transition-transform duration-200 hover:bg-secondary active:scale-95"
             >
               {t.hero.ctaSecondary}
             </MagneticButton>
@@ -682,7 +682,7 @@ function Index() {
               <MagneticButton
                 href={cvAsset.url}
                 download="JaraSebastian_CV.pdf"
-                className="group inline-flex min-w-0 items-center justify-center gap-2 break-words rounded-full bg-gradient-accent px-6 py-3.5 text-center text-sm font-semibold text-accent-foreground shadow-[var(--shadow-accent)] transition-transform duration-200 active:scale-95"
+                className="group inline-flex min-w-0 items-center justify-center gap-2 break-words rounded-full bg-gradient-accent px-5 py-3 sm:px-6 sm:py-3.5 text-center text-sm font-semibold text-accent-foreground shadow-[var(--shadow-accent)] transition-transform duration-200 active:scale-95"
               >
                 <Download className="h-4 w-4 shrink-0" />
                 {t.about.downloadCv}
