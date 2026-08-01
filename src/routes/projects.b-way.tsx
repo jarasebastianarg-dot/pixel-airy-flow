@@ -1091,7 +1091,7 @@ function BWayProject() {
               <div className="inline-flex items-center gap-3">
                 <span className="h-px w-8 bg-accent-1" />
                 <span className="font-mono text-xs font-semibold uppercase tracking-[0.24em] text-accent-1">
-                  03 — Outcome
+                  {tr("03 — Outcome")}
                 </span>
               </div>
             </motion.div>
@@ -1099,19 +1099,19 @@ function BWayProject() {
               variants={fadeUp}
               className="mt-6 max-w-3xl text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl"
             >
-              How I{" "}
+              {tr("How I")}{" "}
               <span className="font-serif italic font-normal text-accent-1">
-                grew
+                {tr("grew")}
               </span>{" "}
-              in this role.
+              {tr("in this role.")}
             </motion.h2>
             <motion.p
               variants={fadeUp}
               className="mt-6 max-w-2xl text-base leading-relaxed text-background/70 md:text-lg"
             >
-              Two years of compounding scope — I walked in as a Product Designer
-              and walked out as a Brand Manager owning packaging, digital, ops,
-              marketing and events across three countries.
+              {tr(
+                "Two years of compounding scope — I walked in as a Product Designer and walked out as a Brand Manager owning packaging, digital, ops, marketing and events across three countries.",
+              )}
             </motion.p>
           </Reveal>
 
@@ -1133,7 +1133,7 @@ function BWayProject() {
                   {m.value}
                 </div>
                 <div className="mt-3 text-sm leading-relaxed text-background/70">
-                  {m.label}
+                  {tr(m.label)}
                 </div>
               </motion.div>
             ))}
@@ -1147,10 +1147,10 @@ function BWayProject() {
           <div>
             <SectionLabel>{tr("Next")}</SectionLabel>
             <h3 className="mt-4 max-w-xl text-3xl font-bold leading-[1.1] tracking-tight md:text-4xl">
-              Scaling a brand across borders and channels?
+              {tr("Scaling a brand across borders and channels?")}
             </h3>
             <p className="mt-3 max-w-lg text-base leading-relaxed text-muted-foreground">
-              I build omnichannel infrastructure — from Shopify storefronts to trade-show floors.
+              {tr("I build omnichannel infrastructure — from Shopify storefronts to trade-show floors.")}
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-3">
@@ -1159,13 +1159,13 @@ function BWayProject() {
               className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-3 text-sm font-semibold text-foreground shadow-[var(--shadow-card)] transition-colors hover:bg-secondary"
             >
               <ArrowLeft className="h-4 w-4" />
-              Back to portfolio
+              {tr("Back to portfolio")}
             </Link>
             <a
               href="/#contact"
               className="inline-flex items-center gap-2 rounded-full bg-gradient-accent px-5 py-3 text-sm font-semibold text-accent-foreground shadow-[var(--shadow-accent)] transition-transform hover:-translate-y-0.5"
             >
-              Get in touch
+              {tr("Get in touch")}
               <ArrowUpRight className="h-4 w-4" />
             </a>
           </div>
