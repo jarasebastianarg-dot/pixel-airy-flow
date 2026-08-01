@@ -592,10 +592,10 @@ function ElevateLocalProject() {
               className="group rounded-3xl border border-border bg-card p-6 shadow-[var(--shadow-card)] transition-colors duration-300 hover:border-accent-1/40 hover:shadow-[var(--shadow-elegant)] md:hover:bg-card"
             >
               <div className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
-                Role
+                {tr("Role")}
               </div>
               <div className="mt-3 text-base font-semibold text-foreground transition-colors duration-300 md:text-lg md:group-hover:text-accent-1">
-                Brand Identity Designer
+                {tr("Brand Identity Designer")}
               </div>
             </motion.div>
             <motion.div
@@ -605,7 +605,7 @@ function ElevateLocalProject() {
               className="group rounded-3xl border border-border bg-card p-6 shadow-[var(--shadow-card)] transition-colors duration-300 hover:border-accent-1/40 hover:shadow-[var(--shadow-elegant)]"
             >
               <div className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
-                Tech Stack
+                {tr("Tech Stack")}
               </div>
               <div className="mt-3 flex flex-wrap gap-2">
                 {stack.map((t) => (
@@ -627,7 +627,7 @@ function ElevateLocalProject() {
               className="group rounded-3xl border border-border bg-card p-6 shadow-[var(--shadow-card)] transition-colors duration-300 hover:border-accent-1/40 hover:shadow-[var(--shadow-elegant)]"
             >
               <div className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
-                Focus
+                {tr("Focus")}
               </div>
               <div className="mt-3 flex flex-wrap gap-2">
                 {focus.map((f) => (
@@ -638,7 +638,7 @@ function ElevateLocalProject() {
                     className="group/tag inline-flex cursor-default items-center gap-1.5 rounded-full bg-gradient-accent px-3 py-1 text-xs font-semibold text-accent-foreground shadow-[0_2px_8px_-2px_oklch(0.7_0.19_25_/_0.3)] transition-shadow duration-200 hover:shadow-[0_6px_18px_-4px_oklch(0.7_0.19_25_/_0.55)]"
                   >
                     <Sparkles className="h-3 w-3 transition-transform duration-300 group-hover/tag:rotate-12 group-hover/tag:scale-110" />
-                    {f}
+                    {tr(f)}
                   </motion.span>
                 ))}
               </div>

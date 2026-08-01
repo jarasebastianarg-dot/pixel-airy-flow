@@ -579,10 +579,10 @@ function PawRoyaltyProject() {
               className="group rounded-3xl border border-border bg-card p-6 shadow-[var(--shadow-card)] transition-colors duration-300 hover:border-accent-1/40 hover:shadow-[var(--shadow-elegant)] md:hover:bg-card"
             >
               <div className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
-                Role
+                {tr("Role")}
               </div>
               <div className="mt-3 text-base font-semibold text-foreground transition-colors duration-300 md:text-lg md:group-hover:text-accent-1">
-                Lead E-commerce Developer & Designer
+                {tr("Lead E-commerce Developer & Designer")}
               </div>
             </motion.div>
             <motion.div
@@ -592,7 +592,7 @@ function PawRoyaltyProject() {
               className="group rounded-3xl border border-border bg-card p-6 shadow-[var(--shadow-card)] transition-colors duration-300 hover:border-accent-1/40 hover:shadow-[var(--shadow-elegant)]"
             >
               <div className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
-                Tech Stack
+                {tr("Tech Stack")}
               </div>
               <div className="mt-3 flex flex-wrap gap-2">
                 {stack.map((t) => (
@@ -602,7 +602,7 @@ function PawRoyaltyProject() {
                     transition={{ type: "spring", stiffness: 400, damping: 18 }}
                     className="cursor-default rounded-full border border-border bg-secondary px-3 py-1 text-xs font-semibold text-foreground/80 transition-colors duration-200 hover:border-accent-1/50 hover:bg-background hover:text-foreground"
                   >
-                    {t}
+                    {tr(t)}
                   </motion.span>
                 ))}
               </div>
@@ -614,7 +614,7 @@ function PawRoyaltyProject() {
               className="group rounded-3xl border border-border bg-card p-6 shadow-[var(--shadow-card)] transition-colors duration-300 hover:border-accent-1/40 hover:shadow-[var(--shadow-elegant)]"
             >
               <div className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
-                Focus
+                {tr("Focus")}
               </div>
               <div className="mt-3 flex flex-wrap gap-2">
                 {focus.map((f) => (
@@ -625,7 +625,7 @@ function PawRoyaltyProject() {
                     className="group/tag inline-flex cursor-default items-center gap-1.5 rounded-full bg-gradient-accent px-3 py-1 text-xs font-semibold text-accent-foreground shadow-[0_2px_8px_-2px_oklch(0.7_0.19_25_/_0.3)] transition-shadow duration-200 hover:shadow-[0_6px_18px_-4px_oklch(0.7_0.19_25_/_0.55)]"
                   >
                     <Sparkles className="h-3 w-3 transition-transform duration-300 group-hover/tag:rotate-12 group-hover/tag:scale-110" />
-                    {f}
+                    {tr(f)}
                   </motion.span>
                 ))}
               </div>
@@ -639,11 +639,11 @@ function PawRoyaltyProject() {
         <div className="mx-auto max-w-6xl px-6 py-20 md:grid md:grid-cols-12 md:gap-12 md:px-10 md:py-28">
           <Reveal className="md:col-span-4" stagger={0.08}>
             <motion.div variants={fadeUp}>
-              <SectionLabel>01 — Context</SectionLabel>
+              <SectionLabel>{tr("01 — Context")}</SectionLabel>
               <h2 className="mt-6 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
-                The{" "}
+                {tr("The")}{" "}
                 <span className="font-serif italic font-normal text-accent-1">
-                  Friction
+                  {tr("Friction")}
                 </span>
               </h2>
             </motion.div>
@@ -653,13 +653,13 @@ function PawRoyaltyProject() {
               variants={fadeUp}
               className="text-lg leading-relaxed text-foreground/85 md:text-xl"
             >
-              Launching a new brand in the highly competitive pet care market
-              requires more than just an aesthetic template. The challenge was
-              building a digital presence from{" "}
-              <span className="font-semibold text-foreground">absolute zero</span>{" "}
-              that could immediately convey trust, educate the customer through
-              information-dense product pages, and convert cold traffic into
-              recurring revenue without relying on a pre-existing customer base.
+              {tr(
+                "Launching a new brand in the highly competitive pet care market requires more than just an aesthetic template. The challenge was building a digital presence from",
+              )}{" "}
+              <span className="font-semibold text-foreground">{tr("absolute zero")}</span>{" "}
+              {tr(
+                "that could immediately convey trust, educate the customer through information-dense product pages, and convert cold traffic into recurring revenue without relying on a pre-existing customer base.",
+              )}
             </motion.p>
           </Reveal>
         </div>
@@ -670,11 +670,11 @@ function PawRoyaltyProject() {
         <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
           <Reveal className="grid grid-cols-1 gap-10 md:grid-cols-12 md:items-end" stagger={0.1}>
             <motion.div variants={fadeUp} className="md:col-span-7">
-              <SectionLabel>02 — Build</SectionLabel>
+              <SectionLabel>{tr("02 — Build")}</SectionLabel>
               <h2 className="mt-6 text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl">
-                The{" "}
+                {tr("The")}{" "}
                 <span className="font-serif italic font-normal text-accent-1">
-                  Execution
+                  {tr("Execution")}
                 </span>
               </h2>
             </motion.div>
@@ -682,10 +682,9 @@ function PawRoyaltyProject() {
               variants={fadeUp}
               className="text-base leading-relaxed text-muted-foreground md:col-span-5 md:text-lg"
             >
-              Bypassing rigid themes and static mockups to architect the entire
-              digital storefront directly in Shopify Liquid. This provided
-              absolute creative freedom and a high-performance foundation built
-              specifically for scaling.
+              {tr(
+                "Bypassing rigid themes and static mockups to architect the entire digital storefront directly in Shopify Liquid. This provided absolute creative freedom and a high-performance foundation built specifically for scaling.",
+              )}
             </motion.p>
           </Reveal>
 
