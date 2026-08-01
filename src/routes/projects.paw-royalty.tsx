@@ -762,7 +762,7 @@ function PawRoyaltyProject() {
               <div className="inline-flex items-center gap-3">
                 <span className="h-px w-8 bg-accent-1" />
                 <span className="font-mono text-xs font-semibold uppercase tracking-[0.24em] text-accent-1">
-                  03 — Outcome
+                  {tr("03 — Outcome")}
                 </span>
               </div>
             </motion.div>
@@ -770,9 +770,9 @@ function PawRoyaltyProject() {
               variants={fadeUp}
               className="mt-6 max-w-3xl text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl"
             >
-              The{" "}
+              {tr("The")}{" "}
               <span className="font-serif italic font-normal text-accent-1">
-                Impact
+                {tr("Impact")}
               </span>
               .
             </motion.h2>
@@ -796,7 +796,7 @@ function PawRoyaltyProject() {
                   {m.value}
                 </div>
                 <div className="mt-3 text-sm leading-relaxed text-background/70">
-                  {m.label}
+                  {tr(m.label)}
                 </div>
               </motion.div>
             ))}
@@ -808,13 +808,14 @@ function PawRoyaltyProject() {
       <section className="border-t border-border/60">
         <div className="mx-auto flex max-w-6xl flex-col items-start gap-8 px-6 py-20 md:flex-row md:items-center md:justify-between md:px-10 md:py-24">
           <div>
-            <SectionLabel>Next</SectionLabel>
+            <SectionLabel>{tr("Next")}</SectionLabel>
             <h3 className="mt-4 max-w-xl text-3xl font-bold leading-[1.1] tracking-tight md:text-4xl">
-              Launching something new?
+              {tr("Launching something new?")}
             </h3>
             <p className="mt-3 max-w-lg text-base leading-relaxed text-muted-foreground">
-              I incubate brands end-to-end — from identity to a storefront built
-              for recurring revenue.
+              {tr(
+                "I incubate brands end-to-end — from identity to a storefront built for recurring revenue.",
+              )}
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-3">
@@ -823,13 +824,13 @@ function PawRoyaltyProject() {
               className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-3 text-sm font-semibold text-foreground shadow-[var(--shadow-card)] transition-colors hover:bg-secondary"
             >
               <ArrowLeft className="h-4 w-4" />
-              Back to portfolio
+              {tr("Back to portfolio")}
             </Link>
             <a
               href="/#contact"
               className="inline-flex items-center gap-2 rounded-full bg-gradient-accent px-5 py-3 text-sm font-semibold text-accent-foreground shadow-[var(--shadow-accent)] transition-transform hover:-translate-y-0.5"
             >
-              Get in touch
+              {tr("Get in touch")}
               <ArrowUpRight className="h-4 w-4" />
             </a>
           </div>

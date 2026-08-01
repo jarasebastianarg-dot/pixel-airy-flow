@@ -652,11 +652,11 @@ function ElevateLocalProject() {
         <div className="mx-auto max-w-6xl px-6 py-20 md:grid md:grid-cols-12 md:gap-12 md:px-10 md:py-28">
           <Reveal className="md:col-span-4" stagger={0.08}>
             <motion.div variants={fadeUp}>
-              <SectionLabel>01 — Context</SectionLabel>
+              <SectionLabel>{tr("01 — Context")}</SectionLabel>
               <h2 className="mt-6 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
-                The{" "}
+                {tr("The")}{" "}
                 <span className="font-serif italic font-normal text-accent-1">
-                  Friction
+                  {tr("Friction")}
                 </span>
               </h2>
             </motion.div>
@@ -666,22 +666,17 @@ function ElevateLocalProject() {
               variants={fadeUp}
               className="text-lg leading-relaxed text-foreground/85 md:text-xl"
             >
-              Elevate Local is a marketing agency built to help{" "}
+              {tr("Elevate Local is a marketing agency built to help")}{" "}
               <span className="font-semibold text-foreground">
-                medical clinics across Europe
+                {tr("medical clinics across Europe")}
               </span>{" "}
-              attract more patients and own their local market. In a sector where
-              trust is the currency, the brand had to feel as credible as a white-coat
-              consultation — not as flashy as a consumer app.
+              {tr("attract more patients and own their local market. In a sector where trust is the currency, the brand had to feel as credible as a white-coat consultation — not as flashy as a consumer app.")}
             </motion.p>
             <motion.p
               variants={fadeUp}
               className="mt-6 text-base leading-relaxed text-muted-foreground md:text-lg"
             >
-              The challenge was building a visual identity from scratch that
-              bridged this gap: reassuring clinic directors and patients, while
-              still projecting the speed and precision of a performance marketing
-              team — all managed asynchronously across time zones.
+              {tr("The challenge was building a visual identity from scratch that bridged this gap: reassuring clinic directors and patients, while still projecting the speed and precision of a performance marketing team — all managed asynchronously across time zones.")}
             </motion.p>
           </Reveal>
         </div>
@@ -696,15 +691,15 @@ function ElevateLocalProject() {
               <div className="relative flex aspect-[16/8] items-center justify-center px-10 md:px-24">
                 <img
                   src={elHorizontalLight.url}
-                  alt="Elevate Local horizontal logotype on Obsidiana Mate"
+                  alt={tr("Elevate Local horizontal logotype on Obsidiana Mate")}
                   loading="lazy"
                   decoding="async"
                   className="max-h-[60%] w-full max-w-4xl object-contain"
                 />
               </div>
               <div className="relative flex items-center justify-between border-t border-white/10 bg-black/20 px-6 py-4 font-mono text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-white/70 backdrop-blur">
-                <span>Elevate Local · Primary Lockup</span>
-                <span className="text-accent-1">Matte Obsidian #1E1A17</span>
+                <span>{tr("Elevate Local · Primary Lockup")}</span>
+                <span className="text-accent-1">{tr("Matte Obsidian")} #1E1A17</span>
               </div>
             </motion.div>
           </Reveal>
@@ -716,11 +711,11 @@ function ElevateLocalProject() {
         <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
           <Reveal className="grid grid-cols-1 gap-10 md:grid-cols-12 md:items-end" stagger={0.1}>
             <motion.div variants={fadeUp} className="md:col-span-7">
-              <SectionLabel>02 — Build</SectionLabel>
+              <SectionLabel>{tr("02 — Build")}</SectionLabel>
               <h2 className="mt-6 text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl">
-                The{" "}
+                {tr("The")}{" "}
                 <span className="font-serif italic font-normal text-accent-1">
-                  Execution
+                  {tr("Execution")}
                 </span>
               </h2>
             </motion.div>
@@ -728,9 +723,7 @@ function ElevateLocalProject() {
               variants={fadeUp}
               className="text-base leading-relaxed text-muted-foreground md:col-span-5 md:text-lg"
             >
-              Designing a cohesive visual identity grounded in target audience
-              psychology and European market research, delivered through a
-              highly optimized, asynchronous remote collaboration framework.
+              {tr("Designing a cohesive visual identity grounded in target audience psychology and European market research, delivered through a highly optimized, asynchronous remote collaboration framework.")}
             </motion.p>
           </Reveal>
 
@@ -753,22 +746,20 @@ function ElevateLocalProject() {
         <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
           <Reveal className="grid grid-cols-1 gap-10 md:grid-cols-12 md:items-end" stagger={0.1}>
             <motion.div variants={fadeUp} className="md:col-span-7">
-              <SectionLabel>02.6 — Color</SectionLabel>
+              <SectionLabel>{tr("02.6 — Color")}</SectionLabel>
               <h2 className="mt-6 text-4xl font-bold leading-[1.05] tracking-tight md:text-5xl">
-                The{" "}
+                {tr("The")}{" "}
                 <span className="font-serif italic font-normal text-accent-1">
-                  Mineral
+                  {tr("Mineral")}
                 </span>{" "}
-                Palette
+                {tr("Palette")}
               </h2>
             </motion.div>
             <motion.p
               variants={fadeUp}
               className="text-base leading-relaxed text-muted-foreground md:col-span-5 md:text-lg"
             >
-              Neutral, mineral tones that simulate granite and high-gram paper —
-              chosen to feel clean, clinical, and reassuring to patients and
-              clinic directors, not noisy like a consumer app.
+              {tr("Neutral, mineral tones that simulate granite and high-gram paper — chosen to feel clean, clinical, and reassuring to patients and clinic directors, not noisy like a consumer app.")}
             </motion.p>
           </Reveal>
 

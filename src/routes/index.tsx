@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { useLanguage, type Lang } from "@/i18n/LanguageContext";
+import { useLanguage } from "@/i18n/LanguageContext";
+import { LanguageToggle } from "@/components/LanguageToggle";
 import portrait from "@/assets/portrait.jpg.asset.json";
 import cvAsset from "@/assets/JaraSebastian_CV.pdf.asset.json";
 import bwayThumb from "@/assets/bway/bway-brand.jpg.asset.json";
@@ -307,7 +308,7 @@ function CustomCursor() {
 /* ─────────────────────────── page ─────────────────────────── */
 
 function Index() {
-  const { lang, setLang, t } = useLanguage();
+  const { t } = useLanguage();
 
   return (
     <div className="min-h-screen w-full overflow-x-hidden bg-background text-foreground md:cursor-none">
