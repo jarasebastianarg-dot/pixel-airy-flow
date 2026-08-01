@@ -765,6 +765,7 @@ function WorkCard({
   body,
   image,
   href,
+  fit,
 }: {
   tag: string;
   client: string;
@@ -772,20 +773,33 @@ function WorkCard({
   body: string;
   image: string;
   href?: string;
+  fit?: "cover" | "contain";
 }) {
   return (
     <motion.a
       href={href ?? "#"}
       data-cursor-view
       variants={fadeUp}
-      className="group relative block h-[24rem] overflow-hidden rounded-[calc(var(--radius)+16px)] border border-border shadow-[var(--shadow-card)]"
+      className="group relative block h-[20rem] overflow-hidden rounded-[calc(var(--radius)+16px)] border border-border shadow-[var(--shadow-card)] sm:h-[24rem]"
     >
+      {fit === "contain" && (
+        <img
+          src={image}
+          alt=""
+          aria-hidden="true"
+          loading="lazy"
+          decoding="async"
+          className="absolute inset-0 h-full w-full scale-125 object-cover blur-2xl"
+        />
+      )}
       <img
         src={image}
         alt={`${client} — ${headline}. Shopify e-commerce design, UI/UX and automation case study.`}
         loading="lazy"
         decoding="async"
-        className="absolute inset-0 h-full w-full object-cover transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110"
+        className={`absolute inset-0 h-full w-full transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110 ${
+          fit === "contain" ? "object-contain p-6 sm:p-10" : "object-cover"
+        }`}
       />
       {/* dark gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-70 transition-opacity duration-500 group-hover:opacity-100" />
@@ -798,14 +812,14 @@ function WorkCard({
       <ArrowUpRight className="absolute right-6 top-6 h-5 w-5 text-white/80 transition-transform duration-500 group-hover:-translate-y-1 group-hover:translate-x-1" />
 
       {/* text emerging from bottom */}
-      <div className="absolute inset-x-0 bottom-0 min-w-0 p-8 md:p-10">
-        <p className="translate-y-2 break-words text-sm font-semibold text-white/70 opacity-90 transition-all duration-500 group-hover:translate-y-0">
+      <div className="absolute inset-x-0 bottom-0 min-w-0 p-6 sm:p-8 md:p-10">
+        <p className="break-words text-sm font-semibold text-white/70 opacity-90 transition-all duration-500 md:translate-y-2 md:group-hover:translate-y-0">
           {client}
         </p>
-        <h3 className="mt-1 translate-y-3 break-words text-2xl font-bold tracking-tight text-white transition-all duration-500 group-hover:translate-y-0 md:text-3xl">
+        <h3 className="mt-1 break-words text-xl font-bold tracking-tight text-white transition-all duration-500 sm:text-2xl md:translate-y-3 md:text-3xl md:group-hover:translate-y-0">
           {headline}
         </h3>
-        <p className="mt-3 max-w-md translate-y-4 break-words text-sm leading-relaxed text-white/0 transition-all duration-500 group-hover:translate-y-0 group-hover:text-white/80">
+        <p className="mt-3 max-w-md break-words text-[0.8125rem] leading-relaxed text-white/80 transition-all duration-500 sm:text-sm md:translate-y-4 md:text-white/0 md:group-hover:translate-y-0 md:group-hover:text-white/80">
           {body}
         </p>
       </div>
