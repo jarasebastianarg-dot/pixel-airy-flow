@@ -1,5 +1,15 @@
-import { createContext, useCallback, useContext, useMemo, useState, type ReactNode } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+  type ReactNode,
+} from "react";
 import { dictionary, type Dict, type Lang } from "./dictionary";
+
+const STORAGE_KEY = "sj-lang";
 
 type LanguageContextValue = {
   lang: Lang;
@@ -18,10 +28,28 @@ export function LanguageProvider({
 }) {
   const [lang, setLangState] = useState<Lang>(defaultLang);
 
+  // Restore the persisted preference after hydration (avoids SSR mismatch).
+  useEffect(() => {
+    try {
+      const stored = window.localStorage.getItem(STORAGE_KEY);
+      if (stored === "en" || stored === "es") {
+        setLangState(stored);
+        document.documentElement.lang = stored;
+      }
+    } catch {
+      /* storage unavailable — keep default */
+    }
+  }, []);
+
   const setLang = useCallback((next: Lang) => {
     setLangState(next);
     if (typeof document !== "undefined") {
       document.documentElement.lang = next;
+    }
+    try {
+      window.localStorage.setItem(STORAGE_KEY, next);
+    } catch {
+      /* ignore */
     }
   }, []);
 
