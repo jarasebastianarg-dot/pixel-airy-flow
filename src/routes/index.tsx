@@ -474,6 +474,7 @@ function Index() {
                   client={w.client}
                   image={w.image}
                   href={w.href}
+                  fit={"fit" in w ? w.fit : undefined}
                   tag={copy.tag}
                   headline={copy.headline}
                   body={copy.body}
