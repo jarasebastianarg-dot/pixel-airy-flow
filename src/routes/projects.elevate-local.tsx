@@ -832,22 +832,20 @@ function ElevateLocalProject() {
         <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
           <Reveal className="grid grid-cols-1 gap-10 md:grid-cols-12 md:items-end" stagger={0.1}>
             <motion.div variants={fadeUp} className="md:col-span-7">
-              <SectionLabel>02.7 — Type</SectionLabel>
+              <SectionLabel>{tr("02.7 — Type")}</SectionLabel>
               <h2 className="mt-6 text-4xl font-bold leading-[1.05] tracking-tight md:text-5xl">
                 Geomanist —{" "}
                 <span className="font-serif italic font-normal text-accent-1">
-                  Editorial
+                  {tr("Editorial")}
                 </span>{" "}
-                Authority
+                {tr("Authority")}
               </h2>
             </motion.div>
             <motion.p
               variants={fadeUp}
               className="text-base leading-relaxed text-muted-foreground md:col-span-5 md:text-lg"
             >
-              A voice engineered to speak eye-to-eye with clinic directors and
-              medical professionals: stable, methodical, and trustworthy. No
-              generic startup type.
+              {tr("A voice engineered to speak eye-to-eye with clinic directors and medical professionals: stable, methodical, and trustworthy. No generic startup type.")}
             </motion.p>
           </Reveal>
 
@@ -860,20 +858,18 @@ function ElevateLocalProject() {
             >
               <div className="flex items-center justify-between font-mono text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
                 <span>Geomanist · Ultra</span>
-                <span className="text-accent-1">Headline</span>
+                <span className="text-accent-1">{tr("Headline")}</span>
               </div>
               <div className="mt-8 text-[3.5rem] font-black leading-[0.95] tracking-[-0.04em] text-foreground md:text-[5rem]">
                 Aa
               </div>
               <p className="mt-6 text-base leading-relaxed text-muted-foreground md:text-[0.95rem]">
-                Reserved for hero statements, landing headlines and section
-                openers. The heaviest cut in the family — used sparingly to
-                assert authority the moment a clinic director lands on the page.
+                {tr("Reserved for hero statements, landing headlines and section openers. The heaviest cut in the family — used sparingly to assert authority the moment a clinic director lands on the page.")}
               </p>
               <div className="mt-6 flex flex-wrap gap-2 border-t border-border pt-4 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-muted-foreground">
-                <span className="rounded-full border border-border bg-secondary px-2.5 py-1">Hero</span>
-                <span className="rounded-full border border-border bg-secondary px-2.5 py-1">Section titles</span>
-                <span className="rounded-full border border-border bg-secondary px-2.5 py-1">Pitch decks</span>
+                <span className="rounded-full border border-border bg-secondary px-2.5 py-1">{tr("Hero")}</span>
+                <span className="rounded-full border border-border bg-secondary px-2.5 py-1">{tr("Section titles")}</span>
+                <span className="rounded-full border border-border bg-secondary px-2.5 py-1">{tr("Pitch decks")}</span>
               </div>
             </motion.div>
 
@@ -885,20 +881,18 @@ function ElevateLocalProject() {
             >
               <div className="flex items-center justify-between font-mono text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
                 <span>Geomanist · Medium</span>
-                <span className="text-accent-1">Body &amp; Subhead</span>
+                <span className="text-accent-1">{tr("Body & Subhead")}</span>
               </div>
               <div className="mt-8 text-[3.5rem] font-medium leading-[0.95] tracking-[-0.03em] text-foreground md:text-[5rem]">
                 Aa
               </div>
               <p className="mt-6 text-base leading-relaxed text-muted-foreground md:text-[0.95rem]">
-                The workhorse cut. Handles subheads, running copy, UI labels
-                and technical documentation — optimized for legibility on long
-                digital reads without losing editorial rhythm.
+                {tr("The workhorse cut. Handles subheads, running copy, UI labels and technical documentation — optimized for legibility on long digital reads without losing editorial rhythm.")}
               </p>
               <div className="mt-6 flex flex-wrap gap-2 border-t border-border pt-4 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-muted-foreground">
-                <span className="rounded-full border border-border bg-secondary px-2.5 py-1">Body copy</span>
-                <span className="rounded-full border border-border bg-secondary px-2.5 py-1">Subheads</span>
-                <span className="rounded-full border border-border bg-secondary px-2.5 py-1">UI &amp; docs</span>
+                <span className="rounded-full border border-border bg-secondary px-2.5 py-1">{tr("Body copy")}</span>
+                <span className="rounded-full border border-border bg-secondary px-2.5 py-1">{tr("Subheads")}</span>
+                <span className="rounded-full border border-border bg-secondary px-2.5 py-1">{tr("UI & docs")}</span>
               </div>
             </motion.div>
           </Reveal>
