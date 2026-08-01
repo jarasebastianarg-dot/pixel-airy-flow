@@ -450,7 +450,7 @@ function ScrollPreviewCard({
         type="button"
         onClick={() => onOpen(item.image, item.title, item.kicker === "Home" || item.kicker === "PDP" ? "wide" : "standard")}
         className="group relative block w-full overflow-hidden rounded-[calc(var(--radius)+14px)] border border-border bg-[#E4EDF7] text-left shadow-[var(--shadow-card)] transition-shadow duration-500 hover:shadow-[var(--shadow-card-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-1/60"
-        aria-label={`${tr("Open")} ${tr(item.title)} ${tr("preview")}`}
+        aria-label={tr(`Open ${item.title} preview`)}
       >
         <div className="relative aspect-[4/5] w-full overflow-hidden">
           <img
