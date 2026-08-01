@@ -851,9 +851,9 @@ function BWayProject() {
               <motion.div variants={fadeUp} className="md:col-span-7">
                 <SectionLabel>{tr("02.5 — Packaging")}</SectionLabel>
                 <h2 className="mt-6 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
-                  Every box the brand{" "}
+                  {tr("Every box the brand")}{" "}
                   <span className="font-serif italic font-normal text-accent-1">
-                    shipped
+                    {tr("shipped")}
                   </span>
                   .
                 </h2>
@@ -862,19 +862,17 @@ function BWayProject() {
                 variants={fadeUp}
                 className="text-base leading-relaxed text-muted-foreground md:col-span-5 md:text-lg"
               >
-                I designed the packaging for every B-WAY product line — die-cuts,
-                interior architecture, print production and retail-shelf systems —{" "}
+                {tr("I designed the packaging for every B-WAY product line — die-cuts, interior architecture, print production and retail-shelf systems —")}{" "}
                 <span className="font-semibold text-foreground">
-                  coordinating production directly with the factory in China
+                  {tr("coordinating production directly with the factory in China")}
                 </span>{" "}
-                from die-cut sign-off to final print runs.{" "}
+                {tr("from die-cut sign-off to final print runs.")}{" "}
                 <span className="font-semibold text-foreground">
-                  I also supervised every single launch
+                  {tr("I also supervised every single launch")}
                 </span>{" "}
-                the brand rolled out from my first day through the end of{" "}
+                {tr("the brand rolled out from my first day through the end of")}{" "}
                 <span className="font-semibold text-accent-1">2025</span> —
-                keeping the visual language consistent across the whole product
-                range and three markets.
+                {tr("keeping the visual language consistent across the whole product range and three markets.")}
               </motion.p>
             </Reveal>
 
@@ -891,18 +889,18 @@ function BWayProject() {
                   whileHover={{ y: -4 }}
                   transition={{ type: "spring", stiffness: 260, damping: 22 }}
                   className="group relative block w-full rounded-[calc(var(--radius)+14px)] border border-border bg-card text-left shadow-[var(--shadow-card)] transition-shadow duration-500 hover:shadow-[var(--shadow-card-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-1/60"
-                  aria-label={`Open ${p.label} preview`}
+                  aria-label={`${tr("Open")} ${tr(p.label)} ${tr("preview")}`}
                 >
                   <div className="absolute -top-3 left-3 z-10 inline-flex items-center gap-2 rounded-full border border-border bg-background px-2.5 py-1 font-mono text-[0.55rem] font-semibold uppercase tracking-[0.22em] text-muted-foreground shadow-[var(--shadow-card)]">
                     <span className="text-accent-1">
                       {String(i + 1).padStart(2, "0")}
                     </span>
-                    {p.kicker}
+                    {tr(p.kicker)}
                   </div>
                   <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[calc(var(--radius)+14px)] bg-background">
                     <img
                       src={p.url}
-                      alt={p.label}
+                      alt={tr(p.label)}
                       loading="lazy" decoding="async"
                       className="h-full w-full object-cover transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]"
                       draggable={false}
@@ -910,11 +908,11 @@ function BWayProject() {
                     <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-90 transition-opacity duration-500 group-hover:opacity-100" />
                     <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-between gap-2 p-3">
                       <span className="font-mono text-[0.6rem] font-semibold uppercase tracking-[0.22em] text-white/90">
-                        {p.label}
+                        {tr(p.label)}
                       </span>
                       <span className="inline-flex items-center gap-1 rounded-full bg-white/95 px-2 py-0.5 font-mono text-[0.55rem] font-semibold uppercase tracking-[0.2em] text-foreground opacity-0 shadow-md transition-opacity duration-300 group-hover:opacity-100">
                         <ZoomIn className="h-3 w-3" />
-                        Zoom
+                        {tr("Zoom")}
                       </span>
                     </div>
                   </div>
@@ -935,7 +933,7 @@ function BWayProject() {
                   variants={fadeUp}
                   className="rounded-full border border-border bg-card px-3 py-1 text-xs font-semibold text-foreground/80"
                 >
-                  {t}
+                  {tr(t)}
                 </motion.span>
               ))}
             </Reveal>
