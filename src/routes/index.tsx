@@ -308,7 +308,7 @@ function CustomCursor() {
 /* ─────────────────────────── page ─────────────────────────── */
 
 function Index() {
-  const { t } = useLanguage();
+  const { lang, t } = useLanguage();
 
   return (
     <div className="min-h-screen w-full overflow-x-hidden bg-background text-foreground md:cursor-none">

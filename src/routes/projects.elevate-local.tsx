@@ -788,10 +788,10 @@ function ElevateLocalProject() {
                   </div>
                   <div className="p-5">
                     <div className="text-base font-bold tracking-tight text-foreground">
-                      {c.name}
+                      {tr(c.name)}
                     </div>
                     <div className="mt-1 font-mono text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-accent-1">
-                      {c.role}
+                      {tr(c.role)}
                     </div>
                     <dl className="mt-5 divide-y divide-border/70 border-t border-border/70 font-mono">
                       <div className="flex items-center justify-between gap-3 py-2.5">
