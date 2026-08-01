@@ -51,7 +51,7 @@ const workMeta = [
     slug: "folkways",
     client: "Folkways",
     image:
-      "https://raw.githubusercontent.com/jarasebastianarg-dot/Portfolio-Photos/main/Folkways%20Home.png",
+      "https://raw.githubusercontent.com/jarasebastianarg-dot/Portfolio-Photos/main/Folkways%20Thumbnail.webp",
     href: "/projects/folkways",
   },
   {
