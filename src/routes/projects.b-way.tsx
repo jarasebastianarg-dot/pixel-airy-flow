@@ -720,9 +720,9 @@ function BWayProject() {
             <motion.div variants={fadeUp}>
               <SectionLabel>{tr("01 — Context")}</SectionLabel>
               <h2 className="mt-6 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
-                The{" "}
+                {tr("The")}{" "}
                 <span className="font-serif italic font-normal text-accent-1">
-                  Friction
+                  {tr("Friction")}
                 </span>
               </h2>
             </motion.div>
@@ -732,21 +732,17 @@ function BWayProject() {
               variants={fadeUp}
               className="mb-6 text-2xl font-bold tracking-tight md:text-3xl"
             >
-              The Challenge
+              {tr("The Challenge")}
             </motion.h3>
             <motion.p
               variants={fadeUp}
               className="text-lg leading-relaxed text-foreground/85 md:text-xl"
             >
-              The barber-tools market was{" "}
-              <span className="font-semibold text-foreground">stuck in corporate blacks and safe grays</span>.
-              B-WAY needed a visual system loud enough to disrupt it, and an
-              operation big enough to sell it across{" "}
-              <span className="font-semibold text-accent-1">the US, Brazil and Argentina</span>.
-              I started at the packaging bench — die-cuts, interior architecture,
-              print production — and every quarter, the scope kept expanding: social
-              design, e-commerce, campaigns, educators, events. Two years later, I
-              was running the whole brand.
+              {tr("The barber-tools market was")}{" "}
+              <span className="font-semibold text-foreground">{tr("stuck in corporate blacks and safe grays")}</span>.
+              {tr("B-WAY needed a visual system loud enough to disrupt it, and an operation big enough to sell it across")}{" "}
+              <span className="font-semibold text-accent-1">{tr("the US, Brazil and Argentina")}</span>.
+              {tr("I started at the packaging bench — die-cuts, interior architecture, print production — and every quarter, the scope kept expanding: social design, e-commerce, campaigns, educators, events. Two years later, I was running the whole brand.")}
             </motion.p>
           </Reveal>
         </div>
@@ -760,13 +756,13 @@ function BWayProject() {
             >
               <img
                 src={brandCover.url}
-                alt="B-WAY full product line"
+                alt={tr("B-WAY full product line")}
                 loading="lazy" decoding="async"
                 className="aspect-[16/9] w-full object-cover"
               />
               <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 to-transparent p-6">
                 <div className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-white/85">
-                  Where it started — the full B-WAY packaging system
+                  {tr("Where it started — the full B-WAY packaging system")}
                 </div>
               </div>
             </motion.div>
@@ -781,20 +777,18 @@ function BWayProject() {
             <motion.div variants={fadeUp} className="md:col-span-7">
               <SectionLabel>{tr("02 — The Growth Story")}</SectionLabel>
               <h2 className="mt-4 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
-                Four{" "}
+                {tr("Four")}{" "}
                 <span className="font-serif italic font-normal text-accent-1">
-                  chapters
+                  {tr("chapters")}
                 </span>
-                , one promotion.
+                , {tr("one promotion.")}
               </h2>
             </motion.div>
             <motion.p
               variants={fadeUp}
               className="text-sm leading-relaxed text-muted-foreground md:col-span-5 md:text-base"
             >
-              The scope kept compounding. Each chapter added a new discipline on
-              top of the last — packaging, then digital, then commerce, then people.
-              By chapter four I was leading the team that made all of it move.
+              {tr("The scope kept compounding. Each chapter added a new discipline on top of the last — packaging, then digital, then commerce, then people. By chapter four I was leading the team that made all of it move.")}
             </motion.p>
           </Reveal>
 
@@ -823,15 +817,15 @@ function BWayProject() {
                       </div>
                     </div>
                     <div className="mt-3 font-mono text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
-                      {c.kicker}
+                      {tr(c.kicker)}
                     </div>
                   </div>
                   <div className="relative md:col-span-9">
                     <h3 className="text-xl font-bold tracking-tight md:text-2xl">
-                      {c.title}
+                      {tr(c.title)}
                     </h3>
                     <p className="mt-2 text-sm leading-relaxed text-foreground/80 md:text-base">
-                      {c.body}
+                      {tr(c.body)}
                     </p>
                     <div className="mt-4 flex flex-wrap gap-2">
                       {c.tags.map((t) => (
@@ -839,7 +833,7 @@ function BWayProject() {
                           key={t}
                           className="rounded-full border border-border bg-secondary px-2.5 py-1 text-[0.7rem] font-semibold text-foreground/80"
                         >
-                          {t}
+                          {tr(t)}
                         </span>
                       ))}
                     </div>
