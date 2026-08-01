@@ -455,6 +455,7 @@ function ExecutionCard({ card, index }: { card: ExecutionCardData; index: number
 const mockups = packaging;
 
 function HorizontalMockups() {
+  const { tr } = useTr();
   const containerRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const [trackWidth, setTrackWidth] = useState(0);
@@ -490,15 +491,15 @@ function HorizontalMockups() {
             <div>
               <SectionLabel>{tr("02.5 — Gallery")}</SectionLabel>
               <h3 className="mt-4 text-3xl font-bold leading-[1.05] tracking-tight">
-                Brand Guidelines &amp; Logo Variations{" "}
+                {tr("Brand Guidelines & Logo Variations")}{" "}
                 <span className="font-serif italic font-normal text-accent-1">
-                  Overlap
+                  {tr("Overlap")}
                 </span>
               </h3>
             </div>
           </div>
           <div className="mt-2 font-mono text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
-            Swipe to explore →
+            {tr("Swipe to explore →")}
           </div>
         </div>
         <div
@@ -515,12 +516,12 @@ function HorizontalMockups() {
                 <span className="text-accent-1">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                {m.kicker}
+                {tr(m.kicker)}
               </div>
               <div className="relative aspect-[3/4] w-full overflow-hidden rounded-[calc(var(--radius)+18px)] border border-border bg-card shadow-[var(--shadow-card)]">
-                <img src={m.url} alt={m.label} loading="lazy" decoding="async" className="h-full w-full object-cover" />
+                <img src={m.url} alt={tr(m.label)} loading="lazy" decoding="async" className="h-full w-full object-cover" />
                 <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-4">
-                  <div className="font-mono text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-white/85">{m.label}</div>
+                  <div className="font-mono text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-white/85">{tr(m.label)}</div>
                 </div>
               </div>
             </div>
@@ -539,14 +540,14 @@ function HorizontalMockups() {
             <div>
               <SectionLabel>{tr("02.5 — Gallery")}</SectionLabel>
               <h3 className="mt-4 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
-                Brand Guidelines &amp; Logo Variations{" "}
+                {tr("Brand Guidelines & Logo Variations")}{" "}
                 <span className="font-serif italic font-normal text-accent-1">
-                  Overlap
+                  {tr("Overlap")}
                 </span>
               </h3>
             </div>
             <span className="hidden font-mono text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground md:inline">
-              Scroll to explore →
+              {tr("Scroll to explore →")}
             </span>
           </div>
         </div>
@@ -565,12 +566,12 @@ function HorizontalMockups() {
                 <span className="text-accent-1">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                {m.kicker}
+                {tr(m.kicker)}
               </div>
               <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[calc(var(--radius)+18px)] border border-border bg-card shadow-[var(--shadow-card)]">
-                <img src={m.url} alt={m.label} loading="lazy" decoding="async" className="h-full w-full object-cover" />
+                <img src={m.url} alt={tr(m.label)} loading="lazy" decoding="async" className="h-full w-full object-cover" />
                 <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-4">
-                  <div className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-white/85">{m.label}</div>
+                  <div className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-white/85">{tr(m.label)}</div>
                 </div>
               </div>
             </div>
