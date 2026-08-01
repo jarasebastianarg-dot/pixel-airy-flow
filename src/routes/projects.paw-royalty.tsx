@@ -183,6 +183,7 @@ function MediaPlaceholder({
 type ExecutionCardData = (typeof executionCards)[number];
 
 function ExecutionCard({ card, index }: { card: ExecutionCardData; index: number }) {
+  const { tr } = useTr();
   const Icon = card.icon;
   const isMobile = useIsMobile();
   const [hovered, setHovered] = useState(false);
@@ -240,14 +241,14 @@ function ExecutionCard({ card, index }: { card: ExecutionCardData; index: number
             {String(index + 1).padStart(2, "0")}
           </span>
           <div className="mt-1 text-[0.6rem] font-semibold uppercase tracking-[0.2em] text-accent-1">
-            {card.kicker}
+            {tr(card.kicker)}
           </div>
         </div>
       </div>
 
       {/* Title always visible */}
       <h3 className="relative mt-auto text-lg font-bold leading-tight tracking-tight md:text-[1.05rem] lg:text-lg">
-        {card.title}
+        {tr(card.title)}
       </h3>
 
       {/* Swap: helper vs body */}
@@ -262,7 +263,7 @@ function ExecutionCard({ card, index }: { card: ExecutionCardData; index: number
               transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
               className="absolute inset-x-0 top-0 text-[0.78rem] leading-relaxed text-muted-foreground"
             >
-              {card.body}
+              {tr(card.body)}
             </motion.p>
           ) : (
             <motion.div
@@ -274,7 +275,7 @@ function ExecutionCard({ card, index }: { card: ExecutionCardData; index: number
               className="absolute inset-x-0 top-0 inline-flex items-center gap-1.5 font-mono text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-muted-foreground"
             >
               <Plus className="h-3 w-3" />
-              Hover to expand
+              {tr("Hover to expand")}
             </motion.div>
           )}
         </AnimatePresence>
