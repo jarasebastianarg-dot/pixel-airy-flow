@@ -1,2 +1,2 @@
-export const bWayEs: Record<string, string> = {
+export const bwayEs: Record<string, string> = {
 };
