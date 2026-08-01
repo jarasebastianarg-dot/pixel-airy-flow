@@ -353,6 +353,7 @@ function Lightbox({
   width?: "standard" | "wide";
   onClose: () => void;
 }) {
+  const { tr } = useTr();
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
@@ -379,7 +380,7 @@ function Lightbox({
           onClick={onClose}
           role="dialog"
           aria-modal="true"
-          aria-label={label ?? "Image preview"}
+          aria-label={label ?? tr("Image preview")}
         >
           <motion.button
             type="button"
@@ -388,13 +389,13 @@ function Lightbox({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
             className="absolute right-4 top-4 z-10 inline-flex h-11 w-11 items-center justify-center rounded-full bg-background/90 text-foreground shadow-[var(--shadow-card)] transition-colors hover:bg-background md:right-6 md:top-6"
-            aria-label="Close preview"
+            aria-label={tr("Close preview")}
           >
             <X className="h-5 w-5" />
           </motion.button>
           {label ? (
             <div className="pointer-events-none absolute left-1/2 top-4 -translate-x-1/2 rounded-full bg-background/90 px-4 py-1.5 font-mono text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-foreground shadow-[var(--shadow-card)] md:top-6">
-              {label}
+              {tr(label)}
             </div>
           ) : null}
           <motion.div
@@ -433,6 +434,7 @@ function ScrollPreviewCard({
   onOpen: (src: string, label: string, width?: "standard" | "wide") => void;
   scrollDurationMs?: number;
 }) {
+  const { tr } = useTr();
   return (
     <motion.div
       variants={fadeUp}
@@ -442,18 +444,18 @@ function ScrollPreviewCard({
         <span className="text-accent-1">
           {String(index + 1).padStart(2, "0")}
         </span>
-        {item.kicker}
+        {tr(item.kicker)}
       </div>
       <button
         type="button"
         onClick={() => onOpen(item.image, item.title, item.kicker === "Home" || item.kicker === "PDP" ? "wide" : "standard")}
         className="group relative block w-full overflow-hidden rounded-[calc(var(--radius)+14px)] border border-border bg-[#E4EDF7] text-left shadow-[var(--shadow-card)] transition-shadow duration-500 hover:shadow-[var(--shadow-card-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-1/60"
-        aria-label={`Open ${item.title} preview`}
+        aria-label={`${tr("Open")} ${tr(item.title)} ${tr("preview")}`}
       >
         <div className="relative aspect-[4/5] w-full overflow-hidden">
           <img
             src={item.image}
-            alt={item.title}
+            alt={tr(item.title)}
             loading="lazy" decoding="async"
             style={{ transitionDuration: `${scrollDurationMs}ms` }}
             className="block h-auto w-full select-none ease-linear [image-rendering:auto] group-hover:-translate-y-[70%]"
@@ -462,17 +464,17 @@ function ScrollPreviewCard({
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
           <div className="pointer-events-none absolute right-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-foreground/85 px-2.5 py-1 font-mono text-[0.55rem] font-semibold uppercase tracking-[0.2em] text-background opacity-0 shadow-md transition-opacity duration-300 group-hover:opacity-100">
             <ZoomIn className="h-3 w-3" />
-            Click to zoom
+            {tr("Click to zoom")}
           </div>
         </div>
       </button>
       <div className="mt-5 space-y-2">
         <div className="font-mono text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-accent-1">
-          {item.focus}
+          {tr(item.focus)}
         </div>
-        <div className="text-lg font-bold tracking-tight">{item.title}</div>
+        <div className="text-lg font-bold tracking-tight">{tr(item.title)}</div>
         <p className="text-[0.85rem] leading-relaxed text-muted-foreground">
-          {item.body}
+          {tr(item.body)}
         </p>
       </div>
     </motion.div>

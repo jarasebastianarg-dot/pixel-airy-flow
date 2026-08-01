@@ -201,6 +201,7 @@ function LogoPlate({
   variant: LogoVariant;
   aspect: string;
 }) {
+  const { tr } = useTr();
   const isDark = variant.theme === "dark";
   return (
     <div
@@ -213,7 +214,7 @@ function LogoPlate({
       <div className="absolute inset-0 flex items-center justify-center p-10 md:p-14">
         <img
           src={variant.src}
-          alt={variant.alt}
+          alt={tr(variant.alt)}
           className="max-h-full max-w-full object-contain"
           loading="lazy" decoding="async"
         />
@@ -225,9 +226,9 @@ function LogoPlate({
             : "border-border bg-background/70 text-muted-foreground backdrop-blur"
         }`}
       >
-        <span className="font-mono">{variant.label}</span>
+        <span className="font-mono">{tr(variant.label)}</span>
         <span className={`font-mono ${isDark ? "text-accent-1" : "text-accent-1"}`}>
-          {variant.kicker}
+          {tr(variant.kicker)}
         </span>
       </div>
     </div>
