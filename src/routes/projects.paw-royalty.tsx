@@ -701,11 +701,11 @@ function PawRoyaltyProject() {
           <div className="mt-20">
             <Reveal className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between" stagger={0.08}>
               <motion.div variants={fadeUp}>
-                <SectionLabel>02.5 — Gallery</SectionLabel>
+                <SectionLabel>{tr("02.5 — Gallery")}</SectionLabel>
                 <h3 className="mt-4 text-3xl font-bold leading-[1.1] tracking-tight md:text-5xl">
-                  Storefront{" "}
+                  {tr("Storefront")}{" "}
                   <span className="font-serif italic font-normal text-accent-1">
-                    in motion
+                    {tr("in motion")}
                   </span>
                 </h3>
               </motion.div>
@@ -713,8 +713,9 @@ function PawRoyaltyProject() {
                 variants={fadeUp}
                 className="max-w-md text-sm leading-relaxed text-muted-foreground md:text-base"
               >
-                Hover any preview to scroll the full page. Click to open the
-                full-resolution capture.
+                {tr(
+                  "Hover any preview to scroll the full page. Click to open the full-resolution capture.",
+                )}
               </motion.p>
             </Reveal>
             <PreviewGallery items={mockups} onOpen={openLightbox} />
@@ -727,9 +728,9 @@ function PawRoyaltyProject() {
         <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
           <Reveal className="grid grid-cols-1 gap-10 md:grid-cols-12 md:items-end" stagger={0.1}>
             <motion.div variants={fadeUp} className="md:col-span-7">
-              <SectionLabel>02.75 — Email Marketing</SectionLabel>
+              <SectionLabel>{tr("02.75 — Email Marketing")}</SectionLabel>
               <h2 className="mt-6 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
-                Retention wired into{" "}
+                {tr("Retention wired into")}{" "}
                 <span className="font-serif italic font-normal text-accent-1">
                   Klaviyo
                 </span>
@@ -740,10 +741,9 @@ function PawRoyaltyProject() {
               variants={fadeUp}
               className="text-base leading-relaxed text-muted-foreground md:col-span-5 md:text-lg"
             >
-              A full-funnel email system — welcome, subscribe-and-save
-              retention and flagship product campaigns — designed and coded
-              inside Klaviyo. The channel now drives 22% of total revenue
-              with a 48% average open rate and a 30× ROI on automations.
+              {tr(
+                "A full-funnel email system — welcome, subscribe-and-save retention and flagship product campaigns — designed and coded inside Klaviyo. The channel now drives 22% of total revenue with a 48% average open rate and a 30× ROI on automations.",
+              )}
             </motion.p>
           </Reveal>
           <PreviewGallery items={emails} onOpen={openLightbox} scrollDurationMs={9000} />
