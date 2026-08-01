@@ -9,6 +9,7 @@ import {
 } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { useTr } from "@/i18n/projectTranslate";
 import {
   ArrowLeft,
   ArrowUpRight,
@@ -485,7 +486,7 @@ function HorizontalMockups() {
         <div className="mx-auto w-full max-w-6xl px-6">
           <div className="flex items-end justify-between gap-4">
             <div>
-              <SectionLabel>02.5 — Gallery</SectionLabel>
+              <SectionLabel>{tr("02.5 — Gallery")}</SectionLabel>
               <h3 className="mt-4 text-3xl font-bold leading-[1.05] tracking-tight">
                 Brand Guidelines &amp; Logo Variations{" "}
                 <span className="font-serif italic font-normal text-accent-1">
@@ -534,7 +535,7 @@ function HorizontalMockups() {
         <div className="mx-auto w-full max-w-6xl px-6 md:px-10">
           <div className="flex items-end justify-between gap-6">
             <div>
-              <SectionLabel>02.5 — Gallery</SectionLabel>
+              <SectionLabel>{tr("02.5 — Gallery")}</SectionLabel>
               <h3 className="mt-4 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
                 Brand Guidelines &amp; Logo Variations{" "}
                 <span className="font-serif italic font-normal text-accent-1">
@@ -615,7 +616,7 @@ function BWayProject() {
         <div className="mx-auto max-w-6xl px-6 pb-20 pt-16 md:px-10 md:pb-28 md:pt-24">
           <Reveal stagger={0.12}>
             <motion.div variants={fadeUp}>
-              <SectionLabel>Omnichannel · Global Expansion</SectionLabel>
+              <SectionLabel>{tr("Omnichannel · Global Expansion")}</SectionLabel>
             </motion.div>
             <motion.h1
               variants={fadeUp}
@@ -715,7 +716,7 @@ function BWayProject() {
         <div className="mx-auto max-w-6xl px-6 py-20 md:grid md:grid-cols-12 md:gap-12 md:px-10 md:py-28">
           <Reveal className="md:col-span-4" stagger={0.08}>
             <motion.div variants={fadeUp}>
-              <SectionLabel>01 — Context</SectionLabel>
+              <SectionLabel>{tr("01 — Context")}</SectionLabel>
               <h2 className="mt-6 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
                 The{" "}
                 <span className="font-serif italic font-normal text-accent-1">
@@ -776,7 +777,7 @@ function BWayProject() {
         <div className="mx-auto max-w-6xl px-6 py-16 md:px-10 md:py-20">
           <Reveal className="grid grid-cols-1 gap-6 md:grid-cols-12 md:items-end" stagger={0.1}>
             <motion.div variants={fadeUp} className="md:col-span-7">
-              <SectionLabel>02 — The Growth Story</SectionLabel>
+              <SectionLabel>{tr("02 — The Growth Story")}</SectionLabel>
               <h2 className="mt-4 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
                 Four{" "}
                 <span className="font-serif italic font-normal text-accent-1">
@@ -852,7 +853,7 @@ function BWayProject() {
           <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
             <Reveal className="grid grid-cols-1 gap-8 md:grid-cols-12 md:items-start" stagger={0.08}>
               <motion.div variants={fadeUp} className="md:col-span-7">
-                <SectionLabel>02.5 — Packaging</SectionLabel>
+                <SectionLabel>{tr("02.5 — Packaging")}</SectionLabel>
                 <h2 className="mt-6 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
                   Every box the brand{" "}
                   <span className="font-serif italic font-normal text-accent-1">
@@ -950,7 +951,7 @@ function BWayProject() {
           <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
             <Reveal className="grid grid-cols-1 gap-8 md:grid-cols-12 md:items-end" stagger={0.08}>
               <motion.div variants={fadeUp} className="md:col-span-7">
-                <SectionLabel>02.6 — E-Commerce</SectionLabel>
+                <SectionLabel>{tr("02.6 — E-Commerce")}</SectionLabel>
                 <h2 className="mt-6 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
                   Shopify stores built{" "}
                   <span className="font-serif italic font-normal text-accent-1">
@@ -1014,7 +1015,7 @@ function BWayProject() {
           <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
             <Reveal className="max-w-4xl" stagger={0.08}>
               <motion.div variants={fadeUp}>
-                <SectionLabel>03 — On The Floor</SectionLabel>
+                <SectionLabel>{tr("03 — On The Floor")}</SectionLabel>
                 <h2 className="mt-6 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
                   Events I{" "}
                   <span className="font-serif italic font-normal text-accent-1">
@@ -1155,7 +1156,7 @@ function BWayProject() {
       <section className="border-t border-border/60">
         <div className="mx-auto flex max-w-6xl flex-col items-start gap-8 px-6 py-20 md:flex-row md:items-center md:justify-between md:px-10 md:py-24">
           <div>
-            <SectionLabel>Next</SectionLabel>
+            <SectionLabel>{tr("Next")}</SectionLabel>
             <h3 className="mt-4 max-w-xl text-3xl font-bold leading-[1.1] tracking-tight md:text-4xl">
               Scaling a brand across borders and channels?
             </h3>
