@@ -67,6 +67,7 @@ const workMeta = [
     client: "Elevate Local",
     image: elevateThumb.url,
     href: "/projects/elevate-local",
+    fit: "contain" as const,
   },
 ] as const;
 
