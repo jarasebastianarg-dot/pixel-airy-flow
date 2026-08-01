@@ -509,6 +509,7 @@ function PreviewGallery({
 }
 
 function PawRoyaltyProject() {
+  const { tr } = useTr();
   const [lightbox, setLightbox] = useState<{ src: string; label?: string; width?: "standard" | "wide" } | null>(null);
   const openLightbox = (src: string, label?: string, width?: "standard" | "wide") => setLightbox({ src, label, width });
   return (
@@ -528,10 +529,10 @@ function PawRoyaltyProject() {
             className="group inline-flex items-center gap-2 text-sm font-semibold text-foreground/80 transition-colors hover:text-accent-1"
           >
             <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
-            Back to portfolio
+            {tr("Back to portfolio")}
           </Link>
           <span className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-muted-foreground">
-            Case Study / 02
+            {tr("Case Study / 02")}
           </span>
         </div>
       </div>
@@ -545,17 +546,17 @@ function PawRoyaltyProject() {
         <div className="mx-auto max-w-6xl px-6 pb-20 pt-16 md:px-10 md:pb-28 md:pt-24">
           <Reveal stagger={0.12}>
             <motion.div variants={fadeUp}>
-              <SectionLabel>Shopify Launch · E-commerce</SectionLabel>
+              <SectionLabel>{tr("Shopify Launch · E-commerce")}</SectionLabel>
             </motion.div>
             <motion.h1
               variants={fadeUp}
               className="mt-6 max-w-5xl text-4xl font-bold leading-[1.02] tracking-tight md:text-6xl lg:text-[4.5rem]"
             >
-              Paw Royalty: Full-Stack{" "}
-              <span className="text-gradient-accent">E-Commerce Launch</span>{" "}
+              {tr("Paw Royalty: Full-Stack")}{" "}
+              <span className="text-gradient-accent">{tr("E-Commerce Launch")}</span>{" "}
               &{" "}
               <span className="font-serif italic font-normal text-accent-1">
-                High-Converting UX
+                {tr("High-Converting UX")}
               </span>
               .
             </motion.h1>
@@ -563,9 +564,9 @@ function PawRoyaltyProject() {
               variants={fadeUp}
               className="mt-8 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg"
             >
-              A brand incubated from zero — storefront, UX and retention system
-              engineered directly in Shopify Liquid, tuned for day-one recurring
-              revenue.
+              {tr(
+                "A brand incubated from zero — storefront, UX and retention system engineered directly in Shopify Liquid, tuned for day-one recurring revenue.",
+              )}
             </motion.p>
           </Reveal>
 

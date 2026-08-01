@@ -414,6 +414,7 @@ const palette = [
 ];
 
 function HorizontalMockups() {
+  const { tr } = useTr();
   const containerRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const [trackWidth, setTrackWidth] = useState(0);
@@ -447,17 +448,17 @@ function HorizontalMockups() {
         <div className="mx-auto w-full max-w-6xl px-6">
           <div className="flex items-end justify-between gap-4">
             <div>
-              <SectionLabel>02.5 — Gallery</SectionLabel>
+              <SectionLabel>{tr("02.5 — Gallery")}</SectionLabel>
               <h3 className="mt-4 text-3xl font-bold leading-[1.05] tracking-tight">
-                Brand Guidelines &amp; Logo Variations{" "}
+                {tr("Brand Guidelines & Logo Variations")}{" "}
                 <span className="font-serif italic font-normal text-accent-1">
-                  Overlap
+                  {tr("Overlap")}
                 </span>
               </h3>
             </div>
           </div>
           <div className="mt-2 font-mono text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
-            Swipe to explore →
+            {tr("Swipe to explore →")}
           </div>
         </div>
         <div
@@ -474,7 +475,7 @@ function HorizontalMockups() {
                 <span className="text-accent-1">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                {m.kicker}
+                {tr(m.kicker)}
               </div>
               <LogoPlate variant={m} aspect="aspect-[3/4]" />
             </div>
@@ -491,16 +492,16 @@ function HorizontalMockups() {
         <div className="mx-auto w-full max-w-6xl px-6 md:px-10">
           <div className="flex items-end justify-between gap-6">
             <div>
-              <SectionLabel>02.5 — Gallery</SectionLabel>
+              <SectionLabel>{tr("02.5 — Gallery")}</SectionLabel>
               <h3 className="mt-4 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
-                Brand Guidelines &amp; Logo Variations{" "}
+                {tr("Brand Guidelines & Logo Variations")}{" "}
                 <span className="font-serif italic font-normal text-accent-1">
-                  Overlap
+                  {tr("Overlap")}
                 </span>
               </h3>
             </div>
             <span className="hidden font-mono text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground md:inline">
-              Scroll to explore →
+              {tr("Scroll to explore →")}
             </span>
           </div>
         </div>
@@ -519,7 +520,7 @@ function HorizontalMockups() {
                 <span className="text-accent-1">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                {m.kicker}
+                {tr(m.kicker)}
               </div>
               <LogoPlate variant={m} aspect="aspect-[4/3]" />
             </div>
@@ -532,6 +533,7 @@ function HorizontalMockups() {
 }
 
 function ElevateLocalProject() {
+  const { tr } = useTr();
   return (
     <main className="min-h-screen w-full overflow-x-hidden bg-background text-foreground">
       {/* Top bar */}
@@ -542,10 +544,10 @@ function ElevateLocalProject() {
             className="group inline-flex items-center gap-2 text-sm font-semibold text-foreground/80 transition-colors hover:text-accent-1"
           >
             <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
-            Back to portfolio
+            {tr("Back to portfolio")}
           </Link>
           <span className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-muted-foreground">
-            Case Study / 03
+            {tr("Case Study / 03")}
           </span>
         </div>
       </div>
@@ -559,17 +561,17 @@ function ElevateLocalProject() {
         <div className="mx-auto max-w-6xl px-6 pb-20 pt-16 md:px-10 md:pb-28 md:pt-24">
           <Reveal stagger={0.12}>
             <motion.div variants={fadeUp}>
-              <SectionLabel>Brand Identity · B2B Medical</SectionLabel>
+              <SectionLabel>{tr("Brand Identity · B2B Medical")}</SectionLabel>
             </motion.div>
             <motion.h1
               variants={fadeUp}
               className="mt-6 max-w-5xl text-4xl font-bold leading-[1.02] tracking-tight md:text-6xl lg:text-[4.5rem]"
             >
-              Elevate Local:{" "}
-              <span className="text-gradient-accent">Clinical Authority</span>{" "}
-              &amp; Strategic{" "}
+              {tr("Elevate Local:")}{" "}
+              <span className="text-gradient-accent">{tr("Clinical Authority")}</span>{" "}
+              {tr("& Strategic")}{" "}
               <span className="font-serif italic font-normal text-accent-1">
-                Brand Identity
+                {tr("Brand Identity")}
               </span>
               .
             </motion.h1>
@@ -577,10 +579,7 @@ function ElevateLocalProject() {
               variants={fadeUp}
               className="mt-8 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg"
             >
-              A B2B visual identity for a marketing agency that helps medical
-              clinics across Europe win patient trust and fill appointment books —
-              balancing clinical credibility with modern growth marketing, delivered
-              100% remotely.
+              {tr("A B2B visual identity for a marketing agency that helps medical clinics across Europe win patient trust and fill appointment books — balancing clinical credibility with modern growth marketing, delivered 100% remotely.")}
             </motion.p>
           </Reveal>
 
