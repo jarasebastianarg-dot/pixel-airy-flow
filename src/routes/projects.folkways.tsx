@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { LanguageToggle } from "@/components/LanguageToggle";
 import {
   AnimatePresence,
   motion,
@@ -7,6 +8,7 @@ import {
 } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { useTr } from "@/i18n/projectTranslate";
 import {
   ArrowLeft,
   ArrowUpRight,
@@ -153,6 +155,7 @@ const metrics = [
 type ExecutionCardData = (typeof executionCards)[number];
 
 function ExecutionCard({ card, index }: { card: ExecutionCardData; index: number }) {
+  const { tr } = useTr();
   const Icon = card.icon;
   const isMobile = useIsMobile();
   const [hovered, setHovered] = useState(false);
@@ -205,13 +208,13 @@ function ExecutionCard({ card, index }: { card: ExecutionCardData; index: number
             {String(index + 1).padStart(2, "0")}
           </span>
           <div className="mt-1 text-[0.6rem] font-semibold uppercase tracking-[0.2em] text-accent-1">
-            {card.kicker}
+            {tr(card.kicker)}
           </div>
         </div>
       </div>
 
       <h3 className="relative mt-auto text-lg font-bold leading-tight tracking-tight md:text-[1.05rem] lg:text-lg">
-        {card.title}
+        {tr(card.title)}
       </h3>
 
       <div className="relative mt-3 min-h-[3.75rem]">
@@ -225,7 +228,7 @@ function ExecutionCard({ card, index }: { card: ExecutionCardData; index: number
               transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
               className="absolute inset-x-0 top-0 text-[0.78rem] leading-relaxed text-muted-foreground"
             >
-              {card.body}
+              {tr(card.body)}
             </motion.p>
           ) : (
             <motion.div
@@ -237,7 +240,7 @@ function ExecutionCard({ card, index }: { card: ExecutionCardData; index: number
               className="absolute inset-x-0 top-0 inline-flex items-center gap-1.5 font-mono text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-muted-foreground"
             >
               <Plus className="h-3 w-3" />
-              Hover to expand
+              {tr("Hover to expand")}
             </motion.div>
           )}
         </AnimatePresence>
@@ -300,6 +303,7 @@ function Lightbox({
   width?: "standard" | "wide";
   onClose: () => void;
 }) {
+  const { tr } = useTr();
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
@@ -326,7 +330,7 @@ function Lightbox({
           onClick={onClose}
           role="dialog"
           aria-modal="true"
-          aria-label={label ?? "Image preview"}
+          aria-label={label ?? tr("Image preview")}
         >
           <motion.button
             type="button"
@@ -335,7 +339,7 @@ function Lightbox({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
             className="absolute right-4 top-4 z-10 inline-flex h-11 w-11 items-center justify-center rounded-full bg-background/90 text-foreground shadow-[var(--shadow-card)] transition-colors hover:bg-background md:right-6 md:top-6"
-            aria-label="Close preview"
+            aria-label={tr("Close preview")}
           >
             <X className="h-5 w-5" />
           </motion.button>
@@ -388,6 +392,8 @@ function ScrollPreviewCard({
   onOpen: (src: string, label: string, width?: "standard" | "wide") => void;
   scrollDurationMs?: number;
 }) {
+  const { tr } = useTr();
+  const title = tr(item.title);
   return (
     <motion.div
       variants={fadeUp}
@@ -397,18 +403,18 @@ function ScrollPreviewCard({
         <span className="text-accent-1">
           {String(index + 1).padStart(2, "0")}
         </span>
-        {item.kicker}
+        {tr(item.kicker)}
       </div>
       <button
         type="button"
-        onClick={() => onOpen(item.image, item.title, item.width)}
+        onClick={() => onOpen(item.image, title, item.width)}
         className="group relative block w-full overflow-hidden rounded-[calc(var(--radius)+14px)] border border-border bg-secondary text-left shadow-[var(--shadow-card)] transition-shadow duration-500 hover:shadow-[var(--shadow-card-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-1/60"
-        aria-label={`Open ${item.title} preview`}
+        aria-label={`${tr("Open")} ${title} ${tr("preview")}`}
       >
         <div className="relative aspect-[4/5] w-full overflow-hidden">
           <img
             src={item.image}
-            alt={item.title}
+            alt={title}
             loading="lazy"
             decoding="async"
             style={{ transitionDuration: `${scrollDurationMs}ms`, transform: "translateZ(0)" }}
@@ -418,17 +424,17 @@ function ScrollPreviewCard({
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
           <div className="pointer-events-none absolute right-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-foreground/85 px-2.5 py-1 font-mono text-[0.55rem] font-semibold uppercase tracking-[0.2em] text-background opacity-0 shadow-md transition-opacity duration-300 group-hover:opacity-100">
             <ZoomIn className="h-3 w-3" />
-            Click to zoom
+            {tr("Click to zoom")}
           </div>
         </div>
       </button>
       <div className="mt-5 space-y-2">
         <div className="font-mono text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-accent-1">
-          {item.focus}
+          {tr(item.focus)}
         </div>
-        <div className="text-lg font-bold tracking-tight">{item.title}</div>
+        <div className="text-lg font-bold tracking-tight">{title}</div>
         <p className="text-[0.85rem] leading-relaxed text-muted-foreground">
-          {item.body}
+          {tr(item.body)}
         </p>
       </div>
     </motion.div>
@@ -463,6 +469,7 @@ function PreviewGallery({
 }
 
 function FolkwaysProject() {
+  const { tr } = useTr();
   const [lightbox, setLightbox] = useState<{ src: string; label?: string; width?: "standard" | "wide" } | null>(null);
   const openLightbox = (src: string, label?: string, width?: "standard" | "wide") =>
     setLightbox({ src, label, width });
@@ -483,11 +490,14 @@ function FolkwaysProject() {
             className="group inline-flex items-center gap-2 text-sm font-semibold text-foreground/80 transition-colors hover:text-accent-1"
           >
             <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
-            Back to portfolio
+            {tr("Back to portfolio")}
           </Link>
+          <div className="flex items-center gap-3">
           <span className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-muted-foreground">
-            Case Study / 01
+            {tr("Case Study / 01")}
           </span>
+            <LanguageToggle />
+          </div>
         </div>
       </div>
 
@@ -500,28 +510,27 @@ function FolkwaysProject() {
         <div className="mx-auto max-w-6xl px-6 pb-20 pt-16 md:px-10 md:pb-28 md:pt-24">
           <Reveal stagger={0.12}>
             <motion.div variants={fadeUp}>
-              <SectionLabel>Shopify Expert · E-commerce</SectionLabel>
+              <SectionLabel>{tr("Shopify Expert · E-commerce")}</SectionLabel>
             </motion.div>
             <motion.h1
               variants={fadeUp}
               className="mt-6 max-w-5xl text-4xl font-bold leading-[1.02] tracking-tight md:text-6xl lg:text-[4.5rem]"
             >
-              Folkways: Architecting a{" "}
-              <span className="text-gradient-accent">2,000+ SKU</span>{" "}
-              Website Migration &{" "}
+              {tr("Folkways: Architecting a")}{" "}
+              <span className="text-gradient-accent">{tr("2,000+ SKU")}</span>{" "}
+              {tr("Website Migration &")}{" "}
               <span className="font-serif italic font-normal text-accent-1">
-                Native Retention
+                {tr("Native Retention")}
               </span>{" "}
-              Ecosystem.
+              {tr("Ecosystem.")}
             </motion.h1>
             <motion.p
               variants={fadeUp}
               className="mt-8 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg"
             >
-              A full Shopify 2.0 rebuild plus a native Klaviyo retention
-              engine — from catalog migration to cashback recovery flows and
-              wine club campaigns — engineered directly in Liquid and coded
-              in-house, without a single bloated app.
+              {tr(
+                "A full Shopify 2.0 rebuild plus a native Klaviyo retention engine — from catalog migration to cashback recovery flows and wine club campaigns — engineered directly in Liquid and coded in-house, without a single bloated app.",
+              )}
             </motion.p>
           </Reveal>
 
@@ -534,10 +543,10 @@ function FolkwaysProject() {
               className="group rounded-3xl border border-border bg-card p-6 shadow-[var(--shadow-card)] transition-colors duration-300 hover:border-accent-1/40 hover:shadow-[var(--shadow-elegant)] md:hover:bg-card"
             >
               <div className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
-                Role
+                {tr("Role")}
               </div>
               <div className="mt-3 text-base font-semibold text-foreground transition-colors duration-300 md:text-lg md:group-hover:text-accent-1">
-                Lead E-commerce Developer & Designer
+                {tr("Lead E-commerce Developer & Designer")}
               </div>
             </motion.div>
             <motion.div
@@ -547,7 +556,7 @@ function FolkwaysProject() {
               className="group rounded-3xl border border-border bg-card p-6 shadow-[var(--shadow-card)] transition-colors duration-300 hover:border-accent-1/40 hover:shadow-[var(--shadow-elegant)]"
             >
               <div className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
-                Tech Stack
+                {tr("Tech Stack")}
               </div>
               <div className="mt-3 flex flex-wrap gap-2">
                 {stack.map((t) => (
@@ -557,7 +566,7 @@ function FolkwaysProject() {
                     transition={{ type: "spring", stiffness: 400, damping: 18 }}
                     className="cursor-default rounded-full border border-border bg-secondary px-3 py-1 text-xs font-semibold text-foreground/80 transition-colors duration-200 hover:border-accent-1/50 hover:bg-background hover:text-foreground"
                   >
-                    {t}
+                    {tr(t)}
                   </motion.span>
                 ))}
               </div>
@@ -569,7 +578,7 @@ function FolkwaysProject() {
               className="group rounded-3xl border border-border bg-card p-6 shadow-[var(--shadow-card)] transition-colors duration-300 hover:border-accent-1/40 hover:shadow-[var(--shadow-elegant)]"
             >
               <div className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
-                Focus
+                {tr("Focus")}
               </div>
               <div className="mt-3 flex flex-wrap gap-2">
                 {focus.map((f) => (
@@ -580,7 +589,7 @@ function FolkwaysProject() {
                     className="group/tag inline-flex cursor-default items-center gap-1.5 rounded-full bg-gradient-accent px-3 py-1 text-xs font-semibold text-accent-foreground shadow-[0_2px_8px_-2px_oklch(0.7_0.19_25_/_0.3)] transition-shadow duration-200 hover:shadow-[0_6px_18px_-4px_oklch(0.7_0.19_25_/_0.55)]"
                   >
                     <Sparkles className="h-3 w-3 transition-transform duration-300 group-hover/tag:rotate-12 group-hover/tag:scale-110" />
-                    {f}
+                    {tr(f)}
                   </motion.span>
                 ))}
               </div>
@@ -594,11 +603,11 @@ function FolkwaysProject() {
         <div className="mx-auto max-w-6xl px-6 py-20 md:grid md:grid-cols-12 md:gap-12 md:px-10 md:py-28">
           <Reveal className="md:col-span-4" stagger={0.08}>
             <motion.div variants={fadeUp}>
-              <SectionLabel>01 — Context</SectionLabel>
+              <SectionLabel>{tr("01 — Context")}</SectionLabel>
               <h2 className="mt-6 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
-                The{" "}
+                {tr("The")}{" "}
                 <span className="font-serif italic font-normal text-accent-1">
-                  Friction
+                  {tr("Friction")}
                 </span>
               </h2>
             </motion.div>
@@ -608,24 +617,23 @@ function FolkwaysProject() {
               variants={fadeUp}
               className="text-lg leading-relaxed text-foreground/85 md:text-xl"
             >
-              Moving a massive, complex catalog to Shopify 2.0 required more
-              than a simple theme update. The brand was leaking revenue on
-              two fronts: a storefront suffering from severe{" "}
+              {tr(
+                "Moving a massive, complex catalog to Shopify 2.0 required more than a simple theme update. The brand was leaking revenue on two fronts: a storefront suffering from severe",
+              )}{" "}
               <span className="font-semibold text-foreground">
-                “app bloat,”
+                {tr("“app bloat,”")}
               </span>{" "}
-              and a fragmented email stack that couldn't turn buyers into
-              repeat customers — page load delays on one side, dead retention
-              flows on the other.
+              {tr(
+                "and a fragmented email stack that couldn't turn buyers into repeat customers — page load delays on one side, dead retention flows on the other.",
+              )}
             </motion.p>
             <motion.p
               variants={fadeUp}
               className="mt-6 text-base leading-relaxed text-muted-foreground md:text-lg"
             >
-              The team was juggling multiple single-use apps for cart, upsell
-              and pop-ups while running Klaviyo at a fraction of its
-              potential — draining resources and starving the wine club of
-              the traffic it needed to grow.
+              {tr(
+                "The team was juggling multiple single-use apps for cart, upsell and pop-ups while running Klaviyo at a fraction of its potential — draining resources and starving the wine club of the traffic it needed to grow.",
+              )}
             </motion.p>
           </Reveal>
         </div>
@@ -637,11 +645,11 @@ function FolkwaysProject() {
         <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
           <Reveal className="grid grid-cols-1 gap-10 md:grid-cols-12 md:items-end" stagger={0.1}>
             <motion.div variants={fadeUp} className="md:col-span-7">
-              <SectionLabel>02 — Build</SectionLabel>
+              <SectionLabel>{tr("02 — Build")}</SectionLabel>
               <h2 className="mt-6 text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl">
-                The{" "}
+                {tr("The")}{" "}
                 <span className="font-serif italic font-normal text-accent-1">
-                  Execution
+                  {tr("Execution")}
                 </span>
               </h2>
             </motion.div>
@@ -649,10 +657,9 @@ function FolkwaysProject() {
               variants={fadeUp}
               className="text-base leading-relaxed text-muted-foreground md:col-span-5 md:text-lg"
             >
-              Rebuilding the storefront in Shopify Liquid and rewiring
-              retention inside Klaviyo — one editorial system covering
-              catalog, cart, campaigns and lifecycle email, without
-              compromising the buyer journey or the backend workflow.
+              {tr(
+                "Rebuilding the storefront in Shopify Liquid and rewiring retention inside Klaviyo — one editorial system covering catalog, cart, campaigns and lifecycle email, without compromising the buyer journey or the backend workflow.",
+              )}
             </motion.p>
           </Reveal>
 
@@ -669,11 +676,11 @@ function FolkwaysProject() {
           <div className="mt-20">
             <Reveal className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between" stagger={0.08}>
               <motion.div variants={fadeUp}>
-                <SectionLabel>02.5 — Gallery</SectionLabel>
+                <SectionLabel>{tr("02.5 — Gallery")}</SectionLabel>
                 <h3 className="mt-4 text-3xl font-bold leading-[1.1] tracking-tight md:text-5xl">
-                  Storefront{" "}
+                  {tr("Storefront")}{" "}
                   <span className="font-serif italic font-normal text-accent-1">
-                    in motion
+                    {tr("in motion")}
                   </span>
                 </h3>
               </motion.div>
@@ -681,8 +688,9 @@ function FolkwaysProject() {
                 variants={fadeUp}
                 className="max-w-md text-sm leading-relaxed text-muted-foreground md:text-base"
               >
-                Hover any preview to scroll the full page. Click to open the
-                full-resolution capture.
+                {tr(
+                  "Hover any preview to scroll the full page. Click to open the full-resolution capture.",
+                )}
               </motion.p>
             </Reveal>
             <PreviewGallery items={mockups} onOpen={openLightbox} />
@@ -695,9 +703,9 @@ function FolkwaysProject() {
         <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
           <Reveal className="grid grid-cols-1 gap-10 md:grid-cols-12 md:items-end" stagger={0.1}>
             <motion.div variants={fadeUp} className="md:col-span-7">
-              <SectionLabel>02.75 — Email Marketing</SectionLabel>
+              <SectionLabel>{tr("02.75 — Email Marketing")}</SectionLabel>
               <h2 className="mt-6 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
-                Retention wired into{" "}
+                {tr("Retention wired into")}{" "}
                 <span className="font-serif italic font-normal text-accent-1">
                   Klaviyo
                 </span>
@@ -708,10 +716,9 @@ function FolkwaysProject() {
               variants={fadeUp}
               className="text-base leading-relaxed text-muted-foreground md:col-span-5 md:text-lg"
             >
-              A native retention system built inside Klaviyo — cashback recovery
-              flows and wine club acquisition campaigns designed to turn
-              one-time buyers into a repeat cellar and compound revenue on
-              autopilot.
+              {tr(
+                "A native retention system built inside Klaviyo — cashback recovery flows and wine club acquisition campaigns designed to turn one-time buyers into a repeat cellar and compound revenue on autopilot.",
+              )}
             </motion.p>
           </Reveal>
           <PreviewGallery items={emails} onOpen={openLightbox} scrollDurationMs={9000} />
@@ -730,7 +737,7 @@ function FolkwaysProject() {
               <div className="inline-flex items-center gap-3">
                 <span className="h-px w-8 bg-accent-1" />
                 <span className="font-mono text-xs font-semibold uppercase tracking-[0.24em] text-accent-1">
-                  03 — Outcome
+                  {tr("03 — Outcome")}
                 </span>
               </div>
             </motion.div>
@@ -738,9 +745,9 @@ function FolkwaysProject() {
               variants={fadeUp}
               className="mt-6 max-w-3xl text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl"
             >
-              The{" "}
+              {tr("The")}{" "}
               <span className="font-serif italic font-normal text-accent-1">
-                Impact
+                {tr("Impact")}
               </span>
               .
             </motion.h2>
@@ -764,7 +771,7 @@ function FolkwaysProject() {
                   {m.value}
                 </div>
                 <div className="mt-3 text-sm leading-relaxed text-background/70">
-                  {m.label}
+                  {tr(m.label)}
                 </div>
               </motion.div>
             ))}
@@ -776,12 +783,12 @@ function FolkwaysProject() {
       <section className="border-t border-border/60">
         <div className="mx-auto flex max-w-6xl flex-col items-start gap-8 px-6 py-20 md:flex-row md:items-center md:justify-between md:px-10 md:py-24">
           <div>
-            <SectionLabel>Next</SectionLabel>
+            <SectionLabel>{tr("Next")}</SectionLabel>
             <h3 className="mt-4 max-w-xl text-3xl font-bold leading-[1.1] tracking-tight md:text-4xl">
-              Have a catalog that's outgrown its stack?
+              {tr("Have a catalog that's outgrown its stack?")}
             </h3>
             <p className="mt-3 max-w-lg text-base leading-relaxed text-muted-foreground">
-              I architect Shopify environments that scale — without the app bloat.
+              {tr("I architect Shopify environments that scale — without the app bloat.")}
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-3">
@@ -790,13 +797,13 @@ function FolkwaysProject() {
               className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-3 text-sm font-semibold text-foreground shadow-[var(--shadow-card)] transition-colors hover:bg-secondary"
             >
               <ArrowLeft className="h-4 w-4" />
-              Back to portfolio
+              {tr("Back to portfolio")}
             </Link>
             <a
               href="/#contact"
               className="inline-flex items-center gap-2 rounded-full bg-gradient-accent px-5 py-3 text-sm font-semibold text-accent-foreground shadow-[var(--shadow-accent)] transition-transform hover:-translate-y-0.5"
             >
-              Get in touch
+              {tr("Get in touch")}
               <ArrowUpRight className="h-4 w-4" />
             </a>
           </div>

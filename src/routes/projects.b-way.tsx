@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { LanguageToggle } from "@/components/LanguageToggle";
 import {
   AnimatePresence,
   motion,
@@ -9,6 +10,7 @@ import {
 } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { useTr } from "@/i18n/projectTranslate";
 import {
   ArrowLeft,
   ArrowUpRight,
@@ -246,6 +248,7 @@ function Lightbox({
   label?: string;
   onClose: () => void;
 }) {
+  const { tr } = useTr();
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
@@ -272,7 +275,7 @@ function Lightbox({
           onClick={onClose}
           role="dialog"
           aria-modal="true"
-          aria-label={label ?? "Image preview"}
+          aria-label={label ?? tr("Image preview")}
         >
           <motion.button
             type="button"
@@ -281,7 +284,7 @@ function Lightbox({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
             className="absolute right-4 top-4 z-10 inline-flex h-11 w-11 items-center justify-center rounded-full bg-background/90 text-foreground shadow-[var(--shadow-card)] transition-colors hover:bg-background md:right-6 md:top-6"
-            aria-label="Close preview"
+            aria-label={tr("Close preview")}
           >
             <X className="h-5 w-5" />
           </motion.button>
@@ -356,6 +359,7 @@ function MediaPlaceholder({
 type ExecutionCardData = (typeof executionCards)[number];
 
 function ExecutionCard({ card, index }: { card: ExecutionCardData; index: number }) {
+  const { tr } = useTr();
   const Icon = card.icon;
   const isMobile = useIsMobile();
   const [hovered, setHovered] = useState(false);
@@ -408,13 +412,13 @@ function ExecutionCard({ card, index }: { card: ExecutionCardData; index: number
             {String(index + 1).padStart(2, "0")}
           </span>
           <div className="mt-1 text-[0.6rem] font-semibold uppercase tracking-[0.2em] text-accent-1">
-            {card.kicker}
+            {tr(card.kicker)}
           </div>
         </div>
       </div>
 
       <h3 className="relative mt-auto text-lg font-bold leading-tight tracking-tight md:text-[1.05rem] lg:text-lg">
-        {card.title}
+        {tr(card.title)}
       </h3>
 
       <div className="relative mt-3 min-h-[3.75rem]">
@@ -428,7 +432,7 @@ function ExecutionCard({ card, index }: { card: ExecutionCardData; index: number
               transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
               className="absolute inset-x-0 top-0 text-[0.78rem] leading-relaxed text-muted-foreground"
             >
-              {card.body}
+              {tr(card.body)}
             </motion.p>
           ) : (
             <motion.div
@@ -440,7 +444,7 @@ function ExecutionCard({ card, index }: { card: ExecutionCardData; index: number
               className="absolute inset-x-0 top-0 inline-flex items-center gap-1.5 font-mono text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-muted-foreground"
             >
               <Plus className="h-3 w-3" />
-              Hover to expand
+              {tr("Hover to expand")}
             </motion.div>
           )}
         </AnimatePresence>
@@ -452,6 +456,7 @@ function ExecutionCard({ card, index }: { card: ExecutionCardData; index: number
 const mockups = packaging;
 
 function HorizontalMockups() {
+  const { tr } = useTr();
   const containerRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const [trackWidth, setTrackWidth] = useState(0);
@@ -485,17 +490,17 @@ function HorizontalMockups() {
         <div className="mx-auto w-full max-w-6xl px-6">
           <div className="flex items-end justify-between gap-4">
             <div>
-              <SectionLabel>02.5 — Gallery</SectionLabel>
+              <SectionLabel>{tr("02.5 — Gallery")}</SectionLabel>
               <h3 className="mt-4 text-3xl font-bold leading-[1.05] tracking-tight">
-                Brand Guidelines &amp; Logo Variations{" "}
+                {tr("Brand Guidelines & Logo Variations")}{" "}
                 <span className="font-serif italic font-normal text-accent-1">
-                  Overlap
+                  {tr("Overlap")}
                 </span>
               </h3>
             </div>
           </div>
           <div className="mt-2 font-mono text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
-            Swipe to explore →
+            {tr("Swipe to explore →")}
           </div>
         </div>
         <div
@@ -512,12 +517,12 @@ function HorizontalMockups() {
                 <span className="text-accent-1">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                {m.kicker}
+                {tr(m.kicker)}
               </div>
               <div className="relative aspect-[3/4] w-full overflow-hidden rounded-[calc(var(--radius)+18px)] border border-border bg-card shadow-[var(--shadow-card)]">
-                <img src={m.url} alt={m.label} loading="lazy" decoding="async" className="h-full w-full object-cover" />
+                <img src={m.url} alt={tr(m.label)} loading="lazy" decoding="async" className="h-full w-full object-cover" />
                 <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-4">
-                  <div className="font-mono text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-white/85">{m.label}</div>
+                  <div className="font-mono text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-white/85">{tr(m.label)}</div>
                 </div>
               </div>
             </div>
@@ -534,16 +539,16 @@ function HorizontalMockups() {
         <div className="mx-auto w-full max-w-6xl px-6 md:px-10">
           <div className="flex items-end justify-between gap-6">
             <div>
-              <SectionLabel>02.5 — Gallery</SectionLabel>
+              <SectionLabel>{tr("02.5 — Gallery")}</SectionLabel>
               <h3 className="mt-4 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
-                Brand Guidelines &amp; Logo Variations{" "}
+                {tr("Brand Guidelines & Logo Variations")}{" "}
                 <span className="font-serif italic font-normal text-accent-1">
-                  Overlap
+                  {tr("Overlap")}
                 </span>
               </h3>
             </div>
             <span className="hidden font-mono text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground md:inline">
-              Scroll to explore →
+              {tr("Scroll to explore →")}
             </span>
           </div>
         </div>
@@ -562,12 +567,12 @@ function HorizontalMockups() {
                 <span className="text-accent-1">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                {m.kicker}
+                {tr(m.kicker)}
               </div>
               <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[calc(var(--radius)+18px)] border border-border bg-card shadow-[var(--shadow-card)]">
-                <img src={m.url} alt={m.label} loading="lazy" decoding="async" className="h-full w-full object-cover" />
+                <img src={m.url} alt={tr(m.label)} loading="lazy" decoding="async" className="h-full w-full object-cover" />
                 <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-4">
-                  <div className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-white/85">{m.label}</div>
+                  <div className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-white/85">{tr(m.label)}</div>
                 </div>
               </div>
             </div>
@@ -580,6 +585,7 @@ function HorizontalMockups() {
 }
 
 function BWayProject() {
+  const { tr } = useTr();
   const [lightbox, setLightbox] = useState<{ src: string; label?: string } | null>(null);
   const openLightbox = (src: string, label?: string) => setLightbox({ src, label });
   return (
@@ -598,11 +604,14 @@ function BWayProject() {
             className="group inline-flex items-center gap-2 text-sm font-semibold text-foreground/80 transition-colors hover:text-accent-1"
           >
             <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
-            Back to portfolio
+            {tr("Back to portfolio")}
           </Link>
+          <div className="flex items-center gap-3">
           <span className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-muted-foreground">
-            Case Study / 04
+            {tr("Case Study / 04")}
           </span>
+            <LanguageToggle />
+          </div>
         </div>
       </div>
 
@@ -615,31 +624,29 @@ function BWayProject() {
         <div className="mx-auto max-w-6xl px-6 pb-20 pt-16 md:px-10 md:pb-28 md:pt-24">
           <Reveal stagger={0.12}>
             <motion.div variants={fadeUp}>
-              <SectionLabel>Omnichannel · Global Expansion</SectionLabel>
+              <SectionLabel>{tr("Omnichannel · Global Expansion")}</SectionLabel>
             </motion.div>
             <motion.h1
               variants={fadeUp}
               className="mt-6 max-w-5xl text-4xl font-bold leading-[1.02] tracking-tight md:text-6xl lg:text-[4.5rem]"
             >
-              From{" "}
-              <span className="text-gradient-accent">Packaging Designer</span>{" "}
-              to{" "}
+              {tr("From")}{" "}
+              <span className="text-gradient-accent">{tr("Packaging Designer")}</span>{" "}
+              {tr("to")}{" "}
               <span className="font-serif italic font-normal text-accent-1">
-                Brand Manager
+                {tr("Brand Manager")}
               </span>
-              . Two years scaling B-WAY across 3 markets.
+              . {tr("Two years scaling B-WAY across 3 markets.")}
             </motion.h1>
             <motion.p
               variants={fadeUp}
               className="mt-8 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg"
             >
-              I joined as a{" "}
-              <span className="font-semibold text-foreground">Product Designer</span>{" "}
-              drawing die-cuts on a bench and ended up leading a{" "}
-              <span className="font-semibold text-foreground">6-person team</span>{" "}
-              across the US, Brazil and Argentina — building Shopify stores from
-              zero, running Meta Ads, coaching brand educators and designing the
-              trade-show stands we activated at Barber Week.
+              {tr("I joined as a")}{" "}
+              <span className="font-semibold text-foreground">{tr("Product Designer")}</span>{" "}
+              {tr("drawing die-cuts on a bench and ended up leading a")}{" "}
+              <span className="font-semibold text-foreground">{tr("6-person team")}</span>{" "}
+              {tr("across the US, Brazil and Argentina — building Shopify stores from zero, running Meta Ads, coaching brand educators and designing the trade-show stands we activated at Barber Week.")}
             </motion.p>
           </Reveal>
 
@@ -652,13 +659,13 @@ function BWayProject() {
               className="group rounded-3xl border border-border bg-card p-6 shadow-[var(--shadow-card)] transition-colors duration-300 hover:border-accent-1/40 hover:shadow-[var(--shadow-elegant)] md:hover:bg-card"
             >
               <div className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
-                Role
+                {tr("Role")}
               </div>
               <div className="mt-3 text-base font-semibold text-foreground transition-colors duration-300 md:text-lg md:group-hover:text-accent-1">
-                Product Designer → Brand Manager
+                {tr("Product Designer → Brand Manager")}
               </div>
               <div className="mt-1 font-mono text-[0.65rem] uppercase tracking-[0.22em] text-muted-foreground">
-                2 years · Promoted in-role
+                {tr("2 years · Promoted in-role")}
               </div>
             </motion.div>
             <motion.div
@@ -668,7 +675,7 @@ function BWayProject() {
               className="group rounded-3xl border border-border bg-card p-6 shadow-[var(--shadow-card)] transition-colors duration-300 hover:border-accent-1/40 hover:shadow-[var(--shadow-elegant)]"
             >
               <div className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
-                What I Actually Did
+                {tr("What I Actually Did")}
               </div>
               <div className="mt-3 flex flex-wrap gap-2">
                 {stack.map((t) => (
@@ -678,7 +685,7 @@ function BWayProject() {
                     transition={{ type: "spring", stiffness: 400, damping: 18 }}
                     className="cursor-default rounded-full border border-border bg-secondary px-3 py-1 text-xs font-semibold text-foreground/80 transition-colors duration-200 hover:border-accent-1/50 hover:bg-background hover:text-foreground"
                   >
-                    {t}
+                    {tr(t)}
                   </motion.span>
                 ))}
               </div>
@@ -690,7 +697,7 @@ function BWayProject() {
               className="group rounded-3xl border border-border bg-card p-6 shadow-[var(--shadow-card)] transition-colors duration-300 hover:border-accent-1/40 hover:shadow-[var(--shadow-elegant)]"
             >
               <div className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
-                Focus
+                {tr("Focus")}
               </div>
               <div className="mt-3 flex flex-wrap gap-2">
                 {focus.map((f) => (
@@ -701,7 +708,7 @@ function BWayProject() {
                     className="group/tag inline-flex cursor-default items-center gap-1.5 rounded-full bg-gradient-accent px-3 py-1 text-xs font-semibold text-accent-foreground shadow-[0_2px_8px_-2px_oklch(0.7_0.19_25_/_0.3)] transition-shadow duration-200 hover:shadow-[0_6px_18px_-4px_oklch(0.7_0.19_25_/_0.55)]"
                   >
                     <Sparkles className="h-3 w-3 transition-transform duration-300 group-hover/tag:rotate-12 group-hover/tag:scale-110" />
-                    {f}
+                    {tr(f)}
                   </motion.span>
                 ))}
               </div>
@@ -715,11 +722,11 @@ function BWayProject() {
         <div className="mx-auto max-w-6xl px-6 py-20 md:grid md:grid-cols-12 md:gap-12 md:px-10 md:py-28">
           <Reveal className="md:col-span-4" stagger={0.08}>
             <motion.div variants={fadeUp}>
-              <SectionLabel>01 — Context</SectionLabel>
+              <SectionLabel>{tr("01 — Context")}</SectionLabel>
               <h2 className="mt-6 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
-                The{" "}
+                {tr("The")}{" "}
                 <span className="font-serif italic font-normal text-accent-1">
-                  Friction
+                  {tr("Friction")}
                 </span>
               </h2>
             </motion.div>
@@ -729,21 +736,17 @@ function BWayProject() {
               variants={fadeUp}
               className="mb-6 text-2xl font-bold tracking-tight md:text-3xl"
             >
-              The Challenge
+              {tr("The Challenge")}
             </motion.h3>
             <motion.p
               variants={fadeUp}
               className="text-lg leading-relaxed text-foreground/85 md:text-xl"
             >
-              The barber-tools market was{" "}
-              <span className="font-semibold text-foreground">stuck in corporate blacks and safe grays</span>.
-              B-WAY needed a visual system loud enough to disrupt it, and an
-              operation big enough to sell it across{" "}
-              <span className="font-semibold text-accent-1">the US, Brazil and Argentina</span>.
-              I started at the packaging bench — die-cuts, interior architecture,
-              print production — and every quarter, the scope kept expanding: social
-              design, e-commerce, campaigns, educators, events. Two years later, I
-              was running the whole brand.
+              {tr("The barber-tools market was")}{" "}
+              <span className="font-semibold text-foreground">{tr("stuck in corporate blacks and safe grays")}</span>.
+              {tr("B-WAY needed a visual system loud enough to disrupt it, and an operation big enough to sell it across")}{" "}
+              <span className="font-semibold text-accent-1">{tr("the US, Brazil and Argentina")}</span>.
+              {tr("I started at the packaging bench — die-cuts, interior architecture, print production — and every quarter, the scope kept expanding: social design, e-commerce, campaigns, educators, events. Two years later, I was running the whole brand.")}
             </motion.p>
           </Reveal>
         </div>
@@ -757,13 +760,13 @@ function BWayProject() {
             >
               <img
                 src={brandCover.url}
-                alt="B-WAY full product line"
+                alt={tr("B-WAY full product line")}
                 loading="lazy" decoding="async"
                 className="aspect-[16/9] w-full object-cover"
               />
               <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 to-transparent p-6">
                 <div className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-white/85">
-                  Where it started — the full B-WAY packaging system
+                  {tr("Where it started — the full B-WAY packaging system")}
                 </div>
               </div>
             </motion.div>
@@ -776,22 +779,20 @@ function BWayProject() {
         <div className="mx-auto max-w-6xl px-6 py-16 md:px-10 md:py-20">
           <Reveal className="grid grid-cols-1 gap-6 md:grid-cols-12 md:items-end" stagger={0.1}>
             <motion.div variants={fadeUp} className="md:col-span-7">
-              <SectionLabel>02 — The Growth Story</SectionLabel>
+              <SectionLabel>{tr("02 — The Growth Story")}</SectionLabel>
               <h2 className="mt-4 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
-                Four{" "}
+                {tr("Four")}{" "}
                 <span className="font-serif italic font-normal text-accent-1">
-                  chapters
+                  {tr("chapters")}
                 </span>
-                , one promotion.
+                , {tr("one promotion.")}
               </h2>
             </motion.div>
             <motion.p
               variants={fadeUp}
               className="text-sm leading-relaxed text-muted-foreground md:col-span-5 md:text-base"
             >
-              The scope kept compounding. Each chapter added a new discipline on
-              top of the last — packaging, then digital, then commerce, then people.
-              By chapter four I was leading the team that made all of it move.
+              {tr("The scope kept compounding. Each chapter added a new discipline on top of the last — packaging, then digital, then commerce, then people. By chapter four I was leading the team that made all of it move.")}
             </motion.p>
           </Reveal>
 
@@ -820,15 +821,15 @@ function BWayProject() {
                       </div>
                     </div>
                     <div className="mt-3 font-mono text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
-                      {c.kicker}
+                      {tr(c.kicker)}
                     </div>
                   </div>
                   <div className="relative md:col-span-9">
                     <h3 className="text-xl font-bold tracking-tight md:text-2xl">
-                      {c.title}
+                      {tr(c.title)}
                     </h3>
                     <p className="mt-2 text-sm leading-relaxed text-foreground/80 md:text-base">
-                      {c.body}
+                      {tr(c.body)}
                     </p>
                     <div className="mt-4 flex flex-wrap gap-2">
                       {c.tags.map((t) => (
@@ -836,7 +837,7 @@ function BWayProject() {
                           key={t}
                           className="rounded-full border border-border bg-secondary px-2.5 py-1 text-[0.7rem] font-semibold text-foreground/80"
                         >
-                          {t}
+                          {tr(t)}
                         </span>
                       ))}
                     </div>
@@ -852,11 +853,11 @@ function BWayProject() {
           <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
             <Reveal className="grid grid-cols-1 gap-8 md:grid-cols-12 md:items-start" stagger={0.08}>
               <motion.div variants={fadeUp} className="md:col-span-7">
-                <SectionLabel>02.5 — Packaging</SectionLabel>
+                <SectionLabel>{tr("02.5 — Packaging")}</SectionLabel>
                 <h2 className="mt-6 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
-                  Every box the brand{" "}
+                  {tr("Every box the brand")}{" "}
                   <span className="font-serif italic font-normal text-accent-1">
-                    shipped
+                    {tr("shipped")}
                   </span>
                   .
                 </h2>
@@ -865,19 +866,17 @@ function BWayProject() {
                 variants={fadeUp}
                 className="text-base leading-relaxed text-muted-foreground md:col-span-5 md:text-lg"
               >
-                I designed the packaging for every B-WAY product line — die-cuts,
-                interior architecture, print production and retail-shelf systems —{" "}
+                {tr("I designed the packaging for every B-WAY product line — die-cuts, interior architecture, print production and retail-shelf systems —")}{" "}
                 <span className="font-semibold text-foreground">
-                  coordinating production directly with the factory in China
+                  {tr("coordinating production directly with the factory in China")}
                 </span>{" "}
-                from die-cut sign-off to final print runs.{" "}
+                {tr("from die-cut sign-off to final print runs.")}{" "}
                 <span className="font-semibold text-foreground">
-                  I also supervised every single launch
+                  {tr("I also supervised every single launch")}
                 </span>{" "}
-                the brand rolled out from my first day through the end of{" "}
+                {tr("the brand rolled out from my first day through the end of")}{" "}
                 <span className="font-semibold text-accent-1">2025</span> —
-                keeping the visual language consistent across the whole product
-                range and three markets.
+                {tr("keeping the visual language consistent across the whole product range and three markets.")}
               </motion.p>
             </Reveal>
 
@@ -894,18 +893,18 @@ function BWayProject() {
                   whileHover={{ y: -4 }}
                   transition={{ type: "spring", stiffness: 260, damping: 22 }}
                   className="group relative block w-full rounded-[calc(var(--radius)+14px)] border border-border bg-card text-left shadow-[var(--shadow-card)] transition-shadow duration-500 hover:shadow-[var(--shadow-card-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-1/60"
-                  aria-label={`Open ${p.label} preview`}
+                  aria-label={`${tr("Open")} ${tr(p.label)} ${tr("preview")}`}
                 >
                   <div className="absolute -top-3 left-3 z-10 inline-flex items-center gap-2 rounded-full border border-border bg-background px-2.5 py-1 font-mono text-[0.55rem] font-semibold uppercase tracking-[0.22em] text-muted-foreground shadow-[var(--shadow-card)]">
                     <span className="text-accent-1">
                       {String(i + 1).padStart(2, "0")}
                     </span>
-                    {p.kicker}
+                    {tr(p.kicker)}
                   </div>
                   <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[calc(var(--radius)+14px)] bg-background">
                     <img
                       src={p.url}
-                      alt={p.label}
+                      alt={tr(p.label)}
                       loading="lazy" decoding="async"
                       className="h-full w-full object-cover transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]"
                       draggable={false}
@@ -913,11 +912,11 @@ function BWayProject() {
                     <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-90 transition-opacity duration-500 group-hover:opacity-100" />
                     <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-between gap-2 p-3">
                       <span className="font-mono text-[0.6rem] font-semibold uppercase tracking-[0.22em] text-white/90">
-                        {p.label}
+                        {tr(p.label)}
                       </span>
                       <span className="inline-flex items-center gap-1 rounded-full bg-white/95 px-2 py-0.5 font-mono text-[0.55rem] font-semibold uppercase tracking-[0.2em] text-foreground opacity-0 shadow-md transition-opacity duration-300 group-hover:opacity-100">
                         <ZoomIn className="h-3 w-3" />
-                        Zoom
+                        {tr("Zoom")}
                       </span>
                     </div>
                   </div>
@@ -938,7 +937,7 @@ function BWayProject() {
                   variants={fadeUp}
                   className="rounded-full border border-border bg-card px-3 py-1 text-xs font-semibold text-foreground/80"
                 >
-                  {t}
+                  {tr(t)}
                 </motion.span>
               ))}
             </Reveal>
@@ -950,11 +949,11 @@ function BWayProject() {
           <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
             <Reveal className="grid grid-cols-1 gap-8 md:grid-cols-12 md:items-end" stagger={0.08}>
               <motion.div variants={fadeUp} className="md:col-span-7">
-                <SectionLabel>02.6 — E-Commerce</SectionLabel>
+                <SectionLabel>{tr("02.6 — E-Commerce")}</SectionLabel>
                 <h2 className="mt-6 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
-                  Shopify stores built{" "}
+                  {tr("Shopify stores built")}{" "}
                   <span className="font-serif italic font-normal text-accent-1">
-                    from zero
+                    {tr("from zero")}
                   </span>
                   .
                 </h2>
@@ -963,10 +962,7 @@ function BWayProject() {
                 variants={fadeUp}
                 className="text-base leading-relaxed text-muted-foreground md:col-span-5 md:text-lg"
               >
-                Architected and launched the USA, Brazil and Argentina
-                storefronts — catalog, checkout, localized copy and payment
-                logic — then ran them day-to-day. Scroll each preview to see
-                the full homepage.
+                {tr("Architected and launched the USA, Brazil and Argentina storefronts — catalog, checkout, localized copy and payment logic — then ran them day-to-day. Scroll each preview to see the full homepage.")}
               </motion.p>
             </Reveal>
             <Reveal className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3" stagger={0.08}>
@@ -979,11 +975,11 @@ function BWayProject() {
                   whileHover={{ y: -4 }}
                   transition={{ type: "spring", stiffness: 260, damping: 22 }}
                   className="group relative block w-full overflow-hidden rounded-[calc(var(--radius)+14px)] border border-border bg-card text-left shadow-[var(--shadow-card)] transition-shadow duration-500 hover:shadow-[var(--shadow-card-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-1/60"
-                  aria-label={`Open ${s.label} preview`}
+                  aria-label={`${tr("Open")} ${tr(s.label)} ${tr("preview")}`}
                 >
                   <div className="flex items-center justify-between border-b border-border bg-secondary/60 px-4 py-2.5">
                     <span className="font-mono text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
-                      {s.label}
+                      {tr(s.label)}
                     </span>
                     <span className="rounded-full bg-gradient-accent px-2 py-0.5 text-[0.6rem] font-bold uppercase tracking-widest text-accent-foreground">
                       {s.country}
@@ -992,7 +988,7 @@ function BWayProject() {
                   <div className="relative aspect-[4/5] w-full overflow-hidden bg-background">
                     <img
                       src={s.url}
-                      alt={s.label}
+                      alt={tr(s.label)}
                       loading="lazy" decoding="async"
                       className="block h-auto w-full select-none transition-transform duration-[7000ms] ease-linear group-hover:-translate-y-[70%]"
                       draggable={false}
@@ -1000,7 +996,7 @@ function BWayProject() {
                     <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                     <div className="pointer-events-none absolute right-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-foreground/85 px-2.5 py-1 font-mono text-[0.55rem] font-semibold uppercase tracking-[0.2em] text-background opacity-0 shadow-md transition-opacity duration-300 group-hover:opacity-100">
                       <ZoomIn className="h-3 w-3" />
-                      Click to zoom
+                      {tr("Click to zoom")}
                     </div>
                   </div>
                 </motion.button>
@@ -1014,30 +1010,28 @@ function BWayProject() {
           <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
             <Reveal className="max-w-4xl" stagger={0.08}>
               <motion.div variants={fadeUp}>
-                <SectionLabel>03 — On The Floor</SectionLabel>
+                <SectionLabel>{tr("03 — On The Floor")}</SectionLabel>
                 <h2 className="mt-6 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
-                  Events I{" "}
+                  {tr("Events I")}{" "}
                   <span className="font-serif italic font-normal text-accent-1">
-                    organized
+                    {tr("organized")}
                   </span>{" "}
-                  &amp; designed.
+                  &amp; {tr("designed.")}
                 </h2>
               </motion.div>
               <motion.p
                 variants={fadeUp}
                 className="mt-6 text-base leading-relaxed text-muted-foreground md:text-lg"
               >
-                I led the{" "}
+                {tr("I led the")}{" "}
                 <span className="font-semibold text-foreground">
-                  stand design, graphics, logistics and on-site build
+                  {tr("stand design, graphics, logistics and on-site build")}
                 </span>{" "}
-                for every B-WAY activation — the local events in Argentina and the
-                international ones in Brazil and the US.{" "}
+                {tr("for every B-WAY activation — the local events in Argentina and the international ones in Brazil and the US.")}{" "}
                 <span className="font-semibold text-accent-1">
-                  Traveled to Brazil to organize everything on the ground, assemble
-                  the stand and represent the brand on the floor
+                  {tr("Traveled to Brazil to organize everything on the ground, assemble the stand and represent the brand on the floor")}
                 </span>{" "}
-                alongside the educator team.
+                {tr("alongside the educator team.")}
               </motion.p>
             </Reveal>
             <Reveal
@@ -1054,18 +1048,18 @@ function BWayProject() {
                 >
                   <div className="mb-4 flex flex-wrap items-center gap-3">
                     <span className="rounded-full bg-gradient-accent px-3 py-1 font-mono text-[0.65rem] font-bold uppercase tracking-[0.22em] text-accent-foreground shadow-[var(--shadow-accent)]">
-                      Evento · {r.country}
+                      {tr("Evento")} · {r.country}
                     </span>
                     <span className="font-mono text-[0.6rem] font-semibold uppercase tracking-[0.22em] text-muted-foreground">
-                      Stand design · graphics · build · organized by me
+                      {tr("Stand design · graphics · build · organized by me")}
                     </span>
                   </div>
                   <div>
                     <h3 className="text-xl font-bold tracking-tight md:text-2xl">
-                      {r.title}
+                      {tr(r.title)}
                     </h3>
                     <p className="mt-2 text-sm leading-relaxed text-muted-foreground md:text-base">
-                      {r.body}
+                      {tr(r.body)}
                     </p>
                   </div>
                   <div className="mt-5 self-end overflow-hidden rounded-[calc(var(--radius)+18px)] border border-border bg-black shadow-[var(--shadow-card)]">
@@ -1101,7 +1095,7 @@ function BWayProject() {
               <div className="inline-flex items-center gap-3">
                 <span className="h-px w-8 bg-accent-1" />
                 <span className="font-mono text-xs font-semibold uppercase tracking-[0.24em] text-accent-1">
-                  03 — Outcome
+                  {tr("03 — Outcome")}
                 </span>
               </div>
             </motion.div>
@@ -1109,19 +1103,19 @@ function BWayProject() {
               variants={fadeUp}
               className="mt-6 max-w-3xl text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl"
             >
-              How I{" "}
+              {tr("How I")}{" "}
               <span className="font-serif italic font-normal text-accent-1">
-                grew
+                {tr("grew")}
               </span>{" "}
-              in this role.
+              {tr("in this role.")}
             </motion.h2>
             <motion.p
               variants={fadeUp}
               className="mt-6 max-w-2xl text-base leading-relaxed text-background/70 md:text-lg"
             >
-              Two years of compounding scope — I walked in as a Product Designer
-              and walked out as a Brand Manager owning packaging, digital, ops,
-              marketing and events across three countries.
+              {tr(
+                "Two years of compounding scope — I walked in as a Product Designer and walked out as a Brand Manager owning packaging, digital, ops, marketing and events across three countries.",
+              )}
             </motion.p>
           </Reveal>
 
@@ -1143,7 +1137,7 @@ function BWayProject() {
                   {m.value}
                 </div>
                 <div className="mt-3 text-sm leading-relaxed text-background/70">
-                  {m.label}
+                  {tr(m.label)}
                 </div>
               </motion.div>
             ))}
@@ -1155,12 +1149,12 @@ function BWayProject() {
       <section className="border-t border-border/60">
         <div className="mx-auto flex max-w-6xl flex-col items-start gap-8 px-6 py-20 md:flex-row md:items-center md:justify-between md:px-10 md:py-24">
           <div>
-            <SectionLabel>Next</SectionLabel>
+            <SectionLabel>{tr("Next")}</SectionLabel>
             <h3 className="mt-4 max-w-xl text-3xl font-bold leading-[1.1] tracking-tight md:text-4xl">
-              Scaling a brand across borders and channels?
+              {tr("Scaling a brand across borders and channels?")}
             </h3>
             <p className="mt-3 max-w-lg text-base leading-relaxed text-muted-foreground">
-              I build omnichannel infrastructure — from Shopify storefronts to trade-show floors.
+              {tr("I build omnichannel infrastructure — from Shopify storefronts to trade-show floors.")}
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-3">
@@ -1169,13 +1163,13 @@ function BWayProject() {
               className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-3 text-sm font-semibold text-foreground shadow-[var(--shadow-card)] transition-colors hover:bg-secondary"
             >
               <ArrowLeft className="h-4 w-4" />
-              Back to portfolio
+              {tr("Back to portfolio")}
             </Link>
             <a
               href="/#contact"
               className="inline-flex items-center gap-2 rounded-full bg-gradient-accent px-5 py-3 text-sm font-semibold text-accent-foreground shadow-[var(--shadow-accent)] transition-transform hover:-translate-y-0.5"
             >
-              Get in touch
+              {tr("Get in touch")}
               <ArrowUpRight className="h-4 w-4" />
             </a>
           </div>

@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { LanguageToggle } from "@/components/LanguageToggle";
 import {
   AnimatePresence,
   motion,
@@ -9,6 +10,7 @@ import {
 } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { useTr } from "@/i18n/projectTranslate";
 import {
   ArrowLeft,
   ArrowUpRight,
@@ -200,6 +202,7 @@ function LogoPlate({
   variant: LogoVariant;
   aspect: string;
 }) {
+  const { tr } = useTr();
   const isDark = variant.theme === "dark";
   return (
     <div
@@ -212,7 +215,7 @@ function LogoPlate({
       <div className="absolute inset-0 flex items-center justify-center p-10 md:p-14">
         <img
           src={variant.src}
-          alt={variant.alt}
+          alt={tr(variant.alt)}
           className="max-h-full max-w-full object-contain"
           loading="lazy" decoding="async"
         />
@@ -224,9 +227,9 @@ function LogoPlate({
             : "border-border bg-background/70 text-muted-foreground backdrop-blur"
         }`}
       >
-        <span className="font-mono">{variant.label}</span>
+        <span className="font-mono">{tr(variant.label)}</span>
         <span className={`font-mono ${isDark ? "text-accent-1" : "text-accent-1"}`}>
-          {variant.kicker}
+          {tr(variant.kicker)}
         </span>
       </div>
     </div>
@@ -234,6 +237,7 @@ function LogoPlate({
 }
 
 function ExecutionCard({ card, index }: { card: ExecutionCardData; index: number }) {
+  const { tr } = useTr();
   const Icon = card.icon;
   const isMobile = useIsMobile();
   const [hovered, setHovered] = useState(false);
@@ -286,13 +290,13 @@ function ExecutionCard({ card, index }: { card: ExecutionCardData; index: number
             {String(index + 1).padStart(2, "0")}
           </span>
           <div className="mt-1 text-[0.6rem] font-semibold uppercase tracking-[0.2em] text-accent-1">
-            {card.kicker}
+            {tr(card.kicker)}
           </div>
         </div>
       </div>
 
       <h3 className="relative mt-auto text-lg font-bold leading-tight tracking-tight md:text-[1.05rem] lg:text-lg">
-        {card.title}
+        {tr(card.title)}
       </h3>
 
       <div className="relative mt-3 min-h-[3.75rem]">
@@ -306,7 +310,7 @@ function ExecutionCard({ card, index }: { card: ExecutionCardData; index: number
               transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
               className="absolute inset-x-0 top-0 text-[0.78rem] leading-relaxed text-muted-foreground"
             >
-              {card.body}
+              {tr(card.body)}
             </motion.p>
           ) : (
             <motion.div
@@ -318,7 +322,7 @@ function ExecutionCard({ card, index }: { card: ExecutionCardData; index: number
               className="absolute inset-x-0 top-0 inline-flex items-center gap-1.5 font-mono text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-muted-foreground"
             >
               <Plus className="h-3 w-3" />
-              Hover to expand
+              {tr("Hover to expand")}
             </motion.div>
           )}
         </AnimatePresence>
@@ -411,6 +415,7 @@ const palette = [
 ];
 
 function HorizontalMockups() {
+  const { tr } = useTr();
   const containerRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const [trackWidth, setTrackWidth] = useState(0);
@@ -444,17 +449,17 @@ function HorizontalMockups() {
         <div className="mx-auto w-full max-w-6xl px-6">
           <div className="flex items-end justify-between gap-4">
             <div>
-              <SectionLabel>02.5 — Gallery</SectionLabel>
+              <SectionLabel>{tr("02.5 — Gallery")}</SectionLabel>
               <h3 className="mt-4 text-3xl font-bold leading-[1.05] tracking-tight">
-                Brand Guidelines &amp; Logo Variations{" "}
+                {tr("Brand Guidelines & Logo Variations")}{" "}
                 <span className="font-serif italic font-normal text-accent-1">
-                  Overlap
+                  {tr("Overlap")}
                 </span>
               </h3>
             </div>
           </div>
           <div className="mt-2 font-mono text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
-            Swipe to explore →
+            {tr("Swipe to explore →")}
           </div>
         </div>
         <div
@@ -471,7 +476,7 @@ function HorizontalMockups() {
                 <span className="text-accent-1">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                {m.kicker}
+                {tr(m.kicker)}
               </div>
               <LogoPlate variant={m} aspect="aspect-[3/4]" />
             </div>
@@ -488,16 +493,16 @@ function HorizontalMockups() {
         <div className="mx-auto w-full max-w-6xl px-6 md:px-10">
           <div className="flex items-end justify-between gap-6">
             <div>
-              <SectionLabel>02.5 — Gallery</SectionLabel>
+              <SectionLabel>{tr("02.5 — Gallery")}</SectionLabel>
               <h3 className="mt-4 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
-                Brand Guidelines &amp; Logo Variations{" "}
+                {tr("Brand Guidelines & Logo Variations")}{" "}
                 <span className="font-serif italic font-normal text-accent-1">
-                  Overlap
+                  {tr("Overlap")}
                 </span>
               </h3>
             </div>
             <span className="hidden font-mono text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground md:inline">
-              Scroll to explore →
+              {tr("Scroll to explore →")}
             </span>
           </div>
         </div>
@@ -516,7 +521,7 @@ function HorizontalMockups() {
                 <span className="text-accent-1">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                {m.kicker}
+                {tr(m.kicker)}
               </div>
               <LogoPlate variant={m} aspect="aspect-[4/3]" />
             </div>
@@ -529,6 +534,7 @@ function HorizontalMockups() {
 }
 
 function ElevateLocalProject() {
+  const { tr } = useTr();
   return (
     <main className="min-h-screen w-full overflow-x-hidden bg-background text-foreground">
       {/* Top bar */}
@@ -539,11 +545,14 @@ function ElevateLocalProject() {
             className="group inline-flex items-center gap-2 text-sm font-semibold text-foreground/80 transition-colors hover:text-accent-1"
           >
             <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
-            Back to portfolio
+            {tr("Back to portfolio")}
           </Link>
+          <div className="flex items-center gap-3">
           <span className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-muted-foreground">
-            Case Study / 03
+            {tr("Case Study / 03")}
           </span>
+            <LanguageToggle />
+          </div>
         </div>
       </div>
 
@@ -556,17 +565,17 @@ function ElevateLocalProject() {
         <div className="mx-auto max-w-6xl px-6 pb-20 pt-16 md:px-10 md:pb-28 md:pt-24">
           <Reveal stagger={0.12}>
             <motion.div variants={fadeUp}>
-              <SectionLabel>Brand Identity · B2B Medical</SectionLabel>
+              <SectionLabel>{tr("Brand Identity · B2B Medical")}</SectionLabel>
             </motion.div>
             <motion.h1
               variants={fadeUp}
               className="mt-6 max-w-5xl text-4xl font-bold leading-[1.02] tracking-tight md:text-6xl lg:text-[4.5rem]"
             >
-              Elevate Local:{" "}
-              <span className="text-gradient-accent">Clinical Authority</span>{" "}
-              &amp; Strategic{" "}
+              {tr("Elevate Local:")}{" "}
+              <span className="text-gradient-accent">{tr("Clinical Authority")}</span>{" "}
+              {tr("& Strategic")}{" "}
               <span className="font-serif italic font-normal text-accent-1">
-                Brand Identity
+                {tr("Brand Identity")}
               </span>
               .
             </motion.h1>
@@ -574,10 +583,7 @@ function ElevateLocalProject() {
               variants={fadeUp}
               className="mt-8 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg"
             >
-              A B2B visual identity for a marketing agency that helps medical
-              clinics across Europe win patient trust and fill appointment books —
-              balancing clinical credibility with modern growth marketing, delivered
-              100% remotely.
+              {tr("A B2B visual identity for a marketing agency that helps medical clinics across Europe win patient trust and fill appointment books — balancing clinical credibility with modern growth marketing, delivered 100% remotely.")}
             </motion.p>
           </Reveal>
 
@@ -590,10 +596,10 @@ function ElevateLocalProject() {
               className="group rounded-3xl border border-border bg-card p-6 shadow-[var(--shadow-card)] transition-colors duration-300 hover:border-accent-1/40 hover:shadow-[var(--shadow-elegant)] md:hover:bg-card"
             >
               <div className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
-                Role
+                {tr("Role")}
               </div>
               <div className="mt-3 text-base font-semibold text-foreground transition-colors duration-300 md:text-lg md:group-hover:text-accent-1">
-                Brand Identity Designer
+                {tr("Brand Identity Designer")}
               </div>
             </motion.div>
             <motion.div
@@ -603,7 +609,7 @@ function ElevateLocalProject() {
               className="group rounded-3xl border border-border bg-card p-6 shadow-[var(--shadow-card)] transition-colors duration-300 hover:border-accent-1/40 hover:shadow-[var(--shadow-elegant)]"
             >
               <div className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
-                Tech Stack
+                {tr("Tech Stack")}
               </div>
               <div className="mt-3 flex flex-wrap gap-2">
                 {stack.map((t) => (
@@ -625,7 +631,7 @@ function ElevateLocalProject() {
               className="group rounded-3xl border border-border bg-card p-6 shadow-[var(--shadow-card)] transition-colors duration-300 hover:border-accent-1/40 hover:shadow-[var(--shadow-elegant)]"
             >
               <div className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
-                Focus
+                {tr("Focus")}
               </div>
               <div className="mt-3 flex flex-wrap gap-2">
                 {focus.map((f) => (
@@ -636,7 +642,7 @@ function ElevateLocalProject() {
                     className="group/tag inline-flex cursor-default items-center gap-1.5 rounded-full bg-gradient-accent px-3 py-1 text-xs font-semibold text-accent-foreground shadow-[0_2px_8px_-2px_oklch(0.7_0.19_25_/_0.3)] transition-shadow duration-200 hover:shadow-[0_6px_18px_-4px_oklch(0.7_0.19_25_/_0.55)]"
                   >
                     <Sparkles className="h-3 w-3 transition-transform duration-300 group-hover/tag:rotate-12 group-hover/tag:scale-110" />
-                    {f}
+                    {tr(f)}
                   </motion.span>
                 ))}
               </div>
@@ -650,11 +656,11 @@ function ElevateLocalProject() {
         <div className="mx-auto max-w-6xl px-6 py-20 md:grid md:grid-cols-12 md:gap-12 md:px-10 md:py-28">
           <Reveal className="md:col-span-4" stagger={0.08}>
             <motion.div variants={fadeUp}>
-              <SectionLabel>01 — Context</SectionLabel>
+              <SectionLabel>{tr("01 — Context")}</SectionLabel>
               <h2 className="mt-6 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
-                The{" "}
+                {tr("The")}{" "}
                 <span className="font-serif italic font-normal text-accent-1">
-                  Friction
+                  {tr("Friction")}
                 </span>
               </h2>
             </motion.div>
@@ -664,22 +670,17 @@ function ElevateLocalProject() {
               variants={fadeUp}
               className="text-lg leading-relaxed text-foreground/85 md:text-xl"
             >
-              Elevate Local is a marketing agency built to help{" "}
+              {tr("Elevate Local is a marketing agency built to help")}{" "}
               <span className="font-semibold text-foreground">
-                medical clinics across Europe
+                {tr("medical clinics across Europe")}
               </span>{" "}
-              attract more patients and own their local market. In a sector where
-              trust is the currency, the brand had to feel as credible as a white-coat
-              consultation — not as flashy as a consumer app.
+              {tr("attract more patients and own their local market. In a sector where trust is the currency, the brand had to feel as credible as a white-coat consultation — not as flashy as a consumer app.")}
             </motion.p>
             <motion.p
               variants={fadeUp}
               className="mt-6 text-base leading-relaxed text-muted-foreground md:text-lg"
             >
-              The challenge was building a visual identity from scratch that
-              bridged this gap: reassuring clinic directors and patients, while
-              still projecting the speed and precision of a performance marketing
-              team — all managed asynchronously across time zones.
+              {tr("The challenge was building a visual identity from scratch that bridged this gap: reassuring clinic directors and patients, while still projecting the speed and precision of a performance marketing team — all managed asynchronously across time zones.")}
             </motion.p>
           </Reveal>
         </div>
@@ -694,15 +695,15 @@ function ElevateLocalProject() {
               <div className="relative flex aspect-[16/8] items-center justify-center px-10 md:px-24">
                 <img
                   src={elHorizontalLight.url}
-                  alt="Elevate Local horizontal logotype on Obsidiana Mate"
+                  alt={tr("Elevate Local horizontal logotype on Obsidiana Mate")}
                   loading="lazy"
                   decoding="async"
                   className="max-h-[60%] w-full max-w-4xl object-contain"
                 />
               </div>
               <div className="relative flex items-center justify-between border-t border-white/10 bg-black/20 px-6 py-4 font-mono text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-white/70 backdrop-blur">
-                <span>Elevate Local · Primary Lockup</span>
-                <span className="text-accent-1">Matte Obsidian #1E1A17</span>
+                <span>{tr("Elevate Local · Primary Lockup")}</span>
+                <span className="text-accent-1">{tr("Matte Obsidian")} #1E1A17</span>
               </div>
             </motion.div>
           </Reveal>
@@ -714,11 +715,11 @@ function ElevateLocalProject() {
         <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
           <Reveal className="grid grid-cols-1 gap-10 md:grid-cols-12 md:items-end" stagger={0.1}>
             <motion.div variants={fadeUp} className="md:col-span-7">
-              <SectionLabel>02 — Build</SectionLabel>
+              <SectionLabel>{tr("02 — Build")}</SectionLabel>
               <h2 className="mt-6 text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl">
-                The{" "}
+                {tr("The")}{" "}
                 <span className="font-serif italic font-normal text-accent-1">
-                  Execution
+                  {tr("Execution")}
                 </span>
               </h2>
             </motion.div>
@@ -726,9 +727,7 @@ function ElevateLocalProject() {
               variants={fadeUp}
               className="text-base leading-relaxed text-muted-foreground md:col-span-5 md:text-lg"
             >
-              Designing a cohesive visual identity grounded in target audience
-              psychology and European market research, delivered through a
-              highly optimized, asynchronous remote collaboration framework.
+              {tr("Designing a cohesive visual identity grounded in target audience psychology and European market research, delivered through a highly optimized, asynchronous remote collaboration framework.")}
             </motion.p>
           </Reveal>
 
@@ -751,22 +750,20 @@ function ElevateLocalProject() {
         <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
           <Reveal className="grid grid-cols-1 gap-10 md:grid-cols-12 md:items-end" stagger={0.1}>
             <motion.div variants={fadeUp} className="md:col-span-7">
-              <SectionLabel>02.6 — Color</SectionLabel>
+              <SectionLabel>{tr("02.6 — Color")}</SectionLabel>
               <h2 className="mt-6 text-4xl font-bold leading-[1.05] tracking-tight md:text-5xl">
-                The{" "}
+                {tr("The")}{" "}
                 <span className="font-serif italic font-normal text-accent-1">
-                  Mineral
+                  {tr("Mineral")}
                 </span>{" "}
-                Palette
+                {tr("Palette")}
               </h2>
             </motion.div>
             <motion.p
               variants={fadeUp}
               className="text-base leading-relaxed text-muted-foreground md:col-span-5 md:text-lg"
             >
-              Neutral, mineral tones that simulate granite and high-gram paper —
-              chosen to feel clean, clinical, and reassuring to patients and
-              clinic directors, not noisy like a consumer app.
+              {tr("Neutral, mineral tones that simulate granite and high-gram paper — chosen to feel clean, clinical, and reassuring to patients and clinic directors, not noisy like a consumer app.")}
             </motion.p>
           </Reveal>
 
@@ -795,10 +792,10 @@ function ElevateLocalProject() {
                   </div>
                   <div className="p-5">
                     <div className="text-base font-bold tracking-tight text-foreground">
-                      {c.name}
+                      {tr(c.name)}
                     </div>
                     <div className="mt-1 font-mono text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-accent-1">
-                      {c.role}
+                      {tr(c.role)}
                     </div>
                     <dl className="mt-5 divide-y divide-border/70 border-t border-border/70 font-mono">
                       <div className="flex items-center justify-between gap-3 py-2.5">
@@ -839,22 +836,20 @@ function ElevateLocalProject() {
         <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
           <Reveal className="grid grid-cols-1 gap-10 md:grid-cols-12 md:items-end" stagger={0.1}>
             <motion.div variants={fadeUp} className="md:col-span-7">
-              <SectionLabel>02.7 — Type</SectionLabel>
+              <SectionLabel>{tr("02.7 — Type")}</SectionLabel>
               <h2 className="mt-6 text-4xl font-bold leading-[1.05] tracking-tight md:text-5xl">
                 Geomanist —{" "}
                 <span className="font-serif italic font-normal text-accent-1">
-                  Editorial
+                  {tr("Editorial")}
                 </span>{" "}
-                Authority
+                {tr("Authority")}
               </h2>
             </motion.div>
             <motion.p
               variants={fadeUp}
               className="text-base leading-relaxed text-muted-foreground md:col-span-5 md:text-lg"
             >
-              A voice engineered to speak eye-to-eye with clinic directors and
-              medical professionals: stable, methodical, and trustworthy. No
-              generic startup type.
+              {tr("A voice engineered to speak eye-to-eye with clinic directors and medical professionals: stable, methodical, and trustworthy. No generic startup type.")}
             </motion.p>
           </Reveal>
 
@@ -867,20 +862,18 @@ function ElevateLocalProject() {
             >
               <div className="flex items-center justify-between font-mono text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
                 <span>Geomanist · Ultra</span>
-                <span className="text-accent-1">Headline</span>
+                <span className="text-accent-1">{tr("Headline")}</span>
               </div>
               <div className="mt-8 text-[3.5rem] font-black leading-[0.95] tracking-[-0.04em] text-foreground md:text-[5rem]">
                 Aa
               </div>
               <p className="mt-6 text-base leading-relaxed text-muted-foreground md:text-[0.95rem]">
-                Reserved for hero statements, landing headlines and section
-                openers. The heaviest cut in the family — used sparingly to
-                assert authority the moment a clinic director lands on the page.
+                {tr("Reserved for hero statements, landing headlines and section openers. The heaviest cut in the family — used sparingly to assert authority the moment a clinic director lands on the page.")}
               </p>
               <div className="mt-6 flex flex-wrap gap-2 border-t border-border pt-4 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-muted-foreground">
-                <span className="rounded-full border border-border bg-secondary px-2.5 py-1">Hero</span>
-                <span className="rounded-full border border-border bg-secondary px-2.5 py-1">Section titles</span>
-                <span className="rounded-full border border-border bg-secondary px-2.5 py-1">Pitch decks</span>
+                <span className="rounded-full border border-border bg-secondary px-2.5 py-1">{tr("Hero")}</span>
+                <span className="rounded-full border border-border bg-secondary px-2.5 py-1">{tr("Section titles")}</span>
+                <span className="rounded-full border border-border bg-secondary px-2.5 py-1">{tr("Pitch decks")}</span>
               </div>
             </motion.div>
 
@@ -892,20 +885,18 @@ function ElevateLocalProject() {
             >
               <div className="flex items-center justify-between font-mono text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
                 <span>Geomanist · Medium</span>
-                <span className="text-accent-1">Body &amp; Subhead</span>
+                <span className="text-accent-1">{tr("Body & Subhead")}</span>
               </div>
               <div className="mt-8 text-[3.5rem] font-medium leading-[0.95] tracking-[-0.03em] text-foreground md:text-[5rem]">
                 Aa
               </div>
               <p className="mt-6 text-base leading-relaxed text-muted-foreground md:text-[0.95rem]">
-                The workhorse cut. Handles subheads, running copy, UI labels
-                and technical documentation — optimized for legibility on long
-                digital reads without losing editorial rhythm.
+                {tr("The workhorse cut. Handles subheads, running copy, UI labels and technical documentation — optimized for legibility on long digital reads without losing editorial rhythm.")}
               </p>
               <div className="mt-6 flex flex-wrap gap-2 border-t border-border pt-4 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-muted-foreground">
-                <span className="rounded-full border border-border bg-secondary px-2.5 py-1">Body copy</span>
-                <span className="rounded-full border border-border bg-secondary px-2.5 py-1">Subheads</span>
-                <span className="rounded-full border border-border bg-secondary px-2.5 py-1">UI &amp; docs</span>
+                <span className="rounded-full border border-border bg-secondary px-2.5 py-1">{tr("Body copy")}</span>
+                <span className="rounded-full border border-border bg-secondary px-2.5 py-1">{tr("Subheads")}</span>
+                <span className="rounded-full border border-border bg-secondary px-2.5 py-1">{tr("UI & docs")}</span>
               </div>
             </motion.div>
           </Reveal>
@@ -925,7 +916,7 @@ function ElevateLocalProject() {
               <div className="inline-flex items-center gap-3">
                 <span className="h-px w-8 bg-accent-1" />
                 <span className="font-mono text-xs font-semibold uppercase tracking-[0.24em] text-accent-1">
-                  03 — Outcome
+                  {tr("03 — Outcome")}
                 </span>
               </div>
             </motion.div>
@@ -933,9 +924,9 @@ function ElevateLocalProject() {
               variants={fadeUp}
               className="mt-6 max-w-3xl text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl"
             >
-              The{" "}
+              {tr("The")}{" "}
               <span className="font-serif italic font-normal text-accent-1">
-                Impact
+                {tr("Impact")}
               </span>
               .
             </motion.h2>
@@ -959,7 +950,7 @@ function ElevateLocalProject() {
                   {m.value}
                 </div>
                 <div className="mt-3 text-sm leading-relaxed text-background/70">
-                  {m.label}
+                  {tr(m.label)}
                 </div>
               </motion.div>
             ))}
@@ -971,12 +962,12 @@ function ElevateLocalProject() {
       <section className="border-t border-border/60">
         <div className="mx-auto flex max-w-6xl flex-col items-start gap-8 px-6 py-20 md:flex-row md:items-center md:justify-between md:px-10 md:py-24">
           <div>
-            <SectionLabel>Next</SectionLabel>
+            <SectionLabel>{tr("Next")}</SectionLabel>
             <h3 className="mt-4 max-w-xl text-3xl font-bold leading-[1.1] tracking-tight md:text-4xl">
-              Building a brand that needs to earn instant trust?
+              {tr("Building a brand that needs to earn instant trust?")}
             </h3>
             <p className="mt-3 max-w-lg text-base leading-relaxed text-muted-foreground">
-              I design B2B identities engineered for authority — delivered fully async.
+              {tr("I design B2B identities engineered for authority — delivered fully async.")}
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-3">
@@ -985,13 +976,13 @@ function ElevateLocalProject() {
               className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-3 text-sm font-semibold text-foreground shadow-[var(--shadow-card)] transition-colors hover:bg-secondary"
             >
               <ArrowLeft className="h-4 w-4" />
-              Back to portfolio
+              {tr("Back to portfolio")}
             </Link>
             <a
               href="/#contact"
               className="inline-flex items-center gap-2 rounded-full bg-gradient-accent px-5 py-3 text-sm font-semibold text-accent-foreground shadow-[var(--shadow-accent)] transition-transform hover:-translate-y-0.5"
             >
-              Get in touch
+              {tr("Get in touch")}
               <ArrowUpRight className="h-4 w-4" />
             </a>
           </div>

@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { LanguageToggle } from "@/components/LanguageToggle";
 import {
   AnimatePresence,
   motion,
@@ -7,6 +8,7 @@ import {
 } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { useTr } from "@/i18n/projectTranslate";
 import {
   ArrowLeft,
   ArrowUpRight,
@@ -182,6 +184,7 @@ function MediaPlaceholder({
 type ExecutionCardData = (typeof executionCards)[number];
 
 function ExecutionCard({ card, index }: { card: ExecutionCardData; index: number }) {
+  const { tr } = useTr();
   const Icon = card.icon;
   const isMobile = useIsMobile();
   const [hovered, setHovered] = useState(false);
@@ -239,14 +242,14 @@ function ExecutionCard({ card, index }: { card: ExecutionCardData; index: number
             {String(index + 1).padStart(2, "0")}
           </span>
           <div className="mt-1 text-[0.6rem] font-semibold uppercase tracking-[0.2em] text-accent-1">
-            {card.kicker}
+            {tr(card.kicker)}
           </div>
         </div>
       </div>
 
       {/* Title always visible */}
       <h3 className="relative mt-auto text-lg font-bold leading-tight tracking-tight md:text-[1.05rem] lg:text-lg">
-        {card.title}
+        {tr(card.title)}
       </h3>
 
       {/* Swap: helper vs body */}
@@ -261,7 +264,7 @@ function ExecutionCard({ card, index }: { card: ExecutionCardData; index: number
               transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
               className="absolute inset-x-0 top-0 text-[0.78rem] leading-relaxed text-muted-foreground"
             >
-              {card.body}
+              {tr(card.body)}
             </motion.p>
           ) : (
             <motion.div
@@ -273,7 +276,7 @@ function ExecutionCard({ card, index }: { card: ExecutionCardData; index: number
               className="absolute inset-x-0 top-0 inline-flex items-center gap-1.5 font-mono text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-muted-foreground"
             >
               <Plus className="h-3 w-3" />
-              Hover to expand
+              {tr("Hover to expand")}
             </motion.div>
           )}
         </AnimatePresence>
@@ -351,6 +354,7 @@ function Lightbox({
   width?: "standard" | "wide";
   onClose: () => void;
 }) {
+  const { tr } = useTr();
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
@@ -377,7 +381,7 @@ function Lightbox({
           onClick={onClose}
           role="dialog"
           aria-modal="true"
-          aria-label={label ?? "Image preview"}
+          aria-label={label ?? tr("Image preview")}
         >
           <motion.button
             type="button"
@@ -386,13 +390,13 @@ function Lightbox({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
             className="absolute right-4 top-4 z-10 inline-flex h-11 w-11 items-center justify-center rounded-full bg-background/90 text-foreground shadow-[var(--shadow-card)] transition-colors hover:bg-background md:right-6 md:top-6"
-            aria-label="Close preview"
+            aria-label={tr("Close preview")}
           >
             <X className="h-5 w-5" />
           </motion.button>
           {label ? (
             <div className="pointer-events-none absolute left-1/2 top-4 -translate-x-1/2 rounded-full bg-background/90 px-4 py-1.5 font-mono text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-foreground shadow-[var(--shadow-card)] md:top-6">
-              {label}
+              {tr(label)}
             </div>
           ) : null}
           <motion.div
@@ -431,6 +435,7 @@ function ScrollPreviewCard({
   onOpen: (src: string, label: string, width?: "standard" | "wide") => void;
   scrollDurationMs?: number;
 }) {
+  const { tr } = useTr();
   return (
     <motion.div
       variants={fadeUp}
@@ -440,18 +445,18 @@ function ScrollPreviewCard({
         <span className="text-accent-1">
           {String(index + 1).padStart(2, "0")}
         </span>
-        {item.kicker}
+        {tr(item.kicker)}
       </div>
       <button
         type="button"
         onClick={() => onOpen(item.image, item.title, item.kicker === "Home" || item.kicker === "PDP" ? "wide" : "standard")}
         className="group relative block w-full overflow-hidden rounded-[calc(var(--radius)+14px)] border border-border bg-[#E4EDF7] text-left shadow-[var(--shadow-card)] transition-shadow duration-500 hover:shadow-[var(--shadow-card-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-1/60"
-        aria-label={`Open ${item.title} preview`}
+        aria-label={tr(`Open ${item.title} preview`)}
       >
         <div className="relative aspect-[4/5] w-full overflow-hidden">
           <img
             src={item.image}
-            alt={item.title}
+            alt={tr(item.title)}
             loading="lazy" decoding="async"
             style={{ transitionDuration: `${scrollDurationMs}ms` }}
             className="block h-auto w-full select-none ease-linear [image-rendering:auto] group-hover:-translate-y-[70%]"
@@ -460,17 +465,17 @@ function ScrollPreviewCard({
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
           <div className="pointer-events-none absolute right-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-foreground/85 px-2.5 py-1 font-mono text-[0.55rem] font-semibold uppercase tracking-[0.2em] text-background opacity-0 shadow-md transition-opacity duration-300 group-hover:opacity-100">
             <ZoomIn className="h-3 w-3" />
-            Click to zoom
+            {tr("Click to zoom")}
           </div>
         </div>
       </button>
       <div className="mt-5 space-y-2">
         <div className="font-mono text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-accent-1">
-          {item.focus}
+          {tr(item.focus)}
         </div>
-        <div className="text-lg font-bold tracking-tight">{item.title}</div>
+        <div className="text-lg font-bold tracking-tight">{tr(item.title)}</div>
         <p className="text-[0.85rem] leading-relaxed text-muted-foreground">
-          {item.body}
+          {tr(item.body)}
         </p>
       </div>
     </motion.div>
@@ -505,6 +510,7 @@ function PreviewGallery({
 }
 
 function PawRoyaltyProject() {
+  const { tr } = useTr();
   const [lightbox, setLightbox] = useState<{ src: string; label?: string; width?: "standard" | "wide" } | null>(null);
   const openLightbox = (src: string, label?: string, width?: "standard" | "wide") => setLightbox({ src, label, width });
   return (
@@ -524,11 +530,14 @@ function PawRoyaltyProject() {
             className="group inline-flex items-center gap-2 text-sm font-semibold text-foreground/80 transition-colors hover:text-accent-1"
           >
             <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
-            Back to portfolio
+            {tr("Back to portfolio")}
           </Link>
+          <div className="flex items-center gap-3">
           <span className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-muted-foreground">
-            Case Study / 02
+            {tr("Case Study / 02")}
           </span>
+            <LanguageToggle />
+          </div>
         </div>
       </div>
 
@@ -541,17 +550,17 @@ function PawRoyaltyProject() {
         <div className="mx-auto max-w-6xl px-6 pb-20 pt-16 md:px-10 md:pb-28 md:pt-24">
           <Reveal stagger={0.12}>
             <motion.div variants={fadeUp}>
-              <SectionLabel>Shopify Launch · E-commerce</SectionLabel>
+              <SectionLabel>{tr("Shopify Launch · E-commerce")}</SectionLabel>
             </motion.div>
             <motion.h1
               variants={fadeUp}
               className="mt-6 max-w-5xl text-4xl font-bold leading-[1.02] tracking-tight md:text-6xl lg:text-[4.5rem]"
             >
-              Paw Royalty: Full-Stack{" "}
-              <span className="text-gradient-accent">E-Commerce Launch</span>{" "}
+              {tr("Paw Royalty: Full-Stack")}{" "}
+              <span className="text-gradient-accent">{tr("E-Commerce Launch")}</span>{" "}
               &{" "}
               <span className="font-serif italic font-normal text-accent-1">
-                High-Converting UX
+                {tr("High-Converting UX")}
               </span>
               .
             </motion.h1>
@@ -559,9 +568,9 @@ function PawRoyaltyProject() {
               variants={fadeUp}
               className="mt-8 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg"
             >
-              A brand incubated from zero — storefront, UX and retention system
-              engineered directly in Shopify Liquid, tuned for day-one recurring
-              revenue.
+              {tr(
+                "A brand incubated from zero — storefront, UX and retention system engineered directly in Shopify Liquid, tuned for day-one recurring revenue.",
+              )}
             </motion.p>
           </Reveal>
 
@@ -574,10 +583,10 @@ function PawRoyaltyProject() {
               className="group rounded-3xl border border-border bg-card p-6 shadow-[var(--shadow-card)] transition-colors duration-300 hover:border-accent-1/40 hover:shadow-[var(--shadow-elegant)] md:hover:bg-card"
             >
               <div className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
-                Role
+                {tr("Role")}
               </div>
               <div className="mt-3 text-base font-semibold text-foreground transition-colors duration-300 md:text-lg md:group-hover:text-accent-1">
-                Lead E-commerce Developer & Designer
+                {tr("Lead E-commerce Developer & Designer")}
               </div>
             </motion.div>
             <motion.div
@@ -587,7 +596,7 @@ function PawRoyaltyProject() {
               className="group rounded-3xl border border-border bg-card p-6 shadow-[var(--shadow-card)] transition-colors duration-300 hover:border-accent-1/40 hover:shadow-[var(--shadow-elegant)]"
             >
               <div className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
-                Tech Stack
+                {tr("Tech Stack")}
               </div>
               <div className="mt-3 flex flex-wrap gap-2">
                 {stack.map((t) => (
@@ -597,7 +606,7 @@ function PawRoyaltyProject() {
                     transition={{ type: "spring", stiffness: 400, damping: 18 }}
                     className="cursor-default rounded-full border border-border bg-secondary px-3 py-1 text-xs font-semibold text-foreground/80 transition-colors duration-200 hover:border-accent-1/50 hover:bg-background hover:text-foreground"
                   >
-                    {t}
+                    {tr(t)}
                   </motion.span>
                 ))}
               </div>
@@ -609,7 +618,7 @@ function PawRoyaltyProject() {
               className="group rounded-3xl border border-border bg-card p-6 shadow-[var(--shadow-card)] transition-colors duration-300 hover:border-accent-1/40 hover:shadow-[var(--shadow-elegant)]"
             >
               <div className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
-                Focus
+                {tr("Focus")}
               </div>
               <div className="mt-3 flex flex-wrap gap-2">
                 {focus.map((f) => (
@@ -620,7 +629,7 @@ function PawRoyaltyProject() {
                     className="group/tag inline-flex cursor-default items-center gap-1.5 rounded-full bg-gradient-accent px-3 py-1 text-xs font-semibold text-accent-foreground shadow-[0_2px_8px_-2px_oklch(0.7_0.19_25_/_0.3)] transition-shadow duration-200 hover:shadow-[0_6px_18px_-4px_oklch(0.7_0.19_25_/_0.55)]"
                   >
                     <Sparkles className="h-3 w-3 transition-transform duration-300 group-hover/tag:rotate-12 group-hover/tag:scale-110" />
-                    {f}
+                    {tr(f)}
                   </motion.span>
                 ))}
               </div>
@@ -634,11 +643,11 @@ function PawRoyaltyProject() {
         <div className="mx-auto max-w-6xl px-6 py-20 md:grid md:grid-cols-12 md:gap-12 md:px-10 md:py-28">
           <Reveal className="md:col-span-4" stagger={0.08}>
             <motion.div variants={fadeUp}>
-              <SectionLabel>01 — Context</SectionLabel>
+              <SectionLabel>{tr("01 — Context")}</SectionLabel>
               <h2 className="mt-6 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
-                The{" "}
+                {tr("The")}{" "}
                 <span className="font-serif italic font-normal text-accent-1">
-                  Friction
+                  {tr("Friction")}
                 </span>
               </h2>
             </motion.div>
@@ -648,13 +657,13 @@ function PawRoyaltyProject() {
               variants={fadeUp}
               className="text-lg leading-relaxed text-foreground/85 md:text-xl"
             >
-              Launching a new brand in the highly competitive pet care market
-              requires more than just an aesthetic template. The challenge was
-              building a digital presence from{" "}
-              <span className="font-semibold text-foreground">absolute zero</span>{" "}
-              that could immediately convey trust, educate the customer through
-              information-dense product pages, and convert cold traffic into
-              recurring revenue without relying on a pre-existing customer base.
+              {tr(
+                "Launching a new brand in the highly competitive pet care market requires more than just an aesthetic template. The challenge was building a digital presence from",
+              )}{" "}
+              <span className="font-semibold text-foreground">{tr("absolute zero")}</span>{" "}
+              {tr(
+                "that could immediately convey trust, educate the customer through information-dense product pages, and convert cold traffic into recurring revenue without relying on a pre-existing customer base.",
+              )}
             </motion.p>
           </Reveal>
         </div>
@@ -665,11 +674,11 @@ function PawRoyaltyProject() {
         <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
           <Reveal className="grid grid-cols-1 gap-10 md:grid-cols-12 md:items-end" stagger={0.1}>
             <motion.div variants={fadeUp} className="md:col-span-7">
-              <SectionLabel>02 — Build</SectionLabel>
+              <SectionLabel>{tr("02 — Build")}</SectionLabel>
               <h2 className="mt-6 text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl">
-                The{" "}
+                {tr("The")}{" "}
                 <span className="font-serif italic font-normal text-accent-1">
-                  Execution
+                  {tr("Execution")}
                 </span>
               </h2>
             </motion.div>
@@ -677,10 +686,9 @@ function PawRoyaltyProject() {
               variants={fadeUp}
               className="text-base leading-relaxed text-muted-foreground md:col-span-5 md:text-lg"
             >
-              Bypassing rigid themes and static mockups to architect the entire
-              digital storefront directly in Shopify Liquid. This provided
-              absolute creative freedom and a high-performance foundation built
-              specifically for scaling.
+              {tr(
+                "Bypassing rigid themes and static mockups to architect the entire digital storefront directly in Shopify Liquid. This provided absolute creative freedom and a high-performance foundation built specifically for scaling.",
+              )}
             </motion.p>
           </Reveal>
 
@@ -697,11 +705,11 @@ function PawRoyaltyProject() {
           <div className="mt-20">
             <Reveal className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between" stagger={0.08}>
               <motion.div variants={fadeUp}>
-                <SectionLabel>02.5 — Gallery</SectionLabel>
+                <SectionLabel>{tr("02.5 — Gallery")}</SectionLabel>
                 <h3 className="mt-4 text-3xl font-bold leading-[1.1] tracking-tight md:text-5xl">
-                  Storefront{" "}
+                  {tr("Storefront")}{" "}
                   <span className="font-serif italic font-normal text-accent-1">
-                    in motion
+                    {tr("in motion")}
                   </span>
                 </h3>
               </motion.div>
@@ -709,8 +717,9 @@ function PawRoyaltyProject() {
                 variants={fadeUp}
                 className="max-w-md text-sm leading-relaxed text-muted-foreground md:text-base"
               >
-                Hover any preview to scroll the full page. Click to open the
-                full-resolution capture.
+                {tr(
+                  "Hover any preview to scroll the full page. Click to open the full-resolution capture.",
+                )}
               </motion.p>
             </Reveal>
             <PreviewGallery items={mockups} onOpen={openLightbox} />
@@ -723,9 +732,9 @@ function PawRoyaltyProject() {
         <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
           <Reveal className="grid grid-cols-1 gap-10 md:grid-cols-12 md:items-end" stagger={0.1}>
             <motion.div variants={fadeUp} className="md:col-span-7">
-              <SectionLabel>02.75 — Email Marketing</SectionLabel>
+              <SectionLabel>{tr("02.75 — Email Marketing")}</SectionLabel>
               <h2 className="mt-6 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
-                Retention wired into{" "}
+                {tr("Retention wired into")}{" "}
                 <span className="font-serif italic font-normal text-accent-1">
                   Klaviyo
                 </span>
@@ -736,10 +745,9 @@ function PawRoyaltyProject() {
               variants={fadeUp}
               className="text-base leading-relaxed text-muted-foreground md:col-span-5 md:text-lg"
             >
-              A full-funnel email system — welcome, subscribe-and-save
-              retention and flagship product campaigns — designed and coded
-              inside Klaviyo. The channel now drives 22% of total revenue
-              with a 48% average open rate and a 30× ROI on automations.
+              {tr(
+                "A full-funnel email system — welcome, subscribe-and-save retention and flagship product campaigns — designed and coded inside Klaviyo. The channel now drives 22% of total revenue with a 48% average open rate and a 30× ROI on automations.",
+              )}
             </motion.p>
           </Reveal>
           <PreviewGallery items={emails} onOpen={openLightbox} scrollDurationMs={9000} />
@@ -758,7 +766,7 @@ function PawRoyaltyProject() {
               <div className="inline-flex items-center gap-3">
                 <span className="h-px w-8 bg-accent-1" />
                 <span className="font-mono text-xs font-semibold uppercase tracking-[0.24em] text-accent-1">
-                  03 — Outcome
+                  {tr("03 — Outcome")}
                 </span>
               </div>
             </motion.div>
@@ -766,9 +774,9 @@ function PawRoyaltyProject() {
               variants={fadeUp}
               className="mt-6 max-w-3xl text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl"
             >
-              The{" "}
+              {tr("The")}{" "}
               <span className="font-serif italic font-normal text-accent-1">
-                Impact
+                {tr("Impact")}
               </span>
               .
             </motion.h2>
@@ -792,7 +800,7 @@ function PawRoyaltyProject() {
                   {m.value}
                 </div>
                 <div className="mt-3 text-sm leading-relaxed text-background/70">
-                  {m.label}
+                  {tr(m.label)}
                 </div>
               </motion.div>
             ))}
@@ -804,13 +812,14 @@ function PawRoyaltyProject() {
       <section className="border-t border-border/60">
         <div className="mx-auto flex max-w-6xl flex-col items-start gap-8 px-6 py-20 md:flex-row md:items-center md:justify-between md:px-10 md:py-24">
           <div>
-            <SectionLabel>Next</SectionLabel>
+            <SectionLabel>{tr("Next")}</SectionLabel>
             <h3 className="mt-4 max-w-xl text-3xl font-bold leading-[1.1] tracking-tight md:text-4xl">
-              Launching something new?
+              {tr("Launching something new?")}
             </h3>
             <p className="mt-3 max-w-lg text-base leading-relaxed text-muted-foreground">
-              I incubate brands end-to-end — from identity to a storefront built
-              for recurring revenue.
+              {tr(
+                "I incubate brands end-to-end — from identity to a storefront built for recurring revenue.",
+              )}
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-3">
@@ -819,13 +828,13 @@ function PawRoyaltyProject() {
               className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-3 text-sm font-semibold text-foreground shadow-[var(--shadow-card)] transition-colors hover:bg-secondary"
             >
               <ArrowLeft className="h-4 w-4" />
-              Back to portfolio
+              {tr("Back to portfolio")}
             </Link>
             <a
               href="/#contact"
               className="inline-flex items-center gap-2 rounded-full bg-gradient-accent px-5 py-3 text-sm font-semibold text-accent-foreground shadow-[var(--shadow-accent)] transition-transform hover:-translate-y-0.5"
             >
-              Get in touch
+              {tr("Get in touch")}
               <ArrowUpRight className="h-4 w-4" />
             </a>
           </div>
