@@ -584,6 +584,7 @@ function HorizontalMockups() {
 }
 
 function BWayProject() {
+  const { tr } = useTr();
   const [lightbox, setLightbox] = useState<{ src: string; label?: string } | null>(null);
   const openLightbox = (src: string, label?: string) => setLightbox({ src, label });
   return (
@@ -602,10 +603,10 @@ function BWayProject() {
             className="group inline-flex items-center gap-2 text-sm font-semibold text-foreground/80 transition-colors hover:text-accent-1"
           >
             <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
-            Back to portfolio
+            {tr("Back to portfolio")}
           </Link>
           <span className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-muted-foreground">
-            Case Study / 04
+            {tr("Case Study / 04")}
           </span>
         </div>
       </div>
@@ -625,25 +626,23 @@ function BWayProject() {
               variants={fadeUp}
               className="mt-6 max-w-5xl text-4xl font-bold leading-[1.02] tracking-tight md:text-6xl lg:text-[4.5rem]"
             >
-              From{" "}
-              <span className="text-gradient-accent">Packaging Designer</span>{" "}
-              to{" "}
+              {tr("From")}{" "}
+              <span className="text-gradient-accent">{tr("Packaging Designer")}</span>{" "}
+              {tr("to")}{" "}
               <span className="font-serif italic font-normal text-accent-1">
-                Brand Manager
+                {tr("Brand Manager")}
               </span>
-              . Two years scaling B-WAY across 3 markets.
+              . {tr("Two years scaling B-WAY across 3 markets.")}
             </motion.h1>
             <motion.p
               variants={fadeUp}
               className="mt-8 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg"
             >
-              I joined as a{" "}
-              <span className="font-semibold text-foreground">Product Designer</span>{" "}
-              drawing die-cuts on a bench and ended up leading a{" "}
-              <span className="font-semibold text-foreground">6-person team</span>{" "}
-              across the US, Brazil and Argentina — building Shopify stores from
-              zero, running Meta Ads, coaching brand educators and designing the
-              trade-show stands we activated at Barber Week.
+              {tr("I joined as a")}{" "}
+              <span className="font-semibold text-foreground">{tr("Product Designer")}</span>{" "}
+              {tr("drawing die-cuts on a bench and ended up leading a")}{" "}
+              <span className="font-semibold text-foreground">{tr("6-person team")}</span>{" "}
+              {tr("across the US, Brazil and Argentina — building Shopify stores from zero, running Meta Ads, coaching brand educators and designing the trade-show stands we activated at Barber Week.")}
             </motion.p>
           </Reveal>
 
@@ -656,13 +655,13 @@ function BWayProject() {
               className="group rounded-3xl border border-border bg-card p-6 shadow-[var(--shadow-card)] transition-colors duration-300 hover:border-accent-1/40 hover:shadow-[var(--shadow-elegant)] md:hover:bg-card"
             >
               <div className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
-                Role
+                {tr("Role")}
               </div>
               <div className="mt-3 text-base font-semibold text-foreground transition-colors duration-300 md:text-lg md:group-hover:text-accent-1">
-                Product Designer → Brand Manager
+                {tr("Product Designer → Brand Manager")}
               </div>
               <div className="mt-1 font-mono text-[0.65rem] uppercase tracking-[0.22em] text-muted-foreground">
-                2 years · Promoted in-role
+                {tr("2 years · Promoted in-role")}
               </div>
             </motion.div>
             <motion.div
@@ -672,7 +671,7 @@ function BWayProject() {
               className="group rounded-3xl border border-border bg-card p-6 shadow-[var(--shadow-card)] transition-colors duration-300 hover:border-accent-1/40 hover:shadow-[var(--shadow-elegant)]"
             >
               <div className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
-                What I Actually Did
+                {tr("What I Actually Did")}
               </div>
               <div className="mt-3 flex flex-wrap gap-2">
                 {stack.map((t) => (
@@ -682,7 +681,7 @@ function BWayProject() {
                     transition={{ type: "spring", stiffness: 400, damping: 18 }}
                     className="cursor-default rounded-full border border-border bg-secondary px-3 py-1 text-xs font-semibold text-foreground/80 transition-colors duration-200 hover:border-accent-1/50 hover:bg-background hover:text-foreground"
                   >
-                    {t}
+                    {tr(t)}
                   </motion.span>
                 ))}
               </div>
@@ -694,7 +693,7 @@ function BWayProject() {
               className="group rounded-3xl border border-border bg-card p-6 shadow-[var(--shadow-card)] transition-colors duration-300 hover:border-accent-1/40 hover:shadow-[var(--shadow-elegant)]"
             >
               <div className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
-                Focus
+                {tr("Focus")}
               </div>
               <div className="mt-3 flex flex-wrap gap-2">
                 {focus.map((f) => (
@@ -705,7 +704,7 @@ function BWayProject() {
                     className="group/tag inline-flex cursor-default items-center gap-1.5 rounded-full bg-gradient-accent px-3 py-1 text-xs font-semibold text-accent-foreground shadow-[0_2px_8px_-2px_oklch(0.7_0.19_25_/_0.3)] transition-shadow duration-200 hover:shadow-[0_6px_18px_-4px_oklch(0.7_0.19_25_/_0.55)]"
                   >
                     <Sparkles className="h-3 w-3 transition-transform duration-300 group-hover/tag:rotate-12 group-hover/tag:scale-110" />
-                    {f}
+                    {tr(f)}
                   </motion.span>
                 ))}
               </div>
