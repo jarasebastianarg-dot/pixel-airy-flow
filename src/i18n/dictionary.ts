@@ -143,7 +143,7 @@ export const dictionary = {
     about: {
       heading: { pre: "Systemic Logic. ", em: "Relentless Discipline." },
       bio: "I'm Sebastián. My background merges academic graphic design with deep technical execution. I build automation workflows and highly customized e-commerce architectures, because beautiful design is useless if it doesn't perform. I bring endurance and precision to every brand I scale.",
-      downloadCv: "Download Résumé",
+      downloadCv: "Download Resume",
       email: "Email",
       copy: "Copy",
       copied: "Copied",
