@@ -639,7 +639,7 @@ function Index() {
               <MagneticButton
                 href={cvAsset.url}
                 download="JaraSebastian_CV.pdf"
-                className="group inline-flex min-w-0 items-center justify-center gap-2 break-words rounded-full bg-gradient-accent px-7 py-3.5 sm:px-8 sm:py-4 text-center text-sm font-semibold text-accent-foreground shadow-[var(--shadow-accent)] transition-transform duration-200 active:scale-95"
+                className="group inline-flex min-w-0 items-center justify-center gap-2 break-words rounded-full bg-gradient-accent px-8 py-4 text-center text-sm font-semibold text-accent-foreground shadow-[var(--shadow-accent)] transition-transform duration-200 active:scale-95"
               >
                 <Download className="h-4 w-4 shrink-0" />
                 {t.about.downloadCv}
@@ -1118,7 +1118,7 @@ function SocialLink({
       target={target}
       rel={isExternal ? "noopener noreferrer" : undefined}
       aria-label={label}
-      className="inline-flex min-w-0 flex-1 items-center justify-center gap-2 break-words rounded-full border border-border bg-card px-5 py-3.5 text-sm font-semibold transition-transform duration-200 hover:bg-secondary active:scale-95"
+      className="inline-flex min-w-0 flex-1 items-center justify-center gap-2 break-words rounded-full border border-border bg-card px-6 py-4 text-sm font-semibold transition-transform duration-200 hover:bg-secondary active:scale-95"
     >
       <Icon className="h-4 w-4 shrink-0" />
       {label}
@@ -1161,7 +1161,7 @@ function CopyEmailButton({ email }: { email: string }) {
       type="button"
       onClick={handleCopy}
       aria-label={t.about.copyAria}
-      className="inline-flex min-w-0 flex-1 items-center justify-center gap-2 break-words rounded-full border border-border bg-card px-5 py-3.5 text-sm font-semibold transition-transform duration-200 hover:bg-secondary active:scale-95"
+      className="inline-flex min-w-0 flex-1 items-center justify-center gap-2 break-words rounded-full border border-border bg-card px-6 py-4 text-sm font-semibold transition-transform duration-200 hover:bg-secondary active:scale-95"
     >
       {copied ? (
         <Check className="h-4 w-4 shrink-0 text-emerald-500" aria-hidden />
