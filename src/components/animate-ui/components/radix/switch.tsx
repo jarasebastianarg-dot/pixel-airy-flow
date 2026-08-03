@@ -34,7 +34,7 @@ function Switch({
     >
       <SwitchThumbPrimitive
         className={cn(
-          'relative z-10 bg-background dark:data-[state=unchecked]:bg-foreground dark:data-[state=checked]:bg-primary-foreground pointer-events-none block size-5 rounded-full ring-0 shadow-sm',
+          'relative z-10 bg-background dark:data-[state=unchecked]:bg-foreground dark:data-[state=checked]:bg-primary-foreground pointer-events-none block size-4 rounded-full ring-0',
         )}
         pressedAnimation={{ width: pressedWidth }}
       >
