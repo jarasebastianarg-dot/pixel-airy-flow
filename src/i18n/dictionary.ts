@@ -17,7 +17,7 @@ export const dictionary = {
       langLabel: "Language",
     },
     hero: {
-      badge: "Creative Developer & Growth Partner",
+      badge: "Ecommerce & Brand Specialist",
       headline: {
         pre: "I build ",
         em1: "brands",
@@ -26,7 +26,7 @@ export const dictionary = {
         post: " that sell.",
       },
       subtitle:
-        "Marketing, design, process automation and AI in one operation. I don't just design the UI/UX — I implement it directly in code inside live Shopify environments, turning storefronts into highly optimized conversion machines.",
+        "Marketing, design, process automation and AI in one operation. I don't just design the UI/UX — I pair design judgment with AI-assisted development to ship it directly inside live Shopify environments, turning storefronts into highly optimized conversion machines.",
       ctaPrimary: "View Projects",
       ctaSecondary: "Get in touch",
     },
@@ -46,7 +46,7 @@ export const dictionary = {
         {
           kicker: "Commerce",
           title: "Shopify & Custom E-commerce",
-          desc: "I architect scalable storefronts with custom Liquid, HTML and CSS. No bloated themes — only high-converting, performance-driven environments.",
+          desc: "I architect scalable storefronts using AI-assisted development in Liquid, HTML and CSS. No bloated themes — only high-converting, performance-driven environments.",
           tags: ["Shopify 2.0", "Liquid", "Headless"],
         },
         {
@@ -76,7 +76,7 @@ export const dictionary = {
         body: "Migrated 2,000+ products to Shopify 2.0 without losing a single drop of performance.",
       },
       "paw-royalty": {
-        tag: "Lead Developer & Designer",
+        tag: "Lead Designer & AI-Assisted Developer",
         headline: "Full-Stack Launch",
         body: "End-to-end creation for a US market entry: brand identity, UI/UX and Klaviyo integration.",
       },
@@ -128,9 +128,7 @@ export const dictionary = {
         Shopify: "Custom theme development and headless architecture",
         "Shopify Liquid": "Bespoke sections built to each merchant's flow",
         "HTML / CSS": "Responsive, accessible, pixel-accurate markup",
-        Webflow: "High-fidelity marketing sites for brand teams",
         Klaviyo: "CRM flows, segmentation and A/B testing",
-        HubSpot: "Pipelines, lead scoring and sales enablement",
         "Email Automation": "Lifecycle campaigns end-to-end",
         "Meta Ads": "Paid social: creative, testing and reporting",
         Make: "No-code pipelines connecting the whole stack",
@@ -142,7 +140,7 @@ export const dictionary = {
     },
     about: {
       heading: { pre: "Systemic Logic. ", em: "Relentless Discipline." },
-      bio: "I'm Sebastián. My background merges academic graphic design with deep technical execution. I build automation workflows and highly customized e-commerce architectures, because beautiful design is useless if it doesn't perform. I bring endurance and precision to every brand I scale.",
+      bio: "I'm Sebastián. My background merges academic graphic design with hands-on, AI-assisted technical execution. I build automation workflows and highly customized e-commerce architectures, because beautiful design is useless if it doesn't perform. I bring endurance and precision to every brand I scale.",
       downloadCv: "Download Resume",
       email: "Email",
       copy: "Copy",
@@ -201,11 +199,6 @@ export const dictionary = {
         title: "Bachelor's Degree in Multimedia & Interaction Design",
         institution: "UADE (Universidad Argentina de la Empresa)",
         period: "2020 — 2024",
-      },
-      {
-        title: "Digital Marketing & Growth Hacking with GenAI",
-        institution: "IBM — Professional Certificate",
-        period: "Expected Apr 2026",
       },
       {
         title: "Foundations of Digital Marketing & E-commerce",
@@ -298,7 +291,7 @@ export const dictionary = {
       langLabel: "Idioma",
     },
     hero: {
-      badge: "Creative Developer & Growth Partner",
+      badge: "Ecommerce & Brand Specialist",
       headline: {
         pre: "Construyo ",
         em1: "marcas",
@@ -307,7 +300,7 @@ export const dictionary = {
         post: " que venden.",
       },
       subtitle:
-        "Marketing, diseño, automatización de procesos y AI en una sola operación. No solo diseño el UI/UX: lo implemento directamente en código dentro de entornos Shopify reales, convirtiendo cada tienda en una máquina de conversión optimizada.",
+        "Marketing, diseño, automatización de procesos y AI en una sola operación. No solo diseño el UI/UX: combino criterio de diseño con desarrollo asistido por AI para implementarlo directamente dentro de entornos Shopify reales, convirtiendo cada tienda en una máquina de conversión optimizada.",
       ctaPrimary: "Ver proyectos",
       ctaSecondary: "Hablemos",
     },
@@ -327,7 +320,7 @@ export const dictionary = {
         {
           kicker: "Commerce",
           title: "Shopify y e-commerce a medida",
-          desc: "Diseño arquitecturas de tiendas escalables con Liquid, HTML y CSS propios. Sin themes pesados: entornos rápidos y pensados para convertir.",
+          desc: "Diseño arquitecturas de tiendas escalables con desarrollo asistido por AI en Liquid, HTML y CSS. Sin themes pesados: entornos rápidos y pensados para convertir.",
           tags: ["Shopify 2.0", "Liquid", "Headless"],
         },
         {
@@ -357,7 +350,7 @@ export const dictionary = {
         body: "Migré más de 2.000 productos a Shopify 2.0 sin perder una gota de performance.",
       },
       "paw-royalty": {
-        tag: "Lead Developer & Designer",
+        tag: "Lead Designer & AI-Assisted Developer",
         headline: "Lanzamiento full-stack",
         body: "Creación integral para entrar al mercado de EE.UU.: identidad, UI/UX e integración con Klaviyo.",
       },
@@ -409,9 +402,7 @@ export const dictionary = {
         Shopify: "Themes a medida y arquitectura headless",
         "Shopify Liquid": "Secciones propias según el flow de cada marca",
         "HTML / CSS": "Markup responsive, accesible y pixel-perfect",
-        Webflow: "Sitios de marketing de alta fidelidad",
         Klaviyo: "Flows de CRM, segmentación y A/B testing",
-        HubSpot: "Pipelines, lead scoring y sales enablement",
         "Email Automation": "Campañas de lifecycle de punta a punta",
         "Meta Ads": "Paid social: creatividad, testing y reporting",
         Make: "Pipelines no-code que conectan todo el stack",
@@ -423,7 +414,7 @@ export const dictionary = {
     },
     about: {
       heading: { pre: "Lógica sistémica. ", em: "Disciplina constante." },
-      bio: "Soy Sebastián. Mi formación combina diseño gráfico académico con ejecución técnica profunda. Construyo workflows de automation y arquitecturas de e-commerce muy personalizadas, porque un diseño lindo no sirve si no performa. Aporto constancia y precisión a cada marca que escalo.",
+      bio: "Soy Sebastián. Mi formación combina diseño gráfico académico con ejecución técnica asistida por AI. Construyo workflows de automation y arquitecturas de e-commerce muy personalizadas, porque un diseño lindo no sirve si no performa. Aporto constancia y precisión a cada marca que escalo.",
       downloadCv: "Descargar CV",
       email: "Email",
       copy: "Copiar",
@@ -482,11 +473,6 @@ export const dictionary = {
         title: "Licenciatura en Diseño Multimedia y de Interacción",
         institution: "UADE (Universidad Argentina de la Empresa)",
         period: "2020 — 2024",
-      },
-      {
-        title: "Digital Marketing & Growth Hacking con GenAI",
-        institution: "IBM — Certificado profesional",
-        period: "Abr 2026 (en curso)",
       },
       {
         title: "Fundamentos de Digital Marketing y E-commerce",
