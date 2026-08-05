@@ -7,12 +7,12 @@ const experience = [
     period: "Oct 2025 — Present",
     highlights: [
       "Lead brand identity and UI/UX for US + Argentina clients, shipping web and app platforms engineered around the buyer journey.",
-      "Build scalable design systems and high-converting landing pages that turn paid social traffic into measurable e-commerce revenue.",
+      "Build scalable design systems and high-converting landing pages — using AI-assisted development to execute faster — that turn paid social traffic into measurable e-commerce revenue.",
     ],
   },
   {
     role: "Brand Manager",
-    company: "B-WAY — Buenos Aires, AR",
+    company: "B-WAY — Buenos Aires, AR (Hybrid)",
     period: "Aug 2024 — Dec 2025",
     highlights: [
       "Directed a 6-person interdisciplinary marketing team running 360° campaigns aligned to commercial KPIs.",

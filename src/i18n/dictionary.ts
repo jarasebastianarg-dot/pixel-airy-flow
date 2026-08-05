@@ -155,12 +155,12 @@ export const dictionary = {
         period: "Oct 2025 — Present",
         highlights: [
           "Lead brand identity and UI/UX for a US + Argentina client portfolio, shipping web and app platforms engineered around the buyer journey.",
-          "Build scalable design systems and high-converting landing pages that turn paid social traffic into measurable e-commerce revenue.",
+          "Build scalable design systems and high-converting landing pages — using AI-assisted development to execute faster — that turn paid social traffic into measurable e-commerce revenue.",
         ],
       },
       {
         role: "Brand Manager",
-        company: "B-WAY — Buenos Aires, AR",
+        company: "B-WAY — Buenos Aires, AR (Hybrid)",
         period: "Aug 2024 — Dec 2025",
         highlights: [
           "Directed a 6-person interdisciplinary marketing team running 360° campaigns aligned to commercial KPIs.",
@@ -429,12 +429,12 @@ export const dictionary = {
         period: "Oct 2025 — Presente",
         highlights: [
           "Lidero identidad de marca y UI/UX para clientes de EE.UU. y Argentina, entregando plataformas web y app diseñadas alrededor del buyer journey.",
-          "Construyo design systems escalables y landing pages de alta conversión que transforman tráfico de paid social en revenue medible de e-commerce.",
+          "Construyo design systems escalables y landing pages de alta conversión — usando desarrollo asistido por AI para ejecutar más rápido — que transforman tráfico de paid social en revenue medible de e-commerce.",
         ],
       },
       {
         role: "Brand Manager",
-        company: "B-WAY — Buenos Aires, AR",
+        company: "B-WAY — Buenos Aires, AR (Híbrido)",
         period: "Ago 2024 — Dic 2025",
         highlights: [
           "Dirigí un equipo interdisciplinario de marketing de 6 personas con campañas 360° alineadas a KPIs comerciales.",
