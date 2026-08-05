@@ -93,7 +93,6 @@ const ecosystemClusters = [
       { label: "Shopify", color: "#95BF47" },
       { label: "Shopify Liquid", color: "#008080" },
       { label: "HTML / CSS", color: "#E34F26" },
-      { label: "Webflow", color: "#146EF5" },
     ],
   },
   {
@@ -101,7 +100,6 @@ const ecosystemClusters = [
     icon: Zap,
     tools: [
       { label: "Klaviyo", color: "#20E2C8" },
-      { label: "HubSpot", color: "#FF7A59" },
       { label: "Email Automation", color: "#F5A623" },
       { label: "Meta Ads", color: "#0668E1" },
       { label: "Make", color: "#8848AB" },

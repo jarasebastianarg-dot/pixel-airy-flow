@@ -78,21 +78,23 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "E-commerce Development & Automation Agency" },
+      { title: "Sebastián Jara — Ecommerce & Brand Specialist" },
       {
         name: "description",
         content:
-          "High-conversion Shopify environments built directly with code. Specializing in brand identity, custom UI/UX architecture, and AI-driven workflows.",
+          "High-conversion Shopify environments built with AI-assisted development. Specializing in brand identity, custom UI/UX architecture, and workflow automation.",
       },
       { name: "author", content: "Portfolio" },
-      { property: "og:title", content: "E-commerce Development & Automation Agency" },
+      { property: "og:title", content: "Sebastián Jara — Ecommerce & Brand Specialist" },
       {
         property: "og:description",
         content:
-          "High-conversion Shopify environments built directly with code. Brand identity, custom UI/UX architecture, and AI-driven workflows.",
+          "High-conversion Shopify environments built with AI-assisted development. Specializing in brand identity, custom UI/UX architecture, and workflow automation.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Sebastián Jara — Ecommerce & Brand Specialist" },
+      { name: "twitter:description", content: "High-conversion Shopify environments built with AI-assisted development. Specializing in brand identity, custom UI/UX architecture, and workflow automation." },
       { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
