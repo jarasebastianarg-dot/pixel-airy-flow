@@ -529,7 +529,7 @@ function FolkwaysProject() {
               className="mt-8 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg"
             >
               {tr(
-                "A full Shopify 2.0 rebuild plus a native Klaviyo retention engine — from catalog migration to cashback recovery flows and wine club campaigns — engineered directly in Liquid and coded in-house, without a single bloated app.",
+                "A full Shopify 2.0 rebuild plus a native Klaviyo retention engine — from catalog migration to cashback recovery flows and wine club campaigns — engineered in Liquid using AI-assisted development, without a single bloated app.",
               )}
             </motion.p>
           </Reveal>
@@ -546,7 +546,7 @@ function FolkwaysProject() {
                 {tr("Role")}
               </div>
               <div className="mt-3 text-base font-semibold text-foreground transition-colors duration-300 md:text-lg md:group-hover:text-accent-1">
-                {tr("Lead E-commerce Developer & Designer")}
+                {tr("Lead Designer & AI-Assisted Developer")}
               </div>
             </motion.div>
             <motion.div

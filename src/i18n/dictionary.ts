@@ -26,7 +26,7 @@ export const dictionary = {
         post: " that sell.",
       },
       subtitle:
-        "Marketing, design, process automation and AI in one operation. I don't just design the UI/UX — I pair design judgment with AI-assisted development to ship it directly inside live Shopify environments, turning storefronts into highly optimized conversion machines.",
+        "I work across marketing, design and automation — and I use AI as part of how I build, not just talk about it. I design the UI/UX, then build it myself directly in Shopify, using AI-assisted development to move faster without cutting corners.",
       ctaPrimary: "View Projects",
       ctaSecondary: "Get in touch",
     },
@@ -41,30 +41,30 @@ export const dictionary = {
     capabilities: {
       heading: { pre: "Four disciplines, ", em: "one", post: " operator." },
       intro:
-        "There is no hand-off between design, code and growth. Every capability below is executed by the same hands — so strategy, aesthetics and performance stay in sync.",
+        "There's no hand-off between design, code and growth — I do all three myself, so nothing gets lost in translation between what's designed and what actually ships.",
       items: [
         {
           kicker: "Commerce",
           title: "Shopify & Custom E-commerce",
-          desc: "I architect scalable storefronts using AI-assisted development in Liquid, HTML and CSS. No bloated themes — only high-converting, performance-driven environments.",
+          desc: "I build custom Shopify storefronts — Liquid, HTML and CSS, with AI doing the heavy lifting on implementation. No off-the-shelf themes: every store is built for how it actually needs to convert.",
           tags: ["Shopify 2.0", "Liquid", "Headless"],
         },
         {
           kicker: "Retention",
           title: "Retention & Email Marketing",
-          desc: "Automated Klaviyo CRM flows and targeted campaigns that turn one-time buyers into loyal customers and maximize LTV.",
+          desc: "Klaviyo flows and campaigns that bring customers back — welcome series, abandoned cart, post-purchase. Email marketing built to move revenue, not just open rates.",
           tags: ["Klaviyo", "Lifecycle", "LTV"],
         },
         {
           kicker: "Identity",
           title: "Brand Identity & UI/UX",
-          desc: "Cohesive visual systems. From packaging to digital interfaces, I build scalable brands grounded in academic design principles.",
+          desc: "I design brand systems end to end — logo, packaging, digital interfaces — built on the design fundamentals I studied at university and applied to brands that actually need to scale.",
           tags: ["Systems", "UI/UX", "Packaging"],
         },
         {
           kicker: "Automation",
           title: "AI & Workflow Automation",
-          desc: "Connecting Make, Claude and Gemini to streamline operations, cut lead times and scale businesses efficiently.",
+          desc: "I connect Claude, Gemini and Make to cut out repetitive work — so campaigns ship faster and less time goes into busywork.",
           tags: ["Make", "Claude", "Gemini"],
         },
       ],
@@ -72,22 +72,22 @@ export const dictionary = {
     works: {
       folkways: {
         tag: "Shopify Expert",
-        headline: "The Technical Scale",
+        headline: "Rebuilding a 2,000+ SKU Store",
         body: "Migrated 2,000+ products to Shopify 2.0 without losing a single drop of performance.",
       },
       "paw-royalty": {
         tag: "Lead Designer & AI-Assisted Developer",
-        headline: "Full-Stack Launch",
+        headline: "Launching a Brand From Zero",
         body: "End-to-end creation for a US market entry: brand identity, UI/UX and Klaviyo integration.",
       },
       "b-way": {
         tag: "Brand Manager",
-        headline: "Global Expansion",
+        headline: "From Designer to Brand Manager",
         body: "Steered a 6-person team scaling operations across the US and Brazil, driving digital and 300+ attendee physical events.",
       },
       "elevate-local": {
         tag: "Branding Designer",
-        headline: "Clinical Aesthetics",
+        headline: "A Brand Clinics Trust",
         body: "Complete visual identity for a European medical marketing agency.",
       },
     },
@@ -114,7 +114,7 @@ export const dictionary = {
         ai: {
           kicker: "Intelligence",
           group: "AI Models",
-          blurb: "AI leveraged across design, code and growth.",
+          blurb: "AI used across design, code and growth.",
         },
       },
       toolUse: {
@@ -139,8 +139,8 @@ export const dictionary = {
       live: "live",
     },
     about: {
-      heading: { pre: "Systemic Logic. ", em: "Relentless Discipline." },
-      bio: "I'm Sebastián. My background merges academic graphic design with hands-on, AI-assisted technical execution. I build automation workflows and highly customized e-commerce architectures, because beautiful design is useless if it doesn't perform. I bring endurance and precision to every brand I scale.",
+      heading: { pre: "Designer by training. ", em: "Builder by habit." },
+      bio: "I'm Sebastián — a graphic designer by training who ended up building the things I design, not just handing them off. I studied design formally, but most of what I do day to day is Shopify builds, brand systems, and workflows that used to take a team and now take me and a few AI tools. I care more about whether something actually works than whether it looks good in a deck.",
       downloadCv: "Download Resume",
       email: "Email",
       copy: "Copy",
@@ -182,7 +182,7 @@ export const dictionary = {
       {
         role: "Graphic Designer",
         company: "Freelance — Remote",
-        period: "2021 — 2023",
+        period: "2022 — 2023",
         highlights: [
           "Delivered end-to-end brand identities and UI/UX systems for clients across multiple industries.",
           "Ran editorial and social content strategy focused on brand voice consistency and audience retention.",
@@ -224,7 +224,7 @@ export const dictionary = {
     caseStudies: {
       folkways: {
         client: "Folkways",
-        role: "Lead E-commerce Developer & Designer",
+        role: "Lead Designer & AI-Assisted Developer",
         problem:
           "A catalog of 2,000+ wines lived on a legacy storefront: slow pages, duplicated manual processes and an app stack that fought against itself. Growth was capped by operations, not by demand.",
         solution:
@@ -300,7 +300,7 @@ export const dictionary = {
         post: " que venden.",
       },
       subtitle:
-        "Marketing, diseño, automatización de procesos y AI en una sola operación. No solo diseño el UI/UX: combino criterio de diseño con desarrollo asistido por AI para implementarlo directamente dentro de entornos Shopify reales, convirtiendo cada tienda en una máquina de conversión optimizada.",
+        "Trabajo entre marketing, diseño y automatización — y uso AI como parte de cómo construyo, no solo para hablar de eso. Diseño el UI/UX y después lo construyo yo mismo directamente en Shopify, usando desarrollo asistido por AI para ir más rápido sin bajar la calidad.",
       ctaPrimary: "Ver proyectos",
       ctaSecondary: "Hablemos",
     },
@@ -315,30 +315,30 @@ export const dictionary = {
     capabilities: {
       heading: { pre: "Cuatro disciplinas, ", em: "un", post: " solo operador." },
       intro:
-        "No hay traspasos entre diseño, código y growth. Cada servicio lo ejecutan las mismas manos, así que estrategia, estética y performance van siempre alineadas.",
+        "No hay traspasos entre diseño, código y growth — los tres los hago yo, así que nada se pierde en el camino entre lo que se diseña y lo que realmente sale a producción.",
       items: [
         {
           kicker: "Commerce",
           title: "Shopify y e-commerce a medida",
-          desc: "Diseño arquitecturas de tiendas escalables con desarrollo asistido por AI en Liquid, HTML y CSS. Sin themes pesados: entornos rápidos y pensados para convertir.",
+          desc: "Construyo storefronts de Shopify a medida — Liquid, HTML y CSS, con AI haciendo el trabajo pesado de la implementación. Sin themes genéricos: cada tienda se construye según cómo necesita convertir.",
           tags: ["Shopify 2.0", "Liquid", "Headless"],
         },
         {
           kicker: "Retention",
           title: "Retención y email marketing",
-          desc: "Flows automatizados de CRM en Klaviyo y campañas segmentadas que convierten compradores puntuales en clientes recurrentes y maximizan el LTV.",
+          desc: "Flows y campañas en Klaviyo que hacen volver a los clientes — bienvenida, carrito abandonado, post-compra. Email marketing hecho para mover revenue, no solo tasas de apertura.",
           tags: ["Klaviyo", "Lifecycle", "LTV"],
         },
         {
           kicker: "Identity",
           title: "Identidad de marca y UI/UX",
-          desc: "Sistemas visuales coherentes. Del packaging a las interfaces digitales, construyo marcas escalables con base en el diseño académico.",
+          desc: "Diseño sistemas de marca de punta a punta — logo, packaging, interfaces digitales — apoyados en los fundamentos de diseño que estudié en la universidad y aplicados a marcas que necesitan escalar de verdad.",
           tags: ["Systems", "UI/UX", "Packaging"],
         },
         {
           kicker: "Automation",
           title: "AI y automatización de workflows",
-          desc: "Conecto Make, Claude y Gemini para simplificar operaciones, reducir tiempos de producción y escalar negocios de forma eficiente.",
+          desc: "Conecto Claude, Gemini y Make para eliminar el trabajo repetitivo — así las campañas salen más rápido y se pierde menos tiempo en tareas mecánicas.",
           tags: ["Make", "Claude", "Gemini"],
         },
       ],
@@ -346,22 +346,22 @@ export const dictionary = {
     works: {
       folkways: {
         tag: "Shopify Expert",
-        headline: "Escala técnica",
+        headline: "Reconstruir una tienda de +2.000 SKU",
         body: "Migré más de 2.000 productos a Shopify 2.0 sin perder una gota de performance.",
       },
       "paw-royalty": {
         tag: "Lead Designer & AI-Assisted Developer",
-        headline: "Lanzamiento full-stack",
+        headline: "Lanzar una marca desde cero",
         body: "Creación integral para entrar al mercado de EE.UU.: identidad, UI/UX e integración con Klaviyo.",
       },
       "b-way": {
         tag: "Brand Manager",
-        headline: "Expansión global",
+        headline: "De diseñador a Brand Manager",
         body: "Lideré un equipo de 6 personas escalando la operación en EE.UU. y Brasil, con campañas digitales y eventos de +300 asistentes.",
       },
       "elevate-local": {
         tag: "Branding Designer",
-        headline: "Estética clínica",
+        headline: "Una marca en la que confían las clínicas",
         body: "Identidad visual completa para una agencia europea de marketing médico.",
       },
     },
@@ -388,7 +388,7 @@ export const dictionary = {
         ai: {
           kicker: "Intelligence",
           group: "AI Models",
-          blurb: "AI aplicada al diseño, al código y al growth.",
+          blurb: "AI usada en diseño, código y growth.",
         },
       },
       toolUse: {
@@ -413,8 +413,8 @@ export const dictionary = {
       live: "live",
     },
     about: {
-      heading: { pre: "Lógica sistémica. ", em: "Disciplina constante." },
-      bio: "Soy Sebastián. Mi formación combina diseño gráfico académico con ejecución técnica asistida por AI. Construyo workflows de automation y arquitecturas de e-commerce muy personalizadas, porque un diseño lindo no sirve si no performa. Aporto constancia y precisión a cada marca que escalo.",
+      heading: { pre: "Diseñador de formación. ", em: "Constructor por costumbre." },
+      bio: "Soy Sebastián — diseñador gráfico de formación que terminó construyendo lo que diseña, en vez de solo entregarlo. Estudié diseño formalmente, pero mi día a día son builds de Shopify, sistemas de marca y workflows que antes requerían un equipo y hoy los hago yo con algunas herramientas de AI. Me importa más que algo funcione de verdad que cómo se ve en una presentación.",
       downloadCv: "Descargar CV",
       email: "Email",
       copy: "Copiar",
@@ -456,7 +456,7 @@ export const dictionary = {
       {
         role: "Graphic Designer",
         company: "Freelance — Remoto",
-        period: "2021 — 2023",
+        period: "2022 — 2023",
         highlights: [
           "Entregué identidades de marca y sistemas de UI/UX completos para clientes de distintas industrias.",
           "Llevé la estrategia de contenido editorial y social enfocada en consistencia de marca y retención de audiencia.",
@@ -498,7 +498,7 @@ export const dictionary = {
     caseStudies: {
       folkways: {
         client: "Folkways",
-        role: "Lead E-commerce Developer & Designer",
+        role: "Lead Designer & AI-Assisted Developer",
         problem:
           "Un catálogo de más de 2.000 vinos vivía en una tienda vieja: páginas lentas, procesos manuales duplicados y un stack de apps que se peleaba entre sí. El techo de crecimiento era operativo, no de demanda.",
         solution:

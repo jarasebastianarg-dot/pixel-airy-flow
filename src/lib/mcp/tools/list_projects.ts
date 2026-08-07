@@ -5,7 +5,7 @@ const projects = [
   {
     slug: "folkways",
     client: "Folkways",
-    role: "Lead E-commerce Developer & Designer",
+    role: "Lead Designer & AI-Assisted Developer",
     headline: "Architecting a 2,000+ SKU Shopify migration & native retention ecosystem",
     summary:
       "Migrated 2,000+ products to Shopify 2.0 without losing performance; consolidated apps and built a native Klaviyo retention system.",
