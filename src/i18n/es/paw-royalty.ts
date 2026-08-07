@@ -9,12 +9,12 @@ export const pawRoyaltyEs: Record<string, string> = {
   "Paw Royalty: Full-Stack": "Paw Royalty: Lanzamiento E-Commerce",
   "E-Commerce Launch": "Full-Stack",
   "High-Converting UX": "UX de Alta Conversión",
-  "A brand incubated from zero — storefront, UX and retention system engineered directly in Shopify Liquid, tuned for day-one recurring revenue.":
-    "Una marca incubada desde cero — storefront, UX y sistema de retención diseñados directamente en Shopify Liquid, optimizados para generar ingresos recurrentes desde el primer día.",
+  "A brand incubated from zero — storefront, UX and retention system engineered in Shopify Liquid using AI-assisted development, tuned for day-one recurring revenue.":
+    "Una marca incubada desde cero — storefront, UX y sistema de retención diseñados en Shopify Liquid con desarrollo asistido por AI, optimizados para generar ingresos recurrentes desde el primer día.",
 
   // TL;DR bar
   "Role": "Rol",
-  "Lead E-commerce Developer & Designer": "Desarrollador y Diseñador E-commerce Líder",
+  "Lead Designer & AI-Assisted Developer": "Diseñador Líder y Desarrollador Asistido por AI",
   "Tech Stack": "Stack Tecnológico",
   "Email Automations": "Automatizaciones de Email",
   "Focus": "Enfoque",
@@ -35,8 +35,8 @@ export const pawRoyaltyEs: Record<string, string> = {
   // Execution section
   "02 — Build": "02 — Construcción",
   "Execution": "Ejecución",
-  "Bypassing rigid themes and static mockups to architect the entire digital storefront directly in Shopify Liquid. This provided absolute creative freedom and a high-performance foundation built specifically for scaling.":
-    "Prescindiendo de temas rígidos y mockups estáticos para diseñar todo el storefront directamente en Shopify Liquid. Esto brindó total libertad creativa y una base de alto rendimiento construida específicamente para escalar.",
+  "Bypassing rigid themes and static mockups to architect the entire digital storefront in Shopify Liquid, using AI-assisted development to move from concept to live build fast. This provided absolute creative freedom and a high-performance foundation built specifically for scaling.":
+    "Prescindiendo de temas rígidos y mockups estáticos para diseñar todo el storefront en Shopify Liquid, usando desarrollo asistido por AI para pasar del concepto al build en vivo rápidamente. Esto brindó total libertad creativa y una base de alto rendimiento construida específicamente para escalar.",
 
   // Execution cards
   "PDP": "PDP",

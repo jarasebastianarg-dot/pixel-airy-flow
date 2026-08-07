@@ -13,10 +13,10 @@ export const folkwaysEs: Record<string, string> = {
   "Website Migration &": "y un ecosistema de",
   "Native Retention": "retención nativa",
   "Ecosystem.": "en el sitio.",
-  "A full Shopify 2.0 rebuild plus a native Klaviyo retention engine — from catalog migration to cashback recovery flows and wine club campaigns — engineered directly in Liquid and coded in-house, without a single bloated app.":
-    "Una reconstrucción completa en Shopify 2.0 junto con un motor de retención nativo en Klaviyo — desde la migración del catálogo hasta flujos de recuperación de cashback y campañas del wine club — todo diseñado directamente en Liquid y programado in-house, sin un solo app innecesaria.",
+  "A full Shopify 2.0 rebuild plus a native Klaviyo retention engine — from catalog migration to cashback recovery flows and wine club campaigns — engineered in Liquid using AI-assisted development, without a single bloated app.":
+    "Una reconstrucción completa en Shopify 2.0 junto con un motor de retención nativo en Klaviyo — desde la migración del catálogo hasta flujos de recuperación de cashback y campañas del wine club — todo diseñado en Liquid con desarrollo asistido por AI, sin una sola app innecesaria.",
   "Role": "Rol",
-  "Lead E-commerce Developer & Designer": "Desarrollador y Diseñador Líder de E-commerce",
+  "Lead Designer & AI-Assisted Developer": "Diseñador Líder y Desarrollador Asistido por AI",
   "Tech Stack": "Stack Tecnológico",
   "Focus": "Foco",
   "Shopify": "Shopify",

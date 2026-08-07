@@ -34,7 +34,7 @@ const experience = [
   {
     role: "Graphic Designer",
     company: "Freelance — Remote",
-    period: "2021 — 2023",
+    period: "2022 — 2023",
     highlights: [
       "Delivered end-to-end brand identities and UI/UX systems across multiple industries.",
       "Ran editorial and social content strategy focused on brand voice and audience retention.",

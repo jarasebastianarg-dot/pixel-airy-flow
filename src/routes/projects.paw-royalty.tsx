@@ -569,7 +569,7 @@ function PawRoyaltyProject() {
               className="mt-8 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg"
             >
               {tr(
-                "A brand incubated from zero — storefront, UX and retention system engineered directly in Shopify Liquid, tuned for day-one recurring revenue.",
+                "A brand incubated from zero — storefront, UX and retention system engineered in Shopify Liquid using AI-assisted development, tuned for day-one recurring revenue.",
               )}
             </motion.p>
           </Reveal>
@@ -586,7 +586,7 @@ function PawRoyaltyProject() {
                 {tr("Role")}
               </div>
               <div className="mt-3 text-base font-semibold text-foreground transition-colors duration-300 md:text-lg md:group-hover:text-accent-1">
-                {tr("Lead E-commerce Developer & Designer")}
+                {tr("Lead Designer & AI-Assisted Developer")}
               </div>
             </motion.div>
             <motion.div
@@ -687,7 +687,7 @@ function PawRoyaltyProject() {
               className="text-base leading-relaxed text-muted-foreground md:col-span-5 md:text-lg"
             >
               {tr(
-                "Bypassing rigid themes and static mockups to architect the entire digital storefront directly in Shopify Liquid. This provided absolute creative freedom and a high-performance foundation built specifically for scaling.",
+                "Bypassing rigid themes and static mockups to architect the entire digital storefront in Shopify Liquid, using AI-assisted development to move from concept to live build fast. This provided absolute creative freedom and a high-performance foundation built specifically for scaling.",
               )}
             </motion.p>
           </Reveal>
