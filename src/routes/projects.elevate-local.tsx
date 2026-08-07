@@ -426,13 +426,22 @@ function HorizontalMockups() {
     if (isMobile) return;
     const measure = () => {
       if (trackRef.current && containerRef.current) {
-        setTrackWidth(trackRef.current.scrollWidth);
+        const track = trackRef.current;
+        const last = track.lastElementChild as HTMLElement | null;
+        const measured = last
+          ? last.offsetLeft + last.offsetWidth
+          : track.scrollWidth;
+        setTrackWidth(Math.max(measured, track.scrollWidth));
         setViewportWidth(containerRef.current.clientWidth);
       }
     };
     measure();
+    const raf = requestAnimationFrame(measure);
     window.addEventListener("resize", measure);
-    return () => window.removeEventListener("resize", measure);
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("resize", measure);
+    };
   }, [isMobile]);
 
   const { scrollYProgress } = useScroll({
