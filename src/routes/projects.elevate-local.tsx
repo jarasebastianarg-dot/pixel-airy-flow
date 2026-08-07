@@ -426,13 +426,22 @@ function HorizontalMockups() {
     if (isMobile) return;
     const measure = () => {
       if (trackRef.current && containerRef.current) {
-        setTrackWidth(trackRef.current.scrollWidth);
+        const track = trackRef.current;
+        const last = track.lastElementChild as HTMLElement | null;
+        const measured = last
+          ? last.offsetLeft + last.offsetWidth
+          : track.scrollWidth;
+        setTrackWidth(Math.max(measured, track.scrollWidth));
         setViewportWidth(containerRef.current.clientWidth);
       }
     };
     measure();
+    const raf = requestAnimationFrame(measure);
     window.addEventListener("resize", measure);
-    return () => window.removeEventListener("resize", measure);
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("resize", measure);
+    };
   }, [isMobile]);
 
   const { scrollYProgress } = useScroll({
@@ -536,7 +545,7 @@ function HorizontalMockups() {
 function ElevateLocalProject() {
   const { tr } = useTr();
   return (
-    <main className="min-h-screen w-full overflow-x-hidden bg-background text-foreground">
+    <main className="min-h-screen w-full [overflow-x:clip] bg-background text-foreground">
       {/* Top bar */}
       <div className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur-xl">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 md:px-10">
