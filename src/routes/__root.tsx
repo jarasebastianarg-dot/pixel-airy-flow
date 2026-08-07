@@ -133,11 +133,11 @@ gtag('config', 'G-NHX7CSFHDW');`,
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className="w-full overflow-x-hidden">
+    <html lang="en" className="w-full [overflow-x:clip]">
       <head>
         <HeadContent />
       </head>
-      <body className="w-full overflow-x-hidden">
+      <body className="w-full [overflow-x:clip]">
         {children}
         <Scripts />
       </body>
