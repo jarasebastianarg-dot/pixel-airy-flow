@@ -224,7 +224,7 @@ export const dictionary = {
     caseStudies: {
       folkways: {
         client: "Folkways",
-        role: "Lead E-commerce Developer & Designer",
+        role: "Lead Designer & AI-Assisted Developer",
         problem:
           "A catalog of 2,000+ wines lived on a legacy storefront: slow pages, duplicated manual processes and an app stack that fought against itself. Growth was capped by operations, not by demand.",
         solution:
@@ -498,7 +498,7 @@ export const dictionary = {
     caseStudies: {
       folkways: {
         client: "Folkways",
-        role: "Lead E-commerce Developer & Designer",
+        role: "Lead Designer & AI-Assisted Developer",
         problem:
           "Un catálogo de más de 2.000 vinos vivía en una tienda vieja: páginas lentas, procesos manuales duplicados y un stack de apps que se peleaba entre sí. El techo de crecimiento era operativo, no de demanda.",
         solution:
