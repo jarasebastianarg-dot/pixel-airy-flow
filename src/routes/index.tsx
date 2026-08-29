@@ -773,7 +773,7 @@ function WorkCard({
           {body}
         </p>
       </div>
-    </motion.a>
+    </MotionLink>
   );
 }
 
