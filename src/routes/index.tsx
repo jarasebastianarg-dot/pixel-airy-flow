@@ -395,41 +395,47 @@ function Index() {
       {/* Header */}
       <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur-md">
         <div className="mx-auto flex max-w-6xl items-center gap-6 px-6 py-4">
-          <a
-            href="#top"
-            onClick={smoothScrollTo("top")}
-            aria-label="SJ — home"
-            className="mr-auto flex min-h-[44px] min-w-[44px] items-center gap-2 font-display text-lg font-bold tracking-tight"
-          >
-            <SJMonogram />
-            <span className="sr-only">Sebastián</span>
-          </a>
+          <Entrance delay={0} className="mr-auto">
+            <a
+              href="#top"
+              onClick={smoothScrollTo("top")}
+              aria-label="SJ — home"
+              className="flex min-h-[44px] min-w-[44px] items-center gap-2 font-display text-lg font-bold tracking-tight"
+            >
+              <SJMonogram />
+              <span className="sr-only">Sebastián</span>
+            </a>
+          </Entrance>
 
           {/* Tertiary: section links */}
-          <nav
-            aria-label="Primary"
-            className="hidden items-center gap-1 md:flex"
-          >
-            {[
-              { href: "#works", label: t.nav.work },
-              { href: "#capabilities", label: t.nav.capabilities },
-              { href: "#stack", label: t.nav.stack },
-              { href: "#about", label: t.nav.about },
-            ].map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
-                onClick={smoothScrollTo(l.href.slice(1))}
-                className="inline-flex min-h-[44px] min-w-0 items-center break-words rounded-full px-3 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground"
-              >
-                {l.label}
-              </a>
-            ))}
-          </nav>
+          <Entrance delay={0.1} className="hidden md:block">
+            <nav
+              aria-label="Primary"
+              className="flex items-center gap-1"
+            >
+              {[
+                { href: "#works", label: t.nav.work },
+                { href: "#capabilities", label: t.nav.capabilities },
+                { href: "#stack", label: t.nav.stack },
+                { href: "#about", label: t.nav.about },
+              ].map((l) => (
+                <a
+                  key={l.href}
+                  href={l.href}
+                  onClick={smoothScrollTo(l.href.slice(1))}
+                  className="inline-flex min-h-[44px] min-w-0 items-center break-words rounded-full px-3 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  {l.label}
+                </a>
+              ))}
+            </nav>
+          </Entrance>
 
           <div className="flex min-w-0 flex-wrap items-center justify-end gap-2">
             {/* Secondary: language toggle */}
-            <LanguageToggle />
+            <Entrance delay={0.2}>
+              <LanguageToggle />
+            </Entrance>
 
             {/* Primary CTA */}
             <a
