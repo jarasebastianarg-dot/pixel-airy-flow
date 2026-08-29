@@ -387,6 +387,15 @@ function CustomCursor() {
 
 function Index() {
   const { lang, t } = useLanguage();
+  const reduceMotion = useReducedMotion();
+  const heroRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+  // Headline drifts at ~0.5x scroll speed for depth, capped at 80px
+  const headlineY = useTransform(scrollYProgress, [0, 1], [0, 80]);
+  const parallaxY = reduceMotion ? 0 : headlineY;
 
   return (
     <div className="min-h-screen w-full overflow-x-hidden bg-background text-foreground md:cursor-none">
