@@ -1,6 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { LanguageToggle } from "@/components/LanguageToggle";
-import { SplitHeading } from "@/components/motion/SplitHeading";
 import {
   AnimatePresence,
   motion,
@@ -724,12 +723,12 @@ function BWayProject() {
           <Reveal className="md:col-span-4" stagger={0.08}>
             <motion.div variants={fadeUp}>
               <SectionLabel>{tr("01 — Context")}</SectionLabel>
-              <SplitHeading className="mt-6 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
+              <h2 className="mt-6 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
                 {tr("The")}{" "}
                 <span className="font-serif italic font-normal text-accent-1">
                   {tr("Friction")}
                 </span>
-              </SplitHeading>
+              </h2>
             </motion.div>
           </Reveal>
           <Reveal className="mt-8 md:col-span-8 md:mt-0" stagger={0.08}>
@@ -781,13 +780,13 @@ function BWayProject() {
           <Reveal className="grid grid-cols-1 gap-6 md:grid-cols-12 md:items-end" stagger={0.1}>
             <motion.div variants={fadeUp} className="md:col-span-7">
               <SectionLabel>{tr("02 — The Growth Story")}</SectionLabel>
-              <SplitHeading className="mt-4 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
+              <h2 className="mt-4 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
                 {tr("Four")}{" "}
                 <span className="font-serif italic font-normal text-accent-1">
                   {tr("chapters")}
                 </span>
                 , {tr("one promotion.")}
-              </SplitHeading>
+              </h2>
             </motion.div>
             <motion.p
               variants={fadeUp}
@@ -855,13 +854,13 @@ function BWayProject() {
             <Reveal className="grid grid-cols-1 gap-8 md:grid-cols-12 md:items-start" stagger={0.08}>
               <motion.div variants={fadeUp} className="md:col-span-7">
                 <SectionLabel>{tr("02.5 — Packaging")}</SectionLabel>
-                <SplitHeading className="mt-6 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
+                <h2 className="mt-6 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
                   {tr("Every box the brand")}{" "}
                   <span className="font-serif italic font-normal text-accent-1">
                     {tr("shipped")}
                   </span>
                   .
-                </SplitHeading>
+                </h2>
               </motion.div>
               <motion.p
                 variants={fadeUp}
@@ -951,13 +950,13 @@ function BWayProject() {
             <Reveal className="grid grid-cols-1 gap-8 md:grid-cols-12 md:items-end" stagger={0.08}>
               <motion.div variants={fadeUp} className="md:col-span-7">
                 <SectionLabel>{tr("02.6 — E-Commerce")}</SectionLabel>
-                <SplitHeading className="mt-6 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
+                <h2 className="mt-6 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
                   {tr("Shopify stores built")}{" "}
                   <span className="font-serif italic font-normal text-accent-1">
                     {tr("from zero")}
                   </span>
                   .
-                </SplitHeading>
+                </h2>
               </motion.div>
               <motion.p
                 variants={fadeUp}
@@ -1012,13 +1011,13 @@ function BWayProject() {
             <Reveal className="max-w-4xl" stagger={0.08}>
               <motion.div variants={fadeUp}>
                 <SectionLabel>{tr("03 — On The Floor")}</SectionLabel>
-                <SplitHeading className="mt-6 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
+                <h2 className="mt-6 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
                   {tr("Events I")}{" "}
                   <span className="font-serif italic font-normal text-accent-1">
                     {tr("organized")}
                   </span>{" "}
                   &amp; {tr("designed.")}
-                </SplitHeading>
+                </h2>
               </motion.div>
               <motion.p
                 variants={fadeUp}

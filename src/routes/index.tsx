@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { LanguageToggle } from "@/components/LanguageToggle";
 import portrait from "@/assets/portrait.jpg.asset.json";
@@ -12,14 +12,8 @@ import {
   useMotionValue,
   useSpring,
   useInView,
-  useReducedMotion,
-  useScroll,
-  useTransform,
   type Variants,
 } from "framer-motion";
-import { EASE_OUT } from "@/lib/motion";
-import { CharReveal } from "@/components/motion/CharReveal";
-import { SplitHeading } from "@/components/motion/SplitHeading";
 import {
   ArrowUpRight,
   ShoppingBag,
@@ -210,32 +204,6 @@ function Reveal({
   );
 }
 
-/* ─────────────────────── hero entrance choreography ─────────────────────── */
-
-/** Fade-up 16px entrance on page load with an explicit delay. */
-function Entrance({
-  children,
-  delay = 0,
-  className,
-}: {
-  children: React.ReactNode;
-  delay?: number;
-  className?: string;
-}) {
-  const reduceMotion = useReducedMotion();
-  if (reduceMotion) return <div className={className}>{children}</div>;
-  return (
-    <motion.div
-      className={className}
-      initial={{ opacity: 0, y: 16 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.45, ease: EASE_OUT, delay }}
-    >
-      {children}
-    </motion.div>
-  );
-}
-
 function MagneticButton({
   children,
   href,
@@ -252,17 +220,15 @@ function MagneticButton({
   const ref = useRef<HTMLAnchorElement>(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-  const sx = useSpring(x, { stiffness: 150, damping: 15 });
-  const sy = useSpring(y, { stiffness: 150, damping: 15 });
+  const sx = useSpring(x, { stiffness: 200, damping: 15 });
+  const sy = useSpring(y, { stiffness: 200, damping: 15 });
 
   function onMove(e: React.MouseEvent) {
     const el = ref.current;
     if (!el) return;
     const r = el.getBoundingClientRect();
-    // Follow the cursor but clamp the pull to a 15px radius
-    const clamp = (v: number) => Math.max(-15, Math.min(15, v * 0.35));
-    x.set(clamp(e.clientX - (r.left + r.width / 2)));
-    y.set(clamp(e.clientY - (r.top + r.height / 2)));
+    x.set((e.clientX - (r.left + r.width / 2)) * 0.35);
+    y.set((e.clientY - (r.top + r.height / 2)) * 0.35);
   }
   function reset() {
     x.set(0);
@@ -286,62 +252,104 @@ function MagneticButton({
   );
 }
 
+/* ─────────────────────── custom cursor ─────────────────────── */
+
+function CustomCursor() {
+  const x = useMotionValue(-100);
+  const y = useMotionValue(-100);
+  const sx = useSpring(x, { stiffness: 500, damping: 40 });
+  const sy = useSpring(y, { stiffness: 500, damping: 40 });
+  const [hovering, setHovering] = useState(false);
+  const [enabled, setEnabled] = useState(false);
+
+  useEffect(() => {
+    if (window.matchMedia("(pointer: fine)").matches) setEnabled(true);
+    function move(e: MouseEvent) {
+      x.set(e.clientX);
+      y.set(e.clientY);
+      const t = e.target as HTMLElement;
+      setHovering(!!t.closest("[data-cursor-view]"));
+    }
+    window.addEventListener("mousemove", move);
+    return () => window.removeEventListener("mousemove", move);
+  }, [x, y]);
+
+  if (!enabled) return null;
+
+  return (
+    <motion.div
+      style={{ x: sx, y: sy }}
+      className="pointer-events-none fixed left-0 top-0 z-[100] -translate-x-1/2 -translate-y-1/2"
+    >
+      <motion.div
+        animate={{
+          width: hovering ? 72 : 12,
+          height: hovering ? 72 : 12,
+          backgroundColor: hovering
+            ? "oklch(0.7 0.19 40)"
+            : "oklch(0.21 0.02 265)",
+        }}
+        transition={{ type: "spring", stiffness: 260, damping: 22 }}
+        className="flex items-center justify-center rounded-full"
+      >
+        <motion.span
+          animate={{ opacity: hovering ? 1 : 0 }}
+          className="text-[10px] font-bold uppercase tracking-widest text-accent-foreground"
+        >
+          View
+        </motion.span>
+      </motion.div>
+    </motion.div>
+  );
+}
+
 /* ─────────────────────────── page ─────────────────────────── */
 
 function Index() {
   const { lang, t } = useLanguage();
-  const reduceMotion = useReducedMotion();
-  const { scrollY } = useScroll();
-  // Headline drifts at 0.5x scroll speed for depth, capped at 80px offset
-  const headlineY = useTransform(scrollY, [0, 160], [0, 80], { clamp: true });
-  const parallaxY = reduceMotion ? 0 : headlineY;
 
   return (
-    <div className="min-h-screen w-full overflow-x-hidden bg-background text-foreground">
+    <div className="min-h-screen w-full overflow-x-hidden bg-background text-foreground md:cursor-none">
+      <CustomCursor />
+
       {/* Header */}
       <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur-md">
         <div className="mx-auto flex max-w-6xl items-center gap-6 px-6 py-4">
-          <Entrance delay={0} className="mr-auto">
-            <a
-              href="#top"
-              onClick={smoothScrollTo("top")}
-              aria-label="SJ — home"
-              className="flex min-h-[44px] min-w-[44px] items-center gap-2 font-display text-lg font-bold tracking-tight"
-            >
-              <SJMonogram />
-              <span className="sr-only">Sebastián</span>
-            </a>
-          </Entrance>
+          <a
+            href="#top"
+            onClick={smoothScrollTo("top")}
+            aria-label="SJ — home"
+            className="mr-auto flex min-h-[44px] min-w-[44px] items-center gap-2 font-display text-lg font-bold tracking-tight"
+          >
+            <SJMonogram />
+            <span className="sr-only">Sebastián</span>
+          </a>
 
           {/* Tertiary: section links */}
-          <Entrance delay={0.1} className="hidden md:block">
-            <nav
-              aria-label="Primary"
-              className="flex items-center gap-1"
-            >
-              {[
-                { href: "#works", label: t.nav.work },
-                { href: "#capabilities", label: t.nav.capabilities },
-                { href: "#stack", label: t.nav.stack },
-                { href: "#about", label: t.nav.about },
-              ].map((l) => (
-                <a
-                  key={l.href}
-                  href={l.href}
-                  onClick={smoothScrollTo(l.href.slice(1))}
-                  className="link-underline inline-flex min-h-[44px] min-w-0 items-center break-words px-3 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground"
-                >
-                  {l.label}
-                </a>
-              ))}
-            </nav>
-          </Entrance>
+          <nav
+            aria-label="Primary"
+            className="hidden items-center gap-1 md:flex"
+          >
+            {[
+              { href: "#works", label: t.nav.work },
+              { href: "#capabilities", label: t.nav.capabilities },
+              { href: "#stack", label: t.nav.stack },
+              { href: "#about", label: t.nav.about },
+            ].map((l) => (
+              <a
+                key={l.href}
+                href={l.href}
+                onClick={smoothScrollTo(l.href.slice(1))}
+                className="inline-flex min-h-[44px] min-w-0 items-center break-words rounded-full px-3 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground"
+              >
+                {l.label}
+              </a>
+            ))}
+          </nav>
 
           <div className="flex min-w-0 flex-wrap items-center justify-end gap-2">
             {/* Secondary: language toggle */}
-            <Entrance delay={0.2}>
-              <LanguageToggle />
-            </Entrance>
+            <LanguageToggle />
 
             {/* Primary CTA */}
             <a
@@ -363,50 +371,51 @@ function Index() {
         transition={{ duration: 0.25, ease: "easeOut" }}
         className="mx-auto max-w-6xl px-6"
       >
-        {/* Hero — choreographed entrance on page load */}
-        <section className="py-20 md:py-28">
-          <motion.div style={{ y: parallaxY }}>
-            <Entrance delay={0.3}>
-              <span className="inline-flex max-w-full flex-wrap items-center gap-2 break-words rounded-full border border-border bg-card px-4 py-1.5 text-xs font-semibold text-muted-foreground">
-                <span className="h-2 w-2 animate-pulse rounded-full bg-orange-500" />
-                {t.hero.badge}
-              </span>
-            </Entrance>
-            <CharReveal
-              baseDelay={0.4}
-              className="mt-6 max-w-4xl break-words text-5xl font-bold leading-[1.02] tracking-tight md:text-7xl"
-              segments={[
-                { text: t.hero.headline.pre },
-                { text: t.hero.headline.em1, accent: true },
-                { text: t.hero.headline.mid },
-                { text: t.hero.headline.em2, accent: true },
-                { text: t.hero.headline.post },
-              ]}
-            />
-            <Entrance delay={0.7} className="mt-6">
-              <p className="max-w-2xl break-words text-lg leading-relaxed text-muted-foreground md:text-xl">
-                {t.hero.subtitle}
-              </p>
-            </Entrance>
-            <Entrance delay={0.8} className="mt-8">
-              <div className="flex flex-wrap items-center gap-4">
-                <MagneticButton
-                  href="#works"
-                  className="group inline-flex min-w-0 items-center gap-2 break-words rounded-full bg-gradient-accent px-5 py-3 sm:px-7 sm:py-3.5 text-sm font-semibold text-accent-foreground shadow-[var(--shadow-accent)] transition-transform duration-200 active:scale-95"
-                >
-                  {t.hero.ctaPrimary}
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </MagneticButton>
-                <MagneticButton
-                  href="#about"
-                  className="inline-flex min-w-0 items-center gap-2 break-words rounded-full border border-border bg-card px-5 py-3 sm:px-7 sm:py-3.5 text-sm font-semibold transition-transform duration-200 hover:bg-secondary active:scale-95"
-                >
-                  {t.hero.ctaSecondary}
-                </MagneticButton>
-              </div>
-            </Entrance>
+        {/* Hero */}
+        <Reveal className="py-20 md:py-28" stagger={0.12}>
+          <motion.span
+            variants={fadeUp}
+            className="inline-flex max-w-full flex-wrap items-center gap-2 break-words rounded-full border border-border bg-card px-4 py-1.5 text-xs font-semibold text-muted-foreground"
+          >
+            <span className="h-2 w-2 animate-pulse rounded-full bg-orange-500" />
+            {t.hero.badge}
+          </motion.span>
+          <motion.h1
+            variants={fadeUp}
+            className="mt-6 max-w-4xl break-words text-5xl font-bold leading-[1.02] tracking-tight md:text-7xl"
+          >
+            {t.hero.headline.pre}
+            <span className="font-serif italic font-normal text-accent-1">
+              {t.hero.headline.em1}
+            </span>
+            {t.hero.headline.mid}
+            <span className="font-serif italic font-normal text-accent-1">
+              {t.hero.headline.em2}
+            </span>
+            {t.hero.headline.post}
+          </motion.h1>
+          <motion.p
+            variants={fadeUp}
+            className="mt-6 max-w-2xl break-words text-lg leading-relaxed text-muted-foreground md:text-xl"
+          >
+            {t.hero.subtitle}
+          </motion.p>
+          <motion.div variants={fadeUp} className="mt-8 flex flex-wrap items-center gap-4">
+            <MagneticButton
+              href="#works"
+              className="group inline-flex min-w-0 items-center gap-2 break-words rounded-full bg-gradient-accent px-5 py-3 sm:px-7 sm:py-3.5 text-sm font-semibold text-accent-foreground shadow-[var(--shadow-accent)] transition-transform duration-200 active:scale-95"
+            >
+              {t.hero.ctaPrimary}
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </MagneticButton>
+            <MagneticButton
+              href="#about"
+              className="inline-flex min-w-0 items-center gap-2 break-words rounded-full border border-border bg-card px-5 py-3 sm:px-7 sm:py-3.5 text-sm font-semibold transition-transform duration-200 hover:bg-secondary active:scale-95"
+            >
+              {t.hero.ctaSecondary}
+            </MagneticButton>
           </motion.div>
-        </section>
+        </Reveal>
 
         {/* Selected Works */}
         <section id="works" className="scroll-mt-24 pt-8">
@@ -435,13 +444,13 @@ function Index() {
           <Reveal className="grid grid-cols-1 gap-10 md:grid-cols-12 md:items-end" stagger={0.1}>
             <motion.div variants={fadeUp} className="md:col-span-7">
               <SectionLabel>{t.sections.capabilities}</SectionLabel>
-              <SplitHeading className="mt-4 break-words text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl">
+              <h2 className="mt-4 break-words text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl">
                 {t.capabilities.heading.pre}
                 <span className="font-serif italic font-normal text-accent-1">
                   {t.capabilities.heading.em}
                 </span>
                 {t.capabilities.heading.post}
-              </SplitHeading>
+              </h2>
             </motion.div>
             <motion.p
               variants={fadeUp}
@@ -632,7 +641,6 @@ function Index() {
               >
                 <Download className="h-4 w-4 shrink-0" />
                 {t.about.downloadCv}
-                <ArrowUpRight className="h-4 w-4 shrink-0 transition-transform duration-300 ease-[cubic-bezier(0.65,0,0.35,1)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </MagneticButton>
               <div className="flex flex-wrap gap-3">
                 <SocialLink
@@ -705,8 +713,6 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
   );
 }
 
-const MotionLink = motion.create(Link);
-
 function WorkCard({
   tag,
   client,
@@ -725,10 +731,9 @@ function WorkCard({
   fit?: "cover" | "contain";
 }) {
   return (
-    <MotionLink
-      to={href ?? "/"}
+    <motion.a
+      href={href ?? "#"}
       data-cursor-view
-      data-cursor="hover"
       variants={fadeUp}
       className="group relative block h-[20rem] overflow-hidden rounded-[calc(var(--radius)+16px)] border border-border shadow-[var(--shadow-card)] sm:h-[24rem]"
     >
@@ -773,7 +778,7 @@ function WorkCard({
           {body}
         </p>
       </div>
-    </MotionLink>
+    </motion.a>
   );
 }
 
@@ -853,13 +858,13 @@ function MethodologyStack() {
         className="grid grid-cols-1 gap-8 md:grid-cols-12 md:items-end"
       >
         <div className="md:col-span-7">
-          <SplitHeading className="mt-4 break-words text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl">
+          <h2 className="mt-4 break-words text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl">
             {t.methodology.heading.pre}
             <span className="font-serif italic font-normal text-accent-1">
               {t.methodology.heading.em}
             </span>
             {t.methodology.heading.post}
-          </SplitHeading>
+          </h2>
         </div>
         <p className="min-w-0 break-words text-base leading-relaxed text-muted-foreground md:col-span-5 md:text-lg">
           {t.methodology.intro}
@@ -1111,11 +1116,10 @@ function SocialLink({
       target={target}
       rel={isExternal ? "noopener noreferrer" : undefined}
       aria-label={label}
-      className="group inline-flex min-w-0 flex-1 items-center justify-center gap-2 break-words rounded-full border border-border bg-card px-6 py-4 text-sm font-semibold transition-transform duration-200 hover:bg-secondary active:scale-95"
+      className="inline-flex min-w-0 flex-1 items-center justify-center gap-2 break-words rounded-full border border-border bg-card px-6 py-4 text-sm font-semibold transition-transform duration-200 hover:bg-secondary active:scale-95"
     >
       <Icon className="h-4 w-4 shrink-0" />
       {label}
-      <ArrowUpRight className="h-4 w-4 shrink-0 transition-transform duration-300 ease-[cubic-bezier(0.65,0,0.35,1)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
     </a>
   );
 }

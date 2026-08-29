@@ -12,9 +12,6 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { LanguageProvider } from "../i18n/LanguageContext";
-import { SmoothScroll } from "../components/motion/SmoothScroll";
-import { PremiumCursor, GrainOverlay } from "../components/motion/PremiumCursor";
-import { PageTransition, TabTitleSwap } from "../components/motion/PageTransition";
 
 function NotFoundComponent() {
   return (
@@ -154,15 +151,8 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <LanguageProvider defaultLang="en">
-        <SmoothScroll>
-          <PremiumCursor />
-          <GrainOverlay />
-          <TabTitleSwap />
-          <PageTransition>
-            {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-            <Outlet />
-          </PageTransition>
-        </SmoothScroll>
+        {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+        <Outlet />
       </LanguageProvider>
     </QueryClientProvider>
   );
