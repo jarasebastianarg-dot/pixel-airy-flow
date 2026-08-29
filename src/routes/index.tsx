@@ -8,7 +8,6 @@ import bwayThumb from "@/assets/bway/bway-brand.jpg.asset.json";
 import elevateThumb from "@/assets/elevate-local/el-thumb.jpg.asset.json";
 import {
   motion,
-  AnimatePresence,
   useMotionValue,
   useSpring,
   useInView,
@@ -828,27 +827,10 @@ const CODE_SNIPPETS = [
   },
 ];
 
-// All coral, matching the site's accent-1 (~oklch(0.72 0.18 45)).
-// Only origin/spread/intensity vary so each card feels alive without breaking the palette.
-const CLUSTER_GRADIENTS = [
-  "radial-gradient(130% 100% at 100% 0%, oklch(0.78 0.19 45 / 0.55), transparent 62%)",
-  "radial-gradient(120% 110% at 0% 100%, oklch(0.75 0.19 42 / 0.5), transparent 65%)",
-  "radial-gradient(140% 100% at 100% 100%, oklch(0.8 0.17 48 / 0.5), transparent 62%)",
-  "radial-gradient(120% 100% at 0% 0%, oklch(0.77 0.18 44 / 0.5), transparent 65%)",
-];
+const DECOR_CODE = CODE_SNIPPETS.map((s) => `// ${s.label}\n${s.code}`).join("\n\n");
 
 function MethodologyStack() {
   const { t } = useLanguage();
-  const [active, setActive] = useState(0);
-  const [paused, setPaused] = useState(false);
-
-  useEffect(() => {
-    if (paused) return;
-    const id = setInterval(() => {
-      setActive((i) => (i + 1) % ecosystemClusters.length);
-    }, 6000);
-    return () => clearInterval(id);
-  }, [paused]);
 
   return (
     <Reveal className="flex flex-col gap-10" stagger={0.1}>
@@ -871,232 +853,113 @@ function MethodologyStack() {
         </p>
       </motion.div>
 
-      {/* Interactive grid */}
+      {/* Horizontal system diagram */}
       <motion.div
         variants={fadeUp}
-        onMouseEnter={() => setPaused(true)}
-        onMouseLeave={() => setPaused(false)}
-        className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:items-stretch"
+        className="relative isolate overflow-hidden rounded-[calc(var(--radius)+16px)] border border-border bg-card/60 px-5 py-10 md:px-10 md:py-14"
       >
-        {/* Cluster cards */}
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:col-span-7">
+        {/* Decorative ambient code texture — purely visual */}
+        <pre
+          aria-hidden
+          className="pointer-events-none absolute inset-0 -z-10 select-none overflow-hidden whitespace-pre p-6 font-mono text-[11px] leading-[1.5] text-foreground opacity-[0.07] md:text-[12px]"
+        >
+          {DECOR_CODE}
+        </pre>
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -right-24 -top-24 -z-10 h-72 w-72 rounded-full bg-gradient-accent opacity-10 blur-3xl"
+        />
+
+        {/* Connector line — desktop: horizontal weave */}
+        <svg
+          aria-hidden
+          viewBox="0 0 1000 200"
+          preserveAspectRatio="none"
+          className="pointer-events-none absolute inset-x-0 top-1/2 -z-10 hidden h-[220px] w-full -translate-y-1/2 lg:block"
+        >
+          <path
+            d="M0 100 C 60 100, 90 40, 125 40 C 200 40, 260 160, 375 160 C 480 160, 520 40, 625 40 C 730 40, 770 160, 875 160 C 940 160, 960 100, 1000 100"
+            fill="none"
+            stroke="var(--accent-1)"
+            strokeOpacity="0.35"
+            strokeWidth="2"
+            strokeDasharray="6 8"
+            vectorEffect="non-scaling-stroke"
+          />
+        </svg>
+
+        {/* Connector line — mobile/tablet: vertical */}
+        <span
+          aria-hidden
+          className="pointer-events-none absolute inset-y-10 left-1/2 -z-10 w-px -translate-x-1/2 bg-[repeating-linear-gradient(to_bottom,color-mix(in_oklab,var(--accent-1)_45%,transparent)_0_6px,transparent_6px_14px)] lg:hidden"
+        />
+
+        <ol className="relative grid grid-cols-1 gap-8 lg:grid-cols-4 lg:gap-5">
           {ecosystemClusters.map((cluster, i) => {
-            const isActive = active === i;
             const Icon = cluster.icon;
             const copy = t.methodology.clusters[cluster.id];
-            const gradient = CLUSTER_GRADIENTS[i % CLUSTER_GRADIENTS.length];
+            const above = i % 2 === 0;
             return (
-              <motion.button
+              <li
                 key={cluster.id}
-                type="button"
-                onClick={() => setActive(i)}
-                whileHover={{ y: -4 }}
-                whileTap={{ scale: 0.985 }}
-                transition={{ type: "spring", stiffness: 300, damping: 22 }}
-                className={`group relative flex min-w-0 cursor-pointer flex-col gap-5 overflow-hidden rounded-3xl border p-6 text-left transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-1 focus-visible:ring-offset-2 focus-visible:ring-offset-background md:p-7 ${
-                  isActive
-                    ? "border-accent-1/50 bg-card shadow-[var(--shadow-card-hover)]"
-                    : "border-border bg-card/70 shadow-[var(--shadow-card)] hover:-translate-y-0.5 hover:border-accent-1/30 hover:bg-card hover:shadow-[var(--shadow-card-hover)]"
+                className={`min-w-0 ${above ? "lg:-translate-y-10" : "lg:translate-y-10"} ${
+                  above ? "mr-4 sm:mr-10 lg:mr-0" : "ml-4 sm:ml-10 lg:ml-0"
                 }`}
-                aria-pressed={isActive}
               >
-                {/* Coral gradient — matches accent-1. Subtle when idle, alive when active. */}
-                <motion.span
-                  aria-hidden
-                  className="pointer-events-none absolute inset-0"
-                  style={{ background: gradient }}
-                  initial={false}
-                  animate={
-                    isActive
-                      ? {
-                          opacity: [0.7, 1, 0.7],
-                          scale: [1, 1.08, 1],
-                        }
-                      : { opacity: 0.18, scale: 1 }
-                  }
-                  transition={
-                    isActive
-                      ? { duration: 6, repeat: Infinity, ease: "easeInOut" }
-                      : { duration: 0.4 }
-                  }
-                />
-
-                <div className="relative flex items-center justify-between">
-                  <span
-                    className={`grid h-14 w-14 shrink-0 place-items-center rounded-2xl ring-1 ring-inset transition-all duration-300 ${
-                      isActive
-                        ? "bg-gradient-accent text-accent-foreground ring-transparent shadow-[var(--shadow-accent)]"
-                        : "bg-secondary text-accent-1 ring-border group-hover:bg-gradient-accent group-hover:text-accent-foreground group-hover:ring-transparent"
-                    }`}
-                  >
-                    <Icon className="h-6 w-6" strokeWidth={1.6} />
-                  </span>
-                  <div className="flex min-w-0 items-start gap-3">
-                    <div className="min-w-0 text-right">
-                      <span className="font-mono text-xs font-semibold tracking-widest text-muted-foreground">
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                      <div className="mt-1 break-words text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-accent-1">
-                      {copy.kicker}
-                      </div>
-                    </div>
+                <div
+                  tabIndex={0}
+                  role="group"
+                  aria-label={`Step ${i + 1} of ${ecosystemClusters.length}. ${copy.kicker}: ${copy.group}. ${copy.blurb} Tools: ${cluster.tools
+                    .map((tool) => tool.label)
+                    .join(", ")}.`}
+                  className="group flex h-full min-w-0 flex-col gap-4 rounded-3xl border border-border bg-card p-6 shadow-[var(--shadow-card)] transition-colors duration-300 hover:border-accent-1/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-1 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                >
+                  <div className="flex items-center gap-3">
                     <span
                       aria-hidden
-                      className={`mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-full border transition-all duration-300 ${
-                        isActive
-                          ? "border-accent-1/40 bg-accent-1/10 text-accent-1"
-                          : "border-border bg-background/80 text-muted-foreground group-hover:-rotate-45 group-hover:border-accent-1/40 group-hover:text-accent-1"
-                      }`}
+                      className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-secondary text-accent-1 ring-1 ring-inset ring-border"
                     >
-                      <ArrowUpRight className="h-4 w-4" />
+                      <Icon className="h-5 w-5" strokeWidth={1.6} />
+                    </span>
+                    <span className="min-w-0 font-mono text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-accent-1">
+                      {String(i + 1).padStart(2, "0")} — {copy.kicker}
                     </span>
                   </div>
-                </div>
 
-                <div className="relative min-w-0 space-y-3">
-                  <h3 className="break-words text-2xl font-bold leading-tight tracking-tight md:text-[1.6rem]">
-                    {copy.group}
-                  </h3>
-                  <p className="break-words text-sm leading-relaxed text-muted-foreground md:text-[0.95rem]">
-                    {copy.blurb}
-                  </p>
-                </div>
+                  <div className="min-w-0 space-y-2">
+                    <h3 className="break-words text-xl font-bold leading-tight tracking-tight">
+                      {copy.group}
+                    </h3>
+                    <p className="break-words text-sm leading-relaxed text-muted-foreground">
+                      {copy.blurb}
+                    </p>
+                  </div>
 
-                <div className="relative mt-auto flex flex-wrap gap-2 pt-2">
-                  {cluster.tools.slice(0, 5).map((tool, ti) => (
-                    <motion.span
-                      key={tool.label}
-                      initial={false}
-                      animate={{
-                        borderColor: isActive
-                          ? "color-mix(in oklab, var(--accent-1) 35%, transparent)"
-                          : "var(--border)",
-                      }}
-                      transition={{ delay: isActive ? ti * 0.03 : 0, duration: 0.2 }}
-                      className="inline-flex max-w-full items-center gap-1.5 break-words rounded-full border bg-background/60 px-3 py-1 text-[0.7rem] font-medium text-muted-foreground transition-colors group-hover:text-foreground"
-                    >
-                      <span
-                        aria-hidden
-                        className="h-1.5 w-1.5 shrink-0 rounded-full"
-                        style={{ background: tool.color }}
-                      />
-                      {tool.label}
-                    </motion.span>
-                  ))}
-                  {cluster.tools.length > 5 && (
-                    <span className="inline-flex items-center rounded-full border border-border bg-background/60 px-3 py-1 text-[0.7rem] font-medium text-muted-foreground/70">
-                      +{cluster.tools.length - 5}
-                    </span>
-                  )}
+                  <ul className="mt-auto flex flex-wrap gap-2 pt-2">
+                    {cluster.tools.map((tool) => (
+                      <li
+                        key={tool.label}
+                        className="inline-flex max-w-full items-center gap-1.5 break-words rounded-full border border-border bg-background/60 px-3 py-1 text-[0.7rem] font-medium text-muted-foreground"
+                      >
+                        <span
+                          aria-hidden
+                          className="h-1.5 w-1.5 shrink-0 rounded-full"
+                          style={{ background: tool.color }}
+                        />
+                        {tool.label}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-
-                {/* Bottom active bar — fades in place, no cross-card slide */}
-                <motion.span
-                  aria-hidden
-                  initial={false}
-                  animate={{ opacity: isActive ? 1 : 0, scaleX: isActive ? 1 : 0.6 }}
-                  transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                  style={{ transformOrigin: "left" }}
-                  className="pointer-events-none absolute inset-x-6 bottom-0 h-[2px] rounded-full bg-gradient-accent"
-                />
-              </motion.button>
+              </li>
             );
           })}
-        </div>
-
-        {/* Terminal */}
-        <div className="lg:col-span-5">
-          <StackTerminal index={active} />
-        </div>
+        </ol>
       </motion.div>
     </Reveal>
   );
 }
 
-function StackTerminal({ index }: { index: number }) {
-  const { t } = useLanguage();
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
-  const [text, setText] = useState("");
-
-  useEffect(() => {
-    if (!inView) return;
-    const full = CODE_SNIPPETS[index].code;
-    setText("");
-    let i = 0;
-    const id = setInterval(() => {
-      i++;
-      setText(full.slice(0, i));
-      if (i >= full.length) clearInterval(id);
-    }, 14);
-    return () => clearInterval(id);
-  }, [inView, index]);
-
-  const cluster = ecosystemClusters[index];
-
-  return (
-    <div
-      ref={ref}
-      className="sticky top-24 flex h-full min-h-[26rem] flex-col overflow-hidden rounded-[calc(var(--radius)+16px)] border border-white/10 bg-[oklch(0.16_0.02_265)] shadow-2xl"
-    >
-      {/* window bar */}
-      <div className="flex items-center justify-between gap-2 border-b border-white/10 bg-white/[0.02] px-5 py-3">
-        <div className="flex items-center gap-1.5">
-          <span className="h-3 w-3 rounded-full bg-[oklch(0.65_0.2_25)]/70" />
-          <span className="h-3 w-3 rounded-full bg-[oklch(0.8_0.16_85)]/70" />
-          <span className="h-3 w-3 rounded-full bg-[oklch(0.7_0.17_145)]/70" />
-        </div>
-        <span className="flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.24em] text-white/40">
-          <Code2 className="h-3.5 w-3.5" />
-          {CODE_SNIPPETS[index].label}
-        </span>
-        <span className="w-10" />
-      </div>
-
-      {/* code body */}
-      <div className="relative min-h-[10rem] flex-1 overflow-hidden px-6 py-6">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -right-24 -top-24 h-56 w-56 rounded-full bg-gradient-accent opacity-15 blur-3xl"
-        />
-        <AnimatePresence mode="wait">
-          <motion.pre
-            key={index}
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.35 }}
-            className="relative whitespace-pre-wrap font-mono text-[13px] leading-relaxed text-[oklch(0.9_0.03_120)]"
-          >
-            {text}
-            <span
-              className="ml-0.5 inline-block h-4 w-2 translate-y-0.5 bg-accent-1"
-              style={{ animation: "caret-blink 1s step-end infinite" }}
-            />
-          </motion.pre>
-        </AnimatePresence>
-      </div>
-
-      {/* footer status */}
-      <div className="border-t border-white/10 bg-white/[0.02] px-6 py-4">
-        <div className="flex items-center justify-between gap-3">
-          <div className="flex items-center gap-2 min-w-0">
-            <span className="relative flex h-2 w-2 shrink-0">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent-1 opacity-60" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-accent-1" />
-            </span>
-            <span className="truncate font-mono text-[10px] uppercase tracking-[0.22em] text-white/50">
-              {t.methodology.live} · {t.methodology.clusters[cluster.id].group}
-            </span>
-          </div>
-          <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-white/40">
-            {String(index + 1).padStart(2, "0")} / {String(ecosystemClusters.length).padStart(2, "0")}
-          </span>
-        </div>
-      </div>
-    </div>
-  );
-}
 
 function SocialLink({
   icon: Icon,
