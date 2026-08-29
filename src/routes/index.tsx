@@ -832,6 +832,98 @@ const CODE_SNIPPETS = [
 
 const DECOR_CODE = CODE_SNIPPETS.map((s) => `// ${s.label}\n${s.code}`).join("\n\n");
 
+function MethodologyCard({
+  cluster,
+  index,
+}: {
+  cluster: (typeof ecosystemClusters)[number];
+  index: number;
+}) {
+  const { t } = useLanguage();
+  const [expanded, setExpanded] = useState(false);
+  const Icon = cluster.icon;
+  const copy = t.methodology.clusters[cluster.id];
+  const panelId = `methodology-panel-${cluster.id}`;
+
+  return (
+    <motion.li
+      variants={fadeUp}
+      className="flex h-full min-w-0 flex-col gap-4 rounded-3xl border border-border bg-card p-6 shadow-[var(--shadow-card)] transition-colors duration-300 hover:border-accent-1/40"
+    >
+      <div className="flex items-center gap-3">
+        <span
+          aria-hidden
+          className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-secondary text-accent-1 ring-1 ring-inset ring-border"
+        >
+          <Icon className="h-5 w-5" strokeWidth={1.6} />
+        </span>
+        <span className="min-w-0 font-mono text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-accent-1">
+          {String(index + 1).padStart(2, "0")} — {copy.kicker}
+        </span>
+      </div>
+
+      <div className="min-w-0 space-y-2">
+        <h3 className="break-words text-xl font-bold leading-tight tracking-tight">
+          {copy.group}
+        </h3>
+        <p className="break-words text-sm leading-relaxed text-muted-foreground">
+          {copy.blurb}
+        </p>
+      </div>
+
+      <ul className="flex flex-wrap gap-2">
+        {cluster.tools.map((tool) => (
+          <li
+            key={tool.label}
+            className="inline-flex max-w-full items-center gap-1.5 break-words rounded-full border border-border bg-background/60 px-3 py-1 text-[0.7rem] font-medium text-muted-foreground"
+          >
+            <span
+              aria-hidden
+              className="h-1.5 w-1.5 shrink-0 rounded-full"
+              style={{ background: tool.color }}
+            />
+            {tool.label}
+          </li>
+        ))}
+      </ul>
+
+      <div className="mt-auto pt-1">
+        <button
+          type="button"
+          aria-expanded={expanded}
+          aria-controls={panelId}
+          onClick={() => setExpanded((v) => !v)}
+          className="inline-flex items-center gap-1.5 rounded-full py-1 text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-accent-1 transition-colors hover:text-accent-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-1 focus-visible:ring-offset-2 focus-visible:ring-offset-card"
+        >
+          {expanded ? t.methodology.showLess : t.methodology.readMore}
+          <ChevronDown
+            aria-hidden
+            className={`h-3.5 w-3.5 transition-transform duration-300 ${expanded ? "rotate-180" : ""}`}
+          />
+        </button>
+
+        <AnimatePresence initial={false}>
+          {expanded && (
+            <motion.div
+              id={panelId}
+              key="panel"
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+              className="overflow-hidden"
+            >
+              <p className="break-words pt-3 text-sm leading-relaxed text-muted-foreground">
+                {copy.more}
+              </p>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </motion.li>
+  );
+}
+
 function MethodologyStack() {
   const { t } = useLanguage();
 
@@ -856,109 +948,21 @@ function MethodologyStack() {
         </p>
       </motion.div>
 
-      {/* Horizontal system diagram */}
-      <motion.div
-        variants={fadeUp}
-        className="relative isolate overflow-hidden rounded-[calc(var(--radius)+16px)] border border-border bg-card/60 px-5 py-10 md:px-10 md:py-14"
-      >
-        {/* Decorative ambient code texture — purely visual */}
+      <div className="relative isolate">
+        {/* Decorative ambient code texture — purely visual, behind the grid */}
         <pre
           aria-hidden
-          className="pointer-events-none absolute inset-0 -z-10 select-none overflow-hidden whitespace-pre p-6 font-mono text-[11px] leading-[1.5] text-foreground opacity-[0.07] md:text-[12px]"
+          className="pointer-events-none absolute inset-0 -z-10 select-none overflow-hidden whitespace-pre font-mono text-[11px] leading-[1.5] text-foreground opacity-[0.06] md:text-[12px]"
         >
           {DECOR_CODE}
         </pre>
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -right-24 -top-24 -z-10 h-72 w-72 rounded-full bg-gradient-accent opacity-10 blur-3xl"
-        />
 
-        {/* Connector line — desktop: horizontal weave */}
-        <svg
-          aria-hidden
-          viewBox="0 0 1000 200"
-          preserveAspectRatio="none"
-          className="pointer-events-none absolute inset-x-0 top-1/2 -z-10 hidden h-[220px] w-full -translate-y-1/2 lg:block"
-        >
-          <path
-            d="M0 100 C 60 100, 90 40, 125 40 C 200 40, 260 160, 375 160 C 480 160, 520 40, 625 40 C 730 40, 770 160, 875 160 C 940 160, 960 100, 1000 100"
-            fill="none"
-            stroke="var(--accent-1)"
-            strokeOpacity="0.35"
-            strokeWidth="2"
-            strokeDasharray="6 8"
-            vectorEffect="non-scaling-stroke"
-          />
-        </svg>
-
-        {/* Connector line — mobile/tablet: vertical */}
-        <span
-          aria-hidden
-          className="pointer-events-none absolute inset-y-10 left-1/2 -z-10 w-px -translate-x-1/2 bg-[repeating-linear-gradient(to_bottom,color-mix(in_oklab,var(--accent-1)_45%,transparent)_0_6px,transparent_6px_14px)] lg:hidden"
-        />
-
-        <ol className="relative grid grid-cols-1 gap-8 lg:grid-cols-4 lg:gap-5">
-          {ecosystemClusters.map((cluster, i) => {
-            const Icon = cluster.icon;
-            const copy = t.methodology.clusters[cluster.id];
-            const above = i % 2 === 0;
-            return (
-              <li
-                key={cluster.id}
-                className={`min-w-0 ${above ? "lg:-translate-y-10" : "lg:translate-y-10"} ${
-                  above ? "mr-4 sm:mr-10 lg:mr-0" : "ml-4 sm:ml-10 lg:ml-0"
-                }`}
-              >
-                <div
-                  tabIndex={0}
-                  role="group"
-                  aria-label={`Step ${i + 1} of ${ecosystemClusters.length}. ${copy.kicker}: ${copy.group}. ${copy.blurb} Tools: ${cluster.tools
-                    .map((tool) => tool.label)
-                    .join(", ")}.`}
-                  className="group flex h-full min-w-0 flex-col gap-4 rounded-3xl border border-border bg-card p-6 shadow-[var(--shadow-card)] transition-colors duration-300 hover:border-accent-1/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-1 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-                >
-                  <div className="flex items-center gap-3">
-                    <span
-                      aria-hidden
-                      className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-secondary text-accent-1 ring-1 ring-inset ring-border"
-                    >
-                      <Icon className="h-5 w-5" strokeWidth={1.6} />
-                    </span>
-                    <span className="min-w-0 font-mono text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-accent-1">
-                      {String(i + 1).padStart(2, "0")} — {copy.kicker}
-                    </span>
-                  </div>
-
-                  <div className="min-w-0 space-y-2">
-                    <h3 className="break-words text-xl font-bold leading-tight tracking-tight">
-                      {copy.group}
-                    </h3>
-                    <p className="break-words text-sm leading-relaxed text-muted-foreground">
-                      {copy.blurb}
-                    </p>
-                  </div>
-
-                  <ul className="mt-auto flex flex-wrap gap-2 pt-2">
-                    {cluster.tools.map((tool) => (
-                      <li
-                        key={tool.label}
-                        className="inline-flex max-w-full items-center gap-1.5 break-words rounded-full border border-border bg-background/60 px-3 py-1 text-[0.7rem] font-medium text-muted-foreground"
-                      >
-                        <span
-                          aria-hidden
-                          className="h-1.5 w-1.5 shrink-0 rounded-full"
-                          style={{ background: tool.color }}
-                        />
-                        {tool.label}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </li>
-            );
-          })}
+        <ol className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {ecosystemClusters.map((cluster, i) => (
+            <MethodologyCard key={cluster.id} cluster={cluster} index={i} />
+          ))}
         </ol>
-      </motion.div>
+      </div>
     </Reveal>
   );
 }
