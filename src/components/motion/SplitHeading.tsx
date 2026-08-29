@@ -46,6 +46,8 @@ export function SplitHeading({
       lines.forEach((line) => {
         line.style.display = "block";
         line.style.overflow = "hidden";
+        line.style.paddingBottom = "0.14em";
+        line.style.marginBottom = "-0.14em";
         const inner = document.createElement("span");
         inner.style.display = "block";
         inner.style.willChange = "transform, opacity";

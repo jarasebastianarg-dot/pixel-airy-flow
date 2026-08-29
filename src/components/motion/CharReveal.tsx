@@ -36,7 +36,7 @@ export function CharReveal({
         .split(/\s+/)
         .filter(Boolean)
         .map((word, wi) => (
-          <span key={`${si}-${wi}`} className="inline-block overflow-hidden align-bottom">
+          <span key={`${si}-${wi}`} className="inline-block overflow-hidden align-bottom pb-[0.16em] -mb-[0.16em]">
             {word.split("").map((ch, ci) => {
               const i = charIndex++;
               return reduceMotion ? (
