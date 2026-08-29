@@ -15,6 +15,13 @@ export function PageTransition({ children }: { children: ReactNode }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const prev = useRef(pathname);
   const positions = useRef<Record<string, number>>({});
+
+  // Persisted so a full document navigation still restores the old position.
+  const read = (path: string) => {
+    if (positions.current[path] != null) return positions.current[path];
+    const raw = sessionStorage.getItem(`scroll:${path}`);
+    return raw ? Number(raw) : 0;
+  };
   const [covering, setCovering] = useState(false);
 
   // Track scroll per route (rAF-throttled, transform/opacity work only).
@@ -25,6 +32,7 @@ export function PageTransition({ children }: { children: ReactNode }) {
       ticking = true;
       requestAnimationFrame(() => {
         positions.current[window.location.pathname] = window.scrollY;
+        sessionStorage.setItem(`scroll:${window.location.pathname}`, String(window.scrollY));
         ticking = false;
       });
     };
@@ -33,9 +41,16 @@ export function PageTransition({ children }: { children: ReactNode }) {
   }, []);
 
   useEffect(() => {
+    // On a fresh document load, restore the stored position for this route.
+    const saved = read(window.location.pathname);
+    if (saved > 0) requestAnimationFrame(() => window.scrollTo(0, saved));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
     if (prev.current === pathname) return;
     prev.current = pathname;
-    const restore = positions.current[pathname] ?? 0;
+    const restore = read(pathname);
 
     if (reduceMotion) {
       window.scrollTo(0, restore);

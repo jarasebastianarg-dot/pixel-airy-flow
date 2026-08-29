@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { LanguageToggle } from "@/components/LanguageToggle";
 import portrait from "@/assets/portrait.jpg.asset.json";
@@ -705,6 +705,8 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
   );
 }
 
+const MotionLink = motion.create(Link);
+
 function WorkCard({
   tag,
   client,
@@ -723,8 +725,8 @@ function WorkCard({
   fit?: "cover" | "contain";
 }) {
   return (
-    <motion.a
-      href={href ?? "#"}
+    <MotionLink
+      to={href ?? "/"}
       data-cursor-view
       data-cursor="hover"
       variants={fadeUp}
