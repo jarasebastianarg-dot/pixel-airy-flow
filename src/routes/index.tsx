@@ -261,7 +261,7 @@ function WordReveal({
                   initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{
-                    duration: 0.45,
+                    duration: 0.4,
                     ease: EASE_OUT,
                     delay: baseDelay + i * 0.04,
                   }}
@@ -482,13 +482,13 @@ function Index() {
                 { text: t.hero.headline.post },
               ]}
             />
-            <Entrance delay={0.9} className="mt-6">
+            <Entrance delay={0.7} className="mt-6">
               <p className="max-w-2xl break-words text-lg leading-relaxed text-muted-foreground md:text-xl">
                 {t.hero.subtitle}
               </p>
             </Entrance>
           </motion.div>
-          <Entrance delay={1.0} className="mt-8">
+          <Entrance delay={0.8} className="mt-8">
             <div className="flex flex-wrap items-center gap-4">
               <MagneticButton
                 href="#works"
