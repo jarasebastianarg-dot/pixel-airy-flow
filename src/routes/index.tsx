@@ -208,6 +208,80 @@ function Reveal({
   );
 }
 
+/* ─────────────────────── hero entrance choreography ─────────────────────── */
+
+/** Fade-up 16px entrance on page load with an explicit delay. */
+function Entrance({
+  children,
+  delay = 0,
+  className,
+}: {
+  children: React.ReactNode;
+  delay?: number;
+  className?: string;
+}) {
+  const reduceMotion = useReducedMotion();
+  if (reduceMotion) return <div className={className}>{children}</div>;
+  return (
+    <motion.div
+      className={className}
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.45, ease: EASE_OUT, delay }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+/** Word-by-word headline reveal: each word fades up 16px, staggered 40ms. */
+function WordReveal({
+  segments,
+  baseDelay = 0,
+  className,
+}: {
+  segments: { text: string; accent?: boolean }[];
+  baseDelay?: number;
+  className?: string;
+}) {
+  const reduceMotion = useReducedMotion();
+  let wordIndex = 0;
+  return (
+    <h1 className={className}>
+      {segments.map((seg, si) =>
+        seg.text.split(/\s+/).filter(Boolean).map((word, wi) => {
+          const i = wordIndex++;
+          const wordEl = (
+            <span key={`${si}-${wi}`} className="inline-block overflow-visible">
+              {reduceMotion ? (
+                word
+              ) : (
+                <motion.span
+                  className="inline-block"
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 0.45,
+                    ease: EASE_OUT,
+                    delay: baseDelay + i * 0.04,
+                  }}
+                >
+                  {word}
+                </motion.span>
+              )}
+            </span>
+          );
+          return (
+            <span key={`${si}-${wi}-w`} className={seg.accent ? "font-serif italic font-normal text-accent-1" : undefined}>
+              {wordEl}{" "}
+            </span>
+          );
+        })
+      )}
+    </h1>
+  );
+}
+
 function MagneticButton({
   children,
   href,
