@@ -8,6 +8,7 @@ import bwayThumb from "@/assets/bway/bway-brand.jpg.asset.json";
 import elevateThumb from "@/assets/elevate-local/el-thumb.jpg.asset.json";
 import {
   motion,
+  AnimatePresence,
   useMotionValue,
   useSpring,
   useInView,
@@ -30,6 +31,7 @@ import {
   Briefcase,
   Copy,
   Check,
+  ChevronDown,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -99,6 +101,7 @@ const ecosystemClusters = [
     icon: Zap,
     tools: [
       { label: "Klaviyo", color: "#20E2C8" },
+      { label: "HubSpot", color: "#FF5C35" },
       { label: "Email Automation", color: "#F5A623" },
       { label: "Meta Ads", color: "#0668E1" },
       { label: "Make", color: "#8848AB" },
