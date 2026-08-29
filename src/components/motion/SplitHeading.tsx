@@ -1,15 +1,36 @@
-import { useEffect, useRef, useState, type ElementType, type ReactNode } from "react";
+import {
+  Children,
+  isValidElement,
+  useEffect,
+  useRef,
+  useState,
+  type ElementType,
+  type ReactNode,
+} from "react";
 import SplitType from "split-type";
 
 const EASE = "cubic-bezier(0.65, 0, 0.35, 1)";
 
+/** Stable text key so the split only re-runs when the copy actually changes. */
+function textOf(node: ReactNode): string {
+  if (node === null || node === undefined || typeof node === "boolean") return "";
+  if (typeof node === "string" || typeof node === "number") return String(node);
+  if (Array.isArray(node)) return node.map(textOf).join("");
+  if (isValidElement(node)) {
+    const props = node.props as { children?: ReactNode };
+    return Children.toArray(props.children).map(textOf).join("");
+  }
+  return "";
+}
+
 /**
  * Section heading with a line-by-line mask reveal (split-type).
  *
- * React only ever owns the hidden source markup; the animated copy is a DOM
- * clone we manage ourselves, so re-renders (e.g. language switch) never fight
- * with split-type's DOM surgery. Falls back to plain text when the user
- * prefers reduced motion or JS hasn't run yet.
+ * Progressive enhancement: React owns a plain, fully visible copy of the text.
+ * Only once the animated clone has been built successfully do we swap the
+ * plain copy for the screen-reader-only source. If JS fails, fonts never
+ * resolve, or the user prefers reduced motion, the heading renders as normal
+ * static text.
  */
 export function SplitHeading({
   children,
@@ -24,8 +45,8 @@ export function SplitHeading({
 }) {
   const srcRef = useRef<HTMLSpanElement>(null);
   const outRef = useRef<HTMLSpanElement>(null);
-  const lastHtml = useRef<string>("");
   const [active, setActive] = useState(false);
+  const textKey = textOf(children);
 
   useEffect(() => {
     const src = srcRef.current;
@@ -35,14 +56,32 @@ export function SplitHeading({
 
     let cancelled = false;
     let observer: IntersectionObserver | null = null;
+    let split: SplitType | null = null;
     let resizeTimer: number | undefined;
+    let revealed = false;
 
-    const build = () => {
+    const clear = () => {
+      observer?.disconnect();
+      observer = null;
+      try {
+        split?.revert();
+      } catch {
+        /* element already gone */
+      }
+      split = null;
+      if (outRef.current) outRef.current.innerHTML = "";
+    };
+
+    const build = (revealImmediately = false) => {
       if (cancelled || !outRef.current || !srcRef.current) return;
+      clear();
       const target = outRef.current;
       target.innerHTML = srcRef.current.innerHTML;
-      const split = new SplitType(target, { types: "lines", tagName: "span" });
+      split = new SplitType(target, { types: "lines", tagName: "span" });
       const lines = split.lines ?? [];
+      if (lines.length === 0) return; // keep the plain copy visible
+
+      const inners: HTMLElement[] = [];
       lines.forEach((line) => {
         line.style.display = "block";
         line.style.overflow = "hidden";
@@ -51,56 +90,60 @@ export function SplitHeading({
         const inner = document.createElement("span");
         inner.style.display = "block";
         inner.style.willChange = "transform, opacity";
-        inner.style.transform = "translateY(110%)";
-        inner.style.opacity = "0";
+        if (!revealImmediately) {
+          inner.style.transform = "translateY(110%)";
+          inner.style.opacity = "0";
+        }
         while (line.firstChild) inner.appendChild(line.firstChild);
         line.appendChild(inner);
+        inners.push(inner);
       });
+
       setActive(true);
 
+      if (revealImmediately || revealed) return;
+
       const reveal = () => {
-        lines.forEach((line, i) => {
-          const inner = line.firstElementChild as HTMLElement | null;
-          if (!inner) return;
+        revealed = true;
+        inners.forEach((inner, i) => {
           inner.style.transition = `transform 0.7s ${EASE} ${i * stagger}s, opacity 0.7s ${EASE} ${i * stagger}s`;
           inner.style.transform = "translateY(0%)";
           inner.style.opacity = "1";
         });
       };
 
-      observer?.disconnect();
+      // Safety net: never let text stay hidden if the observer never fires.
+      const failsafe = window.setTimeout(() => {
+        if (!revealed) reveal();
+      }, 3000);
+
       observer = new IntersectionObserver(
         (entries) => {
           if (entries.some((e) => e.isIntersecting)) {
+            window.clearTimeout(failsafe);
             reveal();
             observer?.disconnect();
             observer = null;
           }
         },
-        { rootMargin: "-10% 0px -10% 0px" }
+        { rootMargin: "0px 0px -10% 0px" }
       );
+      // Fires on mount for elements already in view.
       observer.observe(target);
     };
 
-    if (src.innerHTML !== lastHtml.current) {
-      lastHtml.current = src.innerHTML;
-      if (document.fonts?.status === "loaded") build();
-      else document.fonts?.ready.then(build).catch(build) ?? build();
-    }
+    const start = () => {
+      if (cancelled) return;
+      build();
+    };
+
+    if (document.fonts?.status === "loaded") start();
+    else if (document.fonts?.ready) document.fonts.ready.then(start).catch(start);
+    else start();
 
     const onResize = () => {
       window.clearTimeout(resizeTimer);
-      resizeTimer = window.setTimeout(() => {
-        lastHtml.current = srcRef.current?.innerHTML ?? "";
-        build();
-        // re-split loses the observer state; show immediately after a resize
-        const lines = outRef.current?.querySelectorAll<HTMLElement>(".line > span");
-        lines?.forEach((inner) => {
-          inner.style.transition = "none";
-          inner.style.transform = "translateY(0%)";
-          inner.style.opacity = "1";
-        });
-      }, 200);
+      resizeTimer = window.setTimeout(() => build(revealed), 200);
     };
     window.addEventListener("resize", onResize);
 
@@ -108,9 +151,10 @@ export function SplitHeading({
       cancelled = true;
       window.clearTimeout(resizeTimer);
       window.removeEventListener("resize", onResize);
-      observer?.disconnect();
+      clear();
+      setActive(false);
     };
-  });
+  }, [textKey, stagger]);
 
   return (
     <Tag className={className}>
