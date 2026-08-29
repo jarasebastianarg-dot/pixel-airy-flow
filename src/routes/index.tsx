@@ -388,7 +388,6 @@ function CustomCursor() {
 function Index() {
   const { lang, t } = useLanguage();
   const reduceMotion = useReducedMotion();
-  const heroRef = useRef<HTMLElement>(null);
   const { scrollY } = useScroll();
   // Headline drifts at 0.5x scroll speed for depth, capped at 80px offset
   const headlineY = useTransform(scrollY, [0, 160], [0, 80], { clamp: true });
@@ -463,51 +462,50 @@ function Index() {
         transition={{ duration: 0.25, ease: "easeOut" }}
         className="mx-auto max-w-6xl px-6"
       >
-        {/* Hero */}
-        <Reveal className="py-20 md:py-28" stagger={0.12}>
-          <motion.span
-            variants={fadeUp}
-            className="inline-flex max-w-full flex-wrap items-center gap-2 break-words rounded-full border border-border bg-card px-4 py-1.5 text-xs font-semibold text-muted-foreground"
-          >
-            <span className="h-2 w-2 animate-pulse rounded-full bg-orange-500" />
-            {t.hero.badge}
-          </motion.span>
-          <motion.h1
-            variants={fadeUp}
-            className="mt-6 max-w-4xl break-words text-5xl font-bold leading-[1.02] tracking-tight md:text-7xl"
-          >
-            {t.hero.headline.pre}
-            <span className="font-serif italic font-normal text-accent-1">
-              {t.hero.headline.em1}
-            </span>
-            {t.hero.headline.mid}
-            <span className="font-serif italic font-normal text-accent-1">
-              {t.hero.headline.em2}
-            </span>
-            {t.hero.headline.post}
-          </motion.h1>
-          <motion.p
-            variants={fadeUp}
-            className="mt-6 max-w-2xl break-words text-lg leading-relaxed text-muted-foreground md:text-xl"
-          >
-            {t.hero.subtitle}
-          </motion.p>
-          <motion.div variants={fadeUp} className="mt-8 flex flex-wrap items-center gap-4">
-            <MagneticButton
-              href="#works"
-              className="group inline-flex min-w-0 items-center gap-2 break-words rounded-full bg-gradient-accent px-5 py-3 sm:px-7 sm:py-3.5 text-sm font-semibold text-accent-foreground shadow-[var(--shadow-accent)] transition-transform duration-200 active:scale-95"
-            >
-              {t.hero.ctaPrimary}
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </MagneticButton>
-            <MagneticButton
-              href="#about"
-              className="inline-flex min-w-0 items-center gap-2 break-words rounded-full border border-border bg-card px-5 py-3 sm:px-7 sm:py-3.5 text-sm font-semibold transition-transform duration-200 hover:bg-secondary active:scale-95"
-            >
-              {t.hero.ctaSecondary}
-            </MagneticButton>
+        {/* Hero — choreographed entrance on page load */}
+        <section className="py-20 md:py-28">
+          <motion.div style={{ y: parallaxY }}>
+            <Entrance delay={0.3}>
+              <span className="inline-flex max-w-full flex-wrap items-center gap-2 break-words rounded-full border border-border bg-card px-4 py-1.5 text-xs font-semibold text-muted-foreground">
+                <span className="h-2 w-2 animate-pulse rounded-full bg-orange-500" />
+                {t.hero.badge}
+              </span>
+            </Entrance>
+            <WordReveal
+              baseDelay={0.4}
+              className="mt-6 max-w-4xl break-words text-5xl font-bold leading-[1.02] tracking-tight md:text-7xl"
+              segments={[
+                { text: t.hero.headline.pre },
+                { text: t.hero.headline.em1, accent: true },
+                { text: t.hero.headline.mid },
+                { text: t.hero.headline.em2, accent: true },
+                { text: t.hero.headline.post },
+              ]}
+            />
+            <Entrance delay={0.9} className="mt-6">
+              <p className="max-w-2xl break-words text-lg leading-relaxed text-muted-foreground md:text-xl">
+                {t.hero.subtitle}
+              </p>
+            </Entrance>
           </motion.div>
-        </Reveal>
+          <Entrance delay={1.0} className="mt-8">
+            <div className="flex flex-wrap items-center gap-4">
+              <MagneticButton
+                href="#works"
+                className="group inline-flex min-w-0 items-center gap-2 break-words rounded-full bg-gradient-accent px-5 py-3 sm:px-7 sm:py-3.5 text-sm font-semibold text-accent-foreground shadow-[var(--shadow-accent)] transition-transform duration-200 active:scale-95"
+              >
+                {t.hero.ctaPrimary}
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </MagneticButton>
+              <MagneticButton
+                href="#about"
+                className="inline-flex min-w-0 items-center gap-2 break-words rounded-full border border-border bg-card px-5 py-3 sm:px-7 sm:py-3.5 text-sm font-semibold transition-transform duration-200 hover:bg-secondary active:scale-95"
+              >
+                {t.hero.ctaSecondary}
+              </MagneticButton>
+            </div>
+          </Entrance>
+        </section>
 
         {/* Selected Works */}
         <section id="works" className="scroll-mt-24 pt-8">
