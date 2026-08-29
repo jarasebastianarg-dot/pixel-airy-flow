@@ -94,7 +94,7 @@ export const dictionary = {
     methodology: {
       heading: { pre: "One system, ", em: "four", post: " engines." },
       intro:
-        "Design, code, growth and AI orchestrated as a single stack. Tap any cluster — the workspace re-compiles in real time.",
+        "Design, code, growth and AI orchestrated as a single stack — four connected engines, one continuous pipeline from concept to conversion.",
       clusters: {
         design: {
           kicker: "Craft",
@@ -368,7 +368,7 @@ export const dictionary = {
     methodology: {
       heading: { pre: "Un sistema, ", em: "cuatro", post: " motores." },
       intro:
-        "Diseño, código, growth y AI orquestados como un único stack. Tocá cualquier cluster: el workspace se re-compila en tiempo real.",
+        "Diseño, código, growth y AI orquestados como un único stack: cuatro motores conectados, un pipeline continuo del concepto a la conversión.",
       clusters: {
         design: {
           kicker: "Craft",
