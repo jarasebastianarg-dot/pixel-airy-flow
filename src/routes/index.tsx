@@ -12,8 +12,12 @@ import {
   useMotionValue,
   useSpring,
   useInView,
+  useReducedMotion,
+  useScroll,
+  useTransform,
   type Variants,
 } from "framer-motion";
+import { EASE_OUT } from "@/lib/motion";
 import {
   ArrowUpRight,
   ShoppingBag,
@@ -220,15 +224,17 @@ function MagneticButton({
   const ref = useRef<HTMLAnchorElement>(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-  const sx = useSpring(x, { stiffness: 200, damping: 15 });
-  const sy = useSpring(y, { stiffness: 200, damping: 15 });
+  const sx = useSpring(x, { stiffness: 150, damping: 15 });
+  const sy = useSpring(y, { stiffness: 150, damping: 15 });
 
   function onMove(e: React.MouseEvent) {
     const el = ref.current;
     if (!el) return;
     const r = el.getBoundingClientRect();
-    x.set((e.clientX - (r.left + r.width / 2)) * 0.35);
-    y.set((e.clientY - (r.top + r.height / 2)) * 0.35);
+    // Follow the cursor but clamp the pull to a 15px radius
+    const clamp = (v: number) => Math.max(-15, Math.min(15, v * 0.35));
+    x.set(clamp(e.clientX - (r.left + r.width / 2)));
+    y.set(clamp(e.clientY - (r.top + r.height / 2)));
   }
   function reset() {
     x.set(0);
