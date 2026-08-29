@@ -903,7 +903,7 @@ function MethodologyStack() {
               <li
                 key={cluster.id}
                 className={`min-w-0 ${above ? "lg:-translate-y-10" : "lg:translate-y-10"} ${
-                  above ? "sm:pr-10 lg:pr-0" : "sm:pl-10 lg:pl-0"
+                  above ? "mr-4 sm:mr-10 lg:mr-0" : "ml-4 sm:ml-10 lg:ml-0"
                 }`}
               >
                 <div
