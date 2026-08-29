@@ -389,12 +389,9 @@ function Index() {
   const { lang, t } = useLanguage();
   const reduceMotion = useReducedMotion();
   const heroRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"],
-  });
-  // Headline drifts at ~0.5x scroll speed for depth, capped at 80px
-  const headlineY = useTransform(scrollYProgress, [0, 1], [0, 80]);
+  const { scrollY } = useScroll();
+  // Headline drifts at 0.5x scroll speed for depth, capped at 80px offset
+  const headlineY = useTransform(scrollY, [0, 160], [0, 80], { clamp: true });
   const parallaxY = reduceMotion ? 0 : headlineY;
 
   return (
