@@ -8,7 +8,8 @@ export const getRouter = () => {
   const router = createRouter({
     routeTree,
     context: { queryClient },
-    scrollRestoration: true,
+    // Scroll is restored manually by <PageTransition /> so it syncs with the panel.
+    scrollRestoration: false,
     defaultPreloadStaleTime: 0,
   });
 

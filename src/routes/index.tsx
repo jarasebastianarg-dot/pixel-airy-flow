@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { LanguageToggle } from "@/components/LanguageToggle";
 import portrait from "@/assets/portrait.jpg.asset.json";
@@ -18,6 +18,8 @@ import {
   type Variants,
 } from "framer-motion";
 import { EASE_OUT } from "@/lib/motion";
+import { CharReveal } from "@/components/motion/CharReveal";
+import { SplitHeading } from "@/components/motion/SplitHeading";
 import {
   ArrowUpRight,
   ShoppingBag,
@@ -234,54 +236,6 @@ function Entrance({
   );
 }
 
-/** Word-by-word headline reveal: each word fades up 16px, staggered 40ms. */
-function WordReveal({
-  segments,
-  baseDelay = 0,
-  className,
-}: {
-  segments: { text: string; accent?: boolean }[];
-  baseDelay?: number;
-  className?: string;
-}) {
-  const reduceMotion = useReducedMotion();
-  let wordIndex = 0;
-  return (
-    <h1 className={className}>
-      {segments.map((seg, si) =>
-        seg.text.split(/\s+/).filter(Boolean).map((word, wi) => {
-          const i = wordIndex++;
-          const wordEl = (
-            <span key={`${si}-${wi}`} className="inline-block overflow-visible">
-              {reduceMotion ? (
-                word
-              ) : (
-                <motion.span
-                  className="inline-block"
-                  initial={{ opacity: 0, y: 16 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{
-                    duration: 0.4,
-                    ease: EASE_OUT,
-                    delay: baseDelay + i * 0.04,
-                  }}
-                >
-                  {word}
-                </motion.span>
-              )}
-            </span>
-          );
-          return (
-            <span key={`${si}-${wi}-w`} className={seg.accent ? "font-serif italic font-normal text-accent-1" : undefined}>
-              {wordEl}{" "}
-            </span>
-          );
-        })
-      )}
-    </h1>
-  );
-}
-
 function MagneticButton({
   children,
   href,
@@ -332,57 +286,6 @@ function MagneticButton({
   );
 }
 
-/* ─────────────────────── custom cursor ─────────────────────── */
-
-function CustomCursor() {
-  const x = useMotionValue(-100);
-  const y = useMotionValue(-100);
-  const sx = useSpring(x, { stiffness: 500, damping: 40 });
-  const sy = useSpring(y, { stiffness: 500, damping: 40 });
-  const [hovering, setHovering] = useState(false);
-  const [enabled, setEnabled] = useState(false);
-
-  useEffect(() => {
-    if (window.matchMedia("(pointer: fine)").matches) setEnabled(true);
-    function move(e: MouseEvent) {
-      x.set(e.clientX);
-      y.set(e.clientY);
-      const t = e.target as HTMLElement;
-      setHovering(!!t.closest("[data-cursor-view]"));
-    }
-    window.addEventListener("mousemove", move);
-    return () => window.removeEventListener("mousemove", move);
-  }, [x, y]);
-
-  if (!enabled) return null;
-
-  return (
-    <motion.div
-      style={{ x: sx, y: sy }}
-      className="pointer-events-none fixed left-0 top-0 z-[100] -translate-x-1/2 -translate-y-1/2"
-    >
-      <motion.div
-        animate={{
-          width: hovering ? 72 : 12,
-          height: hovering ? 72 : 12,
-          backgroundColor: hovering
-            ? "oklch(0.7 0.19 40)"
-            : "oklch(0.21 0.02 265)",
-        }}
-        transition={{ type: "spring", stiffness: 260, damping: 22 }}
-        className="flex items-center justify-center rounded-full"
-      >
-        <motion.span
-          animate={{ opacity: hovering ? 1 : 0 }}
-          className="text-[10px] font-bold uppercase tracking-widest text-accent-foreground"
-        >
-          View
-        </motion.span>
-      </motion.div>
-    </motion.div>
-  );
-}
-
 /* ─────────────────────────── page ─────────────────────────── */
 
 function Index() {
@@ -394,9 +297,7 @@ function Index() {
   const parallaxY = reduceMotion ? 0 : headlineY;
 
   return (
-    <div className="min-h-screen w-full overflow-x-hidden bg-background text-foreground md:cursor-none">
-      <CustomCursor />
-
+    <div className="min-h-screen w-full overflow-x-hidden bg-background text-foreground">
       {/* Header */}
       <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur-md">
         <div className="mx-auto flex max-w-6xl items-center gap-6 px-6 py-4">
@@ -428,7 +329,7 @@ function Index() {
                   key={l.href}
                   href={l.href}
                   onClick={smoothScrollTo(l.href.slice(1))}
-                  className="inline-flex min-h-[44px] min-w-0 items-center break-words rounded-full px-3 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground"
+                  className="link-underline inline-flex min-h-[44px] min-w-0 items-center break-words px-3 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground"
                 >
                   {l.label}
                 </a>
@@ -471,7 +372,7 @@ function Index() {
                 {t.hero.badge}
               </span>
             </Entrance>
-            <WordReveal
+            <CharReveal
               baseDelay={0.4}
               className="mt-6 max-w-4xl break-words text-5xl font-bold leading-[1.02] tracking-tight md:text-7xl"
               segments={[
@@ -534,13 +435,13 @@ function Index() {
           <Reveal className="grid grid-cols-1 gap-10 md:grid-cols-12 md:items-end" stagger={0.1}>
             <motion.div variants={fadeUp} className="md:col-span-7">
               <SectionLabel>{t.sections.capabilities}</SectionLabel>
-              <h2 className="mt-4 break-words text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl">
+              <SplitHeading className="mt-4 break-words text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl">
                 {t.capabilities.heading.pre}
                 <span className="font-serif italic font-normal text-accent-1">
                   {t.capabilities.heading.em}
                 </span>
                 {t.capabilities.heading.post}
-              </h2>
+              </SplitHeading>
             </motion.div>
             <motion.p
               variants={fadeUp}
@@ -731,6 +632,7 @@ function Index() {
               >
                 <Download className="h-4 w-4 shrink-0" />
                 {t.about.downloadCv}
+                <ArrowUpRight className="h-4 w-4 shrink-0 transition-transform duration-300 ease-[cubic-bezier(0.65,0,0.35,1)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </MagneticButton>
               <div className="flex flex-wrap gap-3">
                 <SocialLink
@@ -803,6 +705,8 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
   );
 }
 
+const MotionLink = motion.create(Link);
+
 function WorkCard({
   tag,
   client,
@@ -821,9 +725,10 @@ function WorkCard({
   fit?: "cover" | "contain";
 }) {
   return (
-    <motion.a
-      href={href ?? "#"}
+    <MotionLink
+      to={href ?? "/"}
       data-cursor-view
+      data-cursor="hover"
       variants={fadeUp}
       className="group relative block h-[20rem] overflow-hidden rounded-[calc(var(--radius)+16px)] border border-border shadow-[var(--shadow-card)] sm:h-[24rem]"
     >
@@ -868,7 +773,7 @@ function WorkCard({
           {body}
         </p>
       </div>
-    </motion.a>
+    </MotionLink>
   );
 }
 
@@ -948,13 +853,13 @@ function MethodologyStack() {
         className="grid grid-cols-1 gap-8 md:grid-cols-12 md:items-end"
       >
         <div className="md:col-span-7">
-          <h2 className="mt-4 break-words text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl">
+          <SplitHeading className="mt-4 break-words text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl">
             {t.methodology.heading.pre}
             <span className="font-serif italic font-normal text-accent-1">
               {t.methodology.heading.em}
             </span>
             {t.methodology.heading.post}
-          </h2>
+          </SplitHeading>
         </div>
         <p className="min-w-0 break-words text-base leading-relaxed text-muted-foreground md:col-span-5 md:text-lg">
           {t.methodology.intro}
@@ -1206,10 +1111,11 @@ function SocialLink({
       target={target}
       rel={isExternal ? "noopener noreferrer" : undefined}
       aria-label={label}
-      className="inline-flex min-w-0 flex-1 items-center justify-center gap-2 break-words rounded-full border border-border bg-card px-6 py-4 text-sm font-semibold transition-transform duration-200 hover:bg-secondary active:scale-95"
+      className="group inline-flex min-w-0 flex-1 items-center justify-center gap-2 break-words rounded-full border border-border bg-card px-6 py-4 text-sm font-semibold transition-transform duration-200 hover:bg-secondary active:scale-95"
     >
       <Icon className="h-4 w-4 shrink-0" />
       {label}
+      <ArrowUpRight className="h-4 w-4 shrink-0 transition-transform duration-300 ease-[cubic-bezier(0.65,0,0.35,1)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
     </a>
   );
 }

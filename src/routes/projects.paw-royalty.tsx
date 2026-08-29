@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { LanguageToggle } from "@/components/LanguageToggle";
+import { SplitHeading } from "@/components/motion/SplitHeading";
 import {
   AnimatePresence,
   motion,
@@ -644,12 +645,12 @@ function PawRoyaltyProject() {
           <Reveal className="md:col-span-4" stagger={0.08}>
             <motion.div variants={fadeUp}>
               <SectionLabel>{tr("01 — Context")}</SectionLabel>
-              <h2 className="mt-6 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
+              <SplitHeading className="mt-6 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
                 {tr("The")}{" "}
                 <span className="font-serif italic font-normal text-accent-1">
                   {tr("Friction")}
                 </span>
-              </h2>
+              </SplitHeading>
             </motion.div>
           </Reveal>
           <Reveal className="mt-8 md:col-span-8 md:mt-0" stagger={0.08}>
@@ -675,12 +676,12 @@ function PawRoyaltyProject() {
           <Reveal className="grid grid-cols-1 gap-10 md:grid-cols-12 md:items-end" stagger={0.1}>
             <motion.div variants={fadeUp} className="md:col-span-7">
               <SectionLabel>{tr("02 — Build")}</SectionLabel>
-              <h2 className="mt-6 text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl">
+              <SplitHeading className="mt-6 text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl">
                 {tr("The")}{" "}
                 <span className="font-serif italic font-normal text-accent-1">
                   {tr("Execution")}
                 </span>
-              </h2>
+              </SplitHeading>
             </motion.div>
             <motion.p
               variants={fadeUp}
@@ -733,13 +734,13 @@ function PawRoyaltyProject() {
           <Reveal className="grid grid-cols-1 gap-10 md:grid-cols-12 md:items-end" stagger={0.1}>
             <motion.div variants={fadeUp} className="md:col-span-7">
               <SectionLabel>{tr("02.75 — Email Marketing")}</SectionLabel>
-              <h2 className="mt-6 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
+              <SplitHeading className="mt-6 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
                 {tr("Retention wired into")}{" "}
                 <span className="font-serif italic font-normal text-accent-1">
                   Klaviyo
                 </span>
                 .
-              </h2>
+              </SplitHeading>
             </motion.div>
             <motion.p
               variants={fadeUp}
