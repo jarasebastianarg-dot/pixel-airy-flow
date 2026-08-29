@@ -12,8 +12,12 @@ import {
   useMotionValue,
   useSpring,
   useInView,
+  useReducedMotion,
+  useScroll,
+  useTransform,
   type Variants,
 } from "framer-motion";
+import { EASE_OUT } from "@/lib/motion";
 import {
   ArrowUpRight,
   ShoppingBag,
@@ -204,6 +208,80 @@ function Reveal({
   );
 }
 
+/* ─────────────────────── hero entrance choreography ─────────────────────── */
+
+/** Fade-up 16px entrance on page load with an explicit delay. */
+function Entrance({
+  children,
+  delay = 0,
+  className,
+}: {
+  children: React.ReactNode;
+  delay?: number;
+  className?: string;
+}) {
+  const reduceMotion = useReducedMotion();
+  if (reduceMotion) return <div className={className}>{children}</div>;
+  return (
+    <motion.div
+      className={className}
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.45, ease: EASE_OUT, delay }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+/** Word-by-word headline reveal: each word fades up 16px, staggered 40ms. */
+function WordReveal({
+  segments,
+  baseDelay = 0,
+  className,
+}: {
+  segments: { text: string; accent?: boolean }[];
+  baseDelay?: number;
+  className?: string;
+}) {
+  const reduceMotion = useReducedMotion();
+  let wordIndex = 0;
+  return (
+    <h1 className={className}>
+      {segments.map((seg, si) =>
+        seg.text.split(/\s+/).filter(Boolean).map((word, wi) => {
+          const i = wordIndex++;
+          const wordEl = (
+            <span key={`${si}-${wi}`} className="inline-block overflow-visible">
+              {reduceMotion ? (
+                word
+              ) : (
+                <motion.span
+                  className="inline-block"
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 0.4,
+                    ease: EASE_OUT,
+                    delay: baseDelay + i * 0.04,
+                  }}
+                >
+                  {word}
+                </motion.span>
+              )}
+            </span>
+          );
+          return (
+            <span key={`${si}-${wi}-w`} className={seg.accent ? "font-serif italic font-normal text-accent-1" : undefined}>
+              {wordEl}{" "}
+            </span>
+          );
+        })
+      )}
+    </h1>
+  );
+}
+
 function MagneticButton({
   children,
   href,
@@ -220,15 +298,17 @@ function MagneticButton({
   const ref = useRef<HTMLAnchorElement>(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-  const sx = useSpring(x, { stiffness: 200, damping: 15 });
-  const sy = useSpring(y, { stiffness: 200, damping: 15 });
+  const sx = useSpring(x, { stiffness: 150, damping: 15 });
+  const sy = useSpring(y, { stiffness: 150, damping: 15 });
 
   function onMove(e: React.MouseEvent) {
     const el = ref.current;
     if (!el) return;
     const r = el.getBoundingClientRect();
-    x.set((e.clientX - (r.left + r.width / 2)) * 0.35);
-    y.set((e.clientY - (r.top + r.height / 2)) * 0.35);
+    // Follow the cursor but clamp the pull to a 15px radius
+    const clamp = (v: number) => Math.max(-15, Math.min(15, v * 0.35));
+    x.set(clamp(e.clientX - (r.left + r.width / 2)));
+    y.set(clamp(e.clientY - (r.top + r.height / 2)));
   }
   function reset() {
     x.set(0);
@@ -307,6 +387,11 @@ function CustomCursor() {
 
 function Index() {
   const { lang, t } = useLanguage();
+  const reduceMotion = useReducedMotion();
+  const { scrollY } = useScroll();
+  // Headline drifts at 0.5x scroll speed for depth, capped at 80px offset
+  const headlineY = useTransform(scrollY, [0, 160], [0, 80], { clamp: true });
+  const parallaxY = reduceMotion ? 0 : headlineY;
 
   return (
     <div className="min-h-screen w-full overflow-x-hidden bg-background text-foreground md:cursor-none">
@@ -315,41 +400,47 @@ function Index() {
       {/* Header */}
       <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur-md">
         <div className="mx-auto flex max-w-6xl items-center gap-6 px-6 py-4">
-          <a
-            href="#top"
-            onClick={smoothScrollTo("top")}
-            aria-label="SJ — home"
-            className="mr-auto flex min-h-[44px] min-w-[44px] items-center gap-2 font-display text-lg font-bold tracking-tight"
-          >
-            <SJMonogram />
-            <span className="sr-only">Sebastián</span>
-          </a>
+          <Entrance delay={0} className="mr-auto">
+            <a
+              href="#top"
+              onClick={smoothScrollTo("top")}
+              aria-label="SJ — home"
+              className="flex min-h-[44px] min-w-[44px] items-center gap-2 font-display text-lg font-bold tracking-tight"
+            >
+              <SJMonogram />
+              <span className="sr-only">Sebastián</span>
+            </a>
+          </Entrance>
 
           {/* Tertiary: section links */}
-          <nav
-            aria-label="Primary"
-            className="hidden items-center gap-1 md:flex"
-          >
-            {[
-              { href: "#works", label: t.nav.work },
-              { href: "#capabilities", label: t.nav.capabilities },
-              { href: "#stack", label: t.nav.stack },
-              { href: "#about", label: t.nav.about },
-            ].map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
-                onClick={smoothScrollTo(l.href.slice(1))}
-                className="inline-flex min-h-[44px] min-w-0 items-center break-words rounded-full px-3 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground"
-              >
-                {l.label}
-              </a>
-            ))}
-          </nav>
+          <Entrance delay={0.1} className="hidden md:block">
+            <nav
+              aria-label="Primary"
+              className="flex items-center gap-1"
+            >
+              {[
+                { href: "#works", label: t.nav.work },
+                { href: "#capabilities", label: t.nav.capabilities },
+                { href: "#stack", label: t.nav.stack },
+                { href: "#about", label: t.nav.about },
+              ].map((l) => (
+                <a
+                  key={l.href}
+                  href={l.href}
+                  onClick={smoothScrollTo(l.href.slice(1))}
+                  className="inline-flex min-h-[44px] min-w-0 items-center break-words rounded-full px-3 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  {l.label}
+                </a>
+              ))}
+            </nav>
+          </Entrance>
 
           <div className="flex min-w-0 flex-wrap items-center justify-end gap-2">
             {/* Secondary: language toggle */}
-            <LanguageToggle />
+            <Entrance delay={0.2}>
+              <LanguageToggle />
+            </Entrance>
 
             {/* Primary CTA */}
             <a
@@ -371,51 +462,50 @@ function Index() {
         transition={{ duration: 0.25, ease: "easeOut" }}
         className="mx-auto max-w-6xl px-6"
       >
-        {/* Hero */}
-        <Reveal className="py-20 md:py-28" stagger={0.12}>
-          <motion.span
-            variants={fadeUp}
-            className="inline-flex max-w-full flex-wrap items-center gap-2 break-words rounded-full border border-border bg-card px-4 py-1.5 text-xs font-semibold text-muted-foreground"
-          >
-            <span className="h-2 w-2 animate-pulse rounded-full bg-orange-500" />
-            {t.hero.badge}
-          </motion.span>
-          <motion.h1
-            variants={fadeUp}
-            className="mt-6 max-w-4xl break-words text-5xl font-bold leading-[1.02] tracking-tight md:text-7xl"
-          >
-            {t.hero.headline.pre}
-            <span className="font-serif italic font-normal text-accent-1">
-              {t.hero.headline.em1}
-            </span>
-            {t.hero.headline.mid}
-            <span className="font-serif italic font-normal text-accent-1">
-              {t.hero.headline.em2}
-            </span>
-            {t.hero.headline.post}
-          </motion.h1>
-          <motion.p
-            variants={fadeUp}
-            className="mt-6 max-w-2xl break-words text-lg leading-relaxed text-muted-foreground md:text-xl"
-          >
-            {t.hero.subtitle}
-          </motion.p>
-          <motion.div variants={fadeUp} className="mt-8 flex flex-wrap items-center gap-4">
-            <MagneticButton
-              href="#works"
-              className="group inline-flex min-w-0 items-center gap-2 break-words rounded-full bg-gradient-accent px-5 py-3 sm:px-7 sm:py-3.5 text-sm font-semibold text-accent-foreground shadow-[var(--shadow-accent)] transition-transform duration-200 active:scale-95"
-            >
-              {t.hero.ctaPrimary}
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </MagneticButton>
-            <MagneticButton
-              href="#about"
-              className="inline-flex min-w-0 items-center gap-2 break-words rounded-full border border-border bg-card px-5 py-3 sm:px-7 sm:py-3.5 text-sm font-semibold transition-transform duration-200 hover:bg-secondary active:scale-95"
-            >
-              {t.hero.ctaSecondary}
-            </MagneticButton>
+        {/* Hero — choreographed entrance on page load */}
+        <section className="py-20 md:py-28">
+          <motion.div style={{ y: parallaxY }}>
+            <Entrance delay={0.3}>
+              <span className="inline-flex max-w-full flex-wrap items-center gap-2 break-words rounded-full border border-border bg-card px-4 py-1.5 text-xs font-semibold text-muted-foreground">
+                <span className="h-2 w-2 animate-pulse rounded-full bg-orange-500" />
+                {t.hero.badge}
+              </span>
+            </Entrance>
+            <WordReveal
+              baseDelay={0.4}
+              className="mt-6 max-w-4xl break-words text-5xl font-bold leading-[1.02] tracking-tight md:text-7xl"
+              segments={[
+                { text: t.hero.headline.pre },
+                { text: t.hero.headline.em1, accent: true },
+                { text: t.hero.headline.mid },
+                { text: t.hero.headline.em2, accent: true },
+                { text: t.hero.headline.post },
+              ]}
+            />
+            <Entrance delay={0.7} className="mt-6">
+              <p className="max-w-2xl break-words text-lg leading-relaxed text-muted-foreground md:text-xl">
+                {t.hero.subtitle}
+              </p>
+            </Entrance>
+            <Entrance delay={0.8} className="mt-8">
+              <div className="flex flex-wrap items-center gap-4">
+                <MagneticButton
+                  href="#works"
+                  className="group inline-flex min-w-0 items-center gap-2 break-words rounded-full bg-gradient-accent px-5 py-3 sm:px-7 sm:py-3.5 text-sm font-semibold text-accent-foreground shadow-[var(--shadow-accent)] transition-transform duration-200 active:scale-95"
+                >
+                  {t.hero.ctaPrimary}
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </MagneticButton>
+                <MagneticButton
+                  href="#about"
+                  className="inline-flex min-w-0 items-center gap-2 break-words rounded-full border border-border bg-card px-5 py-3 sm:px-7 sm:py-3.5 text-sm font-semibold transition-transform duration-200 hover:bg-secondary active:scale-95"
+                >
+                  {t.hero.ctaSecondary}
+                </MagneticButton>
+              </div>
+            </Entrance>
           </motion.div>
-        </Reveal>
+        </section>
 
         {/* Selected Works */}
         <section id="works" className="scroll-mt-24 pt-8">
