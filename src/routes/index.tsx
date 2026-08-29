@@ -8,7 +8,6 @@ import bwayThumb from "@/assets/bway/bway-brand.jpg.asset.json";
 import elevateThumb from "@/assets/elevate-local/el-thumb.jpg.asset.json";
 import {
   motion,
-  AnimatePresence,
   useMotionValue,
   useSpring,
   useInView,
@@ -826,15 +825,6 @@ const CODE_SNIPPETS = [
       "ai.claudeCoWork  = 'async pair-programming at scale';\n" +
       "ai.gemini        = 'research, data & multimodal analysis';",
   },
-];
-
-// All coral, matching the site's accent-1 (~oklch(0.72 0.18 45)).
-// Only origin/spread/intensity vary so each card feels alive without breaking the palette.
-const CLUSTER_GRADIENTS = [
-  "radial-gradient(130% 100% at 100% 0%, oklch(0.78 0.19 45 / 0.55), transparent 62%)",
-  "radial-gradient(120% 110% at 0% 100%, oklch(0.75 0.19 42 / 0.5), transparent 65%)",
-  "radial-gradient(140% 100% at 100% 100%, oklch(0.8 0.17 48 / 0.5), transparent 62%)",
-  "radial-gradient(120% 100% at 0% 0%, oklch(0.77 0.18 44 / 0.5), transparent 65%)",
 ];
 
 const DECOR_CODE = CODE_SNIPPETS.map((s) => `// ${s.label}\n${s.code}`).join("\n\n");
