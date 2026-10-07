@@ -24,16 +24,16 @@ export const Route = createFileRoute("/projects/xtendo-global")({
   component: XtendoProject,
   head: () => ({
     meta: [
-      { title: "Xtendo Global — A new logo isn't a brand. I built the rest." },
+      { title: "Xtendo Global — Brand manual, sub-brand, templates and AI | Sebastián Jara" },
       {
         name: "description",
         content:
-          "How Sebastián Jara led Xtendo Global's rebrand after the logo: a 45-page brand manual, a new sub-brand, templates for every team, an AI-made launch video and a faster, AI-trained design team.",
+          "Case study: after an outside studio designed Xtendo Global's new logo, I wrote the 45-page brand manual, created the Talent Solutions sub-brand, built templates for each team, made the launch video with Claude and trained the design team in AI.",
       },
       { property: "og:title", content: "Xtendo Global — Brand & Design Strategy case study" },
       {
         property: "og:description",
-        content: "A new logo isn't a brand. Here's how I built the rest for a 1,500-person company in 9 countries.",
+        content: "How I turned Xtendo Global's new logo into a brand system for 1,500+ people in 9 countries.",
       },
       { property: "og:type", content: "article" },
       { property: "og:url", content: "/projects/xtendo-global" },
@@ -48,67 +48,70 @@ export const Route = createFileRoute("/projects/xtendo-global")({
 /* ------------------------------------------------------------------ */
 
 const manualPages = [
-  { src: "manual-p01.webp", page: 1, title: "The cover", body: "One book with every rule, so nobody has to guess what the brand looks like." },
-  { src: "manual-p04.webp", page: 4, title: "The logo", body: "Which version to use, where it goes and how much space it needs." },
-  { src: "manual-p11.webp", page: 11, title: "What not to do", body: "The most common mistakes, shown side by side, so teams catch them before they publish." },
-  { src: "manual-p13.webp", page: 13, title: "Color", body: "Five colors with exact values, and how much of each one to use." },
-  { src: "manual-p18.webp", page: 18, title: "Typography", body: "One typeface, Manrope, with clear sizes for titles and text." },
-  { src: "manual-p23.webp", page: 23, title: "Voice and tone", body: "How Xtendo sounds when it writes: expert, close, concrete and global." },
-  { src: "manual-p28.webp", page: 28, title: "Photography", body: "Real people at work, cool light, no generic stock photos." },
-  { src: "manual-p34.webp", page: 34, title: "Web and UI", body: "Cards, buttons and forms, so the website matches the slides and the posts." },
-  { src: "manual-p40.webp", page: 40, title: "Social media", body: "Ready-made layouts for data posts, content and success stories." },
-  { src: "manual-p43.webp", page: 43, title: "Co-branding", body: "How to share a piece with partners like Frontline without losing the brand." },
+  { src: "manual-p01.webp", page: 1, title: "The cover", body: "The 2026 edition, with every brand rule in one place." },
+  { src: "manual-p04.webp", page: 4, title: "The logo", body: "Which logo version to use on light and dark backgrounds." },
+  { src: "manual-p11.webp", page: 11, title: "What not to do", body: "Common mistakes with the logo, each one shown with an example." },
+  { src: "manual-p13.webp", page: 13, title: "Color", body: "The five brand colors, with exact values for screen and print." },
+  { src: "manual-p18.webp", page: 18, title: "Typography", body: "Manrope for everything, with set sizes for titles and body text." },
+  { src: "manual-p23.webp", page: 23, title: "Voice and tone", body: "How Xtendo writes: expert, close, concrete and global." },
+  { src: "manual-p28.webp", page: 28, title: "Photography", body: "Which photos to use, and which ones to avoid." },
+  { src: "manual-p34.webp", page: 34, title: "Web and UI", body: "Cards, buttons and forms for the website, in the same style as the slides." },
+  { src: "manual-p40.webp", page: 40, title: "Social media", body: "Post layouts for data, content and success stories." },
+  { src: "manual-p43.webp", page: 43, title: "Co-branding", body: "How to place the logo next to partners like Frontline." },
 ];
+
+/* Lines rails up with the page container (max-w-7xl + px-10) */
+const RAIL_PAD = "max(min(2.5rem, 5vw), calc((100vw - 80rem) / 2 + 2.5rem))";
 
 const talentPages = Array.from({ length: 9 }, (_, i) => `talent-p${i + 1}.webp`);
 
-type Piece = { src: string; label: string; ratio: string };
+type Piece = { src: string; label: string };
 const teams: { id: string; label: string; line: string; pieces: Piece[] }[] = [
   {
     id: "sales",
     label: "Sales",
-    line: "Success stories and ebooks that look the same in every country, ready to send to a client.",
+    line: "Success stories and ebooks the sales team sends to clients.",
     pieces: [
-      { src: "xtendo-case-study-1.webp", label: "One-page success story", ratio: "1000/1416" },
-      { src: "xtendo-ebook-cover.webp", label: "LinkedIn ebook cover", ratio: "1/1" },
-      { src: "xtendo-ebook-page-1.webp", label: "Ebook inside page", ratio: "1400/989" },
+      { src: "xtendo-case-study-1.webp", label: "One-page success story" },
+      { src: "xtendo-ebook-cover.webp", label: "LinkedIn ebook cover" },
+      { src: "xtendo-ebook-page-1.webp", label: "Ebook inside page" },
     ],
   },
   {
     id: "marketing",
     label: "Marketing",
-    line: "Webinar launches, infographics and partner campaigns built from the same system.",
+    line: "Webinar posts, infographics and a campaign with Frontline.",
     pieces: [
-      { src: "xtendo-post-webinar-sales.webp", label: "Webinar announcement", ratio: "1080/1064" },
-      { src: "xtendo-infographic.webp", label: "Infographic", ratio: "1080/1350" },
-      { src: "xtendo-post-frontline.webp", label: "Campaign with Frontline", ratio: "1080/1350" },
+      { src: "xtendo-post-webinar-sales.webp", label: "Webinar announcement" },
+      { src: "xtendo-infographic.webp", label: "Infographic" },
+      { src: "xtendo-post-frontline.webp", label: "Campaign with Frontline" },
     ],
   },
   {
     id: "people",
     label: "People",
-    line: "Hiring posts, welcomes and team presentations that make new people feel part of one company.",
+    line: "Job posts, welcome messages and team presentations.",
     pieces: [
-      { src: "xtendo-tpl-hiring.webp", label: "Hiring post", ratio: "1/1" },
-      { src: "xtendo-internal-welcome.webp", label: "Welcome message", ratio: "16/9" },
-      { src: "xtendo-team-presentation.webp", label: "Team presentation", ratio: "746/689" },
+      { src: "xtendo-tpl-hiring.webp", label: "Hiring post" },
+      { src: "xtendo-internal-welcome.webp", label: "Welcome message" },
+      { src: "xtendo-team-presentation.webp", label: "Team presentation" },
     ],
   },
   {
     id: "everyone",
     label: "Everyone",
-    line: "Business cards and video call backgrounds, so every person carries the brand to every meeting.",
+    line: "Business cards and backgrounds for video calls.",
     pieces: [
-      { src: "xtendo-card-front.webp", label: "Business card, front", ratio: "1200/776" },
-      { src: "xtendo-card-back.webp", label: "Business card, back", ratio: "1200/776" },
-      { src: "xtendo-tpl-videocall.webp", label: "Video call background", ratio: "1400/788" },
+      { src: "xtendo-card-front.webp", label: "Business card, front" },
+      { src: "xtendo-card-back.webp", label: "Business card, back" },
+      { src: "xtendo-tpl-videocall.webp", label: "Video call background" },
     ],
   },
 ];
 
 const storyboard = [
   { src: "story-1.webp", label: "The question" },
-  { src: "story-2.webp", label: "The proof" },
+  { src: "story-2.webp", label: "The numbers" },
   { src: "story-3.webp", label: "Global reach" },
   { src: "story-4.webp", label: "The method" },
   { src: "story-5.webp", label: "The model" },
@@ -116,7 +119,7 @@ const storyboard = [
 ];
 
 const PROMPT =
-  "Wide corporate tech illustration, abstract geometric shapes in deep blue (#1531D7) and graphite (#101522), cool blue lighting, lots of negative space, no text, no people.";
+  "Wide corporate tech illustration, abstract geometric shapes in deep blue (#1531D7) and graphite (#101522) on a clean white or graphite background, cool blue lighting, subtle 3D gradient accents, minimal and modern aesthetic, lots of negative space, no text, no people, high resolution, corporate B2B SaaS style";
 
 /* ------------------------------------------------------------------ */
 /* Small building blocks                                               */
@@ -203,17 +206,17 @@ function BeforeAfter() {
   const [pos, setPos] = useState(50);
   return (
     <figure>
-      <div className="relative aspect-[16/8] w-full overflow-hidden rounded-[28px] bg-black select-none">
+      <div className="relative aspect-[16/9] w-full overflow-hidden rounded-[28px] select-none">
         {/* After (full) */}
         <div className="absolute inset-0 flex items-center justify-center p-[10%]" style={{ background: NAVY }}>
-          <img src={`${A}/logo-new-color.webp`} alt={tr("New Xtendo Global logo")} className="max-h-full w-[80%] object-contain" draggable={false} />
+          <img src={`${A}/logo-new-color.webp`} alt={tr("New Xtendo Global logo")} className="h-auto w-[76%] object-contain" draggable={false} />
         </div>
         {/* Before (clipped) */}
         <div
-          className="absolute inset-0 flex items-center justify-center bg-black p-[10%]"
-          style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }}
+          className="absolute inset-0 flex items-center justify-center p-[10%]"
+          style={{ clipPath: `inset(0 ${100 - pos}% 0 0)`, background: "#05091A" }}
         >
-          <img src={`${A}/xtendo-logo-before.webp`} alt={tr("Previous Xtendo logo")} className="max-h-full w-[70%] object-contain" draggable={false} />
+          <img src={`${A}/logo-old.webp`} alt={tr("Previous Xtendo logo")} className="h-auto w-[76%] object-contain" draggable={false} />
         </div>
         <div className="pointer-events-none absolute inset-y-0" style={{ left: `${pos}%` }}>
           <div className="absolute inset-y-0 -translate-x-1/2 w-[2px] bg-white" />
@@ -235,7 +238,7 @@ function BeforeAfter() {
         />
       </div>
       <figcaption className="mt-3 text-sm text-foreground/60">
-        {tr("Drag to compare. New logo designed by an external studio.")}
+        {tr("Drag to compare the old and new logo. The new logo was designed by an outside studio.")}
       </figcaption>
     </figure>
   );
@@ -263,7 +266,7 @@ function ManualScroller({ onOpen }: { onOpen: (src: string, alt: string) => void
   return (
     <div ref={ref} className="relative hidden lg:block" style={{ height: `${n * 55}vh` }}>
       <div className="sticky top-0 flex h-screen items-center">
-        <div className="mx-auto grid w-full max-w-[88rem] grid-cols-[minmax(0,0.75fr)_minmax(0,2.2fr)] items-center gap-14 px-10">
+        <div className="mx-auto grid w-full max-w-7xl grid-cols-[minmax(0,0.8fr)_minmax(0,2.2fr)] items-center gap-12 px-10">
           <ol className="space-y-1">
             {manualPages.map((m, i) => (
               <li key={m.src}>
@@ -319,13 +322,13 @@ function ManualScroller({ onOpen }: { onOpen: (src: string, alt: string) => void
             </div>
             <div className="mt-6 flex items-center gap-4 text-sm text-white/60">
               <span className="tabular-nums">
-                {tr("Page")} {p.page} / 45
+                {active + 1} / {n}
               </span>
               <div className="h-[3px] flex-1 overflow-hidden rounded-full bg-white/10">
                 <motion.div
                   className="h-full rounded-full"
                   style={{ background: BLUE }}
-                  animate={{ width: `${(p.page / 45) * 100}%` }}
+                  animate={{ width: `${((active + 1) / n) * 100}%` }}
                   transition={{ duration: 0.5 }}
                 />
               </div>
@@ -378,7 +381,8 @@ function TalentRail({ onOpen }: { onOpen: (src: string, alt: string) => void }) 
     <div>
       <div
         ref={rail}
-        className="flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-2 [scrollbar-width:none] md:px-10 xl:px-[max(2.5rem,calc((100vw-80rem)/2+2.5rem))]"
+        className="flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4 pt-2 [scrollbar-width:none]"
+        style={{ paddingInline: RAIL_PAD, scrollPaddingInline: RAIL_PAD }}
       >
         {talentPages.map((src, i) => (
           <button
@@ -430,12 +434,66 @@ function TypedPrompt() {
     return () => window.clearInterval(id);
   }, [inView]);
   return (
-    <p ref={ref} className="min-h-[7.5rem] text-[0.95rem] leading-relaxed text-white/85" aria-label={PROMPT}>
+    <p ref={ref} className="min-h-[6.5rem] font-mono text-[0.82rem] leading-relaxed text-white/85" aria-label={PROMPT}>
       <span aria-hidden="true">
         {PROMPT.slice(0, count)}
         {count < PROMPT.length ? <span className="ml-0.5 inline-block h-4 w-[2px] translate-y-0.5 animate-pulse bg-white" /> : null}
       </span>
     </p>
+  );
+}
+
+/* The real rules from the team's prompt book, laid out as a card */
+const promptSwatches = [
+  { hex: "#1531D7", name: "Xtendo blue" },
+  { hex: "#101522", name: "Graphite" },
+  { hex: "#FFFFFF", name: "White" },
+  { hex: "#FF00FE", name: "Magenta, max 10%" },
+];
+const promptRules = [
+  ["Light", "Cool, bluish and high-contrast. Never warm or orange."],
+  ["Style", "Minimal corporate tech, clean geometry, plenty of empty space."],
+  ["Framing", "Subject on one third of the frame, centered only for icons."],
+  ["Avoid", "Generic office stock, off-palette colors, cartoon illustrations."],
+];
+
+function PromptBookCard() {
+  const { tr } = useTr();
+  return (
+    <div className="overflow-hidden rounded-[24px] bg-white text-[#101522] shadow-[0_40px_90px_-40px_rgba(0,0,0,.7)]">
+      <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 border-b border-[#E3E7EF] px-6 py-5 md:px-8">
+        <p className="font-display text-xl font-semibold" style={{ color: "#1531D7" }}>Prompt Book</p>
+        <p className="text-sm text-[#4A5470]">Xtendo Global, 2026</p>
+      </div>
+      <div className="px-6 py-6 md:px-8">
+        <p className="text-sm font-semibold">{tr("Palette")}</p>
+        <ul className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-4">
+          {promptSwatches.map((c) => (
+            <li key={c.hex}>
+              <span className="block h-12 rounded-lg ring-1 ring-black/10" style={{ background: c.hex }} />
+              <span className="mt-2 block text-xs font-medium">{tr(c.name)}</span>
+              <span className="block text-xs tabular-nums text-[#4A5470]">{c.hex}</span>
+            </li>
+          ))}
+        </ul>
+        <dl className="mt-6 divide-y divide-[#E3E7EF] border-t border-[#E3E7EF]">
+          {promptRules.map(([k, v]) => (
+            <div key={k} className="grid gap-1 py-3 sm:grid-cols-[6.5rem_1fr] sm:gap-4">
+              <dt className="text-sm font-semibold">{tr(k)}</dt>
+              <dd className="text-sm leading-relaxed text-[#4A5470]">{tr(v)}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+      <div className="px-6 pb-6 md:px-8 md:pb-8">
+        <div className="rounded-2xl p-5" style={{ background: NAVY }}>
+          <p className="text-xs font-medium text-white/55">{tr("Master prompt 1: presentation hero image")}</p>
+          <div className="mt-3">
+            <TypedPrompt />
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -545,7 +603,7 @@ function XtendoProject() {
                 transition={{ duration: 0.5 }}
                 className="text-sm font-medium text-white/60"
               >
-                {tr("Xtendo Global, Brand & Design Strategy Lead, since August 2026")}
+                {tr("Brand & Design Strategy Lead at Xtendo Global")}
               </motion.p>
               <h1 className="mt-5 font-display text-[clamp(2.6rem,6.4vw,5.4rem)] font-semibold leading-[0.98] tracking-[-0.035em]">
                 <motion.span
@@ -554,7 +612,7 @@ function XtendoProject() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
                 >
-                  {tr("A new logo isn't a brand.")}
+                  {tr("Xtendo had a new logo.")}
                 </motion.span>
                 <motion.span
                   className="block text-white/45"
@@ -562,7 +620,7 @@ function XtendoProject() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.7, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
                 >
-                  {tr("I built the rest.")}
+                  {tr("I made it work in 9 countries.")}
                 </motion.span>
               </h1>
               <motion.p
@@ -572,18 +630,18 @@ function XtendoProject() {
                 className="mt-8 max-w-xl text-lg leading-relaxed text-white/75"
               >
                 {tr(
-                  "Xtendo Global had a new logo and 1,500 people in 9 countries ready to use it, with no rules on how. I took the brand from there: the manual, a new sub-brand, templates for every team, the launch video, and a design team that now works with AI.",
+                  "I joined in August 2026, halfway through the rebrand. An outside studio had designed the logo. I took on the rest: the brand manual, the Talent Solutions sub-brand, templates for each team, the launch video, and bringing AI into the design team's work.",
                 )}
               </motion.p>
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.6, delay: 0.75 }}
-                className="mt-10 grid max-w-xl grid-cols-3 gap-6 border-t border-white/10 pt-6 text-sm"
+                className="mt-10 flex max-w-xl flex-wrap gap-x-10 gap-y-5 border-t border-white/10 pt-6 text-sm"
               >
                 <div>
                   <p className="text-white/50">{tr("My role")}</p>
-                  <p className="mt-1 font-medium">{tr("Brand lead, team of 2")}</p>
+                  <p className="mt-1 font-medium">{tr("Brand lead, 2 designers")}</p>
                 </div>
                 <div>
                   <p className="text-white/50">{tr("Company")}</p>
@@ -591,7 +649,7 @@ function XtendoProject() {
                 </div>
                 <div>
                   <p className="text-white/50">{tr("Logo")}</p>
-                  <p className="mt-1 font-medium">{tr("External studio")}</p>
+                  <p className="mt-1 font-medium">{tr("Outside studio")}</p>
                 </div>
               </motion.div>
             </div>
@@ -624,7 +682,7 @@ function XtendoProject() {
                 </button>
               </div>
               <figcaption className="mt-4 text-sm leading-relaxed text-white/60">
-                {tr("Xtendo 3.0 launch video. Script, design and animation by me, made with AI.")}
+                {tr("Xtendo 3.0 launch video. I wrote the script, designed the scenes and animated it with Claude.")}
               </figcaption>
             </motion.figure>
           </div>
@@ -636,15 +694,15 @@ function XtendoProject() {
           <div className="mt-8 grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
             <div>
               <h2 className="font-display text-[clamp(2rem,4vw,3.25rem)] font-semibold leading-[1.05] tracking-[-0.03em]">
-                {tr("The logo was ready. Everything else was improvised.")}
+                {tr("There was a logo, but no rules for using it.")}
               </h2>
               <p className="mt-6 max-w-lg text-lg leading-relaxed text-foreground/70">
                 {tr(
-                  "When I joined, an outside studio had already redesigned the logo. But each team still made its own slides, posts and documents, so Xtendo looked different in every country and every meeting.",
+                  "Each team made its own slides, posts and documents, so Xtendo looked different from one country to the next.",
                 )}
               </p>
               <p className="mt-4 max-w-lg text-lg leading-relaxed text-foreground/70">
-                {tr("My job was to turn that logo into a brand anyone in the company could use, without asking a designer.")}
+                {tr("My first job was to write those rules down and make them easy to follow.")}
               </p>
             </div>
             <BeforeAfter />
@@ -657,10 +715,10 @@ function XtendoProject() {
             <Chapter n={2} title="The brand manual" tone="dark" accent="#7B93F5" />
             <div className="mt-8 grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
               <h2 className="font-display text-[clamp(2rem,4.4vw,3.6rem)] font-semibold leading-[1.03] tracking-[-0.03em]">
-                {tr("45 pages that answer every “how should this look?”")}
+                {tr("A 45-page brand manual, written with the CEO")}
               </h2>
               <p className="text-lg leading-relaxed text-white/70">
-                {tr("I wrote and designed Xtendo's first complete brand manual, with the CEO, in 2026. Scroll and it turns its own pages.")}
+                {tr("It covers the logo, color, type, tone of voice, photography, web, social media and co-branding. Keep scrolling to flip through ten of its pages.")}
               </p>
             </div>
           </div>
@@ -673,38 +731,42 @@ function XtendoProject() {
         {/* ------------------------------------------------ 3. TALENT SOLUTIONS */}
         <section className="relative overflow-hidden py-24 md:py-32" style={{ background: "#F3FAFE" }}>
           <div className="mx-auto max-w-7xl px-5 md:px-10">
-            <Chapter n={3} title="A new brand from zero" accent={CYAN} />
+            <Chapter n={3} title="A new sub-brand" accent={CYAN} />
             <div className="mt-8 grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-center">
               <div>
                 <h2 className="font-display text-[clamp(2rem,4vw,3.25rem)] font-semibold leading-[1.05] tracking-[-0.03em]">
-                  {tr("Then the recruiting team needed its own name.")}
+                  {tr("Talent Solutions, a sub-brand I designed from scratch")}
                 </h2>
                 <p className="mt-6 max-w-lg text-lg leading-relaxed text-foreground/70">
                   {tr(
-                    "Talent Solutions finds and hires people at scale for other companies. It had to feel close and human, and stand on its own next to Xtendo. I designed the logo and wrote its 9-page manual.",
+                    "Talent Solutions is Xtendo's recruiting service. It needed its own identity, separate from the main brand. I designed the logo and wrote a 9-page manual for it.",
                   )}
                 </p>
                 <blockquote className="mt-8 max-w-lg border-l-[3px] pl-5 text-base leading-relaxed text-foreground/80" style={{ borderColor: CYAN }}>
-                  {tr("The rule I set: Talent Solutions never shares a logo, color or typeface with another brand. It always shows up as itself.")}
+                  {tr("One rule from the manual: the Talent Solutions logo never appears next to another company's brand in the same piece.")}
                 </blockquote>
               </div>
               <motion.div
                 initial={{ opacity: 0, scale: 0.92 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, margin: "-120px" }}
+                viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                className="relative flex aspect-[5/4] items-center justify-center overflow-hidden rounded-[28px] bg-white shadow-[0_30px_80px_-40px_rgba(0,178,243,.6)]"
+                className="relative aspect-[5/4] overflow-hidden rounded-[28px] bg-white shadow-[0_30px_80px_-40px_rgba(0,178,243,.6)]"
               >
+                <div className="absolute inset-y-0 left-0 right-[28%] flex items-center justify-center">
+                  <img src={`${A}/talent-logo.webp`} alt={tr("Talent Solutions logo, designed by me")} className="w-[78%]" />
+                </div>
                 <motion.div
                   aria-hidden="true"
-                  className="absolute inset-y-0 right-0"
+                  className="absolute inset-y-0 right-0 flex items-center justify-center overflow-hidden"
                   style={{ background: CYAN }}
                   initial={{ width: "0%" }}
-                  whileInView={{ width: "26%" }}
-                  viewport={{ once: true, margin: "-120px" }}
+                  whileInView={{ width: "28%" }}
+                  viewport={{ once: true, amount: 0.4 }}
                   transition={{ duration: 0.9, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                />
-                <img src={`${A}/talent-logo.webp`} alt={tr("Talent Solutions logo, designed by me")} className="relative w-[54%] -translate-x-[16%]" />
+                >
+                  <img src={`${A}/talent-isotype.webp`} alt="" className="w-[38%] min-w-[44px]" />
+                </motion.div>
               </motion.div>
             </div>
           </div>
@@ -715,13 +777,13 @@ function XtendoProject() {
 
         {/* ------------------------------------------------ 4. ONE BRAND, EVERY TEAM */}
         <section className="mx-auto max-w-7xl px-5 py-24 md:px-10 md:py-32">
-          <Chapter n={4} title="One brand for every team" />
-          <div className="mt-8 grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
+          <Chapter n={4} title="Templates" />
+          <div className="mt-8 max-w-2xl">
             <h2 className="font-display text-[clamp(2rem,4vw,3.25rem)] font-semibold leading-[1.05] tracking-[-0.03em]">
-              {tr("Templates so nobody starts from a blank page.")}
+              {tr("Templates for each team")}
             </h2>
-            <p className="text-lg leading-relaxed text-foreground/70">
-              {tr("I built more than 15 templates and campaigns with my team. Pick a team to see what they use.")}
+            <p className="mt-6 text-lg leading-relaxed text-foreground/70">
+              {tr("With my two designers I built more than 15 templates and campaigns. Choose a team to see some of them.")}
             </p>
           </div>
 
@@ -754,7 +816,7 @@ function XtendoProject() {
               className="mt-8"
             >
               <p className="max-w-2xl text-lg text-foreground/75">{tr(activeTeam.line)}</p>
-              <div className="mt-8 grid items-end gap-5 md:grid-cols-3">
+              <div className="mt-8 grid gap-5 md:grid-cols-3">
                 {activeTeam.pieces.map((pc, i) => (
                   <motion.figure
                     key={pc.src}
@@ -765,10 +827,16 @@ function XtendoProject() {
                     <button
                       type="button"
                       onClick={() => open(`${A}/${pc.src}`, tr(pc.label))}
-                      className="block w-full overflow-hidden rounded-2xl bg-foreground/[0.04] transition-transform hover:-translate-y-1"
+                      className="group flex aspect-[5/4] w-full items-center justify-center rounded-2xl p-[9%] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+                      style={{ background: "#E9EDF5", outlineColor: BLUE }}
                       aria-label={`${tr("Open")} ${tr(pc.label)}`}
                     >
-                      <img src={`${A}/${pc.src}`} alt="" loading="lazy" className="w-full object-cover" style={{ aspectRatio: pc.ratio }} />
+                      <img
+                        src={`${A}/${pc.src}`}
+                        alt=""
+                        loading="lazy"
+                        className="max-h-full max-w-full rounded-md object-contain shadow-[0_18px_40px_-18px_rgba(12,23,55,.5)] transition-transform duration-300 group-hover:scale-[1.03]"
+                      />
                     </button>
                     <figcaption className="mt-3 text-sm text-foreground/60">{tr(pc.label)}</figcaption>
                   </motion.figure>
@@ -784,10 +852,10 @@ function XtendoProject() {
             <Chapter n={5} title="How I work with AI" tone="dark" accent="#7B93F5" />
             <div className="mt-8 grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
               <h2 className="font-display text-[clamp(2rem,4.4vw,3.6rem)] font-semibold leading-[1.03] tracking-[-0.03em]">
-                {tr("A launch video without an agency.")}
+                {tr("I made the launch video with Claude")}
               </h2>
               <p className="text-lg leading-relaxed text-white/70">
-                {tr("I wrote the script, designed every frame and animated it with Claude. Six scenes, 23 seconds, one message: pay for results, not for hours.")}
+                {tr("I wrote the script, designed each scene and animated it with Claude. It runs 23 seconds and asks one question: are you paying for capacity or for results?")}
               </p>
             </div>
 
@@ -807,6 +875,7 @@ function XtendoProject() {
                   </figcaption>
                 </motion.figure>
               ))}
+              <span aria-hidden="true" className="w-2 shrink-0 md:hidden" />
             </div>
             <button
               type="button"
@@ -818,52 +887,42 @@ function XtendoProject() {
             </button>
 
             {/* Prompt book */}
-            <div className="mt-24 grid gap-10 border-t border-white/10 pt-16 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
-              <div>
+            <div className="mt-24 grid gap-10 border-t border-white/10 pt-16 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+              <div className="lg:sticky lg:top-28">
                 <h3 className="font-display text-[clamp(1.6rem,3vw,2.4rem)] font-semibold leading-[1.1] tracking-[-0.02em]">
-                  {tr("Then I taught the team to do the same.")}
+                  {tr("A prompt book for the team")}
                 </h3>
                 <p className="mt-5 text-lg leading-relaxed text-white/70">
-                  {tr("I wrote a prompt book with the exact instructions that make AI images look like Xtendo, and trained the 2 designers on my team to use AI in their daily work.")}
+                  {tr("I wrote a guide with the visual rules and ready-to-use prompts for AI images, so whatever the team generates stays on brand. I also trained my two designers to use AI in their everyday work.")}
                 </p>
               </div>
-              <div className="grid gap-4 sm:grid-cols-2 sm:items-stretch">
-                <div className="rounded-2xl bg-white/[0.06] p-6 ring-1 ring-white/10">
-                  <p className="text-sm font-medium text-white/50">{tr("From the prompt book")}</p>
-                  <div className="mt-4">
-                    <TypedPrompt />
-                  </div>
-                </div>
-                <figure className="overflow-hidden rounded-2xl ring-1 ring-white/10">
-                  <img src={`${A}/xtendo-cover-ai.webp`} alt={tr("Image generated with the prompt")} loading="lazy" className="h-full w-full object-cover" />
-                </figure>
-              </div>
+              <PromptBookCard />
             </div>
           </div>
         </section>
 
         {/* ------------------------------------------------ 6. RESULTS */}
         <section className="mx-auto max-w-7xl px-5 py-24 md:px-10 md:py-32">
-          <Chapter n={6} title="What changed" />
+          <Chapter n={6} title="Results" />
           <div className="mt-8 grid gap-14 lg:grid-cols-[1fr_1fr] lg:items-center">
             <div>
               <h2 className="font-display text-[clamp(2rem,4vw,3.25rem)] font-semibold leading-[1.05] tracking-[-0.03em]">
-                {tr("A landing page used to take almost a week. Now it takes a day.")}
+                {tr("Landing pages now take 1 day instead of 4 or 5")}
               </h2>
               <p className="mt-6 max-w-lg text-lg leading-relaxed text-foreground/70">
-                {tr("With the system in place and AI in the workflow, the team spends its time on ideas, not on rebuilding layouts.")}
+                {tr("The team starts from the templates and uses AI for the first draft.")}
               </p>
             </div>
             <SpeedBars />
           </div>
 
-          <ul className="mt-20 grid gap-px overflow-hidden rounded-[28px] bg-foreground/10 md:grid-cols-3">
+          <ul className="mt-20 grid gap-10 border-t border-foreground/10 pt-10 md:grid-cols-3 md:gap-12">
             {[
-              ["One brand", "The same look and voice across 9 countries and 1,500+ people."],
-              ["2 designers trained in AI", "They now write prompts, edit and ship on their own."],
-              ["Better campaigns", "Click-through and webinar sign-ups went up after the new campaigns launched."],
+              ["One brand in 9 countries", "1,500+ people use the same logo, colors and templates."],
+              ["2 designers trained in AI", "I trained both designers on my team to work with AI tools."],
+              ["More clicks and sign-ups", "Click-through rate and webinar registrations went up after the new campaigns."],
             ].map(([h, b]) => (
-              <li key={h} className="bg-background p-8">
+              <li key={h}>
                 <p className="font-display text-xl font-semibold">{tr(h)}</p>
                 <p className="mt-2 leading-relaxed text-foreground/65">{tr(b)}</p>
               </li>
@@ -875,14 +934,14 @@ function XtendoProject() {
         <section className="text-white" style={{ background: NAVY }}>
           <div className="mx-auto flex max-w-7xl flex-col items-start gap-8 px-5 py-20 md:flex-row md:items-center md:justify-between md:px-10">
             <h2 className="max-w-2xl font-display text-[clamp(1.8rem,3.4vw,2.8rem)] font-semibold leading-[1.08] tracking-[-0.02em]">
-              {tr("Need someone to put order in your brand and bring AI into your team?")}
+              {tr("Want to talk about your brand or your team's design workflow?")}
             </h2>
             <div className="flex flex-wrap gap-3">
               <a href="/#contact" className="inline-flex items-center rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-[#0C1737] hover:bg-white/90">
-                {tr("Let's talk")}
+                {tr("Contact me")}
               </a>
               <Link to="/" className="inline-flex items-center rounded-full border border-white/25 px-6 py-3.5 text-sm font-semibold hover:bg-white/10">
-                {tr("See more work")}
+                {tr("See more projects")}
               </Link>
             </div>
           </div>
