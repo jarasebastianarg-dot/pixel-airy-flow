@@ -17,16 +17,16 @@ export const dictionary = {
       langLabel: "Language",
     },
     hero: {
-      badge: "Ecommerce & Brand Specialist",
+      badge: "Brand & Design Strategy Lead @ Xtendo Global",
       headline: {
-        pre: "I build ",
+        pre: "I lead ",
         em1: "brands",
-        mid: " that stand out and ",
-        em2: "systems",
-        post: " that sell.",
+        mid: " and build the ",
+        em2: "AI systems",
+        post: " that make marketing teams 5× faster.",
       },
       subtitle:
-        "I work across marketing, design and automation — and I use AI as part of how I build, not just talk about it. I design the UI/UX, then build it myself directly in Shopify, using AI-assisted development to move faster without cutting corners.",
+        "Brand & Design Strategy Lead at Xtendo Global. I turn brand strategy into systems teams actually use — guidelines, templates, campaigns, landing pages, Shopify stores and motion — designed by me and built faster with AI.",
       ctaPrimary: "View Projects",
       ctaSecondary: "Get in touch",
     },
@@ -41,8 +41,20 @@ export const dictionary = {
     capabilities: {
       heading: { pre: "Four disciplines, ", em: "one", post: " operator." },
       intro:
-        "There's no hand-off between design, code and growth — I do all three myself, so nothing gets lost in translation between what's designed and what actually ships.",
+        "No hand-off between strategy, design and build — I lead the brand, design the system and automate the production, so nothing gets lost between what's designed and what actually ships.",
       items: [
+        {
+          kicker: "Leadership",
+          title: "Brand & Design Leadership",
+          desc: "Rebrands, brand guidelines and template systems that a whole company can use — plus leading and training the designers who keep it consistent.",
+          tags: ["Rebranding", "Guidelines", "Team lead"],
+        },
+        {
+          kicker: "Growth",
+          title: "Growth & Lifecycle",
+          desc: "Landing pages, webinar campaigns and email flows in HubSpot and Klaviyo — built to turn traffic into registrations, leads and repeat customers.",
+          tags: ["HubSpot", "Klaviyo", "Landing pages"],
+        },
         {
           kicker: "Commerce",
           title: "Shopify & Custom E-commerce",
@@ -50,30 +62,23 @@ export const dictionary = {
           tags: ["Shopify 2.0", "Liquid", "Headless"],
         },
         {
-          kicker: "Retention",
-          title: "Retention & Email Marketing",
-          desc: "Klaviyo flows and campaigns that bring customers back — welcome series, abandoned cart, post-purchase. Email marketing built to move revenue, not just open rates.",
-          tags: ["Klaviyo", "Lifecycle", "LTV"],
-        },
-        {
-          kicker: "Identity",
-          title: "Brand Identity & UI/UX",
-          desc: "I design brand systems end to end — logo, packaging, digital interfaces — built on the design fundamentals I studied at university and applied to brands that actually need to scale.",
-          tags: ["Systems", "UI/UX", "Packaging"],
-        },
-        {
-          kicker: "Automation",
-          title: "AI & Workflow Automation",
-          desc: "I connect Claude, Gemini and Make to cut out repetitive work — so campaigns ship faster and less time goes into busywork.",
-          tags: ["Make", "Claude", "Gemini"],
+          kicker: "AI Systems",
+          title: "AI Design Systems & Automation",
+          desc: "AI-powered design systems and workflows in Claude, Make and n8n that let small teams ship in days, not weeks — and the training so the team can run them.",
+          tags: ["Claude", "Make", "n8n"],
         },
       ],
     },
     works: {
+      "xtendo-global": {
+        tag: "Brand & Design Strategy Lead",
+        headline: "Building the Brand System for a 1,500-Person Rebrand",
+        body: "Supervised the rebrand and built everything around the new logo: a 45-page brand manual, 15+ templates, campaigns and motion across 9 countries.",
+      },
       folkways: {
-        tag: "Shopify Expert",
+        tag: "Shopify Designer & Developer",
         headline: "Rebuilding a 2,000+ SKU Store",
-        body: "Migrated 2,000+ products to Shopify 2.0 without losing a single drop of performance.",
+        body: "Migrated 2,000+ products to Shopify 2.0 and replaced app bloat with native Liquid sections.",
       },
       "paw-royalty": {
         tag: "Lead Designer & AI-Assisted Developer",
@@ -83,12 +88,12 @@ export const dictionary = {
       "b-way": {
         tag: "Brand Manager",
         headline: "From Designer to Brand Manager",
-        body: "Steered a 6-person team scaling operations across the US and Brazil, driving digital and 300+ attendee physical events.",
+        body: "Led a 5-person team across the US, Brazil and Argentina — from packaging to 300+ attendee events.",
       },
       "elevate-local": {
         tag: "Branding Designer",
         headline: "A Brand Clinics Trust",
-        body: "Complete visual identity for a European medical marketing agency.",
+        body: "Complete visual identity and logo-reveal motion for a European medical marketing agency.",
       },
     },
     methodology: {
@@ -156,7 +161,18 @@ export const dictionary = {
     },
     experience: [
       {
-        role: "Branding & UI/UX Designer",
+        role: "Brand & Design Strategy Lead",
+        company: "Xtendo Global — Remote",
+        period: "Aug 2026 — Present",
+        highlights: [
+          "Supervised the company-wide rebrand, partnering with the CEO on logo decisions and messaging for a B2B BPO & CX company (1,500+ people, 9 countries).",
+          "Created the 45-page brand manual and a library of 15+ templates so every team produces on-brand material.",
+          "Built AI-powered design systems in Claude that cut landing page production from 4–5 days to 1.",
+          "Run HubSpot webinar campaigns end-to-end (landing pages, invitation and follow-up emails) and lead and train a team of 2 designers.",
+        ],
+      },
+      {
+        role: "Brand & E-commerce Designer",
         company: "Freelance — Remote",
         period: "Oct 2025 — Present",
         highlights: [
@@ -169,7 +185,7 @@ export const dictionary = {
         company: "B-WAY — Buenos Aires, AR (Hybrid)",
         period: "Aug 2024 — Dec 2025",
         highlights: [
-          "Directed a 6-person interdisciplinary marketing team running 360° campaigns aligned to commercial KPIs.",
+          "Led a 5-person interdisciplinary marketing team running 360° campaigns aligned to commercial KPIs.",
           "Deployed AI-driven analytics workflows that cut production lead times by 30% and sharpened targeting precision.",
           "Owned e-commerce and paid media strategy across 3 international markets (US, BR, AR), improving ROAS on core SKUs.",
           "Orchestrated flagship events (B-WAY Experience, Barber Week) driving qualified lead generation at scale.",
@@ -209,12 +225,12 @@ export const dictionary = {
       {
         title: "Foundations of Digital Marketing & E-commerce",
         institution: "Google - Professional Certificate",
-        period: "2026",
+        period: "2025",
       },
       {
         title: "OPI 2.0 — Public Speaking",
-        institution: "Franco Pisso - Professional Certificate",
-        period: "2026",
+        institution: "Franco Pisso - Program",
+        period: "In progress",
       },
       {
         title: "CAE - Certificate in Advanced English C1",
@@ -236,11 +252,9 @@ export const dictionary = {
         solution:
           "Full migration to Shopify 2.0 with custom Liquid sections, a normalized product data model and automated import workflows that replaced manual catalog entry. Klaviyo was rebuilt natively with lifecycle flows, segmentation and A/B testing, while Make pipelines and AI-assisted content generation kept 2,000+ SKUs enriched and in sync.",
         impact: [
-          "2,000+ SKUs migrated and automated",
-          "-40% page load time",
-          "+28% cart conversion rate",
-          "+45% recurring revenue",
-          "42% average email open rate",
+          "2,000+ SKUs migrated to Shopify 2.0",
+          "Native Liquid sections replacing third-party apps",
+          "Klaviyo retention flows rebuilt",
         ],
       },
       "paw-royalty": {
@@ -252,9 +266,8 @@ export const dictionary = {
           "End-to-end build: brand identity, UI/UX designed and implemented directly in Shopify code, a conversion-first PDP, a dedicated Subscribe & Save page and a quiz that routes each customer to a personalized recommendation. Klaviyo automation covers welcome, quiz-result, abandoned-cart and replenishment flows, with AI-assisted copy and creative iteration accelerating campaign production.",
         impact: [
           "Full US launch shipped end-to-end",
-          "48% average email open rate",
-          "22% of total revenue attributed to email",
-          "30x ROI on retention campaigns",
+          "Custom Liquid storefront with Subscribe & Save and quiz",
+          "Klaviyo welcome, quiz and replenishment flows",
         ],
       },
       "b-way": {
@@ -263,7 +276,7 @@ export const dictionary = {
         problem:
           "A grooming brand scaling across the US, Brazil and Argentina with fragmented branding, three disconnected storefronts and production lead times that throttled every campaign.",
         solution:
-          "Unified brand system across packaging, retail and digital, plus regional e-commerce storefronts built on a shared design language. Directed a 6-person team on 360° campaigns and deployed AI-driven analytics and automation workflows for reporting, asset production and paid-media iteration.",
+          "Unified brand system across packaging, retail and digital, plus regional e-commerce storefronts built on a shared design language. Led a 5-person team on 360° campaigns and deployed AI-driven analytics and automation workflows for reporting, asset production and paid-media iteration.",
         impact: [
           "3 international markets operated (US, BR, AR)",
           "-30% production lead times",
@@ -297,16 +310,16 @@ export const dictionary = {
       langLabel: "Idioma",
     },
     hero: {
-      badge: "Ecommerce & Brand Specialist",
+      badge: "Brand & Design Strategy Lead @ Xtendo Global",
       headline: {
-        pre: "Construyo ",
+        pre: "Lidero ",
         em1: "marcas",
-        mid: " que se destacan y ",
-        em2: "sistemas",
-        post: " que venden.",
+        mid: " y construyo los ",
+        em2: "sistemas con IA",
+        post: " que hacen 5× más rápidos a los equipos de marketing.",
       },
       subtitle:
-        "Trabajo entre marketing, diseño y automatización — y uso AI como parte de cómo construyo, no solo para hablar de eso. Diseño el UI/UX y después lo construyo yo mismo directamente en Shopify, usando desarrollo asistido por AI para ir más rápido sin bajar la calidad.",
+        "Brand & Design Strategy Lead en Xtendo Global. Convierto la estrategia de marca en sistemas que los equipos realmente usan — manuales, plantillas, campañas, landing pages, tiendas Shopify y motion — diseñados por mí y construidos más rápido con IA.",
       ctaPrimary: "Ver proyectos",
       ctaSecondary: "Hablemos",
     },
@@ -321,8 +334,20 @@ export const dictionary = {
     capabilities: {
       heading: { pre: "Cuatro disciplinas, ", em: "un", post: " solo operador." },
       intro:
-        "No hay traspasos entre diseño, código y growth — los tres los hago yo, así que nada se pierde en el camino entre lo que se diseña y lo que realmente sale a producción.",
+        "Sin traspasos entre estrategia, diseño y ejecución — lidero la marca, diseño el sistema y automatizo la producción, así nada se pierde entre lo que se diseña y lo que sale a producción.",
       items: [
+        {
+          kicker: "Leadership",
+          title: "Liderazgo de marca y diseño",
+          desc: "Rebrandings, manuales de marca y sistemas de plantillas que toda una empresa puede usar — y el liderazgo y la capacitación de los diseñadores que lo mantienen consistente.",
+          tags: ["Rebranding", "Manual de marca", "Team lead"],
+        },
+        {
+          kicker: "Growth",
+          title: "Growth y lifecycle",
+          desc: "Landing pages, campañas de webinars y flujos de email en HubSpot y Klaviyo — pensados para convertir tráfico en inscriptos, leads y clientes que vuelven.",
+          tags: ["HubSpot", "Klaviyo", "Landing pages"],
+        },
         {
           kicker: "Commerce",
           title: "Shopify y e-commerce a medida",
@@ -330,30 +355,23 @@ export const dictionary = {
           tags: ["Shopify 2.0", "Liquid", "Headless"],
         },
         {
-          kicker: "Retention",
-          title: "Retención y email marketing",
-          desc: "Flows y campañas en Klaviyo que hacen volver a los clientes — bienvenida, carrito abandonado, post-compra. Email marketing hecho para mover revenue, no solo tasas de apertura.",
-          tags: ["Klaviyo", "Lifecycle", "LTV"],
-        },
-        {
-          kicker: "Identity",
-          title: "Identidad de marca y UI/UX",
-          desc: "Diseño sistemas de marca de punta a punta — logo, packaging, interfaces digitales — apoyados en los fundamentos de diseño que estudié en la universidad y aplicados a marcas que necesitan escalar de verdad.",
-          tags: ["Systems", "UI/UX", "Packaging"],
-        },
-        {
-          kicker: "Automation",
-          title: "AI y automatización de workflows",
-          desc: "Conecto Claude, Gemini y Make para eliminar el trabajo repetitivo — así las campañas salen más rápido y se pierde menos tiempo en tareas mecánicas.",
-          tags: ["Make", "Claude", "Gemini"],
+          kicker: "AI Systems",
+          title: "Sistemas de diseño con IA",
+          desc: "Sistemas de diseño y workflows con IA en Claude, Make y n8n para que equipos chicos entreguen en días y no en semanas — y la capacitación para que el equipo los use.",
+          tags: ["Claude", "Make", "n8n"],
         },
       ],
     },
     works: {
+      "xtendo-global": {
+        tag: "Brand & Design Strategy Lead",
+        headline: "El sistema de marca de un rebranding para 1.500 personas",
+        body: "Supervisé el rebranding y construí todo alrededor del logo nuevo: manual de marca de 45 páginas, más de 15 plantillas, campañas y motion en 9 países.",
+      },
       folkways: {
-        tag: "Shopify Expert",
+        tag: "Shopify Designer & Developer",
         headline: "Reconstruir una tienda de +2.000 SKU",
-        body: "Migré más de 2.000 productos a Shopify 2.0 sin perder una gota de performance.",
+        body: "Migré más de 2.000 productos a Shopify 2.0 y reemplacé el exceso de apps por secciones nativas en Liquid.",
       },
       "paw-royalty": {
         tag: "Lead Designer & AI-Assisted Developer",
@@ -363,12 +381,12 @@ export const dictionary = {
       "b-way": {
         tag: "Brand Manager",
         headline: "De diseñador a Brand Manager",
-        body: "Lideré un equipo de 6 personas escalando la operación en EE.UU. y Brasil, con campañas digitales y eventos de +300 asistentes.",
+        body: "Lideré un equipo de 5 personas en EE.UU., Brasil y Argentina — del packaging a eventos de +300 asistentes.",
       },
       "elevate-local": {
         tag: "Branding Designer",
         headline: "Una marca en la que confían las clínicas",
-        body: "Identidad visual completa para una agencia europea de marketing médico.",
+        body: "Identidad visual completa y motion de presentación del logo para una agencia europea de marketing médico.",
       },
     },
     methodology: {
@@ -436,7 +454,18 @@ export const dictionary = {
     },
     experience: [
       {
-        role: "Branding & UI/UX Designer",
+        role: "Brand & Design Strategy Lead",
+        company: "Xtendo Global — Remoto",
+        period: "Ago 2026 — Presente",
+        highlights: [
+          "Supervisé el rebranding de toda la empresa, trabajando con el CEO en las decisiones de logo y comunicación, para una compañía B2B de BPO y CX (1.500+ personas, 9 países).",
+          "Creé el manual de marca de 45 páginas y una biblioteca de más de 15 plantillas para que cada equipo produzca material de marca.",
+          "Armé sistemas de diseño con IA en Claude que redujeron la producción de una landing de 4–5 días a 1.",
+          "Gestiono campañas de webinars en HubSpot de punta a punta (landings, emails de invitación y seguimiento) y lidero y capacito a un equipo de 2 diseñadores.",
+        ],
+      },
+      {
+        role: "Diseñador de Marca y E-commerce",
         company: "Freelance — Remoto",
         period: "Oct 2025 — Presente",
         highlights: [
@@ -449,7 +478,7 @@ export const dictionary = {
         company: "B-WAY — Buenos Aires, AR (Híbrido)",
         period: "Ago 2024 — Dic 2025",
         highlights: [
-          "Dirigí un equipo interdisciplinario de marketing de 6 personas con campañas 360° alineadas a KPIs comerciales.",
+          "Lideré un equipo interdisciplinario de marketing de 5 personas con campañas 360° alineadas a KPIs comerciales.",
           "Implementé workflows de analytics con AI que redujeron un 30% los tiempos de producción y afinaron el targeting.",
           "Lideré la estrategia de e-commerce y paid media en 3 mercados (US, BR, AR), mejorando el ROAS de los SKUs principales.",
           "Coordiné eventos insignia (B-WAY Experience, Barber Week) generando leads calificados a escala.",
@@ -489,12 +518,12 @@ export const dictionary = {
       {
         title: "Fundamentos de Digital Marketing y E-commerce",
         institution: "Google — Certificado profesional",
-        period: "2026",
+        period: "2025",
       },
       {
         title: "OPI 2.0 — Oratoria",
-        institution: "Franco Pisso — Certificado profesional",
-        period: "2026",
+        institution: "Franco Pisso — Programa",
+        period: "En curso",
       },
       {
         title: "CAE — Certificate in Advanced English C1",
@@ -516,11 +545,9 @@ export const dictionary = {
         solution:
           "Migración completa a Shopify 2.0 con secciones Liquid propias, un modelo de datos de producto normalizado y workflows de importación automatizados que reemplazaron la carga manual del catálogo. Rearmé Klaviyo de forma nativa con flows de lifecycle, segmentación y A/B testing, mientras pipelines en Make y generación de contenido con AI mantienen los 2.000+ SKUs enriquecidos y sincronizados.",
         impact: [
-          "2.000+ SKUs migrados y automatizados",
-          "-40% en tiempo de carga",
-          "+28% en conversión de carrito",
-          "+45% de revenue recurrente",
-          "42% de open rate promedio en email",
+          "2.000+ SKUs migrados a Shopify 2.0",
+          "Secciones nativas en Liquid en lugar de apps de terceros",
+          "Flows de retención en Klaviyo rearmados",
         ],
       },
       "paw-royalty": {
@@ -532,9 +559,8 @@ export const dictionary = {
           "Build integral: identidad de marca, UI/UX diseñado e implementado directamente en el código de Shopify, una PDP orientada a conversión, una página dedicada de Subscribe & Save y un quiz que lleva a cada cliente a una recomendación personalizada. La automation en Klaviyo cubre welcome, resultado del quiz, abandoned cart y reposición, con copy y creatividades iteradas con AI para acelerar la producción de campañas.",
         impact: [
           "Lanzamiento completo en EE.UU. de punta a punta",
-          "48% de open rate promedio en email",
-          "22% del revenue total atribuido a email",
-          "30x de ROI en campañas de retención",
+          "Tienda a medida en Liquid con Subscribe & Save y quiz",
+          "Flows de Klaviyo de bienvenida, quiz y reposición",
         ],
       },
       "b-way": {
@@ -543,7 +569,7 @@ export const dictionary = {
         problem:
           "Una marca de grooming escalando en EE.UU., Brasil y Argentina con branding fragmentado, tres tiendas desconectadas y tiempos de producción que frenaban cada campaña.",
         solution:
-          "Unifiqué el sistema de marca en packaging, retail y digital, y construí las tiendas regionales sobre un mismo lenguaje de diseño. Dirigí un equipo de 6 personas en campañas 360° e implementé workflows de analytics y automation con AI para reporting, producción de assets e iteración de paid media.",
+          "Unifiqué el sistema de marca en packaging, retail y digital, y construí las tiendas regionales sobre un mismo lenguaje de diseño. Lideré un equipo de 5 personas en campañas 360° e implementé workflows de analytics y automation con AI para reporting, producción de assets e iteración de paid media.",
         impact: [
           "3 mercados internacionales operados (US, BR, AR)",
           "-30% en tiempos de producción",

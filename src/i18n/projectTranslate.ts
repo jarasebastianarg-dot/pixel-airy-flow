@@ -9,12 +9,14 @@ import { folkwaysEs } from "./es/folkways";
 import { pawRoyaltyEs } from "./es/paw-royalty";
 import { elevateLocalEs } from "./es/elevate-local";
 import { bwayEs } from "./es/b-way";
+import { xtendoGlobalEs } from "./es/xtendo-global";
 
 export const caseStudyEs: Record<string, string> = {
   ...folkwaysEs,
   ...pawRoyaltyEs,
   ...elevateLocalEs,
   ...bwayEs,
+  ...xtendoGlobalEs,
 };
 
 export type Translate = (value: string) => string;
