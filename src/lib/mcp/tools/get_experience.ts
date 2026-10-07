@@ -2,7 +2,18 @@ import { defineTool } from "@lovable.dev/mcp-js";
 
 const experience = [
   {
-    role: "Branding & UI/UX Designer",
+    role: "Brand & Design Strategy Lead",
+    company: "Xtendo Global — Remote",
+    period: "Aug 2026 — Present",
+    highlights: [
+      "Supervised the company-wide rebrand with the CEO for a B2B BPO & CX company (1,500+ people, 9 countries).",
+      "Created the 45-page brand manual and a library of 15+ templates.",
+      "Built AI-powered design systems in Claude that cut landing page production from 4–5 days to 1.",
+      "Run HubSpot webinar campaigns end-to-end and lead a team of 2 designers.",
+    ],
+  },
+  {
+    role: "Brand & E-commerce Designer",
     company: "Freelance — Remote",
     period: "Oct 2025 — Present",
     highlights: [
@@ -15,7 +26,7 @@ const experience = [
     company: "B-WAY — Buenos Aires, AR (Hybrid)",
     period: "Aug 2024 — Dec 2025",
     highlights: [
-      "Directed a 6-person interdisciplinary marketing team running 360° campaigns aligned to commercial KPIs.",
+      "Led a 5-person interdisciplinary marketing team running 360° campaigns aligned to commercial KPIs.",
       "Deployed AI-driven analytics workflows that cut production lead times by 30%.",
       "Owned e-commerce and paid media strategy across US, BR and AR, improving ROAS on core SKUs.",
       "Orchestrated flagship events (B-WAY Experience, Barber Week) driving qualified lead generation at scale.",
