@@ -9,34 +9,42 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as McpRouteImport } from './routes/mcp'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as ProjectsPawRoyaltyRouteImport } from './routes/projects.paw-royalty'
-import { Route as ProjectsFolkwaysRouteImport } from './routes/projects.folkways'
-import { Route as ProjectsElevateLocalRouteImport } from './routes/projects.elevate-local'
-import { Route as ProjectsBWayRouteImport } from './routes/projects.b-way'
-import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
+import { Route as McpRouteImport } from './routes/mcp'
 import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]/list-tools'
+import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
+import { Route as ProjectsBWayRouteImport } from './routes/projects.b-way'
+import { Route as ProjectsElevateLocalRouteImport } from './routes/projects.elevate-local'
+import { Route as ProjectsFolkwaysRouteImport } from './routes/projects.folkways'
+import { Route as ProjectsPawRoyaltyRouteImport } from './routes/projects.paw-royalty'
+import { Route as ProjectsXtendoGlobalRouteImport } from './routes/projects.xtendo-global'
 import { Route as Char91DotmcpChar93InvokeToolToolRouteImport } from './routes/[.mcp]/invoke-tool/$tool'
 
-const McpRoute = McpRouteImport.update({
-  id: '/mcp',
-  path: '/mcp',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ProjectsPawRoyaltyRoute = ProjectsPawRoyaltyRouteImport.update({
-  id: '/projects/paw-royalty',
-  path: '/projects/paw-royalty',
+const McpRoute = McpRouteImport.update({
+  id: '/mcp',
+  path: '/mcp',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ProjectsFolkwaysRoute = ProjectsFolkwaysRouteImport.update({
-  id: '/projects/folkways',
-  path: '/projects/folkways',
+const Char91DotmcpChar93ListToolsRoute =
+  Char91DotmcpChar93ListToolsRouteImport.update({
+    id: '/.mcp/list-tools',
+    path: '/.mcp/list-tools',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const Char91DotwellKnownChar93OauthProtectedResourceRoute =
+  Char91DotwellKnownChar93OauthProtectedResourceRouteImport.update({
+    id: '/.well-known/oauth-protected-resource',
+    path: '/.well-known/oauth-protected-resource',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ProjectsBWayRoute = ProjectsBWayRouteImport.update({
+  id: '/projects/b-way',
+  path: '/projects/b-way',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProjectsElevateLocalRoute = ProjectsElevateLocalRouteImport.update({
@@ -44,23 +52,21 @@ const ProjectsElevateLocalRoute = ProjectsElevateLocalRouteImport.update({
   path: '/projects/elevate-local',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ProjectsBWayRoute = ProjectsBWayRouteImport.update({
-  id: '/projects/b-way',
-  path: '/projects/b-way',
+const ProjectsFolkwaysRoute = ProjectsFolkwaysRouteImport.update({
+  id: '/projects/folkways',
+  path: '/projects/folkways',
   getParentRoute: () => rootRouteImport,
 } as any)
-const Char91DotwellKnownChar93OauthProtectedResourceRoute =
-  Char91DotwellKnownChar93OauthProtectedResourceRouteImport.update({
-    id: '/.well-known/oauth-protected-resource',
-    path: '/.well-known/oauth-protected-resource',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const Char91DotmcpChar93ListToolsRoute =
-  Char91DotmcpChar93ListToolsRouteImport.update({
-    id: '/.mcp/list-tools',
-    path: '/.mcp/list-tools',
-    getParentRoute: () => rootRouteImport,
-  } as any)
+const ProjectsPawRoyaltyRoute = ProjectsPawRoyaltyRouteImport.update({
+  id: '/projects/paw-royalty',
+  path: '/projects/paw-royalty',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjectsXtendoGlobalRoute = ProjectsXtendoGlobalRouteImport.update({
+  id: '/projects/xtendo-global',
+  path: '/projects/xtendo-global',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const Char91DotmcpChar93InvokeToolToolRoute =
   Char91DotmcpChar93InvokeToolToolRouteImport.update({
     id: '/.mcp/invoke-tool/$tool',
@@ -77,6 +83,7 @@ export interface FileRoutesByFullPath {
   '/projects/elevate-local': typeof ProjectsElevateLocalRoute
   '/projects/folkways': typeof ProjectsFolkwaysRoute
   '/projects/paw-royalty': typeof ProjectsPawRoyaltyRoute
+  '/projects/xtendo-global': typeof ProjectsXtendoGlobalRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
 }
 export interface FileRoutesByTo {
@@ -88,6 +95,7 @@ export interface FileRoutesByTo {
   '/projects/elevate-local': typeof ProjectsElevateLocalRoute
   '/projects/folkways': typeof ProjectsFolkwaysRoute
   '/projects/paw-royalty': typeof ProjectsPawRoyaltyRoute
+  '/projects/xtendo-global': typeof ProjectsXtendoGlobalRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
 }
 export interface FileRoutesById {
@@ -100,6 +108,7 @@ export interface FileRoutesById {
   '/projects/elevate-local': typeof ProjectsElevateLocalRoute
   '/projects/folkways': typeof ProjectsFolkwaysRoute
   '/projects/paw-royalty': typeof ProjectsPawRoyaltyRoute
+  '/projects/xtendo-global': typeof ProjectsXtendoGlobalRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
 }
 export interface FileRouteTypes {
@@ -113,6 +122,7 @@ export interface FileRouteTypes {
     | '/projects/elevate-local'
     | '/projects/folkways'
     | '/projects/paw-royalty'
+    | '/projects/xtendo-global'
     | '/.mcp/invoke-tool/$tool'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -124,6 +134,7 @@ export interface FileRouteTypes {
     | '/projects/elevate-local'
     | '/projects/folkways'
     | '/projects/paw-royalty'
+    | '/projects/xtendo-global'
     | '/.mcp/invoke-tool/$tool'
   id:
     | '__root__'
@@ -135,6 +146,7 @@ export interface FileRouteTypes {
     | '/projects/elevate-local'
     | '/projects/folkways'
     | '/projects/paw-royalty'
+    | '/projects/xtendo-global'
     | '/.mcp/invoke-tool/$tool'
   fileRoutesById: FileRoutesById
 }
@@ -147,18 +159,12 @@ export interface RootRouteChildren {
   ProjectsElevateLocalRoute: typeof ProjectsElevateLocalRoute
   ProjectsFolkwaysRoute: typeof ProjectsFolkwaysRoute
   ProjectsPawRoyaltyRoute: typeof ProjectsPawRoyaltyRoute
+  ProjectsXtendoGlobalRoute: typeof ProjectsXtendoGlobalRoute
   Char91DotmcpChar93InvokeToolToolRoute: typeof Char91DotmcpChar93InvokeToolToolRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/mcp': {
-      id: '/mcp'
-      path: '/mcp'
-      fullPath: '/mcp'
-      preLoaderRoute: typeof McpRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
@@ -166,32 +172,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/projects/paw-royalty': {
-      id: '/projects/paw-royalty'
-      path: '/projects/paw-royalty'
-      fullPath: '/projects/paw-royalty'
-      preLoaderRoute: typeof ProjectsPawRoyaltyRouteImport
+    '/mcp': {
+      id: '/mcp'
+      path: '/mcp'
+      fullPath: '/mcp'
+      preLoaderRoute: typeof McpRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/projects/folkways': {
-      id: '/projects/folkways'
-      path: '/projects/folkways'
-      fullPath: '/projects/folkways'
-      preLoaderRoute: typeof ProjectsFolkwaysRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/projects/elevate-local': {
-      id: '/projects/elevate-local'
-      path: '/projects/elevate-local'
-      fullPath: '/projects/elevate-local'
-      preLoaderRoute: typeof ProjectsElevateLocalRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/projects/b-way': {
-      id: '/projects/b-way'
-      path: '/projects/b-way'
-      fullPath: '/projects/b-way'
-      preLoaderRoute: typeof ProjectsBWayRouteImport
+    '/.mcp/list-tools': {
+      id: '/.mcp/list-tools'
+      path: '/.mcp/list-tools'
+      fullPath: '/.mcp/list-tools'
+      preLoaderRoute: typeof Char91DotmcpChar93ListToolsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/.well-known/oauth-protected-resource': {
@@ -201,11 +193,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/.mcp/list-tools': {
-      id: '/.mcp/list-tools'
-      path: '/.mcp/list-tools'
-      fullPath: '/.mcp/list-tools'
-      preLoaderRoute: typeof Char91DotmcpChar93ListToolsRouteImport
+    '/projects/b-way': {
+      id: '/projects/b-way'
+      path: '/projects/b-way'
+      fullPath: '/projects/b-way'
+      preLoaderRoute: typeof ProjectsBWayRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projects/elevate-local': {
+      id: '/projects/elevate-local'
+      path: '/projects/elevate-local'
+      fullPath: '/projects/elevate-local'
+      preLoaderRoute: typeof ProjectsElevateLocalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projects/folkways': {
+      id: '/projects/folkways'
+      path: '/projects/folkways'
+      fullPath: '/projects/folkways'
+      preLoaderRoute: typeof ProjectsFolkwaysRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projects/paw-royalty': {
+      id: '/projects/paw-royalty'
+      path: '/projects/paw-royalty'
+      fullPath: '/projects/paw-royalty'
+      preLoaderRoute: typeof ProjectsPawRoyaltyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projects/xtendo-global': {
+      id: '/projects/xtendo-global'
+      path: '/projects/xtendo-global'
+      fullPath: '/projects/xtendo-global'
+      preLoaderRoute: typeof ProjectsXtendoGlobalRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/.mcp/invoke-tool/$tool': {
@@ -228,6 +248,7 @@ const rootRouteChildren: RootRouteChildren = {
   ProjectsElevateLocalRoute: ProjectsElevateLocalRoute,
   ProjectsFolkwaysRoute: ProjectsFolkwaysRoute,
   ProjectsPawRoyaltyRoute: ProjectsPawRoyaltyRoute,
+  ProjectsXtendoGlobalRoute: ProjectsXtendoGlobalRoute,
   Char91DotmcpChar93InvokeToolToolRoute: Char91DotmcpChar93InvokeToolToolRoute,
 }
 export const routeTree = rootRouteImport
