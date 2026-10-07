@@ -1,4 +1,10 @@
 export const pawRoyaltyEs: Record<string, string> = {
+  "Brand, storefront and retention system built from scratch": "Marca, tienda y sistema de retención construidos desde cero",
+  "Custom Liquid storefront — no page-builder apps": "Tienda a medida en Liquid — sin apps de page builder",
+  "Key experiences: home, PDP, Subscribe & Save and wellness quiz": "Experiencias clave: home, PDP, Subscribe & Save y quiz de bienestar",
+  "Klaviyo flows and campaigns designed and coded": "Flows y campañas de Klaviyo diseñados y codificados",
+  "A full-funnel email system — welcome, subscribe-and-save retention and flagship product campaigns — designed and coded inside Klaviyo.":
+    "Un sistema de email de embudo completo — bienvenida, retención de subscribe-and-save y campañas insignia de producto — diseñado y codificado dentro de Klaviyo.",
   // Top bar / nav
   "Back to portfolio": "Volver al portafolio",
   "Case Study / 02": "Caso de Estudio / 02",

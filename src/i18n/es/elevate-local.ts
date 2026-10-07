@@ -1,4 +1,6 @@
 export const elevateLocalEs: Record<string, string> = {
+  "Elevate Local logo reveal animation": "Animación de presentación del logo de Elevate Local",
+  "Logo reveal · Motion designed by me": "Logo reveal · Motion diseñado por mí",
   "& Strategic": "e Identidad",
   "01 — Context": "01 — Contexto",
   "02 — Build": "02 — Construcción",

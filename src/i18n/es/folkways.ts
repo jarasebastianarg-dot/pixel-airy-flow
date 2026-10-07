@@ -1,4 +1,8 @@
 export const folkwaysEs: Record<string, string> = {
+  "SKUs migrated to Shopify 2.0": "SKUs migrados a Shopify 2.0",
+  "Full storefront rebuilt in native Liquid": "Tienda completa reconstruida en Liquid nativo",
+  "Third-party apps for cart, upsell and pop-ups — rebuilt natively": "Apps de terceros para carrito, upsell y pop-ups — reconstruidos de forma nativa",
+  "Cashback recovery and wine-club flows rebuilt": "Flows de recupero con cashback y del club de vinos rearmados",
   "Hover to expand": "Pasá el mouse para expandir",
   "Click to zoom": "Click para hacer zoom",
   "Image preview": "Vista previa de imagen",

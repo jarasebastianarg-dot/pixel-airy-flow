@@ -1,4 +1,8 @@
 export const bwayEs: Record<string, string> = {
+  "5-person team": "Equipo de 5 personas",
+  "Nov 2023 – Dec 2025 · Promoted after 9 months": "Nov 2023 – Dic 2025 · Ascendido a los 9 meses",
+  "Promoted after 9 months of expanding scope — from packaging bench to running the brand.":
+    "Ascendido a los 9 meses, con un alcance cada vez mayor — de la mesa de packaging a liderar la marca.",
   // Nav / UI
   "Back to portfolio": "Volver al portfolio",
   "Get in touch": "Hablemos",
