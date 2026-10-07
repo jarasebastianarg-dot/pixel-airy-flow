@@ -141,15 +141,12 @@ const executionCards = [
   },
 ];
 
+// Scope facts only — performance and revenue results were tracked by the client.
 const metrics = [
-  { icon: Boxes, value: "2,000+", label: "SKUs Migrated & Automated" },
-  { icon: Gauge, value: "-40%", label: "Reduction in Page Load Time" },
-  { icon: TrendingUp, value: "+28%", label: "Increase in Cart Conversion Rate" },
-  { icon: Repeat, value: "+45%", label: "Boost in Recurring Revenue" },
-  { icon: Mail, value: "42%", label: "Avg. Klaviyo Campaign Open Rate" },
-  { icon: MousePointer2, value: "3.8%", label: "Email-to-Site CTR" },
-  { icon: Percent, value: "22x", label: "ROI on Retention Automations" },
-  { icon: TrendingUp, value: "+31%", label: "Wine Club Subscription Lift" },
+  { icon: Boxes, value: "2,000+", label: "SKUs migrated to Shopify 2.0" },
+  { icon: Gauge, value: "2.0", label: "Full storefront rebuilt in native Liquid" },
+  { icon: MousePointer2, value: "0", label: "Third-party apps for cart, upsell and pop-ups — rebuilt natively" },
+  { icon: Mail, value: "Klaviyo", label: "Cashback recovery and wine-club flows rebuilt" },
 ];
 
 type ExecutionCardData = (typeof executionCards)[number];
@@ -159,7 +156,7 @@ function ExecutionCard({ card, index }: { card: ExecutionCardData; index: number
   const Icon = card.icon;
   const isMobile = useIsMobile();
   const [hovered, setHovered] = useState(false);
-  const showBody = isMobile || hovered;
+  const showBody = true; // always visible (no hover needed, works on touch)
   const active = hovered && !isMobile;
   return (
     <motion.article

@@ -71,7 +71,7 @@ export const Route = createFileRoute("/projects/b-way")({
       {
         name: "description",
         content:
-          "Case study: architecting global e-commerce, leading a 6-person team, and orchestrating experiential events for B-WAY across the US, Brazil and Argentina.",
+          "Case study: architecting global e-commerce, leading a 5-person team, and orchestrating experiential events for B-WAY across the US, Brazil and Argentina.",
       },
       { property: "og:title", content: "B-WAY — Omnichannel Growth Case Study" },
       {
@@ -317,7 +317,7 @@ function Lightbox({
 }
 
 const metrics = [
-  { icon: TrendingUp, value: "Product Designer → Brand Manager", label: "Promoted after two years of expanding scope — from packaging bench to running the brand." },
+  { icon: TrendingUp, value: "Product Designer → Brand Manager", label: "Promoted after 9 months of expanding scope — from packaging bench to running the brand." },
   { icon: Layers, value: "5 disciplines owned", label: "Packaging, social, e-commerce, marketing campaigns and experiential events — all under one role." },
   { icon: Globe2, value: "3 markets managed", label: "Argentina, Brazil and the US — Shopify stores, campaigns and stands localized for each." },
   { icon: GraduationCap, value: "Where I grew the most", label: "The role where I stopped being just a designer and learned to lead a brand end-to-end." },
@@ -363,7 +363,7 @@ function ExecutionCard({ card, index }: { card: ExecutionCardData; index: number
   const Icon = card.icon;
   const isMobile = useIsMobile();
   const [hovered, setHovered] = useState(false);
-  const showBody = isMobile || hovered;
+  const showBody = true; // always visible (no hover needed, works on touch)
   const active = hovered && !isMobile;
   return (
     <motion.article
@@ -645,7 +645,7 @@ function BWayProject() {
               {tr("I joined as a")}{" "}
               <span className="font-semibold text-foreground">{tr("Product Designer")}</span>{" "}
               {tr("drawing die-cuts on a bench and ended up leading a")}{" "}
-              <span className="font-semibold text-foreground">{tr("6-person team")}</span>{" "}
+              <span className="font-semibold text-foreground">{tr("5-person team")}</span>{" "}
               {tr("across the US, Brazil and Argentina — building Shopify stores from zero, running Meta Ads, coaching brand educators and designing the trade-show stands we activated at Barber Week.")}
             </motion.p>
           </Reveal>
@@ -665,7 +665,7 @@ function BWayProject() {
                 {tr("Product Designer → Brand Manager")}
               </div>
               <div className="mt-1 font-mono text-[0.65rem] uppercase tracking-[0.22em] text-muted-foreground">
-                {tr("2 years · Promoted in-role")}
+                {tr("Nov 2023 – Dec 2025 · Promoted after 9 months")}
               </div>
             </motion.div>
             <motion.div

@@ -137,15 +137,12 @@ const executionCards = [
   },
 ];
 
+// Scope facts only — no estimated performance numbers.
 const metrics = [
-  { icon: Boxes, value: "100%", label: "Custom Native Architecture" },
-  { icon: Percent, value: "+4.2%", label: "Day-One Conversion Rate" },
-  { icon: Repeat, value: "35%", label: "Subscription Opt-In Rate" },
-  { icon: TrendingUp, value: "30x", label: "ROI on Klaviyo Automations" },
-  { icon: Mail, value: "48%", label: "Average Campaign Open Rate" },
-  { icon: MousePointerClick, value: "5.1%", label: "Email → Site Click-Through" },
-  { icon: Repeat, value: "+38%", label: "Subscribe & Save Lift from Email" },
-  { icon: Percent, value: "22%", label: "Revenue from Email Channel" },
+  { icon: TrendingUp, value: "0 → 1", label: "Brand, storefront and retention system built from scratch" },
+  { icon: Boxes, value: "100%", label: "Custom Liquid storefront — no page-builder apps" },
+  { icon: MousePointerClick, value: "4", label: "Key experiences: home, PDP, Subscribe & Save and wellness quiz" },
+  { icon: Mail, value: "3", label: "Klaviyo flows and campaigns designed and coded" },
 ];
 
 function MediaPlaceholder({
@@ -190,7 +187,7 @@ function ExecutionCard({ card, index }: { card: ExecutionCardData; index: number
   const [hovered, setHovered] = useState(false);
   // On mobile: always show body copy but keep the accent visuals in resting state.
   // Reserve the accent bar / glow / icon-swap treatment for real hover on desktop.
-  const showBody = isMobile || hovered;
+  const showBody = true; // always visible (no hover needed, works on touch)
   const active = hovered && !isMobile;
   return (
     <motion.article
@@ -746,7 +743,7 @@ function PawRoyaltyProject() {
               className="text-base leading-relaxed text-muted-foreground md:col-span-5 md:text-lg"
             >
               {tr(
-                "A full-funnel email system — welcome, subscribe-and-save retention and flagship product campaigns — designed and coded inside Klaviyo. The channel now drives 22% of total revenue with a 48% average open rate and a 30× ROI on automations.",
+                "A full-funnel email system — welcome, subscribe-and-save retention and flagship product campaigns — designed and coded inside Klaviyo.",
               )}
             </motion.p>
           </Reveal>

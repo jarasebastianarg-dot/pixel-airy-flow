@@ -5,7 +5,6 @@ import { LanguageToggle } from "@/components/LanguageToggle";
 import portrait from "@/assets/portrait.jpg.asset.json";
 import cvAsset from "@/assets/JaraSebastian_CV.pdf.asset.json";
 import bwayThumb from "@/assets/bway/bway-brand.jpg.asset.json";
-import elevateThumb from "@/assets/elevate-local/el-thumb.jpg.asset.json";
 import {
   motion,
   AnimatePresence,
@@ -42,19 +41,32 @@ export const Route = createFileRoute("/")({
 
 /** Visual/structural metadata — all copy lives in the language dictionary. */
 const capabilityMeta = [
-  { icon: ShoppingBag, number: "01" },
+  { icon: Palette, number: "01" },
   { icon: Zap, number: "02" },
-  { icon: Palette, number: "03" },
+  { icon: ShoppingBag, number: "03" },
   { icon: Bot, number: "04" },
 ] as const;
 
-const workMeta = [
+type WorkMeta = {
+  slug: string;
+  client: string;
+  image: string;
+  href: string;
+  fit?: "cover" | "contain";
+  video?: string;
+  poster?: string;
+  wide?: boolean;
+};
+
+const workMeta: WorkMeta[] = [
   {
-    slug: "folkways",
-    client: "Folkways",
-    image:
-      "https://raw.githubusercontent.com/jarasebastianarg-dot/Portfolio-Photos/main/Folkways%20Thumbnail.webp",
-    href: "/projects/folkways",
+    slug: "xtendo-global",
+    client: "Xtendo Global",
+    image: "/work/xtendo/xtendo-cover-ai.webp",
+    video: "/work/xtendo/xtendo-motion.mp4",
+    poster: "/work/xtendo/xtendo-motion-poster.webp",
+    href: "/projects/xtendo-global",
+    wide: true,
   },
   {
     slug: "paw-royalty",
@@ -63,15 +75,22 @@ const workMeta = [
       "https://raw.githubusercontent.com/jarasebastianarg-dot/Portfolio-Photos/main/Paw%20Royalty%20thumbnail.png",
     href: "/projects/paw-royalty",
   },
+  {
+    slug: "folkways",
+    client: "Folkways",
+    image:
+      "https://raw.githubusercontent.com/jarasebastianarg-dot/Portfolio-Photos/main/Folkways%20Thumbnail.webp",
+    href: "/projects/folkways",
+  },
   { slug: "b-way", client: "B-WAY", image: bwayThumb.url, href: "/projects/b-way" },
   {
     slug: "elevate-local",
     client: "Elevate Local",
-    image: elevateThumb.url,
+    image: "/work/elevate/elevate-logo-reveal-poster.webp",
+    video: "/work/elevate/elevate-logo-reveal.mp4",
     href: "/projects/elevate-local",
-    fit: "contain" as const,
   },
-] as const;
+];
 
 const ecosystemClusters = [
   {
@@ -173,12 +192,11 @@ function smoothScrollTo(id: string) {
 }
 
 const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 28, filter: "blur(8px)" },
+  hidden: { opacity: 0, y: 16 },
   show: {
     opacity: 1,
     y: 0,
-    filter: "blur(0px)",
-    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
   },
 };
 
@@ -368,22 +386,20 @@ function Index() {
 
       <motion.main
         key={lang}
-        initial={{ opacity: 0 }}
+        initial={false}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.25, ease: "easeOut" }}
         className="mx-auto max-w-6xl px-6"
       >
         {/* Hero */}
-        <Reveal className="py-20 md:py-28" stagger={0.12}>
-          <motion.span
-            variants={fadeUp}
+        <div className="py-20 md:py-28">
+          <span
             className="inline-flex max-w-full flex-wrap items-center gap-2 break-words rounded-full border border-border bg-card px-4 py-1.5 text-xs font-semibold text-muted-foreground"
           >
             <span className="h-2 w-2 animate-pulse rounded-full bg-orange-500" />
             {t.hero.badge}
-          </motion.span>
-          <motion.h1
-            variants={fadeUp}
+          </span>
+          <h1
             className="mt-6 max-w-4xl break-words text-5xl font-bold leading-[1.02] tracking-tight md:text-7xl"
           >
             {t.hero.headline.pre}
@@ -395,14 +411,13 @@ function Index() {
               {t.hero.headline.em2}
             </span>
             {t.hero.headline.post}
-          </motion.h1>
-          <motion.p
-            variants={fadeUp}
+          </h1>
+          <p
             className="mt-6 max-w-2xl break-words text-lg leading-relaxed text-muted-foreground md:text-xl"
           >
             {t.hero.subtitle}
-          </motion.p>
-          <motion.div variants={fadeUp} className="mt-8 flex flex-wrap items-center gap-4">
+          </p>
+          <div className="mt-8 flex flex-wrap items-center gap-4">
             <MagneticButton
               href="#works"
               className="group inline-flex min-w-0 items-center gap-2 break-words rounded-full bg-gradient-accent px-5 py-3 sm:px-7 sm:py-3.5 text-sm font-semibold text-accent-foreground shadow-[var(--shadow-accent)] transition-transform duration-200 active:scale-95"
@@ -416,8 +431,8 @@ function Index() {
             >
               {t.hero.ctaSecondary}
             </MagneticButton>
-          </motion.div>
-        </Reveal>
+          </div>
+        </div>
 
         {/* Selected Works */}
         <section id="works" className="scroll-mt-24 pt-8">
@@ -431,7 +446,10 @@ function Index() {
                   client={w.client}
                   image={w.image}
                   href={w.href}
-                  fit={"fit" in w ? w.fit : undefined}
+                  fit={w.fit}
+                  video={w.video}
+                  poster={w.poster}
+                  wide={w.wide}
                   tag={copy.tag}
                   headline={copy.headline}
                   body={copy.body}
@@ -633,8 +651,9 @@ function Index() {
             </div>
 
             <motion.div
+              id="contact"
               variants={fadeUp}
-              className="mt-12 flex flex-col flex-wrap gap-3 border-t border-border pt-10 sm:flex-row sm:items-center"
+              className="mt-12 flex scroll-mt-24 flex-col flex-wrap gap-3 border-t border-border pt-10 sm:flex-row sm:items-center"
             >
               <MagneticButton
                 href={cvAsset.url}
@@ -723,6 +742,9 @@ function WorkCard({
   image,
   href,
   fit,
+  video,
+  poster,
+  wide,
 }: {
   tag: string;
   client: string;
@@ -731,13 +753,16 @@ function WorkCard({
   image: string;
   href?: string;
   fit?: "cover" | "contain";
+  video?: string;
+  poster?: string;
+  wide?: boolean;
 }) {
   return (
     <motion.a
       href={href ?? "#"}
       data-cursor-view
       variants={fadeUp}
-      className="group relative block h-[20rem] overflow-hidden rounded-[calc(var(--radius)+16px)] border border-border shadow-[var(--shadow-card)] sm:h-[24rem]"
+      className={`group relative block h-[20rem] overflow-hidden rounded-[calc(var(--radius)+16px)] border border-border bg-black shadow-[var(--shadow-card)] sm:h-[24rem] ${wide ? "md:col-span-2 md:h-[30rem]" : ""}`}
     >
       {fit === "contain" && (
         <img
@@ -749,17 +774,43 @@ function WorkCard({
           className="absolute inset-0 h-full w-full scale-125 object-cover blur-2xl"
         />
       )}
+      {video ? (
+        <video
+          src={video}
+          poster={poster ?? image}
+          aria-hidden="true"
+          muted
+          loop
+          autoPlay
+          playsInline
+          preload="metadata"
+          className={`absolute inset-0 h-full w-full object-cover transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105 ${wide ? "md:left-auto md:w-[45%]" : ""}`}
+        />
+      ) : null}
+      {wide && video ? (
+        <img
+          src={image}
+          alt=""
+          aria-hidden="true"
+          loading="lazy"
+          decoding="async"
+          className="absolute inset-y-0 left-0 hidden h-full w-[55%] object-cover object-left md:block"
+        />
+      ) : null}
       <img
         src={image}
-        alt={`${client} — ${headline}. Shopify e-commerce design, UI/UX and automation case study.`}
+        alt={`${client} — ${headline}. Case study.`}
         loading="lazy"
         decoding="async"
         className={`absolute inset-0 h-full w-full transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110 ${
           fit === "contain" ? "object-contain p-6 sm:p-10" : "object-cover"
-        }`}
+        } ${video ? "hidden" : ""}`}
       />
       {/* dark gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-70 transition-opacity duration-500 group-hover:opacity-100" />
+      {wide ? (
+        <div className="absolute inset-y-0 left-0 hidden w-[55%] bg-gradient-to-r from-black/70 via-black/40 to-transparent md:block" />
+      ) : null}
 
       {/* tag top-left */}
       <span className="absolute left-6 right-16 top-6 inline-flex max-w-fit flex-wrap items-center gap-2 break-words rounded-full border border-white/20 bg-black/70 px-3 py-1 text-xs font-semibold text-white backdrop-blur-md">
@@ -769,7 +820,7 @@ function WorkCard({
       <ArrowUpRight className="absolute right-6 top-6 h-5 w-5 text-white/80 transition-transform duration-500 group-hover:-translate-y-1 group-hover:translate-x-1" />
 
       {/* text emerging from bottom */}
-      <div className="absolute inset-x-0 bottom-0 min-w-0 p-6 sm:p-8 md:p-10">
+      <div className={`absolute inset-x-0 bottom-0 min-w-0 p-6 sm:p-8 md:p-10 ${wide ? "md:right-auto md:w-[55%]" : ""}`}>
         <p className="break-words text-sm font-semibold text-white/70 opacity-90 transition-all duration-500 md:translate-y-2 md:group-hover:translate-y-0">
           {client}
         </p>

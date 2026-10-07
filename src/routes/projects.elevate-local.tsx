@@ -241,7 +241,7 @@ function ExecutionCard({ card, index }: { card: ExecutionCardData; index: number
   const Icon = card.icon;
   const isMobile = useIsMobile();
   const [hovered, setHovered] = useState(false);
-  const showBody = isMobile || hovered;
+  const showBody = true; // always visible (no hover needed, works on touch)
   const active = hovered && !isMobile;
   return (
     <motion.article
@@ -701,17 +701,20 @@ function ElevateLocalProject() {
               variants={fadeUp}
               className="relative overflow-hidden rounded-[calc(var(--radius)+22px)] border border-white/10 bg-[oklch(0.18_0.008_60)] shadow-[var(--shadow-card-hover)]"
             >
-              <div className="relative flex aspect-[16/8] items-center justify-center px-10 md:px-24">
-                <img
-                  src={elHorizontalLight.url}
-                  alt={tr("Elevate Local horizontal logotype on Obsidiana Mate")}
-                  loading="lazy"
-                  decoding="async"
-                  className="max-h-[60%] w-full max-w-4xl object-contain"
-                />
-              </div>
+              <video
+                src="/work/elevate/elevate-logo-reveal.mp4"
+                poster="/work/elevate/elevate-logo-reveal-poster.webp"
+                aria-label={tr("Elevate Local logo reveal animation")}
+                className="aspect-video w-full object-cover"
+                playsInline
+                muted
+                loop
+                autoPlay
+                controls
+                preload="metadata"
+              />
               <div className="relative flex items-center justify-between border-t border-white/10 bg-black/20 px-6 py-4 font-mono text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-white/70 backdrop-blur">
-                <span>{tr("Elevate Local · Primary Lockup")}</span>
+                <span>{tr("Logo reveal · Motion designed by me")}</span>
                 <span className="text-accent-1">{tr("Matte Obsidian")} #1E1A17</span>
               </div>
             </motion.div>
