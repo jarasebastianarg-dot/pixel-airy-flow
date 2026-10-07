@@ -1,193 +1,167 @@
+/** Spanish copy for /projects/xtendo-global (keys are the English strings in the page). */
 export const xtendoGlobalEs: Record<string, string> = {
-  // UI
-  "Featured Case Study": "Caso destacado",
-  "Image preview": "Vista previa de imagen",
+  // Chrome
+  "Back to portfolio": "Volver al portfolio",
   "Close preview": "Cerrar vista previa",
-  "Open": "Abrir",
-  "Scope": "Alcance",
-  "Credits:": "Créditos:",
+  Open: "Abrir",
+  "Open page": "Abrir página",
+  Page: "Página",
+  page: "página",
 
   // Hero
-  "Brand System · B2B BPO & CX": "Sistema de marca · B2B BPO y CX",
-  "turning a new logo into a": "convertir un logo nuevo en un",
-  "brand system": "sistema de marca",
-  "for 1,500+ people.": "para más de 1.500 personas.",
-  "I joined Xtendo Global as": "Entré a Xtendo Global como",
-  "Brand & Design Strategy Lead": "Brand & Design Strategy Lead",
-  "in the middle of its rebrand. My job: supervise the rebrand and build everything around the new logo — the brand manual, the template library, the campaigns and the motion that put the identity to work across 9 countries.":
-    "en pleno rebranding. Mi trabajo: supervisar el rebranding y construir todo alrededor del logo nuevo — el manual de marca, la biblioteca de plantillas, las campañas y el motion que pusieron la identidad a trabajar en 9 países.",
-  "the logo was designed by an external studio. The brand manual, templates, campaigns and motion on this page were designed by me, leading a team of 2 designers.":
-    "el logo lo diseñó un estudio externo. El manual de marca, las plantillas, las campañas y el motion de esta página los diseñé yo, liderando un equipo de 2 diseñadores.",
-  "Aug 2026 – Present · Remote": "Ago 2026 – Actualidad · Remoto",
-  "Rebrand supervision": "Supervisión del rebranding",
-  "Brand guidelines": "Manual de marca",
-  "Template library": "Biblioteca de plantillas",
-  "Campaign design": "Diseño de campañas",
-  "Motion graphics": "Motion graphics",
-  "AI design systems": "Sistemas de diseño con IA",
-  "Team leadership": "Liderazgo de equipo",
-  "1,500+ people · 9 countries": "1.500+ personas · 9 países",
-  "Team of 2 designers": "Equipo de 2 diseñadores",
-  "Working with the CEO": "Trabajo directo con el CEO",
-  "Xtendo Global brand manual 2026 cover": "Portada del manual de marca 2026 de Xtendo Global",
-  "Brand manual 2026 · 45 pages": "Manual de marca 2026 · 45 páginas",
-  "Brand manual 2026 · Cover": "Manual de marca 2026 · Portada",
+  "Xtendo Global, Brand & Design Strategy Lead, since August 2026":
+    "Xtendo Global, Brand & Design Strategy Lead, desde agosto de 2026",
+  "A new logo isn't a brand.": "Un logo nuevo no es una marca.",
+  "I built the rest.": "Yo construí todo lo demás.",
+  "Xtendo Global had a new logo and 1,500 people in 9 countries ready to use it, with no rules on how. I took the brand from there: the manual, a new sub-brand, templates for every team, the launch video, and a design team that now works with AI.":
+    "Xtendo Global tenía un logo nuevo y 1.500 personas en 9 países listas para usarlo, pero ninguna regla sobre cómo. Tomé la marca desde ahí: el manual, una sub-marca nueva, plantillas para cada equipo, el video de lanzamiento y un equipo de diseño que hoy trabaja con IA.",
+  "My role": "Mi rol",
+  "Brand lead, team of 2": "Líder de marca, equipo de 2",
+  Company: "Empresa",
+  "B2B services, 1,500+ people": "Servicios B2B, +1.500 personas",
+  Logo: "Logo",
+  "External studio": "Estudio externo",
+  "Xtendo 3.0 launch video": "Video de lanzamiento Xtendo 3.0",
+  "Play with sound": "Escuchar con sonido",
+  Mute: "Silenciar",
+  "Xtendo 3.0 launch video. Script, design and animation by me, made with AI.":
+    "Video de lanzamiento Xtendo 3.0. Guion, diseño y animación míos, hechos con IA.",
 
-  // Context
-  "Xtendo Global is a B2B BPO and customer-experience company with":
-    "Xtendo Global es una empresa B2B de BPO y experiencia de cliente con",
-  "1,500+ people across 9 countries": "más de 1.500 personas en 9 países",
-  ", serving clients like Microsoft, Dell and Cisco. When I joined, the new logo already existed — but nothing around it did.":
-    ", con clientes como Microsoft, Dell y Cisco. Cuando entré, el logo nuevo ya existía — pero nada alrededor de él.",
-  "Legacy versions of the logo were still in use, and every team built its own slides, posts and documents. A new mark alone wasn't going to change how the company looked. It needed a system people could actually use.":
-    "Las versiones viejas del logo seguían en uso y cada equipo armaba sus propias presentaciones, posteos y documentos. Un logo nuevo solo no iba a cambiar cómo se veía la empresa. Hacía falta un sistema que la gente realmente pudiera usar.",
-  "Before · Legacy lockup": "Antes · Logo anterior",
-  "After · New identity (logo by an external studio)": "Después · Nueva identidad (logo de un estudio externo)",
+  // 1
+  "Where I started": "Dónde arranqué",
+  "The logo was ready. Everything else was improvised.": "El logo estaba listo. Todo lo demás era improvisado.",
+  "When I joined, an outside studio had already redesigned the logo. But each team still made its own slides, posts and documents, so Xtendo looked different in every country and every meeting.":
+    "Cuando llegué, un estudio externo ya había rediseñado el logo. Pero cada equipo seguía armando sus propias presentaciones, posteos y documentos, así que Xtendo se veía distinta en cada país y en cada reunión.",
+  "My job was to turn that logo into a brand anyone in the company could use, without asking a designer.":
+    "Mi trabajo fue convertir ese logo en una marca que cualquiera en la empresa pudiera usar sin pedirle nada a un diseñador.",
+  "New Xtendo Global logo": "Logo nuevo de Xtendo Global",
+  "Previous Xtendo logo": "Logo anterior de Xtendo",
+  Before: "Antes",
+  After: "Después",
+  "Drag to compare the old and new logo": "Deslizá para comparar el logo anterior y el nuevo",
+  "Drag to compare. New logo designed by an external studio.":
+    "Deslizá para comparar. El logo nuevo lo diseñó un estudio externo.",
 
-  // What I built
-  "02 — What I Built": "02 — Lo que construí",
-  "From one logo to a": "De un logo a un",
-  "whole system": "sistema completo",
-  "Four layers, each one making the next possible: direction, foundations, scale and activation.":
-    "Cuatro capas, cada una hace posible la siguiente: dirección, bases, escala y activación.",
-  "Direction": "Dirección",
-  "Supervising the rebrand": "Supervisar el rebranding",
-  "Joined mid-process and took ownership of the rollout: worked hand in hand with the CEO on logo decisions and brand messaging, and art-directed how the new identity would be applied everywhere.":
-    "Entré a mitad del proceso y me hice cargo del despliegue: trabajé mano a mano con el CEO en las decisiones de logo y comunicación de marca, y dirigí cómo se iba a aplicar la nueva identidad en todos lados.",
-  "CEO partnership": "Trabajo con el CEO",
-  "Art direction": "Dirección de arte",
-  "Rollout": "Despliegue",
-  "Foundations": "Bases",
-  "A 45-page brand manual": "Un manual de marca de 45 páginas",
-  "Logo construction and usage, color, typography, voice and tone, photography, iconography, web UI components, social media and co-branding rules — one source of truth for the whole company.":
-    "Construcción y uso del logo, color, tipografía, voz y tono, fotografía, iconografía, componentes web, redes sociales y reglas de co-branding — una única fuente de verdad para toda la empresa.",
-  "45 pages": "45 páginas",
-  "Voice & tone": "Voz y tono",
-  "Web UI": "UI web",
+  // 2
+  "The brand manual": "El manual de marca",
+  "45 pages that answer every “how should this look?”": "45 páginas que responden cada “¿cómo debería verse esto?”",
+  "I wrote and designed Xtendo's first complete brand manual, with the CEO, in 2026. Scroll and it turns its own pages.":
+    "Escribí y diseñé el primer manual de marca completo de Xtendo, junto al CEO, en 2026. Bajá y pasa sus propias páginas.",
+  "The cover": "La portada",
+  "One book with every rule, so nobody has to guess what the brand looks like.":
+    "Un solo libro con todas las reglas, para que nadie tenga que adivinar cómo se ve la marca.",
+  "The logo": "El logo",
+  "Which version to use, where it goes and how much space it needs.":
+    "Qué versión usar, dónde va y cuánto espacio necesita.",
+  "What not to do": "Qué no hacer",
+  "The most common mistakes, shown side by side, so teams catch them before they publish.":
+    "Los errores más comunes, uno al lado del otro, para que los equipos los detecten antes de publicar.",
+  Color: "Color",
+  "Five colors with exact values, and how much of each one to use.":
+    "Cinco colores con sus valores exactos y cuánto usar de cada uno.",
+  Typography: "Tipografía",
+  "One typeface, Manrope, with clear sizes for titles and text.":
+    "Una sola tipografía, Manrope, con tamaños claros para títulos y textos.",
+  "Voice and tone": "Voz y tono",
+  "How Xtendo sounds when it writes: expert, close, concrete and global.":
+    "Cómo suena Xtendo cuando escribe: experta, cercana, concreta y global.",
+  Photography: "Fotografía",
+  "Real people at work, cool light, no generic stock photos.":
+    "Personas reales trabajando, luz fría y nada de fotos de stock genéricas.",
+  "Web and UI": "Web e interfaz",
+  "Cards, buttons and forms, so the website matches the slides and the posts.":
+    "Tarjetas, botones y formularios, para que la web combine con las presentaciones y los posteos.",
+  "Social media": "Redes sociales",
+  "Ready-made layouts for data posts, content and success stories.":
+    "Diseños listos para posteos con datos, contenido y casos de éxito.",
   "Co-branding": "Co-branding",
-  "Scale": "Escala",
-  "A template library anyone can use": "Una biblioteca de plantillas que cualquiera puede usar",
-  "15+ editable templates so any team can produce on-brand material without waiting for a designer: decks, letterhead, business cards, case studies, internal documents and comms, video-call backgrounds, webinar covers, LinkedIn banners, lead-gen and hiring posts — plus a LinkedIn guide and an AI prompt book.":
-    "Más de 15 plantillas editables para que cualquier equipo produzca material de marca sin esperar a un diseñador: presentaciones, hoja membretada, tarjetas, casos de éxito, documentos y comunicación interna, fondos de videollamada, portadas de webinar, banners de LinkedIn, posteos de leads y de búsquedas — más una guía de LinkedIn y un prompt book de IA.",
-  "15+ templates": "15+ plantillas",
-  "LinkedIn guide": "Guía de LinkedIn",
-  "AI prompt book": "Prompt book de IA",
-  "Activation": "Activación",
-  "Campaigns & motion": "Campañas y motion",
-  "Put the new brand to work: webinar campaigns with Frontline and the AEERC Contact Center Week in Spain, Conarec 2026 speaker posts, a WhatsApp-pricing e-book in Spanish and Portuguese, and motion pieces for LinkedIn.":
-    "Puse la marca nueva a trabajar: campañas de webinars con Frontline y la Semana del Contact Center de AEERC en España, posteos de oradores para Conarec 2026, un e-book sobre los nuevos precios de WhatsApp en español y portugués, y piezas de motion para LinkedIn.",
-  "Webinars": "Webinars",
-  "E-book ES · PT": "E-book ES · PT",
-  "LinkedIn": "LinkedIn",
-  "Motion": "Motion",
+  "How to share a piece with partners like Frontline without losing the brand.":
+    "Cómo compartir una pieza con socios como Frontline sin perder la marca.",
+  "Swipe to turn the pages": "Deslizá para pasar las páginas",
 
-  // Manual
-  "02.5 — Brand Manual": "02.5 — Manual de marca",
-  "45 pages,": "45 páginas,",
-  "one source": "una sola fuente",
-  "of truth.": "de verdad.",
-  "Everything a designer, marketer or sales rep needs to use the brand correctly — from logo clear space to how we write on LinkedIn. Click any page to zoom.":
-    "Todo lo que un diseñador, marketer o vendedor necesita para usar bien la marca — desde el área de protección del logo hasta cómo escribimos en LinkedIn. Hacé clic en cualquier página para ampliarla.",
-  "Logo · primary lockups": "Logo · versiones principales",
-  "Authorized versions": "Versiones autorizadas",
-  "Isotype": "Isotipo",
-  "Color palette": "Paleta cromática",
-  "Supporting colors": "Colores de apoyo",
-  "Typography · Manrope": "Tipografía · Manrope",
-  "Type hierarchy": "Jerarquía tipográfica",
-  "Brand personality": "Personalidad de marca",
-  "Photography": "Fotografía",
-  "Web UI components": "Componentes web",
-  "Cards & layouts": "Tarjetas y layouts",
-  "Social profiles": "Perfiles en redes",
-  "Social templates": "Plantillas para redes",
+  // 3
+  "A new brand from zero": "Una marca nueva desde cero",
+  "Then the recruiting team needed its own name.": "Después, el equipo de reclutamiento necesitó su propia marca.",
+  "Talent Solutions finds and hires people at scale for other companies. It had to feel close and human, and stand on its own next to Xtendo. I designed the logo and wrote its 9-page manual.":
+    "Talent Solutions busca y contrata personas a gran escala para otras empresas. Tenía que sentirse cercana y humana, y tener identidad propia al lado de Xtendo. Diseñé el logo y escribí su manual de 9 páginas.",
+  "The rule I set: Talent Solutions never shares a logo, color or typeface with another brand. It always shows up as itself.":
+    "La regla que definí: Talent Solutions nunca comparte logo, color ni tipografía con otra marca. Siempre aparece como ella misma.",
+  "Talent Solutions logo, designed by me": "Logo de Talent Solutions, diseñado por mí",
+  "9 pages. Tap any page to open it.": "9 páginas. Tocá cualquiera para abrirla.",
+  "Previous pages": "Páginas anteriores",
+  "Next pages": "Páginas siguientes",
 
-  // Templates
-  "02.6 — Template Library": "02.6 — Biblioteca de plantillas",
-  "Built so teams": "Hecha para que los equipos",
-  "don't wait": "no esperen",
-  "for design.": "a diseño.",
-  "15+ editable templates covering sales, marketing, HR and internal communication — plus a LinkedIn guide and an AI prompt book so non-designers stay on brand.":
-    "Más de 15 plantillas editables para ventas, marketing, RR.HH. y comunicación interna — más una guía de LinkedIn y un prompt book de IA para que quienes no son diseñadores respeten la marca.",
-  "Internal comms · Anniversary": "Comunicación interna · Aniversario",
-  "Business card · Front": "Tarjeta · Frente",
-  "Lead-gen carousel · 1": "Carrusel de leads · 1",
-  "Case study · A4": "Caso de éxito · A4",
-  "Webinar cover": "Portada de webinar",
-  "Lead-gen carousel · 2": "Carrusel de leads · 2",
-  "Internal comms · Birthday": "Comunicación interna · Cumpleaños",
-  "Business card · Dark": "Tarjeta · Oscura",
-  "Lead magnet · Story": "Lead magnet · Historia",
-  "Case study · Results": "Caso de éxito · Resultados",
-  "Hiring post": "Posteo de búsqueda",
-  "Internal comms · Welcome": "Comunicación interna · Bienvenida",
-  "Video-call background": "Fondo de videollamada",
-  "Lead-gen carousel · 3": "Carrusel de leads · 3",
-  "Business card · Back": "Tarjeta · Dorso",
-  "Internal comms · Dark": "Comunicación interna · Oscura",
+  // 4
+  "One brand for every team": "Una marca para cada equipo",
+  "Templates so nobody starts from a blank page.": "Plantillas para que nadie empiece de una hoja en blanco.",
+  "I built more than 15 templates and campaigns with my team. Pick a team to see what they use.":
+    "Armé más de 15 plantillas y campañas con mi equipo. Elegí un área para ver qué usa.",
+  Teams: "Equipos",
+  Sales: "Ventas",
+  Marketing: "Marketing",
+  People: "Personas",
+  Everyone: "Todos",
+  "Success stories and ebooks that look the same in every country, ready to send to a client.":
+    "Casos de éxito y ebooks que se ven igual en todos los países, listos para mandar a un cliente.",
+  "Webinar launches, infographics and partner campaigns built from the same system.":
+    "Lanzamientos de webinars, infografías y campañas con socios, armados con el mismo sistema.",
+  "Hiring posts, welcomes and team presentations that make new people feel part of one company.":
+    "Búsquedas laborales, bienvenidas y presentaciones de equipo para que cada persona nueva se sienta parte de una sola empresa.",
+  "Business cards and video call backgrounds, so every person carries the brand to every meeting.":
+    "Tarjetas y fondos de videollamada, para que cada persona lleve la marca a cada reunión.",
+  "One-page success story": "Caso de éxito en una página",
+  "LinkedIn ebook cover": "Portada de ebook para LinkedIn",
+  "Ebook inside page": "Página interna del ebook",
+  "Webinar announcement": "Anuncio de webinar",
+  Infographic: "Infografía",
+  "Campaign with Frontline": "Campaña con Frontline",
+  "Hiring post": "Posteo de búsqueda laboral",
+  "Welcome message": "Mensaje de bienvenida",
+  "Team presentation": "Presentación del equipo",
+  "Business card, front": "Tarjeta personal, frente",
+  "Business card, back": "Tarjeta personal, dorso",
+  "Video call background": "Fondo para videollamadas",
 
-  // Campaigns
-  "02.7 — Campaigns": "02.7 — Campañas",
-  "The brand,": "La marca,",
-  "at work.": "trabajando.",
-  "Webinar campaigns with Frontline and the AEERC Contact Center Week in Spain, Conarec 2026 speaker posts, LinkedIn infographics and a WhatsApp-pricing e-book launched in Spanish and Portuguese.":
-    "Campañas de webinars con Frontline y la Semana del Contact Center de AEERC en España, posteos de oradores para Conarec 2026, infografías para LinkedIn y un e-book sobre los precios de WhatsApp lanzado en español y portugués.",
-  "Webinar · Smart Sales & Automation": "Webinar · Ventas inteligentes y automatización",
-  "E-book · WhatsApp pricing": "E-book · Precios de WhatsApp",
-  "Conarec 2026 · Speaker post": "Conarec 2026 · Posteo de orador",
-  "LinkedIn infographic": "Infografía para LinkedIn",
-  "E-book carousel · 1/5": "Carrusel del e-book · 1/5",
-  "Webinar · Collections": "Webinar · Cobranzas",
-  "Team presentation": "Presentación al equipo",
-  "E-book carousel · 2/5": "Carrusel del e-book · 2/5",
-  "Frontline solution piece": "Pieza de la solución Frontline",
-  "Blog cover": "Portada de blog",
-  "E-book carousel · 3/5": "Carrusel del e-book · 3/5",
-  "E-book · Cover page": "E-book · Portada",
-  "Campaign key visual": "Key visual de campaña",
-  "E-book carousel · 4/5": "Carrusel del e-book · 4/5",
-  "E-book · Inside page": "E-book · Página interior",
-  "E-book carousel · 5/5": "Carrusel del e-book · 5/5",
+  // 5
+  "How I work with AI": "Cómo trabajo con IA",
+  "A launch video without an agency.": "Un video de lanzamiento sin agencia.",
+  "I wrote the script, designed every frame and animated it with Claude. Six scenes, 23 seconds, one message: pay for results, not for hours.":
+    "Escribí el guion, diseñé cada cuadro y lo animé con Claude. Seis escenas, 23 segundos y un mensaje: pagá por resultados, no por horas.",
+  Scene: "Escena",
+  "The question": "La pregunta",
+  "The proof": "La prueba",
+  "Global reach": "Alcance global",
+  "The method": "El método",
+  "The model": "El modelo",
+  "The close": "El cierre",
+  "Watch it with sound": "Verlo con sonido",
+  "Then I taught the team to do the same.": "Después le enseñé al equipo a hacer lo mismo.",
+  "I wrote a prompt book with the exact instructions that make AI images look like Xtendo, and trained the 2 designers on my team to use AI in their daily work.":
+    "Escribí un prompt book con las instrucciones exactas para que las imágenes con IA se vean como Xtendo, y capacité a los 2 diseñadores de mi equipo para usar IA en su trabajo diario.",
+  "From the prompt book": "Del prompt book",
+  "Image generated with the prompt": "Imagen generada con ese prompt",
 
-  // Motion
-  "03 — Motion": "03 — Motion",
-  "Brand in": "La marca en",
-  "motion.": "movimiento.",
-  "The XTENDO 3.0 piece and short-form clips cut from our webinars — animated with AI-assisted workflows to keep production fast and on brand.":
-    "La pieza XTENDO 3.0 y clips cortos editados de nuestros webinars — animados con flujos asistidos por IA para producir rápido y sin salirse de la marca.",
-  "XTENDO 3.0 · Brand motion piece": "XTENDO 3.0 · Pieza de motion de marca",
-  "Webinar short · Response time": "Short del webinar · Tiempo de respuesta",
-  "Webinar short · AI in sales": "Short del webinar · IA en ventas",
-
-  // AI workflow
-  "03.5 — AI Workflow": "03.5 — Flujo con IA",
-  "A design team that ships": "Un equipo de diseño que entrega",
-  "5× faster.": "5 veces más rápido.",
-  "Built AI-powered design systems in Claude that turn a brief into an on-brand landing page in 1 day instead of 4–5.":
-    "Armé sistemas de diseño con IA en Claude que convierten un brief en una landing de marca en 1 día en vez de 4–5.",
-  "Trained the 2 designers on my team to use them, so the speed doesn't depend on me.":
-    "Capacité a los 2 diseñadores de mi equipo para usarlos, así la velocidad no depende de mí.",
-  "Designed the HubSpot landing pages, invitation and follow-up emails behind each webinar campaign.":
-    "Diseñé las landings de HubSpot y los emails de invitación y seguimiento de cada campaña de webinar.",
-
-  // Outcome
-  "04 — Outcome": "04 — Resultado",
-  "A brand people": "Una marca que la gente",
-  "actually use.": "realmente usa.",
-  "45-page brand manual": "Manual de marca de 45 páginas",
-  "One source of truth for logo, color, type, voice, photography, web UI and social.":
-    "Una sola fuente de verdad para logo, color, tipografía, voz, fotografía, web y redes.",
-  "Editable files built so any team can ship on-brand material without a designer.":
-    "Archivos editables para que cualquier equipo saque material de marca sin un diseñador.",
-  "4–5 days → 1": "4–5 días → 1",
-  "Landing page delivery after building AI-powered design systems in Claude.":
-    "Tiempo de entrega de una landing después de armar sistemas de diseño con IA en Claude.",
-  "ES · PT · 9 countries": "ES · PT · 9 países",
-  "Campaigns for LATAM, Brazil and Spain under one consistent brand.":
-    "Campañas para LATAM, Brasil y España bajo una misma marca.",
+  // 6
+  "What changed": "Qué cambió",
+  "A landing page used to take almost a week. Now it takes a day.":
+    "Una landing page llevaba casi una semana. Ahora lleva un día.",
+  "With the system in place and AI in the workflow, the team spends its time on ideas, not on rebuilding layouts.":
+    "Con el sistema armado y la IA en el flujo de trabajo, el equipo dedica su tiempo a las ideas y no a rehacer diseños.",
+  "4–5 days": "4–5 días",
+  "Now, with AI": "Ahora, con IA",
+  "1 day": "1 día",
+  "One brand": "Una sola marca",
+  "The same look and voice across 9 countries and 1,500+ people.":
+    "La misma imagen y la misma voz en 9 países y más de 1.500 personas.",
+  "2 designers trained in AI": "2 diseñadores capacitados en IA",
+  "They now write prompts, edit and ship on their own.": "Hoy escriben prompts, editan y publican por su cuenta.",
+  "Better campaigns": "Mejores campañas",
+  "Click-through and webinar sign-ups went up after the new campaigns launched.":
+    "Subieron los clics y los registros a webinars después de lanzar las campañas nuevas.",
 
   // CTA
-  "Rolling out a new brand across a whole company?": "¿Lanzando una marca nueva en toda una empresa?",
-  "I turn a logo into a system people actually use — guidelines, templates, campaigns and motion.":
-    "Convierto un logo en un sistema que la gente realmente usa — manual, plantillas, campañas y motion.",
+  "Need someone to put order in your brand and bring AI into your team?":
+    "¿Necesitás a alguien que ordene tu marca y meta la IA en tu equipo?",
+  "Let's talk": "Hablemos",
+  "See more work": "Ver más trabajos",
 };
