@@ -10,6 +10,7 @@ import { pawRoyaltyEs } from "./es/paw-royalty";
 import { elevateLocalEs } from "./es/elevate-local";
 import { bwayEs } from "./es/b-way";
 import { xtendoGlobalEs } from "./es/xtendo-global";
+import { sharedCaseEs } from "./es/shared";
 
 export const caseStudyEs: Record<string, string> = {
   ...folkwaysEs,
@@ -17,6 +18,7 @@ export const caseStudyEs: Record<string, string> = {
   ...elevateLocalEs,
   ...bwayEs,
   ...xtendoGlobalEs,
+  ...sharedCaseEs,
 };
 
 export type Translate = (value: string) => string;
