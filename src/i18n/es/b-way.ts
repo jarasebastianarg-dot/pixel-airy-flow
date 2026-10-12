@@ -12,13 +12,6 @@ export const bwayEs: Record<string, string> = {
   "Swipe to explore →": "Deslizá para explorar →",
 
   // Section labels
-  "01 — Context": "01 — Contexto",
-  "02 — How the role grew": "02 — Cómo creció el rol",
-  "02.5 — Gallery": "02.5 — Galería",
-  "02.5 — Packaging": "02.5 — Packaging",
-  "02.6 — E-Commerce": "02.6 — E-Commerce",
-  "03 — Events": "03 — Eventos",
-  "04 — Outcome": "04 — Resultado",
 
   // Hero
   "Packaging · E-commerce · Events": "Packaging · E-commerce · Eventos",
@@ -36,7 +29,7 @@ export const bwayEs: Record<string, string> = {
     "para Estados Unidos, Brasil y Argentina. Armé las tiendas en Shopify, manejé Meta Ads y email, capacité a los brand educators y diseñé nuestros stands para la Barber Week.",
   "Role": "Rol",
   "Product Designer → Brand Manager": "Product Designer → Brand Manager",
-  "Nov 2023 – Dec 2025 · Promoted after 9 months": "Nov 2023 – Dic 2025 · Ascendido a los 9 meses",
+  "Nov 2023 - Dec 2025 · Promoted after 9 months": "Nov 2023 - Dic 2025 · Ascendido a los 9 meses",
   "What I worked on": "En qué trabajé",
   "Focus": "Foco",
 
@@ -111,7 +104,7 @@ export const bwayEs: Record<string, string> = {
   "Interior print": "Impresión interior",
   "Retail boxes": "Cajas para retail",
   "Factory coordination · China": "Coordinación con la fábrica · China",
-  "Launch supervision · 2023 – 2025": "Supervisión de lanzamientos · 2023 – 2025",
+  "Launch supervision · 2023 - 2025": "Supervisión de lanzamientos · 2023 - 2025",
   "Brand Guidelines & Logo Variations": "Brand guidelines y variaciones de logo",
   "Overlap": "Overlap",
 

@@ -26,7 +26,6 @@ export const xtendoGlobalEs: Record<string, string> = {
   Mute: "Silenciar",
 
   // 01
-  "01 — Context": "01 — Contexto",
   "There was a logo, but": "Había un logo, pero",
   "no rules": "ninguna regla",
   "for using it.": "para usarlo.",
@@ -43,7 +42,6 @@ export const xtendoGlobalEs: Record<string, string> = {
     "Deslizá para comparar el logo anterior y el nuevo. El logo nuevo lo diseñó un estudio externo.",
 
   // 02
-  "02 — Brand manual": "02 — Manual de marca",
   "A 45-page": "Un",
   "brand manual": "manual de marca",
   "written with the CEO.": "de 45 páginas, escrito junto al CEO.",
@@ -74,7 +72,6 @@ export const xtendoGlobalEs: Record<string, string> = {
   "How to place the logo next to partners like Frontline.": "Cómo ubicar el logo junto a socios como Frontline.",
 
   // 03
-  "03 — Sub-brand": "03 — Sub-marca",
   "Talent Solutions, a sub-brand I designed": "Talent Solutions, una sub-marca que diseñé",
   "from scratch": "desde cero",
   "Talent Solutions is Xtendo's recruiting service. It needed its own identity, separate from the main brand. I designed the logo and wrote a 9-page manual for it.":
@@ -87,7 +84,6 @@ export const xtendoGlobalEs: Record<string, string> = {
   "Next pages": "Páginas siguientes",
 
   // 04
-  "04 — HubSpot": "04 — HubSpot",
   "Landing pages and email automation in": "Landing pages y automatización de emails en",
   "Social post": "Posteo en redes",
   "Announces the webinar and sends people to the landing page.": "Anuncia el webinar y lleva a la gente a la landing.",
@@ -109,7 +105,6 @@ export const xtendoGlobalEs: Record<string, string> = {
   "One day per landing page, with AI": "Un día por landing, con IA",
 
   // 05
-  "05 — Pieces": "05 — Piezas",
   "Different messages,": "Mensajes distintos,",
   "one system": "un solo sistema",
   "With my two designers I made more than 15 templates and campaigns. These are the ones that best show how the system holds up.":
@@ -143,7 +138,6 @@ export const xtendoGlobalEs: Record<string, string> = {
   "Read the full ebook": "Leer el ebook completo",
 
   // 06
-  "06 — AI workflow": "06 — Flujo con IA",
   "I made the launch video": "Hice el video de lanzamiento",
   "with Claude": "con Claude",
   "I wrote the script, designed each scene and animated it with Claude. It runs 23 seconds and asks one question: are you paying for capacity or for results?":
@@ -175,12 +169,11 @@ export const xtendoGlobalEs: Record<string, string> = {
   "Master prompt 1: presentation hero image": "Prompt maestro 1: imagen principal de presentación",
 
   // 07
-  "07 — Impact": "07 — Impacto",
   "Landing pages now take": "Una landing page ahora lleva",
   "1 day": "1 día",
   "instead of 4 or 5.": "en lugar de 4 o 5.",
   "The team starts from the templates and uses AI for the first draft.": "El equipo parte de las plantillas y usa IA para el primer borrador.",
-  "4–5 days": "4–5 días",
+  "4-5 days": "4-5 días",
   "Now, with AI": "Ahora, con IA",
   "One brand in 9 countries": "Una marca en 9 países",
   "1,500+ people use the same logo, colors and templates.": "Más de 1.500 personas usan el mismo logo, los mismos colores y las mismas plantillas.",
@@ -198,7 +191,6 @@ export const xtendoGlobalEs: Record<string, string> = {
   "Xtendo Global logo next to pages of the brand manual, the ebook and a webinar post":
     "Logo de Xtendo Global junto a páginas del manual de marca, el ebook y un posteo de webinar",
   "Xtendo 3.0 launch video, 23 seconds.": "Video de lanzamiento Xtendo 3.0, 23 segundos.",
-  Storyboard: "Guion visual",
   "I design and build Xtendo's webinar funnels in HubSpot: the social posts, the landing page with its form and the invitation email. Each one in a different country and language, all on the same brand system.":
     "Diseño y armo en HubSpot los embudos de los webinars de Xtendo: los posteos, la landing con su formulario y el email de invitación. Cada uno en un país y un idioma distinto, todos con el mismo sistema de marca.",
   "Landing page for the Vendas Modernas webinar with Frontline, for Brazil. Hover to scroll through it.":

@@ -31,7 +31,6 @@ export const pawRoyaltyEs: Record<string, string> = {
   "Email Marketing": "Email Marketing",
 
   // The problem
-  "01 — Context": "01 — Contexto",
   "The": "El",
   "problem": "problema",
   "Paw Royalty was a new pet supplement brand starting from":
@@ -41,7 +40,6 @@ export const pawRoyaltyEs: Record<string, string> = {
     "para el mercado de Estados Unidos. No había tienda, ni lista de clientes, ni emails armados. El sitio tenía que explicar cada producto con claridad y hacer que suscribirse fuera una opción fácil.",
 
   // What I did
-  "02 — Build": "02 — Construcción",
   "What I": "Qué",
   "did": "hice",
   "I skipped ready-made themes and coded the store in Shopify Liquid, using AI-assisted development to move faster. That let me build the design the way I drew it.":
@@ -64,7 +62,6 @@ export const pawRoyaltyEs: Record<string, string> = {
     "Liquid y CSS a medida llevan la marca a la tienda. Todas las páginas son responsive, del celular al desktop.",
 
   // Gallery
-  "02.5 — Gallery": "02.5 — Galería",
   "Storefront": "Storefront",
   "in motion": "en movimiento",
   "Hover a preview to scroll the page. Click to see it full size.":
@@ -90,7 +87,6 @@ export const pawRoyaltyEs: Record<string, string> = {
     "Un quiz que sugiere suplementos según raza, edad y objetivos de salud. Al final da un descuento para la primera compra, y las respuestas van a Klaviyo para segmentar.",
 
   // Email marketing
-  "02.75 — Email Marketing": "02.75 — Email Marketing",
   "Emails built in": "Emails armados en",
   "I designed and coded the emails in Klaviyo: the welcome flow, a Subscribe & Save email and the launch campaign.":
     "Diseñé y programé los emails en Klaviyo: el flow de bienvenida, un email de Subscribe & Save y la campaña de lanzamiento.",
@@ -110,7 +106,6 @@ export const pawRoyaltyEs: Record<string, string> = {
     "Parte del flow de bienvenida, centrado en el suplemento Calming: sello de fórmula veterinaria, lista de ingredientes, reseñas verificadas y el código ROYAL-SUB.",
 
   // Results
-  "03 — Outcome": "03 — Resultado",
   "Results": "Resultados",
   "Brand, store and emails built from scratch": "Marca, tienda y emails hechos desde cero",
   "Store coded in custom Liquid, no page builder apps": "Tienda programada en Liquid a medida, sin apps de page builder",

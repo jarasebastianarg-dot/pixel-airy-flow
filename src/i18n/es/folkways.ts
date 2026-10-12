@@ -30,7 +30,6 @@ export const folkwaysEs: Record<string, string> = {
   "Store UX": "UX de la tienda",
 
   // The problem
-  "01 — Context": "01 — Contexto",
   "The": "El",
   "problem": "problema",
   "Folkways had more than 2,000 products on an older Shopify setup. The store used":
@@ -42,7 +41,6 @@ export const folkwaysEs: Record<string, string> = {
     "Cada app era una cosa más que el equipo tenía que configurar y mantener. Del lado del email, los flows de cashback y del club de vinos había que rearmarlos.",
 
   // What I did
-  "02 — Build": "02 — Construcción",
   "What I": "Qué",
   "did": "hice",
   "I rebuilt the storefront in Shopify Liquid and redid the email flows in Klaviyo. The goal was one store that looks consistent and is easy for the team to run.":
@@ -65,7 +63,6 @@ export const folkwaysEs: Record<string, string> = {
     "Las páginas de producto muestran el stock en vivo (“Quedan solo 9”) tomado del inventario. La columna de imágenes es sticky, así que el botón “Agregar al carrito” queda en pantalla mientras scrolleás.",
 
   // Gallery
-  "02.5 — Gallery": "02.5 — Galería",
   "Storefront": "Storefront",
   "in motion": "en movimiento",
   "Hover a preview to scroll the page. Click to see it full size.":
@@ -81,7 +78,6 @@ export const folkwaysEs: Record<string, string> = {
     "Programada en Liquid. Tiene el stock en vivo, un botón de agregar al carrito sticky, una fila de vinos relacionados y las notas del productor de cada botella.",
 
   // Email marketing
-  "02.75 — Email Marketing": "02.75 — Email Marketing",
   "Emails built in": "Emails armados en",
   "I redid the Klaviyo setup: cashback recovery flows and wine club campaigns. The goal was to bring one-time buyers back for a second order.":
     "Rehice la configuración de Klaviyo: flows de recupero con cashback y campañas del club de vinos. La idea era que quien compró una vez vuelva por un segundo pedido.",
@@ -97,7 +93,6 @@ export const folkwaysEs: Record<string, string> = {
     "Un email de Klaviyo que le recuerda a cada cliente su saldo de cashback. Sugiere tres formas de usarlo y tiene un solo botón claro.",
 
   // Results
-  "03 — Outcome": "03 — Resultado",
   "Results": "Resultados",
   "Products migrated to Shopify 2.0": "Productos migrados a Shopify 2.0",
   "Storefront rebuilt with native Liquid sections": "Tienda rearmada con secciones nativas de Liquid",

@@ -7,12 +7,6 @@ export const elevateLocalEs: Record<string, string> = {
   "Palette": "Paleta",
 
   // Section labels
-  "01 — Context": "01 — Contexto",
-  "02 — Process": "02 — Proceso",
-  "02.5 — Gallery": "02.5 — Galería",
-  "02.6 — Color": "02.6 — Color",
-  "02.7 — Type": "02.7 — Tipografía",
-  "03 — Outcome": "03 — Resultado",
 
   // Hero
   "Brand identity · B2B · Healthcare": "Identidad de marca · B2B · Salud",

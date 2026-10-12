@@ -3,7 +3,7 @@ export const sharedCaseEs: Record<string, string> = {
   "Case study": "Caso de estudio",
   "Next project": "Siguiente proyecto",
   "Want to work together or have a question about this project?": "¿Querés trabajar conmigo o tenés una pregunta sobre este proyecto?",
-  "Write to me": "Escribime",
+  "Get in touch": "Escribime",
   "All projects": "Todos los proyectos",
   "View case study": "Ver caso",
   "Brand manual, sub-brand, HubSpot landings and AI for a company of 1,500+ people":
