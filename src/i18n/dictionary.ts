@@ -26,7 +26,7 @@ export const dictionary = {
         post: ".",
       },
       subtitle:
-        "I write brand manuals and templates, design campaigns, and build the HubSpot landing pages, the emails and the Shopify stores myself. I use AI to do it faster, and I teach my team to do the same.",
+        "I write brand manuals and design campaigns, then build the HubSpot landing pages, emails and Shopify stores myself.",
       ctaPrimary: "See projects",
       ctaSecondary: "Download CV",
     },
@@ -120,7 +120,7 @@ export const dictionary = {
       {
         role: "Brand & Design Strategy Lead",
         company: "Xtendo Global, remote",
-        period: "Aug 2026 – Present",
+        period: "Aug 2026 - Present",
         highlights: [
           "Took over the company-wide rebrand halfway through and worked with the CEO on the logo decisions and messaging. B2B BPO and CX company, 1,500+ people, 9 countries.",
           "Wrote and designed the 45-page brand manual and a library of 15+ templates.",
@@ -131,7 +131,7 @@ export const dictionary = {
       {
         role: "Brand & E-commerce Designer",
         company: "Freelance, remote",
-        period: "Oct 2025 – Present",
+        period: "Oct 2025 - Present",
         highlights: [
           "Brand identity, UI/UX and Shopify stores for clients in the US and Argentina.",
           "Landing pages for paid social campaigns, built with AI-assisted development.",
@@ -140,7 +140,7 @@ export const dictionary = {
       {
         role: "Brand Manager",
         company: "B-WAY, Buenos Aires (hybrid)",
-        period: "Aug 2024 – Dec 2025",
+        period: "Aug 2024 - Dec 2025",
         highlights: [
           "Led a 5-person marketing team: campaigns, content, paid media and launches.",
           "Ran the Shopify stores and paid media for the US, Brazil and Argentina.",
@@ -150,7 +150,7 @@ export const dictionary = {
       {
         role: "Product & Packaging Designer",
         company: "B-WAY, Buenos Aires",
-        period: "Nov 2023 – Aug 2024",
+        period: "Nov 2023 - Aug 2024",
         highlights: [
           "Designed the packaging for the full product line and coordinated production with the factory in China.",
           "Made the e-commerce visuals and social media assets. Promoted to Brand Manager after 9 months.",
@@ -159,7 +159,7 @@ export const dictionary = {
       {
         role: "Graphic Designer",
         company: "Freelance, remote",
-        period: "2022 – 2023",
+        period: "2022 - 2023",
         highlights: ["Brand identities, social media content and web design for clients in different industries."],
       },
     ],
@@ -167,12 +167,12 @@ export const dictionary = {
       {
         title: "Bachelor's Degree in Graphic Design",
         institution: "UADE (Universidad Argentina de la Empresa)",
-        period: "2019 – 2024",
+        period: "2019 - 2024",
       },
       {
         title: "Bachelor's Degree in Multimedia & Interaction Design",
         institution: "UADE (Universidad Argentina de la Empresa)",
-        period: "2020 – 2024",
+        period: "2020 - 2024",
       },
       {
         title: "Foundations of Digital Marketing & E-commerce",
@@ -211,7 +211,7 @@ export const dictionary = {
         post: ".",
       },
       subtitle:
-        "Escribo manuales de marca y plantillas, diseño campañas y armo yo mismo las landing pages en HubSpot, los emails y las tiendas en Shopify. Uso IA para hacerlo más rápido y le enseño a mi equipo a hacer lo mismo.",
+        "Escribo manuales de marca y diseño campañas, y después armo yo mismo las landing pages en HubSpot, los emails y las tiendas en Shopify.",
       ctaPrimary: "Ver proyectos",
       ctaSecondary: "Descargar CV",
     },
@@ -305,7 +305,7 @@ export const dictionary = {
       {
         role: "Brand & Design Strategy Lead",
         company: "Xtendo Global, remoto",
-        period: "Ago 2026 – Actualidad",
+        period: "Ago 2026 - Actualidad",
         highlights: [
           "Tomé el rebranding de la empresa a mitad de camino y trabajé con el CEO en las decisiones del logo y el mensaje. Empresa B2B de BPO y CX, más de 1.500 personas, 9 países.",
           "Escribí y diseñé el manual de marca de 45 páginas y una biblioteca de más de 15 plantillas.",
@@ -316,7 +316,7 @@ export const dictionary = {
       {
         role: "Brand & E-commerce Designer",
         company: "Freelance, remoto",
-        period: "Oct 2025 – Actualidad",
+        period: "Oct 2025 - Actualidad",
         highlights: [
           "Identidad de marca, UI/UX y tiendas en Shopify para clientes de Estados Unidos y Argentina.",
           "Landing pages para campañas pagas en redes, armadas con desarrollo asistido por IA.",
@@ -325,7 +325,7 @@ export const dictionary = {
       {
         role: "Brand Manager",
         company: "B-WAY, Buenos Aires (híbrido)",
-        period: "Ago 2024 – Dic 2025",
+        period: "Ago 2024 - Dic 2025",
         highlights: [
           "Lideré un equipo de marketing de 5 personas: campañas, contenido, pauta y lanzamientos.",
           "Manejé las tiendas en Shopify y la pauta para Estados Unidos, Brasil y Argentina.",
@@ -335,7 +335,7 @@ export const dictionary = {
       {
         role: "Diseñador de producto y packaging",
         company: "B-WAY, Buenos Aires",
-        period: "Nov 2023 – Ago 2024",
+        period: "Nov 2023 - Ago 2024",
         highlights: [
           "Diseñé el packaging de toda la línea de productos y coordiné la producción con la fábrica en China.",
           "Hice las piezas para el e-commerce y las redes. A los 9 meses me ascendieron a Brand Manager.",
@@ -344,7 +344,7 @@ export const dictionary = {
       {
         role: "Diseñador gráfico",
         company: "Freelance, remoto",
-        period: "2022 – 2023",
+        period: "2022 - 2023",
         highlights: ["Identidades de marca, contenido para redes y diseño web para clientes de distintos rubros."],
       },
     ],
@@ -352,12 +352,12 @@ export const dictionary = {
       {
         title: "Licenciatura en Diseño Gráfico",
         institution: "UADE (Universidad Argentina de la Empresa)",
-        period: "2019 – 2024",
+        period: "2019 - 2024",
       },
       {
         title: "Licenciatura en Diseño Multimedial y de Interacción",
         institution: "UADE (Universidad Argentina de la Empresa)",
-        period: "2020 – 2024",
+        period: "2020 - 2024",
       },
       {
         title: "Fundamentos de Marketing Digital y E-commerce",
