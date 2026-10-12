@@ -31,7 +31,7 @@ export function NextProject({ current }: { current: CaseStudy["slug"] }) {
             <p className="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
               {tr("Want to work together or have a question about this project?")}{" "}
               <a href="/#contact" className="font-semibold text-foreground underline decoration-accent-1/50 underline-offset-4 hover:decoration-accent-1">
-                {tr("Write to me")}
+                {tr("Get in touch")}
               </a>
               .
             </p>
