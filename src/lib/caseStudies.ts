@@ -40,7 +40,7 @@ export const caseStudies: CaseStudy[] = [
     client: "B-WAY",
     href: "/projects/b-way",
     cover: bwayThumb.url,
-    year: "2023–2025",
+    year: "2023-2025",
   },
   {
     slug: "elevate-local",
