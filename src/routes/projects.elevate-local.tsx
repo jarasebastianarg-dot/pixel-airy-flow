@@ -37,13 +37,13 @@ export const Route = createFileRoute("/projects/elevate-local")({
   component: ElevateLocalProject,
   head: () => ({
     meta: [
-      { title: "Elevate Local — Visual identity for a medical marketing agency | Sebastián Jara" },
+      { title: "Elevate Local: Visual identity for a medical marketing agency | Sebastián Jara" },
       {
         name: "description",
         content:
           "The visual identity I designed for a marketing agency that works with medical clinics in Europe: logo system, colors, type, brand guidelines and a logo animation, done fully remote.",
       },
-      { property: "og:title", content: "Elevate Local — Visual identity for a medical marketing agency" },
+      { property: "og:title", content: "Elevate Local: Visual identity for a medical marketing agency" },
       {
         property: "og:description",
         content:
@@ -457,10 +457,9 @@ function HorizontalMockups() {
         <div className="mx-auto w-full max-w-6xl px-6">
           <div className="flex items-end justify-between gap-4">
             <div>
-              <SectionLabel>{tr("02.5 — Gallery")}</SectionLabel>
               <h3 className="mt-4 text-3xl font-bold leading-[1.05] tracking-tight">
                 {tr("The logo in")}{" "}
-                <span className="font-serif italic font-normal text-accent-1">
+                <span className="">
                   {tr("five versions")}
                 </span>
               </h3>
@@ -501,10 +500,9 @@ function HorizontalMockups() {
         <div className="mx-auto w-full max-w-6xl px-6 md:px-10">
           <div className="flex items-end justify-between gap-6">
             <div>
-              <SectionLabel>{tr("02.5 — Gallery")}</SectionLabel>
               <h3 className="mt-4 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
                 {tr("The logo in")}{" "}
-                <span className="font-serif italic font-normal text-accent-1">
+                <span className="">
                   {tr("five versions")}
                 </span>
               </h3>
@@ -665,10 +663,9 @@ function ElevateLocalProject() {
         <div className="mx-auto max-w-6xl px-6 py-20 md:grid md:grid-cols-12 md:gap-12 md:px-10 md:py-28">
           <Reveal className="md:col-span-4" stagger={0.08}>
             <motion.div variants={fadeUp}>
-              <SectionLabel>{tr("01 — Context")}</SectionLabel>
               <h2 className="mt-6 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
                 {tr("The")}{" "}
-                <span className="font-serif italic font-normal text-accent-1">
+                <span className="">
                   {tr("problem")}
                 </span>
               </h2>
@@ -725,19 +722,18 @@ function ElevateLocalProject() {
       {/* What I did */}
       <section className="border-t border-border/60">
         <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
-          <Reveal className="grid grid-cols-1 gap-10 md:grid-cols-12 md:items-end" stagger={0.1}>
-            <motion.div variants={fadeUp} className="md:col-span-7">
-              <SectionLabel>{tr("02 — Process")}</SectionLabel>
+          <Reveal className="flex max-w-3xl flex-col gap-6" stagger={0.1}>
+            <motion.div variants={fadeUp} className="">
               <h2 className="mt-6 text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl">
                 {tr("What I")}{" "}
-                <span className="font-serif italic font-normal text-accent-1">
+                <span className="">
                   {tr("did")}
                 </span>
               </h2>
             </motion.div>
             <motion.p
               variants={fadeUp}
-              className="text-base leading-relaxed text-muted-foreground md:col-span-5 md:text-lg"
+              className="text-base leading-relaxed text-muted-foreground max-w-[65ch] md:text-lg"
             >
               {tr("I started from who the agency talks to: clinic directors in Europe. I explored a few directions, chose one with the client and turned it into a full brand kit.")}
             </motion.p>
@@ -760,19 +756,18 @@ function ElevateLocalProject() {
       {/* Color System — Mineral Palette */}
       <section className="border-t border-border/60 bg-secondary/30">
         <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
-          <Reveal className="grid grid-cols-1 gap-10 md:grid-cols-12 md:items-end" stagger={0.1}>
-            <motion.div variants={fadeUp} className="md:col-span-7">
-              <SectionLabel>{tr("02.6 — Color")}</SectionLabel>
+          <Reveal className="flex max-w-3xl flex-col gap-6" stagger={0.1}>
+            <motion.div variants={fadeUp} className="">
               <h2 className="mt-6 text-4xl font-bold leading-[1.05] tracking-tight md:text-5xl">
                 {tr("A palette of")}{" "}
-                <span className="font-serif italic font-normal text-accent-1">
+                <span className="">
                   {tr("mineral tones")}
                 </span>
               </h2>
             </motion.div>
             <motion.p
               variants={fadeUp}
-              className="text-base leading-relaxed text-muted-foreground md:col-span-5 md:text-lg"
+              className="text-base leading-relaxed text-muted-foreground max-w-[65ch] md:text-lg"
             >
               {tr("Neutral tones inspired by stone and heavy paper. I chose them because they feel clean and calm, which suits a medical brand.")}
             </motion.p>
@@ -845,19 +840,18 @@ function ElevateLocalProject() {
       {/* Typography — Geomanist */}
       <section className="border-t border-border/60">
         <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
-          <Reveal className="grid grid-cols-1 gap-10 md:grid-cols-12 md:items-end" stagger={0.1}>
-            <motion.div variants={fadeUp} className="md:col-span-7">
-              <SectionLabel>{tr("02.7 — Type")}</SectionLabel>
+          <Reveal className="flex max-w-3xl flex-col gap-6" stagger={0.1}>
+            <motion.div variants={fadeUp} className="">
               <h2 className="mt-6 text-4xl font-bold leading-[1.05] tracking-tight md:text-5xl">
                 {tr("One typeface:")}{" "}
-                <span className="font-serif italic font-normal text-accent-1">
+                <span className="">
                   Geomanist
                 </span>
               </h2>
             </motion.div>
             <motion.p
               variants={fadeUp}
-              className="text-base leading-relaxed text-muted-foreground md:col-span-5 md:text-lg"
+              className="text-base leading-relaxed text-muted-foreground max-w-[65ch] md:text-lg"
             >
               {tr("Geomanist is stable, clear and easy to read. That makes it a good fit for a brand that talks to clinic directors and doctors.")}
             </motion.p>
@@ -922,19 +916,11 @@ function ElevateLocalProject() {
         />
         <div className="relative mx-auto max-w-6xl px-6 py-24 md:px-10 md:py-32">
           <Reveal stagger={0.08}>
-            <motion.div variants={fadeUp}>
-              <div className="inline-flex items-center gap-3">
-                <span className="h-px w-8 bg-accent-1" />
-                <span className="font-mono text-xs font-semibold uppercase tracking-[0.24em] text-accent-1">
-                  {tr("03 — Outcome")}
-                </span>
-              </div>
-            </motion.div>
             <motion.h2
               variants={fadeUp}
-              className="mt-6 max-w-3xl text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl"
+              className="max-w-3xl text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl"
             >
-              <span className="font-serif italic font-normal text-accent-1">
+              <span className="">
                 {tr("Results")}
               </span>
             </motion.h2>

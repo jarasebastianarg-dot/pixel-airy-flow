@@ -182,46 +182,6 @@ function MagneticButton({
   );
 }
 
-/* ─────────────────────── custom cursor ─────────────────────── */
-
-function CustomCursor() {
-  const x = useMotionValue(-100);
-  const y = useMotionValue(-100);
-  const sx = useSpring(x, { stiffness: 500, damping: 40 });
-  const sy = useSpring(y, { stiffness: 500, damping: 40 });
-  const [hovering, setHovering] = useState(false);
-  const [enabled, setEnabled] = useState(false);
-
-  useEffect(() => {
-    if (window.matchMedia("(pointer: fine)").matches) setEnabled(true);
-    function move(e: MouseEvent) {
-      x.set(e.clientX);
-      y.set(e.clientY);
-      const t = e.target as HTMLElement;
-      setHovering(!!t.closest("[data-cursor-view]"));
-    }
-    window.addEventListener("mousemove", move);
-    return () => window.removeEventListener("mousemove", move);
-  }, [x, y]);
-
-  if (!enabled) return null;
-
-  /* The native cursor stays visible; this bubble only appears over project cards. */
-  return (
-    <motion.div style={{ x: sx, y: sy }} className="pointer-events-none fixed left-0 top-0 z-[100] -translate-x-1/2 -translate-y-1/2">
-      <motion.div
-        initial={false}
-        animate={{ scale: hovering ? 1 : 0, opacity: hovering ? 1 : 0 }}
-        transition={{ type: "spring", stiffness: 260, damping: 22 }}
-        className="flex h-[72px] w-[72px] items-center justify-center rounded-full bg-accent-1"
-      >
-        <span className="text-[10px] font-bold uppercase tracking-widest text-accent-foreground">View</span>
-      </motion.div>
-    </motion.div>
-  );
-}
-
-
 /* ─────────────────────────── page ─────────────────────────── */
 
 function Index() {
@@ -231,7 +191,6 @@ function Index() {
 
   return (
     <div className="min-h-screen w-full overflow-x-hidden bg-background text-foreground">
-      <CustomCursor />
 
       {/* Header */}
       <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur-md">
@@ -288,17 +247,16 @@ function Index() {
         {/* Hero */}
         <div id="top" className="py-20 md:py-28">
           <span className="inline-flex max-w-full flex-wrap items-center gap-2 rounded-full border border-border bg-card px-4 py-1.5 text-xs font-semibold text-muted-foreground">
-            <span className="h-2 w-2 animate-pulse rounded-full bg-accent-1" />
             {t.hero.badge}
           </span>
-          <h1 className="mt-6 max-w-5xl break-words text-5xl font-bold leading-[1.02] tracking-tight md:text-7xl">
+          <h1 className="mt-6 max-w-5xl break-words pb-1 text-4xl font-bold leading-[1.06] tracking-tight [text-wrap:balance] sm:text-5xl md:text-6xl lg:text-7xl">
             {t.hero.headline.pre}
             <span className="font-serif font-normal italic text-accent-1">{t.hero.headline.em1}</span>
             {t.hero.headline.mid}
-            <span className="font-serif font-normal italic text-accent-1">{t.hero.headline.em2}</span>
+            {t.hero.headline.em2}
             {t.hero.headline.post}
           </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">{t.hero.subtitle}</p>
+          <p className="mt-6 max-w-[48ch] text-lg leading-relaxed text-muted-foreground md:text-xl">{t.hero.subtitle}</p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <MagneticButton
               href="#works"
@@ -320,7 +278,7 @@ function Index() {
 
         {/* Selected work: one card anatomy for every project */}
         <section id="works" className="scroll-mt-24">
-          <SectionLabel>{t.sections.works}</SectionLabel>
+          <h2 className="mb-8 text-3xl font-bold tracking-tight md:text-4xl">{t.sections.works}</h2>
           <Reveal className="grid grid-cols-1 gap-6 md:grid-cols-2" stagger={0.1}>
             <ProjectCard slug={featured.slug} wide />
             {rest.map((c) => (
@@ -329,53 +287,30 @@ function Index() {
           </Reveal>
         </section>
 
-        {/* What I do (capabilities and tools, merged) */}
+        {/* What I do: an open list, so it does not repeat the project-card layout */}
         <section id="services" className="scroll-mt-24 pt-28">
-          <Reveal className="grid grid-cols-1 gap-10 md:grid-cols-12 md:items-end" stagger={0.1}>
-            <motion.div variants={fadeUp} className="md:col-span-7">
-              <SectionLabel>{t.sections.services}</SectionLabel>
-              <h2 className="break-words text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl">
-                {t.services.heading.pre}
-                <span className="font-serif font-normal italic text-accent-1">{t.services.heading.em}</span>
-                {t.services.heading.post}
-              </h2>
-            </motion.div>
-            <motion.p variants={fadeUp} className="text-base leading-relaxed text-muted-foreground md:col-span-5 md:text-lg">
+          <Reveal className="max-w-3xl" stagger={0.1}>
+            <motion.h2 variants={fadeUp} className="text-4xl font-bold leading-[1.05] tracking-tight [text-wrap:balance] md:text-5xl">
+              {t.services.heading.pre}
+              {t.services.heading.em}
+              {t.services.heading.post}
+            </motion.h2>
+            <motion.p variants={fadeUp} className="mt-6 max-w-[60ch] text-base leading-relaxed text-muted-foreground md:text-lg">
               {t.services.intro}
             </motion.p>
           </Reveal>
 
-          <Reveal className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2" stagger={0.08}>
+          <Reveal className="mt-14 grid grid-cols-1 gap-x-16 gap-y-12 md:grid-cols-2" stagger={0.08}>
             {t.services.items.map((s, i) => {
               const Icon = serviceIcons[i];
               return (
-                <motion.article
-                  key={s.title}
-                  variants={fadeUp}
-                  className="group relative isolate flex h-full flex-col overflow-hidden rounded-[calc(var(--radius)+18px)] border border-border bg-card p-8 shadow-[var(--shadow-card)] transition-shadow duration-500 hover:shadow-[var(--shadow-card-hover)] md:p-10"
-                >
-                  <span
-                    aria-hidden
-                    className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-gradient-accent transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-x-100"
-                  />
-                  <div className="flex items-center justify-between gap-6">
-                    <span className="grid h-12 w-12 place-items-center rounded-2xl bg-secondary text-accent-1 ring-1 ring-inset ring-border transition-colors duration-500 group-hover:bg-gradient-accent group-hover:text-accent-foreground group-hover:ring-transparent">
-                      <Icon className="h-5 w-5" strokeWidth={1.6} />
-                    </span>
-                    <span className="font-mono text-xs font-semibold tracking-widest text-muted-foreground">0{i + 1}</span>
-                  </div>
-                  <h3 className="mt-8 text-2xl font-bold leading-tight tracking-tight">{s.title}</h3>
-                  <p className="mt-3 text-[0.95rem] leading-relaxed text-muted-foreground">{s.desc}</p>
-                  <ul className="mt-auto flex flex-wrap gap-2 pt-8">
-                    {s.tools.map((tool) => (
-                      <li
-                        key={tool}
-                        className="rounded-full border border-border bg-background/60 px-3 py-1 text-[0.75rem] font-medium text-muted-foreground transition-colors duration-300 group-hover:border-accent-1/40 group-hover:text-foreground"
-                      >
-                        {tool}
-                      </li>
-                    ))}
-                  </ul>
+                <motion.article key={s.title} variants={fadeUp} className="group border-t border-border pt-8">
+                  <span className="grid h-11 w-11 place-items-center rounded-2xl bg-secondary text-accent-1 transition-colors duration-300 group-hover:bg-gradient-accent group-hover:text-accent-foreground">
+                    <Icon className="h-5 w-5" strokeWidth={1.6} />
+                  </span>
+                  <h3 className="mt-6 text-2xl font-bold leading-tight tracking-tight">{s.title}</h3>
+                  <p className="mt-3 max-w-[48ch] text-[0.95rem] leading-relaxed text-muted-foreground">{s.desc}</p>
+                  <p className="mt-5 text-sm text-foreground/70">{s.tools.join(", ")}</p>
                 </motion.article>
               );
             })}
@@ -385,9 +320,6 @@ function Index() {
         {/* About */}
         <section id="about" className="scroll-mt-24 pt-28">
           <Reveal className="bento-card overflow-hidden p-8 md:p-14" stagger={0.12}>
-            <motion.div variants={fadeUp}>
-              <SectionLabel>{t.sections.about}</SectionLabel>
-            </motion.div>
             <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:items-center">
               <motion.div variants={fadeUp} className="md:col-span-1">
                 <img
@@ -403,7 +335,7 @@ function Index() {
               <motion.div variants={fadeUp} className="min-w-0 md:col-span-2">
                 <h2 className="max-w-3xl text-3xl font-bold leading-tight tracking-tight md:text-5xl">
                   {t.about.heading.pre}
-                  <span className="font-serif font-normal italic text-accent-1">{t.about.heading.em}</span>
+                  <span className="text-muted-foreground">{t.about.heading.em}</span>
                 </h2>
                 <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">{t.about.bio}</p>
               </motion.div>
@@ -442,9 +374,9 @@ function Index() {
                   <GraduationCap className="h-4 w-4 shrink-0 text-accent-1" />
                   <h3 className="text-lg font-bold tracking-tight">{t.sections.credentials}</h3>
                 </div>
-                <ul className="flex flex-col gap-3">
+                <ul className="flex flex-col gap-6">
                   {t.credentials.map((c) => (
-                    <li key={c.title + c.period} className="rounded-2xl border border-border bg-secondary/60 px-5 py-4 leading-snug">
+                    <li key={c.title + c.period} className="leading-snug">
                       <p className="text-sm font-bold tracking-tight">{c.title}</p>
                       <p className="mt-1 text-xs text-muted-foreground">{c.institution}</p>
                       <p className="mt-1 text-[0.7rem] font-semibold uppercase tracking-widest text-accent-1">{c.period}</p>
@@ -465,10 +397,9 @@ function Index() {
             />
             <div className="relative grid gap-10 md:grid-cols-12 md:items-end">
               <motion.div variants={fadeUp} className="md:col-span-7">
-                <span className="text-xs font-semibold uppercase tracking-widest text-background/60">{t.sections.contact}</span>
-                <h2 className="mt-4 text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl">
+                <h2 className="text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl">
                   {t.contact.heading.pre}
-                  <span className="font-serif font-normal italic text-accent-1">{t.contact.heading.em}</span>
+                  {t.contact.heading.em}
                   {t.contact.heading.post}
                 </h2>
                 <p className="mt-5 max-w-xl text-base leading-relaxed text-background/70 md:text-lg">{t.contact.body}</p>
@@ -537,9 +468,6 @@ function SJMonogram({ className = "" }: { className?: string }) {
   );
 }
 
-function SectionLabel({ children }: { children: React.ReactNode }) {
-  return <p className="mb-6 text-xs font-semibold uppercase tracking-widest text-muted-foreground">{children}</p>;
-}
 
 /** The one card used for every project: same image ratio, same text blocks, same hover. */
 function ProjectCard({ slug, wide = false }: { slug: (typeof caseStudies)[number]["slug"]; wide?: boolean }) {
@@ -550,7 +478,7 @@ function ProjectCard({ slug, wide = false }: { slug: (typeof caseStudies)[number
     <motion.div variants={fadeUp} className={`h-full ${wide ? "md:col-span-2" : ""}`}>
       <Link
         to={c.href}
-        data-cursor-view
+       
         className={`group grid h-full overflow-hidden rounded-[calc(var(--radius)+16px)] border border-border bg-card shadow-[var(--shadow-card)] transition-shadow duration-500 hover:shadow-[var(--shadow-card-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-1 ${
           wide ? "md:grid-cols-12" : ""
         }`}

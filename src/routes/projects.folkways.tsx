@@ -38,13 +38,13 @@ export const Route = createFileRoute("/projects/folkways")({
   component: FolkwaysProject,
   head: () => ({
     meta: [
-      { title: "Folkways — Shopify 2.0 migration and Klaviyo emails | Sebastián Jara" },
+      { title: "Folkways: Shopify 2.0 migration and Klaviyo emails | Sebastián Jara" },
       {
         name: "description",
         content:
           "Case study: how I moved a wine store with 2,000+ products to Shopify 2.0, rebuilt the storefront in Liquid and redid its Klaviyo emails.",
       },
-      { property: "og:title", content: "Folkways — Shopify 2.0 migration case study" },
+      { property: "og:title", content: "Folkways: Shopify 2.0 migration case study" },
       {
         property: "og:description",
         content:
@@ -598,10 +598,9 @@ function FolkwaysProject() {
         <div className="mx-auto max-w-6xl px-6 py-20 md:grid md:grid-cols-12 md:gap-12 md:px-10 md:py-28">
           <Reveal className="md:col-span-4" stagger={0.08}>
             <motion.div variants={fadeUp}>
-              <SectionLabel>{tr("01 — Context")}</SectionLabel>
               <h2 className="mt-6 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
                 {tr("The")}{" "}
-                <span className="font-serif italic font-normal text-accent-1">
+                <span className="">
                   {tr("problem")}
                 </span>
               </h2>
@@ -638,19 +637,18 @@ function FolkwaysProject() {
       {/* What I did */}
       <section className="border-t border-border/60">
         <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
-          <Reveal className="grid grid-cols-1 gap-10 md:grid-cols-12 md:items-end" stagger={0.1}>
-            <motion.div variants={fadeUp} className="md:col-span-7">
-              <SectionLabel>{tr("02 — Build")}</SectionLabel>
+          <Reveal className="flex max-w-3xl flex-col gap-6" stagger={0.1}>
+            <motion.div variants={fadeUp} className="">
               <h2 className="mt-6 text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl">
                 {tr("What I")}{" "}
-                <span className="font-serif italic font-normal text-accent-1">
+                <span className="">
                   {tr("did")}
                 </span>
               </h2>
             </motion.div>
             <motion.p
               variants={fadeUp}
-              className="text-base leading-relaxed text-muted-foreground md:col-span-5 md:text-lg"
+              className="text-base leading-relaxed text-muted-foreground max-w-[65ch] md:text-lg"
             >
               {tr(
                 "I rebuilt the storefront in Shopify Liquid and redid the email flows in Klaviyo. The goal was one store that looks consistent and is easy for the team to run.",
@@ -671,10 +669,9 @@ function FolkwaysProject() {
           <div className="mt-20">
             <Reveal className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between" stagger={0.08}>
               <motion.div variants={fadeUp}>
-                <SectionLabel>{tr("02.5 — Gallery")}</SectionLabel>
                 <h3 className="mt-4 text-3xl font-bold leading-[1.1] tracking-tight md:text-5xl">
                   {tr("Storefront")}{" "}
-                  <span className="font-serif italic font-normal text-accent-1">
+                  <span className="">
                     {tr("in motion")}
                   </span>
                 </h3>
@@ -696,12 +693,11 @@ function FolkwaysProject() {
       {/* Email Marketing */}
       <section className="border-t border-border/60 bg-secondary/30">
         <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
-          <Reveal className="grid grid-cols-1 gap-10 md:grid-cols-12 md:items-end" stagger={0.1}>
-            <motion.div variants={fadeUp} className="md:col-span-7">
-              <SectionLabel>{tr("02.75 — Email Marketing")}</SectionLabel>
+          <Reveal className="flex max-w-3xl flex-col gap-6" stagger={0.1}>
+            <motion.div variants={fadeUp} className="">
               <h2 className="mt-6 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
                 {tr("Emails built in")}{" "}
-                <span className="font-serif italic font-normal text-accent-1">
+                <span className="">
                   Klaviyo
                 </span>
                 .
@@ -709,7 +705,7 @@ function FolkwaysProject() {
             </motion.div>
             <motion.p
               variants={fadeUp}
-              className="text-base leading-relaxed text-muted-foreground md:col-span-5 md:text-lg"
+              className="text-base leading-relaxed text-muted-foreground max-w-[65ch] md:text-lg"
             >
               {tr(
                 "I redid the Klaviyo setup: cashback recovery flows and wine club campaigns. The goal was to bring one-time buyers back for a second order.",
@@ -728,19 +724,11 @@ function FolkwaysProject() {
         />
         <div className="relative mx-auto max-w-6xl px-6 py-24 md:px-10 md:py-32">
           <Reveal stagger={0.08}>
-            <motion.div variants={fadeUp}>
-              <div className="inline-flex items-center gap-3">
-                <span className="h-px w-8 bg-accent-1" />
-                <span className="font-mono text-xs font-semibold uppercase tracking-[0.24em] text-accent-1">
-                  {tr("03 — Outcome")}
-                </span>
-              </div>
-            </motion.div>
             <motion.h2
               variants={fadeUp}
-              className="mt-6 max-w-3xl text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl"
+              className="max-w-3xl text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl"
             >
-              <span className="font-serif italic font-normal text-accent-1">
+              <span className="">
                 {tr("Results")}
               </span>
             </motion.h2>

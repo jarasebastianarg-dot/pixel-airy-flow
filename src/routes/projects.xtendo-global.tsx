@@ -30,13 +30,13 @@ export const Route = createFileRoute("/projects/xtendo-global")({
   component: XtendoProject,
   head: () => ({
     meta: [
-      { title: "Xtendo Global — Brand system, HubSpot landings and AI | Sebastián Jara" },
+      { title: "Xtendo Global: Brand system, HubSpot landings and AI | Sebastián Jara" },
       {
         name: "description",
         content:
           "Case study: after an outside studio designed Xtendo Global's new logo, I wrote the 45-page brand manual, created the Talent Solutions sub-brand, built HubSpot landing pages and emails, designed the brand's templates and made the launch video with Claude.",
       },
-      { property: "og:title", content: "Xtendo Global — Brand & Design Strategy case study" },
+      { property: "og:title", content: "Xtendo Global: Brand & Design Strategy case study" },
       {
         property: "og:description",
         content: "How I turned Xtendo Global's new logo into a brand system for 1,500+ people in 9 countries.",
@@ -173,33 +173,32 @@ function SectionLabel({ children, tone = "light" }: { children: React.ReactNode;
   );
 }
 
-function Accent({ children }: { children: React.ReactNode }) {
-  return <span className="font-serif font-normal italic text-accent-1">{children}</span>;
+/* Serif accent is reserved for the hero headline; elsewhere the word reads as plain text. */
+function Accent({ children, hero = false }: { children: React.ReactNode; hero?: boolean }) {
+  return hero ? <span className="font-serif font-normal italic text-accent-1">{children}</span> : <>{children}</>;
 }
 
-/* Section header used by every chapter: label, title, intro */
+/* Section header used by every chapter: headline on top, short intro below */
 function Header({
-  label,
   title,
   intro,
   tone = "light",
 }: {
-  label: string;
+  label?: string;
   title: React.ReactNode;
   intro?: string;
   tone?: "light" | "dark";
 }) {
   const { tr } = useTr();
   return (
-    <Reveal className="grid grid-cols-1 gap-8 md:grid-cols-12 md:items-end">
-      <motion.div variants={fadeUp} className="md:col-span-7">
-        <SectionLabel tone={tone}>{tr(label)}</SectionLabel>
-        <h2 className="mt-6 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">{title}</h2>
-      </motion.div>
+    <Reveal className="max-w-3xl">
+      <motion.h2 variants={fadeUp} className="text-3xl font-bold leading-[1.05] tracking-tight [text-wrap:balance] md:text-5xl">
+        {title}
+      </motion.h2>
       {intro ? (
         <motion.p
           variants={fadeUp}
-          className={`text-base leading-relaxed md:col-span-5 md:text-lg ${tone === "dark" ? "text-background/70" : "text-muted-foreground"}`}
+          className={`mt-6 max-w-[65ch] text-base leading-relaxed md:text-lg ${tone === "dark" ? "text-background/70" : "text-muted-foreground"}`}
         >
           {tr(intro)}
         </motion.p>
@@ -707,41 +706,23 @@ function PromptBookCard() {
   );
 }
 
-/* 4–5 days → 1 day, on the dark impact section */
-function SpeedBars() {
+/* 4-5 days vs 1 day, shown as two numbers instead of progress bars */
+function SpeedCompare() {
   const { tr } = useTr();
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
   return (
-    <div ref={ref} className="space-y-6">
-      <div>
-        <div className="mb-2 flex justify-between text-sm">
-          <span className="text-background/65">{tr("Before")}</span>
-          <span className="font-semibold tabular-nums">{tr("4–5 days")}</span>
-        </div>
-        <div className="h-11 overflow-hidden rounded-full bg-background/10">
-          <motion.div
-            className="h-full rounded-full bg-background/30"
-            initial={{ width: "0%" }}
-            animate={{ width: inView ? "100%" : "0%" }}
-            transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
-          />
-        </div>
-      </div>
-      <div>
-        <div className="mb-2 flex justify-between text-sm">
-          <span className="text-background/65">{tr("Now, with AI")}</span>
-          <span className="font-semibold tabular-nums text-accent-1">{tr("1 day")}</span>
-        </div>
-        <div className="h-11 overflow-hidden rounded-full bg-background/10">
-          <motion.div
-            className="h-full rounded-full bg-gradient-accent"
-            initial={{ width: "0%" }}
-            animate={{ width: inView ? "22%" : "0%" }}
-            transition={{ duration: 0.6, delay: 1.0, ease: [0.22, 1, 0.36, 1] }}
-          />
-        </div>
-      </div>
+    <div ref={ref} className="grid grid-cols-2 gap-6 sm:gap-10">
+      <motion.div initial={{ opacity: 0, y: 16 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.5 }}>
+        <p className="text-sm text-background/60">{tr("Before")}</p>
+        <p className="mt-2 whitespace-nowrap text-4xl font-bold tracking-tight text-background/40 line-through decoration-background/30 decoration-2 lg:text-6xl">
+          {tr("4-5 days")}
+        </p>
+      </motion.div>
+      <motion.div initial={{ opacity: 0, y: 16 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.5, delay: 0.25 }}>
+        <p className="text-sm text-background/60">{tr("Now, with AI")}</p>
+        <p className="mt-2 whitespace-nowrap text-4xl font-bold tracking-tight text-accent-1 lg:text-6xl">{tr("1 day")}</p>
+      </motion.div>
     </div>
   );
 }
@@ -803,7 +784,7 @@ function XtendoProject() {
           <div className="mx-auto max-w-6xl px-6 pb-16 pt-14 md:px-10 md:pb-20 md:pt-20">
             <SectionLabel>{tr("Brand & Design Strategy Lead · Xtendo Global")}</SectionLabel>
             <h1 className="mt-6 max-w-5xl text-4xl font-bold leading-[1.02] tracking-tight md:text-6xl lg:text-[4.5rem]">
-              {tr("Xtendo had a new logo. I made it work in")} <Accent>{tr("9 countries")}</Accent>.
+              {tr("Xtendo had a new logo. I made it work in")} <Accent hero>{tr("9 countries")}</Accent>.
             </h1>
             <p className="mt-8 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
               {tr(
@@ -848,10 +829,7 @@ function XtendoProject() {
         <section className="border-t border-border/60">
           <div className="mx-auto grid max-w-6xl gap-12 px-6 py-20 md:px-10 md:py-28 lg:grid-cols-12 lg:items-center">
             <Reveal className="lg:col-span-5">
-              <motion.div variants={fadeUp}>
-                <SectionLabel>{tr("01 — Context")}</SectionLabel>
-              </motion.div>
-              <motion.h2 variants={fadeUp} className="mt-6 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
+              <motion.h2 variants={fadeUp} className="text-3xl font-bold leading-[1.05] tracking-tight [text-wrap:balance] md:text-5xl">
                 {tr("There was a logo, but")} <Accent>{tr("no rules")}</Accent> {tr("for using it.")}
               </motion.h2>
               <motion.p variants={fadeUp} className="mt-6 text-base leading-relaxed text-muted-foreground md:text-lg">
@@ -871,7 +849,6 @@ function XtendoProject() {
         <section className="border-t border-border/60 bg-secondary/30">
           <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
             <Header
-              label="02 — Brand manual"
               title={
                 <>
                   {tr("A 45-page")} <Accent>{tr("brand manual")}</Accent>, {tr("written with the CEO.")}
@@ -890,10 +867,7 @@ function XtendoProject() {
           <div className="mx-auto max-w-6xl px-6 pt-20 md:px-10 md:pt-28">
             <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
               <Reveal className="lg:col-span-6">
-                <motion.div variants={fadeUp}>
-                  <SectionLabel>{tr("03 — Sub-brand")}</SectionLabel>
-                </motion.div>
-                <motion.h2 variants={fadeUp} className="mt-6 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
+                <motion.h2 variants={fadeUp} className="text-3xl font-bold leading-[1.05] tracking-tight [text-wrap:balance] md:text-5xl">
                   {tr("Talent Solutions, a sub-brand I designed")} <Accent>{tr("from scratch")}</Accent>.
                 </motion.h2>
                 <motion.p variants={fadeUp} className="mt-6 text-base leading-relaxed text-muted-foreground md:text-lg">
@@ -935,7 +909,6 @@ function XtendoProject() {
         <section className="border-t border-border/60 bg-secondary/30">
           <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
             <Header
-              label="04 — HubSpot"
               title={
                 <>
                   {tr("Landing pages and email automation in")} <Accent>HubSpot</Accent>.
@@ -1048,7 +1021,6 @@ function XtendoProject() {
         <section className="border-t border-border/60">
           <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
             <Header
-              label="05 — Pieces"
               title={
                 <>
                   {tr("Different messages,")} <Accent>{tr("one system")}</Accent>.
@@ -1146,7 +1118,6 @@ function XtendoProject() {
         <section className="border-t border-border/60 bg-secondary/30">
           <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
             <Header
-              label="06 — AI workflow"
               title={
                 <>
                   {tr("I made the launch video")} <Accent>{tr("with Claude")}</Accent>.
@@ -1185,8 +1156,7 @@ function XtendoProject() {
 
               {/* storyboard */}
               <div className="lg:col-span-8">
-                <p className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">{tr("Storyboard")}</p>
-                <div className="-mx-6 mt-4 flex snap-x gap-3 overflow-x-auto px-6 pb-2 [scrollbar-width:none] sm:mx-0 sm:grid sm:grid-cols-3 sm:overflow-visible sm:px-0">
+                <div className="-mx-6 flex snap-x gap-3 overflow-x-auto px-6 pb-2 [scrollbar-width:none] sm:mx-0 sm:grid sm:grid-cols-3 sm:overflow-visible sm:px-0">
                   {storyboard.map((s, i) => (
                     <motion.figure
                       key={s.src}
@@ -1237,10 +1207,7 @@ function XtendoProject() {
           <div className="relative mx-auto max-w-6xl px-6 py-24 md:px-10 md:py-32">
             <div className="grid gap-14 lg:grid-cols-12 lg:items-center">
               <Reveal className="lg:col-span-6">
-                <motion.div variants={fadeUp}>
-                  <SectionLabel tone="dark">{tr("07 — Impact")}</SectionLabel>
-                </motion.div>
-                <motion.h2 variants={fadeUp} className="mt-6 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
+                <motion.h2 variants={fadeUp} className="text-3xl font-bold leading-[1.05] tracking-tight [text-wrap:balance] md:text-5xl">
                   {tr("Landing pages now take")} <Accent>{tr("1 day")}</Accent> {tr("instead of 4 or 5.")}
                 </motion.h2>
                 <motion.p variants={fadeUp} className="mt-6 text-base leading-relaxed text-background/70 md:text-lg">
@@ -1248,7 +1215,7 @@ function XtendoProject() {
                 </motion.p>
               </Reveal>
               <div className="lg:col-span-6">
-                <SpeedBars />
+                <SpeedCompare />
               </div>
             </div>
 

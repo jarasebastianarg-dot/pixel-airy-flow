@@ -67,13 +67,13 @@ export const Route = createFileRoute("/projects/b-way")({
   component: BWayProject,
   head: () => ({
     meta: [
-      { title: "B-WAY — From packaging designer to brand manager | Sebastián Jara" },
+      { title: "B-WAY: From packaging designer to brand manager | Sebastián Jara" },
       {
         name: "description",
         content:
           "Two years at B-WAY, a barber tools brand. I started on packaging, became Brand Manager and led a 5-person team across the US, Brazil and Argentina.",
       },
-      { property: "og:title", content: "B-WAY — From packaging designer to brand manager" },
+      { property: "og:title", content: "B-WAY: From packaging designer to brand manager" },
       {
         property: "og:description",
         content:
@@ -490,10 +490,9 @@ function HorizontalMockups() {
         <div className="mx-auto w-full max-w-6xl px-6">
           <div className="flex items-end justify-between gap-4">
             <div>
-              <SectionLabel>{tr("02.5 — Gallery")}</SectionLabel>
               <h3 className="mt-4 text-3xl font-bold leading-[1.05] tracking-tight">
                 {tr("Brand Guidelines & Logo Variations")}{" "}
-                <span className="font-serif italic font-normal text-accent-1">
+                <span className="">
                   {tr("Overlap")}
                 </span>
               </h3>
@@ -539,10 +538,9 @@ function HorizontalMockups() {
         <div className="mx-auto w-full max-w-6xl px-6 md:px-10">
           <div className="flex items-end justify-between gap-6">
             <div>
-              <SectionLabel>{tr("02.5 — Gallery")}</SectionLabel>
               <h3 className="mt-4 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
                 {tr("Brand Guidelines & Logo Variations")}{" "}
-                <span className="font-serif italic font-normal text-accent-1">
+                <span className="">
                   {tr("Overlap")}
                 </span>
               </h3>
@@ -666,7 +664,7 @@ function BWayProject() {
                 {tr("Product Designer → Brand Manager")}
               </div>
               <div className="mt-1 font-mono text-[0.65rem] uppercase tracking-[0.22em] text-muted-foreground">
-                {tr("Nov 2023 – Dec 2025 · Promoted after 9 months")}
+                {tr("Nov 2023 - Dec 2025 · Promoted after 9 months")}
               </div>
             </motion.div>
             <motion.div
@@ -723,10 +721,9 @@ function BWayProject() {
         <div className="mx-auto max-w-6xl px-6 py-20 md:grid md:grid-cols-12 md:gap-12 md:px-10 md:py-28">
           <Reveal className="md:col-span-4" stagger={0.08}>
             <motion.div variants={fadeUp}>
-              <SectionLabel>{tr("01 — Context")}</SectionLabel>
               <h2 className="mt-6 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
                 {tr("The")}{" "}
-                <span className="font-serif italic font-normal text-accent-1">
+                <span className="">
                   {tr("problem")}
                 </span>
               </h2>
@@ -778,12 +775,11 @@ function BWayProject() {
       {/* The Growth Story */}
       <section className="border-t border-border/60">
         <div className="mx-auto max-w-6xl px-6 py-16 md:px-10 md:py-20">
-          <Reveal className="grid grid-cols-1 gap-6 md:grid-cols-12 md:items-end" stagger={0.1}>
-            <motion.div variants={fadeUp} className="md:col-span-7">
-              <SectionLabel>{tr("02 — How the role grew")}</SectionLabel>
+          <Reveal className="flex max-w-3xl flex-col gap-6" stagger={0.1}>
+            <motion.div variants={fadeUp} className="">
               <h2 className="mt-4 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
                 {tr("Four")}{" "}
-                <span className="font-serif italic font-normal text-accent-1">
+                <span className="">
                   {tr("stages")}
                 </span>{" "}
                 {tr("in two years.")}
@@ -791,7 +787,7 @@ function BWayProject() {
             </motion.div>
             <motion.p
               variants={fadeUp}
-              className="text-sm leading-relaxed text-muted-foreground md:col-span-5 md:text-base"
+              className="text-sm leading-relaxed text-muted-foreground max-w-[65ch] md:text-base"
             >
               {tr("Each stage added new work on top of the last one. First packaging, then the online stores, then campaigns, then events and the team. By the end I was leading the team that handled all of it.")}
             </motion.p>
@@ -852,12 +848,11 @@ function BWayProject() {
         {/* Packaging Work */}
         <div className="border-t border-border/60 bg-secondary/30">
           <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
-            <Reveal className="grid grid-cols-1 gap-8 md:grid-cols-12 md:items-start" stagger={0.08}>
-              <motion.div variants={fadeUp} className="md:col-span-7">
-                <SectionLabel>{tr("02.5 — Packaging")}</SectionLabel>
+            <Reveal className="flex max-w-3xl flex-col gap-6" stagger={0.08}>
+              <motion.div variants={fadeUp} className="">
                 <h2 className="mt-6 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
                   {tr("Every box the brand")}{" "}
-                  <span className="font-serif italic font-normal text-accent-1">
+                  <span className="">
                     {tr("shipped")}
                   </span>
                   .
@@ -865,7 +860,7 @@ function BWayProject() {
               </motion.div>
               <motion.p
                 variants={fadeUp}
-                className="text-base leading-relaxed text-muted-foreground md:col-span-5 md:text-lg"
+                className="text-base leading-relaxed text-muted-foreground max-w-[65ch] md:text-lg"
               >
                 {tr("I designed the packaging for every B-WAY product line: die-cuts, inside prints and retail boxes.")}{" "}
                 <span className="font-semibold text-foreground">
@@ -931,7 +926,7 @@ function BWayProject() {
                 "Interior print",
                 "Retail boxes",
                 "Factory coordination · China",
-                "Launch supervision · 2023 – 2025",
+                "Launch supervision · 2023 - 2025",
               ].map((t) => (
                 <motion.span
                   key={t}
@@ -948,12 +943,11 @@ function BWayProject() {
         {/* E-Commerce Storefronts */}
         <div className="border-t border-border/60">
           <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
-            <Reveal className="grid grid-cols-1 gap-8 md:grid-cols-12 md:items-end" stagger={0.08}>
-              <motion.div variants={fadeUp} className="md:col-span-7">
-                <SectionLabel>{tr("02.6 — E-Commerce")}</SectionLabel>
+            <Reveal className="flex max-w-3xl flex-col gap-6" stagger={0.08}>
+              <motion.div variants={fadeUp} className="">
                 <h2 className="mt-6 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
                   {tr("Three Shopify stores,")}{" "}
-                  <span className="font-serif italic font-normal text-accent-1">
+                  <span className="">
                     {tr("one per market")}
                   </span>
                   .
@@ -961,7 +955,7 @@ function BWayProject() {
               </motion.div>
               <motion.p
                 variants={fadeUp}
-                className="text-base leading-relaxed text-muted-foreground md:col-span-5 md:text-lg"
+                className="text-base leading-relaxed text-muted-foreground max-w-[65ch] md:text-lg"
               >
                 {tr("I built and ran the stores for the US, Brazil and Argentina: catalog, checkout, local copy and payments. Hover over a preview to scroll the homepage, or click to zoom in.")}
               </motion.p>
@@ -1011,10 +1005,9 @@ function BWayProject() {
           <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
             <Reveal className="max-w-4xl" stagger={0.08}>
               <motion.div variants={fadeUp}>
-                <SectionLabel>{tr("03 — Events")}</SectionLabel>
                 <h2 className="mt-6 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
                   {tr("Events I")}{" "}
-                  <span className="font-serif italic font-normal text-accent-1">
+                  <span className="">
                     {tr("organized")}
                   </span>{" "}
                   {tr("and designed.")}
@@ -1092,20 +1085,12 @@ function BWayProject() {
         />
         <div className="relative mx-auto max-w-6xl px-6 py-24 md:px-10 md:py-32">
           <Reveal stagger={0.08}>
-            <motion.div variants={fadeUp}>
-              <div className="inline-flex items-center gap-3">
-                <span className="h-px w-8 bg-accent-1" />
-                <span className="font-mono text-xs font-semibold uppercase tracking-[0.24em] text-accent-1">
-                  {tr("04 — Outcome")}
-                </span>
-              </div>
-            </motion.div>
             <motion.h2
               variants={fadeUp}
-              className="mt-6 max-w-3xl text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl"
+              className="max-w-3xl text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl"
             >
               {tr("How I")}{" "}
-              <span className="font-serif italic font-normal text-accent-1">
+              <span className="">
                 {tr("grew")}
               </span>{" "}
               {tr("in this role.")}

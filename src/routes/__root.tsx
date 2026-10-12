@@ -78,14 +78,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Sebastián Jara — Brand & Design Strategy Lead" },
+      { title: "Sebastián Jara | Brand & Design Strategy Lead" },
       {
         name: "description",
         content:
           "Brand & Design Strategy Lead from Buenos Aires. I lead brands and build their landing pages, HubSpot emails and Shopify stores, using AI to work faster.",
       },
       { name: "author", content: "Sebastián Jara" },
-      { property: "og:title", content: "Sebastián Jara — Brand & Design Strategy Lead" },
+      { property: "og:title", content: "Sebastián Jara | Brand & Design Strategy Lead" },
       {
         property: "og:description",
         content:
@@ -93,7 +93,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Sebastián Jara — Brand & Design Strategy Lead" },
+      { name: "twitter:title", content: "Sebastián Jara | Brand & Design Strategy Lead" },
       { name: "twitter:description", content: "Brand & Design Strategy Lead from Buenos Aires. I lead brands and build their landing pages, HubSpot emails and Shopify stores, using AI to work faster." },
     ],
     links: [
