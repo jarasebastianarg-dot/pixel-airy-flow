@@ -31,13 +31,13 @@ export const Route = createFileRoute("/")({
 const serviceIcons = [Palette, MousePointerClick, ShoppingBag, Bot] as const;
 
 /**
- * Latest CVs (Marketing & Design Lead, exported from Reactive Resume).
+ * Latest CVs (EN/ES), served from /public/cv/ by site language.
  * Flip HAS_NEW_CV to true once /public/cv/ has both PDFs; until then the old file stays.
  */
-const HAS_NEW_CV = false;
+const HAS_NEW_CV = true;
 const CV = {
-  en: { href: "/cv/SebastianJara_CV_MarketingDesignLead_EN.pdf", file: "SebastianJara_CV_EN.pdf" },
-  es: { href: "/cv/SebastianJara_CV_MarketingDesignLead_ES.pdf", file: "SebastianJara_CV_ES.pdf" },
+  en: { href: "/cv/SebastianJara_CV_EN.pdf", file: "SebastianJara_CV_EN.pdf" },
+  es: { href: "/cv/SebastianJara_CV_ES.pdf", file: "SebastianJara_CV_ES.pdf" },
 };
 function useCv() {
   const { lang } = useLanguage();
