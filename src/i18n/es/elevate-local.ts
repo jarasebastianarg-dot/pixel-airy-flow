@@ -1,130 +1,127 @@
 export const elevateLocalEs: Record<string, string> = {
-  "Elevate Local logo reveal animation": "Animación de presentación del logo de Elevate Local",
-  "Logo reveal · Motion designed by me": "Logo reveal · Motion diseñado por mí",
-  "& Strategic": "e Identidad",
+  // Nav / UI
+  "Back to portfolio": "Volver al portfolio",
+  "Hover to expand": "Pasá el mouse para expandir",
+  "Scroll to explore →": "Scrolleá para explorar →",
+  "Swipe to explore →": "Deslizá para explorar →",
+  "Palette": "Paleta",
+
+  // Section labels
   "01 — Context": "01 — Contexto",
-  "02 — Build": "02 — Construcción",
+  "02 — Process": "02 — Proceso",
   "02.5 — Gallery": "02.5 — Galería",
   "02.6 — Color": "02.6 — Color",
   "02.7 — Type": "02.7 — Tipografía",
   "03 — Outcome": "03 — Resultado",
-  "A B2B visual identity for a marketing agency that helps medical clinics across Europe win patient trust and fill appointment books — balancing clinical credibility with modern growth marketing, delivered 100% remotely.":
-    "Una identidad visual B2B para una agencia de marketing que ayuda a clínicas médicas de toda Europa a ganar la confianza de los pacientes y llenar agendas de citas — equilibrando credibilidad clínica con marketing de crecimiento moderno, entregada 100% de forma remota.",
-  "A voice engineered to speak eye-to-eye with clinic directors and medical professionals: stable, methodical, and trustworthy. No generic startup type.":
-    "Una voz diseñada para hablar de igual a igual con directores de clínicas y profesionales médicos: estable, metódica y confiable. Nada de tipografía genérica de startup.",
-  "Authority": "Autoridad",
-  "Back to portfolio": "Volver al portafolio",
-  "Body & Subhead": "Cuerpo y Subtítulo",
-  "Body copy": "Texto de cuerpo",
-  "Brand Guidelines & Logo Variations": "Guías de Marca y Variaciones de Logo",
-  "Brand Identity": "Identidad de Marca",
-  "Brand Identity Designer": "Diseñador de Identidad de Marca",
-  "Brand Identity · B2B Medical": "Identidad de Marca · B2B Médico",
-  "Building a brand that needs to earn instant trust?": "¿Construyendo una marca que necesita ganar confianza al instante?",
-  "Case Study / 03": "Caso de Estudio / 03",
-  "Clinical Authority": "Autoridad Clínica",
-  "Designing a cohesive visual identity grounded in target audience psychology and European market research, delivered through a highly optimized, asynchronous remote collaboration framework.":
-    "Diseño de una identidad visual coherente basada en la psicología del público objetivo y la investigación del mercado europeo, entregada a través de un marco de colaboración remota asíncrona altamente optimizado.",
-  "Editorial": "Editorial",
-  "Elevate Local horizontal logotype on Obsidiana Mate": "Logotipo horizontal de Elevate Local sobre Obsidiana Mate",
-  "Elevate Local is a marketing agency built to help": "Elevate Local es una agencia de marketing creada para ayudar a",
-  "Elevate Local · Primary Lockup": "Elevate Local · Lockup Primario",
+
+  // Hero
+  "Brand identity · B2B · Healthcare": "Identidad de marca · B2B · Salud",
   "Elevate Local:": "Elevate Local:",
-  "Execution": "Ejecución",
-  "Focus": "Enfoque",
-  "Friction": "Fricción",
-  "Get in touch": "Ponte en contacto",
-  "Headline": "Titular",
-  "Hero": "Hero",
-  "Hover to expand": "Pasa el cursor para expandir",
-  "I design B2B identities engineered for authority — delivered fully async.": "Diseño identidades B2B pensadas para transmitir autoridad — entregadas completamente de forma asíncrona.",
-  "Impact": "Impacto",
-  "Matte Obsidian": "Obsidiana Mate",
-  "Mineral": "Mineral",
-  "Neutral, mineral tones that simulate granite and high-gram paper — chosen to feel clean, clinical, and reassuring to patients and clinic directors, not noisy like a consumer app.":
-    "Tonos neutros y minerales que simulan granito y papel de alto gramaje — elegidos para transmitir limpieza, clínica y tranquilidad a pacientes y directores de clínicas, sin el ruido de una app de consumo.",
-  "Next": "Siguiente",
-  "Overlap": "Superposición",
-  "Palette": "Paleta",
-  "Pitch decks": "Presentaciones",
-  "Reserved for hero statements, landing headlines and section openers. The heaviest cut in the family — used sparingly to assert authority the moment a clinic director lands on the page.":
-    "Reservado para declaraciones hero, titulares de landing y aperturas de sección. El corte más pesado de la familia — usado con moderación para afirmar autoridad en el momento en que un director de clínica llega a la página.",
+  "a visual identity": "una identidad visual",
+  "for an agency that markets": "para una agencia que hace marketing para",
+  "medical clinics": "clínicas médicas",
+  "Elevate Local is a marketing agency for medical clinics in Europe. I designed its visual identity from scratch: logo, colors, type, brand guidelines and a short logo animation. The whole project was done remotely.":
+    "Elevate Local es una agencia de marketing para clínicas médicas en Europa. Diseñé su identidad visual desde cero: logo, colores, tipografía, guía de marca y una animación corta del logo. Todo el proyecto fue remoto.",
   "Role": "Rol",
-  "Scroll to explore →": "Desplázate para explorar →",
-  "Section titles": "Títulos de sección",
-  "Subheads": "Subtítulos",
-  "Swipe to explore →": "Desliza para explorar →",
-  "Tech Stack": "Stack Tecnológico",
-  "The": "La",
-  "The challenge was building a visual identity from scratch that bridged this gap: reassuring clinic directors and patients, while still projecting the speed and precision of a performance marketing team — all managed asynchronously across time zones.":
-    "El reto era construir una identidad visual desde cero que cerrara esta brecha: tranquilizando a directores de clínicas y pacientes, mientras proyectaba la velocidad y precisión de un equipo de performance marketing — todo gestionado de forma asíncrona entre zonas horarias.",
-  "The workhorse cut. Handles subheads, running copy, UI labels and technical documentation — optimized for legibility on long digital reads without losing editorial rhythm.":
-    "El corte de trabajo. Maneja subtítulos, texto corrido, etiquetas de UI y documentación técnica — optimizado para legibilidad en lecturas digitales largas sin perder el ritmo editorial.",
-  "UI & docs": "UI y documentación",
-  "attract more patients and own their local market. In a sector where trust is the currency, the brand had to feel as credible as a white-coat consultation — not as flashy as a consumer app.":
-    "atraer más pacientes y dominar su mercado local. En un sector donde la confianza es la moneda, la marca tenía que sentirse tan creíble como una consulta de bata blanca — no tan llamativa como una app de consumo.",
+  "Brand Identity Designer": "Diseñador de identidad de marca",
+  "Tools": "Herramientas",
+  "Focus": "Foco",
+  "B2B branding": "Branding B2B",
+  "Medical sector": "Sector médico",
+  "Remote collaboration": "Colaboración remota",
+
+  // The problem
+  "The": "El",
+  "problem": "problema",
+  "Elevate Local helps": "Elevate Local ayuda a",
   "medical clinics across Europe": "clínicas médicas de toda Europa",
+  "get more patients through marketing. Its clients are clinic directors, and in healthcare people need to trust you before they hire you. So the brand had to look calm and professional.":
+    "a conseguir más pacientes con marketing. Sus clientes son directores de clínicas, y en salud la gente necesita confiar en vos antes de contratarte. Por eso la marca tenía que verse tranquila y profesional.",
+  "The agency had no visual identity yet. I had to design one from zero that clinic directors and patients would trust, and that still looked like a modern marketing team. We worked fully remote, in different time zones.":
+    "La agencia todavía no tenía identidad visual. Tenía que diseñar una desde cero que generara confianza en directores de clínicas y pacientes, y que igual se viera como un equipo de marketing moderno. Trabajamos 100% remoto, en distintas zonas horarias.",
+  "Elevate Local logo reveal animation": "Animación de presentación del logo de Elevate Local",
+  "Logo reveal · Motion designed by me": "Logo reveal · Motion hecho por mí",
+  "Matte Obsidian": "Obsidiana Mate",
 
-  // Execution cards
-  "Positioning": "Posicionamiento",
-  "Clinic-First Positioning": "Posicionamiento Centrado en la Clínica",
-  "Engineered the core logomark and visual language specifically to resonate with European clinic directors and healthcare decision-makers. Every typographic and color choice was strategically selected to project clinical trust, precision, and patient-centric marketing energy.":
-    "Diseñé el logomark central y el lenguaje visual específicamente para conectar con directores de clínicas europeas y tomadores de decisiones del sector salud. Cada elección tipográfica y de color se seleccionó estratégicamente para proyectar confianza clínica, precisión y una energía de marketing centrada en el paciente.",
+  // What I did
+  "What I": "Qué",
+  "did": "hice",
+  "I started from who the agency talks to: clinic directors in Europe. I explored a few directions, chose one with the client and turned it into a full brand kit.":
+    "Arranqué por saber a quién le habla la agencia: directores de clínicas en Europa. Exploré algunas direcciones, elegí una con el cliente y la convertí en un brand kit completo.",
+  "Audience": "Público",
+  "Made for clinic directors": "Pensada para directores de clínicas",
+  "I designed the logo and the visual language for the people the agency sells to: clinic directors and healthcare managers in Europe. I picked colors and type that feel trustworthy and precise.":
+    "Diseñé el logo y el lenguaje visual para las personas a las que la agencia les vende: directores de clínicas y gerentes de salud en Europa. Elegí colores y tipografía que transmiten confianza y precisión.",
   "Async": "Asíncrono",
-  "Asynchronous Strategic Presentations": "Presentaciones Estratégicas Asíncronas",
-  "Leveraged asynchronous Loom video presentations to guide European stakeholders through the design rationale remotely. This workflow solved timezone friction, allowing the client to digest strategic context before providing feedback, drastically reducing revision cycles.":
-    "Aproveché presentaciones en video asíncronas con Loom para guiar remotamente a los stakeholders europeos a través del razonamiento del diseño. Este flujo de trabajo resolvió la fricción de zonas horarias, permitiendo al cliente digerir el contexto estratégico antes de dar feedback, reduciendo drásticamente los ciclos de revisión.",
+  "Recorded presentations": "Presentaciones grabadas",
+  "I presented each round in a Loom video and explained the reasons behind every choice. The client watched on their own time and sent feedback, so we didn't need to match time zones for calls.":
+    "Presenté cada ronda en un video de Loom y expliqué el porqué de cada decisión. El cliente lo veía cuando podía y mandaba su feedback, así no teníamos que coordinar zonas horarias para hacer llamadas.",
   "Iteration": "Iteración",
-  "Iterative Design Architecture": "Arquitectura de Diseño Iterativa",
-  "Developed multiple conceptual directions based on clinic-director and patient avatars. Refined the chosen path through strategic feedback loops, ensuring the final identity was perfectly aligned with their B2B medical marketing goals.":
-    "Desarrollé múltiples direcciones conceptuales basadas en avatares de directores de clínicas y pacientes. Refiné el camino elegido mediante ciclos de feedback estratégico, asegurando que la identidad final estuviera perfectamente alineada con sus objetivos de marketing médico B2B.",
+  "A few directions, then one": "Varias direcciones, después una",
+  "I sketched several concepts with clinic directors and their patients in mind. We picked one together and I refined it over a few rounds of feedback.":
+    "Bocetié varios conceptos pensando en los directores de clínicas y sus pacientes. Elegimos uno juntos y lo fui ajustando en algunas rondas de feedback.",
   "Delivery": "Entrega",
-  "Scalable Asset Delivery": "Entrega de Activos Escalables",
-  "Delivered a robust and comprehensive brand package — including vector assets, color systems, and usage guidelines — ensuring the agency's new identity remains consistent and scalable across websites, pitch decks, paid ads, and clinic-facing collateral.":
-    "Entregué un paquete de marca robusto y completo — incluyendo activos vectoriales, sistemas de color y guías de uso — garantizando que la nueva identidad de la agencia se mantenga consistente y escalable en sitios web, presentaciones, anuncios pagados y material dirigido a clínicas.",
+  "The brand kit": "El brand kit",
+  "I delivered the logo files, the color palette, the type and the usage guidelines. With that, the agency can apply the brand the same way on its website, decks, ads and materials for clinics.":
+    "Entregué los archivos del logo, la paleta de color, la tipografía y la guía de uso. Con eso, la agencia puede aplicar la marca de la misma forma en su web, presentaciones, anuncios y materiales para clínicas.",
 
-  // Metrics
-  "Positioned for European clinic directors — a credibility-first identity built to unlock high-ticket healthcare contracts.":
-    "Posicionada para directores de clínicas europeas — una identidad centrada en la credibilidad construida para desbloquear contratos de salud de alto valor.",
-  "Unified visual system across web, decks and paid ads — the agency finally shows up consistent in every patient-facing touchpoint.":
-    "Sistema visual unificado en web, presentaciones y anuncios pagados — la agencia finalmente se presenta de forma consistente en cada punto de contacto con el paciente.",
-  "Revision turnaround end-to-end async — the agency ships pitches and campaigns faster than in-house competitors.":
-    "Tiempo de revisión de principio a fin asíncrono — la agencia entrega propuestas y campañas más rápido que competidores internos.",
-  "Fully remote delivery across time zones — proof the brand can run at European speed with no on-site friction.":
-    "Entrega totalmente remota entre zonas horarias — prueba de que la marca puede operar a la velocidad europea sin fricción presencial.",
-
-  // Logo variants
-  "Primary": "Primario",
-  "Horizontal Logotype": "Logotipo Horizontal",
-  "Matte Obsidian on Limestone. Editorial pause anchored by the center dot.": "Obsidiana Mate sobre Limestone. Pausa editorial anclada por el punto central.",
+  // Logo gallery
+  "The logo in": "El logo en",
+  "five versions": "cinco versiones",
+  "Primary": "Principal",
+  "Horizontal Logotype": "Logotipo horizontal",
+  "Elevate Local horizontal logotype, dark on light": "Logotipo horizontal de Elevate Local, oscuro sobre claro",
   "Negative": "Negativo",
   "Horizontal · Reversed": "Horizontal · Invertido",
-  "Limestone on Matte Obsidian. Same weight and legibility in negative.": "Limestone sobre Obsidiana Mate. Mismo peso y legibilidad en negativo.",
-  "Elevate Local horizontal logotype — dark on light": "Logotipo horizontal de Elevate Local — oscuro sobre claro",
-  "Elevate Local horizontal logotype — light on dark": "Logotipo horizontal de Elevate Local — claro sobre oscuro",
+  "Elevate Local horizontal logotype, light on dark": "Logotipo horizontal de Elevate Local, claro sobre oscuro",
   "Stacked": "Apilado",
-  "Vertical Lockup": "Lockup Vertical",
-  "Square-format lockup for social avatars, decks and merch.": "Lockup en formato cuadrado para avatares sociales, presentaciones y merchandising.",
+  "Vertical Lockup": "Lockup vertical",
   "Elevate Local stacked logotype": "Logotipo apilado de Elevate Local",
   "Monogram": "Monograma",
   "E·L Reduction": "Reducción E·L",
-  "Compact editorial mark for tight formats — 46px minimum.": "Marca editorial compacta para formatos reducidos — mínimo 46px.",
   "Elevate Local E·L monogram": "Monograma E·L de Elevate Local",
   "Isotype": "Isotipo",
   "The E": "La E",
-  "Widened cut for aggressive, commercial recognition at any scale.": "Corte ensanchado para un reconocimiento comercial contundente a cualquier escala.",
-  "Elevate Local isotype — the E": "Isotipo de Elevate Local — la E",
+  "Elevate Local isotype, the E": "Isotipo de Elevate Local, la E",
 
   // Palette
-  "Primary CTA · Authority": "CTA Primario · Autoridad",
-  "Canvas · Editorial paper": "Lienzo · Papel editorial",
+  "A palette of": "Una paleta de",
+  "mineral tones": "tonos minerales",
+  "Neutral tones inspired by stone and heavy paper. I chose them because they feel clean and calm, which suits a medical brand.":
+    "Tonos neutros inspirados en la piedra y el papel grueso. Los elegí porque se sienten limpios y tranquilos, algo que le queda bien a una marca médica.",
+  "Limestone": "Limestone",
   "Sand": "Arena",
-  "Inactive states · Dividers": "Estados inactivos · Divisores",
   "Cement": "Cemento",
-  "Cards · Table structure": "Tarjetas · Estructura de tabla",
+  "Primary CTA · Authority": "CTA principal · Autoridad",
+  "Canvas · Editorial paper": "Fondo · Papel editorial",
+  "Inactive states · Dividers": "Estados inactivos · Divisores",
+  "Cards · Table structure": "Tarjetas · Estructura de tablas",
 
-  // Focus tags
-  "B2B Visual Strategy": "Estrategia Visual B2B",
-  "Medical Sector": "Sector Médico",
-  "Remote Collaboration": "Colaboración Remota",
+  // Typography
+  "One typeface:": "Una tipografía:",
+  "Geomanist is stable, clear and easy to read. That makes it a good fit for a brand that talks to clinic directors and doctors.":
+    "Geomanist es estable, clara y fácil de leer. Por eso le queda bien a una marca que les habla a directores de clínicas y médicos.",
+  "Headline": "Titular",
+  "For big headlines, landing page titles and section openers. It's the heaviest weight in the family, so I use it sparingly.":
+    "Para titulares grandes, títulos de landing page y aperturas de sección. Es el peso más grueso de la familia, así que lo uso con moderación.",
+  "Hero": "Hero",
+  "Section titles": "Títulos de sección",
+  "Pitch decks": "Pitch decks",
+  "Body & subheads": "Cuerpo y subtítulos",
+  "The everyday weight, for subheads, body copy, UI labels and documents. It reads well in long texts on screen.":
+    "El peso de todos los días, para subtítulos, texto corrido, etiquetas de UI y documentos. Se lee bien en textos largos en pantalla.",
+  "Body copy": "Texto corrido",
+  "Subheads": "Subtítulos",
+  "UI & docs": "UI y documentos",
+
+  // Results
+  "Results": "Resultados",
+  "An identity made for selling to clinic directors in Europe.":
+    "Una identidad pensada para venderles a directores de clínicas en Europa.",
+  "One visual system for the website, decks and ads.":
+    "Un solo sistema visual para la web, las presentaciones y los anuncios.",
+  "Logo versions: horizontal, reversed, stacked, monogram and isotype.":
+    "Versiones del logo: horizontal, invertida, apilada, monograma e isotipo.",
+  "Remote, from the first brief to the final files, across time zones.":
+    "Remoto, del primer brief a los archivos finales, entre distintas zonas horarias.",
 };

@@ -2,7 +2,6 @@
 export const xtendoGlobalEs: Record<string, string> = {
   // Chrome and shared UI
   "Back to portfolio": "Volver al portfolio",
-  "Featured case study": "Caso destacado",
   "Close preview": "Cerrar vista previa",
   Open: "Abrir",
   page: "página",
@@ -21,15 +20,10 @@ export const xtendoGlobalEs: Record<string, string> = {
   "I joined in August 2026, halfway through the rebrand. An outside studio had designed the logo. I took on the rest: the brand manual, the Talent Solutions sub-brand, HubSpot landing pages and emails, templates for each team, the launch video, and bringing AI into the design team's work.":
     "Entré en agosto de 2026, con el rebranding a mitad de camino. El logo lo había diseñado un estudio externo. Yo me hice cargo del resto: el manual de marca, la sub-marca Talent Solutions, las landing pages y los emails en HubSpot, plantillas para cada equipo, el video de lanzamiento y la incorporación de IA al trabajo del equipo de diseño.",
   Role: "Rol",
-  "Brand lead, 2 designers": "Líder de marca, 2 diseñadores",
   Tools: "Herramientas",
-  Company: "Empresa",
-  "B2B services, 1,500+ people": "Servicios B2B, +1.500 personas",
   "Xtendo 3.0 launch video": "Video de lanzamiento Xtendo 3.0",
   "Play with sound": "Escuchar con sonido",
   Mute: "Silenciar",
-  "Xtendo 3.0 launch video. I wrote the script, designed the scenes and animated it with Claude.":
-    "Video de lanzamiento Xtendo 3.0. Escribí el guion, diseñé las escenas y lo animé con Claude.",
 
   // 01
   "01 — Context": "01 — Contexto",
@@ -95,8 +89,6 @@ export const xtendoGlobalEs: Record<string, string> = {
   // 04
   "04 — HubSpot": "04 — HubSpot",
   "Landing pages and email automation in": "Landing pages y automatización de emails en",
-  "For a webinar during the AEERC Contact Center Week in Spain, I designed and built the whole registration funnel in HubSpot, on the new brand system.":
-    "Para un webinar de la Semana del Contact Center de la AEERC en España, diseñé y armé todo el embudo de inscripción en HubSpot, con el nuevo sistema de marca.",
   "Social post": "Posteo en redes",
   "Announces the webinar and sends people to the landing page.": "Anuncia el webinar y lleva a la gente a la landing.",
   "Landing page + form": "Landing page + formulario",
@@ -106,10 +98,8 @@ export const xtendoGlobalEs: Record<string, string> = {
   "The date, the time and one clear button to register, in the same visual language as the landing.":
     "La fecha, el horario y un solo botón claro para inscribirse, con el mismo lenguaje visual que la landing.",
   "Webinar landing page built in HubSpot": "Landing del webinar armada en HubSpot",
-  "Landing page. Hover to scroll through it.": "Landing page. Pasá el mouse para recorrerla.",
   "Open the live page": "Ver la página publicada",
   "Invitation email built in HubSpot": "Email de invitación armado en HubSpot",
-  "Invitation email. Hover to scroll through it.": "Email de invitación. Pasá el mouse para recorrerlo.",
   Inbox: "Bandeja de entrada",
   "Built in": "Hecho en",
   "HubSpot CMS and marketing email": "HubSpot CMS y Marketing Email",
@@ -165,7 +155,6 @@ export const xtendoGlobalEs: Record<string, string> = {
   "The method": "El método",
   "The model": "El modelo",
   "The close": "El cierre",
-  "Watch it with sound": "Verlo con sonido",
   "A prompt book for the": "Un prompt book para el",
   team: "equipo",
   "I wrote a guide with the visual rules and ready-to-use prompts for AI images, so whatever the team generates stays on brand. I also trained my two designers to use AI in their everyday work.":
@@ -200,8 +189,20 @@ export const xtendoGlobalEs: Record<string, string> = {
   "More clicks and sign-ups": "Más clics y registros",
   "Click-through rate and webinar registrations went up after the new campaigns.": "El CTR y los registros a webinars subieron con las campañas nuevas.",
 
-  // CTA
-  Next: "Siguiente",
-  "Want to talk about your brand or your team's design workflow?": "¿Querés hablar sobre tu marca o sobre cómo trabaja tu equipo de diseño?",
-  "Get in touch": "Contactame",
+
+  // Updated 2026-10-12
+  "Brand & Design Strategy Lead, team of 2 designers": "Brand & Design Strategy Lead, equipo de 2 diseñadores",
+  Focus: "Foco",
+  "Brand system": "Sistema de marca",
+  "AI workflow": "Flujo con IA",
+  "Xtendo Global logo next to pages of the brand manual, the ebook and a webinar post":
+    "Logo de Xtendo Global junto a páginas del manual de marca, el ebook y un posteo de webinar",
+  "Xtendo 3.0 launch video, 23 seconds.": "Video de lanzamiento Xtendo 3.0, 23 segundos.",
+  Storyboard: "Guion visual",
+  "I design and build Xtendo's webinar funnels in HubSpot: the social posts, the landing page with its form and the invitation email. Each one in a different country and language, all on the same brand system.":
+    "Diseño y armo en HubSpot los embudos de los webinars de Xtendo: los posteos, la landing con su formulario y el email de invitación. Cada uno en un país y un idioma distinto, todos con el mismo sistema de marca.",
+  "Landing page for the Vendas Modernas webinar with Frontline, for Brazil. Hover to scroll through it.":
+    "Landing del webinar Vendas Modernas con Frontline, para Brasil. Pasá el mouse para recorrerla.",
+  "Invitation email for the AEERC webinar in Spain. Hover to scroll through it.":
+    "Email de invitación del webinar de la AEERC en España. Pasá el mouse para recorrerlo.",
 };
