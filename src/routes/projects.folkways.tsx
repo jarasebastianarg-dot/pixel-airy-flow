@@ -9,15 +9,13 @@ import {
 import { useEffect, useRef, useState } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useTr } from "@/i18n/projectTranslate";
+import { NextProject, useCaseLabel } from "@/components/case/NextProject";
 import {
   ArrowLeft,
-  ArrowUpRight,
   Boxes,
   Sparkles,
   Layers,
   Gauge,
-  TrendingUp,
-  Repeat,
   ShoppingCart,
   Mail,
   MousePointerClick,
@@ -25,7 +23,6 @@ import {
   X,
   ZoomIn,
   MousePointer2,
-  Percent,
 } from "lucide-react";
 
 const FW_HOME =
@@ -41,17 +38,17 @@ export const Route = createFileRoute("/projects/folkways")({
   component: FolkwaysProject,
   head: () => ({
     meta: [
-      { title: "Folkways — 2,000+ SKU Shopify Migration & Retention Ecosystem" },
+      { title: "Folkways — Shopify 2.0 migration and Klaviyo emails | Sebastián Jara" },
       {
         name: "description",
         content:
-          "Case study: architecting a 2,000+ SKU migration to Shopify 2.0 with a native cart, app consolidation, Klaviyo retention and conversion-driven Liquid.",
+          "Case study: how I moved a wine store with 2,000+ products to Shopify 2.0, rebuilt the storefront in Liquid and redid its Klaviyo emails.",
       },
-      { property: "og:title", content: "Folkways — Shopify 2.0 Migration Case Study" },
+      { property: "og:title", content: "Folkways — Shopify 2.0 migration case study" },
       {
         property: "og:description",
         content:
-          "How I migrated 2,000+ SKUs, cut app bloat, and rebuilt a native retention ecosystem in Shopify Liquid.",
+          "How I moved 2,000+ products to Shopify 2.0 and replaced the cart, upsell and pop-up apps with native Liquid sections.",
       },
       { property: "og:type", content: "article" },
       { property: "og:url", content: "/projects/folkways" },
@@ -112,41 +109,41 @@ const stack = [
   "Email Automations",
 ];
 
-const focus = ["Shopify 2.0 Migration", "Email Marketing", "CRO & Retention"];
+const focus = ["Shopify 2.0 Migration", "Email Marketing", "Store UX"];
 
 const executionCards = [
   {
     icon: ShoppingCart,
-    kicker: "AOV",
-    title: "Native Cart & AOV Optimization",
-    body: "Replaced rigid, app-injected blocks with a 100% custom native architecture. Engineered cross-sell layouts (“You May Also Like”) and dynamic messaging for volume discounts and shipping tiers directly in Shopify Liquid to strategically increase Average Order Value and overall cart conversion.",
+    kicker: "Cart",
+    title: "Native cart and upsells",
+    body: "I replaced the app-based cart blocks with sections I coded in Liquid. The cart suggests related wines (“You may also like”) and shows messages for volume discounts and shipping tiers.",
   },
   {
     icon: Layers,
     kicker: "Ops",
-    title: "App Consolidation & Cost Reduction",
-    body: "Simplified the client's operational workflow by auditing and stripping away single-use third-party apps. Consolidating utilities into fewer high-impact tools drastically reduced monthly software expenses and backend configuration time, empowering the team to focus on growth rather than maintenance.",
+    title: "Fewer apps",
+    body: "I went through the installed apps and removed the ones that only did one small job. The cart, upsell and pop-ups now live in the theme, so the team has fewer tools to set up and maintain.",
   },
   {
     icon: Mail,
     kicker: "Email",
-    title: "Klaviyo CRM & Lifecycle Email Marketing",
-    body: "Rebuilt Klaviyo from the ground up as the brand's retention engine — cashback recovery flows, wine club acquisition campaigns and segmented lifecycle emails coded in-house to convert one-time buyers into repeat cellar customers and compound recurring revenue.",
+    title: "Klaviyo flows",
+    body: "I rebuilt the email flows in Klaviyo, including cashback recovery and the wine club campaigns. I designed and coded the templates myself.",
   },
   {
     icon: MousePointerClick,
-    kicker: "CRO",
-    title: "Conversion-Driven Frontend Architecture",
-    body: "Engineered real-time scarcity triggers (“Only 9 left”) directly synced with the backend to drive urgency and accelerate purchasing decisions. Deployed pure CSS sticky media logic to keep the “Add to Cart” action always within the viewport — eliminating scroll fatigue and removing friction from the buying journey.",
+    kicker: "PDP",
+    title: "Product page details",
+    body: "Product pages show live stock (“Only 9 left”) pulled from inventory. The image column is sticky, so the “Add to cart” button stays on screen while you scroll.",
   },
 ];
 
-// Scope facts only — performance and revenue results were tracked by the client.
+// Scope facts only. Performance and revenue results were tracked by the client.
 const metrics = [
-  { icon: Boxes, value: "2,000+", label: "SKUs migrated to Shopify 2.0" },
-  { icon: Gauge, value: "2.0", label: "Full storefront rebuilt in native Liquid" },
-  { icon: MousePointer2, value: "0", label: "Third-party apps for cart, upsell and pop-ups — rebuilt natively" },
-  { icon: Mail, value: "Klaviyo", label: "Cashback recovery and wine-club flows rebuilt" },
+  { icon: Boxes, value: "2,000+", label: "Products migrated to Shopify 2.0" },
+  { icon: Gauge, value: "2.0", label: "Storefront rebuilt with native Liquid sections" },
+  { icon: MousePointer2, value: "0", label: "Third-party apps left for cart, upsell and pop-ups" },
+  { icon: Mail, value: "Klaviyo", label: "Cashback recovery and wine club flows rebuilt" },
 ];
 
 type ExecutionCardData = (typeof executionCards)[number];
@@ -250,17 +247,17 @@ const mockups = [
   {
     kicker: "Home",
     title: "Homepage",
-    focus: "Merchandising + Storytelling",
-    body: "Editorial homepage engineered around the buyer journey — staff picks, category rails, curated cases and the wine club offer stacked to move cold traffic from browsing to checkout without a single third-party app.",
+    focus: "Browsing + Wine club",
+    body: "The homepage works like a shop window: staff picks, category rows, curated cases and the wine club offer. All of it is built with native sections, no third-party apps.",
     image: FW_HOME,
     sourceImage: FW_HOME,
     width: "wide" as const,
   },
   {
     kicker: "PDP",
-    title: "Product Detail Page",
-    focus: "Conversion + Trust",
-    body: "High-density PDP hardcoded in Liquid — dynamic scarcity, sticky add-to-cart, cross-sell rail and maker notes designed to close the sale on natural, low-intervention bottles.",
+    title: "Product page",
+    focus: "Product info",
+    body: "Coded in Liquid. It has the live stock count, a sticky add to cart button, a row of related wines and the maker's notes for each bottle.",
     image: FW_PRODUCT,
     sourceImage: FW_PRODUCT,
     width: "wide" as const,
@@ -270,17 +267,17 @@ const mockups = [
 const emails = [
   {
     kicker: "Club",
-    title: "Wine Club Acquisition Campaign",
-    focus: "Acquisition + Recurring Revenue",
-    body: "Curated Cases campaign pushing the monthly wine club — hero editorial, 10% off framing and dual-tier subscription cards (Essential 4-Pack and Voyager 6-Pack) designed to convert subscribers on the first send.",
+    title: "Wine club campaign",
+    focus: "Subscriptions",
+    body: "A campaign for the monthly wine club, built around curated cases. It shows the 10% discount and the two plans side by side: Essential 4-Pack and Voyager 6-Pack.",
     image: FW_EMAIL_CLUB,
     sourceImage: FW_EMAIL_CLUB,
   },
   {
     kicker: "Retention",
-    title: "$22.30 Cashback Recovery",
-    focus: "Winback + LTV",
-    body: "Lifecycle recovery email built inside Klaviyo — personalized cashback balance, three curated next-buy angles and a single dark CTA. Rebuilt to reactivate dormant customers and lift second-order rate.",
+    title: "$22.30 cashback reminder",
+    focus: "Repeat purchases",
+    body: "A Klaviyo email that reminds each customer of their cashback balance. It suggests three ways to spend it and has one clear button.",
     image: FW_EMAIL_CASHBACK,
     sourceImage: FW_EMAIL_CASHBACK,
   },
@@ -406,7 +403,7 @@ function ScrollPreviewCard({
         type="button"
         onClick={() => onOpen(item.image, title, item.width)}
         className="group relative block w-full overflow-hidden rounded-[calc(var(--radius)+14px)] border border-border bg-secondary text-left shadow-[var(--shadow-card)] transition-shadow duration-500 hover:shadow-[var(--shadow-card-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-1/60"
-        aria-label={`${tr("Open")} ${title} ${tr("preview")}`}
+        aria-label={`${tr("Open preview")}: ${title}`}
       >
         <div className="relative aspect-[4/5] w-full overflow-hidden">
           <img
@@ -467,6 +464,7 @@ function PreviewGallery({
 
 function FolkwaysProject() {
   const { tr } = useTr();
+  const caseLabel = useCaseLabel("folkways");
   const [lightbox, setLightbox] = useState<{ src: string; label?: string; width?: "standard" | "wide" } | null>(null);
   const openLightbox = (src: string, label?: string, width?: "standard" | "wide") =>
     setLightbox({ src, label, width });
@@ -491,7 +489,7 @@ function FolkwaysProject() {
           </Link>
           <div className="flex items-center gap-3">
           <span className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-muted-foreground">
-            {tr("Case Study / 01")}
+            {caseLabel}
           </span>
             <LanguageToggle />
           </div>
@@ -507,26 +505,26 @@ function FolkwaysProject() {
         <div className="mx-auto max-w-6xl px-6 pb-20 pt-16 md:px-10 md:pb-28 md:pt-24">
           <Reveal stagger={0.12}>
             <motion.div variants={fadeUp}>
-              <SectionLabel>{tr("Shopify Expert · E-commerce")}</SectionLabel>
+              <SectionLabel>{tr("Shopify · E-commerce")}</SectionLabel>
             </motion.div>
             <motion.h1
               variants={fadeUp}
               className="mt-6 max-w-5xl text-4xl font-bold leading-[1.02] tracking-tight md:text-6xl lg:text-[4.5rem]"
             >
-              {tr("Folkways: Architecting a")}{" "}
-              <span className="text-gradient-accent">{tr("2,000+ SKU")}</span>{" "}
-              {tr("Website Migration &")}{" "}
+              {tr("Folkways: moving a wine store with")}{" "}
+              <span className="text-gradient-accent">{tr("2,000+ products")}</span>{" "}
+              {tr("to")}{" "}
               <span className="font-serif italic font-normal text-accent-1">
-                {tr("Native Retention")}
-              </span>{" "}
-              {tr("Ecosystem.")}
+                Shopify 2.0
+              </span>
+              .
             </motion.h1>
             <motion.p
               variants={fadeUp}
               className="mt-8 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg"
             >
               {tr(
-                "A full Shopify 2.0 rebuild plus a native Klaviyo retention engine — from catalog migration to cashback recovery flows and wine club campaigns — engineered in Liquid using AI-assisted development, without a single bloated app.",
+                "I designed and coded the new Folkways store on Shopify 2.0. I moved the full catalog, built the cart, upsell and pop-ups as native Liquid sections instead of apps, and rebuilt the Klaviyo email flows. I wrote the code with AI-assisted development.",
               )}
             </motion.p>
           </Reveal>
@@ -543,7 +541,7 @@ function FolkwaysProject() {
                 {tr("Role")}
               </div>
               <div className="mt-3 text-base font-semibold text-foreground transition-colors duration-300 md:text-lg md:group-hover:text-accent-1">
-                {tr("Lead Designer & AI-Assisted Developer")}
+                {tr("Designer and developer (AI-assisted)")}
               </div>
             </motion.div>
             <motion.div
@@ -595,7 +593,7 @@ function FolkwaysProject() {
         </div>
       </section>
 
-      {/* The Friction */}
+      {/* The problem */}
       <section className="border-t border-border/60 bg-secondary/30">
         <div className="mx-auto max-w-6xl px-6 py-20 md:grid md:grid-cols-12 md:gap-12 md:px-10 md:py-28">
           <Reveal className="md:col-span-4" stagger={0.08}>
@@ -604,7 +602,7 @@ function FolkwaysProject() {
               <h2 className="mt-6 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
                 {tr("The")}{" "}
                 <span className="font-serif italic font-normal text-accent-1">
-                  {tr("Friction")}
+                  {tr("problem")}
                 </span>
               </h2>
             </motion.div>
@@ -615,13 +613,13 @@ function FolkwaysProject() {
               className="text-lg leading-relaxed text-foreground/85 md:text-xl"
             >
               {tr(
-                "Moving a massive, complex catalog to Shopify 2.0 required more than a simple theme update. The brand was leaking revenue on two fronts: a storefront suffering from severe",
+                "Folkways had more than 2,000 products on an older Shopify setup. The store used",
               )}{" "}
               <span className="font-semibold text-foreground">
-                {tr("“app bloat,”")}
+                {tr("separate apps")}
               </span>{" "}
               {tr(
-                "and a fragmented email stack that couldn't turn buyers into repeat customers — page load delays on one side, dead retention flows on the other.",
+                "for the cart, upsells and pop-ups, and the Klaviyo emails were scattered and out of date.",
               )}
             </motion.p>
             <motion.p
@@ -629,7 +627,7 @@ function FolkwaysProject() {
               className="mt-6 text-base leading-relaxed text-muted-foreground md:text-lg"
             >
               {tr(
-                "The team was juggling multiple single-use apps for cart, upsell and pop-ups while running Klaviyo at a fraction of its potential — draining resources and starving the wine club of the traffic it needed to grow.",
+                "Every app was one more thing for the team to set up and maintain. On the email side, the cashback and wine club flows needed a rebuild.",
               )}
             </motion.p>
           </Reveal>
@@ -637,16 +635,16 @@ function FolkwaysProject() {
 
       </section>
 
-      {/* The Execution */}
+      {/* What I did */}
       <section className="border-t border-border/60">
         <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
           <Reveal className="grid grid-cols-1 gap-10 md:grid-cols-12 md:items-end" stagger={0.1}>
             <motion.div variants={fadeUp} className="md:col-span-7">
               <SectionLabel>{tr("02 — Build")}</SectionLabel>
               <h2 className="mt-6 text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl">
-                {tr("The")}{" "}
+                {tr("What I")}{" "}
                 <span className="font-serif italic font-normal text-accent-1">
-                  {tr("Execution")}
+                  {tr("did")}
                 </span>
               </h2>
             </motion.div>
@@ -655,7 +653,7 @@ function FolkwaysProject() {
               className="text-base leading-relaxed text-muted-foreground md:col-span-5 md:text-lg"
             >
               {tr(
-                "Rebuilding the storefront in Shopify Liquid and rewiring retention inside Klaviyo — one editorial system covering catalog, cart, campaigns and lifecycle email, without compromising the buyer journey or the backend workflow.",
+                "I rebuilt the storefront in Shopify Liquid and redid the email flows in Klaviyo. The goal was one store that looks consistent and is easy for the team to run.",
               )}
             </motion.p>
           </Reveal>
@@ -686,7 +684,7 @@ function FolkwaysProject() {
                 className="max-w-md text-sm leading-relaxed text-muted-foreground md:text-base"
               >
                 {tr(
-                  "Hover any preview to scroll the full page. Click to open the full-resolution capture.",
+                  "Hover a preview to scroll the page. Click to see it full size.",
                 )}
               </motion.p>
             </Reveal>
@@ -702,7 +700,7 @@ function FolkwaysProject() {
             <motion.div variants={fadeUp} className="md:col-span-7">
               <SectionLabel>{tr("02.75 — Email Marketing")}</SectionLabel>
               <h2 className="mt-6 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
-                {tr("Retention wired into")}{" "}
+                {tr("Emails built in")}{" "}
                 <span className="font-serif italic font-normal text-accent-1">
                   Klaviyo
                 </span>
@@ -714,7 +712,7 @@ function FolkwaysProject() {
               className="text-base leading-relaxed text-muted-foreground md:col-span-5 md:text-lg"
             >
               {tr(
-                "A native retention system built inside Klaviyo — cashback recovery flows and wine club acquisition campaigns designed to turn one-time buyers into a repeat cellar and compound revenue on autopilot.",
+                "I redid the Klaviyo setup: cashback recovery flows and wine club campaigns. The goal was to bring one-time buyers back for a second order.",
               )}
             </motion.p>
           </Reveal>
@@ -722,7 +720,7 @@ function FolkwaysProject() {
         </div>
       </section>
 
-      {/* The Impact */}
+      {/* Results */}
       <section className="relative overflow-hidden border-t border-border/60 bg-foreground text-background">
         <div
           aria-hidden
@@ -742,11 +740,9 @@ function FolkwaysProject() {
               variants={fadeUp}
               className="mt-6 max-w-3xl text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl"
             >
-              {tr("The")}{" "}
               <span className="font-serif italic font-normal text-accent-1">
-                {tr("Impact")}
+                {tr("Results")}
               </span>
-              .
             </motion.h2>
           </Reveal>
 
@@ -776,36 +772,7 @@ function FolkwaysProject() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="border-t border-border/60">
-        <div className="mx-auto flex max-w-6xl flex-col items-start gap-8 px-6 py-20 md:flex-row md:items-center md:justify-between md:px-10 md:py-24">
-          <div>
-            <SectionLabel>{tr("Next")}</SectionLabel>
-            <h3 className="mt-4 max-w-xl text-3xl font-bold leading-[1.1] tracking-tight md:text-4xl">
-              {tr("Have a catalog that's outgrown its stack?")}
-            </h3>
-            <p className="mt-3 max-w-lg text-base leading-relaxed text-muted-foreground">
-              {tr("I architect Shopify environments that scale — without the app bloat.")}
-            </p>
-          </div>
-          <div className="flex flex-wrap items-center gap-3">
-            <Link
-              to="/"
-              className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-3 text-sm font-semibold text-foreground shadow-[var(--shadow-card)] transition-colors hover:bg-secondary"
-            >
-              <ArrowLeft className="h-4 w-4" />
-              {tr("Back to portfolio")}
-            </Link>
-            <a
-              href="/#contact"
-              className="inline-flex items-center gap-2 rounded-full bg-gradient-accent px-5 py-3 text-sm font-semibold text-accent-foreground shadow-[var(--shadow-accent)] transition-transform hover:-translate-y-0.5"
-            >
-              {tr("Get in touch")}
-              <ArrowUpRight className="h-4 w-4" />
-            </a>
-          </div>
-        </div>
-      </section>
+      <NextProject current="folkways" />
     </main>
   );
 }

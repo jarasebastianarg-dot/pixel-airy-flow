@@ -11,9 +11,9 @@ import {
 import { useEffect, useRef, useState } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useTr } from "@/i18n/projectTranslate";
+import { NextProject, useCaseLabel } from "@/components/case/NextProject";
 import {
   ArrowLeft,
-  ArrowUpRight,
   Sparkles,
   Package,
   Palette,
@@ -67,17 +67,17 @@ export const Route = createFileRoute("/projects/b-way")({
   component: BWayProject,
   head: () => ({
     meta: [
-      { title: "B-WAY — Scaling an Omnichannel Brand Across 3 International Markets" },
+      { title: "B-WAY — From packaging designer to brand manager | Sebastián Jara" },
       {
         name: "description",
         content:
-          "Case study: architecting global e-commerce, leading a 5-person team, and orchestrating experiential events for B-WAY across the US, Brazil and Argentina.",
+          "Two years at B-WAY, a barber tools brand. I started on packaging, became Brand Manager and led a 5-person team across the US, Brazil and Argentina.",
       },
-      { property: "og:title", content: "B-WAY — Omnichannel Growth Case Study" },
+      { property: "og:title", content: "B-WAY — From packaging designer to brand manager" },
       {
         property: "og:description",
         content:
-          "How I scaled B-WAY across 3 international markets — bridging Shopify, Meta Ads, ambassador management and large-scale physical events.",
+          "Packaging made with the factory in China, Shopify stores for three countries, Meta Ads, email and event stands at Barber Week.",
       },
       { property: "og:type", content: "article" },
       { property: "og:url", content: "/projects/b-way" },
@@ -142,7 +142,7 @@ const stack = [
   "Brand Education",
 ];
 
-const focus = ["Product Designer → Brand Manager", "3 Markets · US / BR / AR", "2-Year Journey"];
+const focus = ["Product Designer → Brand Manager", "3 Markets · US / BR / AR", "5-person team"];
 
 // The Growth Story — 4 chapters covering the promotion arc
 const chapters = [
@@ -151,32 +151,32 @@ const chapters = [
     icon: Package,
     kicker: "Where I Started",
     title: "Packaging & Social Media",
-    body: "Started designing packaging for the full product range and every social media asset the brand needed — coordinating production directly with the factory in China from die-cut approvals to final print.",
+    body: "I started with the packaging for the full product line and the brand's social media posts. I worked directly with the factory in China, from die-cut approval to the final print.",
     tags: ["Packaging", "Social Media", "China Production"],
   },
   {
     n: "02",
     icon: ShoppingBag,
     kicker: "Going Digital",
-    title: "E-Commerce Management",
-    body: "Took ownership of the e-commerce — built Shopify BR and AR from scratch and ran the operation day-to-day.",
-    tags: ["Shopify BR", "Shopify AR", "Ops"],
+    title: "E-Commerce",
+    body: "Then I took over e-commerce. I built and ran the Shopify stores for Brazil, Argentina and the US.",
+    tags: ["Shopify BR", "Shopify AR", "Shopify US"],
   },
   {
     n: "03",
     icon: Megaphone,
     kicker: "Growing the Brand",
     title: "Marketing Campaigns",
-    body: "Led marketing campaigns across markets — paid, email and content — tying every launch back to revenue.",
+    body: "I ran the marketing in all three markets: Meta Ads, email and content for each product launch.",
     tags: ["Meta Ads", "Email", "Launches"],
   },
   {
     n: "04",
     icon: Calendar,
-    kicker: "On The Floor",
+    kicker: "At the Events",
     title: "Events & Trade Shows",
-    body: "Owned the events — designed and organized the stands in Argentina, Brazil and the US, and led brand educators on-site.",
-    tags: ["Stand Design", "AR · BR · US", "Educators"],
+    body: "I designed and organized our stands at Barber Week in Buenos Aires and in Brazil, and trained the brand educators who worked them.",
+    tags: ["Stand Design", "AR · BR", "Educators"],
   },
 ];
 
@@ -193,7 +193,7 @@ const packaging = [
   { url: diecutUrban.url, label: "Urban · Retail Packaging", kicker: "Urban" },
   { url: b10kAdentro.url, label: "B10K · Box & Interior Print", kicker: "B10K" },
   { url: sonicNegro.url, label: "Sonic · Black Edition Packaging", kicker: "Sonic" },
-  { url: sonicAdentro.url, label: "Sonic · Interior Architecture", kicker: "Interior" },
+  { url: sonicAdentro.url, label: "Sonic · Interior Layout", kicker: "Interior" },
   { url: compactFrente.url, label: "Compact · Retail Packaging", kicker: "Compact" },
   { url: b10kMockup.url, label: "B10K · Product Mockup", kicker: "Mockup" },
   { url: urbanDiecut.url, label: "Urban · Die-cut Technical Drawing", kicker: "Die-cut" },
@@ -210,13 +210,13 @@ const reels = [
     url: reel1.url,
     country: "Argentina",
     title: "Barber Week · Buenos Aires",
-    body: "Stand activation, product demos and brand educators on-site.",
+    body: "Our stand, with live product demos run by the brand educators.",
   },
   {
     url: barberWeekBr.url,
     country: "Brasil",
     title: "Barber Week · Brasil",
-    body: "Traveled to Brazil to design the stand, produce the graphics, organize the logistics and lead the on-site build — then represented the brand on the floor.",
+    body: "I traveled to Brazil to design the stand, make the graphics, sort out the logistics and build it on site. Then I worked the stand for the brand.",
   },
 ];
 
@@ -317,10 +317,10 @@ function Lightbox({
 }
 
 const metrics = [
-  { icon: TrendingUp, value: "Product Designer → Brand Manager", label: "Promoted after 9 months of expanding scope — from packaging bench to running the brand." },
-  { icon: Layers, value: "5 disciplines owned", label: "Packaging, social, e-commerce, marketing campaigns and experiential events — all under one role." },
-  { icon: Globe2, value: "3 markets managed", label: "Argentina, Brazil and the US — Shopify stores, campaigns and stands localized for each." },
-  { icon: GraduationCap, value: "Where I grew the most", label: "The role where I stopped being just a designer and learned to lead a brand end-to-end." },
+  { icon: TrendingUp, value: "Product Designer → Brand Manager", label: "Promoted after 9 months, in August 2024. I went from designing boxes to running the brand." },
+  { icon: Layers, value: "5 areas in one role", label: "Packaging, social media, e-commerce, campaigns and events." },
+  { icon: Globe2, value: "3 markets", label: "Argentina, Brazil and the US, each with its own Shopify store and campaigns." },
+  { icon: GraduationCap, value: "Team of 5", label: "I led the marketing team and trained the brand educators for our events." },
 ];
 
 function MediaPlaceholder({
@@ -586,6 +586,7 @@ function HorizontalMockups() {
 
 function BWayProject() {
   const { tr } = useTr();
+  const caseLabel = useCaseLabel("b-way");
   const [lightbox, setLightbox] = useState<{ src: string; label?: string } | null>(null);
   const openLightbox = (src: string, label?: string) => setLightbox({ src, label });
   return (
@@ -608,7 +609,7 @@ function BWayProject() {
           </Link>
           <div className="flex items-center gap-3">
           <span className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-muted-foreground">
-            {tr("Case Study / 04")}
+            {caseLabel}
           </span>
             <LanguageToggle />
           </div>
@@ -624,7 +625,7 @@ function BWayProject() {
         <div className="mx-auto max-w-6xl px-6 pb-20 pt-16 md:px-10 md:pb-28 md:pt-24">
           <Reveal stagger={0.12}>
             <motion.div variants={fadeUp}>
-              <SectionLabel>{tr("Omnichannel · Global Expansion")}</SectionLabel>
+              <SectionLabel>{tr("Packaging · E-commerce · Events")}</SectionLabel>
             </motion.div>
             <motion.h1
               variants={fadeUp}
@@ -636,7 +637,7 @@ function BWayProject() {
               <span className="font-serif italic font-normal text-accent-1">
                 {tr("Brand Manager")}
               </span>
-              . {tr("Two years scaling B-WAY across 3 markets.")}
+              . {tr("Two years at B-WAY, in three countries.")}
             </motion.h1>
             <motion.p
               variants={fadeUp}
@@ -644,9 +645,9 @@ function BWayProject() {
             >
               {tr("I joined as a")}{" "}
               <span className="font-semibold text-foreground">{tr("Product Designer")}</span>{" "}
-              {tr("drawing die-cuts on a bench and ended up leading a")}{" "}
+              {tr("doing packaging and die-cuts. Nine months later I was Brand Manager, leading a")}{" "}
               <span className="font-semibold text-foreground">{tr("5-person team")}</span>{" "}
-              {tr("across the US, Brazil and Argentina — building Shopify stores from zero, running Meta Ads, coaching brand educators and designing the trade-show stands we activated at Barber Week.")}
+              {tr("for the US, Brazil and Argentina. I built the Shopify stores, ran Meta Ads and email, trained the brand educators and designed our stands for Barber Week.")}
             </motion.p>
           </Reveal>
 
@@ -675,7 +676,7 @@ function BWayProject() {
               className="group rounded-3xl border border-border bg-card p-6 shadow-[var(--shadow-card)] transition-colors duration-300 hover:border-accent-1/40 hover:shadow-[var(--shadow-elegant)]"
             >
               <div className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
-                {tr("What I Actually Did")}
+                {tr("What I worked on")}
               </div>
               <div className="mt-3 flex flex-wrap gap-2">
                 {stack.map((t) => (
@@ -717,7 +718,7 @@ function BWayProject() {
         </div>
       </section>
 
-      {/* The Friction */}
+      {/* The problem */}
       <section className="border-t border-border/60 bg-secondary/30">
         <div className="mx-auto max-w-6xl px-6 py-20 md:grid md:grid-cols-12 md:gap-12 md:px-10 md:py-28">
           <Reveal className="md:col-span-4" stagger={0.08}>
@@ -726,7 +727,7 @@ function BWayProject() {
               <h2 className="mt-6 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
                 {tr("The")}{" "}
                 <span className="font-serif italic font-normal text-accent-1">
-                  {tr("Friction")}
+                  {tr("problem")}
                 </span>
               </h2>
             </motion.div>
@@ -736,17 +737,17 @@ function BWayProject() {
               variants={fadeUp}
               className="mb-6 text-2xl font-bold tracking-tight md:text-3xl"
             >
-              {tr("The Challenge")}
+              {tr("One brand, three countries")}
             </motion.h3>
             <motion.p
               variants={fadeUp}
               className="text-lg leading-relaxed text-foreground/85 md:text-xl"
             >
-              {tr("The barber-tools market was")}{" "}
-              <span className="font-semibold text-foreground">{tr("stuck in corporate blacks and safe grays")}</span>.
-              {tr("B-WAY needed a visual system loud enough to disrupt it, and an operation big enough to sell it across")}{" "}
-              <span className="font-semibold text-accent-1">{tr("the US, Brazil and Argentina")}</span>.
-              {tr("I started at the packaging bench — die-cuts, interior architecture, print production — and every quarter, the scope kept expanding: social design, e-commerce, campaigns, educators, events. Two years later, I was running the whole brand.")}
+              {tr("B-WAY makes tools for barbers. The brand needed")}{" "}
+              <span className="font-semibold text-foreground">{tr("packaging, online stores, campaigns and events")}</span>.{" "}
+              {tr("And all of it had to work in")}{" "}
+              <span className="font-semibold text-accent-1">{tr("the US, Brazil and Argentina")}</span>.{" "}
+              {tr("I started on the packaging. Every few months I took on something new: social media, e-commerce, campaigns, educators, events. Nine months in, I was promoted to Brand Manager.")}
             </motion.p>
           </Reveal>
         </div>
@@ -766,7 +767,7 @@ function BWayProject() {
               />
               <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 to-transparent p-6">
                 <div className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-white/85">
-                  {tr("Where it started — the full B-WAY packaging system")}
+                  {tr("Where it started: the full B-WAY packaging line")}
                 </div>
               </div>
             </motion.div>
@@ -779,20 +780,20 @@ function BWayProject() {
         <div className="mx-auto max-w-6xl px-6 py-16 md:px-10 md:py-20">
           <Reveal className="grid grid-cols-1 gap-6 md:grid-cols-12 md:items-end" stagger={0.1}>
             <motion.div variants={fadeUp} className="md:col-span-7">
-              <SectionLabel>{tr("02 — The Growth Story")}</SectionLabel>
+              <SectionLabel>{tr("02 — How the role grew")}</SectionLabel>
               <h2 className="mt-4 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
                 {tr("Four")}{" "}
                 <span className="font-serif italic font-normal text-accent-1">
-                  {tr("chapters")}
-                </span>
-                , {tr("one promotion.")}
+                  {tr("stages")}
+                </span>{" "}
+                {tr("in two years.")}
               </h2>
             </motion.div>
             <motion.p
               variants={fadeUp}
               className="text-sm leading-relaxed text-muted-foreground md:col-span-5 md:text-base"
             >
-              {tr("The scope kept compounding. Each chapter added a new discipline on top of the last — packaging, then digital, then commerce, then people. By chapter four I was leading the team that made all of it move.")}
+              {tr("Each stage added new work on top of the last one. First packaging, then the online stores, then campaigns, then events and the team. By the end I was leading the team that handled all of it.")}
             </motion.p>
           </Reveal>
 
@@ -866,17 +867,17 @@ function BWayProject() {
                 variants={fadeUp}
                 className="text-base leading-relaxed text-muted-foreground md:col-span-5 md:text-lg"
               >
-                {tr("I designed the packaging for every B-WAY product line — die-cuts, interior architecture, print production and retail-shelf systems —")}{" "}
+                {tr("I designed the packaging for every B-WAY product line: die-cuts, inside prints and retail boxes.")}{" "}
                 <span className="font-semibold text-foreground">
-                  {tr("coordinating production directly with the factory in China")}
+                  {tr("I worked directly with the factory in China")}
                 </span>{" "}
-                {tr("from die-cut sign-off to final print runs.")}{" "}
+                {tr("from die-cut approval to the final print run.")}{" "}
                 <span className="font-semibold text-foreground">
-                  {tr("I also supervised every single launch")}
+                  {tr("I also oversaw every product launch")}
                 </span>{" "}
-                {tr("the brand rolled out from my first day through the end of")}{" "}
-                <span className="font-semibold text-accent-1">2025</span> —
-                {tr("keeping the visual language consistent across the whole product range and three markets.")}
+                {tr("from my first day until I left at the end of")}{" "}
+                <span className="font-semibold text-accent-1">2025</span>
+                {tr(", so the whole line looked like one brand in all three markets.")}
               </motion.p>
             </Reveal>
 
@@ -926,9 +927,9 @@ function BWayProject() {
 
             <Reveal className="mt-10 flex flex-wrap gap-2" stagger={0.03}>
               {[
-                "Die-cut engineering",
+                "Die-cuts",
                 "Interior print",
-                "Retail shelf systems",
+                "Retail boxes",
                 "Factory coordination · China",
                 "Launch supervision · 2023 – 2025",
               ].map((t) => (
@@ -951,9 +952,9 @@ function BWayProject() {
               <motion.div variants={fadeUp} className="md:col-span-7">
                 <SectionLabel>{tr("02.6 — E-Commerce")}</SectionLabel>
                 <h2 className="mt-6 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
-                  {tr("Shopify stores built")}{" "}
+                  {tr("Three Shopify stores,")}{" "}
                   <span className="font-serif italic font-normal text-accent-1">
-                    {tr("from zero")}
+                    {tr("one per market")}
                   </span>
                   .
                 </h2>
@@ -962,7 +963,7 @@ function BWayProject() {
                 variants={fadeUp}
                 className="text-base leading-relaxed text-muted-foreground md:col-span-5 md:text-lg"
               >
-                {tr("Architected and launched the USA, Brazil and Argentina storefronts — catalog, checkout, localized copy and payment logic — then ran them day-to-day. Scroll each preview to see the full homepage.")}
+                {tr("I built and ran the stores for the US, Brazil and Argentina: catalog, checkout, local copy and payments. Hover over a preview to scroll the homepage, or click to zoom in.")}
               </motion.p>
             </Reveal>
             <Reveal className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3" stagger={0.08}>
@@ -1010,28 +1011,28 @@ function BWayProject() {
           <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
             <Reveal className="max-w-4xl" stagger={0.08}>
               <motion.div variants={fadeUp}>
-                <SectionLabel>{tr("03 — On The Floor")}</SectionLabel>
+                <SectionLabel>{tr("03 — Events")}</SectionLabel>
                 <h2 className="mt-6 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
                   {tr("Events I")}{" "}
                   <span className="font-serif italic font-normal text-accent-1">
                     {tr("organized")}
                   </span>{" "}
-                  &amp; {tr("designed.")}
+                  {tr("and designed.")}
                 </h2>
               </motion.div>
               <motion.p
                 variants={fadeUp}
                 className="mt-6 text-base leading-relaxed text-muted-foreground md:text-lg"
               >
-                {tr("I led the")}{" "}
+                {tr("I handled the")}{" "}
                 <span className="font-semibold text-foreground">
-                  {tr("stand design, graphics, logistics and on-site build")}
+                  {tr("stand design, graphics, logistics and setup")}
                 </span>{" "}
-                {tr("for every B-WAY activation — the local events in Argentina and the international ones in Brazil and the US.")}{" "}
+                {tr("for our events, from Barber Week in Buenos Aires to Barber Week in Brazil.")}{" "}
                 <span className="font-semibold text-accent-1">
-                  {tr("Traveled to Brazil to organize everything on the ground, assemble the stand and represent the brand on the floor")}
+                  {tr("I traveled to Brazil to build the stand and represent the brand")}
                 </span>{" "}
-                {tr("alongside the educator team.")}
+                {tr("with the educator team.")}
               </motion.p>
             </Reveal>
             <Reveal
@@ -1048,7 +1049,7 @@ function BWayProject() {
                 >
                   <div className="mb-4 flex flex-wrap items-center gap-3">
                     <span className="rounded-full bg-gradient-accent px-3 py-1 font-mono text-[0.65rem] font-bold uppercase tracking-[0.22em] text-accent-foreground shadow-[var(--shadow-accent)]">
-                      {tr("Evento")} · {r.country}
+                      {tr("Event")} · {r.country}
                     </span>
                     <span className="font-mono text-[0.6rem] font-semibold uppercase tracking-[0.22em] text-muted-foreground">
                       {tr("Stand design · graphics · build · organized by me")}
@@ -1083,7 +1084,7 @@ function BWayProject() {
         </div>
       </section>
 
-      {/* The Impact */}
+      {/* Results */}
       <section className="relative overflow-hidden border-t border-border/60 bg-foreground text-background">
         <div
           aria-hidden
@@ -1095,7 +1096,7 @@ function BWayProject() {
               <div className="inline-flex items-center gap-3">
                 <span className="h-px w-8 bg-accent-1" />
                 <span className="font-mono text-xs font-semibold uppercase tracking-[0.24em] text-accent-1">
-                  {tr("03 — Outcome")}
+                  {tr("04 — Outcome")}
                 </span>
               </div>
             </motion.div>
@@ -1114,7 +1115,7 @@ function BWayProject() {
               className="mt-6 max-w-2xl text-base leading-relaxed text-background/70 md:text-lg"
             >
               {tr(
-                "Two years of compounding scope — I walked in as a Product Designer and walked out as a Brand Manager owning packaging, digital, ops, marketing and events across three countries.",
+                "I joined as a Product Designer and left as Brand Manager, in charge of packaging, e-commerce, marketing and events in three countries.",
               )}
             </motion.p>
           </Reveal>
@@ -1134,7 +1135,7 @@ function BWayProject() {
                 />
                 <m.icon className="h-6 w-6 text-accent-1" strokeWidth={1.6} />
                 <div className="mt-6 font-display text-xl font-bold leading-tight tracking-tight md:text-2xl">
-                  {m.value}
+                  {tr(m.value)}
                 </div>
                 <div className="mt-3 text-sm leading-relaxed text-background/70">
                   {tr(m.label)}
@@ -1145,36 +1146,7 @@ function BWayProject() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="border-t border-border/60">
-        <div className="mx-auto flex max-w-6xl flex-col items-start gap-8 px-6 py-20 md:flex-row md:items-center md:justify-between md:px-10 md:py-24">
-          <div>
-            <SectionLabel>{tr("Next")}</SectionLabel>
-            <h3 className="mt-4 max-w-xl text-3xl font-bold leading-[1.1] tracking-tight md:text-4xl">
-              {tr("Scaling a brand across borders and channels?")}
-            </h3>
-            <p className="mt-3 max-w-lg text-base leading-relaxed text-muted-foreground">
-              {tr("I build omnichannel infrastructure — from Shopify storefronts to trade-show floors.")}
-            </p>
-          </div>
-          <div className="flex flex-wrap items-center gap-3">
-            <Link
-              to="/"
-              className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-3 text-sm font-semibold text-foreground shadow-[var(--shadow-card)] transition-colors hover:bg-secondary"
-            >
-              <ArrowLeft className="h-4 w-4" />
-              {tr("Back to portfolio")}
-            </Link>
-            <a
-              href="/#contact"
-              className="inline-flex items-center gap-2 rounded-full bg-gradient-accent px-5 py-3 text-sm font-semibold text-accent-foreground shadow-[var(--shadow-accent)] transition-transform hover:-translate-y-0.5"
-            >
-              {tr("Get in touch")}
-              <ArrowUpRight className="h-4 w-4" />
-            </a>
-          </div>
-        </div>
-      </section>
+      <NextProject current="b-way" />
     </main>
   );
 }

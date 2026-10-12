@@ -1,36 +1,25 @@
 import { useState, useEffect, useRef } from "react";
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { LanguageToggle } from "@/components/LanguageToggle";
 import portrait from "@/assets/portrait.jpg.asset.json";
 import cvAsset from "@/assets/JaraSebastian_CV.pdf.asset.json";
-import bwayThumb from "@/assets/bway/bway-brand.jpg.asset.json";
-import {
-  motion,
-  AnimatePresence,
-  useMotionValue,
-  useSpring,
-  useInView,
-  type Variants,
-} from "framer-motion";
+import { caseStudies } from "@/lib/caseStudies";
+import { motion, useMotionValue, useSpring, useInView, type Variants } from "framer-motion";
 import {
   ArrowUpRight,
   ShoppingBag,
   Mail,
   Palette,
   Bot,
-  Sparkles,
   Linkedin,
   ArrowRight,
-  Code2,
-  Zap,
-  Boxes,
   Download,
   GraduationCap,
   Briefcase,
   Copy,
   Check,
-  ChevronDown,
+  MousePointerClick,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -39,104 +28,25 @@ export const Route = createFileRoute("/")({
 
 /* ─────────────────────────── data ─────────────────────────── */
 
-/** Visual/structural metadata — all copy lives in the language dictionary. */
-const capabilityMeta = [
-  { icon: Palette, number: "01" },
-  { icon: Zap, number: "02" },
-  { icon: ShoppingBag, number: "03" },
-  { icon: Bot, number: "04" },
-] as const;
+const serviceIcons = [Palette, MousePointerClick, ShoppingBag, Bot] as const;
 
-type WorkMeta = {
-  slug: string;
-  client: string;
-  image: string;
-  href: string;
-  fit?: "cover" | "contain";
-  video?: string;
-  poster?: string;
-  wide?: boolean;
+/**
+ * Latest CVs (Marketing & Design Lead, exported from Reactive Resume).
+ * Flip HAS_NEW_CV to true once /public/cv/ has both PDFs; until then the old file stays.
+ */
+const HAS_NEW_CV = false;
+const CV = {
+  en: { href: "/cv/SebastianJara_CV_MarketingDesignLead_EN.pdf", file: "SebastianJara_CV_EN.pdf" },
+  es: { href: "/cv/SebastianJara_CV_MarketingDesignLead_ES.pdf", file: "SebastianJara_CV_ES.pdf" },
 };
+function useCv() {
+  const { lang } = useLanguage();
+  if (!HAS_NEW_CV) return { href: cvAsset.url, file: "JaraSebastian_CV.pdf" };
+  return CV[lang];
+}
 
-const workMeta: WorkMeta[] = [
-  {
-    slug: "xtendo-global",
-    client: "Xtendo Global",
-    image: "/work/xtendo/xtendo-cover-ai.webp",
-    video: "/work/xtendo/xtendo-motion.mp4",
-    poster: "/work/xtendo/xtendo-motion-poster.webp",
-    href: "/projects/xtendo-global",
-    wide: true,
-  },
-  {
-    slug: "paw-royalty",
-    client: "Paw Royalty",
-    image:
-      "https://raw.githubusercontent.com/jarasebastianarg-dot/Portfolio-Photos/main/Paw%20Royalty%20thumbnail.png",
-    href: "/projects/paw-royalty",
-  },
-  {
-    slug: "folkways",
-    client: "Folkways",
-    image:
-      "https://raw.githubusercontent.com/jarasebastianarg-dot/Portfolio-Photos/main/Folkways%20Thumbnail.webp",
-    href: "/projects/folkways",
-  },
-  { slug: "b-way", client: "B-WAY", image: bwayThumb.url, href: "/projects/b-way" },
-  {
-    slug: "elevate-local",
-    client: "Elevate Local",
-    image: "/work/elevate/elevate-logo-reveal-poster.webp",
-    video: "/work/elevate/elevate-logo-reveal.mp4",
-    href: "/projects/elevate-local",
-  },
-];
-
-const ecosystemClusters = [
-  {
-    id: "design",
-    icon: Palette,
-    tools: [
-      { label: "Photoshop", color: "#31A8FF" },
-      { label: "Illustrator", color: "#FF9A00" },
-      { label: "InDesign", color: "#FF3366" },
-      { label: "After Effects", color: "#9999FF" },
-      { label: "Figma", color: "#F24E1E" },
-      { label: "Canva", color: "#00C4CC" },
-      { label: "Claude Design", color: "#D97757" },
-    ],
-  },
-  {
-    id: "build",
-    icon: Code2,
-    tools: [
-      { label: "Shopify", color: "#95BF47" },
-      { label: "Shopify Liquid", color: "#008080" },
-      { label: "HTML / CSS", color: "#E34F26" },
-    ],
-  },
-  {
-    id: "scale",
-    icon: Zap,
-    tools: [
-      { label: "Klaviyo", color: "#20E2C8" },
-      { label: "HubSpot", color: "#FF5C35" },
-      { label: "Email Automation", color: "#F5A623" },
-      { label: "Meta Ads", color: "#0668E1" },
-      { label: "Make", color: "#8848AB" },
-    ],
-  },
-  {
-    id: "ai",
-    icon: Bot,
-    tools: [
-      { label: "Claude", color: "#D97757" },
-      { label: "Claude Co-Work", color: "#B85A3E" },
-      { label: "Gemini", color: "#1A73E8" },
-    ],
-  },
-] as const;
-
+const EMAIL = "jarasebastian.arg@gmail.com";
+const LINKEDIN = "https://www.linkedin.com/in/sebastian-jara-dsgn/";
 
 
 /* ─────────────────────── motion helpers ─────────────────────── */
@@ -296,40 +206,31 @@ function CustomCursor() {
 
   if (!enabled) return null;
 
+  /* The native cursor stays visible; this bubble only appears over project cards. */
   return (
-    <motion.div
-      style={{ x: sx, y: sy }}
-      className="pointer-events-none fixed left-0 top-0 z-[100] -translate-x-1/2 -translate-y-1/2"
-    >
+    <motion.div style={{ x: sx, y: sy }} className="pointer-events-none fixed left-0 top-0 z-[100] -translate-x-1/2 -translate-y-1/2">
       <motion.div
-        animate={{
-          width: hovering ? 72 : 12,
-          height: hovering ? 72 : 12,
-          backgroundColor: hovering
-            ? "oklch(0.7 0.19 40)"
-            : "oklch(0.21 0.02 265)",
-        }}
+        initial={false}
+        animate={{ scale: hovering ? 1 : 0, opacity: hovering ? 1 : 0 }}
         transition={{ type: "spring", stiffness: 260, damping: 22 }}
-        className="flex items-center justify-center rounded-full"
+        className="flex h-[72px] w-[72px] items-center justify-center rounded-full bg-accent-1"
       >
-        <motion.span
-          animate={{ opacity: hovering ? 1 : 0 }}
-          className="text-[10px] font-bold uppercase tracking-widest text-accent-foreground"
-        >
-          View
-        </motion.span>
+        <span className="text-[10px] font-bold uppercase tracking-widest text-accent-foreground">View</span>
       </motion.div>
     </motion.div>
   );
 }
 
+
 /* ─────────────────────────── page ─────────────────────────── */
 
 function Index() {
   const { lang, t } = useLanguage();
+  const cv = useCv();
+  const [featured, ...rest] = caseStudies;
 
   return (
-    <div className="min-h-screen w-full overflow-x-hidden bg-background text-foreground md:cursor-none">
+    <div className="min-h-screen w-full overflow-x-hidden bg-background text-foreground">
       <CustomCursor />
 
       {/* Header */}
@@ -338,46 +239,39 @@ function Index() {
           <a
             href="#top"
             onClick={smoothScrollTo("top")}
-            aria-label="SJ — home"
-            className="mr-auto flex min-h-[44px] min-w-[44px] items-center gap-2 font-display text-lg font-bold tracking-tight"
+            aria-label="Sebastián Jara, home"
+            className="mr-auto flex min-h-[44px] min-w-[44px] items-center gap-3 font-display text-lg font-bold tracking-tight"
           >
             <SJMonogram />
-            <span className="sr-only">Sebastián</span>
+            <span className="hidden text-sm font-semibold sm:inline">Sebastián Jara</span>
           </a>
 
-          {/* Tertiary: section links */}
-          <nav
-            aria-label="Primary"
-            className="hidden items-center gap-1 md:flex"
-          >
+          <nav aria-label="Primary" className="hidden items-center gap-1 md:flex">
             {[
               { href: "#works", label: t.nav.work },
-              { href: "#capabilities", label: t.nav.capabilities },
-              { href: "#stack", label: t.nav.stack },
+              { href: "#services", label: t.nav.services },
               { href: "#about", label: t.nav.about },
+              { href: "#contact", label: t.nav.contact },
             ].map((l) => (
               <a
                 key={l.href}
                 href={l.href}
                 onClick={smoothScrollTo(l.href.slice(1))}
-                className="inline-flex min-h-[44px] min-w-0 items-center break-words rounded-full px-3 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground"
+                className="inline-flex min-h-[44px] items-center rounded-full px-3 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground"
               >
                 {l.label}
               </a>
             ))}
           </nav>
 
-          <div className="flex min-w-0 flex-wrap items-center justify-end gap-2">
-            {/* Secondary: language toggle */}
+          <div className="flex items-center gap-2">
             <LanguageToggle />
-
-            {/* Primary CTA */}
             <a
-              href="#works"
-              onClick={smoothScrollTo("works")}
-              className="group inline-flex min-w-0 items-center gap-1.5 rounded-full bg-gradient-accent px-3.5 py-2.5 text-center text-xs sm:px-4 sm:py-2 font-semibold text-accent-foreground shadow-[var(--shadow-accent)] transition-transform duration-200 hover:-translate-y-0.5 active:scale-95"
+              href="#contact"
+              onClick={smoothScrollTo("contact")}
+              className="group inline-flex items-center gap-1.5 rounded-full bg-gradient-accent px-3.5 py-2.5 text-xs font-semibold text-accent-foreground shadow-[var(--shadow-accent)] transition-transform duration-200 hover:-translate-y-0.5 active:scale-95 sm:px-4 sm:py-2"
             >
-              <span className="break-words">{t.nav.viewProjects}</span>
+              {t.nav.cta}
               <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
             </a>
           </div>
@@ -392,174 +286,105 @@ function Index() {
         className="mx-auto max-w-6xl px-6"
       >
         {/* Hero */}
-        <div className="py-20 md:py-28">
-          <span
-            className="inline-flex max-w-full flex-wrap items-center gap-2 break-words rounded-full border border-border bg-card px-4 py-1.5 text-xs font-semibold text-muted-foreground"
-          >
-            <span className="h-2 w-2 animate-pulse rounded-full bg-orange-500" />
+        <div id="top" className="py-20 md:py-28">
+          <span className="inline-flex max-w-full flex-wrap items-center gap-2 rounded-full border border-border bg-card px-4 py-1.5 text-xs font-semibold text-muted-foreground">
+            <span className="h-2 w-2 animate-pulse rounded-full bg-accent-1" />
             {t.hero.badge}
           </span>
-          <h1
-            className="mt-6 max-w-4xl break-words text-5xl font-bold leading-[1.02] tracking-tight md:text-7xl"
-          >
+          <h1 className="mt-6 max-w-5xl break-words text-5xl font-bold leading-[1.02] tracking-tight md:text-7xl">
             {t.hero.headline.pre}
-            <span className="font-serif italic font-normal text-accent-1">
-              {t.hero.headline.em1}
-            </span>
+            <span className="font-serif font-normal italic text-accent-1">{t.hero.headline.em1}</span>
             {t.hero.headline.mid}
-            <span className="font-serif italic font-normal text-accent-1">
-              {t.hero.headline.em2}
-            </span>
+            <span className="font-serif font-normal italic text-accent-1">{t.hero.headline.em2}</span>
             {t.hero.headline.post}
           </h1>
-          <p
-            className="mt-6 max-w-2xl break-words text-lg leading-relaxed text-muted-foreground md:text-xl"
-          >
-            {t.hero.subtitle}
-          </p>
-          <div className="mt-8 flex flex-wrap items-center gap-4">
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">{t.hero.subtitle}</p>
+          <div className="mt-8 flex flex-wrap items-center gap-3">
             <MagneticButton
               href="#works"
-              className="group inline-flex min-w-0 items-center gap-2 break-words rounded-full bg-gradient-accent px-5 py-3 sm:px-7 sm:py-3.5 text-sm font-semibold text-accent-foreground shadow-[var(--shadow-accent)] transition-transform duration-200 active:scale-95"
+              className="group inline-flex items-center gap-2 rounded-full bg-gradient-accent px-6 py-3.5 text-sm font-semibold text-accent-foreground shadow-[var(--shadow-accent)] transition-transform duration-200 active:scale-95 sm:px-7"
             >
               {t.hero.ctaPrimary}
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </MagneticButton>
             <MagneticButton
-              href="#about"
-              className="inline-flex min-w-0 items-center gap-2 break-words rounded-full border border-border bg-card px-5 py-3 sm:px-7 sm:py-3.5 text-sm font-semibold transition-transform duration-200 hover:bg-secondary active:scale-95"
+              href={cv.href}
+              download={cv.file}
+              className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-6 py-3.5 text-sm font-semibold transition-colors duration-200 hover:bg-secondary active:scale-95 sm:px-7"
             >
+              <Download className="h-4 w-4" />
               {t.hero.ctaSecondary}
             </MagneticButton>
           </div>
         </div>
 
-        {/* Selected Works */}
-        <section id="works" className="scroll-mt-24 pt-8">
+        {/* Selected work: one card anatomy for every project */}
+        <section id="works" className="scroll-mt-24">
           <SectionLabel>{t.sections.works}</SectionLabel>
-          <Reveal className="grid grid-cols-1 gap-6 md:grid-cols-2" stagger={0.12}>
-            {workMeta.map((w) => {
-              const copy = t.works[w.slug as keyof typeof t.works];
-              return (
-                <WorkCard
-                  key={w.slug}
-                  client={w.client}
-                  image={w.image}
-                  href={w.href}
-                  fit={w.fit}
-                  video={w.video}
-                  poster={w.poster}
-                  wide={w.wide}
-                  tag={copy.tag}
-                  headline={copy.headline}
-                  body={copy.body}
-                />
-              );
-            })}
+          <Reveal className="grid grid-cols-1 gap-6 md:grid-cols-2" stagger={0.1}>
+            <ProjectCard slug={featured.slug} wide />
+            {rest.map((c) => (
+              <ProjectCard key={c.slug} slug={c.slug} />
+            ))}
           </Reveal>
         </section>
 
-        {/* Capabilities */}
-        <section id="capabilities" className="scroll-mt-24 pt-24">
+        {/* What I do (capabilities and tools, merged) */}
+        <section id="services" className="scroll-mt-24 pt-28">
           <Reveal className="grid grid-cols-1 gap-10 md:grid-cols-12 md:items-end" stagger={0.1}>
             <motion.div variants={fadeUp} className="md:col-span-7">
-              <SectionLabel>{t.sections.capabilities}</SectionLabel>
-              <h2 className="mt-4 break-words text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl">
-                {t.capabilities.heading.pre}
-                <span className="font-serif italic font-normal text-accent-1">
-                  {t.capabilities.heading.em}
-                </span>
-                {t.capabilities.heading.post}
+              <SectionLabel>{t.sections.services}</SectionLabel>
+              <h2 className="break-words text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl">
+                {t.services.heading.pre}
+                <span className="font-serif font-normal italic text-accent-1">{t.services.heading.em}</span>
+                {t.services.heading.post}
               </h2>
             </motion.div>
-            <motion.p
-              variants={fadeUp}
-              className="min-w-0 break-words md:col-span-5 text-base leading-relaxed text-muted-foreground md:text-lg"
-            >
-              {t.capabilities.intro}
+            <motion.p variants={fadeUp} className="text-base leading-relaxed text-muted-foreground md:col-span-5 md:text-lg">
+              {t.services.intro}
             </motion.p>
           </Reveal>
 
           <Reveal className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2" stagger={0.08}>
-            {capabilityMeta.map((meta, i) => {
-              const c = { ...meta, ...t.capabilities.items[i] };
+            {t.services.items.map((s, i) => {
+              const Icon = serviceIcons[i];
               return (
-              <motion.article
-                key={c.title}
-                variants={fadeUp}
-                whileHover={{ y: -6 }}
-                transition={{ type: "spring", stiffness: 260, damping: 22 }}
-                className="group relative isolate flex h-full min-w-0 flex-col overflow-hidden rounded-[calc(var(--radius)+18px)] border border-border bg-card p-8 shadow-[var(--shadow-card)] transition-shadow duration-500 hover:shadow-[var(--shadow-card-hover)] md:p-10"
-              >
-                {/* animated accent bar */}
-                <span
-                  aria-hidden
-                  className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-gradient-accent transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-x-100"
-                />
-                {/* soft radial glow on hover */}
-                <span
-                  aria-hidden
-                  className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,oklch(0.72_0.18_45_/_0.28),transparent_65%)] opacity-0 transition-opacity duration-700 group-hover:opacity-100"
-                />
-
-                <header className="flex items-start justify-between gap-6">
-                  <motion.span
-                    whileHover={{ rotate: -6, scale: 1.05 }}
-                    transition={{ type: "spring", stiffness: 300, damping: 15 }}
-                    className="relative grid h-14 w-14 place-items-center rounded-2xl bg-secondary text-accent-1 ring-1 ring-inset ring-border transition-colors duration-500 group-hover:bg-gradient-accent group-hover:text-accent-foreground group-hover:ring-transparent"
-                  >
-                    <c.icon className="h-6 w-6" strokeWidth={1.6} />
-                  </motion.span>
-                  <div className="min-w-0 text-right">
-                    <span className="font-mono text-xs font-semibold tracking-widest text-muted-foreground">
-                      {c.number}
+                <motion.article
+                  key={s.title}
+                  variants={fadeUp}
+                  className="group relative isolate flex h-full flex-col overflow-hidden rounded-[calc(var(--radius)+18px)] border border-border bg-card p-8 shadow-[var(--shadow-card)] transition-shadow duration-500 hover:shadow-[var(--shadow-card-hover)] md:p-10"
+                >
+                  <span
+                    aria-hidden
+                    className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-gradient-accent transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-x-100"
+                  />
+                  <div className="flex items-center justify-between gap-6">
+                    <span className="grid h-12 w-12 place-items-center rounded-2xl bg-secondary text-accent-1 ring-1 ring-inset ring-border transition-colors duration-500 group-hover:bg-gradient-accent group-hover:text-accent-foreground group-hover:ring-transparent">
+                      <Icon className="h-5 w-5" strokeWidth={1.6} />
                     </span>
-                    <div className="mt-1 break-words text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-accent-1">
-                      {c.kicker}
-                    </div>
+                    <span className="font-mono text-xs font-semibold tracking-widest text-muted-foreground">0{i + 1}</span>
                   </div>
-                </header>
-
-                <h3 className="mt-8 break-words text-2xl font-bold leading-tight tracking-tight md:text-[1.6rem]">
-                  {c.title}
-                </h3>
-                <p className="mt-3 break-words text-sm leading-relaxed text-muted-foreground md:text-[0.95rem]">
-                  {c.desc}
-                </p>
-
-                <div className="mt-auto flex flex-wrap items-center justify-between gap-4 pt-8">
-                  <ul className="flex flex-wrap gap-2">
-                    {c.tags.map((tag) => (
+                  <h3 className="mt-8 text-2xl font-bold leading-tight tracking-tight">{s.title}</h3>
+                  <p className="mt-3 text-[0.95rem] leading-relaxed text-muted-foreground">{s.desc}</p>
+                  <ul className="mt-auto flex flex-wrap gap-2 pt-8">
+                    {s.tools.map((tool) => (
                       <li
-                        key={tag}
-                        className="max-w-full break-words rounded-full border border-border bg-background/60 px-3 py-1 text-[0.7rem] font-medium text-muted-foreground transition-colors duration-300 group-hover:border-accent-1/40 group-hover:text-foreground"
+                        key={tool}
+                        className="rounded-full border border-border bg-background/60 px-3 py-1 text-[0.75rem] font-medium text-muted-foreground transition-colors duration-300 group-hover:border-accent-1/40 group-hover:text-foreground"
                       >
-                        {tag}
+                        {tool}
                       </li>
                     ))}
                   </ul>
-                  <span
-                    aria-hidden
-                    className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-border bg-card text-muted-foreground transition-all duration-500 group-hover:-rotate-45 group-hover:border-transparent group-hover:bg-gradient-accent group-hover:text-accent-foreground"
-                  >
-                    <ArrowUpRight className="h-4 w-4" />
-                  </span>
-                </div>
-              </motion.article>
+                </motion.article>
               );
             })}
           </Reveal>
         </section>
 
-        {/* Methodology & Tech */}
-        <section id="stack" className="scroll-mt-24 pt-16">
-          <SectionLabel>{t.sections.stack}</SectionLabel>
-          <MethodologyStack />
-        </section>
-
-        {/* The Architect */}
-        <section id="about" className="scroll-mt-24 py-16">
-          <Reveal className="bento-card overflow-hidden p-10 md:p-14" stagger={0.12}>
+        {/* About */}
+        <section id="about" className="scroll-mt-24 pt-28">
+          <Reveal className="bento-card overflow-hidden p-8 md:p-14" stagger={0.12}>
             <motion.div variants={fadeUp}>
               <SectionLabel>{t.sections.about}</SectionLabel>
             </motion.div>
@@ -567,54 +392,41 @@ function Index() {
               <motion.div variants={fadeUp} className="md:col-span-1">
                 <img
                   src={portrait.url}
-                  alt="Portrait of Sebastián Jara, e-commerce developer and UI/UX designer"
+                  alt={t.about.portraitAlt}
                   loading="lazy"
                   decoding="async"
                   width={1024}
                   height={1024}
-                  className="aspect-square w-full rounded-2xl object-cover"
+                  className="aspect-square w-full rounded-2xl bg-secondary object-cover"
                 />
               </motion.div>
               <motion.div variants={fadeUp} className="min-w-0 md:col-span-2">
-                <h3 className="max-w-3xl break-words text-3xl font-bold leading-tight tracking-tight md:text-5xl">
+                <h2 className="max-w-3xl text-3xl font-bold leading-tight tracking-tight md:text-5xl">
                   {t.about.heading.pre}
-                  <span className="font-serif italic font-normal text-accent-1">
-                    {t.about.heading.em}
-                  </span>
-                </h3>
-                <p className="mt-6 max-w-2xl break-words text-base leading-relaxed text-muted-foreground md:text-lg">
-                  {t.about.bio}
-                </p>
+                  <span className="font-serif font-normal italic text-accent-1">{t.about.heading.em}</span>
+                </h2>
+                <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">{t.about.bio}</p>
               </motion.div>
             </div>
 
-            <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3">
-              {/* Experience */}
+            <div className="mt-14 grid grid-cols-1 gap-10 md:grid-cols-3">
               <motion.div variants={fadeUp} className="min-w-0 md:col-span-2">
                 <div className="mb-8 flex items-center gap-2">
                   <Briefcase className="h-4 w-4 shrink-0 text-accent-1" />
-                  <h4 className="min-w-0 break-words text-lg font-bold tracking-tight">
-                    {t.sections.experience}
-                  </h4>
+                  <h3 className="text-lg font-bold tracking-tight">{t.sections.experience}</h3>
                 </div>
                 <ol className="relative border-l border-border pl-8">
                   {t.experience.map((item) => (
                     <li key={item.role + item.period} className="relative mb-10 last:mb-0">
                       <span className="absolute -left-[2.6rem] top-1 grid h-4 w-4 place-items-center rounded-full border-2 border-background bg-gradient-accent" />
-                      <span className="text-xs font-semibold uppercase tracking-widest text-accent-1">
-                        {item.period}
-                      </span>
-                      <h5 className="mt-1 break-words text-lg font-bold tracking-tight">
-                        {item.role}
-                      </h5>
-                      <p className="mt-0.5 break-words text-sm font-medium text-foreground/80">
-                        {item.company}
-                      </p>
+                      <span className="text-xs font-semibold uppercase tracking-widest text-accent-1">{item.period}</span>
+                      <h4 className="mt-1 text-lg font-bold tracking-tight">{item.role}</h4>
+                      <p className="mt-0.5 text-sm font-medium text-foreground/80">{item.company}</p>
                       <ul className="mt-3 flex flex-col gap-2">
                         {item.highlights.map((h) => (
                           <li
                             key={h}
-                            className="relative break-words pl-4 text-sm leading-relaxed text-muted-foreground before:absolute before:left-0 before:top-[0.55rem] before:h-1 before:w-1 before:rounded-full before:bg-accent-1"
+                            className="relative pl-4 text-sm leading-relaxed text-muted-foreground before:absolute before:left-0 before:top-[0.55rem] before:h-1 before:w-1 before:rounded-full before:bg-accent-1"
                           >
                             {h}
                           </li>
@@ -625,62 +437,65 @@ function Index() {
                 </ol>
               </motion.div>
 
-              {/* Credentials */}
               <motion.div variants={fadeUp} className="min-w-0 md:col-span-1">
                 <div className="mb-8 flex items-center gap-2">
                   <GraduationCap className="h-4 w-4 shrink-0 text-accent-1" />
-                  <h4 className="min-w-0 break-words text-lg font-bold tracking-tight">
-                    {t.sections.credentials}
-                  </h4>
+                  <h3 className="text-lg font-bold tracking-tight">{t.sections.credentials}</h3>
                 </div>
                 <ul className="flex flex-col gap-3">
                   {t.credentials.map((c) => (
-                    <li
-                      key={c.title + c.period}
-                      className="min-w-0 break-words rounded-2xl border border-border bg-secondary/60 px-5 py-4 leading-snug"
-                    >
+                    <li key={c.title + c.period} className="rounded-2xl border border-border bg-secondary/60 px-5 py-4 leading-snug">
                       <p className="text-sm font-bold tracking-tight">{c.title}</p>
                       <p className="mt-1 text-xs text-muted-foreground">{c.institution}</p>
-                      <p className="mt-1 text-[0.7rem] font-semibold uppercase tracking-widest text-accent-1">
-                        {c.period}
-                      </p>
+                      <p className="mt-1 text-[0.7rem] font-semibold uppercase tracking-widest text-accent-1">{c.period}</p>
                     </li>
                   ))}
                 </ul>
               </motion.div>
             </div>
-
-            <motion.div
-              id="contact"
-              variants={fadeUp}
-              className="mt-12 flex scroll-mt-24 flex-col flex-wrap gap-3 border-t border-border pt-10 sm:flex-row sm:items-center"
-            >
-              <MagneticButton
-                href={cvAsset.url}
-                download="JaraSebastian_CV.pdf"
-                className="group inline-flex min-w-0 items-center justify-center gap-2 break-words rounded-full bg-gradient-accent px-8 py-4 text-center text-sm font-semibold text-accent-foreground shadow-[var(--shadow-accent)] transition-transform duration-200 active:scale-95"
-              >
-                <Download className="h-4 w-4 shrink-0" />
-                {t.about.downloadCv}
-              </MagneticButton>
-              <div className="flex flex-wrap gap-3">
-                <SocialLink
-                  icon={Linkedin}
-                  label="LinkedIn"
-                  href="https://www.linkedin.com/in/sebastian-jara-dsgn/"
-                  target="_blank"
-                />
-                <SocialLink
-                  icon={Mail}
-                  label={t.about.email}
-                  href="mailto:jarasebastian.arg@gmail.com"
-                />
-                <CopyEmailButton email="jarasebastian.arg@gmail.com" />
-              </div>
-            </motion.div>
           </Reveal>
-          <p className="break-words pb-10 text-center text-xs text-muted-foreground">
-            © {new Date().getFullYear()} — {t.about.footer}
+        </section>
+
+        {/* Contact */}
+        <section id="contact" className="scroll-mt-24 py-28">
+          <Reveal className="relative overflow-hidden rounded-[calc(var(--radius)+18px)] bg-foreground p-8 text-background md:p-14" stagger={0.1}>
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_85%_15%,oklch(0.72_0.18_45_/_0.3),transparent_55%),radial-gradient(circle_at_10%_100%,oklch(0.7_0.19_25_/_0.22),transparent_60%)]"
+            />
+            <div className="relative grid gap-10 md:grid-cols-12 md:items-end">
+              <motion.div variants={fadeUp} className="md:col-span-7">
+                <span className="text-xs font-semibold uppercase tracking-widest text-background/60">{t.sections.contact}</span>
+                <h2 className="mt-4 text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl">
+                  {t.contact.heading.pre}
+                  <span className="font-serif font-normal italic text-accent-1">{t.contact.heading.em}</span>
+                  {t.contact.heading.post}
+                </h2>
+                <p className="mt-5 max-w-xl text-base leading-relaxed text-background/70 md:text-lg">{t.contact.body}</p>
+                <a href={`mailto:${EMAIL}`} className="mt-6 inline-block break-all text-lg font-semibold underline decoration-accent-1/60 underline-offset-4 hover:decoration-accent-1 md:text-xl">
+                  {EMAIL}
+                </a>
+              </motion.div>
+              <motion.div variants={fadeUp} className="flex flex-col gap-3 md:col-span-5">
+                <MagneticButton
+                  href={cv.href}
+                  download={cv.file}
+                  className="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-accent px-8 py-4 text-sm font-semibold text-accent-foreground shadow-[var(--shadow-accent)] transition-transform duration-200 active:scale-95"
+                >
+                  <Download className="h-4 w-4 shrink-0" />
+                  {t.contact.downloadCv}
+                  {HAS_NEW_CV ? <span className="font-normal opacity-80">· {t.contact.cvNote}</span> : null}
+                </MagneticButton>
+                <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
+                  <SocialLink icon={Linkedin} label="LinkedIn" href={LINKEDIN} target="_blank" />
+                  <SocialLink icon={Mail} label={t.contact.email} href={`mailto:${EMAIL}`} />
+                  <CopyEmailButton email={EMAIL} />
+                </div>
+              </motion.div>
+            </div>
+          </Reveal>
+          <p className="pt-10 text-center text-xs text-muted-foreground">
+            © {new Date().getFullYear()} {t.contact.footer}
           </p>
         </section>
       </motion.main>
@@ -696,11 +511,7 @@ function SJMonogram({ className = "" }: { className?: string }) {
       aria-hidden
       className={`relative grid h-9 w-9 place-items-center overflow-hidden rounded-xl bg-gradient-accent text-accent-foreground shadow-[var(--shadow-accent)] ${className}`}
     >
-      <svg
-        viewBox="0 0 40 40"
-        className="h-9 w-9"
-        role="img"
-      >
+      <svg viewBox="0 0 40 40" className="h-9 w-9" role="img">
         <defs>
           <linearGradient id="sj-stroke" x1="0" y1="0" x2="1" y2="1">
             <stop offset="0%" stopColor="oklch(0.99 0.01 60)" />
@@ -727,294 +538,52 @@ function SJMonogram({ className = "" }: { className?: string }) {
 }
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
-  return (
-    <h2 className="mb-6 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-      {children}
-    </h2>
-  );
+  return <p className="mb-6 text-xs font-semibold uppercase tracking-widest text-muted-foreground">{children}</p>;
 }
 
-function WorkCard({
-  tag,
-  client,
-  headline,
-  body,
-  image,
-  href,
-  fit,
-  video,
-  poster,
-  wide,
-}: {
-  tag: string;
-  client: string;
-  headline: string;
-  body: string;
-  image: string;
-  href?: string;
-  fit?: "cover" | "contain";
-  video?: string;
-  poster?: string;
-  wide?: boolean;
-}) {
-  return (
-    <motion.a
-      href={href ?? "#"}
-      data-cursor-view
-      variants={fadeUp}
-      className={`group relative block h-[20rem] overflow-hidden rounded-[calc(var(--radius)+16px)] border border-border bg-black shadow-[var(--shadow-card)] sm:h-[24rem] ${wide ? "md:col-span-2 md:h-[30rem]" : ""}`}
-    >
-      {fit === "contain" && (
-        <img
-          src={image}
-          alt=""
-          aria-hidden="true"
-          loading="lazy"
-          decoding="async"
-          className="absolute inset-0 h-full w-full scale-125 object-cover blur-2xl"
-        />
-      )}
-      {video ? (
-        <video
-          src={video}
-          poster={poster ?? image}
-          aria-hidden="true"
-          muted
-          loop
-          autoPlay
-          playsInline
-          preload="metadata"
-          className={`absolute inset-0 h-full w-full object-cover transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105 ${wide ? "md:left-auto md:w-[45%]" : ""}`}
-        />
-      ) : null}
-      {wide && video ? (
-        <img
-          src={image}
-          alt=""
-          aria-hidden="true"
-          loading="lazy"
-          decoding="async"
-          className="absolute inset-y-0 left-0 hidden h-full w-[55%] object-cover object-left md:block"
-        />
-      ) : null}
-      <img
-        src={image}
-        alt={`${client} — ${headline}. Case study.`}
-        loading="lazy"
-        decoding="async"
-        className={`absolute inset-0 h-full w-full transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110 ${
-          fit === "contain" ? "object-contain p-6 sm:p-10" : "object-cover"
-        } ${video ? "hidden" : ""}`}
-      />
-      {/* dark gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-70 transition-opacity duration-500 group-hover:opacity-100" />
-      {wide ? (
-        <div className="absolute inset-y-0 left-0 hidden w-[55%] bg-gradient-to-r from-black/70 via-black/40 to-transparent md:block" />
-      ) : null}
-
-      {/* tag top-left */}
-      <span className="absolute left-6 right-16 top-6 inline-flex max-w-fit flex-wrap items-center gap-2 break-words rounded-full border border-white/20 bg-black/70 px-3 py-1 text-xs font-semibold text-white backdrop-blur-md">
-        <Boxes className="h-3.5 w-3.5 shrink-0" />
-        {tag}
-      </span>
-      <ArrowUpRight className="absolute right-6 top-6 h-5 w-5 text-white/80 transition-transform duration-500 group-hover:-translate-y-1 group-hover:translate-x-1" />
-
-      {/* text emerging from bottom */}
-      <div className={`absolute inset-x-0 bottom-0 min-w-0 p-6 sm:p-8 md:p-10 ${wide ? "md:right-auto md:w-[55%]" : ""}`}>
-        <p className="break-words text-sm font-semibold text-white/70 opacity-90 transition-all duration-500 md:translate-y-2 md:group-hover:translate-y-0">
-          {client}
-        </p>
-        <h3 className="mt-1 break-words text-xl font-bold tracking-tight text-white transition-all duration-500 sm:text-2xl md:translate-y-3 md:text-3xl md:group-hover:translate-y-0">
-          {headline}
-        </h3>
-        <p className="mt-3 max-w-md break-words text-[0.8125rem] leading-relaxed text-white/80 transition-all duration-500 sm:text-sm md:translate-y-4 md:text-white/0 md:group-hover:translate-y-0 md:group-hover:text-white/80">
-          {body}
-        </p>
-      </div>
-    </motion.a>
-  );
-}
-
-const CODE_SNIPPETS = [
-  {
-    label: "design.system.ts",
-    code:
-      "// design & ux — brand systems and interface craft\n" +
-      "export const design = {\n" +
-      "  photoshop:     'photo retouching & campaign visuals',\n" +
-      "  illustrator:   'logo systems & vector assets',\n" +
-      "  indesign:      'editorial layouts & guidelines',\n" +
-      "  afterEffects:  'motion graphics & social reels',\n" +
-      "  figma:         'product UI, prototypes, design systems',\n" +
-      "  canva:         'fast-turn decks & social',\n" +
-      "  claudeDesign:  'AI-assisted concept exploration',\n" +
-      "};",
-  },
-  {
-    label: "storefront.build.ts",
-    code:
-      "// build & code — shipping storefronts that convert\n" +
-      "export const stack = {\n" +
-      "  shopify:       'custom themes & headless architecture',\n" +
-      "  shopifyLiquid: 'bespoke sections per merchant flow',\n" +
-      "  htmlCss:       'responsive, accessible, pixel-accurate',\n" +
-      "  webflow:       'high-fidelity marketing sites',\n" +
-      "};",
-  },
-  {
-    label: "growth.pipeline.ts",
-    code:
-      "// scale & automate — retention, paid, lifecycle\n" +
-      "growth.klaviyo   = 'CRM flows, segmentation, A/B testing';\n" +
-      "growth.hubspot   = 'pipelines & lead scoring';\n" +
-      "growth.email     = 'lifecycle automations end-to-end';\n" +
-      "growth.metaAds   = 'paid social: creative, testing, reporting';\n" +
-      "growth.make      = 'no-code ops across the stack';",
-  },
-  {
-    label: "ai.co-pilot.ts",
-    code:
-      "// ai — leveraged across every discipline\n" +
-      "ai.claude        = 'engineering co-pilot & copywriting';\n" +
-      "ai.claudeCoWork  = 'async pair-programming at scale';\n" +
-      "ai.gemini        = 'research, data & multimodal analysis';",
-  },
-];
-
-const DECOR_CODE = CODE_SNIPPETS.map((s) => `// ${s.label}\n${s.code}`).join("\n\n");
-
-function MethodologyCard({
-  cluster,
-  index,
-}: {
-  cluster: (typeof ecosystemClusters)[number];
-  index: number;
-}) {
+/** The one card used for every project: same image ratio, same text blocks, same hover. */
+function ProjectCard({ slug, wide = false }: { slug: (typeof caseStudies)[number]["slug"]; wide?: boolean }) {
   const { t } = useLanguage();
-  const [expanded, setExpanded] = useState(false);
-  const Icon = cluster.icon;
-  const copy = t.methodology.clusters[cluster.id];
-  const panelId = `methodology-panel-${cluster.id}`;
-
+  const c = caseStudies.find((x) => x.slug === slug)!;
+  const copy = t.works.items[slug];
   return (
-    <motion.li
-      variants={fadeUp}
-      className="flex h-full min-w-0 flex-col gap-4 rounded-3xl border border-border bg-card p-6 shadow-[var(--shadow-card)] transition-colors duration-300 hover:border-accent-1/40"
-    >
-      <div className="flex items-center gap-3">
-        <span
-          aria-hidden
-          className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-secondary text-accent-1 ring-1 ring-inset ring-border"
-        >
-          <Icon className="h-5 w-5" strokeWidth={1.6} />
-        </span>
-        <span className="min-w-0 font-mono text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-accent-1">
-          {String(index + 1).padStart(2, "0")} — {copy.kicker}
-        </span>
-      </div>
-
-      <div className="min-w-0 space-y-2">
-        <h3 className="break-words text-xl font-bold leading-tight tracking-tight">
-          {copy.group}
-        </h3>
-        <p className="break-words text-sm leading-relaxed text-muted-foreground">
-          {copy.blurb}
-        </p>
-      </div>
-
-      <ul className="flex flex-wrap gap-2">
-        {cluster.tools.map((tool) => (
-          <li
-            key={tool.label}
-            className="inline-flex max-w-full items-center gap-1.5 break-words rounded-full border border-border bg-background/60 px-3 py-1 text-[0.7rem] font-medium text-muted-foreground"
-          >
-            <span
-              aria-hidden
-              className="h-1.5 w-1.5 shrink-0 rounded-full"
-              style={{ background: tool.color }}
-            />
-            {tool.label}
-          </li>
-        ))}
-      </ul>
-
-      <div className="mt-auto pt-1">
-        <button
-          type="button"
-          aria-expanded={expanded}
-          aria-controls={panelId}
-          onClick={() => setExpanded((v) => !v)}
-          className="inline-flex items-center gap-1.5 rounded-full py-1 text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-accent-1 transition-colors hover:text-accent-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-1 focus-visible:ring-offset-2 focus-visible:ring-offset-card"
-        >
-          {expanded ? t.methodology.showLess : t.methodology.readMore}
-          <ChevronDown
-            aria-hidden
-            className={`h-3.5 w-3.5 transition-transform duration-300 ${expanded ? "rotate-180" : ""}`}
-          />
-        </button>
-
-        <AnimatePresence initial={false}>
-          {expanded && (
-            <motion.div
-              id={panelId}
-              key="panel"
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-              className="overflow-hidden"
-            >
-              <p className="break-words pt-3 text-sm leading-relaxed text-muted-foreground">
-                {copy.more}
-              </p>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
-    </motion.li>
-  );
-}
-
-function MethodologyStack() {
-  const { t } = useLanguage();
-
-  return (
-    <Reveal className="flex flex-col gap-10" stagger={0.1}>
-      {/* Section headline — matches Capabilities pattern */}
-      <motion.div
-        variants={fadeUp}
-        className="grid grid-cols-1 gap-8 md:grid-cols-12 md:items-end"
+    <motion.div variants={fadeUp} className={`h-full ${wide ? "md:col-span-2" : ""}`}>
+      <Link
+        to={c.href}
+        data-cursor-view
+        className={`group grid h-full overflow-hidden rounded-[calc(var(--radius)+16px)] border border-border bg-card shadow-[var(--shadow-card)] transition-shadow duration-500 hover:shadow-[var(--shadow-card-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-1 ${
+          wide ? "md:grid-cols-12" : ""
+        }`}
       >
-        <div className="md:col-span-7">
-          <h2 className="mt-4 break-words text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl">
-            {t.methodology.heading.pre}
-            <span className="font-serif italic font-normal text-accent-1">
-              {t.methodology.heading.em}
-            </span>
-            {t.methodology.heading.post}
-          </h2>
+        <div className={`relative aspect-[16/10] overflow-hidden bg-secondary ${wide ? "md:col-span-7 md:aspect-auto md:min-h-[24rem]" : ""}`}>
+          <img
+            src={c.cover}
+            alt=""
+            loading="lazy"
+            decoding="async"
+            className="absolute inset-0 h-full w-full object-cover transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
+          />
         </div>
-        <p className="min-w-0 break-words text-base leading-relaxed text-muted-foreground md:col-span-5 md:text-lg">
-          {t.methodology.intro}
-        </p>
-      </motion.div>
-
-      <div className="relative isolate">
-        {/* Decorative ambient code texture — purely visual, behind the grid */}
-        <pre
-          aria-hidden
-          className="pointer-events-none absolute inset-0 -z-10 select-none overflow-hidden whitespace-pre font-mono text-[11px] leading-[1.5] text-foreground opacity-[0.06] md:text-[12px]"
-        >
-          {DECOR_CODE}
-        </pre>
-
-        <ol className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {ecosystemClusters.map((cluster, i) => (
-            <MethodologyCard key={cluster.id} cluster={cluster} index={i} />
-          ))}
-        </ol>
-      </div>
-    </Reveal>
+        <div className={`flex flex-col gap-4 p-6 md:p-8 ${wide ? "md:col-span-5 md:justify-center md:p-10" : ""}`}>
+          <div className="flex items-center justify-between gap-4">
+            <p className="text-sm font-semibold text-foreground">
+              {c.client} <span className="font-normal text-muted-foreground">· {c.year}</span>
+            </p>
+            <ArrowUpRight className="h-5 w-5 shrink-0 text-muted-foreground transition-all duration-500 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent-1" />
+          </div>
+          <h3 className={`font-bold leading-tight tracking-tight ${wide ? "text-2xl md:text-3xl" : "text-xl md:text-2xl"}`}>{copy.headline}</h3>
+          <p className="text-sm leading-relaxed text-muted-foreground md:text-[0.95rem]">{copy.body}</p>
+          <div className="mt-auto flex flex-wrap items-center gap-2 pt-2">
+            <span className="rounded-full bg-gradient-accent px-3 py-1 text-xs font-semibold text-accent-foreground">{copy.tag}</span>
+            {copy.disciplines.map((d) => (
+              <span key={d} className="rounded-full border border-border px-3 py-1 text-xs font-medium text-muted-foreground">
+                {d}
+              </span>
+            ))}
+          </div>
+        </div>
+      </Link>
+    </motion.div>
   );
 }
 
@@ -1037,7 +606,7 @@ function SocialLink({
       target={target}
       rel={isExternal ? "noopener noreferrer" : undefined}
       aria-label={label}
-      className="inline-flex min-w-0 flex-1 items-center justify-center gap-2 break-words rounded-full border border-border bg-card px-6 py-4 text-sm font-semibold transition-transform duration-200 hover:bg-secondary active:scale-95"
+      className="inline-flex min-w-0 items-center justify-center gap-2 rounded-full border border-border bg-card px-4 py-3.5 text-sm font-semibold text-foreground transition-colors duration-200 hover:bg-secondary active:scale-95"
     >
       <Icon className="h-4 w-4 shrink-0" />
       {label}
@@ -1079,15 +648,15 @@ function CopyEmailButton({ email }: { email: string }) {
     <button
       type="button"
       onClick={handleCopy}
-      aria-label={t.about.copyAria}
-      className="inline-flex min-w-0 flex-1 items-center justify-center gap-2 break-words rounded-full border border-border bg-card px-6 py-4 text-sm font-semibold transition-transform duration-200 hover:bg-secondary active:scale-95"
+      aria-label={t.contact.copyAria}
+      className="inline-flex min-w-0 items-center justify-center gap-2 rounded-full border border-border bg-card px-4 py-3.5 text-sm font-semibold text-foreground transition-colors duration-200 hover:bg-secondary active:scale-95"
     >
       {copied ? (
         <Check className="h-4 w-4 shrink-0 text-emerald-500" aria-hidden />
       ) : (
         <Copy className="h-4 w-4 shrink-0" aria-hidden />
       )}
-      {copied ? t.about.copied : t.about.copy}
+      {copied ? t.contact.copied : t.contact.copy}
     </button>
   );
 }

@@ -3,6 +3,7 @@ import { LanguageToggle } from "@/components/LanguageToggle";
 import { AnimatePresence, MotionConfig, motion, useInView, type Variants } from "framer-motion";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useTr } from "@/i18n/projectTranslate";
+import { NextProject, useCaseLabel } from "@/components/case/NextProject";
 import {
   ArrowLeft,
   ArrowUpRight,
@@ -23,7 +24,7 @@ import {
 const A = "/work/xtendo";
 /* Full-page captures of the landing and the email. Flip to true once landing-full.webp and email-full.webp are in /public/work/xtendo. */
 const HAS_HUBSPOT_CAPTURES = false;
-const LANDING_URL = "https://recursos.xtendo.global/es-es/webinar-ventas-inteligentes-y-automatizacion-aeerc-espana";
+const LANDING_URL = "https://recursos.xtendo.global/pt-br/webinar-vendas-modernas-22-outubro";
 
 export const Route = createFileRoute("/projects/xtendo-global")({
   component: XtendoProject,
@@ -751,6 +752,7 @@ function SpeedBars() {
 
 function XtendoProject() {
   const { tr } = useTr();
+  const caseLabel = useCaseLabel("xtendo-global");
   const videoRef = useRef<HTMLVideoElement>(null);
   const [muted, setMuted] = useState(true);
   const [group, setGroup] = useState(pieceGroups[0].id);
@@ -767,15 +769,6 @@ function XtendoProject() {
       void v.play();
     }
     setMuted(v.muted);
-  };
-  const watchAgain = () => {
-    const v = videoRef.current;
-    if (!v) return;
-    v.scrollIntoView({ behavior: "smooth", block: "center" });
-    v.currentTime = 0;
-    v.muted = false;
-    setMuted(false);
-    void v.play();
   };
 
   const activeGroup = pieceGroups.find((g) => g.id === group) ?? pieceGroups[0];
@@ -794,7 +787,7 @@ function XtendoProject() {
             </Link>
             <div className="flex items-center gap-3">
               <span className="hidden font-mono text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-muted-foreground sm:inline">
-                {tr("Featured case study")}
+                {caseLabel}
               </span>
               <LanguageToggle />
             </div>
@@ -807,63 +800,46 @@ function XtendoProject() {
             aria-hidden
             className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_-10%,oklch(0.72_0.18_45_/_0.18),transparent_55%),radial-gradient(circle_at_90%_10%,oklch(0.7_0.19_25_/_0.15),transparent_60%)]"
           />
-          <div className="mx-auto grid max-w-6xl gap-12 px-6 pb-20 pt-14 md:px-10 md:pb-28 md:pt-20 lg:grid-cols-12 lg:items-center">
-            <div className="lg:col-span-7">
-              <SectionLabel>{tr("Brand & Design Strategy Lead · Xtendo Global")}</SectionLabel>
-              <h1 className="mt-6 text-4xl font-bold leading-[1.02] tracking-tight md:text-6xl">
-                {tr("Xtendo had a new logo. I made it work in")} <Accent>{tr("9 countries")}</Accent>.
-              </h1>
-              <p className="mt-8 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
-                {tr(
-                  "I joined in August 2026, halfway through the rebrand. An outside studio had designed the logo. I took on the rest: the brand manual, the Talent Solutions sub-brand, HubSpot landing pages and emails, templates for each team, the launch video, and bringing AI into the design team's work.",
-                )}
-              </p>
-              <div className="mt-10 grid gap-4 sm:grid-cols-3">
-                <div className="rounded-3xl border border-border bg-card p-5 shadow-[var(--shadow-card)]">
-                  <p className="font-mono text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">{tr("Role")}</p>
-                  <p className="mt-2 text-sm font-bold leading-snug">{tr("Brand lead, 2 designers")}</p>
+          <div className="mx-auto max-w-6xl px-6 pb-16 pt-14 md:px-10 md:pb-20 md:pt-20">
+            <SectionLabel>{tr("Brand & Design Strategy Lead · Xtendo Global")}</SectionLabel>
+            <h1 className="mt-6 max-w-5xl text-4xl font-bold leading-[1.02] tracking-tight md:text-6xl lg:text-[4.5rem]">
+              {tr("Xtendo had a new logo. I made it work in")} <Accent>{tr("9 countries")}</Accent>.
+            </h1>
+            <p className="mt-8 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
+              {tr(
+                "I joined in August 2026, halfway through the rebrand. An outside studio had designed the logo. I took on the rest: the brand manual, the Talent Solutions sub-brand, HubSpot landing pages and emails, templates for each team, the launch video, and bringing AI into the design team's work.",
+              )}
+            </p>
+            <div className="mt-10 grid max-w-4xl gap-4 sm:grid-cols-3">
+              <div className="rounded-3xl border border-border bg-card p-5 shadow-[var(--shadow-card)]">
+                <p className="font-mono text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">{tr("Role")}</p>
+                <p className="mt-2 text-sm font-bold leading-snug">{tr("Brand & Design Strategy Lead, team of 2 designers")}</p>
+              </div>
+              <div className="rounded-3xl border border-border bg-card p-5 shadow-[var(--shadow-card)]">
+                <p className="font-mono text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">{tr("Tools")}</p>
+                <div className="mt-2 flex flex-wrap gap-1.5">
+                  {["HubSpot", "Claude", "Illustrator", "Monday"].map((t) => (
+                    <span key={t} className="rounded-full bg-secondary px-2.5 py-1 text-xs font-semibold">{t}</span>
+                  ))}
                 </div>
-                <div className="rounded-3xl border border-border bg-card p-5 shadow-[var(--shadow-card)]">
-                  <p className="font-mono text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">{tr("Tools")}</p>
-                  <div className="mt-2 flex flex-wrap gap-1.5">
-                    {["HubSpot", "Claude", "Monday"].map((t) => (
-                      <span key={t} className="rounded-full bg-secondary px-2.5 py-1 text-xs font-semibold">{t}</span>
-                    ))}
-                  </div>
-                </div>
-                <div className="rounded-3xl border border-border bg-card p-5 shadow-[var(--shadow-card)]">
-                  <p className="font-mono text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">{tr("Company")}</p>
-                  <p className="mt-2 text-sm font-bold leading-snug">{tr("B2B services, 1,500+ people")}</p>
+              </div>
+              <div className="rounded-3xl border border-border bg-card p-5 shadow-[var(--shadow-card)]">
+                <p className="font-mono text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">{tr("Focus")}</p>
+                <div className="mt-2 flex flex-wrap gap-1.5">
+                  {["Brand system", "HubSpot", "AI workflow"].map((t) => (
+                    <span key={t} className="rounded-full bg-gradient-accent px-2.5 py-1 text-xs font-semibold text-accent-foreground">{tr(t)}</span>
+                  ))}
                 </div>
               </div>
             </div>
-
-            <figure className="relative mx-auto w-full max-w-[400px] lg:col-span-5">
-              <div aria-hidden className="float-orb absolute -inset-6 -z-10 rounded-[3rem] bg-[radial-gradient(circle,oklch(0.72_0.18_45_/_0.3),transparent_70%)] blur-2xl" />
-              <div className="relative overflow-hidden rounded-[2rem] border border-border bg-card p-2 shadow-[var(--shadow-card-hover)]">
-                <video
-                  ref={videoRef}
-                  src={`${A}/xtendo-motion.mp4`}
-                  poster={`${A}/xtendo-motion-poster.webp`}
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  className="aspect-[4/5] w-full rounded-[1.5rem] object-cover"
-                  aria-label={tr("Xtendo 3.0 launch video")}
-                />
-                <button
-                  type="button"
-                  onClick={toggleSound}
-                  className="absolute bottom-6 right-6 inline-flex items-center gap-2 rounded-full bg-gradient-accent px-4 py-2.5 text-sm font-semibold text-accent-foreground shadow-[var(--shadow-accent)] transition-transform hover:-translate-y-0.5"
-                >
-                  {muted ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
-                  {muted ? tr("Play with sound") : tr("Mute")}
-                </button>
-              </div>
-              <figcaption className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                {tr("Xtendo 3.0 launch video. I wrote the script, designed the scenes and animated it with Claude.")}
-              </figcaption>
+          </div>
+          <div className="mx-auto max-w-6xl px-6 pb-20 md:px-10 md:pb-28">
+            <figure className="overflow-hidden rounded-3xl border border-border shadow-[var(--shadow-card-hover)]">
+              <img
+                src={`${A}/xtendo-cover.webp`}
+                alt={tr("Xtendo Global logo next to pages of the brand manual, the ebook and a webinar post")}
+                className="aspect-[16/10] w-full object-cover"
+              />
             </figure>
           </div>
         </section>
@@ -965,7 +941,7 @@ function XtendoProject() {
                   {tr("Landing pages and email automation in")} <Accent>HubSpot</Accent>.
                 </>
               }
-              intro="For a webinar during the AEERC Contact Center Week in Spain, I designed and built the whole registration funnel in HubSpot, on the new brand system."
+              intro="I design and build Xtendo's webinar funnels in HubSpot: the social posts, the landing page with its form and the invitation email. Each one in a different country and language, all on the same brand system."
             />
 
             {/* the funnel, step by step */}
@@ -1011,10 +987,10 @@ function XtendoProject() {
                   src={`${A}/landing-full.webp`}
                   alt={tr("Webinar landing page built in HubSpot")}
                   className="flex h-[30rem] flex-col md:h-[38rem]"
-                  chrome={<BrowserChrome url="recursos.xtendo.global/es-es/webinar-ventas-inteligentes…" />}
+                  chrome={<BrowserChrome url="recursos.xtendo.global/pt-br/webinar-vendas-modernas…" />}
                 />
                 <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
-                  <p className="text-sm text-muted-foreground">{tr("Landing page. Hover to scroll through it.")}</p>
+                  <p className="text-sm text-muted-foreground">{tr("Landing page for the Vendas Modernas webinar with Frontline, for Brazil. Hover to scroll through it.")}</p>
                   <a
                     href={LANDING_URL}
                     target="_blank"
@@ -1034,7 +1010,7 @@ function XtendoProject() {
                     className="flex h-[30rem] flex-col md:h-[38rem]"
                     chrome={<MailChrome subject="Cómo duplicar tu conversión y decirle adiós al telemarketing frío" />}
                   />
-                  <p className="mt-4 text-sm text-muted-foreground">{tr("Invitation email. Hover to scroll through it.")}</p>
+                  <p className="mt-4 text-sm text-muted-foreground">{tr("Invitation email for the AEERC webinar in Spain. Hover to scroll through it.")}</p>
                 </div>
               </div>
             </div>
@@ -1179,37 +1155,62 @@ function XtendoProject() {
               intro="I wrote the script, designed each scene and animated it with Claude. It runs 23 seconds and asks one question: are you paying for capacity or for results?"
             />
 
-            <div className="-mx-6 mt-12 flex snap-x gap-3 overflow-x-auto px-6 pb-2 [scrollbar-width:none] md:mx-0 md:grid md:grid-cols-6 md:overflow-visible md:px-0">
-              {storyboard.map((s, i) => (
-                <motion.figure
-                  key={s.src}
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-60px" }}
-                  transition={{ duration: 0.45, delay: i * 0.08 }}
-                  className="w-[42%] shrink-0 snap-start md:w-auto"
-                >
-                  <img
-                    src={`${A}/${s.src}`}
-                    alt={`${tr("Scene")} ${i + 1}: ${tr(s.label)}`}
-                    loading="lazy"
-                    className="aspect-[4/5] w-full rounded-2xl border border-border object-cover shadow-[var(--shadow-card)]"
+            <div className="mt-12 grid gap-8 lg:grid-cols-12 lg:items-start">
+              {/* the video itself */}
+              <figure className="mx-auto w-full max-w-[380px] lg:col-span-4 lg:max-w-none">
+                <div className="relative overflow-hidden rounded-[2rem] border border-border bg-card p-2 shadow-[var(--shadow-card-hover)]">
+                  <video
+                    ref={videoRef}
+                    src={`${A}/xtendo-motion.mp4`}
+                    poster={`${A}/story-1.webp`}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                    className="aspect-[4/5] w-full rounded-[1.5rem] object-cover"
+                    aria-label={tr("Xtendo 3.0 launch video")}
                   />
-                  <figcaption className="mt-2 text-sm text-muted-foreground">
-                    <span className="font-mono text-xs text-accent-1">0{i + 1}</span> {tr(s.label)}
-                  </figcaption>
-                </motion.figure>
-              ))}
-              <span aria-hidden className="w-2 shrink-0 md:hidden" />
+                  <button
+                    type="button"
+                    onClick={toggleSound}
+                    className="absolute bottom-6 right-6 inline-flex items-center gap-2 rounded-full bg-gradient-accent px-4 py-2.5 text-sm font-semibold text-accent-foreground shadow-[var(--shadow-accent)] transition-transform hover:-translate-y-0.5"
+                  >
+                    {muted ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
+                    {muted ? tr("Play with sound") : tr("Mute")}
+                  </button>
+                </div>
+                <figcaption className="mt-3 text-sm text-muted-foreground">{tr("Xtendo 3.0 launch video, 23 seconds.")}</figcaption>
+              </figure>
+
+              {/* storyboard */}
+              <div className="lg:col-span-8">
+                <p className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">{tr("Storyboard")}</p>
+                <div className="-mx-6 mt-4 flex snap-x gap-3 overflow-x-auto px-6 pb-2 [scrollbar-width:none] sm:mx-0 sm:grid sm:grid-cols-3 sm:overflow-visible sm:px-0">
+                  {storyboard.map((s, i) => (
+                    <motion.figure
+                      key={s.src}
+                      initial={{ opacity: 0, y: 24 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, margin: "-60px" }}
+                      transition={{ duration: 0.45, delay: i * 0.06 }}
+                      className="w-[42%] shrink-0 snap-start sm:w-auto"
+                    >
+                      <img
+                        src={`${A}/${s.src}`}
+                        alt={`${tr("Scene")} ${i + 1}: ${tr(s.label)}`}
+                        loading="lazy"
+                        className="aspect-[4/5] w-full rounded-2xl border border-border object-cover shadow-[var(--shadow-card)]"
+                      />
+                      <figcaption className="mt-2 text-sm text-muted-foreground">
+                        <span className="font-mono text-xs text-accent-1">0{i + 1}</span> {tr(s.label)}
+                      </figcaption>
+                    </motion.figure>
+                  ))}
+                  <span aria-hidden className="w-2 shrink-0 sm:hidden" />
+                </div>
+              </div>
             </div>
-            <button
-              type="button"
-              onClick={watchAgain}
-              className="mt-8 inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-3 text-sm font-semibold shadow-[var(--shadow-card)] hover:bg-secondary"
-            >
-              <Play className="h-4 w-4" />
-              {tr("Watch it with sound")}
-            </button>
 
             <div className="mt-20 grid gap-10 border-t border-border/60 pt-16 lg:grid-cols-12 lg:items-start">
               <Reveal className="lg:sticky lg:top-28 lg:col-span-5">
@@ -1266,33 +1267,7 @@ function XtendoProject() {
           </div>
         </section>
 
-        {/* ------------------------------------------------ CTA */}
-        <section className="border-t border-border/60">
-          <div className="mx-auto flex max-w-6xl flex-col items-start gap-8 px-6 py-20 md:flex-row md:items-center md:justify-between md:px-10 md:py-24">
-            <div>
-              <SectionLabel>{tr("Next")}</SectionLabel>
-              <h3 className="mt-4 max-w-xl text-3xl font-bold leading-[1.1] tracking-tight md:text-4xl">
-                {tr("Want to talk about your brand or your team's design workflow?")}
-              </h3>
-            </div>
-            <div className="flex flex-wrap items-center gap-3">
-              <Link
-                to="/"
-                className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-3 text-sm font-semibold text-foreground shadow-[var(--shadow-card)] transition-colors hover:bg-secondary"
-              >
-                <ArrowLeft className="h-4 w-4" />
-                {tr("Back to portfolio")}
-              </Link>
-              <a
-                href="/#contact"
-                className="inline-flex items-center gap-2 rounded-full bg-gradient-accent px-5 py-3 text-sm font-semibold text-accent-foreground shadow-[var(--shadow-accent)] transition-transform hover:-translate-y-0.5"
-              >
-                {tr("Get in touch")}
-                <ArrowUpRight className="h-4 w-4" />
-              </a>
-            </div>
-          </div>
-        </section>
+        <NextProject current="xtendo-global" />
       </main>
     </MotionConfig>
   );
