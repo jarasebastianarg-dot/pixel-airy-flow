@@ -9,16 +9,14 @@ import {
 import { useEffect, useRef, useState } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useTr } from "@/i18n/projectTranslate";
+import { NextProject, useCaseLabel } from "@/components/case/NextProject";
 import {
   ArrowLeft,
-  ArrowUpRight,
   Sparkles,
   Layers,
-  Repeat,
   ShoppingCart,
   Mail,
   MousePointerClick,
-  Percent,
   TrendingUp,
   Boxes,
   Plus,
@@ -37,17 +35,17 @@ export const Route = createFileRoute("/projects/paw-royalty")({
   component: PawRoyaltyProject,
   head: () => ({
     meta: [
-      { title: "Paw Royalty — Full-Stack E-Commerce Launch & High-Converting UX" },
+      { title: "Paw Royalty: Launching a pet supplement brand on Shopify | Sebastián Jara" },
       {
         name: "description",
         content:
-          "Case study: launching Paw Royalty from zero with a fully custom Shopify Liquid storefront, native Subscribe & Save engine, and full-funnel Klaviyo retention.",
+          "Case study: how I launched Paw Royalty from zero for the US market. Brand identity, a Shopify store coded in Liquid, a Subscribe & Save page, a wellness quiz and Klaviyo emails.",
       },
-      { property: "og:title", content: "Paw Royalty — E-Commerce Launch Case Study" },
+      { property: "og:title", content: "Paw Royalty: Shopify launch case study" },
       {
         property: "og:description",
         content:
-          "How I launched a new pet care brand with a 100% native Shopify Liquid build and a retention system engineered for day-one recurring revenue.",
+          "How I designed a new pet supplement brand and built its Shopify store from zero.",
       },
       { property: "og:type", content: "article" },
       { property: "og:url", content: "/projects/paw-royalty" },
@@ -108,41 +106,41 @@ const stack = [
   "Email Automations",
 ];
 
-const focus = ["Brand Incubation", "UI/UX Design", "Retention Strategy"];
+const focus = ["Brand Identity", "UI/UX Design", "Email Marketing"];
 
 const executionCards = [
   {
     icon: Layers,
     kicker: "PDP",
-    title: "High-Density Product Architectures",
-    body: "Information-dense PDPs hardcoded in Liquid — visual, fast, and engineered to build trust and drive conversion.",
+    title: "Detailed product pages",
+    body: "Product pages coded in Liquid with ingredients, certifications and FAQs, so people can check what they are buying.",
   },
   {
     icon: ShoppingCart,
-    kicker: "LTV",
-    title: "Native Subscribe & Save Engine",
-    body: "Seamless subscription flow wired into the native cart — capturing recurring revenue from day one.",
+    kicker: "Subscription",
+    title: "Subscribe & Save in the cart",
+    body: "Shoppers can pick a subscription right on the product page and in the cart, with 15% off every order.",
   },
   {
     icon: Mail,
-    kicker: "Retention",
-    title: "Full-Funnel Email Marketing",
-    body: "Editorial Klaviyo campaigns and lifecycle flows — welcome, abandoned cart, post-purchase and subscribe-and-save — designed and coded in-house to nurture new pet parents and compound recurring revenue on autopilot.",
+    kicker: "Email",
+    title: "Klaviyo emails",
+    body: "I designed and coded the welcome flow and the product campaigns in Klaviyo, written for new pet owners.",
   },
   {
     icon: MousePointerClick,
     kicker: "UX",
-    title: "Liquid-Driven Creative Freedom",
-    body: "Custom Liquid and CSS translate the brand into a fluid, interactive UI — hand-crafted across every device.",
+    title: "Custom UI",
+    body: "Custom Liquid and CSS bring the brand into the store. Every page is responsive, from phone to desktop.",
   },
 ];
 
-// Scope facts only — no estimated performance numbers.
+// Scope facts only. No estimated performance numbers.
 const metrics = [
-  { icon: TrendingUp, value: "0 → 1", label: "Brand, storefront and retention system built from scratch" },
-  { icon: Boxes, value: "100%", label: "Custom Liquid storefront — no page-builder apps" },
-  { icon: MousePointerClick, value: "4", label: "Key experiences: home, PDP, Subscribe & Save and wellness quiz" },
-  { icon: Mail, value: "3", label: "Klaviyo flows and campaigns designed and coded" },
+  { icon: TrendingUp, value: "0 → 1", label: "Brand, store and emails built from scratch" },
+  { icon: Boxes, value: "100%", label: "Store coded in custom Liquid, no page builder apps" },
+  { icon: MousePointerClick, value: "4", label: "Key pages: home, product page, Subscribe & Save and wellness quiz" },
+  { icon: Mail, value: "3", label: "Klaviyo emails designed and coded" },
 ];
 
 function MediaPlaceholder({
@@ -286,29 +284,29 @@ const mockups = [
   {
     kicker: "Home",
     title: "Homepage",
-    focus: "Conversion + Education",
-    body: "Designed to convert and inform in equal measure — hero storytelling, best-sellers, benefits, customer proof and press credibility guide cold clicks to considered add-to-carts.",
+    focus: "Brand + Education",
+    body: "The homepage introduces the brand and the products: a hero story, best sellers, benefits, customer reviews and press mentions.",
     image: prHome.url,
   },
   {
     kicker: "PDP",
-    title: "Product Detail Page",
-    focus: "Conversion + Trust",
-    body: "A high-density PDP built to close the sale. Native Subscribe & Save 15% wired into the cart, plus ingredients, certifications, FAQs and behavioral wellness copy stack the trust pet parents need to check out.",
+    title: "Product page",
+    focus: "Product info",
+    body: "Each product page has the Subscribe & Save option (15% off) connected to the cart, plus ingredients, certifications, FAQs and notes on what the supplement helps with.",
     image: prProduct.url,
   },
   {
     kicker: "S&S",
     title: "Subscribe & Save",
-    focus: "Recurring Revenue",
-    body: "A dedicated page that turns subscription into the offer — choose formula, pick cadence, save 15% every order — reframing recurrence as clinical benefit, not a lock-in.",
+    focus: "Subscriptions",
+    body: "A page just for the subscription. You choose the formula, pick how often it ships and save 15% on every order. The copy explains why a steady routine is good for the pet.",
     image: prSubscribe.url,
   },
   {
     kicker: "Quiz",
-    title: "Wellness Quiz",
-    focus: "Personalization + Discount",
-    body: "An interactive quiz that recommends a supplement stack by breed, age and health goals and unlocks a first-order discount — feeding Klaviyo with segmented, high-intent data.",
+    title: "Wellness quiz",
+    focus: "Personalization",
+    body: "A quiz that suggests supplements based on breed, age and health goals. At the end it gives a first-order discount, and the answers go to Klaviyo for segmenting.",
     image: prQuiz.url,
   },
 ];
@@ -316,23 +314,23 @@ const mockups = [
 const emails = [
   {
     kicker: "Campaign",
-    title: "Royal Treatment — Flagship Campaign",
-    focus: "Brand + Conversion",
-    body: "Editorial hero campaign email — bestseller grid with vet-driven copy, science badges and a limited-time 15% first-order code. Designed to sell the brand and the product at once.",
+    title: "Royal Treatment campaign",
+    focus: "Brand + Products",
+    body: "The main launch campaign: a grid of best sellers with short product copy, science badges and a limited-time 15% first-order code.",
     image: prEmailCampaign.url,
   },
   {
     kicker: "Retention",
-    title: "Subscribe & Save 15% Off",
-    focus: "Recurring Revenue",
-    body: "Full routine grid pushing every SKU into the subscription funnel — dark cards, single CTA per formula, and social proof close to lift subscribers-per-send.",
+    title: "Subscribe & Save 15% off",
+    focus: "Subscriptions",
+    body: "An email that shows the full product range with one Subscribe & Save button per formula and customer reviews at the end.",
     image: prEmailSubscribe.url,
   },
   {
     kicker: "Welcome",
-    title: "Calming — 20% OFF Welcome Flow",
-    focus: "Acquisition + Trust",
-    body: "Welcome-series drop for the Calming SKU: veterinarian-formulated badge, ingredient breakdown, verified reviews and a single ROYAL-SUB code to convert first-time subscribers.",
+    title: "Calming welcome email (20% off)",
+    focus: "Welcome flow",
+    body: "Part of the welcome flow, focused on the Calming supplement: vet-formulated badge, ingredient list, verified reviews and the ROYAL-SUB code.",
     image: prEmailCalming.url,
   },
 ];
@@ -448,7 +446,7 @@ function ScrollPreviewCard({
         type="button"
         onClick={() => onOpen(item.image, item.title, item.kicker === "Home" || item.kicker === "PDP" ? "wide" : "standard")}
         className="group relative block w-full overflow-hidden rounded-[calc(var(--radius)+14px)] border border-border bg-[#E4EDF7] text-left shadow-[var(--shadow-card)] transition-shadow duration-500 hover:shadow-[var(--shadow-card-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-1/60"
-        aria-label={tr(`Open ${item.title} preview`)}
+        aria-label={`${tr("Open preview")}: ${tr(item.title)}`}
       >
         <div className="relative aspect-[4/5] w-full overflow-hidden">
           <img
@@ -508,6 +506,7 @@ function PreviewGallery({
 
 function PawRoyaltyProject() {
   const { tr } = useTr();
+  const caseLabel = useCaseLabel("paw-royalty");
   const [lightbox, setLightbox] = useState<{ src: string; label?: string; width?: "standard" | "wide" } | null>(null);
   const openLightbox = (src: string, label?: string, width?: "standard" | "wide") => setLightbox({ src, label, width });
   return (
@@ -531,7 +530,7 @@ function PawRoyaltyProject() {
           </Link>
           <div className="flex items-center gap-3">
           <span className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-muted-foreground">
-            {tr("Case Study / 02")}
+            {caseLabel}
           </span>
             <LanguageToggle />
           </div>
@@ -547,17 +546,17 @@ function PawRoyaltyProject() {
         <div className="mx-auto max-w-6xl px-6 pb-20 pt-16 md:px-10 md:pb-28 md:pt-24">
           <Reveal stagger={0.12}>
             <motion.div variants={fadeUp}>
-              <SectionLabel>{tr("Shopify Launch · E-commerce")}</SectionLabel>
+              <SectionLabel>{tr("Brand launch · Shopify")}</SectionLabel>
             </motion.div>
             <motion.h1
               variants={fadeUp}
               className="mt-6 max-w-5xl text-4xl font-bold leading-[1.02] tracking-tight md:text-6xl lg:text-[4.5rem]"
             >
-              {tr("Paw Royalty: Full-Stack")}{" "}
-              <span className="text-gradient-accent">{tr("E-Commerce Launch")}</span>{" "}
-              &{" "}
+              {tr("Paw Royalty: launching a")}{" "}
+              <span className="text-gradient-accent">{tr("pet supplement brand")}</span>{" "}
+              {tr("from zero for the")}{" "}
               <span className="font-serif italic font-normal text-accent-1">
-                {tr("High-Converting UX")}
+                {tr("US market")}
               </span>
               .
             </motion.h1>
@@ -566,7 +565,7 @@ function PawRoyaltyProject() {
               className="mt-8 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg"
             >
               {tr(
-                "A brand incubated from zero — storefront, UX and retention system engineered in Shopify Liquid using AI-assisted development, tuned for day-one recurring revenue.",
+                "I created the brand identity, designed the UI and coded the Shopify store in Liquid. I also built a Subscribe & Save page, a wellness quiz and the Klaviyo emails. I wrote the code with AI-assisted development.",
               )}
             </motion.p>
           </Reveal>
@@ -583,7 +582,7 @@ function PawRoyaltyProject() {
                 {tr("Role")}
               </div>
               <div className="mt-3 text-base font-semibold text-foreground transition-colors duration-300 md:text-lg md:group-hover:text-accent-1">
-                {tr("Lead Designer & AI-Assisted Developer")}
+                {tr("Designer and developer (AI-assisted)")}
               </div>
             </motion.div>
             <motion.div
@@ -635,16 +634,15 @@ function PawRoyaltyProject() {
         </div>
       </section>
 
-      {/* The Friction */}
+      {/* The problem */}
       <section className="border-t border-border/60 bg-secondary/30">
         <div className="mx-auto max-w-6xl px-6 py-20 md:grid md:grid-cols-12 md:gap-12 md:px-10 md:py-28">
           <Reveal className="md:col-span-4" stagger={0.08}>
             <motion.div variants={fadeUp}>
-              <SectionLabel>{tr("01 — Context")}</SectionLabel>
               <h2 className="mt-6 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
                 {tr("The")}{" "}
-                <span className="font-serif italic font-normal text-accent-1">
-                  {tr("Friction")}
+                <span className="">
+                  {tr("problem")}
                 </span>
               </h2>
             </motion.div>
@@ -655,36 +653,35 @@ function PawRoyaltyProject() {
               className="text-lg leading-relaxed text-foreground/85 md:text-xl"
             >
               {tr(
-                "Launching a new brand in the highly competitive pet care market requires more than just an aesthetic template. The challenge was building a digital presence from",
+                "Paw Royalty was a new pet supplement brand starting from",
               )}{" "}
-              <span className="font-semibold text-foreground">{tr("absolute zero")}</span>{" "}
+              <span className="font-semibold text-foreground">{tr("zero")}</span>{" "}
               {tr(
-                "that could immediately convey trust, educate the customer through information-dense product pages, and convert cold traffic into recurring revenue without relying on a pre-existing customer base.",
+                "for the US market. There was no store, no customer list and no email setup. The site had to explain each product clearly and make subscribing an easy choice.",
               )}
             </motion.p>
           </Reveal>
         </div>
       </section>
 
-      {/* The Execution */}
+      {/* What I did */}
       <section className="border-t border-border/60">
         <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
-          <Reveal className="grid grid-cols-1 gap-10 md:grid-cols-12 md:items-end" stagger={0.1}>
-            <motion.div variants={fadeUp} className="md:col-span-7">
-              <SectionLabel>{tr("02 — Build")}</SectionLabel>
+          <Reveal className="flex max-w-3xl flex-col gap-6" stagger={0.1}>
+            <motion.div variants={fadeUp} className="">
               <h2 className="mt-6 text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl">
-                {tr("The")}{" "}
-                <span className="font-serif italic font-normal text-accent-1">
-                  {tr("Execution")}
+                {tr("What I")}{" "}
+                <span className="">
+                  {tr("did")}
                 </span>
               </h2>
             </motion.div>
             <motion.p
               variants={fadeUp}
-              className="text-base leading-relaxed text-muted-foreground md:col-span-5 md:text-lg"
+              className="text-base leading-relaxed text-muted-foreground max-w-[65ch] md:text-lg"
             >
               {tr(
-                "Bypassing rigid themes and static mockups to architect the entire digital storefront in Shopify Liquid, using AI-assisted development to move from concept to live build fast. This provided absolute creative freedom and a high-performance foundation built specifically for scaling.",
+                "I skipped ready-made themes and coded the store in Shopify Liquid, using AI-assisted development to move faster. That let me build the design the way I drew it.",
               )}
             </motion.p>
           </Reveal>
@@ -702,10 +699,9 @@ function PawRoyaltyProject() {
           <div className="mt-20">
             <Reveal className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between" stagger={0.08}>
               <motion.div variants={fadeUp}>
-                <SectionLabel>{tr("02.5 — Gallery")}</SectionLabel>
                 <h3 className="mt-4 text-3xl font-bold leading-[1.1] tracking-tight md:text-5xl">
                   {tr("Storefront")}{" "}
-                  <span className="font-serif italic font-normal text-accent-1">
+                  <span className="">
                     {tr("in motion")}
                   </span>
                 </h3>
@@ -715,7 +711,7 @@ function PawRoyaltyProject() {
                 className="max-w-md text-sm leading-relaxed text-muted-foreground md:text-base"
               >
                 {tr(
-                  "Hover any preview to scroll the full page. Click to open the full-resolution capture.",
+                  "Hover a preview to scroll the page. Click to see it full size.",
                 )}
               </motion.p>
             </Reveal>
@@ -727,12 +723,11 @@ function PawRoyaltyProject() {
       {/* Email Marketing */}
       <section className="border-t border-border/60 bg-secondary/30">
         <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
-          <Reveal className="grid grid-cols-1 gap-10 md:grid-cols-12 md:items-end" stagger={0.1}>
-            <motion.div variants={fadeUp} className="md:col-span-7">
-              <SectionLabel>{tr("02.75 — Email Marketing")}</SectionLabel>
+          <Reveal className="flex max-w-3xl flex-col gap-6" stagger={0.1}>
+            <motion.div variants={fadeUp} className="">
               <h2 className="mt-6 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
-                {tr("Retention wired into")}{" "}
-                <span className="font-serif italic font-normal text-accent-1">
+                {tr("Emails built in")}{" "}
+                <span className="">
                   Klaviyo
                 </span>
                 .
@@ -740,10 +735,10 @@ function PawRoyaltyProject() {
             </motion.div>
             <motion.p
               variants={fadeUp}
-              className="text-base leading-relaxed text-muted-foreground md:col-span-5 md:text-lg"
+              className="text-base leading-relaxed text-muted-foreground max-w-[65ch] md:text-lg"
             >
               {tr(
-                "A full-funnel email system — welcome, subscribe-and-save retention and flagship product campaigns — designed and coded inside Klaviyo.",
+                "I designed and coded the emails in Klaviyo: the welcome flow, a Subscribe & Save email and the launch campaign.",
               )}
             </motion.p>
           </Reveal>
@@ -751,7 +746,7 @@ function PawRoyaltyProject() {
         </div>
       </section>
 
-      {/* The Impact */}
+      {/* Results */}
       <section className="relative overflow-hidden border-t border-border/60 bg-foreground text-background">
         <div
           aria-hidden
@@ -759,23 +754,13 @@ function PawRoyaltyProject() {
         />
         <div className="relative mx-auto max-w-6xl px-6 py-24 md:px-10 md:py-32">
           <Reveal stagger={0.08}>
-            <motion.div variants={fadeUp}>
-              <div className="inline-flex items-center gap-3">
-                <span className="h-px w-8 bg-accent-1" />
-                <span className="font-mono text-xs font-semibold uppercase tracking-[0.24em] text-accent-1">
-                  {tr("03 — Outcome")}
-                </span>
-              </div>
-            </motion.div>
             <motion.h2
               variants={fadeUp}
-              className="mt-6 max-w-3xl text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl"
+              className="max-w-3xl text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl"
             >
-              {tr("The")}{" "}
-              <span className="font-serif italic font-normal text-accent-1">
-                {tr("Impact")}
+              <span className="">
+                {tr("Results")}
               </span>
-              .
             </motion.h2>
           </Reveal>
 
@@ -805,38 +790,7 @@ function PawRoyaltyProject() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="border-t border-border/60">
-        <div className="mx-auto flex max-w-6xl flex-col items-start gap-8 px-6 py-20 md:flex-row md:items-center md:justify-between md:px-10 md:py-24">
-          <div>
-            <SectionLabel>{tr("Next")}</SectionLabel>
-            <h3 className="mt-4 max-w-xl text-3xl font-bold leading-[1.1] tracking-tight md:text-4xl">
-              {tr("Launching something new?")}
-            </h3>
-            <p className="mt-3 max-w-lg text-base leading-relaxed text-muted-foreground">
-              {tr(
-                "I incubate brands end-to-end — from identity to a storefront built for recurring revenue.",
-              )}
-            </p>
-          </div>
-          <div className="flex flex-wrap items-center gap-3">
-            <Link
-              to="/"
-              className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-3 text-sm font-semibold text-foreground shadow-[var(--shadow-card)] transition-colors hover:bg-secondary"
-            >
-              <ArrowLeft className="h-4 w-4" />
-              {tr("Back to portfolio")}
-            </Link>
-            <a
-              href="/#contact"
-              className="inline-flex items-center gap-2 rounded-full bg-gradient-accent px-5 py-3 text-sm font-semibold text-accent-foreground shadow-[var(--shadow-accent)] transition-transform hover:-translate-y-0.5"
-            >
-              {tr("Get in touch")}
-              <ArrowUpRight className="h-4 w-4" />
-            </a>
-          </div>
-        </div>
-      </section>
+      <NextProject current="paw-royalty" />
     </main>
   );
 }

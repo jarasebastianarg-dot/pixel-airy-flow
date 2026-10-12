@@ -1,108 +1,101 @@
 export const folkwaysEs: Record<string, string> = {
-  "SKUs migrated to Shopify 2.0": "SKUs migrados a Shopify 2.0",
-  "Full storefront rebuilt in native Liquid": "Tienda completa reconstruida en Liquid nativo",
-  "Third-party apps for cart, upsell and pop-ups — rebuilt natively": "Apps de terceros para carrito, upsell y pop-ups — reconstruidos de forma nativa",
-  "Cashback recovery and wine-club flows rebuilt": "Flows de recupero con cashback y del club de vinos rearmados",
+  // Top bar / microcopy
+  "Back to portfolio": "Volver al portfolio",
   "Hover to expand": "Pasá el mouse para expandir",
-  "Click to zoom": "Click para hacer zoom",
+  "Click to zoom": "Click para ampliar",
   "Image preview": "Vista previa de imagen",
   "Close preview": "Cerrar vista previa",
-  "Open": "Abrir",
-  "preview": "vista previa",
-  "Back to portfolio": "Volver al portfolio",
-  "Case Study / 01": "Caso de Éxito / 01",
-  "Shopify Expert · E-commerce": "Experto en Shopify · E-commerce",
-  "Folkways: Architecting a": "Folkways: diseñando una",
-  "2,000+ SKU": "migración de 2.000+ SKU",
-  "Website Migration &": "y un ecosistema de",
-  "Native Retention": "retención nativa",
-  "Ecosystem.": "en el sitio.",
-  "A full Shopify 2.0 rebuild plus a native Klaviyo retention engine — from catalog migration to cashback recovery flows and wine club campaigns — engineered in Liquid using AI-assisted development, without a single bloated app.":
-    "Una reconstrucción completa en Shopify 2.0 junto con un motor de retención nativo en Klaviyo — desde la migración del catálogo hasta flujos de recuperación de cashback y campañas del wine club — todo diseñado en Liquid con desarrollo asistido por AI, sin una sola app innecesaria.",
+  "Open preview": "Abrir vista previa",
+
+  // Hero
+  "Shopify · E-commerce": "Shopify · E-commerce",
+  "Folkways: moving a wine store with": "Folkways: mudar una tienda de vinos con",
+  "2,000+ products": "más de 2.000 productos",
+  "to": "a",
+  "I designed and coded the new Folkways store on Shopify 2.0. I moved the full catalog, built the cart, upsell and pop-ups as native Liquid sections instead of apps, and rebuilt the Klaviyo email flows. I wrote the code with AI-assisted development.":
+    "Diseñé y programé la nueva tienda de Folkways en Shopify 2.0. Migré todo el catálogo, armé el carrito, el upsell y los pop-ups como secciones nativas en Liquid en lugar de usar apps, y rearmé los flows de email en Klaviyo. Escribí el código con desarrollo asistido por IA.",
+
+  // TL;DR bar
   "Role": "Rol",
-  "Lead Designer & AI-Assisted Developer": "Diseñador Líder y Desarrollador Asistido por AI",
+  "Designer and developer (AI-assisted)": "Diseñador y desarrollador (asistido por IA)",
   "Tech Stack": "Stack Tecnológico",
   "Focus": "Foco",
   "Shopify": "Shopify",
   "Shopify Liquid": "Shopify Liquid",
   "HTML / CSS": "HTML / CSS",
   "Klaviyo": "Klaviyo",
-  "Email Automations": "Automatizaciones de Email",
+  "Email Automations": "Automatizaciones de email",
   "Shopify 2.0 Migration": "Migración a Shopify 2.0",
   "Email Marketing": "Email Marketing",
-  "CRO & Retention": "CRO y Retención",
-  "01 — Context": "01 — Contexto",
-  "The": "La",
-  "Friction": "Fricción",
-  "Moving a massive, complex catalog to Shopify 2.0 required more than a simple theme update. The brand was leaking revenue on two fronts: a storefront suffering from severe":
-    "Migrar un catálogo masivo y complejo a Shopify 2.0 requería mucho más que una simple actualización de tema. La marca estaba perdiendo ingresos en dos frentes: un storefront que sufría de un severo",
-  "“app bloat,”": "“exceso de apps,”",
-  "and a fragmented email stack that couldn't turn buyers into repeat customers — page load delays on one side, dead retention flows on the other.":
-    "y un stack de email fragmentado que no lograba convertir compradores en clientes recurrentes — demoras en la carga de página por un lado, flujos de retención inertes por el otro.",
-  "The team was juggling multiple single-use apps for cart, upsell and pop-ups while running Klaviyo at a fraction of its potential — draining resources and starving the wine club of the traffic it needed to grow.":
-    "El equipo manejaba múltiples apps de un solo uso para carrito, upsell y pop-ups mientras corría Klaviyo a una fracción de su potencial — drenando recursos y privando al wine club del tráfico que necesitaba para crecer.",
-  "02 — Build": "02 — Construcción",
-  "Execution": "Ejecución",
-  "Rebuilding the storefront in Shopify Liquid and rewiring retention inside Klaviyo — one editorial system covering catalog, cart, campaigns and lifecycle email, without compromising the buyer journey or the backend workflow.":
-    "Reconstruir el storefront en Shopify Liquid y reconfigurar la retención dentro de Klaviyo — un sistema editorial único que cubre catálogo, carrito, campañas y email lifecycle, sin comprometer el journey del comprador ni el flujo de trabajo del backend.",
-  "AOV": "AOV",
-  "Native Cart & AOV Optimization": "Carrito Nativo y Optimización de AOV",
-  "Replaced rigid, app-injected blocks with a 100% custom native architecture. Engineered cross-sell layouts (“You May Also Like”) and dynamic messaging for volume discounts and shipping tiers directly in Shopify Liquid to strategically increase Average Order Value and overall cart conversion.":
-    "Reemplacé bloques rígidos inyectados por apps con una arquitectura nativa 100% custom. Diseñé layouts de cross-sell (“También te puede interesar”) y mensajería dinámica para descuentos por volumen y niveles de envío directamente en Shopify Liquid para incrementar estratégicamente el Average Order Value y la conversión general del carrito.",
+  "Store UX": "UX de la tienda",
+
+  // The problem
+  "The": "El",
+  "problem": "problema",
+  "Folkways had more than 2,000 products on an older Shopify setup. The store used":
+    "Folkways tenía más de 2.000 productos en una versión vieja de Shopify. La tienda usaba",
+  "separate apps": "apps separadas",
+  "for the cart, upsells and pop-ups, and the Klaviyo emails were scattered and out of date.":
+    "para el carrito, los upsells y los pop-ups, y los emails de Klaviyo estaban dispersos y desactualizados.",
+  "Every app was one more thing for the team to set up and maintain. On the email side, the cashback and wine club flows needed a rebuild.":
+    "Cada app era una cosa más que el equipo tenía que configurar y mantener. Del lado del email, los flows de cashback y del club de vinos había que rearmarlos.",
+
+  // What I did
+  "What I": "Qué",
+  "did": "hice",
+  "I rebuilt the storefront in Shopify Liquid and redid the email flows in Klaviyo. The goal was one store that looks consistent and is easy for the team to run.":
+    "Rearmé la tienda en Shopify Liquid y rehice los flows de email en Klaviyo. La idea era tener una tienda coherente y fácil de manejar para el equipo.",
+  "Cart": "Carrito",
+  "Native cart and upsells": "Carrito y upsells nativos",
+  "I replaced the app-based cart blocks with sections I coded in Liquid. The cart suggests related wines (“You may also like”) and shows messages for volume discounts and shipping tiers.":
+    "Reemplacé los bloques del carrito que venían de apps por secciones que programé en Liquid. El carrito sugiere vinos relacionados (“También te puede gustar”) y muestra mensajes de descuentos por volumen y niveles de envío.",
   "Ops": "Operaciones",
-  "App Consolidation & Cost Reduction": "Consolidación de Apps y Reducción de Costos",
-  "Simplified the client's operational workflow by auditing and stripping away single-use third-party apps. Consolidating utilities into fewer high-impact tools drastically reduced monthly software expenses and backend configuration time, empowering the team to focus on growth rather than maintenance.":
-    "Simplifiqué el flujo operativo del cliente auditando y eliminando apps de terceros de un solo uso. Consolidar utilidades en menos herramientas de alto impacto redujo drásticamente los gastos mensuales de software y el tiempo de configuración del backend, permitiendo al equipo enfocarse en el crecimiento en lugar del mantenimiento.",
+  "Fewer apps": "Menos apps",
+  "I went through the installed apps and removed the ones that only did one small job. The cart, upsell and pop-ups now live in the theme, so the team has fewer tools to set up and maintain.":
+    "Revisé las apps instaladas y saqué las que hacían una sola tarea chica. El carrito, el upsell y los pop-ups ahora están en el theme, así que el equipo tiene menos herramientas para configurar y mantener.",
   "Email": "Email",
-  "Klaviyo CRM & Lifecycle Email Marketing": "CRM en Klaviyo y Email Marketing de Lifecycle",
-  "Rebuilt Klaviyo from the ground up as the brand's retention engine — cashback recovery flows, wine club acquisition campaigns and segmented lifecycle emails coded in-house to convert one-time buyers into repeat cellar customers and compound recurring revenue.":
-    "Reconstruí Klaviyo desde cero como el motor de retención de la marca — flujos de recuperación de cashback, campañas de adquisición para el wine club y emails de lifecycle segmentados programados in-house para convertir compradores ocasionales en clientes recurrentes de la cava y potenciar los ingresos recurrentes.",
-  "CRO": "CRO",
-  "Conversion-Driven Frontend Architecture": "Arquitectura de Frontend Orientada a la Conversión",
-  "Engineered real-time scarcity triggers (“Only 9 left”) directly synced with the backend to drive urgency and accelerate purchasing decisions. Deployed pure CSS sticky media logic to keep the “Add to Cart” action always within the viewport — eliminating scroll fatigue and removing friction from the buying journey.":
-    "Diseñé disparadores de escasez en tiempo real (“Sólo quedan 9”) sincronizados directamente con el backend para generar urgencia y acelerar las decisiones de compra. Implementé lógica sticky en CSS puro para mantener la acción “Agregar al Carrito” siempre dentro del viewport — eliminando la fatiga de scroll y quitando fricción del journey de compra.",
-  "02.5 — Gallery": "02.5 — Galería",
+  "Klaviyo flows": "Flows de Klaviyo",
+  "I rebuilt the email flows in Klaviyo, including cashback recovery and the wine club campaigns. I designed and coded the templates myself.":
+    "Rearmé los flows de email en Klaviyo, incluyendo el recupero con cashback y las campañas del club de vinos. Diseñé y programé los templates yo mismo.",
+  "PDP": "PDP",
+  "Product page details": "Detalles de la página de producto",
+  "Product pages show live stock (“Only 9 left”) pulled from inventory. The image column is sticky, so the “Add to cart” button stays on screen while you scroll.":
+    "Las páginas de producto muestran el stock en vivo (“Quedan solo 9”) tomado del inventario. La columna de imágenes es sticky, así que el botón “Agregar al carrito” queda en pantalla mientras scrolleás.",
+
+  // Gallery
   "Storefront": "Storefront",
   "in motion": "en movimiento",
-  "Hover any preview to scroll the full page. Click to open the full-resolution capture.":
-    "Pasá el mouse sobre cualquier vista previa para recorrer la página completa. Hacé click para abrir la captura en resolución completa.",
+  "Hover a preview to scroll the page. Click to see it full size.":
+    "Pasá el mouse sobre una vista previa para recorrer la página. Hacé click para verla en tamaño completo.",
   "Home": "Home",
   "Homepage": "Homepage",
-  "Merchandising + Storytelling": "Merchandising + Storytelling",
-  "Editorial homepage engineered around the buyer journey — staff picks, category rails, curated cases and the wine club offer stacked to move cold traffic from browsing to checkout without a single third-party app.":
-    "Homepage editorial diseñada en torno al journey del comprador — selecciones del staff, rieles de categorías, cajas curadas y la oferta del wine club apiladas para llevar al tráfico frío desde la navegación hasta el checkout sin una sola app de terceros.",
-  "PDP": "PDP",
-  "Product Detail Page": "Página de Detalle de Producto",
-  "Conversion + Trust": "Conversión + Confianza",
-  "High-density PDP hardcoded in Liquid — dynamic scarcity, sticky add-to-cart, cross-sell rail and maker notes designed to close the sale on natural, low-intervention bottles.":
-    "PDP de alta densidad programada a mano en Liquid — escasez dinámica, add-to-cart sticky, riel de cross-sell y notas del productor diseñadas para cerrar la venta en botellas naturales de baja intervención.",
-  "02.75 — Email Marketing": "02.75 — Email Marketing",
-  "Retention wired into": "Retención conectada a",
-  "A native retention system built inside Klaviyo — cashback recovery flows and wine club acquisition campaigns designed to turn one-time buyers into a repeat cellar and compound revenue on autopilot.":
-    "Un sistema de retención nativo construido dentro de Klaviyo — flujos de recuperación de cashback y campañas de adquisición para el wine club diseñadas para convertir compradores ocasionales en una cava recurrente y potenciar los ingresos en piloto automático.",
+  "Browsing + Wine club": "Navegación + Club de vinos",
+  "The homepage works like a shop window: staff picks, category rows, curated cases and the wine club offer. All of it is built with native sections, no third-party apps.":
+    "La homepage funciona como una vidriera: recomendaciones del equipo, filas por categoría, cajas armadas y la oferta del club de vinos. Todo está hecho con secciones nativas, sin apps de terceros.",
+  "Product page": "Página de producto",
+  "Product info": "Info de producto",
+  "Coded in Liquid. It has the live stock count, a sticky add to cart button, a row of related wines and the maker's notes for each bottle.":
+    "Programada en Liquid. Tiene el stock en vivo, un botón de agregar al carrito sticky, una fila de vinos relacionados y las notas del productor de cada botella.",
+
+  // Email marketing
+  "Emails built in": "Emails armados en",
+  "I redid the Klaviyo setup: cashback recovery flows and wine club campaigns. The goal was to bring one-time buyers back for a second order.":
+    "Rehice la configuración de Klaviyo: flows de recupero con cashback y campañas del club de vinos. La idea era que quien compró una vez vuelva por un segundo pedido.",
   "Club": "Club",
-  "Wine Club Acquisition Campaign": "Campaña de Adquisición del Wine Club",
-  "Acquisition + Recurring Revenue": "Adquisición + Ingresos Recurrentes",
-  "Curated Cases campaign pushing the monthly wine club — hero editorial, 10% off framing and dual-tier subscription cards (Essential 4-Pack and Voyager 6-Pack) designed to convert subscribers on the first send.":
-    "Campaña de Cajas Curadas que impulsa el wine club mensual — hero editorial, encuadre de 10% de descuento y tarjetas de suscripción de dos niveles (Essential 4-Pack y Voyager 6-Pack) diseñadas para convertir suscriptores desde el primer envío.",
+  "Wine club campaign": "Campaña del club de vinos",
+  "Subscriptions": "Suscripciones",
+  "A campaign for the monthly wine club, built around curated cases. It shows the 10% discount and the two plans side by side: Essential 4-Pack and Voyager 6-Pack.":
+    "Una campaña para el club de vinos mensual, armada alrededor de las cajas seleccionadas. Muestra el 10% de descuento y los dos planes uno al lado del otro: Essential 4-Pack y Voyager 6-Pack.",
   "Retention": "Retención",
-  "$22.30 Cashback Recovery": "Recuperación de Cashback de $22,30",
-  "Winback + LTV": "Winback + LTV",
-  "Lifecycle recovery email built inside Klaviyo — personalized cashback balance, three curated next-buy angles and a single dark CTA. Rebuilt to reactivate dormant customers and lift second-order rate.":
-    "Email de recuperación lifecycle construido dentro de Klaviyo — saldo de cashback personalizado, tres ángulos curados de próxima compra y un único CTA en tono oscuro. Reconstruido para reactivar clientes inactivos y elevar la tasa de segunda compra.",
-  "03 — Outcome": "03 — Resultado",
-  "Impact": "Impacto",
-  "SKUs Migrated & Automated": "SKUs Migrados y Automatizados",
-  "Reduction in Page Load Time": "Reducción en el Tiempo de Carga",
-  "Increase in Cart Conversion Rate": "Aumento en la Tasa de Conversión del Carrito",
-  "Boost in Recurring Revenue": "Incremento en Ingresos Recurrentes",
-  "Avg. Klaviyo Campaign Open Rate": "Tasa Promedio de Apertura de Campañas en Klaviyo",
-  "Email-to-Site CTR": "CTR de Email al Sitio",
-  "ROI on Retention Automations": "ROI en Automatizaciones de Retención",
-  "Wine Club Subscription Lift": "Incremento en Suscripciones al Wine Club",
-  "Next": "Siguiente",
-  "Have a catalog that's outgrown its stack?": "¿Tenés un catálogo que superó a su stack?",
-  "I architect Shopify environments that scale — without the app bloat.":
-    "Diseño entornos de Shopify que escalan — sin el exceso de apps.",
-  "Get in touch": "Ponete en contacto",
+  "$22.30 cashback reminder": "Recordatorio de cashback de $22,30",
+  "Repeat purchases": "Recompra",
+  "A Klaviyo email that reminds each customer of their cashback balance. It suggests three ways to spend it and has one clear button.":
+    "Un email de Klaviyo que le recuerda a cada cliente su saldo de cashback. Sugiere tres formas de usarlo y tiene un solo botón claro.",
+
+  // Results
+  "Results": "Resultados",
+  "Products migrated to Shopify 2.0": "Productos migrados a Shopify 2.0",
+  "Storefront rebuilt with native Liquid sections": "Tienda rearmada con secciones nativas de Liquid",
+  "Third-party apps left for cart, upsell and pop-ups": "Apps de terceros que quedan para carrito, upsell y pop-ups",
+  "Cashback recovery and wine club flows rebuilt": "Flows de recupero con cashback y del club de vinos rearmados",
 };

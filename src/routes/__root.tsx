@@ -78,24 +78,23 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Sebastián Jara — Ecommerce & Brand Specialist" },
+      { title: "Sebastián Jara | Brand & Design Strategy Lead" },
       {
         name: "description",
         content:
-          "High-conversion Shopify environments built with AI-assisted development. Specializing in brand identity, custom UI/UX architecture, and workflow automation.",
+          "Brand & Design Strategy Lead from Buenos Aires. I lead brands and build their landing pages, HubSpot emails and Shopify stores, using AI to work faster.",
       },
-      { name: "author", content: "Portfolio" },
-      { property: "og:title", content: "Sebastián Jara — Ecommerce & Brand Specialist" },
+      { name: "author", content: "Sebastián Jara" },
+      { property: "og:title", content: "Sebastián Jara | Brand & Design Strategy Lead" },
       {
         property: "og:description",
         content:
-          "High-conversion Shopify environments built with AI-assisted development. Specializing in brand identity, custom UI/UX architecture, and workflow automation.",
+          "Brand & Design Strategy Lead from Buenos Aires. I lead brands and build their landing pages, HubSpot emails and Shopify stores, using AI to work faster.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Sebastián Jara — Ecommerce & Brand Specialist" },
-      { name: "twitter:description", content: "High-conversion Shopify environments built with AI-assisted development. Specializing in brand identity, custom UI/UX architecture, and workflow automation." },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Sebastián Jara | Brand & Design Strategy Lead" },
+      { name: "twitter:description", content: "Brand & Design Strategy Lead from Buenos Aires. I lead brands and build their landing pages, HubSpot emails and Shopify stores, using AI to work faster." },
     ],
     links: [
       {

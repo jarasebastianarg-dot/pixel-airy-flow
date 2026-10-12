@@ -11,16 +11,15 @@ import {
 import { useEffect, useRef, useState } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useTr } from "@/i18n/projectTranslate";
+import { NextProject, useCaseLabel } from "@/components/case/NextProject";
 import {
   ArrowLeft,
-  ArrowUpRight,
   Sparkles,
   Target,
   Video,
   Layers,
   Package,
   Globe2,
-  Clock,
   Briefcase,
   Plus,
 } from "lucide-react";
@@ -38,17 +37,17 @@ export const Route = createFileRoute("/projects/elevate-local")({
   component: ElevateLocalProject,
   head: () => ({
     meta: [
-      { title: "Elevate Local — Clinical Authority & Strategic Brand Identity" },
+      { title: "Elevate Local: Visual identity for a medical marketing agency | Sebastián Jara" },
       {
         name: "description",
         content:
-          "Case study: building a B2B brand identity for a marketing agency serving European medical clinics — 100% remote, async, and clinically credible.",
+          "The visual identity I designed for a marketing agency that works with medical clinics in Europe: logo system, colors, type, brand guidelines and a logo animation, done fully remote.",
       },
-      { property: "og:title", content: "Elevate Local — Brand Identity Case Study" },
+      { property: "og:title", content: "Elevate Local: Visual identity for a medical marketing agency" },
       {
         property: "og:description",
         content:
-          "How I designed a clinical, high-trust B2B brand identity for the European medical sector — delivered fully async.",
+          "Logo system, mineral color palette, typography and brand guidelines for a B2B agency in the European medical sector.",
       },
       { property: "og:type", content: "article" },
       { property: "og:url", content: "/projects/elevate-local" },
@@ -108,32 +107,32 @@ const stack = [
   "Loom",
 ];
 
-const focus = ["B2B Visual Strategy", "Medical Sector", "Remote Collaboration"];
+const focus = ["B2B branding", "Medical sector", "Remote collaboration"];
 
 const executionCards = [
   {
     icon: Target,
-    kicker: "Positioning",
-    title: "Clinic-First Positioning",
-    body: "Engineered the core logomark and visual language specifically to resonate with European clinic directors and healthcare decision-makers. Every typographic and color choice was strategically selected to project clinical trust, precision, and patient-centric marketing energy.",
+    kicker: "Audience",
+    title: "Made for clinic directors",
+    body: "I designed the logo and the visual language for the people the agency sells to: clinic directors and healthcare managers in Europe. I picked colors and type that feel trustworthy and precise.",
   },
   {
     icon: Video,
     kicker: "Async",
-    title: "Asynchronous Strategic Presentations",
-    body: "Leveraged asynchronous Loom video presentations to guide European stakeholders through the design rationale remotely. This workflow solved timezone friction, allowing the client to digest strategic context before providing feedback, drastically reducing revision cycles.",
+    title: "Recorded presentations",
+    body: "I presented each round in a Loom video and explained the reasons behind every choice. The client watched on their own time and sent feedback, so we didn't need to match time zones for calls.",
   },
   {
     icon: Layers,
     kicker: "Iteration",
-    title: "Iterative Design Architecture",
-    body: "Developed multiple conceptual directions based on clinic-director and patient avatars. Refined the chosen path through strategic feedback loops, ensuring the final identity was perfectly aligned with their B2B medical marketing goals.",
+    title: "A few directions, then one",
+    body: "I sketched several concepts with clinic directors and their patients in mind. We picked one together and I refined it over a few rounds of feedback.",
   },
   {
     icon: Package,
     kicker: "Delivery",
-    title: "Scalable Asset Delivery",
-    body: "Delivered a robust and comprehensive brand package — including vector assets, color systems, and usage guidelines — ensuring the agency's new identity remains consistent and scalable across websites, pitch decks, paid ads, and clinic-facing collateral.",
+    title: "The brand kit",
+    body: "I delivered the logo files, the color palette, the type and the usage guidelines. With that, the agency can apply the brand the same way on its website, decks, ads and materials for clinics.",
   },
 ];
 
@@ -141,22 +140,22 @@ const metrics = [
   {
     icon: Briefcase,
     value: "B2B",
-    label: "Positioned for European clinic directors — a credibility-first identity built to unlock high-ticket healthcare contracts.",
+    label: "An identity made for selling to clinic directors in Europe.",
   },
   {
     icon: Sparkles,
     value: "1",
-    label: "Unified visual system across web, decks and paid ads — the agency finally shows up consistent in every patient-facing touchpoint.",
+    label: "One visual system for the website, decks and ads.",
   },
   {
-    icon: Clock,
-    value: "< 48h",
-    label: "Revision turnaround end-to-end async — the agency ships pitches and campaigns faster than in-house competitors.",
+    icon: Layers,
+    value: "5",
+    label: "Logo versions: horizontal, reversed, stacked, monogram and isotype.",
   },
   {
     icon: Globe2,
     value: "100%",
-    label: "Fully remote delivery across time zones — proof the brand can run at European speed with no on-site friction.",
+    label: "Remote, from the first brief to the final files, across time zones.",
   },
 ];
 
@@ -344,9 +343,9 @@ const logoVariants: LogoVariant[] = [
   {
     kicker: "Primary",
     label: "Horizontal Logotype",
-    caption: "Matte Obsidian on Limestone. Editorial pause anchored by the center dot.",
+    caption: "Matte Obsidian on Limestone. The center dot works as a pause between the two words.",
     src: elHorizontalDark.url,
-    alt: "Elevate Local horizontal logotype — dark on light",
+    alt: "Elevate Local horizontal logotype, dark on light",
     theme: "light",
   },
   {
@@ -354,7 +353,7 @@ const logoVariants: LogoVariant[] = [
     label: "Horizontal · Reversed",
     caption: "Limestone on Matte Obsidian. Same weight and legibility in negative.",
     src: elHorizontalLight.url,
-    alt: "Elevate Local horizontal logotype — light on dark",
+    alt: "Elevate Local horizontal logotype, light on dark",
     theme: "dark",
   },
   {
@@ -368,7 +367,7 @@ const logoVariants: LogoVariant[] = [
   {
     kicker: "Monogram",
     label: "E·L Reduction",
-    caption: "Compact editorial mark for tight formats — 46px minimum.",
+    caption: "Compact mark for small formats. Minimum size 46px.",
     src: elMediaDark.url,
     alt: "Elevate Local E·L monogram",
     theme: "light",
@@ -376,9 +375,9 @@ const logoVariants: LogoVariant[] = [
   {
     kicker: "Isotype",
     label: "The E",
-    caption: "Widened cut for aggressive, commercial recognition at any scale.",
+    caption: "A wider E that stays easy to recognize at any size.",
     src: elIsoDark.url,
-    alt: "Elevate Local isotype — the E",
+    alt: "Elevate Local isotype, the E",
     theme: "light",
   },
 ];
@@ -458,11 +457,10 @@ function HorizontalMockups() {
         <div className="mx-auto w-full max-w-6xl px-6">
           <div className="flex items-end justify-between gap-4">
             <div>
-              <SectionLabel>{tr("02.5 — Gallery")}</SectionLabel>
               <h3 className="mt-4 text-3xl font-bold leading-[1.05] tracking-tight">
-                {tr("Brand Guidelines & Logo Variations")}{" "}
-                <span className="font-serif italic font-normal text-accent-1">
-                  {tr("Overlap")}
+                {tr("The logo in")}{" "}
+                <span className="">
+                  {tr("five versions")}
                 </span>
               </h3>
             </div>
@@ -502,11 +500,10 @@ function HorizontalMockups() {
         <div className="mx-auto w-full max-w-6xl px-6 md:px-10">
           <div className="flex items-end justify-between gap-6">
             <div>
-              <SectionLabel>{tr("02.5 — Gallery")}</SectionLabel>
               <h3 className="mt-4 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
-                {tr("Brand Guidelines & Logo Variations")}{" "}
-                <span className="font-serif italic font-normal text-accent-1">
-                  {tr("Overlap")}
+                {tr("The logo in")}{" "}
+                <span className="">
+                  {tr("five versions")}
                 </span>
               </h3>
             </div>
@@ -544,6 +541,7 @@ function HorizontalMockups() {
 
 function ElevateLocalProject() {
   const { tr } = useTr();
+  const caseLabel = useCaseLabel("elevate-local");
   return (
     <main className="min-h-screen w-full [overflow-x:clip] bg-background text-foreground">
       {/* Top bar */}
@@ -558,7 +556,7 @@ function ElevateLocalProject() {
           </Link>
           <div className="flex items-center gap-3">
           <span className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-muted-foreground">
-            {tr("Case Study / 03")}
+            {caseLabel}
           </span>
             <LanguageToggle />
           </div>
@@ -574,17 +572,17 @@ function ElevateLocalProject() {
         <div className="mx-auto max-w-6xl px-6 pb-20 pt-16 md:px-10 md:pb-28 md:pt-24">
           <Reveal stagger={0.12}>
             <motion.div variants={fadeUp}>
-              <SectionLabel>{tr("Brand Identity · B2B Medical")}</SectionLabel>
+              <SectionLabel>{tr("Brand identity · B2B · Healthcare")}</SectionLabel>
             </motion.div>
             <motion.h1
               variants={fadeUp}
               className="mt-6 max-w-5xl text-4xl font-bold leading-[1.02] tracking-tight md:text-6xl lg:text-[4.5rem]"
             >
               {tr("Elevate Local:")}{" "}
-              <span className="text-gradient-accent">{tr("Clinical Authority")}</span>{" "}
-              {tr("& Strategic")}{" "}
+              <span className="text-gradient-accent">{tr("a visual identity")}</span>{" "}
+              {tr("for an agency that markets")}{" "}
               <span className="font-serif italic font-normal text-accent-1">
-                {tr("Brand Identity")}
+                {tr("medical clinics")}
               </span>
               .
             </motion.h1>
@@ -592,7 +590,7 @@ function ElevateLocalProject() {
               variants={fadeUp}
               className="mt-8 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg"
             >
-              {tr("A B2B visual identity for a marketing agency that helps medical clinics across Europe win patient trust and fill appointment books — balancing clinical credibility with modern growth marketing, delivered 100% remotely.")}
+              {tr("Elevate Local is a marketing agency for medical clinics in Europe. I designed its visual identity from scratch: logo, colors, type, brand guidelines and a short logo animation. The whole project was done remotely.")}
             </motion.p>
           </Reveal>
 
@@ -618,7 +616,7 @@ function ElevateLocalProject() {
               className="group rounded-3xl border border-border bg-card p-6 shadow-[var(--shadow-card)] transition-colors duration-300 hover:border-accent-1/40 hover:shadow-[var(--shadow-elegant)]"
             >
               <div className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
-                {tr("Tech Stack")}
+                {tr("Tools")}
               </div>
               <div className="mt-3 flex flex-wrap gap-2">
                 {stack.map((t) => (
@@ -660,16 +658,15 @@ function ElevateLocalProject() {
         </div>
       </section>
 
-      {/* The Friction */}
+      {/* The problem */}
       <section className="border-t border-border/60 bg-secondary/30">
         <div className="mx-auto max-w-6xl px-6 py-20 md:grid md:grid-cols-12 md:gap-12 md:px-10 md:py-28">
           <Reveal className="md:col-span-4" stagger={0.08}>
             <motion.div variants={fadeUp}>
-              <SectionLabel>{tr("01 — Context")}</SectionLabel>
               <h2 className="mt-6 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
                 {tr("The")}{" "}
-                <span className="font-serif italic font-normal text-accent-1">
-                  {tr("Friction")}
+                <span className="">
+                  {tr("problem")}
                 </span>
               </h2>
             </motion.div>
@@ -679,17 +676,17 @@ function ElevateLocalProject() {
               variants={fadeUp}
               className="text-lg leading-relaxed text-foreground/85 md:text-xl"
             >
-              {tr("Elevate Local is a marketing agency built to help")}{" "}
+              {tr("Elevate Local helps")}{" "}
               <span className="font-semibold text-foreground">
                 {tr("medical clinics across Europe")}
               </span>{" "}
-              {tr("attract more patients and own their local market. In a sector where trust is the currency, the brand had to feel as credible as a white-coat consultation — not as flashy as a consumer app.")}
+              {tr("get more patients through marketing. Its clients are clinic directors, and in healthcare people need to trust you before they hire you. So the brand had to look calm and professional.")}
             </motion.p>
             <motion.p
               variants={fadeUp}
               className="mt-6 text-base leading-relaxed text-muted-foreground md:text-lg"
             >
-              {tr("The challenge was building a visual identity from scratch that bridged this gap: reassuring clinic directors and patients, while still projecting the speed and precision of a performance marketing team — all managed asynchronously across time zones.")}
+              {tr("The agency had no visual identity yet. I had to design one from zero that clinic directors and patients would trust, and that still looked like a modern marketing team. We worked fully remote, in different time zones.")}
             </motion.p>
           </Reveal>
         </div>
@@ -722,24 +719,23 @@ function ElevateLocalProject() {
         </div>
       </section>
 
-      {/* The Execution */}
+      {/* What I did */}
       <section className="border-t border-border/60">
         <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
-          <Reveal className="grid grid-cols-1 gap-10 md:grid-cols-12 md:items-end" stagger={0.1}>
-            <motion.div variants={fadeUp} className="md:col-span-7">
-              <SectionLabel>{tr("02 — Build")}</SectionLabel>
+          <Reveal className="flex max-w-3xl flex-col gap-6" stagger={0.1}>
+            <motion.div variants={fadeUp} className="">
               <h2 className="mt-6 text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl">
-                {tr("The")}{" "}
-                <span className="font-serif italic font-normal text-accent-1">
-                  {tr("Execution")}
+                {tr("What I")}{" "}
+                <span className="">
+                  {tr("did")}
                 </span>
               </h2>
             </motion.div>
             <motion.p
               variants={fadeUp}
-              className="text-base leading-relaxed text-muted-foreground md:col-span-5 md:text-lg"
+              className="text-base leading-relaxed text-muted-foreground max-w-[65ch] md:text-lg"
             >
-              {tr("Designing a cohesive visual identity grounded in target audience psychology and European market research, delivered through a highly optimized, asynchronous remote collaboration framework.")}
+              {tr("I started from who the agency talks to: clinic directors in Europe. I explored a few directions, chose one with the client and turned it into a full brand kit.")}
             </motion.p>
           </Reveal>
 
@@ -760,22 +756,20 @@ function ElevateLocalProject() {
       {/* Color System — Mineral Palette */}
       <section className="border-t border-border/60 bg-secondary/30">
         <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
-          <Reveal className="grid grid-cols-1 gap-10 md:grid-cols-12 md:items-end" stagger={0.1}>
-            <motion.div variants={fadeUp} className="md:col-span-7">
-              <SectionLabel>{tr("02.6 — Color")}</SectionLabel>
+          <Reveal className="flex max-w-3xl flex-col gap-6" stagger={0.1}>
+            <motion.div variants={fadeUp} className="">
               <h2 className="mt-6 text-4xl font-bold leading-[1.05] tracking-tight md:text-5xl">
-                {tr("The")}{" "}
-                <span className="font-serif italic font-normal text-accent-1">
-                  {tr("Mineral")}
-                </span>{" "}
-                {tr("Palette")}
+                {tr("A palette of")}{" "}
+                <span className="">
+                  {tr("mineral tones")}
+                </span>
               </h2>
             </motion.div>
             <motion.p
               variants={fadeUp}
-              className="text-base leading-relaxed text-muted-foreground md:col-span-5 md:text-lg"
+              className="text-base leading-relaxed text-muted-foreground max-w-[65ch] md:text-lg"
             >
-              {tr("Neutral, mineral tones that simulate granite and high-gram paper — chosen to feel clean, clinical, and reassuring to patients and clinic directors, not noisy like a consumer app.")}
+              {tr("Neutral tones inspired by stone and heavy paper. I chose them because they feel clean and calm, which suits a medical brand.")}
             </motion.p>
           </Reveal>
 
@@ -846,22 +840,20 @@ function ElevateLocalProject() {
       {/* Typography — Geomanist */}
       <section className="border-t border-border/60">
         <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
-          <Reveal className="grid grid-cols-1 gap-10 md:grid-cols-12 md:items-end" stagger={0.1}>
-            <motion.div variants={fadeUp} className="md:col-span-7">
-              <SectionLabel>{tr("02.7 — Type")}</SectionLabel>
+          <Reveal className="flex max-w-3xl flex-col gap-6" stagger={0.1}>
+            <motion.div variants={fadeUp} className="">
               <h2 className="mt-6 text-4xl font-bold leading-[1.05] tracking-tight md:text-5xl">
-                Geomanist —{" "}
-                <span className="font-serif italic font-normal text-accent-1">
-                  {tr("Editorial")}
-                </span>{" "}
-                {tr("Authority")}
+                {tr("One typeface:")}{" "}
+                <span className="">
+                  Geomanist
+                </span>
               </h2>
             </motion.div>
             <motion.p
               variants={fadeUp}
-              className="text-base leading-relaxed text-muted-foreground md:col-span-5 md:text-lg"
+              className="text-base leading-relaxed text-muted-foreground max-w-[65ch] md:text-lg"
             >
-              {tr("A voice engineered to speak eye-to-eye with clinic directors and medical professionals: stable, methodical, and trustworthy. No generic startup type.")}
+              {tr("Geomanist is stable, clear and easy to read. That makes it a good fit for a brand that talks to clinic directors and doctors.")}
             </motion.p>
           </Reveal>
 
@@ -880,7 +872,7 @@ function ElevateLocalProject() {
                 Aa
               </div>
               <p className="mt-6 text-base leading-relaxed text-muted-foreground md:text-[0.95rem]">
-                {tr("Reserved for hero statements, landing headlines and section openers. The heaviest cut in the family — used sparingly to assert authority the moment a clinic director lands on the page.")}
+                {tr("For big headlines, landing page titles and section openers. It's the heaviest weight in the family, so I use it sparingly.")}
               </p>
               <div className="mt-6 flex flex-wrap gap-2 border-t border-border pt-4 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-muted-foreground">
                 <span className="rounded-full border border-border bg-secondary px-2.5 py-1">{tr("Hero")}</span>
@@ -897,13 +889,13 @@ function ElevateLocalProject() {
             >
               <div className="flex items-center justify-between font-mono text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
                 <span>Geomanist · Medium</span>
-                <span className="text-accent-1">{tr("Body & Subhead")}</span>
+                <span className="text-accent-1">{tr("Body & subheads")}</span>
               </div>
               <div className="mt-8 text-[3.5rem] font-medium leading-[0.95] tracking-[-0.03em] text-foreground md:text-[5rem]">
                 Aa
               </div>
               <p className="mt-6 text-base leading-relaxed text-muted-foreground md:text-[0.95rem]">
-                {tr("The workhorse cut. Handles subheads, running copy, UI labels and technical documentation — optimized for legibility on long digital reads without losing editorial rhythm.")}
+                {tr("The everyday weight, for subheads, body copy, UI labels and documents. It reads well in long texts on screen.")}
               </p>
               <div className="mt-6 flex flex-wrap gap-2 border-t border-border pt-4 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-muted-foreground">
                 <span className="rounded-full border border-border bg-secondary px-2.5 py-1">{tr("Body copy")}</span>
@@ -916,7 +908,7 @@ function ElevateLocalProject() {
         </div>
       </section>
 
-      {/* The Impact */}
+      {/* Results */}
       <section className="relative overflow-hidden border-t border-border/60 bg-foreground text-background">
         <div
           aria-hidden
@@ -924,23 +916,13 @@ function ElevateLocalProject() {
         />
         <div className="relative mx-auto max-w-6xl px-6 py-24 md:px-10 md:py-32">
           <Reveal stagger={0.08}>
-            <motion.div variants={fadeUp}>
-              <div className="inline-flex items-center gap-3">
-                <span className="h-px w-8 bg-accent-1" />
-                <span className="font-mono text-xs font-semibold uppercase tracking-[0.24em] text-accent-1">
-                  {tr("03 — Outcome")}
-                </span>
-              </div>
-            </motion.div>
             <motion.h2
               variants={fadeUp}
-              className="mt-6 max-w-3xl text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl"
+              className="max-w-3xl text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl"
             >
-              {tr("The")}{" "}
-              <span className="font-serif italic font-normal text-accent-1">
-                {tr("Impact")}
+              <span className="">
+                {tr("Results")}
               </span>
-              .
             </motion.h2>
           </Reveal>
 
@@ -970,36 +952,7 @@ function ElevateLocalProject() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="border-t border-border/60">
-        <div className="mx-auto flex max-w-6xl flex-col items-start gap-8 px-6 py-20 md:flex-row md:items-center md:justify-between md:px-10 md:py-24">
-          <div>
-            <SectionLabel>{tr("Next")}</SectionLabel>
-            <h3 className="mt-4 max-w-xl text-3xl font-bold leading-[1.1] tracking-tight md:text-4xl">
-              {tr("Building a brand that needs to earn instant trust?")}
-            </h3>
-            <p className="mt-3 max-w-lg text-base leading-relaxed text-muted-foreground">
-              {tr("I design B2B identities engineered for authority — delivered fully async.")}
-            </p>
-          </div>
-          <div className="flex flex-wrap items-center gap-3">
-            <Link
-              to="/"
-              className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-3 text-sm font-semibold text-foreground shadow-[var(--shadow-card)] transition-colors hover:bg-secondary"
-            >
-              <ArrowLeft className="h-4 w-4" />
-              {tr("Back to portfolio")}
-            </Link>
-            <a
-              href="/#contact"
-              className="inline-flex items-center gap-2 rounded-full bg-gradient-accent px-5 py-3 text-sm font-semibold text-accent-foreground shadow-[var(--shadow-accent)] transition-transform hover:-translate-y-0.5"
-            >
-              {tr("Get in touch")}
-              <ArrowUpRight className="h-4 w-4" />
-            </a>
-          </div>
-        </div>
-      </section>
+      <NextProject current="elevate-local" />
     </main>
   );
 }

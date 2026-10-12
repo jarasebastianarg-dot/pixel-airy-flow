@@ -1,144 +1,114 @@
 export const pawRoyaltyEs: Record<string, string> = {
-  "Brand, storefront and retention system built from scratch": "Marca, tienda y sistema de retención construidos desde cero",
-  "Custom Liquid storefront — no page-builder apps": "Tienda a medida en Liquid — sin apps de page builder",
-  "Key experiences: home, PDP, Subscribe & Save and wellness quiz": "Experiencias clave: home, PDP, Subscribe & Save y quiz de bienestar",
-  "Klaviyo flows and campaigns designed and coded": "Flows y campañas de Klaviyo diseñados y codificados",
-  "A full-funnel email system — welcome, subscribe-and-save retention and flagship product campaigns — designed and coded inside Klaviyo.":
-    "Un sistema de email de embudo completo — bienvenida, retención de subscribe-and-save y campañas insignia de producto — diseñado y codificado dentro de Klaviyo.",
-  // Top bar / nav
-  "Back to portfolio": "Volver al portafolio",
-  "Case Study / 02": "Caso de Estudio / 02",
-  "Get in touch": "Ponerse en contacto",
+  // Top bar / microcopy
+  "Back to portfolio": "Volver al portfolio",
+  "Hover to expand": "Pasá el mouse para expandir",
+  "Click to zoom": "Click para ampliar",
+  "Image preview": "Vista previa de imagen",
+  "Close preview": "Cerrar vista previa",
+  "Open preview": "Abrir vista previa",
 
   // Hero
-  "Shopify Launch · E-commerce": "Lanzamiento Shopify · E-commerce",
-  "Paw Royalty: Full-Stack": "Paw Royalty: Lanzamiento E-Commerce",
-  "E-Commerce Launch": "Full-Stack",
-  "High-Converting UX": "UX de Alta Conversión",
-  "A brand incubated from zero — storefront, UX and retention system engineered in Shopify Liquid using AI-assisted development, tuned for day-one recurring revenue.":
-    "Una marca incubada desde cero — storefront, UX y sistema de retención diseñados en Shopify Liquid con desarrollo asistido por AI, optimizados para generar ingresos recurrentes desde el primer día.",
+  "Brand launch · Shopify": "Lanzamiento de marca · Shopify",
+  "Paw Royalty: launching a": "Paw Royalty: el lanzamiento de una",
+  "pet supplement brand": "marca de suplementos para mascotas",
+  "from zero for the": "desde cero para el",
+  "US market": "mercado de Estados Unidos",
+  "I created the brand identity, designed the UI and coded the Shopify store in Liquid. I also built a Subscribe & Save page, a wellness quiz and the Klaviyo emails. I wrote the code with AI-assisted development.":
+    "Creé la identidad de marca, diseñé la UI y programé la tienda de Shopify en Liquid. También armé una página de Subscribe & Save, un quiz de bienestar y los emails de Klaviyo. Escribí el código con desarrollo asistido por IA.",
 
   // TL;DR bar
   "Role": "Rol",
-  "Lead Designer & AI-Assisted Developer": "Diseñador Líder y Desarrollador Asistido por AI",
+  "Designer and developer (AI-assisted)": "Diseñador y desarrollador (asistido por IA)",
   "Tech Stack": "Stack Tecnológico",
-  "Email Automations": "Automatizaciones de Email",
-  "Focus": "Enfoque",
-  "Brand Incubation": "Incubación de Marca",
+  "Focus": "Foco",
+  "Shopify": "Shopify",
+  "Shopify Liquid": "Shopify Liquid",
+  "HTML / CSS": "HTML / CSS",
+  "Klaviyo": "Klaviyo",
+  "Email Automations": "Automatizaciones de email",
+  "Brand Identity": "Identidad de marca",
   "UI/UX Design": "Diseño UI/UX",
-  "Retention Strategy": "Estrategia de Retención",
+  "Email Marketing": "Email Marketing",
 
-  // Friction section
-  "01 — Context": "01 — Contexto",
-  "The": "La",
-  "Friction": "Fricción",
-  "Launching a new brand in the highly competitive pet care market requires more than just an aesthetic template. The challenge was building a digital presence from":
-    "Lanzar una nueva marca en el altamente competitivo mercado de cuidado de mascotas requiere más que una plantilla estética. El desafío era construir una presencia digital desde",
-  "absolute zero": "cero absoluto",
-  "that could immediately convey trust, educate the customer through information-dense product pages, and convert cold traffic into recurring revenue without relying on a pre-existing customer base.":
-    "que transmitiera confianza de inmediato, educara al cliente mediante páginas de producto densas en información, y convirtiera tráfico frío en ingresos recurrentes sin depender de una base de clientes preexistente.",
+  // The problem
+  "The": "El",
+  "problem": "problema",
+  "Paw Royalty was a new pet supplement brand starting from":
+    "Paw Royalty era una marca nueva de suplementos para mascotas que arrancaba desde",
+  "zero": "cero",
+  "for the US market. There was no store, no customer list and no email setup. The site had to explain each product clearly and make subscribing an easy choice.":
+    "para el mercado de Estados Unidos. No había tienda, ni lista de clientes, ni emails armados. El sitio tenía que explicar cada producto con claridad y hacer que suscribirse fuera una opción fácil.",
 
-  // Execution section
-  "02 — Build": "02 — Construcción",
-  "Execution": "Ejecución",
-  "Bypassing rigid themes and static mockups to architect the entire digital storefront in Shopify Liquid, using AI-assisted development to move from concept to live build fast. This provided absolute creative freedom and a high-performance foundation built specifically for scaling.":
-    "Prescindiendo de temas rígidos y mockups estáticos para diseñar todo el storefront en Shopify Liquid, usando desarrollo asistido por AI para pasar del concepto al build en vivo rápidamente. Esto brindó total libertad creativa y una base de alto rendimiento construida específicamente para escalar.",
-
-  // Execution cards
+  // What I did
+  "What I": "Qué",
+  "did": "hice",
+  "I skipped ready-made themes and coded the store in Shopify Liquid, using AI-assisted development to move faster. That let me build the design the way I drew it.":
+    "Dejé de lado los themes prearmados y programé la tienda en Shopify Liquid, con desarrollo asistido por IA para avanzar más rápido. Así pude construir el diseño tal como lo dibujé.",
   "PDP": "PDP",
-  "High-Density Product Architectures": "Arquitecturas de Producto de Alta Densidad",
-  "Information-dense PDPs hardcoded in Liquid — visual, fast, and engineered to build trust and drive conversion.":
-    "PDPs densas en información codificadas a mano en Liquid — visuales, rápidas y diseñadas para generar confianza e impulsar la conversión.",
-  "LTV": "LTV",
-  "Native Subscribe & Save Engine": "Motor Nativo de Subscribe & Save",
-  "Seamless subscription flow wired into the native cart — capturing recurring revenue from day one.":
-    "Flujo de suscripción integrado sin fisuras en el carrito nativo — capturando ingresos recurrentes desde el primer día.",
-  "Retention": "Retención",
-  "Full-Funnel Email Marketing": "Email Marketing de Embudo Completo",
-  "Editorial Klaviyo campaigns and lifecycle flows — welcome, abandoned cart, post-purchase and subscribe-and-save — designed and coded in-house to nurture new pet parents and compound recurring revenue on autopilot.":
-    "Campañas editoriales en Klaviyo y flujos de lifecycle — bienvenida, carrito abandonado, post-compra y subscribe-and-save — diseñados y codificados internamente para nutrir a los nuevos dueños de mascotas y acumular ingresos recurrentes en piloto automático.",
+  "Detailed product pages": "Páginas de producto completas",
+  "Product pages coded in Liquid with ingredients, certifications and FAQs, so people can check what they are buying.":
+    "Páginas de producto programadas en Liquid con ingredientes, certificaciones y FAQs, para que la gente pueda ver qué está comprando.",
+  "Subscription": "Suscripción",
+  "Subscribe & Save in the cart": "Subscribe & Save en el carrito",
+  "Shoppers can pick a subscription right on the product page and in the cart, with 15% off every order.":
+    "Se puede elegir la suscripción directo en la página de producto y en el carrito, con 15% de descuento en cada pedido.",
+  "Email": "Email",
+  "Klaviyo emails": "Emails en Klaviyo",
+  "I designed and coded the welcome flow and the product campaigns in Klaviyo, written for new pet owners.":
+    "Diseñé y programé el flow de bienvenida y las campañas de producto en Klaviyo, pensados para personas que recién adoptan una mascota.",
   "UX": "UX",
-  "Liquid-Driven Creative Freedom": "Libertad Creativa Impulsada por Liquid",
-  "Custom Liquid and CSS translate the brand into a fluid, interactive UI — hand-crafted across every device.":
-    "Liquid y CSS personalizados traducen la marca en una UI fluida e interactiva — elaborada a mano en cada dispositivo.",
-  "Hover to expand": "Pasa el mouse para expandir",
+  "Custom UI": "UI a medida",
+  "Custom Liquid and CSS bring the brand into the store. Every page is responsive, from phone to desktop.":
+    "Liquid y CSS a medida llevan la marca a la tienda. Todas las páginas son responsive, del celular al desktop.",
 
-  // Gallery section
-  "02.5 — Gallery": "02.5 — Galería",
+  // Gallery
   "Storefront": "Storefront",
   "in motion": "en movimiento",
-  "Hover any preview to scroll the full page. Click to open the full-resolution capture.":
-    "Pasa el mouse sobre cualquier vista previa para recorrer la página completa. Haz clic para abrir la captura en resolución completa.",
-  "Click to zoom": "Clic para ampliar",
-  "Image preview": "Vista previa de imagen",
-  "Close preview": "Cerrar vista previa",
-
-  // Mockup gallery items
+  "Hover a preview to scroll the page. Click to see it full size.":
+    "Pasá el mouse sobre una vista previa para recorrer la página. Hacé click para verla en tamaño completo.",
   "Home": "Home",
-  "Homepage": "Página de Inicio",
-  "Conversion + Education": "Conversión + Educación",
-  "Designed to convert and inform in equal measure — hero storytelling, best-sellers, benefits, customer proof and press credibility guide cold clicks to considered add-to-carts.":
-    "Diseñada para convertir e informar a partes iguales — storytelling en el hero, best-sellers, beneficios, prueba social y credibilidad de prensa guían los clics fríos hacia decisiones de compra consideradas.",
-  "Product Detail Page": "Página de Detalle de Producto",
-  "Conversion + Trust": "Conversión + Confianza",
-  "A high-density PDP built to close the sale. Native Subscribe & Save 15% wired into the cart, plus ingredients, certifications, FAQs and behavioral wellness copy stack the trust pet parents need to check out.":
-    "Una PDP de alta densidad construida para cerrar la venta. Subscribe & Save nativo del 15% integrado en el carrito, además de ingredientes, certificaciones, FAQs y copy de bienestar conductual que suman la confianza que los dueños de mascotas necesitan para completar el checkout.",
+  "Homepage": "Homepage",
+  "Brand + Education": "Marca + Educación",
+  "The homepage introduces the brand and the products: a hero story, best sellers, benefits, customer reviews and press mentions.":
+    "La homepage presenta la marca y los productos: una historia en el hero, los más vendidos, beneficios, reseñas de clientes y menciones en prensa.",
+  "Product page": "Página de producto",
+  "Product info": "Info de producto",
+  "Each product page has the Subscribe & Save option (15% off) connected to the cart, plus ingredients, certifications, FAQs and notes on what the supplement helps with.":
+    "Cada página de producto tiene la opción de Subscribe & Save (15% off) conectada al carrito, más ingredientes, certificaciones, FAQs y notas sobre para qué sirve el suplemento.",
   "S&S": "S&S",
   "Subscribe & Save": "Subscribe & Save",
-  "Recurring Revenue": "Ingresos Recurrentes",
-  "A dedicated page that turns subscription into the offer — choose formula, pick cadence, save 15% every order — reframing recurrence as clinical benefit, not a lock-in.":
-    "Una página dedicada que convierte la suscripción en la oferta misma — elegir fórmula, elegir frecuencia, ahorrar 15% en cada pedido — reformulando la recurrencia como un beneficio clínico y no como una atadura.",
+  "Subscriptions": "Suscripciones",
+  "A page just for the subscription. You choose the formula, pick how often it ships and save 15% on every order. The copy explains why a steady routine is good for the pet.":
+    "Una página solo para la suscripción. Elegís la fórmula, cada cuánto llega y ahorrás 15% en cada pedido. El copy explica por qué una rutina constante le hace bien a la mascota.",
   "Quiz": "Quiz",
-  "Wellness Quiz": "Quiz de Bienestar",
-  "Personalization + Discount": "Personalización + Descuento",
-  "An interactive quiz that recommends a supplement stack by breed, age and health goals and unlocks a first-order discount — feeding Klaviyo with segmented, high-intent data.":
-    "Un quiz interactivo que recomienda un stack de suplementos según raza, edad y objetivos de salud y desbloquea un descuento en la primera compra — alimentando a Klaviyo con datos segmentados y de alta intención.",
+  "Wellness quiz": "Quiz de bienestar",
+  "Personalization": "Personalización",
+  "A quiz that suggests supplements based on breed, age and health goals. At the end it gives a first-order discount, and the answers go to Klaviyo for segmenting.":
+    "Un quiz que sugiere suplementos según raza, edad y objetivos de salud. Al final da un descuento para la primera compra, y las respuestas van a Klaviyo para segmentar.",
 
-  // Email gallery items
+  // Email marketing
+  "Emails built in": "Emails armados en",
+  "I designed and coded the emails in Klaviyo: the welcome flow, a Subscribe & Save email and the launch campaign.":
+    "Diseñé y programé los emails en Klaviyo: el flow de bienvenida, un email de Subscribe & Save y la campaña de lanzamiento.",
   "Campaign": "Campaña",
-  "Royal Treatment — Flagship Campaign": "Royal Treatment — Campaña Insignia",
-  "Brand + Conversion": "Marca + Conversión",
-  "Editorial hero campaign email — bestseller grid with vet-driven copy, science badges and a limited-time 15% first-order code. Designed to sell the brand and the product at once.":
-    "Email de campaña editorial en el hero — grid de bestsellers con copy avalado por veterinarios, sellos científicos y un código de 15% por tiempo limitado para la primera compra. Diseñado para vender la marca y el producto a la vez.",
-  "Subscribe & Save 15% Off": "Subscribe & Save con 15% de Descuento",
-  "Full routine grid pushing every SKU into the subscription funnel — dark cards, single CTA per formula, and social proof close to lift subscribers-per-send.":
-    "Grid de rutina completa que empuja cada SKU hacia el embudo de suscripción — tarjetas oscuras, un solo CTA por fórmula, y prueba social al cierre para elevar los suscriptores por envío.",
+  "Royal Treatment campaign": "Campaña Royal Treatment",
+  "Brand + Products": "Marca + Productos",
+  "The main launch campaign: a grid of best sellers with short product copy, science badges and a limited-time 15% first-order code.":
+    "La campaña principal de lanzamiento: una grilla de los más vendidos con copy corto de producto, sellos científicos y un código de 15% para la primera compra por tiempo limitado.",
+  "Retention": "Retención",
+  "Subscribe & Save 15% off": "Subscribe & Save con 15% off",
+  "An email that shows the full product range with one Subscribe & Save button per formula and customer reviews at the end.":
+    "Un email que muestra toda la línea de productos con un botón de Subscribe & Save por fórmula y reseñas de clientes al final.",
   "Welcome": "Bienvenida",
-  "Calming — 20% OFF Welcome Flow": "Calming — Flujo de Bienvenida con 20% OFF",
-  "Acquisition + Trust": "Adquisición + Confianza",
-  "Welcome-series drop for the Calming SKU: veterinarian-formulated badge, ingredient breakdown, verified reviews and a single ROYAL-SUB code to convert first-time subscribers.":
-    "Envío de la serie de bienvenida para el SKU Calming: sello de fórmula veterinaria, desglose de ingredientes, reseñas verificadas y un único código ROYAL-SUB para convertir a los primeros suscriptores.",
+  "Calming welcome email (20% off)": "Email de bienvenida Calming (20% off)",
+  "Welcome flow": "Flow de bienvenida",
+  "Part of the welcome flow, focused on the Calming supplement: vet-formulated badge, ingredient list, verified reviews and the ROYAL-SUB code.":
+    "Parte del flow de bienvenida, centrado en el suplemento Calming: sello de fórmula veterinaria, lista de ingredientes, reseñas verificadas y el código ROYAL-SUB.",
 
-  // Dynamic aria-labels (Open {title} preview)
-  "Open Homepage preview": "Abrir vista previa de Página de Inicio",
-  "Open Product Detail Page preview": "Abrir vista previa de Página de Detalle de Producto",
-  "Open Subscribe & Save preview": "Abrir vista previa de Subscribe & Save",
-  "Open Wellness Quiz preview": "Abrir vista previa de Quiz de Bienestar",
-  "Open Royal Treatment — Flagship Campaign preview": "Abrir vista previa de Royal Treatment — Campaña Insignia",
-  "Open Subscribe & Save 15% Off preview": "Abrir vista previa de Subscribe & Save con 15% de Descuento",
-  "Open Calming — 20% OFF Welcome Flow preview": "Abrir vista previa de Calming — Flujo de Bienvenida con 20% OFF",
-
-  // Email marketing section
-  "02.75 — Email Marketing": "02.75 — Email Marketing",
-  "Retention wired into": "Retención integrada con",
-  "A full-funnel email system — welcome, subscribe-and-save retention and flagship product campaigns — designed and coded inside Klaviyo. The channel now drives 22% of total revenue with a 48% average open rate and a 30× ROI on automations.":
-    "Un sistema de email de embudo completo — bienvenida, retención de subscribe-and-save y campañas insignia de producto — diseñado y codificado dentro de Klaviyo. El canal ahora genera el 22% de los ingresos totales con una tasa de apertura promedio del 48% y un ROI de 30x en automatizaciones.",
-
-  // Impact section
-  "03 — Outcome": "03 — Resultado",
-  "Impact": "Impacto",
-  "Custom Native Architecture": "Arquitectura Nativa Personalizada",
-  "Day-One Conversion Rate": "Tasa de Conversión Día Uno",
-  "Subscription Opt-In Rate": "Tasa de Suscripción",
-  "ROI on Klaviyo Automations": "ROI en Automatizaciones de Klaviyo",
-  "Average Campaign Open Rate": "Tasa de Apertura Promedio de Campañas",
-  "Email → Site Click-Through": "Click-Through Email → Sitio",
-  "Subscribe & Save Lift from Email": "Aumento de Subscribe & Save desde Email",
-  "Revenue from Email Channel": "Ingresos del Canal Email",
-
-  // CTA
-  "Next": "Siguiente",
-  "Launching something new?": "¿Lanzando algo nuevo?",
-  "I incubate brands end-to-end — from identity to a storefront built for recurring revenue.":
-    "Incubo marcas de punta a punta — desde la identidad hasta un storefront construido para generar ingresos recurrentes.",
+  // Results
+  "Results": "Resultados",
+  "Brand, store and emails built from scratch": "Marca, tienda y emails hechos desde cero",
+  "Store coded in custom Liquid, no page builder apps": "Tienda programada en Liquid a medida, sin apps de page builder",
+  "Key pages: home, product page, Subscribe & Save and wellness quiz": "Páginas clave: home, página de producto, Subscribe & Save y quiz de bienestar",
+  "Klaviyo emails designed and coded": "Emails de Klaviyo diseñados y programados",
 };
