@@ -34,12 +34,12 @@ export const Route = createFileRoute("/projects/xtendo-global")({
       {
         name: "description",
         content:
-          "Case study: after an outside studio designed Xtendo Global's new logo, I wrote the 45-page brand manual, created the Talent Solutions sub-brand, built HubSpot landing pages and emails, designed the brand's templates and made the launch video with Claude.",
+          "Case study: Xtendo Global had a new logo and a thin brand guide. I gave it a look, wrote the 45-page brand manual, built a Gemini Gem so anyone can make on-brand pieces, and designed HubSpot landing pages and emails.",
       },
       { property: "og:title", content: "Xtendo Global: Brand & Design Strategy case study" },
       {
         property: "og:description",
-        content: "How I turned Xtendo Global's new logo into a brand system for 1,500+ people in 9 countries.",
+        content: "How I turned a logo with no look into a brand system for 1,500+ people in 9 countries, with AI.",
       },
       { property: "og:type", content: "article" },
       { property: "og:url", content: "/projects/xtendo-global" },
@@ -67,6 +67,36 @@ const manualPages = [
 ];
 
 const talentPages = Array.from({ length: 9 }, (_, i) => `talent-p${i + 1}.webp`);
+
+/* Pages of the Gem user guide. Pages with the QR code, the Gem link and the Canva link are left out on purpose. */
+const gemGuidePages = ["01", "02", "04", "05", "06", "07", "08", "09", "11"].map((n) => `gem-p${n}.webp`);
+
+const gemFeatures = [
+  {
+    t: "Ask in one sentence",
+    b: "What piece, what it's for, what it says and the details. The Gem picks the format, the logo, the colors and the type.",
+  },
+  {
+    t: "Old pieces, new brand",
+    b: "Upload an old flyer or a slide deck and it comes back with the new look, keeping the same text.",
+  },
+  {
+    t: "A plan B with templates",
+    b: "If it doesn't work after three tries, there are Canva templates in 12 topics where you only change the text.",
+  },
+];
+
+/* Real numbers from one of the HubSpot webinar emails (bots excluded) */
+const emailStats = [
+  { v: "48%", k: "Open rate" },
+  { v: "9.6%", k: "Click rate" },
+  { v: "20%", k: "Click-through rate", note: "Of the people who opened it, 1 in 5 clicked." },
+];
+
+const LANDINGS = [
+  { url: "https://recursos.xtendo.global/webinar-picos-de-demanda", label: "Peaks in demand webinar", lang: "ES" },
+  { url: "https://recursos.xtendo.global/pt-br/webinar-vendas-modernas-22-outubro", label: "Vendas Modernas webinar", lang: "PT" },
+];
 
 type Piece = { cover: string; label: string; note: string; pages?: string[]; pdf?: string };
 const pieceGroups: { id: string; label: string; line: string; pieces: Piece[] }[] = [
@@ -524,9 +554,23 @@ function ManualViewer({ onOpen }: { onOpen: (pages: string[], title: string, sta
   );
 }
 
-/* Horizontal rail of the Talent Solutions manual */
+/* Horizontal rail of document pages (Talent Solutions manual, Gem guide) */
 const RAIL_PAD = "max(1.5rem, calc((100vw - 72rem) / 2 + 2.5rem))";
-function TalentRail({ onOpen }: { onOpen: (pages: string[], title: string, start: number) => void }) {
+function PageRail({
+  pages,
+  title,
+  note,
+  ratio,
+  itemClass = "w-[82%] sm:w-[55%] lg:w-[38%]",
+  onOpen,
+}: {
+  pages: string[];
+  title: string;
+  note: string;
+  ratio: string;
+  itemClass?: string;
+  onOpen: (pages: string[], title: string, start: number) => void;
+}) {
   const { tr } = useTr();
   const rail = useRef<HTMLDivElement>(null);
   const move = (d: 1 | -1) => rail.current?.scrollBy({ left: d * rail.current.clientWidth * 0.7, behavior: "smooth" });
@@ -537,21 +581,21 @@ function TalentRail({ onOpen }: { onOpen: (pages: string[], title: string, start
         className="flex snap-x snap-mandatory gap-5 overflow-x-auto pb-6 pt-2 [scrollbar-width:none]"
         style={{ paddingInline: RAIL_PAD, scrollPaddingInline: RAIL_PAD }}
       >
-        {talentPages.map((src, i) => (
+        {pages.map((src, i) => (
           <button
             key={src}
             type="button"
-            onClick={() => onOpen(talentPages, "Talent Solutions", i)}
-            className="w-[82%] shrink-0 snap-start overflow-hidden rounded-2xl border border-border bg-white shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-card-hover)] sm:w-[55%] lg:w-[38%]"
-            aria-label={`${tr("Open")} Talent Solutions, ${tr("page")} ${i + 1}`}
+            onClick={() => onOpen(pages, tr(title), i)}
+            className={`${itemClass} shrink-0 snap-start overflow-hidden rounded-2xl border border-border bg-white shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-card-hover)]`}
+            aria-label={`${tr("Open")} ${tr(title)}, ${tr("page")} ${i + 1}`}
           >
-            <img src={`${A}/${src}`} alt="" loading="lazy" className="aspect-[1600/1131] w-full object-cover" />
+            <img src={`${A}/${src}`} alt="" loading="lazy" className={`${ratio} w-full object-cover`} />
           </button>
         ))}
         <span aria-hidden className="w-1 shrink-0" />
       </div>
       <div className="mx-auto mt-2 flex max-w-6xl items-center justify-between px-6 md:px-10">
-        <p className="text-sm text-muted-foreground">{tr("9 pages. Tap any page to open it.")}</p>
+        <p className="text-sm text-muted-foreground">{tr(note)}</p>
         <div className="flex gap-2">
           <button type="button" onClick={() => move(-1)} aria-label={tr("Previous pages")} className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border bg-card shadow-[var(--shadow-card)] hover:bg-secondary">
             <ChevronLeft className="h-5 w-5" />
@@ -784,11 +828,11 @@ function XtendoProject() {
           <div className="mx-auto max-w-6xl px-6 pb-16 pt-14 md:px-10 md:pb-20 md:pt-20">
             <SectionLabel>{tr("Brand & Design Strategy Lead · Xtendo Global")}</SectionLabel>
             <h1 className="mt-6 max-w-5xl text-4xl font-bold leading-[1.02] tracking-tight md:text-6xl lg:text-[4.5rem]">
-              {tr("Xtendo had a new logo. I made it work in")} <Accent hero>{tr("9 countries")}</Accent>.
+              {tr("Xtendo had a logo and nothing else. I gave it a")} <Accent hero>{tr("look")}</Accent>.
             </h1>
             <p className="mt-8 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
               {tr(
-                "I joined in August 2026, halfway through the rebrand. An outside studio had designed the logo. I took on the rest: the brand manual, the Talent Solutions sub-brand, HubSpot landing pages and emails, templates for each team, the launch video, and bringing AI into the design team's work.",
+                "I joined in August 2026. An outside studio had delivered the new logo with a thin brand guide and no visual direction. I created the look, wrote the brand manual, built an AI tool so anyone in the company can make on-brand pieces, and used AI to cut production times for my team and for marketing.",
               )}
             </p>
             <div className="mt-10 grid max-w-4xl gap-4 sm:grid-cols-3">
@@ -799,7 +843,7 @@ function XtendoProject() {
               <div className="rounded-3xl border border-border bg-card p-5 shadow-[var(--shadow-card)]">
                 <p className="font-mono text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">{tr("Tools")}</p>
                 <div className="mt-2 flex flex-wrap gap-1.5">
-                  {["HubSpot", "Claude", "Illustrator", "Monday"].map((t) => (
+                  {["HubSpot", "Gemini", "Claude", "Illustrator"].map((t) => (
                     <span key={t} className="rounded-full bg-secondary px-2.5 py-1 text-xs font-semibold">{t}</span>
                   ))}
                 </div>
@@ -830,13 +874,13 @@ function XtendoProject() {
           <div className="mx-auto grid max-w-6xl gap-12 px-6 py-20 md:px-10 md:py-28 lg:grid-cols-12 lg:items-center">
             <Reveal className="lg:col-span-5">
               <motion.h2 variants={fadeUp} className="text-3xl font-bold leading-[1.05] tracking-tight [text-wrap:balance] md:text-5xl">
-                {tr("There was a logo, but")} <Accent>{tr("no rules")}</Accent> {tr("for using it.")}
+                {tr("A new logo, a thin manual and no look.")}
               </motion.h2>
               <motion.p variants={fadeUp} className="mt-6 text-base leading-relaxed text-muted-foreground md:text-lg">
-                {tr("Each team made its own slides, posts and documents, so Xtendo looked different from one country to the next.")}
+                {tr("The studio's guide covered the logo and the colors, and little else. There was no direction for photos, layouts, slides or social media, so each team made its own pieces and Xtendo looked different in every country.")}
               </motion.p>
               <motion.p variants={fadeUp} className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">
-                {tr("My first job was to write those rules down and make them easy to follow.")}
+                {tr("My job was to turn a logo into a brand people could recognize, and make it easy for 1,500 people to use.")}
               </motion.p>
             </Reveal>
             <div className="lg:col-span-7">
@@ -851,10 +895,10 @@ function XtendoProject() {
             <Header
               title={
                 <>
-                  {tr("A 45-page")} <Accent>{tr("brand manual")}</Accent>, {tr("written with the CEO.")}
+                  {tr("First, the look. Then I wrote it down in a 45-page manual.")}
                 </>
               }
-              intro="It covers the logo, color, type, tone of voice, photography, web, social media and co-branding. Ten of its pages, below."
+              intro="I defined the visual language (deep blue and graphite, the big X, the grid, the photo style) and wrote the manual with the CEO. It covers the logo, color, type, tone of voice, photography, web, social media and co-branding. Ten of its pages, below."
             />
             <div className="mt-14">
               <ManualViewer onOpen={(pages, title, start) => open(pages, title, start)} />
@@ -862,171 +906,16 @@ function XtendoProject() {
           </div>
         </section>
 
-        {/* ------------------------------------------------ 03 TALENT SOLUTIONS */}
-        <section className="border-t border-border/60">
-          <div className="mx-auto max-w-6xl px-6 pt-20 md:px-10 md:pt-28">
-            <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
-              <Reveal className="lg:col-span-6">
-                <motion.h2 variants={fadeUp} className="text-3xl font-bold leading-[1.05] tracking-tight [text-wrap:balance] md:text-5xl">
-                  {tr("Talent Solutions, a sub-brand I designed")} <Accent>{tr("from scratch")}</Accent>.
-                </motion.h2>
-                <motion.p variants={fadeUp} className="mt-6 text-base leading-relaxed text-muted-foreground md:text-lg">
-                  {tr("Talent Solutions is Xtendo's recruiting service. It needed its own identity, separate from the main brand. I designed the logo and wrote a 9-page manual for it.")}
-                </motion.p>
-                <motion.blockquote variants={fadeUp} className="mt-8 border-l-2 border-accent-1 pl-5 text-base leading-relaxed text-foreground/85">
-                  {tr("One rule from the manual: the Talent Solutions logo never appears next to another company's brand in the same piece.")}
-                </motion.blockquote>
-              </Reveal>
-              <motion.div
-                initial={{ opacity: 0, scale: 0.94 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                className="relative aspect-[5/4] overflow-hidden rounded-3xl border border-border bg-white shadow-[var(--shadow-card-hover)] lg:col-span-6"
-              >
-                <div className="absolute inset-y-0 left-0 right-[28%] flex items-center justify-center">
-                  <img src={`${A}/talent-logo.webp`} alt={tr("Talent Solutions logo, designed by me")} className="w-[78%]" />
-                </div>
-                <motion.div
-                  aria-hidden="true"
-                  className="absolute inset-y-0 right-0 flex items-center justify-center overflow-hidden bg-[#00B2F3]"
-                  initial={{ width: "0%" }}
-                  whileInView={{ width: "28%" }}
-                  viewport={{ once: true, amount: 0.4 }}
-                  transition={{ duration: 0.9, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                >
-                  <img src={`${A}/talent-isotype.webp`} alt="" className="w-[38%] min-w-[44px]" />
-                </motion.div>
-              </motion.div>
-            </div>
-          </div>
-          <div className="pb-20 pt-14 md:pb-28">
-            <TalentRail onOpen={(pages, title, start) => open(pages, title, start)} />
-          </div>
-        </section>
-
-        {/* ------------------------------------------------ 04 HUBSPOT */}
-        <section className="border-t border-border/60 bg-secondary/30">
-          <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
-            <Header
-              title={
-                <>
-                  {tr("Landing pages and email automation in")} <Accent>HubSpot</Accent>.
-                </>
-              }
-              intro="I design and build Xtendo's webinar funnels in HubSpot: the social posts, the landing page with its form and the invitation email. Each one in a different country and language, all on the same brand system."
-            />
-
-            {/* the funnel, step by step */}
-            <Reveal className="mt-14 grid gap-4 md:grid-cols-3" stagger={0.12}>
-              {[
-                { icon: Send, t: "Social post", b: "Announces the webinar and sends people to the landing page.", img: "post-webinar-sales.webp" },
-                { icon: MousePointerClick, t: "Landing page + form", b: "Explains the session, the agenda and the speaker. The form saves each sign-up as a contact in HubSpot." },
-                { icon: Mail, t: "Invitation email", b: "The date, the time and one clear button to register, in the same visual language as the landing." },
-              ].map((s, i) => (
-                <motion.div key={s.t} variants={fadeUp} className="relative rounded-3xl border border-border bg-card p-6 shadow-[var(--shadow-card)]">
-                  <div className="flex items-center justify-between">
-                    <span className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-accent text-accent-foreground">
-                      <s.icon className="h-5 w-5" />
-                    </span>
-                    <span className="font-mono text-xs font-semibold text-muted-foreground">0{i + 1}</span>
-                  </div>
-                  <p className="mt-5 text-lg font-bold tracking-tight">{tr(s.t)}</p>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{tr(s.b)}</p>
-                  {"img" in s && s.img ? (
-                    <button
-                      type="button"
-                      onClick={() => open([s.img as string], tr(s.t), 0)}
-                      className="mt-4 block w-24 overflow-hidden rounded-xl border border-border shadow-[var(--shadow-card)] transition-transform hover:-translate-y-0.5"
-                      aria-label={`${tr("Open")} ${tr(s.t)}`}
-                    >
-                      <img src={`${A}/${s.img}`} alt="" loading="lazy" className="aspect-square w-full object-cover" />
-                    </button>
-                  ) : null}
-                  {i < 2 ? (
-                    <span aria-hidden className="absolute -right-3 top-1/2 z-10 hidden h-6 w-6 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-background text-muted-foreground md:flex">
-                      <ChevronRight className="h-3.5 w-3.5" />
-                    </span>
-                  ) : null}
-                </motion.div>
-              ))}
-            </Reveal>
-
-            {/* the actual pieces */}
-            {HAS_HUBSPOT_CAPTURES ? (
-            <div className="mt-10 grid gap-6 lg:grid-cols-12">
-              <div className="lg:col-span-8">
-                <ScrollShot
-                  src={`${A}/landing-full.webp`}
-                  alt={tr("Webinar landing page built in HubSpot")}
-                  className="flex h-[30rem] flex-col md:h-[38rem]"
-                  chrome={<BrowserChrome url="recursos.xtendo.global/pt-br/webinar-vendas-modernas…" />}
-                />
-                <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
-                  <p className="text-sm text-muted-foreground">{tr("Landing page for the Vendas Modernas webinar with Frontline, for Brazil. Hover to scroll through it.")}</p>
-                  <a
-                    href={LANDING_URL}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-foreground hover:text-accent-1"
-                  >
-                    {tr("Open the live page")}
-                    <ArrowUpRight className="h-4 w-4" />
-                  </a>
-                </div>
-              </div>
-              <div className="grid gap-6 sm:grid-cols-2 lg:col-span-4 lg:grid-cols-1">
-                <div>
-                  <ScrollShot
-                    src={`${A}/email-full.webp`}
-                    alt={tr("Invitation email built in HubSpot")}
-                    className="flex h-[30rem] flex-col md:h-[38rem]"
-                    chrome={<MailChrome subject="Cómo duplicar tu conversión y decirle adiós al telemarketing frío" />}
-                  />
-                  <p className="mt-4 text-sm text-muted-foreground">{tr("Invitation email for the AEERC webinar in Spain. Hover to scroll through it.")}</p>
-                </div>
-              </div>
-            </div>
-            ) : (
-              <div className="mt-10 flex flex-wrap items-center justify-between gap-4 rounded-3xl border border-border bg-card p-6 shadow-[var(--shadow-card)]">
-                <p className="text-sm text-muted-foreground">recursos.xtendo.global</p>
-                <a
-                  href={LANDING_URL}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full bg-gradient-accent px-5 py-3 text-sm font-semibold text-accent-foreground shadow-[var(--shadow-accent)]"
-                >
-                  {tr("Open the live page")}
-                  <ArrowUpRight className="h-4 w-4" />
-                </a>
-              </div>
-            )}
-
-            <Reveal className="mt-10 grid gap-4 sm:grid-cols-3">
-              {[
-                ["Built in", "HubSpot CMS and marketing email"],
-                ["My part", "Design and build"],
-                ["Speed", "One day per landing page, with AI"],
-              ].map(([k, v]) => (
-                <motion.div key={k} variants={fadeUp} className="rounded-3xl border border-border bg-card p-5 shadow-[var(--shadow-card)]">
-                  <p className="font-mono text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">{tr(k)}</p>
-                  <p className="mt-2 text-sm font-bold">{tr(v)}</p>
-                </motion.div>
-              ))}
-            </Reveal>
-          </div>
-        </section>
-
-        {/* ------------------------------------------------ 05 PIECES */}
+        {/* ------------------------------------------------ 03 THE LOOK, APPLIED */}
         <section className="border-t border-border/60">
           <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
             <Header
               title={
                 <>
-                  {tr("Different messages,")} <Accent>{tr("one system")}</Accent>.
+                  {tr("The look, applied to every piece.")}
                 </>
               }
-              intro="With my two designers I made more than 15 templates and campaigns. These are the ones that best show how the system holds up."
+              intro="With my two designers I made more than 15 templates and campaigns for sales, marketing and internal communication. Different messages, one system."
             />
 
             <div role="tablist" aria-label={tr("Piece types")} className="mt-12 inline-flex max-w-full gap-1 overflow-x-auto rounded-full border border-border bg-card p-1.5 shadow-[var(--shadow-card)] [scrollbar-width:none]">
@@ -1114,8 +1003,272 @@ function XtendoProject() {
           </div>
         </section>
 
-        {/* ------------------------------------------------ 06 AI */}
+        {/* ------------------------------------------------ 04 TALENT SOLUTIONS */}
         <section className="border-t border-border/60 bg-secondary/30">
+          <div className="mx-auto max-w-6xl px-6 pt-20 md:px-10 md:pt-28">
+            <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
+              <Reveal className="lg:col-span-6">
+                <motion.h2 variants={fadeUp} className="text-3xl font-bold leading-[1.05] tracking-tight [text-wrap:balance] md:text-5xl">
+                  {tr("Talent Solutions, a sub-brand I designed")} <Accent>{tr("from scratch")}</Accent>.
+                </motion.h2>
+                <motion.p variants={fadeUp} className="mt-6 text-base leading-relaxed text-muted-foreground md:text-lg">
+                  {tr("Talent Solutions is Xtendo's recruiting service. It needed its own identity, separate from the main brand. I designed the logo and wrote a 9-page manual for it.")}
+                </motion.p>
+                <motion.blockquote variants={fadeUp} className="mt-8 border-l-2 border-accent-1 pl-5 text-base leading-relaxed text-foreground/85">
+                  {tr("One rule from the manual: the Talent Solutions logo never appears next to another company's brand in the same piece.")}
+                </motion.blockquote>
+              </Reveal>
+              <motion.div
+                initial={{ opacity: 0, scale: 0.94 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                className="relative aspect-[5/4] overflow-hidden rounded-3xl border border-border bg-white shadow-[var(--shadow-card-hover)] lg:col-span-6"
+              >
+                <div className="absolute inset-y-0 left-0 right-[28%] flex items-center justify-center">
+                  <img src={`${A}/talent-logo.webp`} alt={tr("Talent Solutions logo, designed by me")} className="w-[78%]" />
+                </div>
+                <motion.div
+                  aria-hidden="true"
+                  className="absolute inset-y-0 right-0 flex items-center justify-center overflow-hidden bg-[#00B2F3]"
+                  initial={{ width: "0%" }}
+                  whileInView={{ width: "28%" }}
+                  viewport={{ once: true, amount: 0.4 }}
+                  transition={{ duration: 0.9, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  <img src={`${A}/talent-isotype.webp`} alt="" className="w-[38%] min-w-[44px]" />
+                </motion.div>
+              </motion.div>
+            </div>
+          </div>
+          <div className="pb-20 pt-14 md:pb-28">
+            <PageRail
+              pages={talentPages}
+              title="Talent Solutions"
+              note="9 pages. Tap any page to open it."
+              ratio="aspect-[1600/1131]"
+              onOpen={(pages, title, start) => open(pages, title, start)}
+            />
+          </div>
+        </section>
+
+        {/* ------------------------------------------------ 05 AI FOR EVERYONE */}
+        <section className="border-t border-border/60">
+          <div className="mx-auto max-w-6xl px-6 pt-20 md:px-10 md:pt-28">
+            <Header
+              title={<>{tr("Then I put the brand in everyone's hands, with AI.")}</>}
+              intro="Most people at Xtendo aren't designers, and my team couldn't make every post. So I built the Xtendo Brand Designer: a Gemini Gem trained on the brand manual and the official logos. You ask for a piece in one sentence and get back an image ready to publish."
+            />
+
+            <div className="mt-14 grid gap-10 lg:grid-cols-12 lg:items-center">
+              {/* the chat, as people use it */}
+              <motion.div
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                className="overflow-hidden rounded-3xl border border-border bg-card shadow-[var(--shadow-card-hover)] lg:col-span-7"
+              >
+                <div className="flex items-center gap-3 border-b border-border bg-secondary/60 px-5 py-3">
+                  <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[#101522] text-xs font-bold text-white">X</span>
+                  <span className="min-w-0">
+                    <span className="block text-sm font-semibold">{tr("Xtendo Brand Designer")}</span>
+                    <span className="block text-xs text-muted-foreground">{tr("Gemini Gem, shared with the company")}</span>
+                  </span>
+                </div>
+                <div className="space-y-5 p-5 md:p-7">
+                  <div className="ml-auto max-w-[85%] rounded-2xl rounded-tr-md bg-secondary px-4 py-3 text-sm leading-relaxed">
+                    {tr('LinkedIn post for a job opening that says "We\'re hiring collections analysts"')}
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#101522] text-xs font-bold text-white">X</span>
+                    <div className="min-w-0">
+                      <img
+                        src={`${A}/gem-example.webp`}
+                        alt={tr("Square LinkedIn post generated by the Gem, with the Xtendo logo, colors and type")}
+                        loading="lazy"
+                        className="w-56 max-w-full rounded-2xl shadow-[var(--shadow-card)] md:w-64"
+                      />
+                      <p className="mt-3 text-sm text-muted-foreground">{tr("It picked the square format, the logo, the colors and the button on its own.")}</p>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+
+              <Reveal className="grid gap-4 lg:col-span-5" stagger={0.1}>
+                {gemFeatures.map((f, i) => (
+                  <motion.div key={f.t} variants={fadeUp} className="rounded-3xl border border-border bg-card p-6 shadow-[var(--shadow-card)]">
+                    <span className="font-mono text-xs font-semibold text-accent-1">0{i + 1}</span>
+                    <p className="mt-2 text-lg font-bold tracking-tight">{tr(f.t)}</p>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{tr(f.b)}</p>
+                  </motion.div>
+                ))}
+              </Reveal>
+            </div>
+
+            <Reveal className="mt-20 max-w-3xl">
+              <motion.h3 variants={fadeUp} className="text-2xl font-bold leading-[1.1] tracking-tight md:text-4xl">
+                {tr("A guide for people who had never used AI.")}
+              </motion.h3>
+              <motion.p variants={fadeUp} className="mt-5 text-base leading-relaxed text-muted-foreground md:text-lg">
+                {tr("I wrote an 11-page guide so anyone can use the Gem on day one: how to get in, a one-sentence formula, copy-and-paste examples, what to do when the result is off, and a checklist before publishing.")}
+              </motion.p>
+            </Reveal>
+          </div>
+          <div className="pt-12">
+            <PageRail
+              pages={gemGuidePages}
+              title="Xtendo Brand Designer guide"
+              note="Some pages of the guide. Tap any page to open it."
+              ratio="aspect-[1100/1555]"
+              itemClass="w-[62%] sm:w-[38%] lg:w-[24%]"
+              onOpen={(pages, title, start) => open(pages, title, start)}
+            />
+          </div>
+          <div className="mx-auto max-w-6xl px-6 pb-20 md:px-10 md:pb-28">
+            <div className="mt-20 grid gap-10 border-t border-border/60 pt-16 lg:grid-cols-12 lg:items-start">
+              <Reveal className="lg:sticky lg:top-28 lg:col-span-5">
+                <motion.h3 variants={fadeUp} className="text-2xl font-bold leading-[1.1] tracking-tight md:text-4xl">
+                  {tr("And a prompt book for the design team.")}
+                </motion.h3>
+                <motion.p variants={fadeUp} className="mt-5 text-base leading-relaxed text-muted-foreground md:text-lg">
+                  {tr("For my two designers I wrote the visual rules and ready-to-use prompts for AI images, so whatever they generate stays on brand. I also trained them to use AI in their everyday work.")}
+                </motion.p>
+              </Reveal>
+              <div className="lg:col-span-7">
+                <PromptBookCard />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ------------------------------------------------ 06 HUBSPOT */}
+        <section className="border-t border-border/60 bg-secondary/30">
+          <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
+            <Header
+              title={
+                <>
+                  {tr("Landing pages and email automation in")} <Accent>HubSpot</Accent>.
+                </>
+              }
+              intro="The new look also had to sell. I design and build Xtendo's webinar funnels in HubSpot: the social post, the landing page with its form and the invitation email, in Spanish and Portuguese, all on the same brand system."
+            />
+
+            {/* the funnel, step by step */}
+            <Reveal className="mt-14 grid gap-4 md:grid-cols-3" stagger={0.12}>
+              {[
+                { icon: Send, t: "Social post", b: "Announces the webinar and sends people to the landing page.", img: "post-webinar-sales.webp" },
+                { icon: MousePointerClick, t: "Landing page + form", b: "Explains the session, the agenda and the speaker. The form saves each sign-up as a contact in HubSpot." },
+                { icon: Mail, t: "Invitation email", b: "The date, the time and one clear button to register, in the same visual language as the landing." },
+              ].map((s, i) => (
+                <motion.div key={s.t} variants={fadeUp} className="relative rounded-3xl border border-border bg-card p-6 shadow-[var(--shadow-card)]">
+                  <div className="flex items-center justify-between">
+                    <span className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-accent text-accent-foreground">
+                      <s.icon className="h-5 w-5" />
+                    </span>
+                    <span className="font-mono text-xs font-semibold text-muted-foreground">0{i + 1}</span>
+                  </div>
+                  <p className="mt-5 text-lg font-bold tracking-tight">{tr(s.t)}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{tr(s.b)}</p>
+                  {"img" in s && s.img ? (
+                    <button
+                      type="button"
+                      onClick={() => open([s.img as string], tr(s.t), 0)}
+                      className="mt-4 block w-24 overflow-hidden rounded-xl border border-border shadow-[var(--shadow-card)] transition-transform hover:-translate-y-0.5"
+                      aria-label={`${tr("Open")} ${tr(s.t)}`}
+                    >
+                      <img src={`${A}/${s.img}`} alt="" loading="lazy" className="aspect-square w-full object-cover" />
+                    </button>
+                  ) : null}
+                  {i < 2 ? (
+                    <span aria-hidden className="absolute -right-3 top-1/2 z-10 hidden h-6 w-6 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-background text-muted-foreground md:flex">
+                      <ChevronRight className="h-3.5 w-3.5" />
+                    </span>
+                  ) : null}
+                </motion.div>
+              ))}
+            </Reveal>
+
+            {/* the actual pieces */}
+            {HAS_HUBSPOT_CAPTURES ? (
+            <div className="mt-10 grid gap-6 lg:grid-cols-12">
+              <div className="lg:col-span-8">
+                <ScrollShot
+                  src={`${A}/landing-full.webp`}
+                  alt={tr("Webinar landing page built in HubSpot")}
+                  className="flex h-[30rem] flex-col md:h-[38rem]"
+                  chrome={<BrowserChrome url="recursos.xtendo.global/pt-br/webinar-vendas-modernas…" />}
+                />
+                <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
+                  <p className="text-sm text-muted-foreground">{tr("Landing page for the Vendas Modernas webinar with Frontline, for Brazil. Hover to scroll through it.")}</p>
+                  <a
+                    href={LANDING_URL}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-foreground hover:text-accent-1"
+                  >
+                    {tr("Open the live page")}
+                    <ArrowUpRight className="h-4 w-4" />
+                  </a>
+                </div>
+              </div>
+              <div className="grid gap-6 sm:grid-cols-2 lg:col-span-4 lg:grid-cols-1">
+                <div>
+                  <ScrollShot
+                    src={`${A}/email-full.webp`}
+                    alt={tr("Invitation email built in HubSpot")}
+                    className="flex h-[30rem] flex-col md:h-[38rem]"
+                    chrome={<MailChrome subject="Cómo duplicar tu conversión y decirle adiós al telemarketing frío" />}
+                  />
+                  <p className="mt-4 text-sm text-muted-foreground">{tr("Invitation email for the AEERC webinar in Spain. Hover to scroll through it.")}</p>
+                </div>
+              </div>
+            </div>
+            ) : (
+              <Reveal className="mt-10 grid gap-4 md:grid-cols-2">
+                {LANDINGS.map((l) => (
+                  <motion.a
+                    key={l.url}
+                    variants={fadeUp}
+                    href={l.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="group flex items-center justify-between gap-4 rounded-3xl border border-border bg-card p-6 shadow-[var(--shadow-card)] transition-shadow hover:shadow-[var(--shadow-card-hover)]"
+                  >
+                    <span className="min-w-0">
+                      <span className="font-mono text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-accent-1">{tr("Landing page")} · {l.lang}</span>
+                      <span className="mt-1 block text-base font-bold tracking-tight">{tr(l.label)}</span>
+                      <span className="mt-1 block truncate font-mono text-xs text-muted-foreground">{l.url.replace("https://", "")}</span>
+                    </span>
+                    <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-gradient-accent px-4 py-2.5 text-sm font-semibold text-accent-foreground shadow-[var(--shadow-accent)] transition-transform group-hover:-translate-y-0.5">
+                      {tr("Open")}
+                      <ArrowUpRight className="h-4 w-4" />
+                    </span>
+                  </motion.a>
+                ))}
+              </Reveal>
+            )}
+
+            <div className="mt-10 rounded-3xl border border-border bg-card p-6 shadow-[var(--shadow-card)] md:p-8">
+              <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
+                <p className="text-lg font-bold tracking-tight">{tr("How one of the webinar emails performed")}</p>
+                <p className="font-mono text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">{tr("HubSpot data, bots excluded")}</p>
+              </div>
+              <Reveal className="mt-6 grid gap-6 sm:grid-cols-3">
+                {emailStats.map((st) => (
+                  <motion.div key={st.k} variants={fadeUp} className="border-t border-border pt-5">
+                    <p className="text-4xl font-bold tracking-tight text-accent-1 md:text-5xl">{st.v}</p>
+                    <p className="mt-2 text-sm font-semibold">{tr(st.k)}</p>
+                    {st.note ? <p className="mt-1 text-sm text-muted-foreground">{tr(st.note)}</p> : null}
+                  </motion.div>
+                ))}
+              </Reveal>
+            </div>
+          </div>
+        </section>
+
+        {/* ------------------------------------------------ 07 LAUNCH VIDEO */}
+        <section className="border-t border-border/60">
           <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
             <Header
               title={
@@ -1182,23 +1335,10 @@ function XtendoProject() {
               </div>
             </div>
 
-            <div className="mt-20 grid gap-10 border-t border-border/60 pt-16 lg:grid-cols-12 lg:items-start">
-              <Reveal className="lg:sticky lg:top-28 lg:col-span-5">
-                <motion.h3 variants={fadeUp} className="text-2xl font-bold leading-[1.1] tracking-tight md:text-4xl">
-                  {tr("A prompt book for the")} <Accent>{tr("team")}</Accent>.
-                </motion.h3>
-                <motion.p variants={fadeUp} className="mt-5 text-base leading-relaxed text-muted-foreground md:text-lg">
-                  {tr("I wrote a guide with the visual rules and ready-to-use prompts for AI images, so whatever the team generates stays on brand. I also trained my two designers to use AI in their everyday work.")}
-                </motion.p>
-              </Reveal>
-              <div className="lg:col-span-7">
-                <PromptBookCard />
-              </div>
-            </div>
           </div>
         </section>
 
-        {/* ------------------------------------------------ 07 IMPACT */}
+        {/* ------------------------------------------------ 08 IMPACT */}
         <section className="relative overflow-hidden border-t border-border/60 bg-foreground text-background">
           <div
             aria-hidden
@@ -1211,7 +1351,7 @@ function XtendoProject() {
                   {tr("Landing pages now take")} <Accent>{tr("1 day")}</Accent> {tr("instead of 4 or 5.")}
                 </motion.h2>
                 <motion.p variants={fadeUp} className="mt-6 text-base leading-relaxed text-background/70 md:text-lg">
-                  {tr("The team starts from the templates and uses AI for the first draft.")}
+                  {tr("My team starts from the templates and uses AI for the first draft. Outside design, people make their own on-brand pieces with the Gem instead of waiting in line.")}
                 </motion.p>
               </Reveal>
               <div className="lg:col-span-6">
@@ -1219,11 +1359,12 @@ function XtendoProject() {
               </div>
             </div>
 
-            <Reveal className="mt-16 grid gap-4 md:grid-cols-3">
+            <Reveal className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {[
                 ["One brand in 9 countries", "1,500+ people use the same logo, colors and templates."],
+                ["On-brand pieces in minutes", "With the Gem, people outside design make posts, flyers and slides by themselves."],
                 ["2 designers trained in AI", "I trained both designers on my team to work with AI tools."],
-                ["More clicks and sign-ups", "Click-through rate and webinar registrations went up after the new campaigns."],
+                ["48% open rate", "On a webinar email, with 1 in 5 openers clicking through. Registrations went up with the new campaigns."],
               ].map(([h, b]) => (
                 <motion.div key={h} variants={fadeUp} className="rounded-3xl border border-background/10 bg-background/[0.04] p-6 backdrop-blur">
                   <p className="text-lg font-bold tracking-tight">{tr(h)}</p>

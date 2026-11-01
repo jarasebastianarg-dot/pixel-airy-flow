@@ -317,10 +317,10 @@ function Lightbox({
 }
 
 const metrics = [
-  { icon: TrendingUp, value: "Product Designer → Brand Manager", label: "Promoted after 9 months, in August 2024. I went from designing boxes to running the brand." },
-  { icon: Layers, value: "5 areas in one role", label: "Packaging, social media, e-commerce, campaigns and events." },
-  { icon: Globe2, value: "3 markets", label: "Argentina, Brazil and the US, each with its own Shopify store and campaigns." },
-  { icon: GraduationCap, value: "Team of 5", label: "I led the marketing team and trained the brand educators for our events." },
+  { icon: TrendingUp, value: "9", label: "Months to go from Product Designer to Brand Manager. Promoted in August 2024." },
+  { icon: Globe2, value: "3", label: "Markets: Argentina, Brazil and the US, each with its own Shopify store and campaigns." },
+  { icon: Layers, value: "5", label: "Areas in one role: packaging, social media, e-commerce, campaigns and events." },
+  { icon: GraduationCap, value: "5", label: "People on the marketing team I led, plus the brand educators I trained." },
 ];
 
 function MediaPlaceholder({
@@ -375,7 +375,7 @@ function ExecutionCard({ card, index }: { card: ExecutionCardData; index: number
       whileHover={{ y: -6 }}
       transition={{ type: "spring", stiffness: 260, damping: 24 }}
       tabIndex={0}
-      className="group relative isolate flex min-h-64 flex-col overflow-hidden rounded-[calc(var(--radius)+14px)] border border-border bg-card p-6 shadow-[var(--shadow-card)] outline-none transition-shadow duration-500 hover:shadow-[var(--shadow-card-hover)] focus-visible:ring-2 focus-visible:ring-accent-1/60 md:h-64"
+      className="group relative isolate flex flex-col overflow-hidden rounded-[calc(var(--radius)+14px)] border border-border bg-card p-6 shadow-[var(--shadow-card)] outline-none transition-shadow duration-500 hover:shadow-[var(--shadow-card-hover)] focus-visible:ring-2 focus-visible:ring-accent-1/60"
     >
       <motion.span
         aria-hidden
@@ -417,7 +417,7 @@ function ExecutionCard({ card, index }: { card: ExecutionCardData; index: number
         </div>
       </div>
 
-      <h3 className="relative mt-auto text-lg font-bold leading-tight tracking-tight md:text-[1.05rem] lg:text-lg">
+      <h3 className="relative mt-8 text-lg font-bold leading-tight tracking-tight md:text-[1.05rem] lg:text-lg">
         {tr(card.title)}
       </h3>
 
@@ -430,7 +430,7 @@ function ExecutionCard({ card, index }: { card: ExecutionCardData; index: number
               animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               exit={{ opacity: 0, y: -6, filter: "blur(4px)" }}
               transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-              className="absolute inset-x-0 top-0 text-[0.78rem] leading-relaxed text-muted-foreground"
+              className="text-[0.78rem] leading-relaxed text-muted-foreground"
             >
               {tr(card.body)}
             </motion.p>
@@ -772,76 +772,30 @@ function BWayProject() {
         </div>
       </section>
 
-      {/* The Growth Story */}
+      {/* What I did */}
       <section className="border-t border-border/60">
-        <div className="mx-auto max-w-6xl px-6 py-16 md:px-10 md:py-20">
+        <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
           <Reveal className="flex max-w-3xl flex-col gap-6" stagger={0.1}>
-            <motion.div variants={fadeUp} className="">
-              <h2 className="mt-4 text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
-                {tr("Four")}{" "}
-                <span className="">
-                  {tr("stages")}
-                </span>{" "}
-                {tr("in two years.")}
+            <motion.div variants={fadeUp}>
+              <h2 className="mt-6 text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl">
+                {tr("What I did")}
               </h2>
             </motion.div>
             <motion.p
               variants={fadeUp}
-              className="text-sm leading-relaxed text-muted-foreground max-w-[65ch] md:text-base"
+              className="max-w-[65ch] text-base leading-relaxed text-muted-foreground md:text-lg"
             >
-              {tr("Each stage added new work on top of the last one. First packaging, then the online stores, then campaigns, then events and the team. By the end I was leading the team that handled all of it.")}
+              {tr("Four stages in two years. Each stage added new work on top of the last one: first packaging, then the online stores, then campaigns, then events and the team.")}
             </motion.p>
           </Reveal>
 
-          <Reveal className="mt-10 space-y-4 md:space-y-6" stagger={0.08}>
-            {chapters.map((c, i) => {
-              const Icon = c.icon;
-              return (
-                <motion.article
-                  key={c.n}
-                  variants={fadeUp}
-                  whileHover={{ y: -3 }}
-                  transition={{ type: "spring", stiffness: 260, damping: 24 }}
-                  className="group relative grid grid-cols-1 gap-4 overflow-hidden rounded-[calc(var(--radius)+14px)] border border-border bg-card p-5 shadow-[var(--shadow-card)] transition-shadow duration-500 hover:shadow-[var(--shadow-card-hover)] md:grid-cols-12 md:gap-6 md:p-7"
-                >
-                  <span
-                    aria-hidden
-                    className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,oklch(0.72_0.18_45_/_0.14),transparent_60%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-                  />
-                  <div className="relative md:col-span-3">
-                    <div className="flex items-center gap-3">
-                      <span className="grid h-10 w-10 place-items-center rounded-xl bg-secondary text-accent-1 ring-1 ring-inset ring-border transition-colors duration-300 group-hover:bg-accent-1 group-hover:text-white">
-                        <Icon className="h-4 w-4" strokeWidth={1.6} />
-                      </span>
-                      <div className="font-display text-3xl font-bold tracking-tight text-accent-1 md:text-4xl">
-                        {c.n}
-                      </div>
-                    </div>
-                    <div className="mt-3 font-mono text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
-                      {tr(c.kicker)}
-                    </div>
-                  </div>
-                  <div className="relative md:col-span-9">
-                    <h3 className="text-xl font-bold tracking-tight md:text-2xl">
-                      {tr(c.title)}
-                    </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-foreground/80 md:text-base">
-                      {tr(c.body)}
-                    </p>
-                    <div className="mt-4 flex flex-wrap gap-2">
-                      {c.tags.map((t) => (
-                        <span
-                          key={t}
-                          className="rounded-full border border-border bg-secondary px-2.5 py-1 text-[0.7rem] font-semibold text-foreground/80"
-                        >
-                          {tr(t)}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </motion.article>
-              );
-            })}
+          <Reveal
+            className="mt-14 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4"
+            stagger={0.06}
+          >
+            {executionCards.map((c, i) => (
+              <ExecutionCard key={c.title} card={c} index={i} />
+            ))}
           </Reveal>
         </div>
 
@@ -1089,11 +1043,7 @@ function BWayProject() {
               variants={fadeUp}
               className="max-w-3xl text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl"
             >
-              {tr("How I")}{" "}
-              <span className="">
-                {tr("grew")}
-              </span>{" "}
-              {tr("in this role.")}
+              {tr("Results")}
             </motion.h2>
             <motion.p
               variants={fadeUp}
@@ -1105,21 +1055,21 @@ function BWayProject() {
             </motion.p>
           </Reveal>
 
-          <Reveal className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2" stagger={0.08}>
+          <Reveal className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4" stagger={0.08}>
             {metrics.map((m) => (
               <motion.div
                 key={m.label}
                 variants={fadeUp}
                 whileHover={{ y: -4 }}
                 transition={{ type: "spring", stiffness: 260, damping: 22 }}
-                className="group relative overflow-hidden rounded-[calc(var(--radius)+16px)] border border-white/10 bg-white/[0.04] p-8 text-left backdrop-blur-sm transition-colors duration-500 hover:border-accent-1/40"
+                className="group relative overflow-hidden rounded-[calc(var(--radius)+16px)] border border-white/10 bg-white/[0.04] p-8 text-center backdrop-blur-sm transition-colors duration-500 hover:border-accent-1/40 sm:text-left"
               >
                 <span
                   aria-hidden
                   className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,oklch(0.72_0.18_45_/_0.28),transparent_65%)] opacity-0 transition-opacity duration-700 group-hover:opacity-100"
                 />
-                <m.icon className="h-6 w-6 text-accent-1" strokeWidth={1.6} />
-                <div className="mt-6 font-display text-xl font-bold leading-tight tracking-tight md:text-2xl">
+                <m.icon className="mx-auto h-6 w-6 text-accent-1 sm:mx-0" strokeWidth={1.6} />
+                <div className="mt-8 font-display text-4xl font-bold tracking-tight md:text-5xl">
                   {tr(m.value)}
                 </div>
                 <div className="mt-3 text-sm leading-relaxed text-background/70">

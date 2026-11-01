@@ -179,4 +179,13 @@ export const bwayEs: Record<string, string> = {
   "Team of 5": "Equipo de 5",
   "I led the marketing team and trained the brand educators for our events.":
     "Lideré el equipo de marketing y capacité a los brand educators para nuestros eventos.",
+  // Unified layout (2026-11-01)
+  "What I did": "Qué hice",
+  "Four stages in two years. Each stage added new work on top of the last one: first packaging, then the online stores, then campaigns, then events and the team.":
+    "Cuatro etapas en dos años. Cada etapa sumó trabajo nuevo sobre la anterior: primero packaging, después las tiendas online, después las campañas, y al final los eventos y el equipo.",
+  Results: "Resultados",
+  "Months to go from Product Designer to Brand Manager. Promoted in August 2024.": "Meses para pasar de Product Designer a Brand Manager. Ascenso en agosto de 2024.",
+  "Markets: Argentina, Brazil and the US, each with its own Shopify store and campaigns.": "Mercados: Argentina, Brasil y EE.UU., cada uno con su tienda Shopify y sus campañas.",
+  "Areas in one role: packaging, social media, e-commerce, campaigns and events.": "Áreas en un solo rol: packaging, redes, e-commerce, campañas y eventos.",
+  "People on the marketing team I led, plus the brand educators I trained.": "Personas en el equipo de marketing que lideré, más los educadores de marca que capacité.",
 };

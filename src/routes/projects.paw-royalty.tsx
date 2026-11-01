@@ -22,6 +22,9 @@ import {
   Plus,
   X,
   ZoomIn,
+  UserCheck,
+  Tags,
+  EyeOff,
 } from "lucide-react";
 const prHome = { url: "https://raw.githubusercontent.com/jarasebastianarg-dot/Portfolio-Photos/main/Paw%20Royalty%20Home.png" };
 const prProduct = { url: "https://raw.githubusercontent.com/jarasebastianarg-dot/Portfolio-Photos/main/Paw%20Royalty%20Product%20page.png" };
@@ -29,6 +32,8 @@ const prSubscribe = { url: "https://raw.githubusercontent.com/jarasebastianarg-d
 const prQuiz = { url: "https://raw.githubusercontent.com/jarasebastianarg-dot/Portfolio-Photos/main/Paw%20Royalty%20Quiz%20page.png" };
 const prEmailCampaign = { url: "https://raw.githubusercontent.com/jarasebastianarg-dot/Portfolio-Photos/main/Paw%20Royalty%20email%20(1).png" };
 const prEmailSubscribe = { url: "https://raw.githubusercontent.com/jarasebastianarg-dot/Portfolio-Photos/main/Paw%20Royalty%20email%20(2).png" };
+/* B2B wholesale portal, as a logged-in B2B customer sees it */
+const prB2b = { url: "/media/paw-royalty/pr-b2b.webp" };
 const prEmailCalming = { url: "https://raw.githubusercontent.com/jarasebastianarg-dot/Portfolio-Photos/main/PawRoyalty%20email%203.png" };
 
 export const Route = createFileRoute("/projects/paw-royalty")({
@@ -139,7 +144,7 @@ const executionCards = [
 const metrics = [
   { icon: TrendingUp, value: "0 → 1", label: "Brand, store and emails built from scratch" },
   { icon: Boxes, value: "100%", label: "Store coded in custom Liquid, no page builder apps" },
-  { icon: MousePointerClick, value: "4", label: "Key pages: home, product page, Subscribe & Save and wellness quiz" },
+  { icon: MousePointerClick, value: "5", label: "Key pages: home, product page, Subscribe & Save, wellness quiz and B2B portal" },
   { icon: Mail, value: "3", label: "Klaviyo emails designed and coded" },
 ];
 
@@ -197,7 +202,7 @@ function ExecutionCard({ card, index }: { card: ExecutionCardData; index: number
       whileHover={{ y: -6 }}
       transition={{ type: "spring", stiffness: 260, damping: 24 }}
       tabIndex={0}
-      className="group relative isolate flex min-h-64 flex-col overflow-hidden rounded-[calc(var(--radius)+14px)] border border-border bg-card p-6 shadow-[var(--shadow-card)] outline-none transition-shadow duration-500 hover:shadow-[var(--shadow-card-hover)] focus-visible:ring-2 focus-visible:ring-accent-1/60 md:h-64"
+      className="group relative isolate flex flex-col overflow-hidden rounded-[calc(var(--radius)+14px)] border border-border bg-card p-6 shadow-[var(--shadow-card)] outline-none transition-shadow duration-500 hover:shadow-[var(--shadow-card-hover)] focus-visible:ring-2 focus-visible:ring-accent-1/60"
     >
       {/* Accent top bar */}
       <motion.span
@@ -243,7 +248,7 @@ function ExecutionCard({ card, index }: { card: ExecutionCardData; index: number
       </div>
 
       {/* Title always visible */}
-      <h3 className="relative mt-auto text-lg font-bold leading-tight tracking-tight md:text-[1.05rem] lg:text-lg">
+      <h3 className="relative mt-8 text-lg font-bold leading-tight tracking-tight md:text-[1.05rem] lg:text-lg">
         {tr(card.title)}
       </h3>
 
@@ -257,7 +262,7 @@ function ExecutionCard({ card, index }: { card: ExecutionCardData; index: number
               animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               exit={{ opacity: 0, y: -6, filter: "blur(4px)" }}
               transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-              className="absolute inset-x-0 top-0 text-[0.78rem] leading-relaxed text-muted-foreground"
+              className="text-[0.78rem] leading-relaxed text-muted-foreground"
             >
               {tr(card.body)}
             </motion.p>
@@ -310,6 +315,32 @@ const mockups = [
     image: prQuiz.url,
   },
 ];
+
+const b2bSteps = [
+  {
+    icon: UserCheck,
+    title: "Log in with a B2B account",
+    body: "Retail partners get a customer account tagged b2b in Shopify. The tag is what unlocks everything else.",
+  },
+  {
+    icon: Tags,
+    title: "See wholesale prices",
+    body: "The store reads the tag and shows the wholesale portal: three volume tiers, a 10-unit minimum and quick bulk ordering by product and flavor.",
+  },
+  {
+    icon: EyeOff,
+    title: "Everyone else sees the regular store",
+    body: "Without the tag, shoppers see the regular retail prices and the B2B section stays hidden.",
+  },
+];
+
+const b2bPreview = {
+  kicker: "B2B",
+  title: "Wholesale portal",
+  focus: "Only for B2B accounts",
+  body: "What a logged-in retail partner sees: the terms, how ordering works, the volume pricing table and a quick order list for every product.",
+  image: prB2b.url,
+};
 
 const emails = [
   {
@@ -720,8 +751,60 @@ function PawRoyaltyProject() {
         </div>
       </section>
 
-      {/* Email Marketing */}
+      {/* B2B */}
       <section className="border-t border-border/60 bg-secondary/30">
+        <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
+          <div className="grid gap-14 lg:grid-cols-12 lg:items-start">
+            <div className="lg:col-span-7">
+              <Reveal className="flex max-w-3xl flex-col gap-6" stagger={0.1}>
+                <motion.h2
+                  variants={fadeUp}
+                  className="mt-6 text-3xl font-bold leading-[1.05] tracking-tight [text-wrap:balance] md:text-5xl"
+                >
+                  {tr("A wholesale portal only B2B customers can see.")}
+                </motion.h2>
+                <motion.p
+                  variants={fadeUp}
+                  className="max-w-[65ch] text-base leading-relaxed text-muted-foreground md:text-lg"
+                >
+                  {tr(
+                    "Paw Royalty also sells wholesale to retail partners. Instead of a second store, I built a B2B section inside the same Shopify site that changes depending on who is logged in.",
+                  )}
+                </motion.p>
+              </Reveal>
+              <Reveal className="mt-10 grid gap-4" stagger={0.08}>
+                {b2bSteps.map((st, i) => {
+                  const Icon = st.icon;
+                  return (
+                    <motion.div
+                      key={st.title}
+                      variants={fadeUp}
+                      className="flex gap-5 rounded-[calc(var(--radius)+14px)] border border-border bg-card p-6 shadow-[var(--shadow-card)]"
+                    >
+                      <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-secondary text-accent-1 ring-1 ring-inset ring-border">
+                        <Icon className="h-5 w-5" strokeWidth={1.6} />
+                      </span>
+                      <div>
+                        <div className="font-mono text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-accent-1">
+                          {String(i + 1).padStart(2, "0")}
+                        </div>
+                        <h3 className="mt-1 text-lg font-bold tracking-tight">{tr(st.title)}</h3>
+                        <p className="mt-2 text-[0.85rem] leading-relaxed text-muted-foreground">{tr(st.body)}</p>
+                      </div>
+                    </motion.div>
+                  );
+                })}
+              </Reveal>
+            </div>
+            <Reveal className="lg:col-span-5" stagger={0.08}>
+              <ScrollPreviewCard item={b2bPreview} index={0} onOpen={openLightbox} scrollDurationMs={9000} />
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* Email Marketing */}
+      <section className="border-t border-border/60">
         <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
           <Reveal className="flex max-w-3xl flex-col gap-6" stagger={0.1}>
             <motion.div variants={fadeUp} className="">
