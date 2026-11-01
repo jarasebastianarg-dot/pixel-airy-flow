@@ -320,17 +320,17 @@ const b2bSteps = [
   {
     icon: UserCheck,
     title: "Log in with a B2B account",
-    body: "Retail partners get a customer account tagged b2b in Shopify. The tag is what unlocks everything else.",
+    body: "Retail partners log in with the account created for them from the B2B section. That account carries the b2b tag in Shopify.",
   },
   {
     icon: Tags,
-    title: "See wholesale prices",
-    body: "The store reads the tag and shows the wholesale portal: three volume tiers, a 10-unit minimum and quick bulk ordering by product and flavor.",
+    title: "Shop at wholesale prices",
+    body: "With the tag, the B2B section opens up: wholesale prices with every discount already applied, the wholesale price guide table and quick bulk ordering.",
   },
   {
     icon: EyeOff,
-    title: "Everyone else sees the regular store",
-    body: "Without the tag, shoppers see the regular retail prices and the B2B section stays hidden.",
+    title: "Without the tag, no wholesale",
+    body: "Anyone can log in, but without the b2b tag the wholesale prices, discounts and price table don't show up.",
   },
 ];
 
