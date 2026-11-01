@@ -22,9 +22,9 @@ import {
 } from "lucide-react";
 
 const A = "/work/xtendo";
-/* Full-page captures of the landing and the email. Flip to true once landing-full.webp and email-full.webp are in /public/work/xtendo. */
-const HAS_HUBSPOT_CAPTURES = false;
-const LANDING_URL = "https://recursos.xtendo.global/pt-br/webinar-vendas-modernas-22-outubro";
+/* Full-page captures of the landing and the email (landing-full.webp and email-full.webp in /public/work/xtendo) */
+const HAS_HUBSPOT_CAPTURES = true;
+const LANDING_URL = "https://recursos.xtendo.global/webinar-picos-de-demanda";
 
 export const Route = createFileRoute("/projects/xtendo-global")({
   component: XtendoProject,
@@ -1191,16 +1191,16 @@ function XtendoProject() {
 
             {/* the actual pieces */}
             {HAS_HUBSPOT_CAPTURES ? (
-            <div className="mt-10 grid gap-6 lg:grid-cols-12">
-              <div className="lg:col-span-8">
+            <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-12">
+              <div className="min-w-0 lg:col-span-8">
                 <ScrollShot
                   src={`${A}/landing-full.webp`}
                   alt={tr("Webinar landing page built in HubSpot")}
                   className="flex h-[30rem] flex-col md:h-[38rem]"
-                  chrome={<BrowserChrome url="recursos.xtendo.global/pt-br/webinar-vendas-modernas…" />}
+                  chrome={<BrowserChrome url="recursos.xtendo.global/webinar-picos-de-demanda" />}
                 />
                 <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
-                  <p className="text-sm text-muted-foreground">{tr("Landing page for the Vendas Modernas webinar with Frontline, for Brazil. Hover to scroll through it.")}</p>
+                  <p className="text-sm text-muted-foreground">{tr("Landing page for the peaks in demand webinar. Hover to scroll through it.")}</p>
                   <a
                     href={LANDING_URL}
                     target="_blank"
@@ -1212,20 +1212,20 @@ function XtendoProject() {
                   </a>
                 </div>
               </div>
-              <div className="grid gap-6 sm:grid-cols-2 lg:col-span-4 lg:grid-cols-1">
-                <div>
+              <div className="grid min-w-0 gap-6 lg:col-span-4">
+                <div className="min-w-0">
                   <ScrollShot
                     src={`${A}/email-full.webp`}
                     alt={tr("Invitation email built in HubSpot")}
                     className="flex h-[30rem] flex-col md:h-[38rem]"
-                    chrome={<MailChrome subject="Cómo duplicar tu conversión y decirle adiós al telemarketing frío" />}
+                    chrome={<MailChrome subject="Cómo manejar picos de demanda" />}
                   />
-                  <p className="mt-4 text-sm text-muted-foreground">{tr("Invitation email for the AEERC webinar in Spain. Hover to scroll through it.")}</p>
+                  <p className="mt-4 text-sm text-muted-foreground">{tr("Invitation email for the same webinar. Hover to scroll through it.")}</p>
                 </div>
               </div>
             </div>
-            ) : (
-              <Reveal className="mt-10 grid gap-4 md:grid-cols-2">
+            ) : null}
+              <Reveal className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-2">
                 {LANDINGS.map((l) => (
                   <motion.a
                     key={l.url}
@@ -1233,7 +1233,7 @@ function XtendoProject() {
                     href={l.url}
                     target="_blank"
                     rel="noreferrer"
-                    className="group flex items-center justify-between gap-4 rounded-3xl border border-border bg-card p-6 shadow-[var(--shadow-card)] transition-shadow hover:shadow-[var(--shadow-card-hover)]"
+                    className="group flex min-w-0 items-center justify-between gap-4 rounded-3xl border border-border bg-card p-6 shadow-[var(--shadow-card)] transition-shadow hover:shadow-[var(--shadow-card-hover)]"
                   >
                     <span className="min-w-0">
                       <span className="font-mono text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-accent-1">{tr("Landing page")} · {l.lang}</span>
@@ -1247,7 +1247,6 @@ function XtendoProject() {
                   </motion.a>
                 ))}
               </Reveal>
-            )}
 
             <div className="mt-10 rounded-3xl border border-border bg-card p-6 shadow-[var(--shadow-card)] md:p-8">
               <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">

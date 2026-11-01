@@ -260,4 +260,8 @@ export const xtendoGlobalEs: Record<string, string> = {
   "48% open rate": "48% de apertura",
   "On a webinar email, with 1 in 5 openers clicking through. Registrations went up with the new campaigns.":
     "En un email de webinar, con 1 de cada 5 personas que lo abrieron haciendo clic. Los registros subieron con las campañas nuevas.",
+  "Landing page for the peaks in demand webinar. Hover to scroll through it.":
+    "Landing del webinar Picos de demanda. Pasá el mouse para recorrerla.",
+  "Invitation email for the same webinar. Hover to scroll through it.":
+    "Email de invitación del mismo webinar. Pasá el mouse para recorrerlo.",
 };

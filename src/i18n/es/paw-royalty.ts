@@ -116,14 +116,14 @@ export const pawRoyaltyEs: Record<string, string> = {
   "Paw Royalty also sells wholesale to retail partners. Instead of a second store, I built a B2B section inside the same Shopify site that changes depending on who is logged in.":
     "Paw Royalty también vende por mayor a comercios. En vez de armar una segunda tienda, hice una sección B2B dentro del mismo Shopify que cambia según quién inicia sesión.",
   "Log in with a B2B account": "Iniciar sesión con una cuenta B2B",
-  "Retail partners get a customer account tagged b2b in Shopify. The tag is what unlocks everything else.":
-    "Los comercios tienen una cuenta de cliente con el tag b2b en Shopify. Ese tag es el que habilita todo lo demás.",
-  "See wholesale prices": "Ver precios mayoristas",
-  "The store reads the tag and shows the wholesale portal: three volume tiers, a 10-unit minimum and quick bulk ordering by product and flavor.":
-    "La tienda lee el tag y muestra el portal mayorista: tres escalas por volumen, un mínimo de 10 unidades y pedido rápido por producto y sabor.",
-  "Everyone else sees the regular store": "El resto ve la tienda normal",
-  "Without the tag, shoppers see the regular retail prices and the B2B section stays hidden.":
-    "Sin el tag, se ven los precios normales y la sección B2B queda oculta.",
+  "Retail partners log in with the account created for them from the B2B section. That account carries the b2b tag in Shopify.":
+    "Los comercios inician sesión con la cuenta que se les creó desde la sección B2B. Esa cuenta tiene el tag b2b en Shopify.",
+  "Shop at wholesale prices": "Comprar a precio mayorista",
+  "With the tag, the B2B section opens up: wholesale prices with every discount already applied, the wholesale price guide table and quick bulk ordering.":
+    "Con el tag se habilita la sección B2B: precios mayoristas con todos los descuentos ya aplicados, la tabla guía de precios mayoristas y el pedido rápido por cantidad.",
+  "Without the tag, no wholesale": "Sin el tag, no hay precios mayoristas",
+  "Anyone can log in, but without the b2b tag the wholesale prices, discounts and price table don't show up.":
+    "Cualquiera puede iniciar sesión, pero sin el tag b2b no aparecen los precios mayoristas, los descuentos ni la tabla de precios.",
   "Wholesale portal": "Portal mayorista",
   "Only for B2B accounts": "Solo para cuentas B2B",
   "What a logged-in retail partner sees: the terms, how ordering works, the volume pricing table and a quick order list for every product.":
