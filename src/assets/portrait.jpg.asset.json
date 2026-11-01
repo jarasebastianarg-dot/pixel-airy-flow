@@ -1,9 +1,6 @@
 {
   "version": 1,
-  "asset_id": "64e21d17-72b8-4ab6-b325-0ef28b5838b7",
-  "project_id": "05b18e1c-dabd-4628-8e9b-1fff20ea84aa",
-  "url": "/__l5e/assets-v1/64e21d17-72b8-4ab6-b325-0ef28b5838b7/portrait.jpg",
-  "r2_key": "a/v1/05b18e1c-dabd-4628-8e9b-1fff20ea84aa/64e21d17-72b8-4ab6-b325-0ef28b5838b7/portrait.jpg",
+  "url": "/media/portrait.jpg",
   "original_filename": "portrait.jpg",
   "size": 739462,
   "content_type": "image/jpeg",
