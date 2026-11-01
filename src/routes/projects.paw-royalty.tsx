@@ -197,7 +197,7 @@ function ExecutionCard({ card, index }: { card: ExecutionCardData; index: number
       whileHover={{ y: -6 }}
       transition={{ type: "spring", stiffness: 260, damping: 24 }}
       tabIndex={0}
-      className="group relative isolate flex min-h-64 flex-col overflow-hidden rounded-[calc(var(--radius)+14px)] border border-border bg-card p-6 shadow-[var(--shadow-card)] outline-none transition-shadow duration-500 hover:shadow-[var(--shadow-card-hover)] focus-visible:ring-2 focus-visible:ring-accent-1/60 md:h-64"
+      className="group relative isolate flex flex-col overflow-hidden rounded-[calc(var(--radius)+14px)] border border-border bg-card p-6 shadow-[var(--shadow-card)] outline-none transition-shadow duration-500 hover:shadow-[var(--shadow-card-hover)] focus-visible:ring-2 focus-visible:ring-accent-1/60"
     >
       {/* Accent top bar */}
       <motion.span
@@ -243,7 +243,7 @@ function ExecutionCard({ card, index }: { card: ExecutionCardData; index: number
       </div>
 
       {/* Title always visible */}
-      <h3 className="relative mt-auto text-lg font-bold leading-tight tracking-tight md:text-[1.05rem] lg:text-lg">
+      <h3 className="relative mt-8 text-lg font-bold leading-tight tracking-tight md:text-[1.05rem] lg:text-lg">
         {tr(card.title)}
       </h3>
 
@@ -257,7 +257,7 @@ function ExecutionCard({ card, index }: { card: ExecutionCardData; index: number
               animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               exit={{ opacity: 0, y: -6, filter: "blur(4px)" }}
               transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-              className="absolute inset-x-0 top-0 text-[0.78rem] leading-relaxed text-muted-foreground"
+              className="text-[0.78rem] leading-relaxed text-muted-foreground"
             >
               {tr(card.body)}
             </motion.p>
