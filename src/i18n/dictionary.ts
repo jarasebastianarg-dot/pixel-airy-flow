@@ -17,7 +17,7 @@ export const dictionary = {
       langLabel: "Language",
     },
     hero: {
-      badge: "Brand & Design Strategy Lead at Xtendo Global",
+      badge: "Brand & Design Strategy Lead · Available for freelance branding projects",
       headline: {
         pre: "I lead ",
         em1: "brands",
@@ -116,6 +116,36 @@ export const dictionary = {
       copyAria: "Copy email address",
       footer: "Sebastián Jara. Buenos Aires, Argentina.",
     },
+    faq: {
+      heading: "Questions before you hire me",
+      intro: "The short answers to what people usually ask before starting a project.",
+      items: [
+        {
+          q: "Who is Sebastián Jara?",
+          a: "I'm a brand and design strategist from Buenos Aires, Argentina. I create brand identities, brand manuals and design systems, and I build the HubSpot landing pages, emails and Shopify stores that put them to work. Today I'm Brand & Design Strategy Lead at Xtendo Global, a B2B company with 1,500+ people in 9 countries.",
+        },
+        {
+          q: "Can I hire you for a freelance branding project?",
+          a: "Yes. I take freelance brand identity, brand system and e-commerce projects. I've worked remotely with clients in the United States, Europe and Argentina, like Paw Royalty, Folkways and Elevate Local.",
+        },
+        {
+          q: "What does a branding project with you include?",
+          a: "It depends on what the brand needs. It usually covers the logo system, color palette, typography and a brand manual with templates. If you need it, I also design and build the pieces that use the brand: landing pages, emails, packaging or a Shopify store.",
+        },
+        {
+          q: "Do you work remotely, and in which languages?",
+          a: "Yes, fully remote from Buenos Aires (GMT-3), in Spanish (native) and English (C1, Cambridge CAE).",
+        },
+        {
+          q: "How do you use AI in design?",
+          a: "I use Claude and Gemini to write, design and code faster, and I train teams to use them. At Xtendo I built a Gemini Gem that lets anyone in the company create on-brand pieces, and landing pages now take 1 day instead of 4 or 5.",
+        },
+        {
+          q: "How do I start a project with you?",
+          a: "Send me an email to jarasebastian.arg@gmail.com or a message on LinkedIn with what you need and your timeline, and we'll set up a call.",
+        },
+      ],
+    },
     experience: [
       {
         role: "Brand & Design Strategy Lead",
@@ -202,7 +232,7 @@ export const dictionary = {
       langLabel: "Idioma",
     },
     hero: {
-      badge: "Brand & Design Strategy Lead en Xtendo Global",
+      badge: "Brand & Design Strategy Lead · Disponible para proyectos freelance de branding",
       headline: {
         pre: "Lidero ",
         em1: "marcas",
@@ -300,6 +330,36 @@ export const dictionary = {
       copied: "Copiado",
       copyAria: "Copiar dirección de email",
       footer: "Sebastián Jara. Buenos Aires, Argentina.",
+    },
+    faq: {
+      heading: "Preguntas antes de contratarme",
+      intro: "Las respuestas cortas a lo que suelen preguntarme antes de empezar un proyecto.",
+      items: [
+        {
+          q: "¿Quién es Sebastián Jara?",
+          a: "Soy estratega de marca y diseño de Buenos Aires, Argentina. Creo identidades de marca, manuales y sistemas de diseño, y armo las landing pages, los emails en HubSpot y las tiendas en Shopify que los ponen en uso. Hoy soy Brand & Design Strategy Lead en Xtendo Global, una empresa B2B con más de 1.500 personas en 9 países.",
+        },
+        {
+          q: "¿Puedo contratarte para un proyecto freelance de branding?",
+          a: "Sí. Tomo proyectos freelance de identidad de marca, sistemas de marca y e-commerce. Trabajé a distancia con clientes de Estados Unidos, Europa y Argentina, como Paw Royalty, Folkways y Elevate Local.",
+        },
+        {
+          q: "¿Qué incluye un proyecto de branding con vos?",
+          a: "Depende de lo que necesite la marca. Normalmente incluye el sistema de logo, la paleta de colores, la tipografía y un manual de marca con plantillas. Si hace falta, también diseño y armo las piezas que usan la marca: landing pages, emails, packaging o una tienda en Shopify.",
+        },
+        {
+          q: "¿Trabajás a distancia? ¿En qué idiomas?",
+          a: "Sí, 100% remoto desde Buenos Aires (GMT-3), en español (nativo) e inglés (C1, Cambridge CAE).",
+        },
+        {
+          q: "¿Cómo usás la IA en el diseño?",
+          a: "Uso Claude y Gemini para escribir, diseñar y programar más rápido, y capacito a los equipos para usarlos. En Xtendo armé una gema de Gemini para que cualquiera en la empresa haga piezas de marca, y una landing page ahora lleva 1 día en vez de 4 o 5.",
+        },
+        {
+          q: "¿Cómo empiezo un proyecto con vos?",
+          a: "Mandame un email a jarasebastian.arg@gmail.com o un mensaje por LinkedIn con lo que necesitás y tus plazos, y coordinamos una llamada.",
+        },
+      ],
     },
     experience: [
       {

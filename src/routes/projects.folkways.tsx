@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { caseStudySchema, jsonLd, pageMeta } from "@/lib/seo";
 import { LanguageToggle } from "@/components/LanguageToggle";
 import {
   AnimatePresence,
@@ -26,35 +27,46 @@ import {
 } from "lucide-react";
 
 const FW_HOME =
-  "https://raw.githubusercontent.com/jarasebastianarg-dot/Portfolio-Photos/main/Folkways%20Home.png";
+  "/media/folkways/home.webp";
 const FW_PRODUCT =
-  "https://raw.githubusercontent.com/jarasebastianarg-dot/Portfolio-Photos/main/Folkways%20Product-page-wine.png";
+  "/media/folkways/product-page.webp";
 const FW_EMAIL_CLUB =
-  "https://raw.githubusercontent.com/jarasebastianarg-dot/Portfolio-Photos/main/Folkways%20email%20(1).png";
+  "/media/folkways/email-1.webp";
 const FW_EMAIL_CASHBACK =
-  "https://raw.githubusercontent.com/jarasebastianarg-dot/Portfolio-Photos/main/Folkways%20email%20(2).png";
+  "/media/folkways/email-2.webp";
 
 export const Route = createFileRoute("/projects/folkways")({
   component: FolkwaysProject,
-  head: () => ({
-    meta: [
-      { title: "Folkways: Shopify 2.0 migration and Klaviyo emails | Sebastián Jara" },
-      {
-        name: "description",
-        content:
-          "Case study: how I moved a wine store with 2,000+ products to Shopify 2.0, rebuilt the storefront in Liquid and redid its Klaviyo emails.",
-      },
-      { property: "og:title", content: "Folkways: Shopify 2.0 migration case study" },
-      {
-        property: "og:description",
-        content:
-          "How I moved 2,000+ products to Shopify 2.0 and replaced the cart, upsell and pop-up apps with native Liquid sections.",
-      },
-      { property: "og:type", content: "article" },
-      { property: "og:url", content: "/projects/folkways" },
-    ],
-    links: [{ rel: "canonical", href: "/projects/folkways" }],
-  }),
+  head: () => {
+    const meta = pageMeta({
+      title: "Folkways: Shopify 2.0 migration and Klaviyo emails | Sebastián Jara",
+      description:
+        "Case study: how I moved a wine store with 2,000+ products to Shopify 2.0, rebuilt the storefront in Liquid and redid its Klaviyo emails.",
+      path: "/projects/folkways",
+      type: "article",
+      image: "/og/folkways.jpg",
+      imageAlt: "Folkways case study by Sebastián Jara",
+      socialTitle: "Folkways: Shopify 2.0 migration case study",
+      socialDescription:
+        "How I moved 2,000+ products to Shopify 2.0 and replaced the cart, upsell and pop-up apps with native Liquid sections.",
+    });
+    return {
+      ...meta,
+      scripts: [
+        jsonLd(
+          caseStudySchema({
+            path: "/projects/folkways",
+            name: "Folkways: Shopify 2.0 migration case study",
+            description: "Case study: how I moved a wine store with 2,000+ products to Shopify 2.0, rebuilt the storefront in Liquid and redid its Klaviyo emails.",
+            image: "/og/folkways.jpg",
+            client: "Folkways",
+            year: "2025",
+            about: ["Shopify 2.0 migration", "Shopify Liquid development", "E-commerce design", "Klaviyo email design"],
+          }),
+        ),
+      ],
+    };
+  },
 });
 
 const fadeUp: Variants = {

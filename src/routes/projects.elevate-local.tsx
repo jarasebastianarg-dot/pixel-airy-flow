@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { caseStudySchema, jsonLd, pageMeta } from "@/lib/seo";
 import { LanguageToggle } from "@/components/LanguageToggle";
 import {
   AnimatePresence,
@@ -35,25 +36,36 @@ import elIsoLight from "@/assets/elevate-local/el-iso-light.png.asset.json";
 
 export const Route = createFileRoute("/projects/elevate-local")({
   component: ElevateLocalProject,
-  head: () => ({
-    meta: [
-      { title: "Elevate Local: Visual identity for a medical marketing agency | Sebastián Jara" },
-      {
-        name: "description",
-        content:
-          "The visual identity I designed for a marketing agency that works with medical clinics in Europe: logo system, colors, type, brand guidelines and a logo animation, done fully remote.",
-      },
-      { property: "og:title", content: "Elevate Local: Visual identity for a medical marketing agency" },
-      {
-        property: "og:description",
-        content:
-          "Logo system, mineral color palette, typography and brand guidelines for a B2B agency in the European medical sector.",
-      },
-      { property: "og:type", content: "article" },
-      { property: "og:url", content: "/projects/elevate-local" },
-    ],
-    links: [{ rel: "canonical", href: "/projects/elevate-local" }],
-  }),
+  head: () => {
+    const meta = pageMeta({
+      title: "Elevate Local: Visual identity for a medical marketing agency | Sebastián Jara",
+      description:
+        "The visual identity I designed for a marketing agency that works with medical clinics in Europe: logo system, colors, type, brand guidelines and a logo animation, done fully remote.",
+      path: "/projects/elevate-local",
+      type: "article",
+      image: "/og/elevate-local.jpg",
+      imageAlt: "Elevate Local case study by Sebastián Jara",
+      socialTitle: "Elevate Local: Visual identity for a medical marketing agency",
+      socialDescription:
+        "Logo system, mineral color palette, typography and brand guidelines for a B2B agency in the European medical sector.",
+    });
+    return {
+      ...meta,
+      scripts: [
+        jsonLd(
+          caseStudySchema({
+            path: "/projects/elevate-local",
+            name: "Elevate Local: Visual identity for a medical marketing agency",
+            description: "The visual identity I designed for a marketing agency that works with medical clinics in Europe: logo system, colors, type, brand guidelines and a logo animation, done fully remote.",
+            image: "/og/elevate-local.jpg",
+            client: "Elevate Local",
+            year: "2025",
+            about: ["Brand identity", "Visual identity", "Logo system", "Brand guidelines", "Logo animation"],
+          }),
+        ),
+      ],
+    };
+  },
 });
 
 const fadeUp: Variants = {

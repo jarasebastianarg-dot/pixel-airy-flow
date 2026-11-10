@@ -5,6 +5,8 @@ import { LanguageToggle } from "@/components/LanguageToggle";
 import portrait from "@/assets/portrait.jpg.asset.json";
 import cvAsset from "@/assets/JaraSebastian_CV.pdf.asset.json";
 import { caseStudies } from "@/lib/caseStudies";
+import { dictionary } from "@/i18n/dictionary";
+import { jsonLd, pageMeta, personSchema, serviceSchema, websiteSchema, absoluteUrl } from "@/lib/seo";
 import { motion, useMotionValue, useSpring, useInView, type Variants } from "framer-motion";
 import {
   ArrowUpRight,
@@ -22,8 +24,53 @@ import {
   MousePointerClick,
 } from "lucide-react";
 
+const HOME_TITLE = "Sebastián Jara | Freelance Brand Designer & Strategist · Branding, Shopify, HubSpot";
+const HOME_DESCRIPTION =
+  "Freelance brand designer and strategist from Buenos Aires. Brand identity, brand manuals, HubSpot landing pages and emails, and custom Shopify stores, built with AI. Remote, in English and Spanish.";
+
 export const Route = createFileRoute("/")({
   component: Index,
+  head: () => {
+    const base = pageMeta({
+      title: HOME_TITLE,
+      description: HOME_DESCRIPTION,
+      path: "/",
+      type: "profile",
+      socialTitle: "Sebastián Jara | Brand & Design Strategy",
+      imageAlt: "Sebastián Jara, brand and design strategist",
+    });
+    const faq = dictionary.en.faq.items;
+    return {
+      ...base,
+      scripts: [
+        jsonLd({
+          "@context": "https://schema.org",
+          "@graph": [
+            personSchema,
+            serviceSchema,
+            websiteSchema,
+            {
+              "@type": "ProfilePage",
+              "@id": absoluteUrl("/#profile"),
+              url: absoluteUrl("/"),
+              name: HOME_TITLE,
+              mainEntity: { "@id": personSchema["@id"] },
+              isPartOf: { "@id": websiteSchema["@id"] },
+            },
+            {
+              "@type": "FAQPage",
+              "@id": absoluteUrl("/#faq"),
+              mainEntity: faq.map((f) => ({
+                "@type": "Question",
+                name: f.q,
+                acceptedAnswer: { "@type": "Answer", text: f.a },
+              })),
+            },
+          ],
+        }),
+      ],
+    };
+  },
 });
 
 /* ─────────────────────────── data ─────────────────────────── */
@@ -388,6 +435,29 @@ function Index() {
           </Reveal>
         </section>
 
+        {/* FAQ: short, direct answers people and AI assistants can quote */}
+        <section id="faq" className="scroll-mt-24 pt-28">
+          <Reveal className="max-w-3xl" stagger={0.1}>
+            <motion.h2 variants={fadeUp} className="text-4xl font-bold leading-[1.05] tracking-tight [text-wrap:balance] md:text-5xl">
+              {t.faq.heading}
+            </motion.h2>
+            <motion.p variants={fadeUp} className="mt-6 max-w-[60ch] text-base leading-relaxed text-muted-foreground md:text-lg">
+              {t.faq.intro}
+            </motion.p>
+          </Reveal>
+          <div className="mt-10 divide-y divide-border border-y border-border">
+            {t.faq.items.map((f) => (
+              <details key={f.q} className="group py-5 [&_summary::-webkit-details-marker]:hidden">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-6 text-left text-lg font-semibold tracking-tight md:text-xl">
+                  <h3 className="font-semibold">{f.q}</h3>
+                  <span aria-hidden className="text-2xl font-normal text-muted-foreground transition-transform duration-300 group-open:rotate-45">+</span>
+                </summary>
+                <p className="mt-3 max-w-[70ch] text-base leading-relaxed text-muted-foreground">{f.a}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+
         {/* Contact */}
         <section id="contact" className="scroll-mt-24 py-28">
           <Reveal className="relative overflow-hidden rounded-[calc(var(--radius)+18px)] bg-foreground p-8 text-background md:p-14" stagger={0.1}>
@@ -486,8 +556,9 @@ function ProjectCard({ slug, wide = false }: { slug: (typeof caseStudies)[number
         <div className={`relative aspect-[16/10] overflow-hidden bg-secondary ${wide ? "md:col-span-7 md:aspect-auto md:min-h-[24rem]" : ""}`}>
           <img
             src={c.cover}
-            alt=""
-            loading="lazy"
+            alt={`${c.client}: ${copy.headline}`}
+            loading={wide ? "eager" : "lazy"}
+            fetchPriority={wide ? "high" : "auto"}
             decoding="async"
             className="absolute inset-0 h-full w-full object-cover transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
           />

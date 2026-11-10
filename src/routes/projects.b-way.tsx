@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { caseStudySchema, jsonLd, pageMeta } from "@/lib/seo";
 import { LanguageToggle } from "@/components/LanguageToggle";
 import {
   AnimatePresence,
@@ -40,7 +41,6 @@ import {
 } from "lucide-react";
 
 // Packaging references from previous portfolio
-import brandCover from "@/assets/bway/bway-brand.jpg.asset.json";
 import b10kMockup from "@/assets/bway/bway-b10k-mockup.jpg.asset.json";
 import b10kInside from "@/assets/bway/bway-b10k-inside.jpg.asset.json";
 import b10kAccessories from "@/assets/bway/bway-b10k-accessories.jpg.asset.json";
@@ -59,31 +59,43 @@ import sonicNegro from "@/assets/bway/bway-sonic-negro.jpg.asset.json";
 import b10kAdentro from "@/assets/bway/bway-b10k-adentro.jpg.asset.json";
 import compactFrente from "@/assets/bway/bway-compact-frente.jpg.asset.json";
 import diecutUrban from "@/assets/bway/bway-diecut-urban.jpg.asset.json";
-const ecomBrHome = { url: "https://raw.githubusercontent.com/jarasebastianarg-dot/Portfolio-Photos/main/Bway-brasil-Home.png" };
-const ecomArHome = { url: "https://raw.githubusercontent.com/jarasebastianarg-dot/Portfolio-Photos/main/Bway%20Ecom%20arg.png" };
-const ecomUsHome = { url: "https://raw.githubusercontent.com/jarasebastianarg-dot/Portfolio-Photos/main/Bway-USA-Ecom.png" };
+const brandCover = { url: "/media/bway/bway-brand-thumb.webp" };
+const ecomBrHome = { url: "/media/bway/ecom-br-home.webp" };
+const ecomArHome = { url: "/media/bway/ecom-ar-home.webp" };
+const ecomUsHome = { url: "/media/bway/ecom-us-home.webp" };
 
 export const Route = createFileRoute("/projects/b-way")({
   component: BWayProject,
-  head: () => ({
-    meta: [
-      { title: "B-WAY: From packaging designer to brand manager | Sebastián Jara" },
-      {
-        name: "description",
-        content:
-          "Two years at B-WAY, a barber tools brand. I started on packaging, became Brand Manager and led a 5-person team across the US, Brazil and Argentina.",
-      },
-      { property: "og:title", content: "B-WAY: From packaging designer to brand manager" },
-      {
-        property: "og:description",
-        content:
-          "Packaging made with the factory in China, Shopify stores for three countries, Meta Ads, email and event stands at Barber Week.",
-      },
-      { property: "og:type", content: "article" },
-      { property: "og:url", content: "/projects/b-way" },
-    ],
-    links: [{ rel: "canonical", href: "/projects/b-way" }],
-  }),
+  head: () => {
+    const meta = pageMeta({
+      title: "B-WAY: From packaging designer to brand manager | Sebastián Jara",
+      description:
+        "Two years at B-WAY, a barber tools brand. I started on packaging, became Brand Manager and led a 5-person team across the US, Brazil and Argentina.",
+      path: "/projects/b-way",
+      type: "article",
+      image: "/og/b-way.jpg",
+      imageAlt: "B-WAY case study by Sebastián Jara",
+      socialTitle: "B-WAY: From packaging designer to brand manager",
+      socialDescription:
+        "Packaging made with the factory in China, Shopify stores for three countries, Meta Ads, email and event stands at Barber Week.",
+    });
+    return {
+      ...meta,
+      scripts: [
+        jsonLd(
+          caseStudySchema({
+            path: "/projects/b-way",
+            name: "B-WAY: From packaging designer to brand manager",
+            description: "Two years at B-WAY, a barber tools brand. I started on packaging, became Brand Manager and led a 5-person team across the US, Brazil and Argentina.",
+            image: "/og/b-way.jpg",
+            client: "B-WAY",
+            year: "2023-2025",
+            about: ["Packaging design", "Brand management", "Shopify stores", "Event and stand design", "Marketing team leadership"],
+          }),
+        ),
+      ],
+    };
+  },
 });
 
 const fadeUp: Variants = {
