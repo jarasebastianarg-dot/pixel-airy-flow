@@ -7,7 +7,7 @@ import getExperience from "./tools/get_experience";
 import getStack from "./tools/get_stack";
 
 export default defineMcp({
-  name: "sebastian-jaimes-portfolio",
+  name: "sebastian-jara-portfolio",
   title: "Sebastián Jara | Portfolio",
   version: "0.1.0",
   instructions:

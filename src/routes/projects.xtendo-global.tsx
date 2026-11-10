@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { caseStudySchema, jsonLd, pageMeta } from "@/lib/seo";
 import { LanguageToggle } from "@/components/LanguageToggle";
 import { AnimatePresence, MotionConfig, motion, useInView, type Variants } from "framer-motion";
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -28,25 +29,36 @@ const LANDING_URL = "https://recursos.xtendo.global/webinar-picos-de-demanda";
 
 export const Route = createFileRoute("/projects/xtendo-global")({
   component: XtendoProject,
-  head: () => ({
-    meta: [
-      { title: "Xtendo Global: Brand system, HubSpot landings and AI | Sebastián Jara" },
-      {
-        name: "description",
-        content:
-          "Case study: Xtendo Global had a new logo and a thin brand guide. I gave it a look, wrote the 45-page brand manual, built a Gemini Gem so anyone can make on-brand pieces, and designed HubSpot landing pages and emails.",
-      },
-      { property: "og:title", content: "Xtendo Global: Brand & Design Strategy case study" },
-      {
-        property: "og:description",
-        content: "How I turned a logo with no look into a brand system for 1,500+ people in 9 countries, with AI.",
-      },
-      { property: "og:type", content: "article" },
-      { property: "og:url", content: "/projects/xtendo-global" },
-      { property: "og:image", content: `${A}/manual-p01.webp` },
-    ],
-    links: [{ rel: "canonical", href: "/projects/xtendo-global" }],
-  }),
+  head: () => {
+    const meta = pageMeta({
+      title: "Xtendo Global: Brand system, HubSpot landings and AI | Sebastián Jara",
+      description:
+        "Case study: Xtendo Global had a new logo and a thin brand guide. I gave it a look, wrote the 45-page brand manual, built a Gemini Gem so anyone can make on-brand pieces, and designed HubSpot landing pages and emails.",
+      path: "/projects/xtendo-global",
+      type: "article",
+      image: "/og/xtendo-global.jpg",
+      imageAlt: "Xtendo Global case study by Sebastián Jara",
+      socialTitle: "Xtendo Global: Brand & Design Strategy case study",
+      socialDescription:
+        "How I turned a logo with no look into a brand system for 1,500+ people in 9 countries, with AI.",
+    });
+    return {
+      ...meta,
+      scripts: [
+        jsonLd(
+          caseStudySchema({
+            path: "/projects/xtendo-global",
+            name: "Xtendo Global: Brand & Design Strategy case study",
+            description: "Case study: Xtendo Global had a new logo and a thin brand guide. I gave it a look, wrote the 45-page brand manual, built a Gemini Gem so anyone can make on-brand pieces, and designed HubSpot landing pages and emails.",
+            image: "/og/xtendo-global.jpg",
+            client: "Xtendo Global",
+            year: "2026",
+            about: ["Brand system", "Brand manual", "Sub-brand design", "HubSpot landing pages and email", "AI design workflow", "Gemini Gem"],
+          }),
+        ),
+      ],
+    };
+  },
 });
 
 /* ------------------------------------------------------------------ */
@@ -701,7 +713,8 @@ function TypedPrompt() {
     return () => window.clearInterval(id);
   }, [inView]);
   return (
-    <p ref={ref} className="min-h-[6.5rem] font-mono text-[0.8rem] leading-relaxed text-background/85" aria-label={PROMPT}>
+    <p ref={ref} className="min-h-[6.5rem] font-mono text-[0.8rem] leading-relaxed text-background/85">
+      <span className="sr-only">{PROMPT}</span>
       <span aria-hidden="true">
         {PROMPT.slice(0, count)}
         {count < PROMPT.length ? <span className="ml-0.5 inline-block h-4 w-[2px] translate-y-0.5 animate-pulse bg-accent-1" /> : null}

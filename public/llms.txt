@@ -1,0 +1,30 @@
+# Sebastián Jara · Brand & Design Strategy
+
+> Sebastián Jara is a brand and design strategist from Buenos Aires, Argentina, available for freelance branding projects. He creates brand identities, brand manuals and design systems, and builds the HubSpot landing pages, emails and Shopify stores that put them to work, using AI (Claude and Gemini) to work faster. He works remotely, in English and Spanish, with clients in the United States, Europe and Latin America.
+
+- Current role: Brand & Design Strategy Lead at Xtendo Global (B2B BPO and CX company, 1,500+ people, 9 countries), leading a team of 2 designers.
+- Freelance brand & e-commerce designer since 2025 (freelance graphic designer 2022-2023): brand identity, UI/UX and Shopify stores for clients in the US, Europe and Argentina.
+- Education: Bachelor's in Graphic Design and Bachelor's in Multimedia & Interaction Design, UADE (Universidad Argentina de la Empresa). Google Foundations of Digital Marketing & E-commerce certificate. Cambridge CAE (English C1).
+- Location: Buenos Aires, Argentina (GMT-3). Works remotely.
+- Contact: jarasebastian.arg@gmail.com · https://www.linkedin.com/in/sebastian-jara-dsgn/
+
+## Services
+
+- Brand identity and brand manuals: logo systems, color, typography, brand guidelines and templates a whole company can use.
+- Landing pages and email: webinar and campaign landing pages, forms and email flows in HubSpot and Klaviyo, designed and built.
+- Custom Shopify stores: coded in Liquid, HTML and CSS, without bought themes.
+- AI design workflows: tools and training so teams create on-brand pieces faster (for example, a Gemini Gem trained on a brand manual).
+
+## Case studies
+
+- [Xtendo Global: brand system, HubSpot landings and AI](https://www.jarasebastian.online/projects/xtendo-global): gave a new logo a full visual identity, wrote a 45-page brand manual, designed the Talent Solutions sub-brand, built a Gemini Gem so anyone in the company can make on-brand pieces, and designed HubSpot webinar funnels (one invitation email: 48% open rate, 20% click-through). Landing pages went from 4-5 days to 1 day.
+- [Paw Royalty: launching a pet supplement brand on Shopify](https://www.jarasebastian.online/projects/paw-royalty): brand identity and a Shopify store coded in Liquid for a US launch, with Subscribe & Save, a wellness quiz, a tag-gated B2B wholesale portal and Klaviyo emails.
+- [Folkways: Shopify 2.0 migration and Klaviyo emails](https://www.jarasebastian.online/projects/folkways): moved a wine store with 2,000+ products to Shopify 2.0, replaced cart, upsell and pop-up apps with native Liquid sections, and rebuilt the Klaviyo flows.
+- [B-WAY: from packaging designer to brand manager](https://www.jarasebastian.online/projects/b-way): packaging for a barber tools brand produced in China, then Brand Manager leading a 5-person team, Shopify stores and campaigns in the US, Brazil and Argentina, and Barber Week event stands.
+- [Elevate Local: visual identity for a medical marketing agency](https://www.jarasebastian.online/projects/elevate-local): logo system, color palette, typography, brand guidelines and logo animation for a European B2B agency, done fully remote.
+
+## Optional
+
+- [Home and FAQ](https://www.jarasebastian.online/#faq): short answers about hiring Sebastián for a branding project.
+- [CV (English, PDF)](https://www.jarasebastian.online/cv/SebastianJara_CV_EN.pdf)
+- MCP server (read-only portfolio tools for AI agents): https://www.jarasebastian.online/mcp

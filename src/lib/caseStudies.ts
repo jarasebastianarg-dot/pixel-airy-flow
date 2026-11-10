@@ -1,5 +1,3 @@
-import bwayThumb from "@/assets/bway/bway-brand.jpg.asset.json";
-
 /**
  * Single source of truth for the case studies: order, cover image and route.
  * The home grid and the "Next project" footer on every case page read from here,
@@ -25,21 +23,21 @@ export const caseStudies: CaseStudy[] = [
     slug: "paw-royalty",
     client: "Paw Royalty",
     href: "/projects/paw-royalty",
-    cover: "https://raw.githubusercontent.com/jarasebastianarg-dot/Portfolio-Photos/main/Paw%20Royalty%20thumbnail.png",
+    cover: "/media/paw-royalty/thumbnail.webp",
     year: "2025",
   },
   {
     slug: "folkways",
     client: "Folkways",
     href: "/projects/folkways",
-    cover: "https://raw.githubusercontent.com/jarasebastianarg-dot/Portfolio-Photos/main/Folkways%20Thumbnail.webp",
+    cover: "/media/folkways/thumbnail.webp",
     year: "2025",
   },
   {
     slug: "b-way",
     client: "B-WAY",
     href: "/projects/b-way",
-    cover: bwayThumb.url,
+    cover: "/media/bway/bway-brand-thumb.webp",
     year: "2023-2025",
   },
   {

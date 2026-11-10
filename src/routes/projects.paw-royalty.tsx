@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { caseStudySchema, jsonLd, pageMeta } from "@/lib/seo";
 import { LanguageToggle } from "@/components/LanguageToggle";
 import {
   AnimatePresence,
@@ -26,37 +27,48 @@ import {
   Tags,
   EyeOff,
 } from "lucide-react";
-const prHome = { url: "https://raw.githubusercontent.com/jarasebastianarg-dot/Portfolio-Photos/main/Paw%20Royalty%20Home.png" };
-const prProduct = { url: "https://raw.githubusercontent.com/jarasebastianarg-dot/Portfolio-Photos/main/Paw%20Royalty%20Product%20page.png" };
-const prSubscribe = { url: "https://raw.githubusercontent.com/jarasebastianarg-dot/Portfolio-Photos/main/Paw%20Royalty%20Pagina%20subscribe%20and%20save.png" };
-const prQuiz = { url: "https://raw.githubusercontent.com/jarasebastianarg-dot/Portfolio-Photos/main/Paw%20Royalty%20Quiz%20page.png" };
-const prEmailCampaign = { url: "https://raw.githubusercontent.com/jarasebastianarg-dot/Portfolio-Photos/main/Paw%20Royalty%20email%20(1).png" };
-const prEmailSubscribe = { url: "https://raw.githubusercontent.com/jarasebastianarg-dot/Portfolio-Photos/main/Paw%20Royalty%20email%20(2).png" };
+const prHome = { url: "/media/paw-royalty/home.webp" };
+const prProduct = { url: "/media/paw-royalty/product-page.webp" };
+const prSubscribe = { url: "/media/paw-royalty/subscribe-and-save.webp" };
+const prQuiz = { url: "/media/paw-royalty/quiz.webp" };
+const prEmailCampaign = { url: "/media/paw-royalty/email-1.webp" };
+const prEmailSubscribe = { url: "/media/paw-royalty/email-2.webp" };
 /* B2B wholesale portal, as a logged-in B2B customer sees it */
 const prB2b = { url: "/media/paw-royalty/pr-b2b.webp" };
-const prEmailCalming = { url: "https://raw.githubusercontent.com/jarasebastianarg-dot/Portfolio-Photos/main/PawRoyalty%20email%203.png" };
+const prEmailCalming = { url: "/media/paw-royalty/email-3.webp" };
 
 export const Route = createFileRoute("/projects/paw-royalty")({
   component: PawRoyaltyProject,
-  head: () => ({
-    meta: [
-      { title: "Paw Royalty: Launching a pet supplement brand on Shopify | Sebastián Jara" },
-      {
-        name: "description",
-        content:
-          "Case study: how I launched Paw Royalty from zero for the US market. Brand identity, a Shopify store coded in Liquid, a Subscribe & Save page, a wellness quiz and Klaviyo emails.",
-      },
-      { property: "og:title", content: "Paw Royalty: Shopify launch case study" },
-      {
-        property: "og:description",
-        content:
-          "How I designed a new pet supplement brand and built its Shopify store from zero.",
-      },
-      { property: "og:type", content: "article" },
-      { property: "og:url", content: "/projects/paw-royalty" },
-    ],
-    links: [{ rel: "canonical", href: "/projects/paw-royalty" }],
-  }),
+  head: () => {
+    const meta = pageMeta({
+      title: "Paw Royalty: Launching a pet supplement brand on Shopify | Sebastián Jara",
+      description:
+        "Case study: how I launched Paw Royalty from zero for the US market. Brand identity, a Shopify store coded in Liquid, a Subscribe & Save page, a wellness quiz and Klaviyo emails.",
+      path: "/projects/paw-royalty",
+      type: "article",
+      image: "/og/paw-royalty.jpg",
+      imageAlt: "Paw Royalty case study by Sebastián Jara",
+      socialTitle: "Paw Royalty: Shopify launch case study",
+      socialDescription:
+        "How I designed a new pet supplement brand and built its Shopify store from zero.",
+    });
+    return {
+      ...meta,
+      scripts: [
+        jsonLd(
+          caseStudySchema({
+            path: "/projects/paw-royalty",
+            name: "Paw Royalty: Shopify launch case study",
+            description: "Case study: how I launched Paw Royalty from zero for the US market. Brand identity, a Shopify store coded in Liquid, a Subscribe & Save page, a wellness quiz and Klaviyo emails.",
+            image: "/og/paw-royalty.jpg",
+            client: "Paw Royalty",
+            year: "2025",
+            about: ["Brand identity", "Shopify store development", "Subscription e-commerce", "B2B wholesale portal", "Klaviyo email design"],
+          }),
+        ),
+      ],
+    };
+  },
 });
 
 const fadeUp: Variants = {

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://www.jarasebastian.online/</loc>
+    <lastmod>2026-11-10</lastmod>
+    <image:image><image:loc>https://www.jarasebastian.online/media/portrait.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://www.jarasebastian.online/projects/xtendo-global</loc>
+    <lastmod>2026-11-10</lastmod>
+    <image:image><image:loc>https://www.jarasebastian.online/og/xtendo-global.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://www.jarasebastian.online/projects/paw-royalty</loc>
+    <lastmod>2026-11-10</lastmod>
+    <image:image><image:loc>https://www.jarasebastian.online/og/paw-royalty.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://www.jarasebastian.online/projects/folkways</loc>
+    <lastmod>2026-11-10</lastmod>
+    <image:image><image:loc>https://www.jarasebastian.online/og/folkways.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://www.jarasebastian.online/projects/b-way</loc>
+    <lastmod>2026-11-10</lastmod>
+    <image:image><image:loc>https://www.jarasebastian.online/og/b-way.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://www.jarasebastian.online/projects/elevate-local</loc>
+    <lastmod>2026-11-10</lastmod>
+    <image:image><image:loc>https://www.jarasebastian.online/og/elevate-local.jpg</image:loc></image:image>
+  </url>
+</urlset>

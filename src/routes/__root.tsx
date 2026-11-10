@@ -78,34 +78,25 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Sebastián Jara | Brand & Design Strategy Lead" },
+      // Defaults for pages without their own head (each route sets its own title, canonical and social tags)
+      { title: "Sebastián Jara | Brand & Design Strategy" },
       {
         name: "description",
         content:
-          "Brand & Design Strategy Lead from Buenos Aires. I lead brands and build their landing pages, HubSpot emails and Shopify stores, using AI to work faster.",
+          "Freelance brand designer and strategist from Buenos Aires: brand identity, brand manuals, HubSpot landing pages and emails, and Shopify stores.",
       },
       { name: "author", content: "Sebastián Jara" },
-      { property: "og:title", content: "Sebastián Jara | Brand & Design Strategy Lead" },
-      {
-        property: "og:description",
-        content:
-          "Brand & Design Strategy Lead from Buenos Aires. I lead brands and build their landing pages, HubSpot emails and Shopify stores, using AI to work faster.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Sebastián Jara | Brand & Design Strategy Lead" },
-      { name: "twitter:description", content: "Brand & Design Strategy Lead from Buenos Aires. I lead brands and build their landing pages, HubSpot emails and Shopify stores, using AI to work faster." },
     ],
     links: [
       {
         rel: "stylesheet",
         href: appCss,
       },
-      { rel: "icon", href: "https://raw.githubusercontent.com/jarasebastianarg-dot/Portfolio-Photos/main/FavIcon.png", type: "image/png" },
+      { rel: "icon", href: "/favicon.ico", sizes: "48x48" },
+      { rel: "icon", href: "/favicon.png", type: "image/png" },
+      { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "preconnect", href: "https://raw.githubusercontent.com", crossOrigin: "anonymous" },
-      { rel: "dns-prefetch", href: "https://raw.githubusercontent.com" },
       {
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap",
