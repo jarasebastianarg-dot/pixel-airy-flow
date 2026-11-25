@@ -2,8 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://www.jarasebastian.online/</loc>
-    <lastmod>2026-11-10</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <image:image><image:loc>https://www.jarasebastian.online/media/portrait.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://www.jarasebastian.online/services/brand-identity</loc>
+    <lastmod>2026-11-25</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jarasebastian.online/services/shopify-stores</loc>
+    <lastmod>2026-11-25</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jarasebastian.online/services/landing-pages-email</loc>
+    <lastmod>2026-11-25</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jarasebastian.online/services/ai-design-workflows</loc>
+    <lastmod>2026-11-25</lastmod>
   </url>
   <url>
     <loc>https://www.jarasebastian.online/projects/xtendo-global</loc>

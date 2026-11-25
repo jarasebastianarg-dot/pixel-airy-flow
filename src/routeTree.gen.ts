@@ -18,6 +18,7 @@ import { Route as ProjectsElevateLocalRouteImport } from './routes/projects.elev
 import { Route as ProjectsFolkwaysRouteImport } from './routes/projects.folkways'
 import { Route as ProjectsPawRoyaltyRouteImport } from './routes/projects.paw-royalty'
 import { Route as ProjectsXtendoGlobalRouteImport } from './routes/projects.xtendo-global'
+import { Route as ServicesSlugRouteImport } from './routes/services.$slug'
 import { Route as Char91DotmcpChar93InvokeToolToolRouteImport } from './routes/[.mcp]/invoke-tool/$tool'
 
 const IndexRoute = IndexRouteImport.update({
@@ -67,6 +68,11 @@ const ProjectsXtendoGlobalRoute = ProjectsXtendoGlobalRouteImport.update({
   path: '/projects/xtendo-global',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesSlugRoute = ServicesSlugRouteImport.update({
+  id: '/services/$slug',
+  path: '/services/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const Char91DotmcpChar93InvokeToolToolRoute =
   Char91DotmcpChar93InvokeToolToolRouteImport.update({
     id: '/.mcp/invoke-tool/$tool',
@@ -84,6 +90,7 @@ export interface FileRoutesByFullPath {
   '/projects/folkways': typeof ProjectsFolkwaysRoute
   '/projects/paw-royalty': typeof ProjectsPawRoyaltyRoute
   '/projects/xtendo-global': typeof ProjectsXtendoGlobalRoute
+  '/services/$slug': typeof ServicesSlugRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
 }
 export interface FileRoutesByTo {
@@ -96,6 +103,7 @@ export interface FileRoutesByTo {
   '/projects/folkways': typeof ProjectsFolkwaysRoute
   '/projects/paw-royalty': typeof ProjectsPawRoyaltyRoute
   '/projects/xtendo-global': typeof ProjectsXtendoGlobalRoute
+  '/services/$slug': typeof ServicesSlugRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
 }
 export interface FileRoutesById {
@@ -109,6 +117,7 @@ export interface FileRoutesById {
   '/projects/folkways': typeof ProjectsFolkwaysRoute
   '/projects/paw-royalty': typeof ProjectsPawRoyaltyRoute
   '/projects/xtendo-global': typeof ProjectsXtendoGlobalRoute
+  '/services/$slug': typeof ServicesSlugRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
 }
 export interface FileRouteTypes {
@@ -123,6 +132,7 @@ export interface FileRouteTypes {
     | '/projects/folkways'
     | '/projects/paw-royalty'
     | '/projects/xtendo-global'
+    | '/services/$slug'
     | '/.mcp/invoke-tool/$tool'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -135,6 +145,7 @@ export interface FileRouteTypes {
     | '/projects/folkways'
     | '/projects/paw-royalty'
     | '/projects/xtendo-global'
+    | '/services/$slug'
     | '/.mcp/invoke-tool/$tool'
   id:
     | '__root__'
@@ -147,6 +158,7 @@ export interface FileRouteTypes {
     | '/projects/folkways'
     | '/projects/paw-royalty'
     | '/projects/xtendo-global'
+    | '/services/$slug'
     | '/.mcp/invoke-tool/$tool'
   fileRoutesById: FileRoutesById
 }
@@ -160,6 +172,7 @@ export interface RootRouteChildren {
   ProjectsFolkwaysRoute: typeof ProjectsFolkwaysRoute
   ProjectsPawRoyaltyRoute: typeof ProjectsPawRoyaltyRoute
   ProjectsXtendoGlobalRoute: typeof ProjectsXtendoGlobalRoute
+  ServicesSlugRoute: typeof ServicesSlugRoute
   Char91DotmcpChar93InvokeToolToolRoute: typeof Char91DotmcpChar93InvokeToolToolRoute
 }
 
@@ -228,6 +241,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProjectsXtendoGlobalRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/$slug': {
+      id: '/services/$slug'
+      path: '/services/$slug'
+      fullPath: '/services/$slug'
+      preLoaderRoute: typeof ServicesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/.mcp/invoke-tool/$tool': {
       id: '/.mcp/invoke-tool/$tool'
       path: '/.mcp/invoke-tool/$tool'
@@ -249,6 +269,7 @@ const rootRouteChildren: RootRouteChildren = {
   ProjectsFolkwaysRoute: ProjectsFolkwaysRoute,
   ProjectsPawRoyaltyRoute: ProjectsPawRoyaltyRoute,
   ProjectsXtendoGlobalRoute: ProjectsXtendoGlobalRoute,
+  ServicesSlugRoute: ServicesSlugRoute,
   Char91DotmcpChar93InvokeToolToolRoute: Char91DotmcpChar93InvokeToolToolRoute,
 }
 export const routeTree = rootRouteImport
