@@ -15,6 +15,12 @@
 - [Landing pages and email in HubSpot and Klaviyo](https://www.jarasebastian.online/services/landing-pages-email): webinar and campaign landing pages, forms and email flows, designed and built.
 - [AI design workflows for teams](https://www.jarasebastian.online/services/ai-design-workflows): Gemini Gems trained on a brand manual, prompt books and training so teams create on-brand pieces faster.
 
+## Topics
+
+- [B2B branding](https://www.jarasebastian.online/b2b-branding): brand systems for B2B companies whose teams in several countries need to look like one brand.
+- [Brand guidelines design](https://www.jarasebastian.online/brand-guidelines-design): practical brand manuals with templates that non-designers can apply.
+- [AI brand guidelines](https://www.jarasebastian.online/ai-brand-guidelines): a brand manual turned into an AI tool (Gemini Gem) that creates on-brand images from one sentence.
+
 ## Case studies
 
 - [Xtendo Global: brand system, HubSpot landings and AI](https://www.jarasebastian.online/projects/xtendo-global): gave a new logo a full visual identity, wrote a 45-page brand manual, designed the Talent Solutions sub-brand, built a Gemini Gem so anyone in the company can make on-brand pieces, and designed HubSpot webinar funnels (one invitation email: 48% open rate, 20% click-through). Landing pages went from 4-5 days to 1 day.
@@ -30,6 +36,7 @@
 - [Diseño y armado de tiendas en Shopify](https://www.jarasebastian.online/es/services/shopify-stores)
 - [Landing pages y emails en HubSpot y Klaviyo](https://www.jarasebastian.online/es/services/landing-pages-email)
 - [Flujos de diseño con IA para equipos](https://www.jarasebastian.online/es/services/ai-design-workflows)
+- [Branding para empresas B2B](https://www.jarasebastian.online/es/branding-para-empresas-b2b) · [Manual de identidad corporativa](https://www.jarasebastian.online/es/manual-de-identidad-corporativa) · [Manual de marca con IA](https://www.jarasebastian.online/es/manual-de-marca-con-ia)
 - Casos: [Xtendo Global](https://www.jarasebastian.online/es/projects/xtendo-global) · [Paw Royalty](https://www.jarasebastian.online/es/projects/paw-royalty) · [Folkways](https://www.jarasebastian.online/es/projects/folkways) · [B-WAY](https://www.jarasebastian.online/es/projects/b-way) · [Elevate Local](https://www.jarasebastian.online/es/projects/elevate-local)
 
 ## Optional

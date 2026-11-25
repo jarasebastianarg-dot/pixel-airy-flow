@@ -10,10 +10,12 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as LandingRouteImport } from './routes/$landing'
 import { Route as McpRouteImport } from './routes/mcp'
 import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]/list-tools'
 import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
 import { Route as EsIndexRouteImport } from './routes/es.index'
+import { Route as EsLandingRouteImport } from './routes/es.$landing'
 import { Route as ProjectsBWayRouteImport } from './routes/projects.b-way'
 import { Route as ProjectsElevateLocalRouteImport } from './routes/projects.elevate-local'
 import { Route as ProjectsFolkwaysRouteImport } from './routes/projects.folkways'
@@ -31,6 +33,11 @@ import { Route as EsServicesSlugRouteImport } from './routes/es.services.$slug'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LandingRoute = LandingRouteImport.update({
+  id: '/$landing',
+  path: '/$landing',
   getParentRoute: () => rootRouteImport,
 } as any)
 const McpRoute = McpRouteImport.update({
@@ -53,6 +60,11 @@ const Char91DotwellKnownChar93OauthProtectedResourceRoute =
 const EsIndexRoute = EsIndexRouteImport.update({
   id: '/es/',
   path: '/es/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EsLandingRoute = EsLandingRouteImport.update({
+  id: '/es/$landing',
+  path: '/es/$landing',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProjectsBWayRoute = ProjectsBWayRouteImport.update({
@@ -124,9 +136,11 @@ const EsServicesSlugRoute = EsServicesSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/$landing': typeof LandingRoute
   '/mcp': typeof McpRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
+  '/es/$landing': typeof EsLandingRoute
   '/projects/b-way': typeof ProjectsBWayRoute
   '/projects/elevate-local': typeof ProjectsElevateLocalRoute
   '/projects/folkways': typeof ProjectsFolkwaysRoute
@@ -144,9 +158,11 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/$landing': typeof LandingRoute
   '/mcp': typeof McpRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
+  '/es/$landing': typeof EsLandingRoute
   '/projects/b-way': typeof ProjectsBWayRoute
   '/projects/elevate-local': typeof ProjectsElevateLocalRoute
   '/projects/folkways': typeof ProjectsFolkwaysRoute
@@ -165,9 +181,11 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/$landing': typeof LandingRoute
   '/mcp': typeof McpRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
+  '/es/$landing': typeof EsLandingRoute
   '/projects/b-way': typeof ProjectsBWayRoute
   '/projects/elevate-local': typeof ProjectsElevateLocalRoute
   '/projects/folkways': typeof ProjectsFolkwaysRoute
@@ -187,9 +205,11 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/$landing'
     | '/mcp'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
+    | '/es/$landing'
     | '/projects/b-way'
     | '/projects/elevate-local'
     | '/projects/folkways'
@@ -207,9 +227,11 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/$landing'
     | '/mcp'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
+    | '/es/$landing'
     | '/projects/b-way'
     | '/projects/elevate-local'
     | '/projects/folkways'
@@ -227,9 +249,11 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/$landing'
     | '/mcp'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
+    | '/es/$landing'
     | '/projects/b-way'
     | '/projects/elevate-local'
     | '/projects/folkways'
@@ -248,9 +272,11 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  LandingRoute: typeof LandingRoute
   McpRoute: typeof McpRoute
   Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
   Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
+  EsLandingRoute: typeof EsLandingRoute
   ProjectsBWayRoute: typeof ProjectsBWayRoute
   ProjectsElevateLocalRoute: typeof ProjectsElevateLocalRoute
   ProjectsFolkwaysRoute: typeof ProjectsFolkwaysRoute
@@ -274,6 +300,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/$landing': {
+      id: '/$landing'
+      path: '/$landing'
+      fullPath: '/$landing'
+      preLoaderRoute: typeof LandingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/mcp': {
@@ -302,6 +335,13 @@ declare module '@tanstack/react-router' {
       path: '/es'
       fullPath: '/es/'
       preLoaderRoute: typeof EsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/es/$landing': {
+      id: '/es/$landing'
+      path: '/es/$landing'
+      fullPath: '/es/$landing'
+      preLoaderRoute: typeof EsLandingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/projects/b-way': {
@@ -400,10 +440,12 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  LandingRoute: LandingRoute,
   McpRoute: McpRoute,
   Char91DotmcpChar93ListToolsRoute: Char91DotmcpChar93ListToolsRoute,
   Char91DotwellKnownChar93OauthProtectedResourceRoute:
     Char91DotwellKnownChar93OauthProtectedResourceRoute,
+  EsLandingRoute: EsLandingRoute,
   ProjectsBWayRoute: ProjectsBWayRoute,
   ProjectsElevateLocalRoute: ProjectsElevateLocalRoute,
   ProjectsFolkwaysRoute: ProjectsFolkwaysRoute,
