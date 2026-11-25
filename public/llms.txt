@@ -10,10 +10,10 @@
 
 ## Services
 
-- Brand identity and brand manuals: logo systems, color, typography, brand guidelines and templates a whole company can use.
-- Landing pages and email: webinar and campaign landing pages, forms and email flows in HubSpot and Klaviyo, designed and built.
-- Custom Shopify stores: coded in Liquid, HTML and CSS, without bought themes.
-- AI design workflows: tools and training so teams create on-brand pieces faster (for example, a Gemini Gem trained on a brand manual).
+- [Brand identity and brand manuals](https://www.jarasebastian.online/services/brand-identity): logo systems, color, typography, brand guidelines and templates a whole company can use.
+- [Custom Shopify stores](https://www.jarasebastian.online/services/shopify-stores): designed and coded in Liquid, HTML and CSS, without bought themes; Shopify 2.0 migrations, subscriptions and B2B wholesale portals.
+- [Landing pages and email in HubSpot and Klaviyo](https://www.jarasebastian.online/services/landing-pages-email): webinar and campaign landing pages, forms and email flows, designed and built.
+- [AI design workflows for teams](https://www.jarasebastian.online/services/ai-design-workflows): Gemini Gems trained on a brand manual, prompt books and training so teams create on-brand pieces faster.
 
 ## Case studies
 

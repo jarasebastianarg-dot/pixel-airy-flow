@@ -76,6 +76,8 @@ export const Route = createFileRoute("/")({
 /* ─────────────────────────── data ─────────────────────────── */
 
 const serviceIcons = [Palette, MousePointerClick, ShoppingBag, Bot] as const;
+/* Same order as t.services.items: each card links to its service page */
+const serviceSlugs = ["brand-identity", "landing-pages-email", "shopify-stores", "ai-design-workflows"] as const;
 
 /**
  * Latest CVs (EN/ES), served from /public/cv/ by site language.
@@ -358,6 +360,14 @@ function Index() {
                   <h3 className="mt-6 text-2xl font-bold leading-tight tracking-tight">{s.title}</h3>
                   <p className="mt-3 max-w-[48ch] text-[0.95rem] leading-relaxed text-muted-foreground">{s.desc}</p>
                   <p className="mt-5 text-sm text-foreground/70">{s.tools.join(", ")}</p>
+                  <Link
+                    to="/services/$slug"
+                    params={{ slug: serviceSlugs[i] }}
+                    className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-accent-1 hover:underline"
+                  >
+                    {t.services.more}
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
                 </motion.article>
               );
             })}

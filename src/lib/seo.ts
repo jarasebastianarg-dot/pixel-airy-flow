@@ -142,18 +142,22 @@ export const serviceSchema = {
     itemListElement: [
       {
         name: "Brand identity and brand manuals",
+        url: `${SITE_URL}/services/brand-identity`,
         description: "Logo systems, color, typography, brand guidelines and templates a whole company can use.",
       },
       {
         name: "Landing pages and email in HubSpot and Klaviyo",
+        url: `${SITE_URL}/services/landing-pages-email`,
         description: "Webinar and campaign landing pages, forms and email flows, designed and built.",
       },
       {
         name: "Custom Shopify stores",
+        url: `${SITE_URL}/services/shopify-stores`,
         description: "Shopify stores coded in Liquid, HTML and CSS, without bought themes.",
       },
       {
         name: "AI design workflows",
+        url: `${SITE_URL}/services/ai-design-workflows`,
         description: "Tools and training so a team can create on-brand pieces faster with Claude and Gemini.",
       },
     ].map((s) => ({ "@type": "Offer", itemOffered: { "@type": "Service", ...s, provider: { "@id": PERSON_ID } } })),

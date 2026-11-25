@@ -77,6 +77,7 @@ export const dictionary = {
       heading: { pre: "Brand, web and ", em: "AI", post: ", done by the same person." },
       intro:
         "Most of my projects need all four. I can lead the brand, design the pieces and also build the pages and flows, so nothing gets lost between the design and what goes live.",
+      more: "See the service",
       items: [
         {
           title: "Brand & design leadership",
@@ -292,6 +293,7 @@ export const dictionary = {
       heading: { pre: "Marca, web e ", em: "IA", post: ", a cargo de la misma persona." },
       intro:
         "La mayoría de mis proyectos necesitan las cuatro cosas. Puedo liderar la marca, diseñar las piezas y también construir las páginas y los flujos, así no se pierde nada entre el diseño y lo que sale publicado.",
+      more: "Ver el servicio",
       items: [
         {
           title: "Liderazgo de marca y diseño",
