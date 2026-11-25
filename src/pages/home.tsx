@@ -668,6 +668,7 @@ function CopyEmailButton({ email }: { email: string }) {
 
   return (
     <button
+      data-track="copy_email"
       type="button"
       onClick={handleCopy}
       aria-label={t.contact.copyAria}

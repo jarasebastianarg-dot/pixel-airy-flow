@@ -14,6 +14,7 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { LanguageProvider } from "../i18n/LanguageContext";
 import { langFromPath } from "../i18n/locale";
+import { listenForContactClicks } from "../lib/analytics";
 
 function NotFoundComponent() {
   return (
@@ -140,6 +141,8 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  // GA4: count clicks on email, LinkedIn and "copy email" as contact intent
+  useEffect(() => listenForContactClicks(), []);
 
   return (
     <QueryClientProvider client={queryClient}>
