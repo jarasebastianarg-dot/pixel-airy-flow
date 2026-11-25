@@ -7,6 +7,7 @@ import { LanguageToggle } from "@/components/LanguageToggle";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { caseStudies } from "@/lib/caseStudies";
 import { getService, process, services } from "@/lib/services";
+import { landings } from "@/lib/landings";
 import { EMAIL, LINKEDIN, absoluteUrl, jsonLd, pageMeta, personSchema } from "@/lib/seo";
 
 export function serviceHead(slug: string, lang: Lang) {
@@ -89,6 +90,7 @@ const ui = {
     ctaBody: "Send me an email or a LinkedIn message with what you need and your timeline. I work remotely from Buenos Aires, in English and Spanish.",
     email: "Send an email",
     other: "Other services",
+    topics: "Related topics",
     view: "View case study",
   },
   es: {
@@ -105,6 +107,7 @@ const ui = {
     ctaBody: "Mandame un email o un mensaje por LinkedIn con lo que necesitás y tus plazos. Trabajo a distancia desde Buenos Aires, en español e inglés.",
     email: "Mandar un email",
     other: "Otros servicios",
+    topics: "Temas relacionados",
     view: "Ver caso",
   },
 };
@@ -118,6 +121,7 @@ export function ServicePage() {
   const steps = process[lang];
   const related = s.related.map((r) => caseStudies.find((x) => x.slug === r)!);
   const others = services.filter((x) => x.slug !== s.slug);
+  const topics = landings.filter((l) => l.service === s.slug);
 
   return (
     <main className="min-h-screen w-full overflow-x-clip bg-background text-foreground">
@@ -293,6 +297,25 @@ export function ServicePage() {
               </div>
             </div>
           </div>
+
+          {topics.length ? (
+            <>
+              <h2 className="mt-16 font-mono text-xs font-semibold uppercase tracking-[0.24em] text-muted-foreground">{t.topics}</h2>
+              <ul className="mt-5 flex flex-wrap gap-3">
+                {topics.map((l) => (
+                  <li key={l.id}>
+                    <LocalLink
+                      to={l.en.path}
+                      className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2.5 text-sm font-semibold shadow-[var(--shadow-card)] transition-colors hover:border-accent-1/40"
+                    >
+                      {l[lang].keyword}
+                      <ArrowRight className="h-4 w-4 text-muted-foreground" />
+                    </LocalLink>
+                  </li>
+                ))}
+              </ul>
+            </>
+          ) : null}
 
           <h2 className="mt-16 font-mono text-xs font-semibold uppercase tracking-[0.24em] text-muted-foreground">{t.other}</h2>
           <ul className="mt-5 grid gap-3 md:grid-cols-3">

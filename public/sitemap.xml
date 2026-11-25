@@ -152,4 +152,46 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.jarasebastian.online/projects/elevate-local"/>
     <image:image><image:loc>https://www.jarasebastian.online/og/elevate-local.jpg</image:loc></image:image>
   </url>
+  <url>
+    <loc>https://www.jarasebastian.online/b2b-branding</loc>
+    <lastmod>2026-11-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.jarasebastian.online/b2b-branding"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.jarasebastian.online/es/branding-para-empresas-b2b"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.jarasebastian.online/b2b-branding"/>
+  </url>
+  <url>
+    <loc>https://www.jarasebastian.online/es/branding-para-empresas-b2b</loc>
+    <lastmod>2026-11-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.jarasebastian.online/b2b-branding"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.jarasebastian.online/es/branding-para-empresas-b2b"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.jarasebastian.online/b2b-branding"/>
+  </url>
+  <url>
+    <loc>https://www.jarasebastian.online/brand-guidelines-design</loc>
+    <lastmod>2026-11-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.jarasebastian.online/brand-guidelines-design"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.jarasebastian.online/es/manual-de-identidad-corporativa"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.jarasebastian.online/brand-guidelines-design"/>
+  </url>
+  <url>
+    <loc>https://www.jarasebastian.online/es/manual-de-identidad-corporativa</loc>
+    <lastmod>2026-11-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.jarasebastian.online/brand-guidelines-design"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.jarasebastian.online/es/manual-de-identidad-corporativa"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.jarasebastian.online/brand-guidelines-design"/>
+  </url>
+  <url>
+    <loc>https://www.jarasebastian.online/ai-brand-guidelines</loc>
+    <lastmod>2026-11-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.jarasebastian.online/ai-brand-guidelines"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.jarasebastian.online/es/manual-de-marca-con-ia"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.jarasebastian.online/ai-brand-guidelines"/>
+  </url>
+  <url>
+    <loc>https://www.jarasebastian.online/es/manual-de-marca-con-ia</loc>
+    <lastmod>2026-11-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.jarasebastian.online/ai-brand-guidelines"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.jarasebastian.online/es/manual-de-marca-con-ia"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.jarasebastian.online/ai-brand-guidelines"/>
+  </url>
 </urlset>

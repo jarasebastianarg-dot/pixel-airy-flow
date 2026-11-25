@@ -1,4 +1,5 @@
 import type { Lang } from "./dictionary";
+import { landingByPath } from "@/lib/landings";
 
 /**
  * The URL decides the language: everything under /es is Spanish, the rest is English.
@@ -20,6 +21,9 @@ export function basePath(pathname: string): string {
 /** The same page in the given language ("/projects/x" + es -> "/es/projects/x") */
 export function localizePath(path: string, lang: Lang): string {
   const [pathOnly, hash] = path.split("#");
+  // Keyword landing pages have their own address in each language
+  const landing = landingByPath(pathOnly || "/");
+  if (landing) return hash !== undefined ? `${landing[lang].path}#${hash}` : landing[lang].path;
   const base = basePath(pathOnly || "/");
   const localized = lang === "es" ? (base === "/" ? ES_PREFIX : `${ES_PREFIX}${base}`) : base;
   return hash !== undefined ? `${localized}#${hash}` : localized;
