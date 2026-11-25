@@ -151,9 +151,9 @@ export const serviceSchema = {
         description: "Webinar and campaign landing pages, forms and email flows, designed and built.",
       },
       {
-        name: "Custom Shopify stores",
+        name: "Shopify store design and development",
         url: `${SITE_URL}/services/shopify-stores`,
-        description: "Shopify stores coded in Liquid, HTML and CSS, without bought themes.",
+        description: "Shopify stores designed and built from scratch or redesigned, coded in Liquid, HTML and CSS.",
       },
       {
         name: "AI design workflows",

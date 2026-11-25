@@ -457,13 +457,10 @@ function Index() {
           </Reveal>
           <div className="mt-10 divide-y divide-border border-y border-border">
             {t.faq.items.map((f) => (
-              <details key={f.q} className="group py-5 [&_summary::-webkit-details-marker]:hidden">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-6 text-left text-lg font-semibold tracking-tight md:text-xl">
-                  <h3 className="font-semibold">{f.q}</h3>
-                  <span aria-hidden className="text-2xl font-normal text-muted-foreground transition-transform duration-300 group-open:rotate-45">+</span>
-                </summary>
-                <p className="mt-3 max-w-[70ch] text-base leading-relaxed text-muted-foreground">{f.a}</p>
-              </details>
+              <div key={f.q} className="py-6">
+                <h3 className="text-lg font-semibold tracking-tight md:text-xl">{f.q}</h3>
+                <p className="mt-2 max-w-[70ch] text-base leading-relaxed text-muted-foreground">{f.a}</p>
+              </div>
             ))}
           </div>
         </section>

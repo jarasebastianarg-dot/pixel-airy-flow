@@ -121,35 +121,39 @@ export const services: Service[] = [
     tools: ["Shopify", "Liquid", "HTML / CSS", "Klaviyo"],
     serviceType: "Shopify store design and development",
     en: {
-      name: "Custom Shopify stores",
-      title: "Freelance Shopify Designer & Liquid Developer · Custom Stores | Sebastián Jara",
+      name: "Shopify store design & development",
+      title: "Shopify Store Design & Development · Freelance Shopify Designer | Sebastián Jara",
       description:
-        "Hire a freelance Shopify designer and developer: custom stores coded in Liquid, Shopify 2.0 migrations, subscriptions, B2B wholesale portals and Klaviyo emails. Remote, in English and Spanish.",
-      headline: "Custom Shopify stores, designed and coded in Liquid.",
+        "Freelance Shopify designer and developer: I design and build your Shopify store from zero or redesign the one you have, coded in Liquid, with subscriptions, B2B wholesale and Klaviyo emails. Remote, in English and Spanish.",
+      headline: "Shopify stores designed and built from scratch, around how your customers shop.",
       intro:
         "I design the store and code it myself in Shopify Liquid, HTML and CSS, without bought themes or a pile of apps. That means the store looks the way it was designed, loads fast and is easy for your team to run. I also set up the emails that bring customers back.",
       forWho: [
         "Brands launching their first Shopify store.",
-        "Stores stuck on an old theme that need to move to Shopify 2.0.",
+        "Stores that outgrew their theme and need a redesign that sells better.",
         "Brands that need custom features: subscriptions, quizzes or a B2B wholesale section.",
       ],
       deliverables: [
         "Store design: home, collection, product, cart and landing pages.",
         "Theme coded in Liquid with native sections your team can edit.",
-        "Shopify 2.0 migrations, including large catalogs.",
+        "Store redesigns and rebuilds, including large catalogs.",
         "Subscribe & Save, product quizzes and B2B pricing for tagged customer accounts.",
         "Klaviyo email flows and campaigns designed and coded.",
       ],
       proof:
-        "I launched Paw Royalty's store from zero for the US market, with Subscribe & Save, a wellness quiz and a B2B wholesale portal. I moved Folkways, a wine store with 2,000+ products, to Shopify 2.0 and replaced its cart, upsell and pop-up apps with native sections. At B-WAY I ran three Shopify stores for the US, Brazil and Argentina.",
+        "I launched Paw Royalty's store from zero for the US market, with Subscribe & Save, a wellness quiz and a B2B wholesale portal. I rebuilt the store of Folkways, a wine shop with 2,000+ products, and replaced its cart, upsell and pop-up apps with native sections. At B-WAY I ran three Shopify stores for the US, Brazil and Argentina.",
       faq: [
         {
           q: "Do you use ready-made Shopify themes?",
           a: "No. I code the theme in Liquid so the store matches the design and doesn't depend on extra apps for basic features.",
         },
         {
-          q: "Can you migrate my store to Shopify 2.0?",
-          a: "Yes. I did it for Folkways, with more than 2,000 products, rebuilding the storefront with native Liquid sections.",
+          q: "Can you redesign the Shopify store I already have?",
+          a: "Yes. For Folkways, a wine store with more than 2,000 products, I rebuilt the whole storefront and replaced several apps with native sections.",
+        },
+        {
+          q: "Can you build my store from scratch?",
+          a: "Yes. For Paw Royalty I designed the brand and built the Shopify store from zero for its launch in the US.",
         },
         {
           q: "Can you set up wholesale prices for B2B customers?",
@@ -158,35 +162,39 @@ export const services: Service[] = [
       ],
     },
     es: {
-      name: "Tiendas Shopify a medida",
-      title: "Diseñador y desarrollador Shopify freelance · Tiendas en Liquid | Sebastián Jara",
+      name: "Diseño y armado de tiendas en Shopify",
+      title: "Diseño de tiendas Shopify · Diseñador web Shopify freelance | Sebastián Jara",
       description:
-        "Diseñador y desarrollador Shopify freelance: tiendas a medida programadas en Liquid, migraciones a Shopify 2.0, suscripciones, portales mayoristas B2B y emails en Klaviyo. Remoto, en español e inglés.",
-      headline: "Tiendas Shopify a medida, diseñadas y programadas en Liquid.",
+        "Diseñador web Shopify freelance: diseño y armo tu tienda Shopify desde cero o rediseño la que tenés, programada en Liquid, con suscripciones, venta mayorista B2B y emails en Klaviyo. Remoto, en español e inglés.",
+      headline: "Tiendas Shopify diseñadas y armadas desde cero, pensadas para cómo compran tus clientes.",
       intro:
         "Diseño la tienda y la programo yo en Shopify Liquid, HTML y CSS, sin temas comprados ni una pila de apps. Así la tienda se ve como se diseñó, carga rápido y es fácil de manejar para tu equipo. También armo los emails que hacen volver a los clientes.",
       forWho: [
         "Marcas que lanzan su primera tienda en Shopify.",
-        "Tiendas trabadas en un tema viejo que necesitan pasar a Shopify 2.0.",
+        "Tiendas que quedaron chicas con su tema y necesitan un rediseño que venda más.",
         "Marcas que necesitan funciones a medida: suscripciones, quizzes o una sección mayorista B2B.",
       ],
       deliverables: [
         "Diseño de la tienda: home, colecciones, producto, carrito y landing pages.",
         "Tema programado en Liquid con secciones nativas que tu equipo puede editar.",
-        "Migraciones a Shopify 2.0, incluso con catálogos grandes.",
+        "Rediseño y rearmado de tiendas, incluso con catálogos grandes.",
         "Subscribe & Save, quizzes de producto y precios B2B para cuentas con tag.",
         "Flujos y campañas de email en Klaviyo, diseñados y programados.",
       ],
       proof:
-        "Lancé desde cero la tienda de Paw Royalty para Estados Unidos, con Subscribe & Save, un quiz de bienestar y un portal mayorista B2B. Pasé a Folkways, una tienda de vinos con más de 2.000 productos, a Shopify 2.0 y reemplacé sus apps de carrito, upsell y pop-ups por secciones nativas. En B-WAY manejé tres tiendas Shopify para Estados Unidos, Brasil y Argentina.",
+        "Lancé desde cero la tienda de Paw Royalty para Estados Unidos, con Subscribe & Save, un quiz de bienestar y un portal mayorista B2B. Rearmé la tienda de Folkways, una tienda de vinos con más de 2.000 productos, y reemplacé sus apps de carrito, upsell y pop-ups por secciones nativas. En B-WAY manejé tres tiendas Shopify para Estados Unidos, Brasil y Argentina.",
       faq: [
         {
           q: "¿Usás temas de Shopify ya hechos?",
           a: "No. Programo el tema en Liquid para que la tienda respete el diseño y no dependa de apps extra para funciones básicas.",
         },
         {
-          q: "¿Podés migrar mi tienda a Shopify 2.0?",
-          a: "Sí. Lo hice para Folkways, con más de 2.000 productos, rearmando la tienda con secciones nativas en Liquid.",
+          q: "¿Podés rediseñar la tienda Shopify que ya tengo?",
+          a: "Sí. Para Folkways, una tienda de vinos con más de 2.000 productos, rearmé toda la tienda y reemplacé varias apps por secciones nativas.",
+        },
+        {
+          q: "¿Podés armar mi tienda desde cero?",
+          a: "Sí. Para Paw Royalty diseñé la marca y armé la tienda Shopify desde cero para su lanzamiento en Estados Unidos.",
         },
         {
           q: "¿Podés armar precios mayoristas para clientes B2B?",
@@ -282,7 +290,7 @@ export const services: Service[] = [
     serviceType: "AI design workflow consulting",
     en: {
       name: "AI design workflows for teams",
-      title: "AI Design Workflows & Brand Tools for Teams (Gemini, Claude) | Sebastián Jara",
+      title: "AI Brand Guidelines & Design Workflows for Teams (Gemini, Claude) | Sebastián Jara",
       description:
         "I set up AI design workflows for teams: Gemini Gems trained on your brand manual, prompt books and training so anyone can create on-brand pieces faster. Remote, in English and Spanish.",
       headline: "AI tools that let your whole team create on-brand pieces, faster.",
