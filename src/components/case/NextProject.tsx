@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { LocalLink } from "@/components/LocalLink";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { caseNumber, nextCase, type CaseStudy } from "@/lib/caseStudies";
 import { useTr } from "@/i18n/projectTranslate";
@@ -30,23 +30,22 @@ export function NextProject({ current }: { current: CaseStudy["slug"] }) {
             </div>
             <p className="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
               {tr("Want to work together or have a question about this project?")}{" "}
-              <a href="/#contact" className="font-semibold text-foreground underline decoration-accent-1/50 underline-offset-4 hover:decoration-accent-1">
+              <LocalLink to="/#contact" className="font-semibold text-foreground underline decoration-accent-1/50 underline-offset-4 hover:decoration-accent-1">
                 {tr("Get in touch")}
-              </a>
+              </LocalLink>
               .
             </p>
           </div>
-          <Link
-            to="/"
-            hash="works"
+          <LocalLink
+            to="/#works"
             className="inline-flex items-center gap-2 self-start rounded-full border border-border bg-card px-5 py-3 text-sm font-semibold text-foreground shadow-[var(--shadow-card)] transition-colors hover:bg-secondary md:self-auto"
           >
             <ArrowLeft className="h-4 w-4" />
             {tr("All projects")}
-          </Link>
+          </LocalLink>
         </div>
 
-        <Link
+        <LocalLink
           to={next.href}
           className="group mt-10 grid overflow-hidden rounded-3xl border border-border bg-card shadow-[var(--shadow-card)] transition-shadow duration-500 hover:shadow-[var(--shadow-card-hover)] md:grid-cols-12"
         >
@@ -71,7 +70,7 @@ export function NextProject({ current }: { current: CaseStudy["slug"] }) {
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </span>
           </div>
-        </Link>
+        </LocalLink>
       </div>
     </section>
   );

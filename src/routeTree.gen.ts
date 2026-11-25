@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as McpRouteImport } from './routes/mcp'
 import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]/list-tools'
 import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
+import { Route as EsIndexRouteImport } from './routes/es.index'
 import { Route as ProjectsBWayRouteImport } from './routes/projects.b-way'
 import { Route as ProjectsElevateLocalRouteImport } from './routes/projects.elevate-local'
 import { Route as ProjectsFolkwaysRouteImport } from './routes/projects.folkways'
@@ -20,6 +21,12 @@ import { Route as ProjectsPawRoyaltyRouteImport } from './routes/projects.paw-ro
 import { Route as ProjectsXtendoGlobalRouteImport } from './routes/projects.xtendo-global'
 import { Route as ServicesSlugRouteImport } from './routes/services.$slug'
 import { Route as Char91DotmcpChar93InvokeToolToolRouteImport } from './routes/[.mcp]/invoke-tool/$tool'
+import { Route as EsProjectsBWayRouteImport } from './routes/es.projects.b-way'
+import { Route as EsProjectsElevateLocalRouteImport } from './routes/es.projects.elevate-local'
+import { Route as EsProjectsFolkwaysRouteImport } from './routes/es.projects.folkways'
+import { Route as EsProjectsPawRoyaltyRouteImport } from './routes/es.projects.paw-royalty'
+import { Route as EsProjectsXtendoGlobalRouteImport } from './routes/es.projects.xtendo-global'
+import { Route as EsServicesSlugRouteImport } from './routes/es.services.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -43,6 +50,11 @@ const Char91DotwellKnownChar93OauthProtectedResourceRoute =
     path: '/.well-known/oauth-protected-resource',
     getParentRoute: () => rootRouteImport,
   } as any)
+const EsIndexRoute = EsIndexRouteImport.update({
+  id: '/es/',
+  path: '/es/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProjectsBWayRoute = ProjectsBWayRouteImport.update({
   id: '/projects/b-way',
   path: '/projects/b-way',
@@ -79,6 +91,36 @@ const Char91DotmcpChar93InvokeToolToolRoute =
     path: '/.mcp/invoke-tool/$tool',
     getParentRoute: () => rootRouteImport,
   } as any)
+const EsProjectsBWayRoute = EsProjectsBWayRouteImport.update({
+  id: '/es/projects/b-way',
+  path: '/es/projects/b-way',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EsProjectsElevateLocalRoute = EsProjectsElevateLocalRouteImport.update({
+  id: '/es/projects/elevate-local',
+  path: '/es/projects/elevate-local',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EsProjectsFolkwaysRoute = EsProjectsFolkwaysRouteImport.update({
+  id: '/es/projects/folkways',
+  path: '/es/projects/folkways',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EsProjectsPawRoyaltyRoute = EsProjectsPawRoyaltyRouteImport.update({
+  id: '/es/projects/paw-royalty',
+  path: '/es/projects/paw-royalty',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EsProjectsXtendoGlobalRoute = EsProjectsXtendoGlobalRouteImport.update({
+  id: '/es/projects/xtendo-global',
+  path: '/es/projects/xtendo-global',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EsServicesSlugRoute = EsServicesSlugRouteImport.update({
+  id: '/es/services/$slug',
+  path: '/es/services/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -91,7 +133,14 @@ export interface FileRoutesByFullPath {
   '/projects/paw-royalty': typeof ProjectsPawRoyaltyRoute
   '/projects/xtendo-global': typeof ProjectsXtendoGlobalRoute
   '/services/$slug': typeof ServicesSlugRoute
+  '/es/': typeof EsIndexRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
+  '/es/projects/b-way': typeof EsProjectsBWayRoute
+  '/es/projects/elevate-local': typeof EsProjectsElevateLocalRoute
+  '/es/projects/folkways': typeof EsProjectsFolkwaysRoute
+  '/es/projects/paw-royalty': typeof EsProjectsPawRoyaltyRoute
+  '/es/projects/xtendo-global': typeof EsProjectsXtendoGlobalRoute
+  '/es/services/$slug': typeof EsServicesSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -104,7 +153,14 @@ export interface FileRoutesByTo {
   '/projects/paw-royalty': typeof ProjectsPawRoyaltyRoute
   '/projects/xtendo-global': typeof ProjectsXtendoGlobalRoute
   '/services/$slug': typeof ServicesSlugRoute
+  '/es': typeof EsIndexRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
+  '/es/projects/b-way': typeof EsProjectsBWayRoute
+  '/es/projects/elevate-local': typeof EsProjectsElevateLocalRoute
+  '/es/projects/folkways': typeof EsProjectsFolkwaysRoute
+  '/es/projects/paw-royalty': typeof EsProjectsPawRoyaltyRoute
+  '/es/projects/xtendo-global': typeof EsProjectsXtendoGlobalRoute
+  '/es/services/$slug': typeof EsServicesSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -118,7 +174,14 @@ export interface FileRoutesById {
   '/projects/paw-royalty': typeof ProjectsPawRoyaltyRoute
   '/projects/xtendo-global': typeof ProjectsXtendoGlobalRoute
   '/services/$slug': typeof ServicesSlugRoute
+  '/es/': typeof EsIndexRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
+  '/es/projects/b-way': typeof EsProjectsBWayRoute
+  '/es/projects/elevate-local': typeof EsProjectsElevateLocalRoute
+  '/es/projects/folkways': typeof EsProjectsFolkwaysRoute
+  '/es/projects/paw-royalty': typeof EsProjectsPawRoyaltyRoute
+  '/es/projects/xtendo-global': typeof EsProjectsXtendoGlobalRoute
+  '/es/services/$slug': typeof EsServicesSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -133,7 +196,14 @@ export interface FileRouteTypes {
     | '/projects/paw-royalty'
     | '/projects/xtendo-global'
     | '/services/$slug'
+    | '/es/'
     | '/.mcp/invoke-tool/$tool'
+    | '/es/projects/b-way'
+    | '/es/projects/elevate-local'
+    | '/es/projects/folkways'
+    | '/es/projects/paw-royalty'
+    | '/es/projects/xtendo-global'
+    | '/es/services/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -146,7 +216,14 @@ export interface FileRouteTypes {
     | '/projects/paw-royalty'
     | '/projects/xtendo-global'
     | '/services/$slug'
+    | '/es'
     | '/.mcp/invoke-tool/$tool'
+    | '/es/projects/b-way'
+    | '/es/projects/elevate-local'
+    | '/es/projects/folkways'
+    | '/es/projects/paw-royalty'
+    | '/es/projects/xtendo-global'
+    | '/es/services/$slug'
   id:
     | '__root__'
     | '/'
@@ -159,7 +236,14 @@ export interface FileRouteTypes {
     | '/projects/paw-royalty'
     | '/projects/xtendo-global'
     | '/services/$slug'
+    | '/es/'
     | '/.mcp/invoke-tool/$tool'
+    | '/es/projects/b-way'
+    | '/es/projects/elevate-local'
+    | '/es/projects/folkways'
+    | '/es/projects/paw-royalty'
+    | '/es/projects/xtendo-global'
+    | '/es/services/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -173,7 +257,14 @@ export interface RootRouteChildren {
   ProjectsPawRoyaltyRoute: typeof ProjectsPawRoyaltyRoute
   ProjectsXtendoGlobalRoute: typeof ProjectsXtendoGlobalRoute
   ServicesSlugRoute: typeof ServicesSlugRoute
+  EsIndexRoute: typeof EsIndexRoute
   Char91DotmcpChar93InvokeToolToolRoute: typeof Char91DotmcpChar93InvokeToolToolRoute
+  EsProjectsBWayRoute: typeof EsProjectsBWayRoute
+  EsProjectsElevateLocalRoute: typeof EsProjectsElevateLocalRoute
+  EsProjectsFolkwaysRoute: typeof EsProjectsFolkwaysRoute
+  EsProjectsPawRoyaltyRoute: typeof EsProjectsPawRoyaltyRoute
+  EsProjectsXtendoGlobalRoute: typeof EsProjectsXtendoGlobalRoute
+  EsServicesSlugRoute: typeof EsServicesSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -204,6 +295,13 @@ declare module '@tanstack/react-router' {
       path: '/.well-known/oauth-protected-resource'
       fullPath: '/.well-known/oauth-protected-resource'
       preLoaderRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/es/': {
+      id: '/es/'
+      path: '/es'
+      fullPath: '/es/'
+      preLoaderRoute: typeof EsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/projects/b-way': {
@@ -255,6 +353,48 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Char91DotmcpChar93InvokeToolToolRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/es/projects/b-way': {
+      id: '/es/projects/b-way'
+      path: '/es/projects/b-way'
+      fullPath: '/es/projects/b-way'
+      preLoaderRoute: typeof EsProjectsBWayRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/es/projects/elevate-local': {
+      id: '/es/projects/elevate-local'
+      path: '/es/projects/elevate-local'
+      fullPath: '/es/projects/elevate-local'
+      preLoaderRoute: typeof EsProjectsElevateLocalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/es/projects/folkways': {
+      id: '/es/projects/folkways'
+      path: '/es/projects/folkways'
+      fullPath: '/es/projects/folkways'
+      preLoaderRoute: typeof EsProjectsFolkwaysRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/es/projects/paw-royalty': {
+      id: '/es/projects/paw-royalty'
+      path: '/es/projects/paw-royalty'
+      fullPath: '/es/projects/paw-royalty'
+      preLoaderRoute: typeof EsProjectsPawRoyaltyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/es/projects/xtendo-global': {
+      id: '/es/projects/xtendo-global'
+      path: '/es/projects/xtendo-global'
+      fullPath: '/es/projects/xtendo-global'
+      preLoaderRoute: typeof EsProjectsXtendoGlobalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/es/services/$slug': {
+      id: '/es/services/$slug'
+      path: '/es/services/$slug'
+      fullPath: '/es/services/$slug'
+      preLoaderRoute: typeof EsServicesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -270,7 +410,14 @@ const rootRouteChildren: RootRouteChildren = {
   ProjectsPawRoyaltyRoute: ProjectsPawRoyaltyRoute,
   ProjectsXtendoGlobalRoute: ProjectsXtendoGlobalRoute,
   ServicesSlugRoute: ServicesSlugRoute,
+  EsIndexRoute: EsIndexRoute,
   Char91DotmcpChar93InvokeToolToolRoute: Char91DotmcpChar93InvokeToolToolRoute,
+  EsProjectsBWayRoute: EsProjectsBWayRoute,
+  EsProjectsElevateLocalRoute: EsProjectsElevateLocalRoute,
+  EsProjectsFolkwaysRoute: EsProjectsFolkwaysRoute,
+  EsProjectsPawRoyaltyRoute: EsProjectsPawRoyaltyRoute,
+  EsProjectsXtendoGlobalRoute: EsProjectsXtendoGlobalRoute,
+  EsServicesSlugRoute: EsServicesSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
