@@ -4,6 +4,9 @@
  * server-rendered HTML, so they must stay absolute and in sync with the copy.
  */
 
+import type { Lang } from "@/i18n/dictionary";
+import { localizePath } from "@/i18n/locale";
+
 export const SITE_URL = "https://www.jarasebastian.online";
 export const SITE_NAME = "Sebastián Jara";
 export const PERSON_NAME = "Sebastián Jara";
@@ -20,7 +23,9 @@ const WEBSITE_ID = `${SITE_URL}/#website`;
 type PageMetaInput = {
   title: string;
   description: string;
+  /** English path of the page; the Spanish one is derived from it */
   path: string;
+  lang?: Lang;
   image?: string;
   imageAlt?: string;
   type?: "website" | "article" | "profile";
@@ -28,18 +33,21 @@ type PageMetaInput = {
   socialDescription?: string;
 };
 
-/** Title, description, canonical, Open Graph and Twitter tags for one page */
+/** Title, description, canonical, hreflang alternates, Open Graph and Twitter tags for one page */
 export function pageMeta({
   title,
   description,
   path,
+  lang = "en",
   image = DEFAULT_OG_IMAGE,
   imageAlt,
   type = "website",
   socialTitle,
   socialDescription,
 }: PageMetaInput) {
-  const url = absoluteUrl(path);
+  const url = absoluteUrl(localizePath(path, lang));
+  const enUrl = absoluteUrl(localizePath(path, "en"));
+  const esUrl = absoluteUrl(localizePath(path, "es"));
   const img = absoluteUrl(image);
   const ogTitle = socialTitle ?? title;
   const ogDesc = socialDescription ?? description;
@@ -49,8 +57,8 @@ export function pageMeta({
       { name: "description", content: description },
       { property: "og:type", content: type },
       { property: "og:site_name", content: SITE_NAME },
-      { property: "og:locale", content: "en_US" },
-      { property: "og:locale:alternate", content: "es_AR" },
+      { property: "og:locale", content: lang === "es" ? "es_AR" : "en_US" },
+      { property: "og:locale:alternate", content: lang === "es" ? "en_US" : "es_AR" },
       { property: "og:url", content: url },
       { property: "og:title", content: ogTitle },
       { property: "og:description", content: ogDesc },
@@ -63,7 +71,12 @@ export function pageMeta({
       { name: "twitter:description", content: ogDesc },
       { name: "twitter:image", content: img },
     ],
-    links: [{ rel: "canonical", href: url }],
+    links: [
+      { rel: "canonical", href: url },
+      { rel: "alternate", hrefLang: "en", href: enUrl },
+      { rel: "alternate", hrefLang: "es", href: esUrl },
+      { rel: "alternate", hrefLang: "x-default", href: enUrl },
+    ],
   };
 }
 
@@ -171,7 +184,7 @@ export const websiteSchema = {
   url: `${SITE_URL}/`,
   name: SITE_NAME,
   description: "Portfolio of Sebastián Jara, brand and design strategist.",
-  inLanguage: "en",
+  inLanguage: ["en", "es"],
   publisher: { "@id": PERSON_ID },
 };
 
@@ -184,7 +197,9 @@ export function caseStudySchema({
   client,
   year,
   about,
+  lang = "en",
 }: {
+  lang?: Lang;
   path: string;
   name: string;
   description: string;
@@ -193,7 +208,8 @@ export function caseStudySchema({
   year: string;
   about: string[];
 }) {
-  const url = absoluteUrl(path);
+  const url = absoluteUrl(localizePath(path, lang));
+  const home = absoluteUrl(localizePath("/", lang));
   return {
     "@context": "https://schema.org",
     "@graph": [
@@ -211,13 +227,13 @@ export function caseStudySchema({
         sourceOrganization: { "@type": "Organization", name: client },
         about,
         isPartOf: { "@id": WEBSITE_ID },
-        inLanguage: "en",
+        inLanguage: lang,
       },
       {
         "@type": "BreadcrumbList",
         itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
-          { "@type": "ListItem", position: 2, name: "Work", item: `${SITE_URL}/#works` },
+          { "@type": "ListItem", position: 1, name: lang === "es" ? "Inicio" : "Home", item: home },
+          { "@type": "ListItem", position: 2, name: lang === "es" ? "Trabajos" : "Work", item: `${home}#works` },
           { "@type": "ListItem", position: 3, name: client, item: url },
         ],
       },

@@ -4,6 +4,7 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useRouterState,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
@@ -12,6 +13,7 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { LanguageProvider } from "../i18n/LanguageContext";
+import { langFromPath } from "../i18n/locale";
 
 function NotFoundComponent() {
   return (
@@ -122,8 +124,9 @@ gtag('config', 'G-NHX7CSFHDW');`,
 });
 
 function RootShell({ children }: { children: ReactNode }) {
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
   return (
-    <html lang="en" className="w-full [overflow-x:clip]">
+    <html lang={langFromPath(pathname)} className="w-full [overflow-x:clip]">
       <head>
         <HeadContent />
       </head>
@@ -140,7 +143,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <LanguageProvider defaultLang="en">
+      <LanguageProvider>
         {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
         <Outlet />
       </LanguageProvider>
